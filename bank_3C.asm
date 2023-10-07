@@ -15638,12 +15638,6 @@ _off014_35_BF9A_03:
 - D 1 - I - 0x01BFEC 06:BFDC: 45        .byte $45   ; 
 - D 1 - I - 0x01BFED 06:BFDD: FF        .byte $FF   ; 
 
-
-; bzk garbage
-- - - - - - 0x01BFEE 06:BFDE: FF        .byte $FF, $FF   ; 
-- - - - - - 0x01BFF0 06:BFE0: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x01C000 06:BFF0: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-
 .out .sprintf("Free bytes in bank 3C: %Xh [%d]", ($BFFF - *), ($BFFF - *))
 
 .segment "BANK_3Cb"
