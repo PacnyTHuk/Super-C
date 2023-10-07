@@ -7,6 +7,7 @@
 *.wch
 *.zip
 copy_*
+PRG_ROM.bin
 
 _debug.txt
 _listing.txt
