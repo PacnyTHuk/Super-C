@@ -860,7 +860,7 @@ C - - - - - 0x0084E0 02:84D0: B9 14 85  LDA tbl_8513_spd_Y + $01,Y
 C - - - - - 0x0084E3 02:84D3: 9D AE 06  STA ram_spd_Y_hi_obj,X
 C - - - - - 0x0084E6 02:84D6: A5 23     LDA ram_0023
 C - - - - - 0x0084E8 02:84D8: 18        CLC
-C - - - - - 0x0084E9 02:84D9: 65 1B     ADC ram_frm_cnt
+C - - - - - 0x0084E9 02:84D9: 65 1B     ADC ram_счетчик_кадров
 C - - - - - 0x0084EB 02:84DB: 29 07     AND #$07
 C - - - - - 0x0084ED 02:84DD: 0A        ASL
 C - - - - - 0x0084EE 02:84DE: A8        TAY

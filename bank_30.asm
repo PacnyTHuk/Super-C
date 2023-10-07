@@ -317,7 +317,7 @@ loc_81CC:
 C D 0 - - - 0x0001DC 00:81CC: A8        TAY
 C - - - - - 0x0001DD 00:81CD: B5 C4     LDA ram_plr_invinc,X
 C - - - - - 0x0001DF 00:81CF: F0 07     BEQ bra_81D8
-C - - - - - 0x0001E1 00:81D1: A5 1B     LDA ram_frm_cnt
+C - - - - - 0x0001E1 00:81D1: A5 1B     LDA ram_счетчик_кадров
 C - - - - - 0x0001E3 00:81D3: 4A        LSR
 C - - - - - 0x0001E4 00:81D4: 90 02     BCC bra_81D8
 C - - - - - 0x0001E6 00:81D6: A0 00     LDY #$00
@@ -328,7 +328,7 @@ C - - - - - 0x0001EC 00:81DC: BD F7 81  LDA tbl_81F7,X
 C - - - - - 0x0001EF 00:81DF: 1D 66 05  ORA ram_attr_spr_plr,X
 C - - - - - 0x0001F2 00:81E2: B4 D4     LDY ram_plr_barrier_timer,X
 C - - - - - 0x0001F4 00:81E4: F0 0D     BEQ bra_81F3
-C - - - - - 0x0001F6 00:81E6: A5 1B     LDA ram_frm_cnt
+C - - - - - 0x0001F6 00:81E6: A5 1B     LDA ram_счетчик_кадров
 C - - - - - 0x0001F8 00:81E8: 4A        LSR
 C - - - - - 0x0001F9 00:81E9: 4A        LSR
 C - - - - - 0x0001FA 00:81EA: BD 66 05  LDA ram_attr_spr_plr,X
@@ -572,7 +572,7 @@ C - - - - - 0x000322 00:8312: 60        RTS
 
 
 loc_8313:
-C D 0 - - - 0x000323 00:8313: A5 1B     LDA ram_frm_cnt
+C D 0 - - - 0x000323 00:8313: A5 1B     LDA ram_счетчик_кадров
 C - - - - - 0x000325 00:8315: 29 0F     AND #$0F
 C - - - - - 0x000327 00:8317: D0 1B     BNE bra_8334_RTS
 C - - - - - 0x000329 00:8319: A5 5C     LDA ram_005C
@@ -787,7 +787,7 @@ C - - - - - 0x000466 00:8456: 60        RTS
 
 
 sub_8457_borrow_lives:
-C - - - - - 0x000467 00:8457: A5 20     LDA ram_plr_counter
+C - - - - - 0x000467 00:8457: A5 20     LDA ram_колво_игроков
 C - - - - - 0x000469 00:8459: F0 FB     BEQ bra_8456_RTS    ; if 1 player
 ; if 2 players
 C - - - - - 0x00046B 00:845B: A2 01     LDX #$01
@@ -2085,7 +2085,7 @@ loc_8BE0:
 C D 0 - - - 0x000BF0 00:8BE0: A8        TAY
 C - - - - - 0x000BF1 00:8BE1: B5 C4     LDA ram_plr_invinc,X
 C - - - - - 0x000BF3 00:8BE3: F0 07     BEQ bra_8BEC
-C - - - - - 0x000BF5 00:8BE5: A5 1B     LDA ram_frm_cnt
+C - - - - - 0x000BF5 00:8BE5: A5 1B     LDA ram_счетчик_кадров
 C - - - - - 0x000BF7 00:8BE7: 4A        LSR
 C - - - - - 0x000BF8 00:8BE8: 90 02     BCC bra_8BEC
 C - - - - - 0x000BFA 00:8BEA: A0 00     LDY #$00
@@ -3191,7 +3191,7 @@ C - - - - - 0x001197 00:9187: 10 FA     BPL bra_9183_loop
 loc_0x001199:
 C D 0 - - - 0x001199 00:9189: A0 07     LDY #$07
 C - - - - - 0x00119B 00:918B: A2 0F     LDX #$0F
-C - - - - - 0x00119D 00:918D: A5 1B     LDA ram_frm_cnt
+C - - - - - 0x00119D 00:918D: A5 1B     LDA ram_счетчик_кадров
 C - - - - - 0x00119F 00:918F: 4A        LSR
 C - - - - - 0x0011A0 00:9190: B0 01     BCS bra_9193
 C - - - - - 0x0011A2 00:9192: CA        DEX
@@ -3674,7 +3674,7 @@ C - - - - - 0x001469 00:9459: B0 F4     BCS bra_944F_loop    ; jmp
 
 
 ofs_006_945B_01:
-C - - J - - 0x00146B 00:945B: A5 1B     LDA ram_frm_cnt
+C - - J - - 0x00146B 00:945B: A5 1B     LDA ram_счетчик_кадров
 C - - - - - 0x00146D 00:945D: 4A        LSR
 C - - - - - 0x00146E 00:945E: 90 0F     BCC bra_946F
 C - - - - - 0x001470 00:9460: A5 94     LDA ram_0094
@@ -3770,7 +3770,7 @@ C - - - - - 0x001507 00:94F7: 29 0F     AND #$0F
 C - - - - - 0x001509 00:94F9: 0A        ASL
 C - - - - - 0x00150A 00:94FA: 0A        ASL
 C - - - - - 0x00150B 00:94FB: 85 0A     STA ram_000A
-C - - - - - 0x00150D 00:94FD: A5 1B     LDA ram_frm_cnt
+C - - - - - 0x00150D 00:94FD: A5 1B     LDA ram_счетчик_кадров
 C - - - - - 0x00150F 00:94FF: 4A        LSR
 C - - - - - 0x001510 00:9500: 4A        LSR
 C - - - - - 0x001511 00:9501: 4A        LSR
@@ -3900,7 +3900,7 @@ C - - - - - 0x0015BE 00:95AE: A5 94     LDA ram_0094
 C - - - - - 0x0015C0 00:95B0: 10 03     BPL bra_95B5
 C - - - - - 0x0015C2 00:95B2: 4C 5C 96  JMP loc_965C
 bra_95B5:
-C - - - - - 0x0015C5 00:95B5: A5 1B     LDA ram_frm_cnt
+C - - - - - 0x0015C5 00:95B5: A5 1B     LDA ram_счетчик_кадров
 C - - - - - 0x0015C7 00:95B7: 65 23     ADC ram_0023
 C - - - - - 0x0015C9 00:95B9: 85 23     STA ram_0023
 C - - - - - 0x0015CB 00:95BB: 4A        LSR
@@ -4039,7 +4039,7 @@ C - - - - - 0x001670 00:9660: A0 10     LDY #$10
 C - - - - - 0x001672 00:9662: 29 20     AND #$20
 C - - - - - 0x001674 00:9664: F0 0A     BEQ bra_9670
 C - - - - - 0x001676 00:9666: A5 23     LDA ram_0023
-C - - - - - 0x001678 00:9668: 65 1B     ADC ram_frm_cnt
+C - - - - - 0x001678 00:9668: 65 1B     ADC ram_счетчик_кадров
 C - - - - - 0x00167A 00:966A: 4A        LSR
 C - - - - - 0x00167B 00:966B: 4A        LSR
 C - - - - - 0x00167C 00:966C: B0 02     BCS bra_9670
@@ -5239,7 +5239,7 @@ C - - - - - 0x001DAA 00:9D9A: A2 01     LDX #$01
 C - - - - - 0x001DAC 00:9D9C: 20 A0 9D  JSR sub_9DA0
 C - - - - - 0x001DAF 00:9D9F: CA        DEX ; 00
 sub_9DA0:
-C - - - - - 0x001DB0 00:9DA0: A5 1B     LDA ram_frm_cnt
+C - - - - - 0x001DB0 00:9DA0: A5 1B     LDA ram_счетчик_кадров
 C - - - - - 0x001DB2 00:9DA2: 4A        LSR
 C - - - - - 0x001DB3 00:9DA3: B0 33     BCS bra_9DD8
 C - - - - - 0x001DB5 00:9DA5: B5 41     LDA ram_0041,X
@@ -5293,7 +5293,7 @@ C - - - - - 0x001E02 00:9DF2: 09 40     ORA #con_btn_B
 C - - - - - 0x001E04 00:9DF4: 95 F3     STA ram_btn_hold,X
 C - - - - - 0x001E06 00:9DF6: D0 0C     BNE bra_9E04_RTS    ; jmp
 bra_9DF8:
-C - - - - - 0x001E08 00:9DF8: A5 1B     LDA ram_frm_cnt
+C - - - - - 0x001E08 00:9DF8: A5 1B     LDA ram_счетчик_кадров
 C - - - - - 0x001E0A 00:9DFA: 29 06     AND #$06
 C - - - - - 0x001E0C 00:9DFC: D0 06     BNE bra_9E04_RTS
 C - - - - - 0x001E0E 00:9DFE: B5 F1     LDA ram_btn_press,X
@@ -5966,7 +5966,7 @@ C - - - - - 0x002260 00:A250: 4C 69 A2  JMP loc_A269
 ofs_009_A253_07_area_8:
 C - - J - - 0x002263 00:A253: A9 00     LDA #$00
 C - - - - - 0x002265 00:A255: 95 F3     STA ram_btn_hold,X
-C - - - - - 0x002267 00:A257: A5 1B     LDA ram_frm_cnt
+C - - - - - 0x002267 00:A257: A5 1B     LDA ram_счетчик_кадров
 C - - - - - 0x002269 00:A259: 4A        LSR
 C - - - - - 0x00226A 00:A25A: B0 0C     BCS bra_A268_RTS
 C - - - - - 0x00226C 00:A25C: A5 9B     LDA ram_009B
@@ -6053,7 +6053,7 @@ tbl_A2BD_cheat_code:
 loc_0x0022D4:
 ; bzk garbage?
 - - - - - - 0x0022D4 00:A2C4: 20 DC A2  JSR sub_A2DC
-- - - - - - 0x0022D7 00:A2C7: A5 1B     LDA ram_frm_cnt
+- - - - - - 0x0022D7 00:A2C7: A5 1B     LDA ram_счетчик_кадров
 - - - - - - 0x0022D9 00:A2C9: 4A        LSR
 - - - - - - 0x0022DA 00:A2CA: 4A        LSR
 - - - - - - 0x0022DB 00:A2CB: 4A        LSR
@@ -6138,7 +6138,7 @@ C - - - - - 0x00234B 00:A33B: 60        RTS
 
 
 ofs_010_A33C_01:
-C - - J - - 0x00234C 00:A33C: A5 1B     LDA ram_frm_cnt
+C - - J - - 0x00234C 00:A33C: A5 1B     LDA ram_счетчик_кадров
 C - - - - - 0x00234E 00:A33E: 29 01     AND #$01
 C - - - - - 0x002350 00:A340: AA        TAX
 C - - - - - 0x002351 00:A341: BD 6B A3  LDA tbl_A36B,X
@@ -6330,14 +6330,14 @@ C - - - - - 0x00245A 00:A44A: 60        RTS
 
 
 ofs_012_A44B_01:
-C - - J - - 0x00245B 00:A44B: A5 1B     LDA ram_frm_cnt
+C - - J - - 0x00245B 00:A44B: A5 1B     LDA ram_счетчик_кадров
 C - - - - - 0x00245D 00:A44D: 4A        LSR
 C - - - - - 0x00245E 00:A44E: A9 38     LDA #$38
 C - - - - - 0x002460 00:A450: 90 02     BCC bra_A454
 C - - - - - 0x002462 00:A452: A9 39     LDA #$39
 bra_A454:
 C - - - - - 0x002464 00:A454: 8D 22 05  STA ram_pos_Y_hi_enemy
-C - - - - - 0x002467 00:A457: A5 1B     LDA ram_frm_cnt
+C - - - - - 0x002467 00:A457: A5 1B     LDA ram_счетчик_кадров
 C - - - - - 0x002469 00:A459: 4A        LSR
 C - - - - - 0x00246A 00:A45A: 4A        LSR
 C - - - - - 0x00246B 00:A45B: A9 BA     LDA #$BA
@@ -6381,7 +6381,7 @@ C - - - - - 0x0024A4 00:A494: 60        RTS
 
 
 sub_A495:
-C - - - - - 0x0024A5 00:A495: A5 1B     LDA ram_frm_cnt
+C - - - - - 0x0024A5 00:A495: A5 1B     LDA ram_счетчик_кадров
 C - - - - - 0x0024A7 00:A497: 29 03     AND #$03
 C - - - - - 0x0024A9 00:A499: F0 03     BEQ bra_A49E
 C - - - - - 0x0024AB 00:A49B: 4C 25 A5  JMP loc_A525

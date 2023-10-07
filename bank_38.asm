@@ -665,7 +665,7 @@ C - - - - - 0x0103E6 04:83D6: D0 14     BNE bra_83EC_RTS
 C - - - - - 0x0103E8 04:83D8: A9 02     LDA #$02
 C - - - - - 0x0103EA 04:83DA: 9D 56 05  STA ram_attr_spr_enemy,X
 C - - - - - 0x0103ED 04:83DD: A5 23     LDA ram_0023
-C - - - - - 0x0103EF 04:83DF: 65 1B     ADC ram_frm_cnt
+C - - - - - 0x0103EF 04:83DF: 65 1B     ADC ram_счетчик_кадров
 C - - - - - 0x0103F1 04:83E1: 85 23     STA ram_0023
 C - - - - - 0x0103F3 04:83E3: 29 03     AND #$03
 C - - - - - 0x0103F5 04:83E5: A8        TAY
@@ -1324,7 +1324,7 @@ C - - - - - 0x0107F5 04:87E5: 4C F9 84  JMP loc_84F9
 
 
 ofs_028_87E8_01:
-C - - J - - 0x0107F8 04:87E8: A5 1B     LDA ram_frm_cnt
+C - - J - - 0x0107F8 04:87E8: A5 1B     LDA ram_счетчик_кадров
 C - - - - - 0x0107FA 04:87EA: 4A        LSR
 C - - - - - 0x0107FB 04:87EB: B0 05     BCS bra_87F2_RTS
 C - - - - - 0x0107FD 04:87ED: DE E6 06  DEC ram_06E6_obj,X
@@ -2785,7 +2785,7 @@ C - - - - - 0x01107C 04:906C: 29 BF     AND #$BF
 bra_906E:
 C - - - - - 0x01107E 04:906E: 9D 72 07  STA ram_0772_obj,X
 bra_9071:
-C - - - - - 0x011081 04:9071: A5 1B     LDA ram_frm_cnt
+C - - - - - 0x011081 04:9071: A5 1B     LDA ram_счетчик_кадров
 C - - - - - 0x011083 04:9073: E5 23     SBC ram_0023
 C - - - - - 0x011085 04:9075: 85 23     STA ram_0023
 C - - - - - 0x011087 04:9077: A5 23     LDA ram_0023

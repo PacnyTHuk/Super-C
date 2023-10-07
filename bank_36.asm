@@ -36,7 +36,7 @@
 sub_8001_display_lives_with_sprites:
 C - - - - - 0x00C011 03:8001: A5 87     LDA ram_game_over_flag
 C - - - - - 0x00C013 03:8003: F0 48     BEQ bra_804D_RTS
-C - - - - - 0x00C015 03:8005: A4 20     LDY ram_plr_counter
+C - - - - - 0x00C015 03:8005: A4 20     LDY ram_колво_игроков
 bra_8007_loop:
 C - - - - - 0x00C017 03:8007: 84 02     STY ram_0002    ; player index
 C - - - - - 0x00C019 03:8009: B9 CA 00  LDA ram_plr_game_over,Y
@@ -4752,7 +4752,7 @@ C - - J - - 0x00D556 03:9546: 60        RTS
 ofs_044_0x00D557_02_area_3:
 C - - J - - 0x00D557 03:9547: AD CD 03  LDA ram_03CD
 C - - - - - 0x00D55A 03:954A: 30 1B     BMI bra_9567
-C - - - - - 0x00D55C 03:954C: A5 1B     LDA ram_frm_cnt
+C - - - - - 0x00D55C 03:954C: A5 1B     LDA ram_счетчик_кадров
 C - - - - - 0x00D55E 03:954E: 29 07     AND #$07
 C - - - - - 0x00D560 03:9550: D0 15     BNE bra_9567
 C - - - - - 0x00D562 03:9552: EE CD 03  INC ram_03CD
@@ -4885,7 +4885,7 @@ bra_95FF_RTS:
 
 
 ofs_044_0x00D610_03_area_4:
-C - - J - - 0x00D610 03:9600: A5 1B     LDA ram_frm_cnt
+C - - J - - 0x00D610 03:9600: A5 1B     LDA ram_счетчик_кадров
 C - - - - - 0x00D612 03:9602: 29 07     AND #$07
 C - - - - - 0x00D614 03:9604: D0 15     BNE bra_961B
 C - - - - - 0x00D616 03:9606: EE CD 03  INC ram_03CD
@@ -5111,7 +5111,7 @@ C - - J - - 0x00D702 03:96F2: 60        RTS
 ofs_044_0x00D703_04_area_5:
 C - - J - - 0x00D703 03:96F3: AD CD 03  LDA ram_03CD
 C - - - - - 0x00D706 03:96F6: 30 1C     BMI bra_9714
-C - - - - - 0x00D708 03:96F8: A5 1B     LDA ram_frm_cnt
+C - - - - - 0x00D708 03:96F8: A5 1B     LDA ram_счетчик_кадров
 C - - - - - 0x00D70A 03:96FA: 29 07     AND #$07
 C - - - - - 0x00D70C 03:96FC: D0 16     BNE bra_9714
 C - - - - - 0x00D70E 03:96FE: EE CD 03  INC ram_03CD
@@ -5127,7 +5127,7 @@ C - - - - - 0x00D721 03:9711: 20 64 F9  JSR sub_0x01F974_write_3_colors_with_con
 bra_9714:
 C - - - - - 0x00D724 03:9714: AD CF 03  LDA ram_03CF
 C - - - - - 0x00D727 03:9717: 30 30     BMI bra_9749
-C - - - - - 0x00D729 03:9719: A5 1B     LDA ram_frm_cnt
+C - - - - - 0x00D729 03:9719: A5 1B     LDA ram_счетчик_кадров
 C - - - - - 0x00D72B 03:971B: 29 03     AND #$03
 C - - - - - 0x00D72D 03:971D: D0 2A     BNE bra_9749
 C - - - - - 0x00D72F 03:971F: EE CF 03  INC ram_03CF
@@ -5342,7 +5342,7 @@ C - - - - - 0x00D829 03:9819: 60        RTS
 ofs_044_0x00D82A_05_area_6:
 C - - J - - 0x00D82A 03:981A: AC CD 03  LDY ram_03CD
 C - - - - - 0x00D82D 03:981D: 30 1B     BMI bra_983A
-C - - - - - 0x00D82F 03:981F: A5 1B     LDA ram_frm_cnt
+C - - - - - 0x00D82F 03:981F: A5 1B     LDA ram_счетчик_кадров
 C - - - - - 0x00D831 03:9821: 29 0F     AND #$0F
 C - - - - - 0x00D833 03:9823: D0 15     BNE bra_983A
 C - - - - - 0x00D835 03:9825: EE CD 03  INC ram_03CD
@@ -5356,7 +5356,7 @@ C - - - - - 0x00D847 03:9837: 8D CD 03  STA ram_03CD
 bra_983A:
 C - - - - - 0x00D84A 03:983A: AD CF 03  LDA ram_03CF
 C - - - - - 0x00D84D 03:983D: 30 1B     BMI bra_985A
-C - - - - - 0x00D84F 03:983F: A5 1B     LDA ram_frm_cnt
+C - - - - - 0x00D84F 03:983F: A5 1B     LDA ram_счетчик_кадров
 C - - - - - 0x00D851 03:9841: 29 07     AND #$07
 C - - - - - 0x00D853 03:9843: D0 15     BNE bra_985A
 C - - - - - 0x00D855 03:9845: EE CF 03  INC ram_03CF
@@ -5599,7 +5599,7 @@ bra_9966_RTS:
 
 
 ofs_044_0x00D977_07_area_8:
-C - - J - - 0x00D977 03:9967: A5 1B     LDA ram_frm_cnt
+C - - J - - 0x00D977 03:9967: A5 1B     LDA ram_счетчик_кадров
 C - - - - - 0x00D979 03:9969: 29 07     AND #$07
 C - - - - - 0x00D97B 03:996B: D0 16     BNE bra_9983
 C - - - - - 0x00D97D 03:996D: EE CD 03  INC ram_03CD

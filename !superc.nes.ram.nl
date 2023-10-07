@@ -1,7 +1,9 @@
-$001B#frm_cnt#
+$0018#demka#
+$0019#nomer_deistvija_na_zastavke#
+$001B#schetchik_kadrov#
 $001E#index_ppu_buffer#
 $001F#001F_flag#
-$0020#plr_counter#
+$0020#kolvo_igrokov#
 $0025#for_8000#
 $0026#for_A000#
 $0027#irq_handler_hi#

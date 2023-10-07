@@ -723,8 +723,8 @@ C - - - - - 0x01E3C6 07:E3B6: 4C 5D E2  JMP loc_E25D
 
 
 sub_E3B9:
-C - - - - - 0x01E3C9 07:E3B9: E6 1B     INC ram_frm_cnt
-C - - - - - 0x01E3CB 07:E3BB: A5 18     LDA ram_0018
+C - - - - - 0x01E3C9 07:E3B9: E6 1B     INC ram_счетчик_кадров
+C - - - - - 0x01E3CB 07:E3BB: A5 18     LDA ram_демка
 C - - - - - 0x01E3CD 07:E3BD: C9 04     CMP #$04
 C - - - - - 0x01E3CF 07:E3BF: D0 03     BNE bra_E3C4
 ; 04
@@ -741,13 +741,13 @@ C - - - - - 0x01E3D4 07:E3C4: 20 09 E6  JSR sub_E609_jump_to_pointers_after_jsr
 
 
 ofs_032_E3D3_00:
-C - - J - - 0x01E3E3 07:E3D3: A6 19     LDX ram_0019
+C - - J - - 0x01E3E3 07:E3D3: A6 19     LDX ram_номер_действия_на_заставке
 C - - - - - 0x01E3E5 07:E3D5: D0 0E     BNE bra_E3E5
 C - - - - - 0x01E3E7 07:E3D7: 20 0B E5  JSR sub_E50B
 C - - - - - 0x01E3EA 07:E3DA: A9 09     LDA #$09
 C - - - - - 0x01E3EC 07:E3DC: 20 70 FE  JSR sub_FE70_set_palette
 C - - - - - 0x01E3EF 07:E3DF: 20 BE F7  JSR sub_F7BE
-C - - - - - 0x01E3F2 07:E3E2: E6 19     INC ram_0019
+C - - - - - 0x01E3F2 07:E3E2: E6 19     INC ram_номер_действия_на_заставке
 bra_E3E4_RTS:
 C - - - - - 0x01E3F4 07:E3E4: 60        RTS
 bra_E3E5:
@@ -765,9 +765,9 @@ bra_E3F9:
 C - - - - - 0x01E409 07:E3F9: 20 2A E5  JSR sub_E52A
 C - - - - - 0x01E40C 07:E3FC: 20 02 E5  JSR sub_E502
 C - - - - - 0x01E40F 07:E3FF: A9 00     LDA #$00
-C - - - - - 0x01E411 07:E401: 85 18     STA ram_0018
+C - - - - - 0x01E411 07:E401: 85 18     STA ram_демка
 C - - - - - 0x01E413 07:E403: A9 02     LDA #$02
-C - - - - - 0x01E415 07:E405: 85 19     STA ram_0019
+C - - - - - 0x01E415 07:E405: 85 19     STA ram_номер_действия_на_заставке
 C - - - - - 0x01E417 07:E407: 60        RTS
 bra_E408:
 C - - - - - 0x01E418 07:E408: CA        DEX
@@ -777,16 +777,16 @@ C - - - - - 0x01E41E 07:E40E: 20 F1 E4  JSR sub_E4F1
 C - - - - - 0x01E421 07:E411: D0 03     BNE bra_E416
 C - - - - - 0x01E423 07:E413: 4C E5 E4  JMP loc_E4E5
 bra_E416:
-C - - - - - 0x01E426 07:E416: A6 22     LDX ram_0022
+C - - - - - 0x01E426 07:E416: A6 22     LDX ram_номер_опции_колво_игроков
 C - - - - - 0x01E428 07:E418: A9 A7     LDA #$A7
 C - - - - - 0x01E42A 07:E41A: BC 70 E4  LDY tbl_E470,X
 C - - - - - 0x01E42D 07:E41D: 20 5F E4  JSR sub_E45F
 C - - - - - 0x01E430 07:E420: A5 F5     LDA ram_copy_btn_press
 C - - - - - 0x01E432 07:E422: 29 20     AND #con_btn_Select
 C - - - - - 0x01E434 07:E424: F0 09     BEQ bra_E42F
-C - - - - - 0x01E436 07:E426: A5 22     LDA ram_0022
+C - - - - - 0x01E436 07:E426: A5 22     LDA ram_номер_опции_колво_игроков
 C - - - - - 0x01E438 07:E428: 49 01     EOR #$01
-C - - - - - 0x01E43A 07:E42A: 85 22     STA ram_0022
+C - - - - - 0x01E43A 07:E42A: 85 22     STA ram_номер_опции_колво_игроков
 C - - - - - 0x01E43C 07:E42C: 20 02 E5  JSR sub_E502
 bra_E42F:
 C - - - - - 0x01E43F 07:E42F: A5 F5     LDA ram_copy_btn_press
@@ -798,7 +798,7 @@ C - - - - - 0x01E449 07:E439: C9 C0     CMP #con_btns_AB
 C - - - - - 0x01E44B 07:E43B: F0 07     BEQ bra_E444
 C - - - - - 0x01E44D 07:E43D: A9 80     LDA #$80
 C - - - - - 0x01E44F 07:E43F: 85 3C     STA ram_003C
-C - - - - - 0x01E451 07:E441: E6 19     INC ram_0019
+C - - - - - 0x01E451 07:E441: E6 19     INC ram_номер_действия_на_заставке
 bra_E443_RTS:
 C - - - - - 0x01E453 07:E443: 60        RTS
 bra_E444:
@@ -811,7 +811,7 @@ C - - - - - 0x01E45D 07:E44D: 0A        ASL
 C - - - - - 0x01E45E 07:E44E: 0A        ASL
 C - - - - - 0x01E45F 07:E44F: 0A        ASL
 C - - - - - 0x01E460 07:E450: 0A        ASL
-C - - - - - 0x01E461 07:E451: 65 22     ADC ram_0022
+C - - - - - 0x01E461 07:E451: 65 22     ADC ram_номер_опции_колво_игроков
 ; con_0x0017EA_1_player
 ; con_0x0017EA_2_players
 C - - - - - 0x01E463 07:E453: 20 7A FE  JSR sub_FE7A_print_text_on_the_screen
@@ -840,10 +840,10 @@ tbl_E470:
 
 
 ofs_032_E472_01:
-C - - J - - 0x01E482 07:E472: A6 19     LDX ram_0019
+C - - J - - 0x01E482 07:E472: A6 19     LDX ram_номер_действия_на_заставке
 C - - - - - 0x01E484 07:E474: D0 06     BNE bra_E47C
 C - - - - - 0x01E486 07:E476: 20 5C E5  JSR sub_E55C
-C - - - - - 0x01E489 07:E479: E6 19     INC ram_0019
+C - - - - - 0x01E489 07:E479: E6 19     INC ram_номер_действия_на_заставке
 C - - - - - 0x01E48B 07:E47B: 60        RTS
 bra_E47C:
 C - - - - - 0x01E48C 07:E47C: A5 F1     LDA ram_btn_press
@@ -878,9 +878,9 @@ C - - - - - 0x01E4B2 07:E4A2: 60        RTS
 ofs_032_E4A3_02:
 C - - J - - 0x01E4B3 07:E4A3: A9 00     LDA #$00
 C - - - - - 0x01E4B5 07:E4A5: 85 1F     STA ram_001F_flag
-C - - - - - 0x01E4B7 07:E4A7: A6 19     LDX ram_0019
+C - - - - - 0x01E4B7 07:E4A7: A6 19     LDX ram_номер_действия_на_заставке
 C - - - - - 0x01E4B9 07:E4A9: D0 03     BNE bra_E4AE
-C - - - - - 0x01E4BB 07:E4AB: E6 19     INC ram_0019
+C - - - - - 0x01E4BB 07:E4AB: E6 19     INC ram_номер_действия_на_заставке
 C - - - - - 0x01E4BD 07:E4AD: 60        RTS
 bra_E4AE:
 C - - - - - 0x01E4BE 07:E4AE: CA        DEX
@@ -905,11 +905,11 @@ C - - - - - 0x01E4D6 07:E4C6: 4C E5 E4  JMP loc_E4E5
 
 
 ofs_032_E4C9_05:
-C - - J - - 0x01E4D9 07:E4C9: A6 19     LDX ram_0019
+C - - J - - 0x01E4D9 07:E4C9: A6 19     LDX ram_номер_действия_на_заставке
 C - - - - - 0x01E4DB 07:E4CB: D0 0E     BNE bra_E4DB_sound_mode
 C - - - - - 0x01E4DD 07:E4CD: A9 00     LDA #$00
 C - - - - - 0x01E4DF 07:E4CF: 8D 00 05  STA ram_anim_id_obj
-C - - - - - 0x01E4E2 07:E4D2: E6 19     INC ram_0019
+C - - - - - 0x01E4E2 07:E4D2: E6 19     INC ram_номер_действия_на_заставке
 C - - - - - 0x01E4E4 07:E4D4: A9 00     LDA #$00
 C - - - - - 0x01E4E6 07:E4D6: 85 50     STA ram_area
 C - - - - - 0x01E4E8 07:E4D8: 85 51     STA ram_game_loop
@@ -925,17 +925,17 @@ C - - - - - 0x01E4F4 07:E4E4: 60        RTS
 
 loc_E4E5:
 loc_0x01E4F5:
-C D 3 - - - 0x01E4F5 07:E4E5: E6 18     INC ram_0018
+C D 3 - - - 0x01E4F5 07:E4E5: E6 18     INC ram_демка
 loc_E4E7:
 C D 3 - - - 0x01E4F7 07:E4E7: A9 00     LDA #$00
-C - - - - - 0x01E4F9 07:E4E9: 85 19     STA ram_0019
+C - - - - - 0x01E4F9 07:E4E9: 85 19     STA ram_номер_действия_на_заставке
 C - - - - - 0x01E4FB 07:E4EB: 60        RTS
 
 
 
 bra_E4EC:
 loc_E4EC:
-C D 3 - - - 0x01E4FC 07:E4EC: 85 18     STA ram_0018
+C D 3 - - - 0x01E4FC 07:E4EC: 85 18     STA ram_демка
 C - - - - - 0x01E4FE 07:E4EE: 4C E7 E4  JMP loc_E4E7
 
 
@@ -1019,14 +1019,14 @@ sub_E55C:
 C - - - - - 0x01E56C 07:E55C: 20 D0 E5  JSR sub_E5D0_clear_memory
 C - - - - - 0x01E56F 07:E55F: A9 01     LDA #$01
 C - - - - - 0x01E571 07:E561: 85 1F     STA ram_001F_flag
-C - - - - - 0x01E573 07:E563: 85 20     STA ram_plr_counter
+C - - - - - 0x01E573 07:E563: 85 20     STA ram_колво_игроков
 C - - - - - 0x01E575 07:E565: A9 01     LDA #$01
 C - - - - - 0x01E577 07:E567: 85 A0     STA ram_00A0
 C - - - - - 0x01E579 07:E569: 85 A1     STA ram_00A1
 C - - - - - 0x01E57B 07:E56B: A9 00     LDA #$00
 C - - - - - 0x01E57D 07:E56D: 85 CA     STA ram_plr_game_over
 C - - - - - 0x01E57F 07:E56F: 85 CB     STA ram_plr_game_over + $01
-C - - - - - 0x01E581 07:E571: 85 1B     STA ram_frm_cnt
+C - - - - - 0x01E581 07:E571: 85 1B     STA ram_счетчик_кадров
 C - - - - - 0x01E583 07:E573: 85 5B     STA ram_005B
 C - - - - - 0x01E585 07:E575: 85 23     STA ram_0023
 C - - - - - 0x01E587 07:E577: A9 10     LDA #$10
@@ -1047,10 +1047,10 @@ C - - - - - 0x01E598 07:E588: 85 A0     STA ram_00A0
 C - - - - - 0x01E59A 07:E58A: 85 A1     STA ram_00A1
 C - - - - - 0x01E59C 07:E58C: A9 02     LDA #$02
 C - - - - - 0x01E59E 07:E58E: 85 59     STA ram_continues
-C - - - - - 0x01E5A0 07:E590: A5 22     LDA ram_0022
-C - - - - - 0x01E5A2 07:E592: 85 20     STA ram_plr_counter
+C - - - - - 0x01E5A0 07:E590: A5 22     LDA ram_номер_опции_колво_игроков
+C - - - - - 0x01E5A2 07:E592: 85 20     STA ram_колво_игроков
 sub_E594:
-C - - - - - 0x01E5A4 07:E594: A6 20     LDX ram_plr_counter
+C - - - - - 0x01E5A4 07:E594: A6 20     LDX ram_колво_игроков
 bra_E596_loop:
 C - - - - - 0x01E5A6 07:E596: A9 01     LDA #$01
 C - - - - - 0x01E5A8 07:E598: 95 A0     STA ram_00A0,X
@@ -1710,7 +1710,7 @@ C - - - - - 0x01E95A 07:E94A: D0 28     BNE bra_E974    ; jmp
 ofs_034_E94C_01:
 C - - J - - 0x01E95C 07:E94C: 20 3D FE  JSR sub_FE3D_area_handler
 C - - - - - 0x01E95F 07:E94F: 20 06 E9  JSR sub_E906
-C - - - - - 0x01E962 07:E952: A5 1B     LDA ram_frm_cnt
+C - - - - - 0x01E962 07:E952: A5 1B     LDA ram_счетчик_кадров
 C - - - - - 0x01E964 07:E954: 4A        LSR
 C - - - - - 0x01E965 07:E955: B0 21     BCS bra_E978_RTS
 C - - - - - 0x01E967 07:E957: C6 3F     DEC ram_003F
@@ -1742,7 +1742,7 @@ ofs_034_E979_02:
 C - - J - - 0x01E989 07:E979: 20 CF FE  JSR sub_FECF_stage_complete_handler
 C - - - - - 0x01E98C 07:E97C: 20 3D FE  JSR sub_FE3D_area_handler
 C - - - - - 0x01E98F 07:E97F: 20 06 E9  JSR sub_E906
-C - - - - - 0x01E992 07:E982: A5 1B     LDA ram_frm_cnt
+C - - - - - 0x01E992 07:E982: A5 1B     LDA ram_счетчик_кадров
 C - - - - - 0x01E994 07:E984: 29 03     AND #$03
 C - - - - - 0x01E996 07:E986: D0 02     BNE bra_E98A
 C - - - - - 0x01E998 07:E988: C6 3F     DEC ram_003F
@@ -4984,7 +4984,7 @@ C - - - - - 0x01FB6B 07:FB5B: 58        CLI
 loc_FB5C_infinite_loop:
 C D 3 - - - 0x01FB6C 07:FB5C: E6 23     INC ram_0023
 C - - - - - 0x01FB6E 07:FB5E: A5 23     LDA ram_0023
-C - - - - - 0x01FB70 07:FB60: 65 1B     ADC ram_frm_cnt
+C - - - - - 0x01FB70 07:FB60: 65 1B     ADC ram_счетчик_кадров
 C - - - - - 0x01FB72 07:FB62: 85 23     STA ram_0023
 C - - - - - 0x01FB74 07:FB64: 4C 5C FB  JMP loc_FB5C_infinite_loop
 
