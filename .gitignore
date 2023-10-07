@@ -8,6 +8,9 @@
 *.zip
 copy_*
 
+_debug.txt
+_listing.txt
+
 startup.lua
 
 syntax_6502.xml
