@@ -52,7 +52,7 @@ ld65 -C ld65.cfg -o PRG_ROM.bin --dbgfile _debug.txt ^
     copy_bank_3E.o
 
 :: join header, prg and chr into a single ROM file
-copy /B header.bin + PRG_ROM.bin + CHR_ROM.chr superc.nes
+copy /B header.bin + PRG_ROM.bin + CHR_ROM.chr !superc.nes
 
 :: join listing files into a single file
 copy /A copy_*.lst _listing.txt
