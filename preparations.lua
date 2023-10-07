@@ -109,10 +109,10 @@ end
 
 --создание файла комментов для FCEUX
 --чтение перевведенного на английский файла с адресами
-local inc_file, err = io.open("copy_bank_ram.inc", "r")
+local inc_file, err = io.open("bank_ram.inc", "r")
 if err ~= nil then PrintError(err) end
 
-local nl_file, err = io.open("!superc.nes.ram.nl", "w+")
+local nl_file, err = io.open("superc.nes.ram.nl", "w+")
 if err ~= nil then PrintError(err) end
 io.output(nl_file)
 
