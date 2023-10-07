@@ -12294,7 +12294,6 @@ _off007_0x01399A_05_area_6:
 - - - - - - 0x013A39 04:BA29: 00        .byte $00   ; 
 
 
-
 .out .sprintf("Free bytes in bank 38: %Xh [%d]", ($BFFF - *), ($BFFF - *))
 
 .segment "BANK_38b"
