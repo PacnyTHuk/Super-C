@@ -3153,10 +3153,10 @@ C - - - - - 0x01F1C3 07:F1B3: B9 C4 F2  LDA tbl_F2C4_атрибуты_метат
 C - - - - - 0x01F1C6 07:F1B6: 85 36     STA ram_0036
 C - - - - - 0x01F1C8 07:F1B8: B9 C5 F2  LDA tbl_F2C4_атрибуты_метатайлов + $01,Y
 C - - - - - 0x01F1CB 07:F1BB: 85 37     STA ram_0037
-C - - - - - 0x01F1CD 07:F1BD: B9 95 F2  LDA tbl_F294 + $01,Y
+C - - - - - 0x01F1CD 07:F1BD: B9 95 F2  LDA tbl_F294_данные_уровня + $01,Y
 C - - - - - 0x01F1D0 07:F1C0: 85 31     STA ram_0031
 C - - - - - 0x01F1D2 07:F1C2: 85 09     STA ram_0009
-C - - - - - 0x01F1D4 07:F1C4: B9 94 F2  LDA tbl_F294,Y
+C - - - - - 0x01F1D4 07:F1C4: B9 94 F2  LDA tbl_F294_данные_уровня,Y
 C - - - - - 0x01F1D7 07:F1C7: 85 08     STA ram_0008
 C - - - - - 0x01F1D9 07:F1C9: 18        CLC
 C - - - - - 0x01F1DA 07:F1CA: 69 02     ADC #$02
@@ -3166,10 +3166,10 @@ C - - - - - 0x01F1DE 07:F1CE: 90 02     BCC bra_F1D2_not_overflow
 bra_F1D2_not_overflow:
 C - - - - - 0x01F1E2 07:F1D2: A0 00     LDY #$00
 C - - - - - 0x01F1E4 07:F1D4: B1 08     LDA (ram_0008),Y
-C - - - - - 0x01F1E6 07:F1D6: 85 89     STA ram_0089
+C - - - - - 0x01F1E6 07:F1D6: 85 89     STA ram_0089    ; столбцы
 C - - - - - 0x01F1E8 07:F1D8: C8        INY ; 01
 C - - - - - 0x01F1E9 07:F1D9: B1 08     LDA (ram_0008),Y
-C - - - - - 0x01F1EB 07:F1DB: 85 88     STA ram_0088
+C - - - - - 0x01F1EB 07:F1DB: 85 88     STA ram_0088    ; строки
 C - - - - - 0x01F1ED 07:F1DD: A5 50     LDA ram_номер_уровня
 C - - - - - 0x01F1EF 07:F1DF: 0A        ASL
 C - - - - - 0x01F1F0 07:F1E0: 0A        ASL
@@ -3224,7 +3224,7 @@ tbl_F284:
 
 
 
-tbl_F294:
+tbl_F294_данные_уровня:
 ; индексы для данных в 0x01F2B4
 - D 3 - - - 0x01F2A4 07:F294: B8 9F     .word _off004_0x009FC8_00_area_1
 - D 3 - - - 0x01F2A6 07:F296: 45 AB     .word _off004_0x002B55_01_area_2
