@@ -825,9 +825,9 @@ C - - - - - 0x0104F4 04:84E4: 9D 1E 07  STA ram_obj_flags,X
 C - - - - - 0x0104F7 04:84E7: A9 20     LDA #$20
 C - - - - - 0x0104F9 04:84E9: 9D 72 07  STA ram_0772_obj,X
 C - - - - - 0x0104FC 04:84EC: A9 5A     LDA #con_chr_bank + $5A
-C - - - - - 0x0104FE 04:84EE: 8D F0 07  STA ram_chr_bank
+C - - - - - 0x0104FE 04:84EE: 8D F0 07  STA ram_bg_bank_1
 C - - - - - 0x010501 04:84F1: A9 06     LDA #con_chr_bank + $06
-C - - - - - 0x010503 04:84F3: 8D F1 07  STA ram_chr_bank + $01
+C - - - - - 0x010503 04:84F3: 8D F1 07  STA ram_bg_bank_1 + $01
 C - - - - - 0x010506 04:84F6: 4C D7 A2  JMP loc_0x0062E7_increase_obj_state
 
 
@@ -900,9 +900,9 @@ C - - - - - 0x010561 04:8551: 20 88 F1  JSR sub_0x01F198
 C - - - - - 0x010564 04:8554: E6 65     INC ram_0065
 C - - - - - 0x010566 04:8556: 20 A1 AA  JSR sub_0x006AB1_restore_reg_values
 C - - - - - 0x010569 04:8559: A9 20     LDA #con_chr_bank + $20
-C - - - - - 0x01056B 04:855B: 8D F0 07  STA ram_chr_bank
+C - - - - - 0x01056B 04:855B: 8D F0 07  STA ram_bg_bank_1
 C - - - - - 0x01056E 04:855E: A9 22     LDA #con_chr_bank + $22
-C - - - - - 0x010570 04:8560: 8D F1 07  STA ram_chr_bank + $01
+C - - - - - 0x010570 04:8560: 8D F1 07  STA ram_bg_bank_1 + $01
 C - - - - - 0x010573 04:8563: 4C 37 A3  JMP loc_0x006347_delete_object_08
 
 
@@ -3405,9 +3405,9 @@ C - - - - - 0x0113E3 04:93D3: BD 1E 07  LDA ram_obj_flags,X
 C - - - - - 0x0113E6 04:93D6: 29 01     AND #$01
 C - - - - - 0x0113E8 04:93D8: A8        TAY
 C - - - - - 0x0113E9 04:93D9: B9 F3 93  LDA tbl_93F3_chr_bank_bg_0,Y
-C - - - - - 0x0113EC 04:93DC: 8D F0 07  STA ram_chr_bank
+C - - - - - 0x0113EC 04:93DC: 8D F0 07  STA ram_bg_bank_1
 C - - - - - 0x0113EF 04:93DF: B9 F5 93  LDA tbl_93F5_chr_bank_bg_1,Y
-C - - - - - 0x0113F2 04:93E2: 8D F1 07  STA ram_chr_bank + $01
+C - - - - - 0x0113F2 04:93E2: 8D F1 07  STA ram_bg_bank_1 + $01
 C - - - - - 0x0113F5 04:93E5: B9 F7 93  LDA tbl_93F7_irq_handler,Y
 C - - - - - 0x0113F8 04:93E8: 85 27     STA ram_irq_handler_hi
 C - - - - - 0x0113FA 04:93EA: B9 F9 93  LDA tbl_93F9,Y
@@ -3482,9 +3482,9 @@ C - - - - - 0x011440 04:9430: 9D 2C 07  STA ram_072C_obj,X
 C - - - - - 0x011443 04:9433: A9 F0     LDA #con__hp_F0
 C - - - - - 0x011445 04:9435: 9D 76 06  STA ram_obj_hp,X
 C - - - - - 0x011448 04:9438: A9 58     LDA #con_chr_bank + $58
-C - - - - - 0x01144A 04:943A: 8D F1 07  STA ram_chr_bank + $01
+C - - - - - 0x01144A 04:943A: 8D F1 07  STA ram_bg_bank_1 + $01
 C - - - - - 0x01144D 04:943D: A9 11     LDA #con_chr_bank + $11
-C - - - - - 0x01144F 04:943F: 8D F5 07  STA ram_chr_bank + $05
+C - - - - - 0x01144F 04:943F: 8D F5 07  STA ram_bg_bank_1 + $05
 C - - - - - 0x011452 04:9442: A9 FF     LDA #$FF
 C - - - - - 0x011454 04:9444: 8D CF 03  STA ram_03CF
 C - - - - - 0x011457 04:9447: A0 9C     LDY #con_F97C_colors + $9C

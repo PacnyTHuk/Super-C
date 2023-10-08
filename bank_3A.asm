@@ -3893,9 +3893,9 @@ C - - J - - 0x0156DC 05:96CC: 20 8C FC  JSR sub_0x01FC9C_increase_002B
 C - - - - - 0x0156DF 05:96CF: 20 88 F1  JSR sub_0x01F198
 C - - - - - 0x0156E2 05:96D2: E6 65     INC ram_0065
 C - - - - - 0x0156E4 05:96D4: A9 08     LDA #con_chr_bank + $08
-C - - - - - 0x0156E6 05:96D6: 8D F0 07  STA ram_chr_bank
+C - - - - - 0x0156E6 05:96D6: 8D F0 07  STA ram_bg_bank_1
 C - - - - - 0x0156E9 05:96D9: A9 0A     LDA #con_chr_bank + $0A
-C - - - - - 0x0156EB 05:96DB: 8D F1 07  STA ram_chr_bank + $01
+C - - - - - 0x0156EB 05:96DB: 8D F1 07  STA ram_bg_bank_1 + $01
 C - - - - - 0x0156EE 05:96DE: 4C 37 A3  JMP loc_0x006347_delete_object_08
 
 

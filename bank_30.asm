@@ -6246,9 +6246,9 @@ C - - - - - 0x0023DD 00:A3CD: 88        DEY
 C - - - - - 0x0023DE 00:A3CE: 10 FA     BPL bra_A3CA_loop
 C - - - - - 0x0023E0 00:A3D0: 20 C0 E7  JSR sub_0x01E7D0
 C - - - - - 0x0023E3 00:A3D3: A9 18     LDA #con_chr_bank + $18
-C - - - - - 0x0023E5 00:A3D5: 8D F1 07  STA ram_chr_bank + $01
+C - - - - - 0x0023E5 00:A3D5: 8D F1 07  STA ram_bg_bank_1 + $01
 C - - - - - 0x0023E8 00:A3D8: A9 69     LDA #con_chr_bank + $69
-C - - - - - 0x0023EA 00:A3DA: 8D F5 07  STA ram_chr_bank + $05
+C - - - - - 0x0023EA 00:A3DA: 8D F5 07  STA ram_bg_bank_1 + $05
 C - - - - - 0x0023ED 00:A3DD: A9 03     LDA #con_irq_credits
 C - - - - - 0x0023EF 00:A3DF: 85 27     STA ram_irq_handler_hi
 C - - - - - 0x0023F1 00:A3E1: 20 03 A6  JSR sub_A603
