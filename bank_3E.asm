@@ -1028,7 +1028,7 @@ C - - - - - 0x01E57D 07:E56D: 85 CA     STA ram_plr_game_over
 C - - - - - 0x01E57F 07:E56F: 85 CB     STA ram_plr_game_over + $01
 C - - - - - 0x01E581 07:E571: 85 1B     STA ram_счетчик_кадров
 C - - - - - 0x01E583 07:E573: 85 5B     STA ram_005B
-C - - - - - 0x01E585 07:E575: 85 23     STA ram_0023
+C - - - - - 0x01E585 07:E575: 85 23     STA ram_рандом_байт_1
 C - - - - - 0x01E587 07:E577: A9 10     LDA #$10
 C - - - - - 0x01E589 07:E579: 85 53     STA ram_lives
 C - - - - - 0x01E58B 07:E57B: 85 54     STA ram_lives + $01
@@ -3296,7 +3296,7 @@ C - - - - - 0x01F2F8 07:F2E8: 85 00     STA ram_0000
 C - - - - - 0x01F2FA 07:F2EA: A9 01     LDA #$01
 C - - - - - 0x01F2FC 07:F2EC: 85 0F     STA ram_000F
 C - - - - - 0x01F2FE 07:F2EE: 20 82 F6  JSR sub_F682
-C - - - - - 0x01F301 07:F2F1: A5 23     LDA ram_0023
+C - - - - - 0x01F301 07:F2F1: A5 23     LDA ram_рандом_байт_1
 C - - - - - 0x01F303 07:F2F3: 29 03     AND #$03
 C - - - - - 0x01F305 07:F2F5: A8        TAY
 C - - - - - 0x01F306 07:F2F6: B9 3B F3  LDA tbl_F33B,Y
@@ -3310,7 +3310,7 @@ C - - - - - 0x01F312 07:F302: 68        PLA
 C - - - - - 0x01F313 07:F303: B0 02     BCS bra_F307
 C - - - - - 0x01F315 07:F305: 85 0A     STA ram_000A
 bra_F307:
-C - - - - - 0x01F317 07:F307: A5 23     LDA ram_0023
+C - - - - - 0x01F317 07:F307: A5 23     LDA ram_рандом_байт_1
 C - - - - - 0x01F319 07:F309: 4A        LSR
 C - - - - - 0x01F31A 07:F30A: 4A        LSR
 C - - - - - 0x01F31B 07:F30B: 29 03     AND #$03
@@ -4982,10 +4982,10 @@ C - - - - - 0x01FB66 07:FB56: A9 00     LDA #con_mirroring_V
 C - - - - - 0x01FB68 07:FB58: 8D 00 A0  STA $A000
 C - - - - - 0x01FB6B 07:FB5B: 58        CLI
 loc_FB5C_infinite_loop:
-C D 3 - - - 0x01FB6C 07:FB5C: E6 23     INC ram_0023
-C - - - - - 0x01FB6E 07:FB5E: A5 23     LDA ram_0023
+C D 3 - - - 0x01FB6C 07:FB5C: E6 23     INC ram_рандом_байт_1
+C - - - - - 0x01FB6E 07:FB5E: A5 23     LDA ram_рандом_байт_1
 C - - - - - 0x01FB70 07:FB60: 65 1B     ADC ram_счетчик_кадров
-C - - - - - 0x01FB72 07:FB62: 85 23     STA ram_0023
+C - - - - - 0x01FB72 07:FB62: 85 23     STA ram_рандом_байт_1
 C - - - - - 0x01FB74 07:FB64: 4C 5C FB  JMP loc_FB5C_infinite_loop
 
 

@@ -850,7 +850,7 @@ C - - - - - 0x0084CA 02:84BA: A9 B8     LDA #$B8
 C - - - - - 0x0084CC 02:84BC: 9D 22 05  STA ram_pos_Y_hi_enemy,X
 C - - - - - 0x0084CF 02:84BF: A9 D0     LDA #$D0
 C - - - - - 0x0084D1 02:84C1: 9D 3C 05  STA ram_pos_X_hi_enemy,X
-C - - - - - 0x0084D4 02:84C4: A5 23     LDA ram_0023
+C - - - - - 0x0084D4 02:84C4: A5 23     LDA ram_рандом_байт_1
 C - - - - - 0x0084D6 02:84C6: 29 07     AND #$07
 C - - - - - 0x0084D8 02:84C8: 0A        ASL
 C - - - - - 0x0084D9 02:84C9: A8        TAY
@@ -858,7 +858,7 @@ C - - - - - 0x0084DA 02:84CA: B9 13 85  LDA tbl_8513_spd_Y,Y
 C - - - - - 0x0084DD 02:84CD: 9D A0 06  STA ram_spd_Y_lo_obj,X
 C - - - - - 0x0084E0 02:84D0: B9 14 85  LDA tbl_8513_spd_Y + $01,Y
 C - - - - - 0x0084E3 02:84D3: 9D AE 06  STA ram_spd_Y_hi_obj,X
-C - - - - - 0x0084E6 02:84D6: A5 23     LDA ram_0023
+C - - - - - 0x0084E6 02:84D6: A5 23     LDA ram_рандом_байт_1
 C - - - - - 0x0084E8 02:84D8: 18        CLC
 C - - - - - 0x0084E9 02:84D9: 65 1B     ADC ram_счетчик_кадров
 C - - - - - 0x0084EB 02:84DB: 29 07     AND #$07
@@ -1512,11 +1512,11 @@ C - - - - - 0x0088F7 02:88E7: 4C E0 A2  JMP loc_0x0062F0
 bra_88EA:
 C - - - - - 0x0088FA 02:88EA: A9 C0     LDA #$C0
 C - - - - - 0x0088FC 02:88EC: 9D 22 05  STA ram_pos_Y_hi_enemy,X
-C - - - - - 0x0088FF 02:88EF: A5 23     LDA ram_0023
+C - - - - - 0x0088FF 02:88EF: A5 23     LDA ram_рандом_байт_1
 C - - - - - 0x008901 02:88F1: 29 78     AND #$78
 C - - - - - 0x008903 02:88F3: 09 80     ORA #$80
 C - - - - - 0x008905 02:88F5: 9D 3C 05  STA ram_pos_X_hi_enemy,X
-C - - - - - 0x008908 02:88F8: A5 23     LDA ram_0023
+C - - - - - 0x008908 02:88F8: A5 23     LDA ram_рандом_байт_1
 C - - - - - 0x00890A 02:88FA: 29 03     AND #$03
 C - - - - - 0x00890C 02:88FC: 0A        ASL
 C - - - - - 0x00890D 02:88FD: A8        TAY
@@ -1524,7 +1524,7 @@ C - - - - - 0x00890E 02:88FE: B9 27 89  LDA tbl_8927_spd_Y,Y
 C - - - - - 0x008911 02:8901: 9D A0 06  STA ram_spd_Y_lo_obj,X
 C - - - - - 0x008914 02:8904: B9 28 89  LDA tbl_8927_spd_Y + $01,Y
 C - - - - - 0x008917 02:8907: 9D AE 06  STA ram_spd_Y_hi_obj,X
-C - - - - - 0x00891A 02:890A: A5 23     LDA ram_0023
+C - - - - - 0x00891A 02:890A: A5 23     LDA ram_рандом_байт_1
 C - - - - - 0x00891C 02:890C: 30 10     BMI bra_891E
 C - - - - - 0x00891E 02:890E: 29 04     AND #$04
 C - - - - - 0x008920 02:8910: 4A        LSR
@@ -1737,7 +1737,7 @@ C - - J - - 0x008A52 02:8A42: A9 80     LDA #$80
 C - - - - - 0x008A54 02:8A44: 9D 2C 07  STA ram_072C_obj,X
 C - - - - - 0x008A57 02:8A47: BD 1E 07  LDA ram_obj_flags,X
 C - - - - - 0x008A5A 02:8A4A: 18        CLC
-C - - - - - 0x008A5B 02:8A4B: 65 23     ADC ram_0023
+C - - - - - 0x008A5B 02:8A4B: 65 23     ADC ram_рандом_байт_1
 C - - - - - 0x008A5D 02:8A4D: 29 07     AND #$07
 C - - - - - 0x008A5F 02:8A4F: 0A        ASL
 C - - - - - 0x008A60 02:8A50: A8        TAY
@@ -1745,7 +1745,7 @@ C - - - - - 0x008A61 02:8A51: B9 90 8A  LDA tbl_8A90_spd_X,Y
 C - - - - - 0x008A64 02:8A54: 9D BC 06  STA ram_spd_X_lo_obj,X
 C - - - - - 0x008A67 02:8A57: B9 91 8A  LDA tbl_8A90_spd_X + $01,Y
 C - - - - - 0x008A6A 02:8A5A: 9D CA 06  STA ram_spd_X_hi_obj,X
-C - - - - - 0x008A6D 02:8A5D: A5 23     LDA ram_0023
+C - - - - - 0x008A6D 02:8A5D: A5 23     LDA ram_рандом_байт_1
 C - - - - - 0x008A6F 02:8A5F: 29 07     AND #$07
 C - - - - - 0x008A71 02:8A61: 0A        ASL
 C - - - - - 0x008A72 02:8A62: A8        TAY
@@ -1955,7 +1955,7 @@ _off001_0x008BB0_3E_facehugger:
 ofs_038_3E_8BAA_01_initialize_object:
 C - - J - - 0x008BBA 02:8BAA: A9 01     LDA #$01
 C - - - - - 0x008BBC 02:8BAC: 9D 48 07  STA ram_0748_obj,X
-C - - - - - 0x008BBF 02:8BAF: A5 23     LDA ram_0023
+C - - - - - 0x008BBF 02:8BAF: A5 23     LDA ram_рандом_байт_1
 C - - - - - 0x008BC1 02:8BB1: 29 03     AND #$03
 C - - - - - 0x008BC3 02:8BB3: 0A        ASL
 C - - - - - 0x008BC4 02:8BB4: 0A        ASL
