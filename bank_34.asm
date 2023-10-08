@@ -6573,22 +6573,22 @@ C - - - - - 0x009AFA 02:9AEA: 99 50 00  STA $00 + $50,Y
 C - - - - - 0x009AFD 02:9AED: 88        DEY
 C - - - - - 0x009AFE 02:9AEE: 10 FA     BPL bra_9AEA_loop
 C - - - - - 0x009B00 02:9AF0: A9 23     LDA #> $23A0
-C - - - - - 0x009B02 02:9AF2: 85 57     STA ram_0057_plr
+C - - - - - 0x009B02 02:9AF2: 85 57     STA ram_очки_до_жизни_старш
 C - - - - - 0x009B04 02:9AF4: A9 A0     LDA #< $23A0
-C - - - - - 0x009B06 02:9AF6: 85 56     STA ram_0055_plr + $01
+C - - - - - 0x009B06 02:9AF6: 85 56     STA ram_очки_до_жизни_младш + $01
 C - - - - - 0x009B08 02:9AF8: A9 0D     LDA #$0D    ; clear lines counter
-C - - - - - 0x009B0A 02:9AFA: 85 55     STA ram_0055_plr
+C - - - - - 0x009B0A 02:9AFA: 85 55     STA ram_очки_до_жизни_младш
 C - - - - - 0x009B0C 02:9AFC: 4C 0E 9B  JMP loc_9B0E
 
 
 
 ofs_sound_mode_9AFF_01_clear_title_screen:
 C - - J - - 0x009B0F 02:9AFF: 20 48 9C  JSR sub_9C48
-C - - - - - 0x009B12 02:9B02: C6 55     DEC ram_0055_plr
+C - - - - - 0x009B12 02:9B02: C6 55     DEC ram_очки_до_жизни_младш
 C - - - - - 0x009B14 02:9B04: 10 0A     BPL bra_9B10_RTS
 ; if all lines are cleared
 C - - - - - 0x009B16 02:9B06: A9 00     LDA #$00
-C - - - - - 0x009B18 02:9B08: 85 55     STA ram_0055_plr
+C - - - - - 0x009B18 02:9B08: 85 55     STA ram_очки_до_жизни_младш
 C - - - - - 0x009B1A 02:9B0A: A9 04     LDA #$04    ; wait 4 frames before drawing window
 C - - - - - 0x009B1C 02:9B0C: 85 52     STA ram_sound_mode_draw_cooldown
 loc_9B0E:
@@ -6605,8 +6605,8 @@ C - - - - - 0x009B23 02:9B13: D0 FB     BNE bra_9B10_RTS
 C - - - - - 0x009B25 02:9B15: A9 01     LDA #$01
 C - - - - - 0x009B27 02:9B17: 85 52     STA ram_sound_mode_draw_cooldown
 C - - - - - 0x009B29 02:9B19: 20 78 9C  JSR sub_9C78_draw_sound_mode_window
-C - - - - - 0x009B2C 02:9B1C: E6 55     INC ram_0055_plr
-C - - - - - 0x009B2E 02:9B1E: A5 55     LDA ram_0055_plr
+C - - - - - 0x009B2C 02:9B1C: E6 55     INC ram_очки_до_жизни_младш
+C - - - - - 0x009B2E 02:9B1E: A5 55     LDA ram_очки_до_жизни_младш
 C - - - - - 0x009B30 02:9B20: C9 0E     CMP #$0E    ; window lines counter
 C - - - - - 0x009B32 02:9B22: 90 EC     BCC bra_9B10_RTS
 C - - - - - 0x009B34 02:9B24: 20 D9 9B  JSR sub_9BD9
@@ -6682,14 +6682,14 @@ C - - - - - 0x009BA6 02:9B96: A5 F7     LDA ram_copy_btn_hold
 C - - - - - 0x009BA8 02:9B98: 29 0C     AND #con_btns_UD
 C - - - - - 0x009BAA 02:9B9A: F0 2B     BEQ bra_9BC7_RTS
 C - - - - - 0x009BAC 02:9B9C: A0 04     LDY #$04
-C - - - - - 0x009BAE 02:9B9E: C6 58     DEC ram_0057_plr + $01
+C - - - - - 0x009BAE 02:9B9E: C6 58     DEC ram_очки_до_жизни_старш + $01
 C - - - - - 0x009BB0 02:9BA0: F0 08     BEQ bra_9BAA
 C - - - - - 0x009BB2 02:9BA2: A5 F5     LDA ram_copy_btn_press
 C - - - - - 0x009BB4 02:9BA4: 29 0C     AND #con_btns_UD
 C - - - - - 0x009BB6 02:9BA6: F0 1F     BEQ bra_9BC7_RTS
 C - - - - - 0x009BB8 02:9BA8: A0 20     LDY #$20
 bra_9BAA:
-C - - - - - 0x009BBA 02:9BAA: 84 58     STY ram_0057_plr + $01
+C - - - - - 0x009BBA 02:9BAA: 84 58     STY ram_очки_до_жизни_старш + $01
 C - - - - - 0x009BBC 02:9BAC: 4A        LSR
 C - - - - - 0x009BBD 02:9BAD: 4A        LSR
 C - - - - - 0x009BBE 02:9BAE: 4A        LSR
@@ -6788,10 +6788,10 @@ C - - - - - 0x009C58 02:9C48: A6 1E     LDX ram_index_ppu_buffer
 C - - - - - 0x009C5A 02:9C4A: A9 03     LDA #con_buf_mode_03
 C - - - - - 0x009C5C 02:9C4C: 9D 00 03  STA ram_nmt_buffer,X
 C - - - - - 0x009C5F 02:9C4F: E8        INX
-C - - - - - 0x009C60 02:9C50: A5 57     LDA ram_0057_plr    ; ppu hi
+C - - - - - 0x009C60 02:9C50: A5 57     LDA ram_очки_до_жизни_старш    ; ppu hi
 C - - - - - 0x009C62 02:9C52: 9D 00 03  STA ram_nmt_buffer,X
 C - - - - - 0x009C65 02:9C55: E8        INX
-C - - - - - 0x009C66 02:9C56: A5 56     LDA ram_0055_plr + $01    ; ppu lo
+C - - - - - 0x009C66 02:9C56: A5 56     LDA ram_очки_до_жизни_младш + $01    ; ppu lo
 C - - - - - 0x009C68 02:9C58: 9D 00 03  STA ram_nmt_buffer,X
 C - - - - - 0x009C6B 02:9C5B: E8        INX
 C - - - - - 0x009C6C 02:9C5C: A9 20     LDA #$20    ; counter
@@ -6801,19 +6801,19 @@ C - - - - - 0x009C72 02:9C62: A9 00     LDA #$00    ; tile
 C - - - - - 0x009C74 02:9C64: 9D 00 03  STA ram_nmt_buffer,X
 C - - - - - 0x009C77 02:9C67: E8        INX
 C - - - - - 0x009C78 02:9C68: 86 1E     STX ram_index_ppu_buffer
-C - - - - - 0x009C7A 02:9C6A: A5 56     LDA ram_0055_plr + $01
+C - - - - - 0x009C7A 02:9C6A: A5 56     LDA ram_очки_до_жизни_младш + $01
 C - - - - - 0x009C7C 02:9C6C: 38        SEC
 C - - - - - 0x009C7D 02:9C6D: E9 20     SBC #< $0020
-C - - - - - 0x009C7F 02:9C6F: 85 56     STA ram_0055_plr + $01
-C - - - - - 0x009C81 02:9C71: A5 57     LDA ram_0057_plr
+C - - - - - 0x009C7F 02:9C6F: 85 56     STA ram_очки_до_жизни_младш + $01
+C - - - - - 0x009C81 02:9C71: A5 57     LDA ram_очки_до_жизни_старш
 C - - - - - 0x009C83 02:9C73: E9 00     SBC #> $0020
-C - - - - - 0x009C85 02:9C75: 85 57     STA ram_0057_plr
+C - - - - - 0x009C85 02:9C75: 85 57     STA ram_очки_до_жизни_старш
 C - - - - - 0x009C87 02:9C77: 60        RTS
 
 
 
 sub_9C78_draw_sound_mode_window:
-C - - - - - 0x009C88 02:9C78: A5 55     LDA ram_0055_plr    ; window line counter
+C - - - - - 0x009C88 02:9C78: A5 55     LDA ram_очки_до_жизни_младш    ; window line counter
 C - - - - - 0x009C8A 02:9C7A: 0A        ASL
 C - - - - - 0x009C8B 02:9C7B: A8        TAY
 C - - - - - 0x009C8C 02:9C7C: B9 05 9E  LDA tbl_9E05_sound_mode_window,Y

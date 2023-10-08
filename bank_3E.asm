@@ -912,7 +912,7 @@ C - - - - - 0x01E4DF 07:E4CF: 8D 00 05  STA ram_anim_id_obj
 C - - - - - 0x01E4E2 07:E4D2: E6 19     INC ram_номер_действия_на_заставке
 C - - - - - 0x01E4E4 07:E4D4: A9 00     LDA #$00
 C - - - - - 0x01E4E6 07:E4D6: 85 50     STA ram_номер_уровня
-C - - - - - 0x01E4E8 07:E4D8: 85 51     STA ram_game_loop
+C - - - - - 0x01E4E8 07:E4D8: 85 51     STA ram_номер_круга
 C - - - - - 0x01E4EA 07:E4DA: 60        RTS
 bra_E4DB_sound_mode:
 C - - - - - 0x01E4EB 07:E4DB: 20 D7 FE  JSR sub_FED7_sound_mode_handler
@@ -1030,8 +1030,8 @@ C - - - - - 0x01E581 07:E571: 85 1B     STA ram_счетчик_кадров
 C - - - - - 0x01E583 07:E573: 85 5B     STA ram_005B
 C - - - - - 0x01E585 07:E575: 85 23     STA ram_рандом_байт_1
 C - - - - - 0x01E587 07:E577: A9 10     LDA #$10
-C - - - - - 0x01E589 07:E579: 85 53     STA ram_lives
-C - - - - - 0x01E58B 07:E57B: 85 54     STA ram_lives + $01
+C - - - - - 0x01E589 07:E579: 85 53     STA ram_жизни
+C - - - - - 0x01E58B 07:E57B: 85 54     STA ram_жизни + $01
 C - - - - - 0x01E58D 07:E57D: A5 F0     LDA ram_00F0
 C - - - - - 0x01E58F 07:E57F: 85 50     STA ram_номер_уровня
 C - - - - - 0x01E591 07:E581: 60        RTS
@@ -1046,7 +1046,7 @@ C - - - - - 0x01E596 07:E586: A9 00     LDA #$00
 C - - - - - 0x01E598 07:E588: 85 A0     STA ram_00A0
 C - - - - - 0x01E59A 07:E58A: 85 A1     STA ram_00A1
 C - - - - - 0x01E59C 07:E58C: A9 02     LDA #$02
-C - - - - - 0x01E59E 07:E58E: 85 59     STA ram_continues
+C - - - - - 0x01E59E 07:E58E: 85 59     STA ram_конты
 C - - - - - 0x01E5A0 07:E590: A5 22     LDA ram_номер_опции_колво_игроков
 C - - - - - 0x01E5A2 07:E592: 85 20     STA ram_колво_игроков
 sub_E594:
@@ -1063,11 +1063,11 @@ C - - - - - 0x01E5B4 07:E5A4: AC EC 07  LDY ram_cheat_flag
 C - - - - - 0x01E5B7 07:E5A7: F0 02     BEQ bra_E5AB_not_cheat
 C - - - - - 0x01E5B9 07:E5A9: A9 09     LDA #$09
 bra_E5AB_not_cheat:
-C - - - - - 0x01E5BB 07:E5AB: 95 53     STA ram_lives,X
+C - - - - - 0x01E5BB 07:E5AB: 95 53     STA ram_жизни,X
 C - - - - - 0x01E5BD 07:E5AD: A9 30     LDA #$30
-C - - - - - 0x01E5BF 07:E5AF: 95 55     STA ram_0055_plr,X
+C - - - - - 0x01E5BF 07:E5AF: 95 55     STA ram_очки_до_жизни_младш,X
 C - - - - - 0x01E5C1 07:E5B1: A9 00     LDA #$00
-C - - - - - 0x01E5C3 07:E5B3: 95 57     STA ram_0057_plr,X
+C - - - - - 0x01E5C3 07:E5B3: 95 57     STA ram_очки_до_жизни_старш,X
 C - - - - - 0x01E5C5 07:E5B5: CA        DEX
 C - - - - - 0x01E5C6 07:E5B6: 10 DE     BPL bra_E596_loop
 ; clear 07E3-07E8
@@ -1245,39 +1245,39 @@ bra_E67E:
 C - - - - - 0x01E68E 07:E67E: A6 21     LDX ram_0021    ; player index
 C - - - - - 0x01E690 07:E680: A0 02     LDY #$02
 C - - - - - 0x01E692 07:E682: B1 04     LDA (ram_0004),Y
-C - - - - - 0x01E694 07:E684: D5 57     CMP ram_0057_plr,X
+C - - - - - 0x01E694 07:E684: D5 57     CMP ram_очки_до_жизни_старш,X
 C - - - - - 0x01E696 07:E686: 90 3E     BCC bra_E6C6
 C - - - - - 0x01E698 07:E688: D0 07     BNE bra_E691
 C - - - - - 0x01E69A 07:E68A: 88        DEY
 C - - - - - 0x01E69B 07:E68B: B1 04     LDA (ram_0004),Y
-C - - - - - 0x01E69D 07:E68D: D5 55     CMP ram_0055_plr,X
+C - - - - - 0x01E69D 07:E68D: D5 55     CMP ram_очки_до_жизни_младш,X
 C - - - - - 0x01E69F 07:E68F: 90 35     BCC bra_E6C6
 bra_E691:
 C - - - - - 0x01E6A1 07:E691: A4 21     LDY ram_0021    ; player index
 C - - - - - 0x01E6A3 07:E693: A2 20     LDX #$20
-C - - - - - 0x01E6A5 07:E695: B9 55 00  LDA ram_0055_plr,Y
+C - - - - - 0x01E6A5 07:E695: B9 55 00  LDA ram_очки_до_жизни_младш,Y
 C - - - - - 0x01E6A8 07:E698: 18        CLC
 C - - - - - 0x01E6A9 07:E699: 20 DF E6  JSR sub_E6DF
-C - - - - - 0x01E6AC 07:E69C: 99 55 00  STA ram_0055_plr,Y
+C - - - - - 0x01E6AC 07:E69C: 99 55 00  STA ram_очки_до_жизни_младш,Y
 C - - - - - 0x01E6AF 07:E69F: 90 10     BCC bra_E6B1
 C - - - - - 0x01E6B1 07:E6A1: A2 01     LDX #$01
-C - - - - - 0x01E6B3 07:E6A3: B9 57 00  LDA ram_0057_plr,Y
+C - - - - - 0x01E6B3 07:E6A3: B9 57 00  LDA ram_очки_до_жизни_старш,Y
 C - - - - - 0x01E6B6 07:E6A6: 18        CLC
 C - - - - - 0x01E6B7 07:E6A7: 20 DF E6  JSR sub_E6DF
 C - - - - - 0x01E6BA 07:E6AA: 90 02     BCC bra_E6AE_not_overflow
 - - - - - - 0x01E6BC 07:E6AC: A9 FF     LDA #$FF
 bra_E6AE_not_overflow:
-C - - - - - 0x01E6BE 07:E6AE: 99 57 00  STA ram_0057_plr,Y
+C - - - - - 0x01E6BE 07:E6AE: 99 57 00  STA ram_очки_до_жизни_старш,Y
 bra_E6B1:
 C - - - - - 0x01E6C1 07:E6B1: A6 21     LDX ram_0021    ; player index
-C - - - - - 0x01E6C3 07:E6B3: B5 53     LDA ram_lives,X
+C - - - - - 0x01E6C3 07:E6B3: B5 53     LDA ram_жизни,X
 C - - - - - 0x01E6C5 07:E6B5: C9 63     CMP #$63
 C - - - - - 0x01E6C7 07:E6B7: 90 06     BCC bra_E6BF_not_overflow
 C - - - - - 0x01E6C9 07:E6B9: A9 63     LDA #$63
-C - - - - - 0x01E6CB 07:E6BB: 95 53     STA ram_lives,X
+C - - - - - 0x01E6CB 07:E6BB: 95 53     STA ram_жизни,X
 C - - - - - 0x01E6CD 07:E6BD: D0 07     BNE bra_E6C6    ; jmp
 bra_E6BF_not_overflow:
-C - - - - - 0x01E6CF 07:E6BF: F6 53     INC ram_lives,X
+C - - - - - 0x01E6CF 07:E6BF: F6 53     INC ram_жизни,X
 C - - - - - 0x01E6D1 07:E6C1: A9 23     LDA #con_sound_23
 C - - - - - 0x01E6D3 07:E6C3: 20 DE FD  JSR sub_FDDE_play_sound
 bra_E6C6:
@@ -1429,7 +1429,7 @@ C - - - - - 0x01E7B3 07:E7A3: 60        RTS
 
 sub_E7A4_display_lives_counter_with_sprites:
 ; Y = player index
-C - - - - - 0x01E7B4 07:E7A4: B9 53 00  LDA ram_lives,Y
+C - - - - - 0x01E7B4 07:E7A4: B9 53 00  LDA ram_жизни,Y
 C - - - - - 0x01E7B7 07:E7A7: A0 00     LDY #$00
 bra_E7A9_loop:
 C - - - - - 0x01E7B9 07:E7A9: C9 0A     CMP #$0A
@@ -1527,7 +1527,7 @@ C D 3 - - - 0x01E84E 07:E83E: 95 C0     STA ram_00C0,X
 C - - - - - 0x01E850 07:E840: 98        TYA
 C - - - - - 0x01E851 07:E841: 95 A0     STA ram_00A0,X
 C - - - - - 0x01E853 07:E843: F0 02     BEQ bra_E847
-C - - - - - 0x01E855 07:E845: F6 53     INC ram_lives,X
+C - - - - - 0x01E855 07:E845: F6 53     INC ram_жизни,X
 bra_E847:
 C - - - - - 0x01E857 07:E847: CA        DEX
 C - - - - - 0x01E858 07:E848: 10 D2     BPL bra_E81C_loop
@@ -1809,13 +1809,13 @@ C - - - - - 0x01E9E9 07:E9D9: 90 17     BCC bra_E9F2_not_finished_yet
 ; C = 1
 C - - - - - 0x01E9EB 07:E9DB: A9 00     LDA #$00
 C - - - - - 0x01E9ED 07:E9DD: 85 50     STA ram_номер_уровня
-C - - - - - 0x01E9EF 07:E9DF: A5 51     LDA ram_game_loop
+C - - - - - 0x01E9EF 07:E9DF: A5 51     LDA ram_номер_круга
 C - - - - - 0x01E9F1 07:E9E1: 69 00     ADC #$00
 C - - - - - 0x01E9F3 07:E9E3: C9 02     CMP #$02
 C - - - - - 0x01E9F5 07:E9E5: 90 02     BCC bra_E9E9_not_overflow
 C - - - - - 0x01E9F7 07:E9E7: A9 01     LDA #$01
 bra_E9E9_not_overflow:
-C - - - - - 0x01E9F9 07:E9E9: 85 51     STA ram_game_loop
+C - - - - - 0x01E9F9 07:E9E9: 85 51     STA ram_номер_круга
 C - - - - - 0x01E9FB 07:E9EB: 20 C3 E5  JSR sub_E5C3_clear_memory
 C - - - - - 0x01E9FE 07:E9EE: A9 08     LDA #$08
 C - - - - - 0x01EA00 07:E9F0: D0 02     BNE bra_E9F4    ; jmp
@@ -1846,7 +1846,7 @@ C - - - - - 0x01EA23 07:EA13: 4C B2 E8  JMP loc_E8B2
 ofs_033_EA16_06:
 C - - J - - 0x01EA26 07:EA16: C6 3F     DEC ram_таймер_на_экране_очков
 C - - - - - 0x01EA28 07:EA18: D0 3F     BNE bra_EA59_RTS
-C - - - - - 0x01EA2A 07:EA1A: C6 59     DEC ram_continues
+C - - - - - 0x01EA2A 07:EA1A: C6 59     DEC ram_конты
 C - - - - - 0x01EA2C 07:EA1C: 30 34     BMI bra_EA52
 C - - - - - 0x01EA2E 07:EA1E: A9 0A     LDA #con_0x0017EA_continue_end
 C - - - - - 0x01EA30 07:EA20: 20 7A FE  JSR sub_FE7A_print_text_on_the_screen

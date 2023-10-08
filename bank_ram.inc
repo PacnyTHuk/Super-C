@@ -229,45 +229,38 @@ ram_номер_уровня                        = $0050 ; 00 = 1
 ;                                                 05 = 6
 ;                                                 06 = 7
 ;                                                 07 = 8
-    ram_cheat_input_cnt                     = ram_номер_уровня ; (title screen) cheat input counter
-    ram_sound_mode_handler                  = ram_номер_уровня ; (sound mode) handler
+    ram_cheat_input_cnt                     = ram_номер_уровня ; Чит код на выбор уровней
+    ram_sound_mode_handler                  = ram_номер_уровня ; Соунд тест
 
 
 
-; how many times you beat the game
-ram_game_loop                           = $0051 ; 001440 001598 004084 009AFA 01E4E8 01E5E8 01E9EF 01E9F9 01FB03 
+ram_номер_круга                         = $0051 ; Номер текущего круга игры
 
 
 
-; how many players have S weapon
-ram_S_weapon_cnt                        = $0052 ; 0000B6 00144F 006BAF 009AFA 009B1C 009B21 009B27 01E5E8 01FB03 
-    ram_sound_mode_draw_cooldown            = ram_S_weapon_cnt ; (sound mode) cooldown before drawing window
+ram_колво_s                             = $0052 ; Кол-во оружия S в команде игроков
+    ram_sound_mode_draw_cooldown            = ram_колво_s ; Соунд тест
 
 
 
-; lives for both players
-ram_lives                               = $0053 ; 00047A 000492 0004A2 0004AE 0004B3 000594 00066C 009AFA 009B52 009B71 009B7E 009BC1 009BC7 009BC9 009BDB 009BDF 009BE1 00C024 01E589 01E5BB 01E5E8 01E6C3 01E6CF 01E7B4 01E855 01FB03 
-; ram_0054                                = $0054 ; 00047A 000492 0004A2 0004AE 0004B3 000594 00066C 009AFA 009B55 009BCC 009BD2 009BE3 009BE7 009BF5 00C024 01E58B 01E5BB 01E5E8 01E7B4 01E855 01FB03 
-    ram_sound_mode_track_cur            = ram_lives         ; (sound mode) current selected track with cursor
-    ram_sound_mode_track_min            = ram_lives + $01   ; (sound mode) first visible track in the sound mode window
+
+ram_жизни                               = $0053 ; Жизни игроков
+; ram_0054                                = $0054 ; 
+    ram_sound_mode_track_cur            = ram_жизни         ; Соунд тест
+    ram_sound_mode_track_min            = ram_жизни + $01   ; Соунд тест
 
 
-; 
-ram_0055_plr                            = $0055 ; 009AFA 009B0A 009B12 009B18 009B2C 009B2E 009C88 01E5BF 01E5E8 01E69D 01E6A5 01E6AC 01FB03 
-; ram_0056                                = $0056 ; 009AFA 009B06 009C66 009C7A 009C7F 01E5BF 01E5E8 01E69D 01FB03 
+ram_очки_до_жизни_младш                 = $0055 ; Кол-во очков до получения жизни (десятки тычсяч)
+; ram_0056                                = $0056 ;
 
-
-
-; 
-ram_0057_plr                            = $0057 ; 009AFA 009B02 009C60 009C81 009C85 01E5C3 01E5E8 01E694 01E6B3 01E6BE 01FB03 
-; ram_0058                                = $0058 ; 009AFA 009BAE 009BBA 01E5C3 01E5E8 01E694 01FB03 
+ram_очки_до_жизни_старш                 = $0057 ; Кол-во очков до получения жизни (сотни тысяч)
+; ram_0058                                = $0058 ;
 
 
 
 ; how many continues left
-ram_continues                           = $0059 ; 009AFA 009B9F 009BA2 009F18 009F63 01E59E 01E5E8 01EA2A 01FB03 
-    ram_play_all                            = ram_continues ; (sound mode) flag to play everything from track list
-
+ram_конты                               = $0059 ; Конты игроков
+    ram_play_all                            = ram_конты ; Соунд тест
 
 
 
@@ -388,8 +381,7 @@ ram_008F                                = $008F ; 0009C1 00125E 001C40 00232B 00
 
 
 
-; mob spawn counter?
-ram_0090_mob_spawn_cnt                  = $0090 ; 00142C 001531 001592 01E5D7 01E5E8 01FB03 
+ram_колво_спавн_мобов                   = $0090 ; Кол-во мобов появившихся на экране
 
 
 
@@ -399,8 +391,7 @@ ram_0092                                = $0092 ; 001424 001428 01E5D7 01E5E8 01
 
 
 
-; timer before next mob will be spawned
-ram_mob_spawn_cooldown                  = $0093 ; 00143E 00145D 001467 001483 00148E 00158B 01E5D7 01E5E8 01FB03 
+ram_таймер_до_спавна_моба               = $0093 ; Таймер до возможного появления моба
 
 
 
@@ -425,28 +416,27 @@ ram_00A4                                = $00A4 ; 0004F0 000825 00082A 000846 00
 ram_00A5                                = $00A5 ; 0004F0 000825 00082A 000846 00084B 000B74 000B79 01E5E8 01FB03 
 
 
-
-; 
-ram_spd_Y_lo_plr                        = $00A6 ; 0004F2 0005BF 0005F9 0005FE 000620 00065B 0006CA 000737 00074A 00074F 000763 000788 000917 000953 000992 0009A2 000A1B 000A7A 000A9F 000AA4 000B0E 000C69 000C8C 000C9B 000CCC 000CE0 01E5E8 01FB03 
-; ram_00A7                                = $00A7 ; 0004F2 0005BF 0005F9 0005FE 00060E 000620 00065B 0006CA 000737 00074A 00074F 000763 000788 000917 000953 0009A2 000A1B 000B0E 000C69 000C9B 000CCC 000CE0 01E5E8 01FB03 
-
-
-
-; 
-ram_spd_Y_hi_plr                        = $00A8 ; 0004F4 0005C3 000600 000604 000622 00065D 0006A0 0006AA 0006CF 00073C 000751 000755 00075F 00078D 000910 0009DB 000A1D 000A7E 000A94 000AA6 000AAA 000B13 000C52 000C67 000C71 000C8E 000C94 01E5E8 01FB03 
-; ram_00A9                                = $00A9 ; 000077 0004F4 0005C3 000600 000604 000612 000622 00065D 0006A0 0006AA 0006CF 00073C 000751 000755 00075F 00078D 000910 0009DB 000A1D 000B13 000C67 000C71 000C94 01E5E8 01FB03 
+ 
+ram_скорость_игрока_y_младш             = $00A6 ; Скорость игрока по y младшее
+; ram_00A7                                = $00A7 ;
 
 
 
 ; 
-ram_spd_X_lo_plr                        = $00AA ; 0004F6 0005E3 000624 00065F 0007C2 0007DA 0007EA 000828 000849 000874 000A74 000B04 000B45 000B5D 000B77 01E5E8 01FB03 
-; ram_00AB                                = $00AB ; 0004F6 0005E3 000624 00065F 0007C2 0007DA 0007EA 000828 000849 000874 000B04 000B45 000B5D 000B77 01E5E8 01FB03 
+ram_скорость_игрока_y_старш             = $00A8 ; Скорость игрока по Y Старшее 
+; ram_00A9                                = $00A9 ;
 
 
 
 ; 
-ram_spd_X_hi_plr                        = $00AC ; 0004F8 0005E8 000626 000661 0007C0 0007C6 0007DC 0007E0 0007E5 0007EE 00082E 000850 000879 000A76 000B09 000B28 000B43 000B49 000B5F 000B66 000B7E 01E5E8 01FB03 
-; ram_00AD                                = $00AD ; 0004F8 0005E8 000626 000661 0007C0 0007C6 0007DC 0007E0 0007E5 0007EE 00082E 000850 000879 000B09 000B43 000B49 000B5F 000B66 000B7E 01E5E8 01FB03 
+ram_скорость_игрока_x_младш             = $00AA ; Скорость игрока по x младшее
+; ram_00AB                                = $00AB ;
+
+
+
+; 
+ram_скорость_игрока_x_старш             = $00AC ; Скорость игрока по X Старшее 
+; ram_00AD                                = $00AD ;
 
 
 

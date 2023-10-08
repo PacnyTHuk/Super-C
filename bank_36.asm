@@ -44,7 +44,7 @@ C - - - - - 0x00C01C 03:800C: A0 04     LDY #$04
 C - - - - - 0x00C01E 03:800E: 05 1F     ORA ram_001F_flag
 C - - - - - 0x00C020 03:8010: D0 0B     BNE bra_801D
 C - - - - - 0x00C022 03:8012: A4 02     LDY ram_0002    ; player index
-C - - - - - 0x00C024 03:8014: B9 53 00  LDA ram_lives,Y
+C - - - - - 0x00C024 03:8014: B9 53 00  LDA ram_жизни,Y
 C - - - - - 0x00C027 03:8017: A0 00     LDY #$00
 C - - - - - 0x00C029 03:8019: C9 04     CMP #$04
 C - - - - - 0x00C02B 03:801B: 90 02     BCC bra_801F_not_overflow

@@ -94,7 +94,7 @@ ofs_038_20_806C_04:
 C - - J - - 0x00407C 01:806C: 20 B7 A6  JSR sub_0x0066C7_delete_object_03
 C - - - - - 0x00407F 01:806F: DE E6 06  DEC ram_06E6_obj,X
 C - - - - - 0x004082 01:8072: D0 3E     BNE bra_80B2_RTS
-C - - - - - 0x004084 01:8074: A5 51     LDA ram_game_loop
+C - - - - - 0x004084 01:8074: A5 51     LDA ram_номер_круга
 C - - - - - 0x004086 01:8076: D0 06     BNE bra_807E_2nd_loop
 ; if 1st loop
 C - - - - - 0x004088 01:8078: BD 1E 07  LDA ram_obj_flags,X

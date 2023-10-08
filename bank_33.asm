@@ -2689,7 +2689,7 @@ sub_0x006BAB_set_dynamic_hp_to_obj:
 C - - - - - 0x006BAB 01:AB9B: 85 08     STA ram_0008
 C - - - - - 0x006BAD 01:AB9D: 84 09     STY ram_0009
 ; bzk optimize, CLC + LDA, that's it
-C - - - - - 0x006BAF 01:AB9F: A5 52     LDA ram_S_weapon_cnt
+C - - - - - 0x006BAF 01:AB9F: A5 52     LDA ram_колво_s
 C - - - - - 0x006BB1 01:ABA1: C9 02     CMP #$02
 C - - - - - 0x006BB3 01:ABA3: 90 02     BCC bra_ABA7
 ; C = 1
