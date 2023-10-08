@@ -127,7 +127,7 @@ bra_8094_loop:
 C - - - - - 0x0000A4 00:8094: B5 A0     LDA ram_00A0,X
 C - - - - - 0x0000A6 00:8096: C9 02     CMP #$02
 C - - - - - 0x0000A8 00:8098: D0 09     BNE bra_80A3
-C - - - - - 0x0000AA 00:809A: B5 B8     LDA ram_weapon,X
+C - - - - - 0x0000AA 00:809A: B5 B8     LDA ram_оружие_игрока,X
 C - - - - - 0x0000AC 00:809C: 29 0F     AND #$0F
 C - - - - - 0x0000AE 00:809E: C9 02     CMP #con_weapon_S
 C - - - - - 0x0000B0 00:80A0: D0 01     BNE bra_80A3
@@ -315,7 +315,7 @@ C - - - - - 0x0001D9 00:81C9: 18        CLC
 C - - - - - 0x0001DA 00:81CA: 69 1A     ADC #$1A
 loc_81CC:
 C D 0 - - - 0x0001DC 00:81CC: A8        TAY
-C - - - - - 0x0001DD 00:81CD: B5 C4     LDA ram_plr_invinc,X
+C - - - - - 0x0001DD 00:81CD: B5 C4     LDA ram_инвиз_игрока,X
 C - - - - - 0x0001DF 00:81CF: F0 07     BEQ bra_81D8
 C - - - - - 0x0001E1 00:81D1: A5 1B     LDA ram_счетчик_кадров
 C - - - - - 0x0001E3 00:81D3: 4A        LSR
@@ -850,9 +850,9 @@ C - - - - - 0x0004C6 00:84B6: 60        RTS
 
 
 sub_84B7:
-C - - - - - 0x0004C7 00:84B7: B5 C4     LDA ram_plr_invinc,X
+C - - - - - 0x0004C7 00:84B7: B5 C4     LDA ram_инвиз_игрока,X
 C - - - - - 0x0004C9 00:84B9: F0 02     BEQ bra_84BD
-C - - - - - 0x0004CB 00:84BB: D6 C4     DEC ram_plr_invinc,X
+C - - - - - 0x0004CB 00:84BB: D6 C4     DEC ram_инвиз_игрока,X
 bra_84BD:
 C - - - - - 0x0004CD 00:84BD: B5 D4     LDA ram_plr_barrier_timer,X
 C - - - - - 0x0004CF 00:84BF: F0 08     BEQ bra_84C9_RTS
@@ -866,10 +866,10 @@ C - - - - - 0x0004D9 00:84C9: 60        RTS
 
 ; bzk garbage
 - - - - - - 0x0004DA 00:84CA: A9 00     LDA #$00    ; con_weapon_default
-- - - - - - 0x0004DC 00:84CC: 95 B8     STA ram_weapon,X
+- - - - - - 0x0004DC 00:84CC: 95 B8     STA ram_оружие_игрока,X
 - - - - - - 0x0004DE 00:84CE: 9D 32 05  STA ram_pos_Y_hi_plr,X
 - - - - - - 0x0004E1 00:84D1: 9D 4C 05  STA ram_pos_X_hi_plr,X
-- - - - - - 0x0004E4 00:84D4: 95 C4     STA ram_plr_invinc,X
+- - - - - - 0x0004E4 00:84D4: 95 C4     STA ram_инвиз_игрока,X
 
 
 
@@ -894,7 +894,7 @@ C - - - - - 0x000508 00:84F8: 95 BE     STA ram_00BE,X
 C - - - - - 0x00050A 00:84FA: 95 C0     STA ram_00C0,X
 C - - - - - 0x00050C 00:84FC: 95 C2     STA ram_00C2,X
 C - - - - - 0x00050E 00:84FE: 95 C6     STA ram_00C6,X
-C - - - - - 0x000510 00:8500: 95 C8     STA ram_00C8,X
+C - - - - - 0x000510 00:8500: 95 C8     STA ram_чарж_f_игрока,X
 C - - - - - 0x000512 00:8502: 95 CA     STA ram_plr_game_over,X
 C - - - - - 0x000514 00:8504: 95 CC     STA ram_00CC,X
 C - - - - - 0x000516 00:8506: 95 CE     STA ram_00CE,X
@@ -1142,9 +1142,9 @@ C - - - - - 0x00066C 00:865C: B4 53     LDY ram_жизни,X
 C - - - - - 0x00066E 00:865E: F0 0A     BEQ bra_866A
 loc_8660:
 C D 0 - - - 0x000670 00:8660: A9 00     LDA #con_weapon_default
-C - - - - - 0x000672 00:8662: 95 B8     STA ram_weapon,X
+C - - - - - 0x000672 00:8662: 95 B8     STA ram_оружие_игрока,X
 C - - - - - 0x000674 00:8664: A9 80     LDA #$80
-C - - - - - 0x000676 00:8666: 95 C4     STA ram_plr_invinc,X
+C - - - - - 0x000676 00:8666: 95 C4     STA ram_инвиз_игрока,X
 C - - - - - 0x000678 00:8668: A9 01     LDA #$01
 bra_866A:
 C - - - - - 0x00067A 00:866A: 95 A0     STA ram_00A0,X
@@ -2083,7 +2083,7 @@ C - - - - - 0x000BEC 00:8BDC: A8        TAY
 C - - - - - 0x000BED 00:8BDD: B9 04 8C  LDA tbl_8C04,Y
 loc_8BE0:
 C D 0 - - - 0x000BF0 00:8BE0: A8        TAY
-C - - - - - 0x000BF1 00:8BE1: B5 C4     LDA ram_plr_invinc,X
+C - - - - - 0x000BF1 00:8BE1: B5 C4     LDA ram_инвиз_игрока,X
 C - - - - - 0x000BF3 00:8BE3: F0 07     BEQ bra_8BEC
 C - - - - - 0x000BF5 00:8BE5: A5 1B     LDA ram_счетчик_кадров
 C - - - - - 0x000BF7 00:8BE7: 4A        LSR
@@ -2322,7 +2322,7 @@ C - - - - - 0x000D04 00:8CF4: B5 F3     LDA ram_btn_hold,X
 C - - - - - 0x000D06 00:8CF6: 29 04     AND #con_btn_Down
 C - - - - - 0x000D08 00:8CF8: D0 40     BNE bra_8D3A_RTS
 bra_8CFA:
-C - - - - - 0x000D0A 00:8CFA: B5 B8     LDA ram_weapon,X
+C - - - - - 0x000D0A 00:8CFA: B5 B8     LDA ram_оружие_игрока,X
 C - - - - - 0x000D0C 00:8CFC: 85 0F     STA ram_000F    ; full weapon value
 C - - - - - 0x000D0E 00:8CFE: 29 0F     AND #$0F
 C - - - - - 0x000D10 00:8D00: 85 0E     STA ram_000E    ; R cut weapon value
@@ -2375,13 +2375,13 @@ C - - - - - 0x000D55 00:8D45: D0 F3     BNE bra_8D3A_RTS
 C - - - - - 0x000D57 00:8D47: B5 F3     LDA ram_btn_hold,X
 C - - - - - 0x000D59 00:8D49: 29 40     AND #con_btn_B
 C - - - - - 0x000D5B 00:8D4B: F0 0A     BEQ bra_8D57
-C - - - - - 0x000D5D 00:8D4D: B5 C8     LDA ram_00C8,X
+C - - - - - 0x000D5D 00:8D4D: B5 C8     LDA ram_чарж_f_игрока,X
 C - - - - - 0x000D5F 00:8D4F: C9 20     CMP #$20
 C - - - - - 0x000D61 00:8D51: B0 E7     BCS bra_8D3A_RTS
-C - - - - - 0x000D63 00:8D53: F6 C8     INC ram_00C8,X
+C - - - - - 0x000D63 00:8D53: F6 C8     INC ram_чарж_f_игрока,X
 C - - - - - 0x000D65 00:8D55: 90 E3     BCC bra_8D3A_RTS    ; jmp
 bra_8D57:
-C - - - - - 0x000D67 00:8D57: B5 C8     LDA ram_00C8,X
+C - - - - - 0x000D67 00:8D57: B5 C8     LDA ram_чарж_f_игрока,X
 C - - - - - 0x000D69 00:8D59: C9 20     CMP #$20
 C - - - - - 0x000D6B 00:8D5B: 90 79     BCC bra_8DD6
 C - - - - - 0x000D6D 00:8D5D: A5 0F     LDA ram_000F    ; full weapon value
@@ -2406,7 +2406,7 @@ C - - - - - 0x000D8A 00:8D7A: C6 0D     DEC ram_000D
 C - - - - - 0x000D8C 00:8D7C: D0 F8     BNE bra_8D76_loop
 bra_8D7E:
 C - - - - - 0x000D8E 00:8D7E: A9 00     LDA #$00
-C - - - - - 0x000D90 00:8D80: 95 C8     STA ram_00C8,X
+C - - - - - 0x000D90 00:8D80: 95 C8     STA ram_чарж_f_игрока,X
 bra_8D82:
 C - - - - - 0x000D92 00:8D82: A0 11     LDY #$11
 C - - - - - 0x000D94 00:8D84: B5 B2     LDA ram_plr_surface,X
@@ -5280,7 +5280,7 @@ C - - - - - 0x001DEC 00:9DDC: 95 F3     STA ram_btn_hold,X
 C - - - - - 0x001DEE 00:9DDE: A5 4E     LDA ram_004E
 C - - - - - 0x001DF0 00:9DE0: C9 E0     CMP #$E0
 C - - - - - 0x001DF2 00:9DE2: 90 20     BCC bra_9E04_RTS
-C - - - - - 0x001DF4 00:9DE4: B5 B8     LDA ram_weapon,X
+C - - - - - 0x001DF4 00:9DE4: B5 B8     LDA ram_оружие_игрока,X
 C - - - - - 0x001DF6 00:9DE6: 29 0F     AND #$0F
 C - - - - - 0x001DF8 00:9DE8: C9 01     CMP #con_weapon_M
 C - - - - - 0x001DFA 00:9DEA: F0 04     BEQ bra_9DF0

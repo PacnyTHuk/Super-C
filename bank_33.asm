@@ -534,7 +534,7 @@ C - - - - - 0x006137 01:A127: C9 40     CMP #$40
 C - - - - - 0x006139 01:A129: B0 E2     BCS bra_A10D_RTS
 C - - - - - 0x00613B 01:A12B: BD D8 06  LDA ram_obj_id,X
 C - - - - - 0x00613E 01:A12E: F0 1B     BEQ bra_A14B_bonus_item ; if con_obj_id_00
-C - - - - - 0x006140 01:A130: B9 C4 00  LDA ram_plr_invinc,Y
+C - - - - - 0x006140 01:A130: B9 C4 00  LDA ram_инвиз_игрока,Y
 C - - - - - 0x006143 01:A133: D0 D8     BNE bra_A10D_RTS
 C - - - - - 0x006145 01:A135: B9 D4 00  LDA ram_plr_barrier_timer,Y
 C - - - - - 0x006148 01:A138: D0 05     BNE bra_A13F
@@ -583,7 +583,7 @@ C - - - - - 0x00618E 01:A17E: 4C 75 A2  JMP loc_A275_delete_object_02
 
 
 ofs_016_A181_04_R:
-C - - J - - 0x006191 01:A181: B9 B8 00  LDA ram_weapon,Y
+C - - J - - 0x006191 01:A181: B9 B8 00  LDA ram_оружие_игрока,Y
 C - - - - - 0x006194 01:A184: 09 80     ORA #con_weapon_R
 C - - - - - 0x006196 01:A186: D0 08     BNE bra_A190    ; jmp
 
@@ -598,7 +598,7 @@ C - - - - - 0x00619B 01:A18B: 29 0F     AND #$0F
 C - - - - - 0x00619D 01:A18D: 18        CLC
 C - - - - - 0x00619E 01:A18E: 69 01     ADC #$01
 bra_A190:
-C - - - - - 0x0061A0 01:A190: 99 B8 00  STA ram_weapon,Y
+C - - - - - 0x0061A0 01:A190: 99 B8 00  STA ram_оружие_игрока,Y
 C - - - - - 0x0061A3 01:A193: 4C 75 A2  JMP loc_A275_delete_object_02
 
 

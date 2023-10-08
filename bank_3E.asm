@@ -1056,8 +1056,8 @@ C - - - - - 0x01E5A6 07:E596: A9 01     LDA #$01
 C - - - - - 0x01E5A8 07:E598: 95 A0     STA ram_00A0,X
 C - - - - - 0x01E5AA 07:E59A: A9 00     LDA #$00    ; con_weapon_default
 C - - - - - 0x01E5AC 07:E59C: 95 CA     STA ram_plr_game_over,X
-C - - - - - 0x01E5AE 07:E59E: 95 C4     STA ram_plr_invinc,X
-C - - - - - 0x01E5B0 07:E5A0: 95 B8     STA ram_weapon,X
+C - - - - - 0x01E5AE 07:E59E: 95 C4     STA ram_инвиз_игрока,X
+C - - - - - 0x01E5B0 07:E5A0: 95 B8     STA ram_оружие_игрока,X
 C - - - - - 0x01E5B2 07:E5A2: A9 02     LDA #$02
 C - - - - - 0x01E5B4 07:E5A4: AC EC 07  LDY ram_cheat_flag
 C - - - - - 0x01E5B7 07:E5A7: F0 02     BEQ bra_E5AB_not_cheat
@@ -1909,8 +1909,8 @@ C - - - - - 0x01EA88 07:EA78: 20 F7 FE  JSR sub_FEF7_credits_handler
 C - - - - - 0x01EA8B 07:EA7B: A5 60     LDA ram_0060
 C - - - - - 0x01EA8D 07:EA7D: F0 DA     BEQ bra_EA59_RTS
 C - - - - - 0x01EA8F 07:EA7F: A9 00     LDA #$00    ; con_weapon_default
-C - - - - - 0x01EA91 07:EA81: 85 B8     STA ram_weapon
-C - - - - - 0x01EA93 07:EA83: 85 B9     STA ram_weapon + $01
+C - - - - - 0x01EA91 07:EA81: 85 B8     STA ram_оружие_игрока
+C - - - - - 0x01EA93 07:EA83: 85 B9     STA ram_оружие_игрока + $01
 C - - - - - 0x01EA95 07:EA85: A9 00     LDA #$00
 C - - - - - 0x01EA97 07:EA87: 4C 01 E9  JMP loc_E901
 
@@ -4065,7 +4065,7 @@ C - - - - - 0x01F6BF 07:F6AF: D0 15     BNE bra_F6C6_RTS
 C - - - - - 0x01F6C1 07:F6B1: A9 25     LDA #con_sound_25
 C - - - - - 0x01F6C3 07:F6B3: 20 DE FD  JSR sub_FDDE_play_sound
 C - - - - - 0x01F6C6 07:F6B6: A9 00     LDA #$00
-C - - - - - 0x01F6C8 07:F6B8: 95 C4     STA ram_plr_invinc,X
+C - - - - - 0x01F6C8 07:F6B8: 95 C4     STA ram_инвиз_игрока,X
 C - - - - - 0x01F6CA 07:F6BA: A9 01     LDA #$01
 C - - - - - 0x01F6CC 07:F6BC: 95 C0     STA ram_00C0,X
 C - - - - - 0x01F6CE 07:F6BE: A9 01     LDA #$01
