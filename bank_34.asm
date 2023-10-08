@@ -3022,7 +3022,7 @@ C - - - - - 0x009236 02:9226: 4C EE 91  JMP loc_91EE_loop
 
 
 sub_9229_spawn_object_from_area_data:
-C - - - - - 0x009239 02:9229: A5 50     LDA ram_area
+C - - - - - 0x009239 02:9229: A5 50     LDA ram_номер_уровня
 C - - - - - 0x00923B 02:922B: 0A        ASL
 C - - - - - 0x00923C 02:922C: A8        TAY
 C - - - - - 0x00923D 02:922D: B9 D4 F2  LDA tbl_0x01F2E4_area_objects_spawner,Y
@@ -3108,7 +3108,7 @@ C - - - - - 0x0092BF 02:92AF: 60        RTS
 
 
 loc_0x0092C0:
-C D 0 - - - 0x0092C0 02:92B0: A5 50     LDA ram_area
+C D 0 - - - 0x0092C0 02:92B0: A5 50     LDA ram_номер_уровня
 C - - - - - 0x0092C2 02:92B2: D0 14     BNE bra_92C8_RTS
 C - - - - - 0x0092C4 02:92B4: 20 FD F6  JSR sub_0x01F70D_try_to_find_free_object
 C - - - - - 0x0092C7 02:92B7: D0 0F     BNE bra_92C8_RTS

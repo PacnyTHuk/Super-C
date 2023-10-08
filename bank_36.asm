@@ -4380,7 +4380,7 @@ _off020_93A6_7F:
 
 
 ofs_044_0x00D3B9_00_area_1:
-C - - J - - 0x00D3B9 03:93A9: A5 39     LDA ram_0039
+C - - J - - 0x00D3B9 03:93A9: A5 39     LDA ram_пауза
 C - - - - - 0x00D3BB 03:93AB: F0 01     BEQ bra_93AE
 C - - - - - 0x00D3BD 03:93AD: 60        RTS
 bra_93AE:
@@ -4600,7 +4600,7 @@ ofs_020_9491_02_RTS:
 
 
 ofs_044_0x00D4A2_01_area_2:
-C - - J - - 0x00D4A2 03:9492: A5 39     LDA ram_0039
+C - - J - - 0x00D4A2 03:9492: A5 39     LDA ram_пауза
 C - - - - - 0x00D4A4 03:9494: F0 01     BEQ bra_9497
 C - - - - - 0x00D4A6 03:9496: 60        RTS
 bra_9497:
@@ -4765,7 +4765,7 @@ C - - - - - 0x00D56E 03:955E: 8C CD 03  STY ram_03CD
 C - - - - - 0x00D571 03:9561: B9 6C 95  LDA tbl_956C_color,Y
 C - - - - - 0x00D574 03:9564: 8D E3 03  STA ram_pal_buffer + $03
 bra_9567:
-C - - - - - 0x00D577 03:9567: A5 39     LDA ram_0039
+C - - - - - 0x00D577 03:9567: A5 39     LDA ram_пауза
 C - - - - - 0x00D579 03:9569: F0 0A     BEQ bra_9575
 C - - - - - 0x00D57B 03:956B: 60        RTS
 
@@ -4898,7 +4898,7 @@ C - - - - - 0x00D622 03:9612: 8C CD 03  STY ram_03CD
 C - - - - - 0x00D625 03:9615: B9 20 96  LDA tbl_9620_color,Y
 C - - - - - 0x00D628 03:9618: 8D EF 03  STA ram_pal_buffer + $0F
 bra_961B:
-C - - - - - 0x00D62B 03:961B: A5 39     LDA ram_0039
+C - - - - - 0x00D62B 03:961B: A5 39     LDA ram_пауза
 C - - - - - 0x00D62D 03:961D: F0 0A     BEQ bra_9629
 C - - - - - 0x00D62F 03:961F: 60        RTS
 
@@ -5152,7 +5152,7 @@ C - - - - - 0x00D754 03:9744: 90 03     BCC bra_9749    ; jmp
 bra_9746:
 C - - - - - 0x00D756 03:9746: 8D EB 03  STA ram_pal_buffer + $0B
 bra_9749:
-C - - - - - 0x00D759 03:9749: A5 39     LDA ram_0039
+C - - - - - 0x00D759 03:9749: A5 39     LDA ram_пауза
 C - - - - - 0x00D75B 03:974B: F0 10     BEQ bra_975D
 C - - - - - 0x00D75D 03:974D: 60        RTS
 
@@ -5369,7 +5369,7 @@ C - - - - - 0x00D861 03:9851: 8C CF 03  STY ram_03CF
 C - - - - - 0x00D864 03:9854: B9 63 98  LDA tbl_9863_color,Y
 C - - - - - 0x00D867 03:9857: 8D EF 03  STA ram_pal_buffer + $0F
 bra_985A:
-C - - - - - 0x00D86A 03:985A: A5 39     LDA ram_0039
+C - - - - - 0x00D86A 03:985A: A5 39     LDA ram_пауза
 C - - - - - 0x00D86C 03:985C: F0 0C     BEQ bra_986A
 C - - - - - 0x00D86E 03:985E: 60        RTS
 
@@ -5507,7 +5507,7 @@ C - - J - - 0x00D8F2 03:98E2: 60        RTS
 
 
 ofs_044_0x00D8F3_06_area_7:
-C - - J - - 0x00D8F3 03:98E3: A5 39     LDA ram_0039
+C - - J - - 0x00D8F3 03:98E3: A5 39     LDA ram_пауза
 C - - - - - 0x00D8F5 03:98E5: F0 01     BEQ bra_98E8
 C - - - - - 0x00D8F7 03:98E7: 60        RTS
 bra_98E8:
@@ -5613,7 +5613,7 @@ C - - - - - 0x00D98C 03:997C: B9 88 99  LDA tbl_9988,Y
 C - - - - - 0x00D98F 03:997F: A8        TAY
 C - - - - - 0x00D990 03:9980: 20 64 F9  JSR sub_0x01F974_write_3_colors_with_condition
 bra_9983:
-C - - - - - 0x00D993 03:9983: A5 39     LDA ram_0039
+C - - - - - 0x00D993 03:9983: A5 39     LDA ram_пауза
 C - - - - - 0x00D995 03:9985: F0 07     BEQ bra_998E
 C - - - - - 0x00D997 03:9987: 60        RTS
 
@@ -13675,7 +13675,7 @@ _off007_0x00F804_02_area_3:
 
 
 loc_0x00F894_set_palette_for_area:
-C D 1 - - - 0x00F894 03:B884: A5 50     LDA ram_area
+C D 1 - - - 0x00F894 03:B884: A5 50     LDA ram_номер_уровня
 loc_0x00F896_set_palette:
 C D 1 - - - 0x00F896 03:B886: 85 08     STA ram_0008
 ; fill 0F color by default

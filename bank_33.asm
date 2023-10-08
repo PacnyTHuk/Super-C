@@ -3386,7 +3386,7 @@ C - - - - - 0x006F2E 01:AF1E: 9D 3C 05  STA ram_pos_X_hi_enemy,X
 bra_AF21:
 C - - - - - 0x006F31 01:AF21: BD 1E 07  LDA ram_obj_flags,X
 C - - - - - 0x006F34 01:AF24: 29 7F     AND #$7F
-C - - - - - 0x006F36 01:AF26: A4 50     LDY ram_area
+C - - - - - 0x006F36 01:AF26: A4 50     LDY ram_номер_уровня
 C - - - - - 0x006F38 01:AF28: C0 07     CPY #$07
 C - - - - - 0x006F3A 01:AF2A: D0 02     BNE bra_AF2E
 C - - - - - 0x006F3C 01:AF2C: 09 80     ORA #$80
@@ -3805,7 +3805,7 @@ C - - - - - 0x0071F8 01:B1E8: BD 1E 07  LDA ram_obj_flags,X
 C - - - - - 0x0071FB 01:B1EB: 4A        LSR
 sub_B1EC:
 C - - - - - 0x0071FC 01:B1EC: 08        PHP
-C - - - - - 0x0071FD 01:B1ED: A5 50     LDA ram_area
+C - - - - - 0x0071FD 01:B1ED: A5 50     LDA ram_номер_уровня
 C - - - - - 0x0071FF 01:B1EF: BC 72 07  LDY ram_0772_obj,X
 C - - - - - 0x007202 01:B1F2: F0 03     BEQ bra_B1F7
 C - - - - - 0x007204 01:B1F4: 18        CLC

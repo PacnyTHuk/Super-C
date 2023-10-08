@@ -963,7 +963,7 @@ ofs_000_855B_01:
 C - - J - - 0x00056B 00:855B: 20 D6 84  JSR sub_84D6
 C - - - - - 0x00056E 00:855E: A9 60     LDA #$60
 C - - - - - 0x000570 00:8560: 9D 32 05  STA ram_pos_Y_hi_plr,X
-C - - - - - 0x000573 00:8563: A5 50     LDA ram_area
+C - - - - - 0x000573 00:8563: A5 50     LDA ram_номер_уровня
 C - - - - - 0x000575 00:8565: 0A        ASL
 C - - - - - 0x000576 00:8566: 85 00     STA ram_0000
 C - - - - - 0x000578 00:8568: 8A        TXA
@@ -3632,10 +3632,10 @@ C - - - - - 0x001430 00:9420: 20 09 E6  JSR sub_0x01E619_jump_to_pointers_after_
 
 
 ofs_006_9427_00:
-C - - J - - 0x001437 00:9427: A5 50     LDA ram_area
+C - - J - - 0x001437 00:9427: A5 50     LDA ram_номер_уровня
 ; bzk bug, Y is always 33 here because of 0x01FD6D,
 ; and it reads a byte from 0x0016F8.
-; was it supposed to be LDY ram_area ?
+; was it supposed to be LDY ram_номер_уровня ?
 C - - - - - 0x001439 00:9429: B9 B5 96  LDA tbl_96B5,Y
 C - - - - - 0x00143C 00:942C: F0 1C     BEQ bra_944A_RTS
 C - - - - - 0x00143E 00:942E: 85 93     STA ram_mob_spawn_cooldown
@@ -3700,7 +3700,7 @@ bra_947E:
 C - - - - - 0x00148E 00:947E: 85 93     STA ram_mob_spawn_cooldown
 C - - - - - 0x001490 00:9480: 60        RTS
 bra_9481:
-C - - - - - 0x001491 00:9481: A5 50     LDA ram_area
+C - - - - - 0x001491 00:9481: A5 50     LDA ram_номер_уровня
 C - - - - - 0x001493 00:9483: 0A        ASL
 C - - - - - 0x001494 00:9484: 0A        ASL
 C - - - - - 0x001495 00:9485: A8        TAY
@@ -3908,7 +3908,7 @@ C - - - - - 0x0015CC 00:95BC: 29 0F     AND #$0F
 C - - - - - 0x0015CE 00:95BE: A8        TAY
 C - - - - - 0x0015CF 00:95BF: B9 40 96  LDA tbl_9640,Y
 C - - - - - 0x0015D2 00:95C2: 85 11     STA ram_0011
-C - - - - - 0x0015D4 00:95C4: A4 50     LDY ram_area
+C - - - - - 0x0015D4 00:95C4: A4 50     LDY ram_номер_уровня
 C - - - - - 0x0015D6 00:95C6: B9 54 96  LDA tbl_9654,Y
 C - - - - - 0x0015D9 00:95C9: F0 08     BEQ bra_95D3
 C - - - - - 0x0015DB 00:95CB: A5 23     LDA ram_рандом_байт_1
@@ -4935,7 +4935,7 @@ C - - - - - 0x001C1C 00:9C0C: 85 FF     STA ram_for_2000
 C - - - - - 0x001C1E 00:9C0E: 85 7C     STA ram_007C
 C - - - - - 0x001C20 00:9C10: A9 FF     LDA #$FF
 C - - - - - 0x001C22 00:9C12: 85 9C     STA ram_009C
-C - - - - - 0x001C24 00:9C14: A4 50     LDY ram_area
+C - - - - - 0x001C24 00:9C14: A4 50     LDY ram_номер_уровня
 C - - - - - 0x001C26 00:9C16: A9 00     LDA #$00
 C - - - - - 0x001C28 00:9C18: 85 63     STA ram_0063
 C - - - - - 0x001C2A 00:9C1A: B9 4E 9C  LDA tbl_9C4E,Y
@@ -5244,7 +5244,7 @@ C - - - - - 0x001DB2 00:9DA2: 4A        LSR
 C - - - - - 0x001DB3 00:9DA3: B0 33     BCS bra_9DD8
 C - - - - - 0x001DB5 00:9DA5: B5 41     LDA ram_0041,X
 C - - - - - 0x001DB7 00:9DA7: D0 2D     BNE bra_9DD6
-C - - - - - 0x001DB9 00:9DA9: A5 50     LDA ram_area
+C - - - - - 0x001DB9 00:9DA9: A5 50     LDA ram_номер_уровня
 C - - - - - 0x001DBB 00:9DAB: C9 03     CMP #$03
 C - - - - - 0x001DBD 00:9DAD: 90 02     BCC bra_9DB1_00_02
 ; 03+
@@ -5783,7 +5783,7 @@ C - - - - - 0x002186 00:A176: 60        RTS
 
 
 sub_A177:
-C - - - - - 0x002187 00:A177: A5 50     LDA ram_area
+C - - - - - 0x002187 00:A177: A5 50     LDA ram_номер_уровня
 C - - - - - 0x002189 00:A179: 20 09 E6  JSR sub_0x01E619_jump_to_pointers_after_jsr
 - D 1 - I - 0x00218C 00:A17C: 8C A1     .word ofs_008_A18C_00_area_1
 - D 1 - I - 0x00218E 00:A17E: 95 A1     .word ofs_008_A195_01_area_2
@@ -5857,7 +5857,7 @@ C - - - - - 0x0021D1 00:A1C1: 60        RTS
 
 
 sub_A1C2:
-C - - - - - 0x0021D2 00:A1C2: A5 50     LDA ram_area
+C - - - - - 0x0021D2 00:A1C2: A5 50     LDA ram_номер_уровня
 C - - - - - 0x0021D4 00:A1C4: 20 09 E6  JSR sub_0x01E619_jump_to_pointers_after_jsr
 - D 1 - I - 0x0021D7 00:A1C7: D7 A1     .word ofs_009_A1D7_00_area_1
 - D 1 - I - 0x0021D9 00:A1C9: FA A1     .word ofs_009_A1FA_01_area_2
@@ -5974,7 +5974,7 @@ C - - - - - 0x00226E 00:A25E: F0 08     BEQ bra_A268_RTS
 C - - - - - 0x002270 00:A260: C6 9B     DEC ram_009B
 C - - - - - 0x002272 00:A262: D0 04     BNE bra_A268_RTS
 C - - - - - 0x002274 00:A264: A9 01     LDA #$01
-C - - - - - 0x002276 00:A266: 85 3F     STA ram_003F
+C - - - - - 0x002276 00:A266: 85 3F     STA ram_таймер_на_экране_очков
 bra_A268_RTS:
 C - - - - - 0x002278 00:A268: 60        RTS
 
@@ -6060,7 +6060,7 @@ loc_0x0022D4:
 - - - - - - 0x0022DC 00:A2CC: 4A        LSR
 - - - - - - 0x0022DD 00:A2CD: A9 00     LDA #$00
 - - - - - - 0x0022DF 00:A2CF: 90 05     BCC bra_A2D6
-- - - - - - 0x0022E1 00:A2D1: A5 50     LDA ram_area
+- - - - - - 0x0022E1 00:A2D1: A5 50     LDA ram_номер_уровня
 - - - - - - 0x0022E3 00:A2D3: 18        CLC
 - - - - - - 0x0022E4 00:A2D4: 69 02     ADC #$02
 bra_A2D6:
@@ -6077,20 +6077,20 @@ sub_A2DC:
 - - - - - - 0x0022F0 00:A2E0: F0 14     BEQ bra_A2F6
 - - - - - - 0x0022F2 00:A2E2: C9 08     CMP #con_btn_Up
 - - - - - - 0x0022F4 00:A2E4: D0 08     BNE bra_A2EE
-- - - - - - 0x0022F6 00:A2E6: A5 50     LDA ram_area
+- - - - - - 0x0022F6 00:A2E6: A5 50     LDA ram_номер_уровня
 - - - - - - 0x0022F8 00:A2E8: F0 0C     BEQ bra_A2F6
-- - - - - - 0x0022FA 00:A2EA: C6 50     DEC ram_area
+- - - - - - 0x0022FA 00:A2EA: C6 50     DEC ram_номер_уровня
 - - - - - - 0x0022FC 00:A2EC: 10 08     BPL bra_A2F6
 bra_A2EE:
-- - - - - - 0x0022FE 00:A2EE: A5 50     LDA ram_area
+- - - - - - 0x0022FE 00:A2EE: A5 50     LDA ram_номер_уровня
 - - - - - - 0x002300 00:A2F0: C9 07     CMP #$07
 - - - - - - 0x002302 00:A2F2: F0 02     BEQ bra_A2F6
-- - - - - - 0x002304 00:A2F4: E6 50     INC ram_area
+- - - - - - 0x002304 00:A2F4: E6 50     INC ram_номер_уровня
 bra_A2F6:
 - - - - - - 0x002306 00:A2F6: A5 F5     LDA ram_copy_btn_press
 - - - - - - 0x002308 00:A2F8: 29 10     AND #con_btn_Start
 - - - - - - 0x00230A 00:A2FA: F0 0D     BEQ bra_A309_RTS
-- - - - - - 0x00230C 00:A2FC: A5 50     LDA ram_area
+- - - - - - 0x00230C 00:A2FC: A5 50     LDA ram_номер_уровня
 - - - - - - 0x00230E 00:A2FE: 48        PHA
 - - - - - - 0x00230F 00:A2FF: 20 D0 E5  JSR sub_0x01E5E0_clear_memory
 - - - - - - 0x002312 00:A302: 68        PLA
