@@ -536,7 +536,7 @@ C - - - - - 0x00613B 01:A12B: BD D8 06  LDA ram_obj_id,X
 C - - - - - 0x00613E 01:A12E: F0 1B     BEQ bra_A14B_bonus_item ; if con_obj_id_00
 C - - - - - 0x006140 01:A130: B9 C4 00  LDA ram_инвиз_игрока,Y
 C - - - - - 0x006143 01:A133: D0 D8     BNE bra_A10D_RTS
-C - - - - - 0x006145 01:A135: B9 D4 00  LDA ram_plr_barrier_timer,Y
+C - - - - - 0x006145 01:A135: B9 D4 00  LDA ram_бессмертие_игрока,Y
 C - - - - - 0x006148 01:A138: D0 05     BNE bra_A13F
 C - - - - - 0x00614A 01:A13A: A6 11     LDX ram_0011
 C - - - - - 0x00614C 01:A13C: 4C AC F6  JMP loc_0x01F6BC
@@ -571,7 +571,7 @@ C - - - - - 0x006172 01:A162: 20 09 E6  JSR sub_0x01E619_jump_to_pointers_after_
 
 ofs_016_A173_05_B:
 C - - J - - 0x006183 01:A173: A9 80     LDA #$80
-C - - - - - 0x006185 01:A175: 99 D4 00  STA ram_plr_barrier_timer,Y
+C - - - - - 0x006185 01:A175: 99 D4 00  STA ram_бессмертие_игрока,Y
 C - - - - - 0x006188 01:A178: 4C 75 A2  JMP loc_A275_delete_object_02
 
 

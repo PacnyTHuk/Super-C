@@ -181,7 +181,7 @@ C - - - - - 0x00C0DC 03:80CC: A9 00     LDA #$00
 C - - - - - 0x00C0DE 03:80CE: 99 01 02  STA ram_spr_T,Y
 C - - - - - 0x00C0E1 03:80D1: 20 01 80  JSR sub_8001_display_lives_with_sprites
 C - - - - - 0x00C0E4 03:80D4: A9 FF     LDA #$FF
-C - - - - - 0x00C0E6 03:80D6: A4 D4     LDY ram_plr_barrier_timer
+C - - - - - 0x00C0E6 03:80D6: A4 D4     LDY ram_бессмертие_игрока
 C - - - - - 0x00C0E8 03:80D8: F0 02     BEQ bra_80DC
 C - - - - - 0x00C0EA 03:80DA: A9 FC     LDA #$FC
 bra_80DC:
@@ -201,7 +201,7 @@ C - - - - - 0x00C109 03:80F9: F0 03     BEQ bra_80FE_skip
 C - - - - - 0x00C10B 03:80FB: 20 5E 80  JSR sub_805E_player_animation_sprite_data_handler
 bra_80FE_skip:
 C - - - - - 0x00C10E 03:80FE: A9 FF     LDA #$FF
-C - - - - - 0x00C110 03:8100: A4 D5     LDY ram_plr_barrier_timer + $01
+C - - - - - 0x00C110 03:8100: A4 D5     LDY ram_бессмертие_игрока + $01
 C - - - - - 0x00C112 03:8102: F0 02     BEQ bra_8106
 C - - - - - 0x00C114 03:8104: A9 FC     LDA #$FC
 bra_8106:

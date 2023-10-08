@@ -756,7 +756,7 @@ C - - - - - 0x01E3F6 07:E3E6: D0 20     BNE bra_E408
 C - - - - - 0x01E3F8 07:E3E8: 20 DF FE  JSR sub_FEDF_cheat_combination
 C - - - - - 0x01E3FB 07:E3EB: 20 EF FE  JSR sub_FEEF_title_screen_handler
 C - - - - - 0x01E3FE 07:E3EE: B0 09     BCS bra_E3F9
-C - - - - - 0x01E400 07:E3F0: A5 F5     LDA ram_copy_btn_press
+C - - - - - 0x01E400 07:E3F0: A5 F5     LDA ram_копия_нажатая_кнопка
 C - - - - - 0x01E402 07:E3F2: 29 30     AND #con_btns_SS
 C - - - - - 0x01E404 07:E3F4: F0 EE     BEQ bra_E3E4_RTS
 loc_E3F6:
@@ -781,7 +781,7 @@ C - - - - - 0x01E426 07:E416: A6 22     LDX ram_номер_опции_колво
 C - - - - - 0x01E428 07:E418: A9 A7     LDA #$A7
 C - - - - - 0x01E42A 07:E41A: BC 70 E4  LDY tbl_E470,X
 C - - - - - 0x01E42D 07:E41D: 20 5F E4  JSR sub_E45F
-C - - - - - 0x01E430 07:E420: A5 F5     LDA ram_copy_btn_press
+C - - - - - 0x01E430 07:E420: A5 F5     LDA ram_копия_нажатая_кнопка
 C - - - - - 0x01E432 07:E422: 29 20     AND #con_btn_Select
 C - - - - - 0x01E434 07:E424: F0 09     BEQ bra_E42F
 C - - - - - 0x01E436 07:E426: A5 22     LDA ram_номер_опции_колво_игроков
@@ -789,10 +789,10 @@ C - - - - - 0x01E438 07:E428: 49 01     EOR #$01
 C - - - - - 0x01E43A 07:E42A: 85 22     STA ram_номер_опции_колво_игроков
 C - - - - - 0x01E43C 07:E42C: 20 02 E5  JSR sub_E502
 bra_E42F:
-C - - - - - 0x01E43F 07:E42F: A5 F5     LDA ram_copy_btn_press
+C - - - - - 0x01E43F 07:E42F: A5 F5     LDA ram_копия_нажатая_кнопка
 C - - - - - 0x01E441 07:E431: 29 10     AND #con_btn_Start
 C - - - - - 0x01E443 07:E433: F0 0E     BEQ bra_E443_RTS
-C - - - - - 0x01E445 07:E435: A5 F7     LDA ram_copy_btn_hold
+C - - - - - 0x01E445 07:E435: A5 F7     LDA ram_копия_удержанная_кнопка
 C - - - - - 0x01E447 07:E437: 29 C0     AND #con_btns_AB
 C - - - - - 0x01E449 07:E439: C9 C0     CMP #con_btns_AB
 C - - - - - 0x01E44B 07:E43B: F0 07     BEQ bra_E444
@@ -846,7 +846,7 @@ C - - - - - 0x01E486 07:E476: 20 5C E5  JSR sub_E55C
 C - - - - - 0x01E489 07:E479: E6 19     INC ram_номер_действия_на_заставке
 C - - - - - 0x01E48B 07:E47B: 60        RTS
 bra_E47C:
-C - - - - - 0x01E48C 07:E47C: A5 F1     LDA ram_btn_press
+C - - - - - 0x01E48C 07:E47C: A5 F1     LDA ram_нажатая_кнопка
 C - - - - - 0x01E48E 07:E47E: 29 30     AND #con_btns_SS
 C - - - - - 0x01E490 07:E480: F0 06     BEQ bra_E488
 C - - - - - 0x01E492 07:E482: 20 96 E4  JSR sub_E496
@@ -916,7 +916,7 @@ C - - - - - 0x01E4E8 07:E4D8: 85 51     STA ram_номер_круга
 C - - - - - 0x01E4EA 07:E4DA: 60        RTS
 bra_E4DB_sound_mode:
 C - - - - - 0x01E4EB 07:E4DB: 20 D7 FE  JSR sub_FED7_sound_mode_handler
-C - - - - - 0x01E4EE 07:E4DE: A5 F5     LDA ram_copy_btn_press
+C - - - - - 0x01E4EE 07:E4DE: A5 F5     LDA ram_копия_нажатая_кнопка
 C - - - - - 0x01E4F0 07:E4E0: 29 10     AND #con_btn_Start
 C - - - - - 0x01E4F2 07:E4E2: D0 AB     BNE bra_E48F_exit_sound_mode
 C - - - - - 0x01E4F4 07:E4E4: 60        RTS
@@ -1684,10 +1684,10 @@ C - - J - - 0x01E933 07:E923: A5 3E     LDA ram_003E
 C - - - - - 0x01E935 07:E925: C9 02     CMP #$02
 C - - - - - 0x01E937 07:E927: 90 0A     BCC bra_E933
 C - - - - - 0x01E939 07:E929: A0 00     LDY #$00
-C - - - - - 0x01E93B 07:E92B: 84 F1     STY ram_btn_press
-C - - - - - 0x01E93D 07:E92D: 84 F2     STY ram_btn_press + $01
-C - - - - - 0x01E93F 07:E92F: 84 F3     STY ram_btn_hold
-C - - - - - 0x01E941 07:E931: 84 F4     STY ram_btn_hold + $01
+C - - - - - 0x01E93B 07:E92B: 84 F1     STY ram_нажатая_кнопка
+C - - - - - 0x01E93D 07:E92D: 84 F2     STY ram_нажатая_кнопка+ $01
+C - - - - - 0x01E93F 07:E92F: 84 F3     STY ram_удержанная_кнопка
+C - - - - - 0x01E941 07:E931: 84 F4     STY ram_удержанная_кнопка + $01
 bra_E933:
 C - - - - - 0x01E943 07:E933: 20 09 E6  JSR sub_E609_jump_to_pointers_after_jsr
 - D 3 - I - 0x01E946 07:E936: 42 E9     .word ofs_034_E942_00
@@ -1857,7 +1857,7 @@ C - - - - - 0x01EA37 07:EA27: 4C B2 E8  JMP loc_E8B2
 
 
 ofs_033_EA2A_07:
-C - - J - - 0x01EA3A 07:EA2A: A5 F1     LDA ram_btn_press
+C - - J - - 0x01EA3A 07:EA2A: A5 F1     LDA ram_нажатая_кнопка
 C - - - - - 0x01EA3C 07:EA2C: 29 2C     AND #con_btn_Select + con_btns_UD
 C - - - - - 0x01EA3E 07:EA2E: F0 06     BEQ bra_EA36
 C - - - - - 0x01EA40 07:EA30: A5 2C     LDA ram_002C
@@ -1868,7 +1868,7 @@ C - - - - - 0x01EA46 07:EA36: A4 2C     LDY ram_002C
 C - - - - - 0x01EA48 07:EA38: B9 5A EA  LDA tbl_EA5A,Y
 C - - - - - 0x01EA4B 07:EA3B: A0 50     LDY #$50
 C - - - - - 0x01EA4D 07:EA3D: 20 5F E4  JSR sub_E45F
-C - - - - - 0x01EA50 07:EA40: A5 F1     LDA ram_btn_press
+C - - - - - 0x01EA50 07:EA40: A5 F1     LDA ram_нажатая_кнопка
 C - - - - - 0x01EA52 07:EA42: 29 10     AND #con_btn_Start
 C - - - - - 0x01EA54 07:EA44: F0 13     BEQ bra_EA59_RTS
 C - - - - - 0x01EA56 07:EA46: A5 2C     LDA ram_002C
@@ -1921,7 +1921,7 @@ C - - - - - 0x01EA9A 07:EA8A: A5 1F     LDA ram_001F_flag
 C - - - - - 0x01EA9C 07:EA8C: 05 3A     ORA ram_003A
 C - - - - - 0x01EA9E 07:EA8E: 05 1D     ORA ram_001D
 C - - - - - 0x01EAA0 07:EA90: D0 1C     BNE bra_EAAE_RTS
-C - - - - - 0x01EAA2 07:EA92: A5 F5     LDA ram_copy_btn_press
+C - - - - - 0x01EAA2 07:EA92: A5 F5     LDA ram_копия_нажатая_кнопка
 C - - - - - 0x01EAA4 07:EA94: A4 39     LDY ram_пауза
 C - - - - - 0x01EAA6 07:EA96: D0 0E     BNE bra_EAA6
 C - - - - - 0x01EAA8 07:EA98: 29 10     AND #con_btn_Start
@@ -5251,19 +5251,19 @@ C - - - - - 0x01FD27 07:FD17: E8        INX ; 01
 sub_FD18:
 C - - - - - 0x01FD28 07:FD18: B5 00     LDA ram_0000,X
 C - - - - - 0x01FD2A 07:FD1A: A8        TAY
-C - - - - - 0x01FD2B 07:FD1B: 55 F7     EOR ram_copy_btn_hold,X
+C - - - - - 0x01FD2B 07:FD1B: 55 F7     EOR ram_копия_удержанная_кнопка,X
 C - - - - - 0x01FD2D 07:FD1D: 35 00     AND ram_0000,X
-C - - - - - 0x01FD2F 07:FD1F: 95 F1     STA ram_btn_press,X
-C - - - - - 0x01FD31 07:FD21: 95 F5     STA ram_copy_btn_press,X
-C - - - - - 0x01FD33 07:FD23: 94 F3     STY ram_btn_hold,X
-C - - - - - 0x01FD35 07:FD25: 94 F7     STY ram_copy_btn_hold,X
+C - - - - - 0x01FD2F 07:FD1F: 95 F1     STA ram_нажатая_кнопка,X
+C - - - - - 0x01FD31 07:FD21: 95 F5     STA ram_копия_нажатая_кнопка,X
+C - - - - - 0x01FD33 07:FD23: 94 F3     STY ram_удержанная_кнопка,X
+C - - - - - 0x01FD35 07:FD25: 94 F7     STY ram_копия_удержанная_кнопка,X
 C - - - - - 0x01FD37 07:FD27: 60        RTS
 bra_FD28_check_failed:
 - - - - - - 0x01FD38 07:FD28: A9 00     LDA #$00
-- - - - - - 0x01FD3A 07:FD2A: 85 F1     STA ram_btn_press
-- - - - - - 0x01FD3C 07:FD2C: 85 F5     STA ram_copy_btn_press
-- - - - - - 0x01FD3E 07:FD2E: 85 F2     STA ram_btn_press + $01
-- - - - - - 0x01FD40 07:FD30: 85 F6     STA ram_copy_btn_press + $01
+- - - - - - 0x01FD3A 07:FD2A: 85 F1     STA ram_нажатая_кнопка
+- - - - - - 0x01FD3C 07:FD2C: 85 F5     STA ram_копия_нажатая_кнопка
+- - - - - - 0x01FD3E 07:FD2E: 85 F2     STA ram_нажатая_кнопка+ $01
+- - - - - - 0x01FD40 07:FD30: 85 F6     STA ram_копия_нажатая_кнопка + $01
 - - - - - - 0x01FD42 07:FD32: 60        RTS
 
 

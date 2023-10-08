@@ -6637,7 +6637,7 @@ C - - - - - 0x009B5F 02:9B4F: 60        RTS
 
 
 sub_9B50:
-C - - - - - 0x009B60 02:9B50: A5 F5     LDA ram_copy_btn_press
+C - - - - - 0x009B60 02:9B50: A5 F5     LDA ram_копия_нажатая_кнопка
 C - - - - - 0x009B62 02:9B52: 10 06     BPL bra_9B5A    ; if not con_btn_A
 C - - - - - 0x009B64 02:9B54: 20 51 9F  JSR sub_9F51
 C - - - - - 0x009B67 02:9B57: 4C 0E FE  JMP loc_0x01FE1E_sprite_engine
@@ -6678,13 +6678,13 @@ C - - - - - 0x009BA1 02:9B91: 60        RTS
 sub_9B92:
 C - - - - - 0x009BA2 02:9B92: A5 59     LDA ram_play_all
 C - - - - - 0x009BA4 02:9B94: D0 31     BNE bra_9BC7_RTS
-C - - - - - 0x009BA6 02:9B96: A5 F7     LDA ram_copy_btn_hold
+C - - - - - 0x009BA6 02:9B96: A5 F7     LDA ram_копия_удержанная_кнопка
 C - - - - - 0x009BA8 02:9B98: 29 0C     AND #con_btns_UD
 C - - - - - 0x009BAA 02:9B9A: F0 2B     BEQ bra_9BC7_RTS
 C - - - - - 0x009BAC 02:9B9C: A0 04     LDY #$04
 C - - - - - 0x009BAE 02:9B9E: C6 58     DEC ram_очки_до_жизни_старш + $01
 C - - - - - 0x009BB0 02:9BA0: F0 08     BEQ bra_9BAA
-C - - - - - 0x009BB2 02:9BA2: A5 F5     LDA ram_copy_btn_press
+C - - - - - 0x009BB2 02:9BA2: A5 F5     LDA ram_копия_нажатая_кнопка
 C - - - - - 0x009BB4 02:9BA4: 29 0C     AND #con_btns_UD
 C - - - - - 0x009BB6 02:9BA6: F0 1F     BEQ bra_9BC7_RTS
 C - - - - - 0x009BB8 02:9BA8: A0 20     LDY #$20

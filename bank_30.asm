@@ -65,7 +65,7 @@ C - - - - - 0x000033 00:8023: A5 CC     LDA ram_00CC
 C - - - - - 0x000035 00:8025: C5 CD     CMP ram_00CD
 C - - - - - 0x000037 00:8027: 90 0A     BCC bra_8033
 C - - - - - 0x000039 00:8029: D0 0A     BNE bra_8035
-C - - - - - 0x00003B 00:802B: A5 F4     LDA ram_btn_hold + $01
+C - - - - - 0x00003B 00:802B: A5 F4     LDA ram_удержанная_кнопка + $01
 C - - - - - 0x00003D 00:802D: 05 B1     ORA ram_00B1
 C - - - - - 0x00003F 00:802F: 29 01     AND #con_btn_Right
 C - - - - - 0x000041 00:8031: F0 02     BEQ bra_8035
@@ -91,7 +91,7 @@ C - - - - - 0x000063 00:8053: 90 26     BCC bra_807B
 C - - - - - 0x000065 00:8055: D0 22     BNE bra_8079
 C - - - - - 0x000067 00:8057: A5 5D     LDA ram_005D
 C - - - - - 0x000069 00:8059: F0 08     BEQ bra_8063
-C - - - - - 0x00006B 00:805B: A5 F4     LDA ram_btn_hold + $01
+C - - - - - 0x00006B 00:805B: A5 F4     LDA ram_удержанная_кнопка + $01
 C - - - - - 0x00006D 00:805D: 29 08     AND #con_btn_Up
 C - - - - - 0x00006F 00:805F: F0 1A     BEQ bra_807B
 C - - - - - 0x000071 00:8061: D0 16     BNE bra_8079    ; jmp
@@ -162,7 +162,7 @@ C - - - - - 0x0000D7 00:80C7: D0 2C     BNE bra_80F5
 C - - - - - 0x0000D9 00:80C9: A9 7F     LDA #$7F
 C - - - - - 0x0000DB 00:80CB: 95 C6     STA ram_00C6,X
 C - - - - - 0x0000DD 00:80CD: A0 00     LDY #$00
-C - - - - - 0x0000DF 00:80CF: B5 F3     LDA ram_btn_hold,X
+C - - - - - 0x0000DF 00:80CF: B5 F3     LDA ram_удержанная_кнопка,X
 C - - - - - 0x0000E1 00:80D1: 29 04     AND #con_btn_Down
 C - - - - - 0x0000E3 00:80D3: F0 02     BEQ bra_80D7
 C - - - - - 0x0000E5 00:80D5: A0 02     LDY #$02
@@ -173,11 +173,11 @@ C - - - - - 0x0000E9 00:80D9: 95 C2     STA ram_00C2,X
 C - - - - - 0x0000EB 00:80DB: B5 BC     LDA ram_00BC,X
 C - - - - - 0x0000ED 00:80DD: F0 10     BEQ bra_80EF
 C - - - - - 0x0000EF 00:80DF: A0 04     LDY #$04
-C - - - - - 0x0000F1 00:80E1: B5 F3     LDA ram_btn_hold,X
+C - - - - - 0x0000F1 00:80E1: B5 F3     LDA ram_удержанная_кнопка,X
 C - - - - - 0x0000F3 00:80E3: 29 08     AND #con_btn_Up
 C - - - - - 0x0000F5 00:80E5: F0 08     BEQ bra_80EF
 C - - - - - 0x0000F7 00:80E7: C8        INY ; 05
-C - - - - - 0x0000F8 00:80E8: B5 F3     LDA ram_btn_hold,X
+C - - - - - 0x0000F8 00:80E8: B5 F3     LDA ram_удержанная_кнопка,X
 C - - - - - 0x0000FA 00:80EA: 29 03     AND #con_btns_LR
 C - - - - - 0x0000FC 00:80EC: D0 01     BNE bra_80EF
 C - - - - - 0x0000FE 00:80EE: C8        INY ; 06
@@ -200,7 +200,7 @@ C - - - - - 0x000118 00:8108: A9 05     LDA #$05
 bra_810A:
 C - - - - - 0x00011A 00:810A: 4C CC 81  JMP loc_81CC
 bra_810D:
-C - - - - - 0x00011D 00:810D: B5 F3     LDA ram_btn_hold,X
+C - - - - - 0x00011D 00:810D: B5 F3     LDA ram_удержанная_кнопка,X
 C - - - - - 0x00011F 00:810F: 29 03     AND #con_btns_LR
 C - - - - - 0x000121 00:8111: F0 18     BEQ bra_812B
 C - - - - - 0x000123 00:8113: F6 B6     INC ram_00B6,X
@@ -235,7 +235,7 @@ C - - - - - 0x000155 00:8145: 20 DE FD  JSR sub_0x01FDEE_play_sound
 bra_8148:
 C - - - - - 0x000158 00:8148: A9 00     LDA #$00
 C - - - - - 0x00015A 00:814A: 85 00     STA ram_0000
-C - - - - - 0x00015C 00:814C: B5 F3     LDA ram_btn_hold,X
+C - - - - - 0x00015C 00:814C: B5 F3     LDA ram_удержанная_кнопка,X
 C - - - - - 0x00015E 00:814E: 4A        LSR
 C - - - - - 0x00015F 00:814F: 4A        LSR
 C - - - - - 0x000160 00:8150: 4A        LSR
@@ -249,19 +249,19 @@ C - - - - - 0x00016C 00:815C: B0 1A     BCS bra_8178    ; if con_btn_Up
 C - - - - - 0x00016E 00:815E: A0 12     LDY #$12
 C - - - - - 0x000170 00:8160: B5 BC     LDA ram_00BC,X
 C - - - - - 0x000172 00:8162: F0 0A     BEQ bra_816E
-C - - - - - 0x000174 00:8164: B5 F3     LDA ram_btn_hold,X
+C - - - - - 0x000174 00:8164: B5 F3     LDA ram_удержанная_кнопка,X
 C - - - - - 0x000176 00:8166: 29 03     AND #con_btns_LR
 C - - - - - 0x000178 00:8168: D0 36     BNE bra_81A0
 C - - - - - 0x00017A 00:816A: A9 0B     LDA #$0B
 C - - - - - 0x00017C 00:816C: D0 3A     BNE bra_81A8    ; jmp
 bra_816E:
-C - - - - - 0x00017E 00:816E: B5 F3     LDA ram_btn_hold,X
+C - - - - - 0x00017E 00:816E: B5 F3     LDA ram_удержанная_кнопка,X
 C - - - - - 0x000180 00:8170: 29 03     AND #con_btns_LR
 C - - - - - 0x000182 00:8172: F0 2C     BEQ bra_81A0
 C - - - - - 0x000184 00:8174: A0 00     LDY #$00
 C - - - - - 0x000186 00:8176: F0 28     BEQ bra_81A0    ; jmp
 bra_8178:
-C - - - - - 0x000188 00:8178: B5 F3     LDA ram_btn_hold,X
+C - - - - - 0x000188 00:8178: B5 F3     LDA ram_удержанная_кнопка,X
 C - - - - - 0x00018A 00:817A: 29 03     AND #con_btns_LR
 C - - - - - 0x00018C 00:817C: D0 22     BNE bra_81A0
 C - - - - - 0x00018E 00:817E: A5 00     LDA ram_0000
@@ -326,7 +326,7 @@ C - - - - - 0x0001E8 00:81D8: 98        TYA
 C - - - - - 0x0001E9 00:81D9: 9D 18 05  STA ram_anim_id_plr,X
 C - - - - - 0x0001EC 00:81DC: BD F7 81  LDA tbl_81F7,X
 C - - - - - 0x0001EF 00:81DF: 1D 66 05  ORA ram_attr_spr_plr,X
-C - - - - - 0x0001F2 00:81E2: B4 D4     LDY ram_plr_barrier_timer,X
+C - - - - - 0x0001F2 00:81E2: B4 D4     LDY ram_бессмертие_игрока,X
 C - - - - - 0x0001F4 00:81E4: F0 0D     BEQ bra_81F3
 C - - - - - 0x0001F6 00:81E6: A5 1B     LDA ram_счетчик_кадров
 C - - - - - 0x0001F8 00:81E8: 4A        LSR
@@ -418,7 +418,7 @@ C - - - - - 0x00023A 00:822A: 10 01     BPL bra_822D
 C - - - - - 0x00023C 00:822C: C8        INY ; 01
 bra_822D:
 C - - - - - 0x00023D 00:822D: 84 00     STY ram_0000
-C - - - - - 0x00023F 00:822F: B5 F3     LDA ram_btn_hold,X
+C - - - - - 0x00023F 00:822F: B5 F3     LDA ram_удержанная_кнопка,X
 C - - - - - 0x000241 00:8231: 29 0F     AND #con_btns_Dpad
 C - - - - - 0x000243 00:8233: C9 0B     CMP #$0B
 C - - - - - 0x000245 00:8235: 90 02     BCC bra_8239
@@ -808,7 +808,7 @@ C - - - - - 0x000481 00:8471: B9 A0 00  LDA ram_00A0,Y
 C - - - - - 0x000484 00:8474: C9 02     CMP #$02
 C - - - - - 0x000486 00:8476: D0 DE     BNE bra_8456_RTS
 bra_8478_enough_lives:
-C - - - - - 0x000488 00:8478: B5 F1     LDA ram_btn_press,X
+C - - - - - 0x000488 00:8478: B5 F1     LDA ram_нажатая_кнопка,X
 C - - - - - 0x00048A 00:847A: 29 80     AND #con_btn_A
 C - - - - - 0x00048C 00:847C: F0 D8     BEQ bra_8456_RTS
 C - - - - - 0x00048E 00:847E: 8A        TXA
@@ -854,12 +854,12 @@ C - - - - - 0x0004C7 00:84B7: B5 C4     LDA ram_инвиз_игрока,X
 C - - - - - 0x0004C9 00:84B9: F0 02     BEQ bra_84BD
 C - - - - - 0x0004CB 00:84BB: D6 C4     DEC ram_инвиз_игрока,X
 bra_84BD:
-C - - - - - 0x0004CD 00:84BD: B5 D4     LDA ram_plr_barrier_timer,X
+C - - - - - 0x0004CD 00:84BD: B5 D4     LDA ram_бессмертие_игрока,X
 C - - - - - 0x0004CF 00:84BF: F0 08     BEQ bra_84C9_RTS
 C - - - - - 0x0004D1 00:84C1: A5 5B     LDA ram_005B
 C - - - - - 0x0004D3 00:84C3: 29 03     AND #$03
 C - - - - - 0x0004D5 00:84C5: D0 02     BNE bra_84C9_RTS
-C - - - - - 0x0004D7 00:84C7: D6 D4     DEC ram_plr_barrier_timer,X
+C - - - - - 0x0004D7 00:84C7: D6 D4     DEC ram_бессмертие_игрока,X
 bra_84C9_RTS:
 C - - - - - 0x0004D9 00:84C9: 60        RTS
 
@@ -900,7 +900,7 @@ C - - - - - 0x000514 00:8504: 95 CC     STA ram_00CC,X
 C - - - - - 0x000516 00:8506: 95 CE     STA ram_00CE,X
 C - - - - - 0x000518 00:8508: 95 D2     STA ram_00D2,X
 C - - - - - 0x00051A 00:850A: 95 D0     STA ram_00D0,X
-C - - - - - 0x00051C 00:850C: 95 D4     STA ram_plr_barrier_timer,X
+C - - - - - 0x00051C 00:850C: 95 D4     STA ram_бессмертие_игрока,X
 C - - - - - 0x00051E 00:850E: 95 D6     STA ram_00D6,X
 C - - - - - 0x000520 00:8510: 95 D8     STA ram_00D8,X
 C - - - - - 0x000522 00:8512: 60        RTS
@@ -1169,7 +1169,7 @@ C - - - - - 0x000691 00:8681: 60        RTS
 
 ofs_000_8682_07:
 C - - J - - 0x000692 00:8682: A9 00     LDA #$00
-C - - - - - 0x000694 00:8684: 95 F3     STA ram_btn_hold,X
+C - - - - - 0x000694 00:8684: 95 F3     STA ram_удержанная_кнопка,X
 C - - - - - 0x000696 00:8686: 20 C9 86  JSR sub_86C9
 C - - - - - 0x000699 00:8689: 20 B5 80  JSR sub_80B5
 C - - - - - 0x00069C 00:868C: D6 C0     DEC ram_00C0,X
@@ -1216,22 +1216,22 @@ sub_86C9:
 C - - - - - 0x0006D9 00:86C9: B5 B2     LDA ram_plr_surface,X
 C - - - - - 0x0006DB 00:86CB: C9 04     CMP #$04
 C - - - - - 0x0006DD 00:86CD: D0 0C     BNE bra_86DB
-C - - - - - 0x0006DF 00:86CF: B5 F3     LDA ram_btn_hold,X
+C - - - - - 0x0006DF 00:86CF: B5 F3     LDA ram_удержанная_кнопка,X
 C - - - - - 0x0006E1 00:86D1: 29 04     AND #con_btn_Down
 C - - - - - 0x0006E3 00:86D3: F0 06     BEQ bra_86DB
-C - - - - - 0x0006E5 00:86D5: B5 F3     LDA ram_btn_hold,X
+C - - - - - 0x0006E5 00:86D5: B5 F3     LDA ram_удержанная_кнопка,X
 C - - - - - 0x0006E7 00:86D7: 29 FC     AND #con_btns_LR ^ $FF
-C - - - - - 0x0006E9 00:86D9: 95 F3     STA ram_btn_hold,X
+C - - - - - 0x0006E9 00:86D9: 95 F3     STA ram_удержанная_кнопка,X
 bra_86DB:
 C - - - - - 0x0006EB 00:86DB: 20 B7 84  JSR sub_84B7
 C - - - - - 0x0006EE 00:86DE: B5 AE     LDA ram_00AE_plr,X
 C - - - - - 0x0006F0 00:86E0: D0 58     BNE bra_873A
-C - - - - - 0x0006F2 00:86E2: B5 F1     LDA ram_btn_press,X
+C - - - - - 0x0006F2 00:86E2: B5 F1     LDA ram_нажатая_кнопка,X
 C - - - - - 0x0006F4 00:86E4: 29 80     AND #con_btn_A
 C - - - - - 0x0006F6 00:86E6: D0 03     BNE bra_86EB
 C - - - - - 0x0006F8 00:86E8: 4C 6D 87  JMP loc_876D
 bra_86EB:
-C - - - - - 0x0006FB 00:86EB: B5 F3     LDA ram_btn_hold,X
+C - - - - - 0x0006FB 00:86EB: B5 F3     LDA ram_удержанная_кнопка,X
 C - - - - - 0x0006FD 00:86ED: 29 0F     AND #con_btns_Dpad
 C - - - - - 0x0006FF 00:86EF: C9 04     CMP #con_btn_Down
 C - - - - - 0x000701 00:86F1: D0 27     BNE bra_871A
@@ -1269,7 +1269,7 @@ C - - - - - 0x00073E 00:872E: A9 00     LDA #$00
 C - - - - - 0x000740 00:8730: 95 B4     STA ram_00B4,X
 C - - - - - 0x000742 00:8732: A9 80     LDA #$80
 C - - - - - 0x000744 00:8734: 95 AE     STA ram_00AE_plr,X
-C - - - - - 0x000746 00:8736: B5 F3     LDA ram_btn_hold,X
+C - - - - - 0x000746 00:8736: B5 F3     LDA ram_удержанная_кнопка,X
 C - - - - - 0x000748 00:8738: 95 B0     STA ram_00B0,X
 bra_873A:
 loc_873A:
@@ -1288,7 +1288,7 @@ C - - - - - 0x00075F 00:874F: 95 A8     STA ram_скорость_игрока_y_
 C - - - - - 0x000761 00:8751: A9 00     LDA #$00
 C - - - - - 0x000763 00:8753: 95 A6     STA ram_скорость_игрока_y_младш,X
 bra_8755:
-C - - - - - 0x000765 00:8755: B5 F3     LDA ram_btn_hold,X
+C - - - - - 0x000765 00:8755: B5 F3     LDA ram_удержанная_кнопка,X
 C - - - - - 0x000767 00:8757: 29 03     AND #con_btns_LR
 C - - - - - 0x000769 00:8759: F0 02     BEQ bra_875D
 C - - - - - 0x00076B 00:875B: 95 B0     STA ram_00B0,X
@@ -1305,7 +1305,7 @@ C - - - - - 0x00077A 00:876A: 4C 7F 87  JMP loc_877F
 
 loc_876D:
 C D 0 - - - 0x00077D 00:876D: 20 88 88  JSR sub_8888
-C - - - - - 0x000780 00:8770: B5 F3     LDA ram_btn_hold,X
+C - - - - - 0x000780 00:8770: B5 F3     LDA ram_удержанная_кнопка,X
 C - - - - - 0x000782 00:8772: 20 53 88  JSR sub_8853
 C - - - - - 0x000785 00:8775: B9 6E 88  LDA tbl_886C_speed + $02,Y
 C - - - - - 0x000788 00:8778: 95 A6     STA ram_скорость_игрока_y_младш,X
@@ -1558,7 +1558,7 @@ C - - - - - 0x0008D4 00:88C4: 20 09 E6  JSR sub_0x01E619_jump_to_pointers_after_
 
 ofs_001_88D9_07:
 C - - J - - 0x0008E9 00:88D9: A9 00     LDA #$00
-C - - - - - 0x0008EB 00:88DB: 95 F3     STA ram_btn_hold,X
+C - - - - - 0x0008EB 00:88DB: 95 F3     STA ram_удержанная_кнопка,X
 ofs_001_88DD_02:
 C - - - - - 0x0008ED 00:88DD: 20 F6 88  JSR sub_88F6
 C - - - - - 0x0008F0 00:88E0: 4C C3 89  JMP loc_89C3
@@ -1743,7 +1743,7 @@ C - - - - - 0x0009FB 00:89EB: D0 D5     BNE bra_89C2_RTS
 sub_89ED:
 C - - - - - 0x0009FD 00:89ED: A9 40     LDA #$40
 C - - - - - 0x0009FF 00:89EF: 95 AE     STA ram_00AE_plr,X
-C - - - - - 0x000A01 00:89F1: B5 F3     LDA ram_btn_hold,X
+C - - - - - 0x000A01 00:89F1: B5 F3     LDA ram_удержанная_кнопка,X
 C - - - - - 0x000A03 00:89F3: 95 B0     STA ram_00B0,X
 C - - - - - 0x000A05 00:89F5: 60        RTS
 bra_89F6:
@@ -1888,7 +1888,7 @@ C - - - - - 0x000ACC 00:8ABC: 4C E0 8B  JMP loc_8BE0
 
 sub_8ABF:
 C - - - - - 0x000ACF 00:8ABF: 20 B7 84  JSR sub_84B7
-C - - - - - 0x000AD2 00:8AC2: B5 F3     LDA ram_btn_hold,X
+C - - - - - 0x000AD2 00:8AC2: B5 F3     LDA ram_удержанная_кнопка,X
 C - - - - - 0x000AD4 00:8AC4: 29 0F     AND #con_btns_Dpad
 C - - - - - 0x000AD6 00:8AC6: 85 13     STA ram_0013
 C - - - - - 0x000AD8 00:8AC8: C9 0B     CMP #$0B
@@ -2053,7 +2053,7 @@ tbl_8B86_speed:
 sub_8BAA:
 C - - - - - 0x000BBA 00:8BAA: A9 BF     LDA #$BF
 C - - - - - 0x000BBC 00:8BAC: 95 C6     STA ram_00C6,X
-C - - - - - 0x000BBE 00:8BAE: B5 F3     LDA ram_btn_hold,X
+C - - - - - 0x000BBE 00:8BAE: B5 F3     LDA ram_удержанная_кнопка,X
 C - - - - - 0x000BC0 00:8BB0: 29 0F     AND #con_btns_Dpad
 C - - - - - 0x000BC2 00:8BB2: F0 18     BEQ bra_8BCC
 C - - - - - 0x000BC4 00:8BB4: F6 B6     INC ram_00B6,X
@@ -2318,7 +2318,7 @@ sub_8CEE:
 C - - - - - 0x000CFE 00:8CEE: B5 B2     LDA ram_plr_surface,X
 C - - - - - 0x000D00 00:8CF0: C9 04     CMP #$04
 C - - - - - 0x000D02 00:8CF2: D0 06     BNE bra_8CFA
-C - - - - - 0x000D04 00:8CF4: B5 F3     LDA ram_btn_hold,X
+C - - - - - 0x000D04 00:8CF4: B5 F3     LDA ram_удержанная_кнопка,X
 C - - - - - 0x000D06 00:8CF6: 29 04     AND #con_btn_Down
 C - - - - - 0x000D08 00:8CF8: D0 40     BNE bra_8D3A_RTS
 bra_8CFA:
@@ -2332,7 +2332,7 @@ C - - - - - 0x000D15 00:8D05: F0 21     BEQ bra_8D28
 C - - - - - 0x000D17 00:8D07: C0 03     CPY #con_weapon_L
 C - - - - - 0x000D19 00:8D09: D0 30     BNE bra_8D3B
 ; if M or L
-C - - - - - 0x000D1B 00:8D0B: B5 F3     LDA ram_btn_hold,X
+C - - - - - 0x000D1B 00:8D0B: B5 F3     LDA ram_удержанная_кнопка,X
 C - - - - - 0x000D1D 00:8D0D: 0A        ASL
 C - - - - - 0x000D1E 00:8D0E: 0A        ASL
 C - - - - - 0x000D1F 00:8D0F: 90 2A     BCC bra_8D3B    ; if not con_btn_B
@@ -2351,7 +2351,7 @@ C - - - - - 0x000D32 00:8D22: C6 0D     DEC ram_000D
 C - - - - - 0x000D34 00:8D24: D0 F6     BNE bra_8D1C_loop
 C - - - - - 0x000D36 00:8D26: F0 5A     BEQ bra_8D82    ; jmp
 bra_8D28:
-C - - - - - 0x000D38 00:8D28: B5 F3     LDA ram_btn_hold,X
+C - - - - - 0x000D38 00:8D28: B5 F3     LDA ram_удержанная_кнопка,X
 C - - - - - 0x000D3A 00:8D2A: 0A        ASL
 C - - - - - 0x000D3B 00:8D2B: 0A        ASL
 C - - - - - 0x000D3C 00:8D2C: A9 00     LDA #$00
@@ -2365,14 +2365,14 @@ C - - - - - 0x000D48 00:8D38: B0 48     BCS bra_8D82
 bra_8D3A_RTS:
 C - - - - - 0x000D4A 00:8D3A: 60        RTS
 bra_8D3B:
-C - - - - - 0x000D4B 00:8D3B: B5 F1     LDA ram_btn_press,X
+C - - - - - 0x000D4B 00:8D3B: B5 F1     LDA ram_нажатая_кнопка,X
 C - - - - - 0x000D4D 00:8D3D: 0A        ASL
 C - - - - - 0x000D4E 00:8D3E: 0A        ASL
 C - - - - - 0x000D4F 00:8D3F: A4 0E     LDY ram_000E    ; R cut weapon value
 C - - - - - 0x000D51 00:8D41: B0 22     BCS bra_8D65    ; if con_btn_B
 C - - - - - 0x000D53 00:8D43: C0 04     CPY #con_weapon_F_normal
 C - - - - - 0x000D55 00:8D45: D0 F3     BNE bra_8D3A_RTS
-C - - - - - 0x000D57 00:8D47: B5 F3     LDA ram_btn_hold,X
+C - - - - - 0x000D57 00:8D47: B5 F3     LDA ram_удержанная_кнопка,X
 C - - - - - 0x000D59 00:8D49: 29 40     AND #con_btn_B
 C - - - - - 0x000D5B 00:8D4B: F0 0A     BEQ bra_8D57
 C - - - - - 0x000D5D 00:8D4D: B5 C8     LDA ram_чарж_f_игрока,X
@@ -2412,7 +2412,7 @@ C - - - - - 0x000D92 00:8D82: A0 11     LDY #$11
 C - - - - - 0x000D94 00:8D84: B5 B2     LDA ram_plr_surface,X
 C - - - - - 0x000D96 00:8D86: C9 04     CMP #$04
 C - - - - - 0x000D98 00:8D88: F0 08     BEQ bra_8D92
-C - - - - - 0x000D9A 00:8D8A: B5 F3     LDA ram_btn_hold,X
+C - - - - - 0x000D9A 00:8D8A: B5 F3     LDA ram_удержанная_кнопка,X
 C - - - - - 0x000D9C 00:8D8C: 29 03     AND #con_btns_LR
 C - - - - - 0x000D9E 00:8D8E: D0 02     BNE bra_8D92
 C - - - - - 0x000DA0 00:8D90: A0 05     LDY #$05
@@ -5275,8 +5275,8 @@ bra_9DD6:
 C - - - - - 0x001DE6 00:9DD6: D6 41     DEC ram_0041,X
 bra_9DD8:
 C - - - - - 0x001DE8 00:9DD8: B5 4C     LDA ram_004C,X
-C - - - - - 0x001DEA 00:9DDA: 95 F1     STA ram_btn_press,X
-C - - - - - 0x001DEC 00:9DDC: 95 F3     STA ram_btn_hold,X
+C - - - - - 0x001DEA 00:9DDA: 95 F1     STA ram_нажатая_кнопка,X
+C - - - - - 0x001DEC 00:9DDC: 95 F3     STA ram_удержанная_кнопка,X
 C - - - - - 0x001DEE 00:9DDE: A5 4E     LDA ram_004E
 C - - - - - 0x001DF0 00:9DE0: C9 E0     CMP #$E0
 C - - - - - 0x001DF2 00:9DE2: 90 20     BCC bra_9E04_RTS
@@ -5288,17 +5288,17 @@ C - - - - - 0x001DFC 00:9DEC: C9 03     CMP #con_weapon_L
 C - - - - - 0x001DFE 00:9DEE: D0 08     BNE bra_9DF8
 bra_9DF0:
 ; if M or L
-C - - - - - 0x001E00 00:9DF0: B5 F3     LDA ram_btn_hold,X
+C - - - - - 0x001E00 00:9DF0: B5 F3     LDA ram_удержанная_кнопка,X
 C - - - - - 0x001E02 00:9DF2: 09 40     ORA #con_btn_B
-C - - - - - 0x001E04 00:9DF4: 95 F3     STA ram_btn_hold,X
+C - - - - - 0x001E04 00:9DF4: 95 F3     STA ram_удержанная_кнопка,X
 C - - - - - 0x001E06 00:9DF6: D0 0C     BNE bra_9E04_RTS    ; jmp
 bra_9DF8:
 C - - - - - 0x001E08 00:9DF8: A5 1B     LDA ram_счетчик_кадров
 C - - - - - 0x001E0A 00:9DFA: 29 06     AND #$06
 C - - - - - 0x001E0C 00:9DFC: D0 06     BNE bra_9E04_RTS
-C - - - - - 0x001E0E 00:9DFE: B5 F1     LDA ram_btn_press,X
+C - - - - - 0x001E0E 00:9DFE: B5 F1     LDA ram_нажатая_кнопка,X
 C - - - - - 0x001E10 00:9E00: 09 40     ORA #con_btn_B
-C - - - - - 0x001E12 00:9E02: 95 F1     STA ram_btn_press,X
+C - - - - - 0x001E12 00:9E02: 95 F1     STA ram_нажатая_кнопка,X
 bra_9E04_RTS:
 C - - - - - 0x001E14 00:9E04: 60        RTS
 bra_9E05_FF:
@@ -5919,7 +5919,7 @@ C - - - - - 0x002231 00:A221: A0 09     LDY #con_btn_Up + con_btn_Right
 C - - - - - 0x002233 00:A223: 90 02     BCC bra_A227
 C - - - - - 0x002235 00:A225: A0 0A     LDY #con_btn_Up + con_btn_Left
 bra_A227:
-C - - - - - 0x002237 00:A227: 94 F3     STY ram_btn_hold,X
+C - - - - - 0x002237 00:A227: 94 F3     STY ram_удержанная_кнопка,X
 C - - - - - 0x002239 00:A229: 60        RTS
 bra_A22A:
 C - - - - - 0x00223A 00:A22A: 4C 97 A2  JMP loc_A297
@@ -5965,7 +5965,7 @@ C - - - - - 0x002260 00:A250: 4C 69 A2  JMP loc_A269
 
 ofs_009_A253_07_area_8:
 C - - J - - 0x002263 00:A253: A9 00     LDA #$00
-C - - - - - 0x002265 00:A255: 95 F3     STA ram_btn_hold,X
+C - - - - - 0x002265 00:A255: 95 F3     STA ram_удержанная_кнопка,X
 C - - - - - 0x002267 00:A257: A5 1B     LDA ram_счетчик_кадров
 C - - - - - 0x002269 00:A259: 4A        LSR
 C - - - - - 0x00226A 00:A25A: B0 0C     BCS bra_A268_RTS
@@ -5987,7 +5987,7 @@ C - - - - - 0x00227D 00:A26D: D0 25     BNE bra_A294
 C - - - - - 0x00227F 00:A26F: B5 CC     LDA ram_00CC,X
 C - - - - - 0x002281 00:A271: D0 04     BNE bra_A277
 C - - - - - 0x002283 00:A273: A9 80     LDA #con_btn_A
-C - - - - - 0x002285 00:A275: 95 F1     STA ram_btn_press,X
+C - - - - - 0x002285 00:A275: 95 F1     STA ram_нажатая_кнопка,X
 bra_A277:
 loc_A277:
 C D 1 - - - 0x002287 00:A277: BD 4C 05  LDA ram_pos_X_hi_plr,X
@@ -6006,7 +6006,7 @@ C - - - - - 0x00229F 00:A28F: 9D 66 05  STA ram_attr_spr_plr,X
 bra_A292:
 C - - - - - 0x0022A2 00:A292: A9 01     LDA #con_btn_Right
 bra_A294:   ; A = 00
-C - - - - - 0x0022A4 00:A294: 95 F3     STA ram_btn_hold,X
+C - - - - - 0x0022A4 00:A294: 95 F3     STA ram_удержанная_кнопка,X
 C - - - - - 0x0022A6 00:A296: 60        RTS
 bra_A297:
 loc_A297:
@@ -6019,7 +6019,7 @@ C - - - - - 0x0022AB 00:A29B: 60        RTS
 loc_0x0022AC_cheat_code:
 C D 1 - - - 0x0022AC 00:A29C: A4 50     LDY ram_cheat_input_cnt
 C - - - - - 0x0022AE 00:A29E: 30 1C     BMI bra_A2BC_RTS    ; if cheat was entered/incorrect input and no second chance
-C - - - - - 0x0022B0 00:A2A0: A5 F1     LDA ram_btn_press
+C - - - - - 0x0022B0 00:A2A0: A5 F1     LDA ram_нажатая_кнопка
 C - - - - - 0x0022B2 00:A2A2: 29 CF     AND #con_btns_AB + con_btns_Dpad
 C - - - - - 0x0022B4 00:A2A4: F0 16     BEQ bra_A2BC_RTS
 C - - - - - 0x0022B6 00:A2A6: D9 BD A2  CMP tbl_A2BD_cheat_code,Y
@@ -6072,7 +6072,7 @@ bra_A2D6:
 
 sub_A2DC:
 ; bzk garbage?
-- - - - - - 0x0022EC 00:A2DC: A5 F5     LDA ram_copy_btn_press
+- - - - - - 0x0022EC 00:A2DC: A5 F5     LDA ram_копия_нажатая_кнопка
 - - - - - - 0x0022EE 00:A2DE: 29 0C     AND #con_btns_UD
 - - - - - - 0x0022F0 00:A2E0: F0 14     BEQ bra_A2F6
 - - - - - - 0x0022F2 00:A2E2: C9 08     CMP #con_btn_Up
@@ -6087,7 +6087,7 @@ bra_A2EE:
 - - - - - - 0x002302 00:A2F2: F0 02     BEQ bra_A2F6
 - - - - - - 0x002304 00:A2F4: E6 50     INC ram_номер_уровня
 bra_A2F6:
-- - - - - - 0x002306 00:A2F6: A5 F5     LDA ram_copy_btn_press
+- - - - - - 0x002306 00:A2F6: A5 F5     LDA ram_копия_нажатая_кнопка
 - - - - - - 0x002308 00:A2F8: 29 10     AND #con_btn_Start
 - - - - - - 0x00230A 00:A2FA: F0 0D     BEQ bra_A309_RTS
 - - - - - - 0x00230C 00:A2FC: A5 50     LDA ram_номер_уровня
@@ -6303,7 +6303,7 @@ ofs_011_A426_04:
 C - - J - - 0x002436 00:A426: 20 03 A6  JSR sub_A603
 C - - - - - 0x002439 00:A429: 20 6A A4  JSR sub_A46A
 C - - - - - 0x00243C 00:A42C: 20 38 A4  JSR sub_A438_helicopter_handler
-C - - - - - 0x00243F 00:A42F: A5 F1     LDA ram_btn_press
+C - - - - - 0x00243F 00:A42F: A5 F1     LDA ram_нажатая_кнопка
 C - - - - - 0x002441 00:A431: 29 10     AND #con_btn_Start
 C - - - - - 0x002443 00:A433: F0 02     BEQ bra_A437_RTS
 C - - - - - 0x002445 00:A435: E6 60     INC ram_0060
