@@ -3141,17 +3141,17 @@ loc_F19B:
 C D 3 - - - 0x01F1AB 07:F19B: A5 50     LDA ram_номер_уровня
 C - - - - - 0x01F1AD 07:F19D: 0A        ASL
 C - - - - - 0x01F1AE 07:F19E: A8        TAY
-C - - - - - 0x01F1AF 07:F19F: B9 A4 F2  LDA tbl_F2A4,Y
+C - - - - - 0x01F1AF 07:F19F: B9 A4 F2  LDA tbl_F2A4_индексы_метатайлов,Y
 C - - - - - 0x01F1B2 07:F1A2: 85 32     STA ram_0032
-C - - - - - 0x01F1B4 07:F1A4: B9 A5 F2  LDA tbl_F2A4 + $01,Y
+C - - - - - 0x01F1B4 07:F1A4: B9 A5 F2  LDA tbl_F2A4_индексы_метатайлов + $01,Y
 C - - - - - 0x01F1B7 07:F1A7: 85 33     STA ram_0033
-C - - - - - 0x01F1B9 07:F1A9: B9 B4 F2  LDA tbl_F2B4,Y
+C - - - - - 0x01F1B9 07:F1A9: B9 B4 F2  LDA tbl_F2B4_метатайлы,Y
 C - - - - - 0x01F1BC 07:F1AC: 85 34     STA ram_0034
-C - - - - - 0x01F1BE 07:F1AE: B9 B5 F2  LDA tbl_F2B4 + $01,Y
+C - - - - - 0x01F1BE 07:F1AE: B9 B5 F2  LDA tbl_F2B4_метатайлы + $01,Y
 C - - - - - 0x01F1C1 07:F1B1: 85 35     STA ram_0035
-C - - - - - 0x01F1C3 07:F1B3: B9 C4 F2  LDA tbl_F2C4,Y
+C - - - - - 0x01F1C3 07:F1B3: B9 C4 F2  LDA tbl_F2C4_атрибуты_метатайлов,Y
 C - - - - - 0x01F1C6 07:F1B6: 85 36     STA ram_0036
-C - - - - - 0x01F1C8 07:F1B8: B9 C5 F2  LDA tbl_F2C4 + $01,Y
+C - - - - - 0x01F1C8 07:F1B8: B9 C5 F2  LDA tbl_F2C4_атрибуты_метатайлов + $01,Y
 C - - - - - 0x01F1CB 07:F1BB: 85 37     STA ram_0037
 C - - - - - 0x01F1CD 07:F1BD: B9 95 F2  LDA tbl_F294 + $01,Y
 C - - - - - 0x01F1D0 07:F1C0: 85 31     STA ram_0031
@@ -3225,7 +3225,7 @@ tbl_F284:
 
 
 tbl_F294:
-; ???
+; индексы для данных в 0x01F2B4
 - D 3 - - - 0x01F2A4 07:F294: B8 9F     .word _off004_0x009FC8_00_area_1
 - D 3 - - - 0x01F2A6 07:F296: 45 AB     .word _off004_0x002B55_01_area_2
 - D 3 - - - 0x01F2A8 07:F298: 6A AB     .word _off004_0x00EB7A_02_area_3
@@ -3237,8 +3237,8 @@ tbl_F294:
 
 
 
-tbl_F2A4:
-; ???
+tbl_F2A4_индексы_метатайлов:
+; блоки уровней 8x8
 - D 3 - - - 0x01F2B4 07:F2A4: F2 9F     .word _off005_0x00A002_00_area_1
 - D 3 - - - 0x01F2B6 07:F2A6: 61 AB     .word _off005_0x002B71_01_area_2
 - D 3 - - - 0x01F2B8 07:F2A8: 82 AB     .word _off005_0x00EB92_02_area_3
@@ -3250,8 +3250,8 @@ tbl_F2A4:
 
 
 
-tbl_F2B4:
-; ???
+tbl_F2B4_метатайлы:
+; блоки тайлов 4x4
 - D 3 - - - 0x01F2C4 07:F2B4: D8 A4     .word _off006_0x00A4E8_00_area_1
 - D 3 - - - 0x01F2C6 07:F2B6: 3F AF     .word _off006_0x002F4F_01_area_2
 - D 3 - - - 0x01F2C8 07:F2B8: E4 AF     .word _off006_0x00EFF4_02_area_3
@@ -3263,8 +3263,8 @@ tbl_F2B4:
 
 
 
-tbl_F2C4:
-; ???
+tbl_F2C4_атрибуты_метатайлов:
+; атрибуты фона для метатайлов
 - D 3 - - - 0x01F2D4 07:F2C4: 18 B4     .word _off007_0x00B428_00_area_1
 - D 3 - - - 0x01F2D6 07:F2C6: 8F BE     .word _off007_0x003E9F_01_area_2
 - D 3 - - - 0x01F2D8 07:F2C8: F4 B7     .word _off007_0x00F804_02_area_3
