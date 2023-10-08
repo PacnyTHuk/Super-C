@@ -4486,19 +4486,18 @@ C - - - - - 0x011B4E 04:9B3E: 20 95 AB  JSR sub_0x006BA5_set_dynamic_hp_to_enemy
 C - - - - - 0x011B51 04:9B41: BC 64 07  LDY ram_0764_obj,X
 C - - - - - 0x011B54 04:9B44: F0 02     BEQ bra_9B48
 C - - - - - 0x011B56 04:9B46: A9 F1     LDA #con__hp_F1
-bra_9B48:   ; A = 00
+bra_9B48:
 C - - - - - 0x011B58 04:9B48: 9D 76 06  STA ram_obj_hp,X
 C - - - - - 0x011B5B 04:9B4B: BD 64 07  LDA ram_0764_obj,X
 C - - - - - 0x011B5E 04:9B4E: D0 40     BNE bra_9B90
 C - - - - - 0x011B60 04:9B50: A9 F0     LDA #$F0
 C - - - - - 0x011B62 04:9B52: 9D 3C 05  STA ram_pos_X_hi_enemy,X
-; !!! ??? хз что мне тут не понравилось
 C - - - - - 0x011B65 04:9B55: A0 00     LDY #$00
 bra_9B57_loop:
 C - - - - - 0x011B67 04:9B57: BD 22 05  LDA ram_pos_Y_hi_enemy,X
-C - - - - - 0x011B6A 04:9B5A: 99 40 04  STA ram_0440,Y
+C - - - - - 0x011B6A 04:9B5A: 99 40 04  STA ram_0440,Y  ; 0440-049B
 C - - - - - 0x011B6D 04:9B5D: BD 3C 05  LDA ram_pos_X_hi_enemy,X
-C - - - - - 0x011B70 04:9B60: 99 A0 04  STA ram_04A0,Y
+C - - - - - 0x011B70 04:9B60: 99 A0 04  STA ram_04A0,Y  ; 04A0-04FB
 C - - - - - 0x011B73 04:9B63: C8        INY
 C - - - - - 0x011B74 04:9B64: C0 5C     CPY #$5C
 C - - - - - 0x011B76 04:9B66: 90 EF     BCC bra_9B57_loop
@@ -4544,7 +4543,7 @@ bra_9BAB:
 C - - - - - 0x011BBB 04:9BAB: BD 56 05  LDA ram_attr_spr_enemy,X
 C - - - - - 0x011BBE 04:9BAE: 09 20     ORA #$20
 C - - - - - 0x011BC0 04:9BB0: 9D 56 05  STA ram_attr_spr_enemy,X
-C - - - - - 0x011BC3 04:9BB3: 4C BB 9B  JMP loc_9BBB
+C - - - - - 0x011BC3 04:9BB3: 4C BB 9B  JMP loc_9BBB    ; bzk optimize, BNE
 bra_9BB6:
 C - - - - - 0x011BC6 04:9BB6: A9 00     LDA #$00
 C - - - - - 0x011BC8 04:9BB8: 9D 08 05  STA ram_anim_id_enemy,X

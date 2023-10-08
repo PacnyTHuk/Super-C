@@ -6237,11 +6237,11 @@ C - - - - - 0x0023C9 00:A3B9: 20 09 E6  JSR sub_0x01E619_jump_to_pointers_after_
 
 
 ofs_011_A3C6_00:
-; !!! ???
 C - - J - - 0x0023D6 00:A3C6: A0 0F     LDY #$0F
 C - - - - - 0x0023D8 00:A3C8: A9 00     LDA #$00
 bra_A3CA_loop:
-C - - - - - 0x0023DA 00:A3CA: 99 70 00  STA ram_0070,Y
+; 0070-007F
+C - - - - - 0x0023DA 00:A3CA: 99 70 00  STA $70,Y
 C - - - - - 0x0023DD 00:A3CD: 88        DEY
 C - - - - - 0x0023DE 00:A3CE: 10 FA     BPL bra_A3CA_loop
 C - - - - - 0x0023E0 00:A3D0: 20 C0 E7  JSR sub_0x01E7D0
