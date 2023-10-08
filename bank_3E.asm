@@ -1028,7 +1028,7 @@ C - - - - - 0x01E57D 07:E56D: 85 CA     STA ram_plr_game_over
 C - - - - - 0x01E57F 07:E56F: 85 CB     STA ram_plr_game_over + $01
 C - - - - - 0x01E581 07:E571: 85 1B     STA ram_счетчик_кадров
 C - - - - - 0x01E583 07:E573: 85 5B     STA ram_005B
-C - - - - - 0x01E585 07:E575: 85 23     STA ram_рандом_байт_1
+C - - - - - 0x01E585 07:E575: 85 23     STA ram_рандом_байт
 C - - - - - 0x01E587 07:E577: A9 10     LDA #$10
 C - - - - - 0x01E589 07:E579: 85 53     STA ram_жизни
 C - - - - - 0x01E58B 07:E57B: 85 54     STA ram_жизни + $01
@@ -1860,6 +1860,7 @@ ofs_033_EA2A_07:
 C - - J - - 0x01EA3A 07:EA2A: A5 F1     LDA ram_нажатая_кнопка
 C - - - - - 0x01EA3C 07:EA2C: 29 2C     AND #con_btn_Select + con_btns_UD
 C - - - - - 0x01EA3E 07:EA2E: F0 06     BEQ bra_EA36
+; поменять опцию continue/end
 C - - - - - 0x01EA40 07:EA30: A5 2C     LDA ram_002C
 C - - - - - 0x01EA42 07:EA32: 49 01     EOR #$01
 C - - - - - 0x01EA44 07:EA34: 85 2C     STA ram_002C
@@ -1923,7 +1924,7 @@ C - - - - - 0x01EA9E 07:EA8E: 05 1D     ORA ram_001D
 C - - - - - 0x01EAA0 07:EA90: D0 1C     BNE bra_EAAE_RTS
 C - - - - - 0x01EAA2 07:EA92: A5 F5     LDA ram_копия_нажатая_кнопка
 C - - - - - 0x01EAA4 07:EA94: A4 39     LDY ram_пауза
-C - - - - - 0x01EAA6 07:EA96: D0 0E     BNE bra_EAA6
+C - - - - - 0x01EAA6 07:EA96: D0 0E     BNE bra_EAA6_игра_на_паузе
 C - - - - - 0x01EAA8 07:EA98: 29 10     AND #con_btn_Start
 C - - - - - 0x01EAAA 07:EA9A: F0 12     BEQ bra_EAAE_RTS
 C - - - - - 0x01EAAC 07:EA9C: A9 01     LDA #$01
@@ -1937,8 +1938,8 @@ C - - - - - 0x01EAB2 07:EAA2: 4C DE FD  JMP loc_FDDE_play_sound
 
 
 
-bra_EAA6:
-C - - - - - 0x01EAB6 07:EAA6: 29 10     AND #$10
+bra_EAA6_игра_на_паузе:
+C - - - - - 0x01EAB6 07:EAA6: 29 10     AND #con_btn_Start
 C - - - - - 0x01EAB8 07:EAA8: F0 05     BEQ bra_EAAF_RTS
 C - - - - - 0x01EABA 07:EAAA: A9 00     LDA #$00
 C - - - - - 0x01EABC 07:EAAC: 85 39     STA ram_пауза
@@ -3296,7 +3297,7 @@ C - - - - - 0x01F2F8 07:F2E8: 85 00     STA ram_0000
 C - - - - - 0x01F2FA 07:F2EA: A9 01     LDA #$01
 C - - - - - 0x01F2FC 07:F2EC: 85 0F     STA ram_000F
 C - - - - - 0x01F2FE 07:F2EE: 20 82 F6  JSR sub_F682
-C - - - - - 0x01F301 07:F2F1: A5 23     LDA ram_рандом_байт_1
+C - - - - - 0x01F301 07:F2F1: A5 23     LDA ram_рандом_байт
 C - - - - - 0x01F303 07:F2F3: 29 03     AND #$03
 C - - - - - 0x01F305 07:F2F5: A8        TAY
 C - - - - - 0x01F306 07:F2F6: B9 3B F3  LDA tbl_F33B,Y
@@ -3310,7 +3311,7 @@ C - - - - - 0x01F312 07:F302: 68        PLA
 C - - - - - 0x01F313 07:F303: B0 02     BCS bra_F307
 C - - - - - 0x01F315 07:F305: 85 0A     STA ram_000A
 bra_F307:
-C - - - - - 0x01F317 07:F307: A5 23     LDA ram_рандом_байт_1
+C - - - - - 0x01F317 07:F307: A5 23     LDA ram_рандом_байт
 C - - - - - 0x01F319 07:F309: 4A        LSR
 C - - - - - 0x01F31A 07:F30A: 4A        LSR
 C - - - - - 0x01F31B 07:F30B: 29 03     AND #$03
@@ -4982,10 +4983,10 @@ C - - - - - 0x01FB66 07:FB56: A9 00     LDA #con_mirroring_V
 C - - - - - 0x01FB68 07:FB58: 8D 00 A0  STA $A000
 C - - - - - 0x01FB6B 07:FB5B: 58        CLI
 loc_FB5C_infinite_loop:
-C D 3 - - - 0x01FB6C 07:FB5C: E6 23     INC ram_рандом_байт_1
-C - - - - - 0x01FB6E 07:FB5E: A5 23     LDA ram_рандом_байт_1
+C D 3 - - - 0x01FB6C 07:FB5C: E6 23     INC ram_рандом_байт
+C - - - - - 0x01FB6E 07:FB5E: A5 23     LDA ram_рандом_байт
 C - - - - - 0x01FB70 07:FB60: 65 1B     ADC ram_счетчик_кадров
-C - - - - - 0x01FB72 07:FB62: 85 23     STA ram_рандом_байт_1
+C - - - - - 0x01FB72 07:FB62: 85 23     STA ram_рандом_байт
 C - - - - - 0x01FB74 07:FB64: 4C 5C FB  JMP loc_FB5C_infinite_loop
 
 
