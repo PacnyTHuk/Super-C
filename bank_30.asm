@@ -18,7 +18,7 @@
 .export loc_0x001DA4
 .export loc_0x002178_stage_complete_handler
 .export loc_0x0022AC_cheat_code
-.export loc_0x0022D4
+.export loc_0x0022D4_выбор_уровня_в_японке
 .export loc_0x00231A_title_screen_handler
 .export loc_0x0023C7_credits_handler
 .export _off014_32_0x00263F_00
@@ -6050,9 +6050,9 @@ tbl_A2BD_cheat_code:
 
 
 
-loc_0x0022D4:
-; bzk garbage?
-- - - - - - 0x0022D4 00:A2C4: 20 DC A2  JSR sub_A2DC
+loc_0x0022D4_выбор_уровня_в_японке:
+; bzk garbage
+- - - - - - 0x0022D4 00:A2C4: 20 DC A2  JSR sub_A2DC_переключение_и_отображение_номера_уровня
 - - - - - - 0x0022D7 00:A2C7: A5 1B     LDA ram_счетчик_кадров
 - - - - - - 0x0022D9 00:A2C9: 4A        LSR
 - - - - - - 0x0022DA 00:A2CA: 4A        LSR
@@ -6070,8 +6070,8 @@ bra_A2D6:
 
 
 
-sub_A2DC:
-; bzk garbage?
+sub_A2DC_переключение_и_отображение_номера_уровня:
+; bzk garbage
 - - - - - - 0x0022EC 00:A2DC: A5 F5     LDA ram_копия_нажатая_кнопка
 - - - - - - 0x0022EE 00:A2DE: 29 0C     AND #con_btns_UD
 - - - - - - 0x0022F0 00:A2E0: F0 14     BEQ bra_A2F6

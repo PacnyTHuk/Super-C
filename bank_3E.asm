@@ -100,13 +100,13 @@
 
 tbl_E000_config_2000:
 ; see con_buf_mode
-- D 3 - - - 0x01E010 07:E000: 28        .byte $28   ; 01 
-- - - - - - 0x01E011 07:E001: 2C        .byte $2C   ; 02 
-- D 3 - - - 0x01E012 07:E002: 28        .byte $28   ; 03 
-- - - - - - 0x01E013 07:E003: 28        .byte $28   ; 04 
-- - - - - - 0x01E014 07:E004: 28        .byte $28   ; 05 
-- D 3 - - - 0x01E015 07:E005: 28        .byte $28   ; 06 
-- D 3 - - - 0x01E016 07:E006: 2C        .byte $2C   ; 07 
+- D 3 - - - 0x01E010 07:E000: 28        .byte $28   ; 01 увеличить 2006 на 01 после записи в 2007
+- - - - - - 0x01E011 07:E001: 2C        .byte $2C   ; 02 unused
+- D 3 - - - 0x01E012 07:E002: 28        .byte $28   ; 03 увеличить 2006 на 01 после записи в 2007
+- - - - - - 0x01E013 07:E003: 28        .byte $28   ; 04 unused
+- - - - - - 0x01E014 07:E004: 28        .byte $28   ; 05 unused
+- D 3 - - - 0x01E015 07:E005: 28        .byte $28   ; 06 увеличить 2006 на 01 после записи в 2007
+- D 3 - - - 0x01E016 07:E006: 2C        .byte $2C   ; 07 увеличить 2006 на 20 после записи в 2007
 
 
 
@@ -849,21 +849,21 @@ bra_E47C:
 C - - - - - 0x01E48C 07:E47C: A5 F1     LDA ram_нажатая_кнопка
 C - - - - - 0x01E48E 07:E47E: 29 30     AND #con_btns_SS
 C - - - - - 0x01E490 07:E480: F0 06     BEQ bra_E488
-C - - - - - 0x01E492 07:E482: 20 96 E4  JSR sub_E496
+C - - - - - 0x01E492 07:E482: 20 96 E4  JSR sub_E496_выбрать_следующий_уровень_для_демки
 C - - - - - 0x01E495 07:E485: 4C F6 E3  JMP loc_E3F6
 bra_E488:
 C - - - - - 0x01E498 07:E488: 20 DF E7  JSR sub_E7DF
 C - - - - - 0x01E49B 07:E48B: A5 3B     LDA ram_003B
 C - - - - - 0x01E49D 07:E48D: F0 B4     BEQ bra_E443_RTS
 bra_E48F_exit_sound_mode:
-C - - - - - 0x01E49F 07:E48F: 20 96 E4  JSR sub_E496
+C - - - - - 0x01E49F 07:E48F: 20 96 E4  JSR sub_E496_выбрать_следующий_уровень_для_демки
 loc_E492:
 C D 3 - - - 0x01E4A2 07:E492: A9 00     LDA #$00
 C - - - - - 0x01E4A4 07:E494: F0 56     BEQ bra_E4EC    ; jmp
 
 
 
-sub_E496:
+sub_E496_выбрать_следующий_уровень_для_демки:
 C - - - - - 0x01E4A6 07:E496: E6 F0     INC ram_00F0
 C - - - - - 0x01E4A8 07:E498: A5 F0     LDA ram_00F0
 C - - - - - 0x01E4AA 07:E49A: C9 03     CMP #$03
@@ -889,11 +889,10 @@ C - - - - - 0x01E4C1 07:E4B1: 20 D0 E5  JSR sub_E5D0_clear_memory
 C - - - - - 0x01E4C4 07:E4B4: 20 82 E5  JSR sub_E582
 C - - - - - 0x01E4C7 07:E4B7: 4C E5 E4  JMP loc_E4E5
 bra_E4BA:
-; bzk garbage? 0019 doesn't seem to have value > 01
-; also game handles printing area number differently
+; bzk garbage
 - - - - - - 0x01E4CA 07:E4BA: A9 0C     LDA #con_0x0017EA__area_1
 - - - - - - 0x01E4CC 07:E4BC: 20 7A FE  JSR sub_FE7A_print_text_on_the_screen
-- - - - - - 0x01E4CF 07:E4BF: 4C E7 FE  JMP loc_FEE7
+- - - - - - 0x01E4CF 07:E4BF: 4C E7 FE  JMP loc_FEE7_выбор_уровня_в_японке
 
 
 
@@ -5627,11 +5626,11 @@ C - - - - - 0x01FEF4 07:FEE4: 4C 9C A2  JMP loc_0x0022AC_cheat_code
 
 
 
-loc_FEE7:
-; bzk garbage?
+loc_FEE7_выбор_уровня_в_японке:
+; bzk garbage
 - - - - - - 0x01FEF7 07:FEE7: A9 30     LDA #con_prg_bank + $30
 - - - - - - 0x01FEF9 07:FEE9: 20 6F FD  JSR sub_FD6F_prg_bankswitch___no_return
-- - - - - - 0x01FEFC 07:FEEC: 4C C4 A2  JMP loc_0x0022D4
+- - - - - - 0x01FEFC 07:FEEC: 4C C4 A2  JMP loc_0x0022D4_выбор_уровня_в_японке
 
 
 
