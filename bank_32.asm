@@ -44,19 +44,19 @@ _off001_0x004011_20_cannon_hidden_1:
 
 ofs_038_20_8013_01_initialize_object:
 C - - J - - 0x004023 01:8013: A9 01     LDA #$01
-C - - - - - 0x004025 01:8015: 9D 08 05  STA ram_anim_id_enemy,X
+C - - - - - 0x004025 01:8015: 9D 08 05  STA ram_кадр_врага_и_пуль,X
 C - - - - - 0x004028 01:8018: A9 81     LDA #$81
 C - - - - - 0x00402A 01:801A: 9D 2C 07  STA ram_072C_obj,X
 C - - - - - 0x00402D 01:801D: A9 0C     LDA #$0C
 C - - - - - 0x00402F 01:801F: 20 95 AB  JSR sub_0x006BA5_set_dynamic_hp_to_enemy
-C - - - - - 0x004032 01:8022: BD 22 05  LDA ram_pos_Y_hi_enemy,X
+C - - - - - 0x004032 01:8022: BD 22 05  LDA ram_позиция_y_спрайта_врага_и_пуль,X
 C - - - - - 0x004035 01:8025: 18        CLC
 C - - - - - 0x004036 01:8026: 69 08     ADC #$08
-C - - - - - 0x004038 01:8028: 9D 22 05  STA ram_pos_Y_hi_enemy,X
-C - - - - - 0x00403B 01:802B: BD 3C 05  LDA ram_pos_X_hi_enemy,X
+C - - - - - 0x004038 01:8028: 9D 22 05  STA ram_позиция_y_спрайта_врага_и_пуль,X
+C - - - - - 0x00403B 01:802B: BD 3C 05  LDA ram_позиция_x_спрайта_врага_и_пуль,X
 C - - - - - 0x00403E 01:802E: 38        SEC
 C - - - - - 0x00403F 01:802F: E9 08     SBC #$08
-C - - - - - 0x004041 01:8031: 9D 3C 05  STA ram_pos_X_hi_enemy,X
+C - - - - - 0x004041 01:8031: 9D 3C 05  STA ram_позиция_x_спрайта_врага_и_пуль,X
 C - - - - - 0x004044 01:8034: 20 B7 A6  JSR sub_0x0066C7_delete_object_03
 C - - - - - 0x004047 01:8037: 4C D7 A2  JMP loc_0x0062E7_increase_obj_state
 
@@ -64,7 +64,7 @@ C - - - - - 0x004047 01:8037: 4C D7 A2  JMP loc_0x0062E7_increase_obj_state
 
 ofs_038_20_803A_02:
 C - - J - - 0x00404A 01:803A: 20 B7 A6  JSR sub_0x0066C7_delete_object_03
-C - - - - - 0x00404D 01:803D: BD 3C 05  LDA ram_pos_X_hi_enemy,X
+C - - - - - 0x00404D 01:803D: BD 3C 05  LDA ram_позиция_x_спрайта_врага_и_пуль,X
 C - - - - - 0x004050 01:8040: C9 E8     CMP #$E8
 C - - - - - 0x004052 01:8042: B0 6E     BCS bra_80B2_RTS
 C - - - - - 0x004054 01:8044: A9 01     LDA #$01
@@ -101,7 +101,7 @@ C - - - - - 0x004088 01:8078: BD 1E 07  LDA ram_obj_flags,X
 C - - - - - 0x00408B 01:807B: 4A        LSR
 C - - - - - 0x00408C 01:807C: B0 34     BCS bra_80B2_RTS
 bra_807E_2nd_loop:
-C - - - - - 0x00408E 01:807E: BD 3C 05  LDA ram_pos_X_hi_enemy,X
+C - - - - - 0x00408E 01:807E: BD 3C 05  LDA ram_позиция_x_спрайта_врага_и_пуль,X
 C - - - - - 0x004091 01:8081: C9 30     CMP #$30
 C - - - - - 0x004093 01:8083: 90 2D     BCC bra_80B2_RTS
 C - - - - - 0x004095 01:8085: A0 02     LDY #$02
@@ -115,12 +115,12 @@ C - - - - - 0x0040A3 01:8093: A9 FD     LDA #> $FD00
 C - - - - - 0x0040A5 01:8095: 99 CA 06  STA ram_spd_X_hi_obj,Y
 C - - - - - 0x0040A8 01:8098: A9 01     LDA #$01
 C - - - - - 0x0040AA 01:809A: 99 48 07  STA ram_0748_obj,Y
-C - - - - - 0x0040AD 01:809D: B9 3C 05  LDA ram_pos_X_hi_enemy,Y
+C - - - - - 0x0040AD 01:809D: B9 3C 05  LDA ram_позиция_x_спрайта_врага_и_пуль,Y
 C - - - - - 0x0040B0 01:80A0: E9 10     SBC #$10
-C - - - - - 0x0040B2 01:80A2: 99 3C 05  STA ram_pos_X_hi_enemy,Y
-C - - - - - 0x0040B5 01:80A5: B9 22 05  LDA ram_pos_Y_hi_enemy,Y
+C - - - - - 0x0040B2 01:80A2: 99 3C 05  STA ram_позиция_x_спрайта_врага_и_пуль,Y
+C - - - - - 0x0040B5 01:80A5: B9 22 05  LDA ram_позиция_y_спрайта_врага_и_пуль,Y
 C - - - - - 0x0040B8 01:80A8: 69 02     ADC #$02
-C - - - - - 0x0040BA 01:80AA: 99 22 05  STA ram_pos_Y_hi_enemy,Y
+C - - - - - 0x0040BA 01:80AA: 99 22 05  STA ram_позиция_y_спрайта_врага_и_пуль,Y
 C - - - - - 0x0040BD 01:80AD: A9 60     LDA #$60
 bra_80AF:
 C - - - - - 0x0040BF 01:80AF: 9D E6 06  STA ram_06E6_obj,X
@@ -202,13 +202,13 @@ tbl_8104:
 
 ofs_038_22_8108_02:
 C - - J - - 0x004118 01:8108: A9 01     LDA #$01
-C - - - - - 0x00411A 01:810A: 9D 08 05  STA ram_anim_id_enemy,X
+C - - - - - 0x00411A 01:810A: 9D 08 05  STA ram_кадр_врага_и_пуль,X
 C - - - - - 0x00411D 01:810D: 20 E6 81  JSR sub_81E6
 C - - - - - 0x004120 01:8110: A9 81     LDA #$81
 C - - - - - 0x004122 01:8112: 9D 2C 07  STA ram_072C_obj,X
 C - - - - - 0x004125 01:8115: BD 9C 07  LDA ram_079C_obj,X
 C - - - - - 0x004128 01:8118: D0 7C     BNE bra_8196_RTS
-C - - - - - 0x00412A 01:811A: BD 3C 05  LDA ram_pos_X_hi_enemy,X
+C - - - - - 0x00412A 01:811A: BD 3C 05  LDA ram_позиция_x_спрайта_врага_и_пуль,X
 C - - - - - 0x00412D 01:811D: C9 08     CMP #$08
 C - - - - - 0x00412F 01:811F: 90 75     BCC bra_8196_RTS
 C - - - - - 0x004131 01:8121: C9 10     CMP #$10
@@ -293,7 +293,7 @@ C - - J - - 0x0041BD 01:81AD: 4C 3D A3  JMP loc_0x00634D_delete_object_04
 loc_81B0:
 sub_81B0:
 C D 0 - - - 0x0041C0 01:81B0: 85 08     STA ram_0008
-C - - - - - 0x0041C2 01:81B2: BD 3C 05  LDA ram_pos_X_hi_enemy,X
+C - - - - - 0x0041C2 01:81B2: BD 3C 05  LDA ram_позиция_x_спрайта_врага_и_пуль,X
 C - - - - - 0x0041C5 01:81B5: C9 08     CMP #$08
 C - - - - - 0x0041C7 01:81B7: 90 21     BCC bra_81DA
 C - - - - - 0x0041C9 01:81B9: C9 FC     CMP #$FC
@@ -353,16 +353,16 @@ C - - - - - 0x004217 01:8207: 85 0B     STA ram_000B
 C - - - - - 0x004219 01:8209: BC 80 07  LDY ram_0780_obj,X
 C - - - - - 0x00421C 01:820C: A5 09     LDA ram_0009
 C - - - - - 0x00421E 01:820E: 18        CLC
-C - - - - - 0x00421F 01:820F: 79 3C 05  ADC ram_pos_X_hi_enemy,Y
-C - - - - - 0x004222 01:8212: 9D 3C 05  STA ram_pos_X_hi_enemy,X
+C - - - - - 0x00421F 01:820F: 79 3C 05  ADC ram_позиция_x_спрайта_врага_и_пуль,Y
+C - - - - - 0x004222 01:8212: 9D 3C 05  STA ram_позиция_x_спрайта_врага_и_пуль,X
 C - - - - - 0x004225 01:8215: A5 0B     LDA ram_000B
 C - - - - - 0x004227 01:8217: 79 9C 07  ADC ram_079C_obj,Y
 C - - - - - 0x00422A 01:821A: 9D 9C 07  STA ram_079C_obj,X
 C - - - - - 0x00422D 01:821D: D0 14     BNE bra_8233
 C - - - - - 0x00422F 01:821F: A5 08     LDA ram_0008
 C - - - - - 0x004231 01:8221: 18        CLC
-C - - - - - 0x004232 01:8222: 79 22 05  ADC ram_pos_Y_hi_enemy,Y
-C - - - - - 0x004235 01:8225: 9D 22 05  STA ram_pos_Y_hi_enemy,X
+C - - - - - 0x004232 01:8222: 79 22 05  ADC ram_позиция_y_спрайта_врага_и_пуль,Y
+C - - - - - 0x004235 01:8225: 9D 22 05  STA ram_позиция_y_спрайта_врага_и_пуль,X
 C - - - - - 0x004238 01:8228: A5 0A     LDA ram_000A
 C - - - - - 0x00423A 01:822A: 79 8E 07  ADC ram_078E_obj,Y
 C - - - - - 0x00423D 01:822D: 9D 8E 07  STA ram_078E_obj,X
@@ -759,7 +759,7 @@ sub_8490:
 C - - - - - 0x0044A0 01:8490: 85 08     STA ram_0008
 C - - - - - 0x0044A2 01:8492: BD 48 07  LDA ram_0748_obj,X
 C - - - - - 0x0044A5 01:8495: D0 07     BNE bra_849E
-C - - - - - 0x0044A7 01:8497: BD 3C 05  LDA ram_pos_X_hi_enemy,X
+C - - - - - 0x0044A7 01:8497: BD 3C 05  LDA ram_позиция_x_спрайта_врага_и_пуль,X
 C - - - - - 0x0044AA 01:849A: C9 20     CMP #$20
 C - - - - - 0x0044AC 01:849C: 90 4D     BCC bra_84EB_RTS
 bra_849E:
@@ -847,9 +847,9 @@ C - - - - - 0x00452C 01:851C: A5 60     LDA ram_0060
 C - - - - - 0x00452E 01:851E: 05 70     ORA ram_0070
 C - - - - - 0x004530 01:8520: D0 F5     BNE bra_8517_RTS
 C - - - - - 0x004532 01:8522: A9 A0     LDA #$A0
-C - - - - - 0x004534 01:8524: 9D 3C 05  STA ram_pos_X_hi_enemy,X
+C - - - - - 0x004534 01:8524: 9D 3C 05  STA ram_позиция_x_спрайта_врага_и_пуль,X
 C - - - - - 0x004537 01:8527: A9 B8     LDA #$B8
-C - - - - - 0x004539 01:8529: 9D 22 05  STA ram_pos_Y_hi_enemy,X
+C - - - - - 0x004539 01:8529: 9D 22 05  STA ram_позиция_y_спрайта_врага_и_пуль,X
 C - - - - - 0x00453C 01:852C: A9 FF     LDA #$FF
 C - - - - - 0x00453E 01:852E: 9D 8E 07  STA ram_078E_obj,X
 C - - - - - 0x004541 01:8531: 9D 9C 07  STA ram_079C_obj,X
@@ -905,7 +905,7 @@ C - - - - - 0x0045A2 01:8592: A5 FF     LDA ram_for_2000
 C - - - - - 0x0045A4 01:8594: 29 FE     AND #$FE
 C - - - - - 0x0045A6 01:8596: 85 FB     STA ram_00FB
 C - - - - - 0x0045A8 01:8598: A9 10     LDA #$10
-C - - - - - 0x0045AA 01:859A: 9D 22 05  STA ram_pos_Y_hi_enemy,X
+C - - - - - 0x0045AA 01:859A: 9D 22 05  STA ram_позиция_y_спрайта_врага_и_пуль,X
 C - - - - - 0x0045AD 01:859D: A9 00     LDA #$00
 C - - - - - 0x0045AF 01:859F: 9D 8E 07  STA ram_078E_obj,X
 C - - - - - 0x0045B2 01:85A2: A9 28     LDA #$28
@@ -970,13 +970,13 @@ C - - - - - 0x00460F 01:85FF: A5 94     LDA ram_0094
 C - - - - - 0x004611 01:8601: 29 BF     AND #$BF
 C - - - - - 0x004613 01:8603: 85 94     STA ram_0094
 C - - - - - 0x004615 01:8605: A9 A7     LDA #$A7
-C - - - - - 0x004617 01:8607: 9D 08 05  STA ram_anim_id_enemy,X
+C - - - - - 0x004617 01:8607: 9D 08 05  STA ram_кадр_врага_и_пуль,X
 bra_860A:
 C - - - - - 0x00461A 01:860A: A5 5B     LDA ram_005B
 C - - - - - 0x00461C 01:860C: 4A        LSR
 C - - - - - 0x00461D 01:860D: 4A        LSR
 C - - - - - 0x00461E 01:860E: 29 03     AND #$03
-C - - - - - 0x004620 01:8610: 9D 56 05  STA ram_attr_spr_enemy,X
+C - - - - - 0x004620 01:8610: 9D 56 05  STA ram_аттрибуты_спрайта_врага_и_пуль,X
 C - - - - - 0x004623 01:8613: 20 B7 86  JSR sub_86B7
 C - - - - - 0x004626 01:8616: 4C 5C 86  JMP loc_865C
 bra_8619_RTS:
@@ -994,7 +994,7 @@ C - - - - - 0x004635 01:8625: 4C B8 A3  JMP loc_0x0063C8
 
 
 ofs_038_21_8628_07:
-C - - J - - 0x004638 01:8628: BD 22 05  LDA ram_pos_Y_hi_enemy,X
+C - - J - - 0x004638 01:8628: BD 22 05  LDA ram_позиция_y_спрайта_врага_и_пуль,X
 C - - - - - 0x00463B 01:862B: C9 A0     CMP #$A0
 C - - - - - 0x00463D 01:862D: B0 03     BCS bra_8632
 C - - - - - 0x00463F 01:862F: 20 4F A7  JSR sub_0x00675F
@@ -1115,7 +1115,7 @@ C - - - - - 0x0046CA 01:86BA: 20 09 E6  JSR sub_0x01E619_jump_to_pointers_after_
 ofs_013_86D3_00:
 C - - J - - 0x0046E3 01:86D3: BD 9C 07  LDA ram_079C_obj,X
 C - - - - - 0x0046E6 01:86D6: D0 54     BNE bra_872C_RTS
-C - - - - - 0x0046E8 01:86D8: BD 3C 05  LDA ram_pos_X_hi_enemy,X
+C - - - - - 0x0046E8 01:86D8: BD 3C 05  LDA ram_позиция_x_спрайта_врага_и_пуль,X
 C - - - - - 0x0046EB 01:86DB: C9 01     CMP #$01
 C - - - - - 0x0046ED 01:86DD: 90 4D     BCC bra_872C_RTS
 bra_86DF:
@@ -1127,7 +1127,7 @@ C - - - - - 0x0046F2 01:86E2: 4C 68 86  JMP loc_8668
 ofs_013_86E5_01:
 C - - J - - 0x0046F5 01:86E5: BD 8E 07  LDA ram_078E_obj,X
 C - - - - - 0x0046F8 01:86E8: D0 42     BNE bra_872C_RTS
-C - - - - - 0x0046FA 01:86EA: BD 22 05  LDA ram_pos_Y_hi_enemy,X
+C - - - - - 0x0046FA 01:86EA: BD 22 05  LDA ram_позиция_y_спрайта_врага_и_пуль,X
 C - - - - - 0x0046FD 01:86ED: C9 40     CMP #$40
 C - - - - - 0x0046FF 01:86EF: 90 0F     BCC bra_8700_RTS
 C - - - - - 0x004701 01:86F1: A5 94     LDA ram_0094
@@ -1138,7 +1138,7 @@ C - - - - - 0x004707 01:86F7: B0 E6     BCS bra_86DF    ; jmp
 
 
 ofs_013_86F9_02:
-C - - J - - 0x004709 01:86F9: BD 3C 05  LDA ram_pos_X_hi_enemy,X
+C - - J - - 0x004709 01:86F9: BD 3C 05  LDA ram_позиция_x_спрайта_врага_и_пуль,X
 C - - - - - 0x00470C 01:86FC: C9 A0     CMP #$A0
 C - - - - - 0x00470E 01:86FE: B0 DF     BCS bra_86DF
 bra_8700_RTS:
@@ -1147,7 +1147,7 @@ C - - - - - 0x004710 01:8700: 60        RTS
 
 
 ofs_013_8701_03:
-C - - J - - 0x004711 01:8701: BD 22 05  LDA ram_pos_Y_hi_enemy,X
+C - - J - - 0x004711 01:8701: BD 22 05  LDA ram_позиция_y_спрайта_врага_и_пуль,X
 C - - - - - 0x004714 01:8704: C9 78     CMP #$78
 C - - - - - 0x004716 01:8706: B0 D7     BCS bra_86DF
 C - - - - - 0x004718 01:8708: 60        RTS
@@ -1158,7 +1158,7 @@ ofs_013_8709_04:
 C - - J - - 0x004719 01:8709: BD 9C 07  LDA ram_079C_obj,X
 C - - - - - 0x00471C 01:870C: C9 01     CMP #$01
 C - - - - - 0x00471E 01:870E: D0 1C     BNE bra_872C_RTS
-C - - - - - 0x004720 01:8710: BD 3C 05  LDA ram_pos_X_hi_enemy,X
+C - - - - - 0x004720 01:8710: BD 3C 05  LDA ram_позиция_x_спрайта_врага_и_пуль,X
 C - - - - - 0x004723 01:8713: C9 30     CMP #$30
 C - - - - - 0x004725 01:8715: B0 C8     BCS bra_86DF
 C - - - - - 0x004727 01:8717: 60        RTS
@@ -1168,7 +1168,7 @@ C - - - - - 0x004727 01:8717: 60        RTS
 ofs_013_8718_05:
 C - - J - - 0x004728 01:8718: BD 9C 07  LDA ram_079C_obj,X
 C - - - - - 0x00472B 01:871B: D0 0F     BNE bra_872C_RTS
-C - - - - - 0x00472D 01:871D: BD 3C 05  LDA ram_pos_X_hi_enemy,X
+C - - - - - 0x00472D 01:871D: BD 3C 05  LDA ram_позиция_x_спрайта_врага_и_пуль,X
 C - - - - - 0x004730 01:8720: C9 E0     CMP #$E0
 C - - - - - 0x004732 01:8722: 90 BB     BCC bra_86DF
 C - - - - - 0x004734 01:8724: 60        RTS
@@ -1176,7 +1176,7 @@ C - - - - - 0x004734 01:8724: 60        RTS
 
 
 ofs_013_8725_06:
-C - - J - - 0x004735 01:8725: BD 22 05  LDA ram_pos_Y_hi_enemy,X
+C - - J - - 0x004735 01:8725: BD 22 05  LDA ram_позиция_y_спрайта_врага_и_пуль,X
 C - - - - - 0x004738 01:8728: C9 50     CMP #$50
 C - - - - - 0x00473A 01:872A: 90 B3     BCC bra_86DF
 bra_872C_RTS:
@@ -1187,7 +1187,7 @@ C - - - - - 0x00473C 01:872C: 60        RTS
 ofs_013_872D_07:
 C - - J - - 0x00473D 01:872D: BD 9C 07  LDA ram_079C_obj,X
 C - - - - - 0x004740 01:8730: 10 FA     BPL bra_872C_RTS
-C - - - - - 0x004742 01:8732: BD 3C 05  LDA ram_pos_X_hi_enemy,X
+C - - - - - 0x004742 01:8732: BD 3C 05  LDA ram_позиция_x_спрайта_врага_и_пуль,X
 C - - - - - 0x004745 01:8735: C9 E0     CMP #$E0
 C - - - - - 0x004747 01:8737: 90 A6     BCC bra_86DF
 C - - - - - 0x004749 01:8739: 60        RTS
@@ -1195,7 +1195,7 @@ C - - - - - 0x004749 01:8739: 60        RTS
 
 
 ofs_013_873A_08:
-C - - J - - 0x00474A 01:873A: BD 22 05  LDA ram_pos_Y_hi_enemy,X
+C - - J - - 0x00474A 01:873A: BD 22 05  LDA ram_позиция_y_спрайта_врага_и_пуль,X
 C - - - - - 0x00474D 01:873D: C9 78     CMP #$78
 C - - - - - 0x00474F 01:873F: 90 BF     BCC bra_8700_RTS
 ; C = 1
@@ -1208,7 +1208,7 @@ ofs_013_8745_09:
 C - - J - - 0x004755 01:8745: BD 9C 07  LDA ram_079C_obj,X
 C - - - - - 0x004758 01:8748: C9 01     CMP #$01
 C - - - - - 0x00475A 01:874A: D0 E0     BNE bra_872C_RTS
-C - - - - - 0x00475C 01:874C: BD 3C 05  LDA ram_pos_X_hi_enemy,X
+C - - - - - 0x00475C 01:874C: BD 3C 05  LDA ram_позиция_x_спрайта_врага_и_пуль,X
 C - - - - - 0x00475F 01:874F: C9 10     CMP #$10
 C - - - - - 0x004761 01:8751: 90 AD     BCC bra_8700_RTS
 ; C = 1
@@ -1225,7 +1225,7 @@ C - - - - - 0x00476D 01:875D: 2A        ROL
 C - - - - - 0x00476E 01:875E: 2A        ROL
 C - - - - - 0x00476F 01:875F: 29 01     AND #$01
 C - - - - - 0x004771 01:8761: A8        TAY
-C - - - - - 0x004772 01:8762: BD 22 05  LDA ram_pos_Y_hi_enemy,X
+C - - - - - 0x004772 01:8762: BD 22 05  LDA ram_позиция_y_спрайта_врага_и_пуль,X
 C - - - - - 0x004775 01:8765: D9 93 87  CMP tbl_8793_pos_Y,Y
 C - - - - - 0x004778 01:8768: 6A        ROR
 C - - - - - 0x004779 01:8769: 5D AE 06  EOR ram_spd_Y_hi_obj,X
@@ -1239,7 +1239,7 @@ C - - - - - 0x004789 01:8779: 2A        ROL
 C - - - - - 0x00478A 01:877A: 2A        ROL
 C - - - - - 0x00478B 01:877B: 29 01     AND #$01
 C - - - - - 0x00478D 01:877D: A8        TAY
-C - - - - - 0x00478E 01:877E: BD 3C 05  LDA ram_pos_X_hi_enemy,X
+C - - - - - 0x00478E 01:877E: BD 3C 05  LDA ram_позиция_x_спрайта_врага_и_пуль,X
 C - - - - - 0x004791 01:8781: D9 95 87  CMP tbl_8795_pos_X,Y
 C - - - - - 0x004794 01:8784: 6A        ROR
 C - - - - - 0x004795 01:8785: 5D CA 06  EOR ram_spd_X_hi_obj,X
@@ -2136,10 +2136,10 @@ _off001_0x004C14_26_hidden_rifleman:
 ofs_038_26_8C16_01_initialize_object:
 C - - J - - 0x004C26 01:8C16: A9 81     LDA #$81
 C - - - - - 0x004C28 01:8C18: 9D 2C 07  STA ram_072C_obj,X
-C - - - - - 0x004C2B 01:8C1B: BD 22 05  LDA ram_pos_Y_hi_enemy,X
+C - - - - - 0x004C2B 01:8C1B: BD 22 05  LDA ram_позиция_y_спрайта_врага_и_пуль,X
 C - - - - - 0x004C2E 01:8C1E: 18        CLC
 C - - - - - 0x004C2F 01:8C1F: 69 05     ADC #$05
-C - - - - - 0x004C31 01:8C21: 9D 22 05  STA ram_pos_Y_hi_enemy,X
+C - - - - - 0x004C31 01:8C21: 9D 22 05  STA ram_позиция_y_спрайта_врага_и_пуль,X
 C - - - - - 0x004C34 01:8C24: 20 B7 A6  JSR sub_0x0066C7_delete_object_03
 C - - - - - 0x004C37 01:8C27: A9 20     LDA #$20
 C - - - - - 0x004C39 01:8C29: 4C E0 A2  JMP loc_0x0062F0
@@ -2167,18 +2167,18 @@ C - - - - - 0x004C59 01:8C49: DE E6 06  DEC ram_06E6_obj,X
 C - - - - - 0x004C5C 01:8C4C: D0 2A     BNE bra_8C78_RTS
 C - - - - - 0x004C5E 01:8C4E: A9 00     LDA #$00
 C - - - - - 0x004C60 01:8C50: 9D 2C 07  STA ram_072C_obj,X
-C - - - - - 0x004C63 01:8C53: BD 22 05  LDA ram_pos_Y_hi_enemy,X
+C - - - - - 0x004C63 01:8C53: BD 22 05  LDA ram_позиция_y_спрайта_врага_и_пуль,X
 C - - - - - 0x004C66 01:8C56: 38        SEC
 C - - - - - 0x004C67 01:8C57: E9 05     SBC #$05
 C - - - - - 0x004C69 01:8C59: 85 08     STA ram_0008
-C - - - - - 0x004C6B 01:8C5B: BD 56 05  LDA ram_attr_spr_enemy,X
+C - - - - - 0x004C6B 01:8C5B: BD 56 05  LDA ram_аттрибуты_спрайта_врага_и_пуль,X
 C - - - - - 0x004C6E 01:8C5E: 0A        ASL
 C - - - - - 0x004C6F 01:8C5F: 0A        ASL
 C - - - - - 0x004C70 01:8C60: A9 0B     LDA #$0B
 C - - - - - 0x004C72 01:8C62: B0 02     BCS bra_8C66
 C - - - - - 0x004C74 01:8C64: A9 F4     LDA #$F4
 bra_8C66:
-C - - - - - 0x004C76 01:8C66: 7D 3C 05  ADC ram_pos_X_hi_enemy,X
+C - - - - - 0x004C76 01:8C66: 7D 3C 05  ADC ram_позиция_x_спрайта_врага_и_пуль,X
 C - - - - - 0x004C79 01:8C69: 85 09     STA ram_0009
 C - - - - - 0x004C7B 01:8C6B: A0 03     LDY #$03
 C - - - - - 0x004C7D 01:8C6D: 20 27 F3  JSR sub_0x01F337
@@ -2199,7 +2199,7 @@ C - - - - - 0x004C93 01:8C83: DE 10 07  DEC ram_0710_obj,X
 C - - - - - 0x004C96 01:8C86: 20 B3 8C  JSR sub_8CB3
 C - - - - - 0x004C99 01:8C89: C0 00     CPY #$00
 C - - - - - 0x004C9B 01:8C8B: D0 B3     BNE bra_8C40
-C - - - - - 0x004C9D 01:8C8D: BD 3C 05  LDA ram_pos_X_hi_enemy,X
+C - - - - - 0x004C9D 01:8C8D: BD 3C 05  LDA ram_позиция_x_спрайта_врага_и_пуль,X
 C - - - - - 0x004CA0 01:8C90: C9 30     CMP #$30
 C - - - - - 0x004CA2 01:8C92: 90 0A     BCC bra_8C9E
 C - - - - - 0x004CA4 01:8C94: A9 60     LDA #$60
@@ -2212,9 +2212,9 @@ C - - - - - 0x004CAE 01:8C9E: 4C 75 A2  JMP loc_0x006285_delete_object_02
 
 
 ofs_038_26_8CA1_05:
-C - - J - - 0x004CB1 01:8CA1: BD 56 05  LDA ram_attr_spr_enemy,X
+C - - J - - 0x004CB1 01:8CA1: BD 56 05  LDA ram_аттрибуты_спрайта_врага_и_пуль,X
 C - - - - - 0x004CB4 01:8CA4: 49 40     EOR #$40
-C - - - - - 0x004CB6 01:8CA6: 9D 56 05  STA ram_attr_spr_enemy,X
+C - - - - - 0x004CB6 01:8CA6: 9D 56 05  STA ram_аттрибуты_спрайта_врага_и_пуль,X
 C - - - - - 0x004CB9 01:8CA9: A9 23     LDA #$23    ; animation id
 C - - - - - 0x004CBB 01:8CAB: 4C 3B B1  JMP loc_0x00714B
 
@@ -2232,15 +2232,15 @@ C - - - - - 0x004CC5 01:8CB5: 9D E6 06  STA ram_06E6_obj,X
 sub_8CB8:
 C - - - - - 0x004CC8 01:8CB8: BC 10 07  LDY ram_0710_obj,X
 C - - - - - 0x004CCB 01:8CBB: B9 D7 8C  LDA tbl_8CD7,Y
-C - - - - - 0x004CCE 01:8CBE: 9D 08 05  STA ram_anim_id_enemy,X
+C - - - - - 0x004CCE 01:8CBE: 9D 08 05  STA ram_кадр_врага_и_пуль,X
 C - - - - - 0x004CD1 01:8CC1: 20 0B AB  JSR sub_0x006B1B
-C - - - - - 0x004CD4 01:8CC4: BD 3C 05  LDA ram_pos_X_hi_enemy,X
-C - - - - - 0x004CD7 01:8CC7: D9 4C 05  CMP ram_pos_X_hi_plr,Y
+C - - - - - 0x004CD4 01:8CC4: BD 3C 05  LDA ram_позиция_x_спрайта_врага_и_пуль,X
+C - - - - - 0x004CD7 01:8CC7: D9 4C 05  CMP ram_позиция_x_спрайта_игрока,Y
 C - - - - - 0x004CDA 01:8CCA: A9 01     LDA #$01
 C - - - - - 0x004CDC 01:8CCC: B0 02     BCS bra_8CD0
 C - - - - - 0x004CDE 01:8CCE: A9 41     LDA #$41
 bra_8CD0:
-C - - - - - 0x004CE0 01:8CD0: 9D 56 05  STA ram_attr_spr_enemy,X
+C - - - - - 0x004CE0 01:8CD0: 9D 56 05  STA ram_аттрибуты_спрайта_врага_и_пуль,X
 C - - - - - 0x004CE3 01:8CD3: BC 10 07  LDY ram_0710_obj,X
 C - - - - - 0x004CE6 01:8CD6: 60        RTS
 
@@ -2270,11 +2270,11 @@ C - - - - - 0x004CFA 01:8CEA: 20 95 AB  JSR sub_0x006BA5_set_dynamic_hp_to_enemy
 C - - - - - 0x004CFD 01:8CED: A9 81     LDA #$81
 C - - - - - 0x004CFF 01:8CEF: 9D 2C 07  STA ram_072C_obj,X
 C - - - - - 0x004D02 01:8CF2: A9 B0     LDA #$B0
-C - - - - - 0x004D04 01:8CF4: 9D 22 05  STA ram_pos_Y_hi_enemy,X
-C - - - - - 0x004D07 01:8CF7: BD 3C 05  LDA ram_pos_X_hi_enemy,X
+C - - - - - 0x004D04 01:8CF4: 9D 22 05  STA ram_позиция_y_спрайта_врага_и_пуль,X
+C - - - - - 0x004D07 01:8CF7: BD 3C 05  LDA ram_позиция_x_спрайта_врага_и_пуль,X
 C - - - - - 0x004D0A 01:8CFA: 38        SEC
 C - - - - - 0x004D0B 01:8CFB: E9 04     SBC #$04
-C - - - - - 0x004D0D 01:8CFD: 9D 3C 05  STA ram_pos_X_hi_enemy,X
+C - - - - - 0x004D0D 01:8CFD: 9D 3C 05  STA ram_позиция_x_спрайта_врага_и_пуль,X
 C - - - - - 0x004D10 01:8D00: BD 1E 07  LDA ram_obj_flags,X
 C - - - - - 0x004D13 01:8D03: 4A        LSR
 C - - - - - 0x004D14 01:8D04: 29 03     AND #$03
@@ -2287,7 +2287,7 @@ C - - - - - 0x004D1F 01:8D0F: 4C D7 A2  JMP loc_0x0062E7_increase_obj_state
 
 ofs_038_27_8D12_02:
 C - - J - - 0x004D22 01:8D12: 20 B7 A6  JSR sub_0x0066C7_delete_object_03
-C - - - - - 0x004D25 01:8D15: BD 3C 05  LDA ram_pos_X_hi_enemy,X
+C - - - - - 0x004D25 01:8D15: BD 3C 05  LDA ram_позиция_x_спрайта_врага_и_пуль,X
 C - - - - - 0x004D28 01:8D18: C9 D8     CMP #$D8
 C - - - - - 0x004D2A 01:8D1A: B0 05     BCS bra_8D21_RTS
 C - - - - - 0x004D2C 01:8D1C: A9 01     LDA #$01
@@ -2299,7 +2299,7 @@ C - - - - - 0x004D31 01:8D21: 60        RTS
 
 ofs_038_27_8D22_03:
 C - - J - - 0x004D32 01:8D22: A9 01     LDA #$01
-C - - - - - 0x004D34 01:8D24: 9D 08 05  STA ram_anim_id_enemy,X
+C - - - - - 0x004D34 01:8D24: 9D 08 05  STA ram_кадр_врага_и_пуль,X
 C - - - - - 0x004D37 01:8D27: 20 B7 A6  JSR sub_0x0066C7_delete_object_03
 C - - - - - 0x004D3A 01:8D2A: DE E6 06  DEC ram_06E6_obj,X
 C - - - - - 0x004D3D 01:8D2D: D0 F2     BNE bra_8D21_RTS
@@ -2325,7 +2325,7 @@ C - - - - - 0x004D62 01:8D52: 60        RTS
 
 
 ofs_038_27_8D53_04:
-C - - J - - 0x004D63 01:8D53: BD 3C 05  LDA ram_pos_X_hi_enemy,X
+C - - J - - 0x004D63 01:8D53: BD 3C 05  LDA ram_позиция_x_спрайта_врага_и_пуль,X
 C - - - - - 0x004D66 01:8D56: C9 40     CMP #$40
 C - - - - - 0x004D68 01:8D58: B0 03     BCS bra_8D5D
 C - - - - - 0x004D6A 01:8D5A: 4C 75 A2  JMP loc_0x006285_delete_object_02
@@ -2359,13 +2359,13 @@ C - - - - - 0x004DA3 01:8D93: A9 00     LDA #< $FE00
 C - - - - - 0x004DA5 01:8D95: 99 BC 06  STA ram_spd_X_lo_obj,Y
 C - - - - - 0x004DA8 01:8D98: A9 FE     LDA #> $FE00
 C - - - - - 0x004DAA 01:8D9A: 99 CA 06  STA ram_spd_X_hi_obj,Y
-C - - - - - 0x004DAD 01:8D9D: B9 22 05  LDA ram_pos_Y_hi_enemy,Y
+C - - - - - 0x004DAD 01:8D9D: B9 22 05  LDA ram_позиция_y_спрайта_врага_и_пуль,Y
 C - - - - - 0x004DB0 01:8DA0: 18        CLC
 C - - - - - 0x004DB1 01:8DA1: 69 02     ADC #$02
-C - - - - - 0x004DB3 01:8DA3: 99 22 05  STA ram_pos_Y_hi_enemy,Y
-C - - - - - 0x004DB6 01:8DA6: B9 3C 05  LDA ram_pos_X_hi_enemy,Y
+C - - - - - 0x004DB3 01:8DA3: 99 22 05  STA ram_позиция_y_спрайта_врага_и_пуль,Y
+C - - - - - 0x004DB6 01:8DA6: B9 3C 05  LDA ram_позиция_x_спрайта_врага_и_пуль,Y
 C - - - - - 0x004DB9 01:8DA9: 69 FE     ADC #$FE
-C - - - - - 0x004DBB 01:8DAB: 99 3C 05  STA ram_pos_X_hi_enemy,Y
+C - - - - - 0x004DBB 01:8DAB: 99 3C 05  STA ram_позиция_x_спрайта_врага_и_пуль,Y
 C - - - - - 0x004DBE 01:8DAE: A9 04     LDA #$04
 C - - - - - 0x004DC0 01:8DB0: 4C 4F 8D  JMP loc_8D4F
 
@@ -2376,10 +2376,10 @@ C - - J - - 0x004DC3 01:8DB3: 20 B7 A6  JSR sub_0x0066C7_delete_object_03
 C - - - - - 0x004DC6 01:8DB6: A0 06     LDY #$03 * $02
 C - - - - - 0x004DC8 01:8DB8: 20 CE 8D  JSR sub_8DCE
 C - - - - - 0x004DCB 01:8DBB: B0 95     BCS bra_8D52_RTS
-C - - - - - 0x004DCD 01:8DBD: BD 3C 05  LDA ram_pos_X_hi_enemy,X
+C - - - - - 0x004DCD 01:8DBD: BD 3C 05  LDA ram_позиция_x_спрайта_врага_и_пуль,X
 C - - - - - 0x004DD0 01:8DC0: 18        CLC
 C - - - - - 0x004DD1 01:8DC1: 69 10     ADC #$10
-C - - - - - 0x004DD3 01:8DC3: 9D 3C 05  STA ram_pos_X_hi_enemy,X
+C - - - - - 0x004DD3 01:8DC3: 9D 3C 05  STA ram_позиция_x_спрайта_врага_и_пуль,X
 C - - - - - 0x004DD6 01:8DC6: 4C 9A A2  JMP loc_0x0062AA
 
 
@@ -2391,7 +2391,7 @@ C - - - - - 0x004DDD 01:8DCD: A8        TAY
 sub_8DCE:
 C - - - - - 0x004DDE 01:8DCE: B9 E8 8D  LDA tbl_8DE7 + $01,Y
 C - - - - - 0x004DE1 01:8DD1: 85 0C     STA ram_000C
-C - - - - - 0x004DE3 01:8DD3: BD 3C 05  LDA ram_pos_X_hi_enemy,X
+C - - - - - 0x004DE3 01:8DD3: BD 3C 05  LDA ram_позиция_x_спрайта_врага_и_пуль,X
 C - - - - - 0x004DE6 01:8DD6: C9 D8     CMP #$D8
 C - - - - - 0x004DE8 01:8DD8: B0 0B     BCS bra_8DE5
 C - - - - - 0x004DEA 01:8DDA: B9 E7 8D  LDA tbl_8DE7,Y
@@ -2433,10 +2433,10 @@ C - - J - - 0x004E0F 01:8DFF: A9 20     LDA #$20
 C - - - - - 0x004E11 01:8E01: 20 95 AB  JSR sub_0x006BA5_set_dynamic_hp_to_enemy
 C - - - - - 0x004E14 01:8E04: A9 81     LDA #$81
 C - - - - - 0x004E16 01:8E06: 9D 2C 07  STA ram_072C_obj,X
-C - - - - - 0x004E19 01:8E09: BD 3C 05  LDA ram_pos_X_hi_enemy,X
+C - - - - - 0x004E19 01:8E09: BD 3C 05  LDA ram_позиция_x_спрайта_врага_и_пуль,X
 C - - - - - 0x004E1C 01:8E0C: 38        SEC
 C - - - - - 0x004E1D 01:8E0D: E9 02     SBC #$02
-C - - - - - 0x004E1F 01:8E0F: 9D 3C 05  STA ram_pos_X_hi_enemy,X
+C - - - - - 0x004E1F 01:8E0F: 9D 3C 05  STA ram_позиция_x_спрайта_врага_и_пуль,X
 C - - - - - 0x004E22 01:8E12: 20 B7 A6  JSR sub_0x0066C7_delete_object_03
 C - - - - - 0x004E25 01:8E15: 4C D7 A2  JMP loc_0x0062E7_increase_obj_state
 
@@ -2444,22 +2444,22 @@ C - - - - - 0x004E25 01:8E15: 4C D7 A2  JMP loc_0x0062E7_increase_obj_state
 
 ofs_038_28_8E18_02:
 C - - J - - 0x004E28 01:8E18: A9 01     LDA #$01
-C - - - - - 0x004E2A 01:8E1A: 9D 08 05  STA ram_anim_id_enemy,X
+C - - - - - 0x004E2A 01:8E1A: 9D 08 05  STA ram_кадр_врага_и_пуль,X
 C - - - - - 0x004E2D 01:8E1D: 20 B7 A6  JSR sub_0x0066C7_delete_object_03
-C - - - - - 0x004E30 01:8E20: BD 3C 05  LDA ram_pos_X_hi_enemy,X
+C - - - - - 0x004E30 01:8E20: BD 3C 05  LDA ram_позиция_x_спрайта_врага_и_пуль,X
 C - - - - - 0x004E33 01:8E23: C9 E0     CMP #$E0
 C - - - - - 0x004E35 01:8E25: B0 27     BCS bra_8E4E_RTS
 C - - - - - 0x004E37 01:8E27: A5 94     LDA ram_0094
 C - - - - - 0x004E39 01:8E29: 09 40     ORA #$40
 C - - - - - 0x004E3B 01:8E2B: 85 94     STA ram_0094
-C - - - - - 0x004E3D 01:8E2D: BD 22 05  LDA ram_pos_Y_hi_enemy,X
+C - - - - - 0x004E3D 01:8E2D: BD 22 05  LDA ram_позиция_y_спрайта_врага_и_пуль,X
 C - - - - - 0x004E40 01:8E30: 18        CLC
 C - - - - - 0x004E41 01:8E31: 69 16     ADC #$16
-C - - - - - 0x004E43 01:8E33: 9D 22 05  STA ram_pos_Y_hi_enemy,X
-C - - - - - 0x004E46 01:8E36: BD 3C 05  LDA ram_pos_X_hi_enemy,X
+C - - - - - 0x004E43 01:8E33: 9D 22 05  STA ram_позиция_y_спрайта_врага_и_пуль,X
+C - - - - - 0x004E46 01:8E36: BD 3C 05  LDA ram_позиция_x_спрайта_врага_и_пуль,X
 C - - - - - 0x004E49 01:8E39: 18        CLC
 C - - - - - 0x004E4A 01:8E3A: 69 08     ADC #$08
-C - - - - - 0x004E4C 01:8E3C: 9D 3C 05  STA ram_pos_X_hi_enemy,X
+C - - - - - 0x004E4C 01:8E3C: 9D 3C 05  STA ram_позиция_x_спрайта_врага_и_пуль,X
 C - - - - - 0x004E4F 01:8E3F: A9 00     LDA #$00
 C - - - - - 0x004E51 01:8E41: 9D 2C 07  STA ram_072C_obj,X
 C - - - - - 0x004E54 01:8E44: A9 07     LDA #$07
@@ -2472,7 +2472,7 @@ C - - - - - 0x004E5E 01:8E4E: 60        RTS
 
 
 ofs_038_28_8E4F_03:
-C - - J - - 0x004E5F 01:8E4F: BD 3C 05  LDA ram_pos_X_hi_enemy,X
+C - - J - - 0x004E5F 01:8E4F: BD 3C 05  LDA ram_позиция_x_спрайта_врага_и_пуль,X
 C - - - - - 0x004E62 01:8E52: C9 30     CMP #$30
 C - - - - - 0x004E64 01:8E54: 90 4D     BCC bra_8EA3
 C - - - - - 0x004E66 01:8E56: 20 B7 A6  JSR sub_0x0066C7_delete_object_03
@@ -2494,14 +2494,14 @@ C - - - - - 0x004E85 01:8E75: 90 1A     BCC bra_8E91
 C - - - - - 0x004E87 01:8E77: A4 11     LDY ram_0011
 C - - - - - 0x004E89 01:8E79: BD 48 07  LDA ram_0748_obj,X
 C - - - - - 0x004E8C 01:8E7C: 99 48 07  STA ram_0748_obj,Y
-C - - - - - 0x004E8F 01:8E7F: B9 22 05  LDA ram_pos_Y_hi_enemy,Y
+C - - - - - 0x004E8F 01:8E7F: B9 22 05  LDA ram_позиция_y_спрайта_врага_и_пуль,Y
 C - - - - - 0x004E92 01:8E82: 38        SEC
 C - - - - - 0x004E93 01:8E83: E9 0E     SBC #$0E
-C - - - - - 0x004E95 01:8E85: 99 22 05  STA ram_pos_Y_hi_enemy,Y
-C - - - - - 0x004E98 01:8E88: B9 3C 05  LDA ram_pos_X_hi_enemy,Y
+C - - - - - 0x004E95 01:8E85: 99 22 05  STA ram_позиция_y_спрайта_врага_и_пуль,Y
+C - - - - - 0x004E98 01:8E88: B9 3C 05  LDA ram_позиция_x_спрайта_врага_и_пуль,Y
 C - - - - - 0x004E9B 01:8E8B: 38        SEC
 C - - - - - 0x004E9C 01:8E8C: E9 08     SBC #$08
-C - - - - - 0x004E9E 01:8E8E: 99 3C 05  STA ram_pos_X_hi_enemy,Y
+C - - - - - 0x004E9E 01:8E8E: 99 3C 05  STA ram_позиция_x_спрайта_врага_и_пуль,Y
 bra_8E91:
 C - - - - - 0x004EA1 01:8E91: A9 02     LDA #$02
 C - - - - - 0x004EA3 01:8E93: DE 48 07  DEC ram_0748_obj,X
@@ -2566,7 +2566,7 @@ C - - - - - 0x004EEB 01:8EDB: 9D 76 06  STA ram_obj_hp,X
 C - - - - - 0x004EEE 01:8EDE: A9 18     LDA #$18
 C - - - - - 0x004EF0 01:8EE0: 9D 2C 07  STA ram_072C_obj,X
 C - - - - - 0x004EF3 01:8EE3: A9 01     LDA #$01
-C - - - - - 0x004EF5 01:8EE5: 9D 56 05  STA ram_attr_spr_enemy,X
+C - - - - - 0x004EF5 01:8EE5: 9D 56 05  STA ram_аттрибуты_спрайта_врага_и_пуль,X
 C - - - - - 0x004EF8 01:8EE8: BD 48 07  LDA ram_0748_obj,X
 C - - - - - 0x004EFB 01:8EEB: 0A        ASL
 C - - - - - 0x004EFC 01:8EEC: 0A        ASL
@@ -2614,7 +2614,7 @@ tbl_8F0C_speed:
 
 ofs_038_29_8F2C_02:
 C - - J - - 0x004F3C 01:8F2C: A9 3A     LDA #$3A
-C - - - - - 0x004F3E 01:8F2E: 9D 08 05  STA ram_anim_id_enemy,X
+C - - - - - 0x004F3E 01:8F2E: 9D 08 05  STA ram_кадр_врага_и_пуль,X
 C - - - - - 0x004F41 01:8F31: BD A0 06  LDA ram_spd_Y_lo_obj,X
 C - - - - - 0x004F44 01:8F34: 18        CLC
 C - - - - - 0x004F45 01:8F35: 69 08     ADC #< $0008
@@ -2969,7 +2969,7 @@ _off001_0x0051D0_3A_bullet_robospider:
 
 
 ofs_038_3A_91C8_01_initialize_object:
-C - - J - - 0x0051D8 01:91C8: BD 22 05  LDA ram_pos_Y_hi_enemy,X
+C - - J - - 0x0051D8 01:91C8: BD 22 05  LDA ram_позиция_y_спрайта_врага_и_пуль,X
 C - - - - - 0x0051DB 01:91CB: 9D 48 07  STA ram_0748_obj,X
 C - - - - - 0x0051DE 01:91CE: 4C 95 AE  JMP loc_0x006EA5
 
@@ -2980,7 +2980,7 @@ C - - J - - 0x0051E1 01:91D1: 20 B7 A6  JSR sub_0x0066C7_delete_object_03
 C - - - - - 0x0051E4 01:91D4: DE E6 06  DEC ram_06E6_obj,X
 C - - - - - 0x0051E7 01:91D7: D0 2C     BNE bra_9205_RTS
 C - - - - - 0x0051E9 01:91D9: A9 06     LDA #$06
-C - - - - - 0x0051EB 01:91DB: 9D 08 05  STA ram_anim_id_enemy,X
+C - - - - - 0x0051EB 01:91DB: 9D 08 05  STA ram_кадр_врага_и_пуль,X
 C - - - - - 0x0051EE 01:91DE: 4C D7 A2  JMP loc_0x0062E7_increase_obj_state
 
 
@@ -2991,7 +2991,7 @@ C - - - - - 0x0051F4 01:91E4: BD E6 06  LDA ram_06E6_obj,X
 C - - - - - 0x0051F7 01:91E7: 4A        LSR
 C - - - - - 0x0051F8 01:91E8: 4A        LSR
 C - - - - - 0x0051F9 01:91E9: 29 03     AND #$03
-C - - - - - 0x0051FB 01:91EB: 9D 56 05  STA ram_attr_spr_enemy,X
+C - - - - - 0x0051FB 01:91EB: 9D 56 05  STA ram_аттрибуты_спрайта_врага_и_пуль,X
 C - - - - - 0x0051FE 01:91EE: BD 64 07  LDA ram_0764_obj,X
 C - - - - - 0x005201 01:91F1: F0 05     BEQ bra_91F8
 C - - - - - 0x005203 01:91F3: A0 05     LDY #$05
@@ -3040,9 +3040,9 @@ C - - - - - 0x005242 01:9232: D0 30     BNE bra_9264_RTS
 C - - - - - 0x005244 01:9234: A9 01     LDA #con_mirroring_H
 C - - - - - 0x005246 01:9236: 85 26     STA ram_for_A000
 C - - - - - 0x005248 01:9238: A9 9C     LDA #$9C
-C - - - - - 0x00524A 01:923A: 9D 22 05  STA ram_pos_Y_hi_enemy,X
+C - - - - - 0x00524A 01:923A: 9D 22 05  STA ram_позиция_y_спрайта_врага_и_пуль,X
 C - - - - - 0x00524D 01:923D: A9 60     LDA #$60
-C - - - - - 0x00524F 01:923F: 9D 3C 05  STA ram_pos_X_hi_enemy,X
+C - - - - - 0x00524F 01:923F: 9D 3C 05  STA ram_позиция_x_спрайта_врага_и_пуль,X
 C - - - - - 0x005252 01:9242: A9 01     LDA #$01
 C - - - - - 0x005254 01:9244: 9D 9C 07  STA ram_079C_obj,X
 C - - - - - 0x005257 01:9247: A9 2C     LDA #$2C
@@ -3101,13 +3101,13 @@ C - - - - - 0x0052B9 01:92A9: BC 9C 07  LDY ram_079C_obj,X
 C - - - - - 0x0052BC 01:92AC: D0 02     BNE bra_92B0
 C - - - - - 0x0052BE 01:92AE: A9 06     LDA #$06
 bra_92B0:
-C - - - - - 0x0052C0 01:92B0: 9D 08 05  STA ram_anim_id_enemy,X
+C - - - - - 0x0052C0 01:92B0: 9D 08 05  STA ram_кадр_врага_и_пуль,X
 C - - - - - 0x0052C3 01:92B3: A5 5B     LDA ram_005B
 C - - - - - 0x0052C5 01:92B5: 4A        LSR
 C - - - - - 0x0052C6 01:92B6: 4A        LSR
 C - - - - - 0x0052C7 01:92B7: 29 03     AND #$03
 C - - - - - 0x0052C9 01:92B9: 09 20     ORA #$20
-C - - - - - 0x0052CB 01:92BB: 9D 56 05  STA ram_attr_spr_enemy,X
+C - - - - - 0x0052CB 01:92BB: 9D 56 05  STA ram_аттрибуты_спрайта_врага_и_пуль,X
 C - - - - - 0x0052CE 01:92BE: 20 F3 94  JSR sub_94F3
 C - - - - - 0x0052D1 01:92C1: 20 10 93  JSR sub_9310
 C - - - - - 0x0052D4 01:92C4: A9 0C     LDA #$0C
@@ -3169,7 +3169,7 @@ ofs_014_931C_00:
 C - - J - - 0x00532C 01:931C: 20 0B 94  JSR sub_940B
 C - - - - - 0x00532F 01:931F: BD 9C 07  LDA ram_079C_obj,X
 C - - - - - 0x005332 01:9322: D0 19     BNE bra_933D_RTS
-C - - - - - 0x005334 01:9324: BD 3C 05  LDA ram_pos_X_hi_enemy,X
+C - - - - - 0x005334 01:9324: BD 3C 05  LDA ram_позиция_x_спрайта_врага_и_пуль,X
 C - - - - - 0x005337 01:9327: C9 C0     CMP #$C0
 C - - - - - 0x005339 01:9329: B0 12     BCS bra_933D_RTS
 C - - - - - 0x00533B 01:932B: BD 10 07  LDA ram_0710_obj,X
@@ -3194,8 +3194,8 @@ C - - - - - 0x005355 01:9345: 20 8B 93  JSR sub_938B
 bra_9348:
 C - - - - - 0x005358 01:9348: DE E6 06  DEC ram_06E6_obj,X
 C - - - - - 0x00535B 01:934B: D0 F0     BNE bra_933D_RTS
-C - - - - - 0x00535D 01:934D: BC 3C 05  LDY ram_pos_X_hi_enemy,X
-C - - - - - 0x005360 01:9350: CC 4C 05  CPY ram_pos_X_hi_plr
+C - - - - - 0x00535D 01:934D: BC 3C 05  LDY ram_позиция_x_спрайта_врага_и_пуль,X
+C - - - - - 0x005360 01:9350: CC 4C 05  CPY ram_позиция_x_спрайта_игрока
 C - - - - - 0x005363 01:9353: A9 00     LDA #$00
 C - - - - - 0x005365 01:9355: 90 02     BCC bra_9359
 C - - - - - 0x005367 01:9357: A9 01     LDA #$01
@@ -3239,9 +3239,9 @@ bra_938F_loop:
 C - - - - - 0x00539F 01:938F: A0 3A     LDY #$3A
 C - - - - - 0x0053A1 01:9391: 20 C8 AB  JSR sub_0x006BD8
 C - - - - - 0x0053A4 01:9394: 90 48     BCC bra_93DE
-C - - - - - 0x0053A6 01:9396: BD 22 05  LDA ram_pos_Y_hi_enemy,X
+C - - - - - 0x0053A6 01:9396: BD 22 05  LDA ram_позиция_y_спрайта_врага_и_пуль,X
 C - - - - - 0x0053A9 01:9399: 85 0A     STA ram_000A
-C - - - - - 0x0053AB 01:939B: BD 3C 05  LDA ram_pos_X_hi_enemy,X
+C - - - - - 0x0053AB 01:939B: BD 3C 05  LDA ram_позиция_x_спрайта_врага_и_пуль,X
 C - - - - - 0x0053AE 01:939E: 85 0B     STA ram_000B
 C - - - - - 0x0053B0 01:93A0: A6 11     LDX ram_0011
 C - - - - - 0x0053B2 01:93A2: A5 08     LDA ram_0008
@@ -3259,11 +3259,11 @@ C - - - - - 0x0053CE 01:93BE: A4 08     LDY ram_0008
 C - - - - - 0x0053D0 01:93C0: A5 0A     LDA ram_000A
 C - - - - - 0x0053D2 01:93C2: 18        CLC
 C - - - - - 0x0053D3 01:93C3: 79 F9 93  ADC tbl_93F9_pos_Y,Y
-C - - - - - 0x0053D6 01:93C6: 9D 22 05  STA ram_pos_Y_hi_enemy,X
+C - - - - - 0x0053D6 01:93C6: 9D 22 05  STA ram_позиция_y_спрайта_врага_и_пуль,X
 C - - - - - 0x0053D9 01:93C9: B9 FF 93  LDA tbl_93FF_pos_X,Y
 C - - - - - 0x0053DC 01:93CC: 18        CLC
 C - - - - - 0x0053DD 01:93CD: 65 0B     ADC ram_000B
-C - - - - - 0x0053DF 01:93CF: 9D 3C 05  STA ram_pos_X_hi_enemy,X
+C - - - - - 0x0053DF 01:93CF: 9D 3C 05  STA ram_позиция_x_спрайта_врага_и_пуль,X
 C - - - - - 0x0053E2 01:93D2: B9 05 94  LDA tbl_9405,Y
 C - - - - - 0x0053E5 01:93D5: 9D 64 07  STA ram_0764_obj,X
 C - - - - - 0x0053E8 01:93D8: A6 10     LDX ram_0010
@@ -3332,9 +3332,9 @@ C - - - - - 0x00541E 01:940E: D0 D0     BNE bra_93E0_RTS
 C - - - - - 0x005420 01:9410: BD 9C 07  LDA ram_079C_obj,X
 C - - - - - 0x005423 01:9413: D0 16     BNE bra_942B
 C - - - - - 0x005425 01:9415: 20 0B AB  JSR sub_0x006B1B
-C - - - - - 0x005428 01:9418: BD 3C 05  LDA ram_pos_X_hi_enemy,X
+C - - - - - 0x005428 01:9418: BD 3C 05  LDA ram_позиция_x_спрайта_врага_и_пуль,X
 C - - - - - 0x00542B 01:941B: 38        SEC
-C - - - - - 0x00542C 01:941C: F9 4C 05  SBC ram_pos_X_hi_plr,Y
+C - - - - - 0x00542C 01:941C: F9 4C 05  SBC ram_позиция_x_спрайта_игрока,Y
 C - - - - - 0x00542F 01:941F: B0 04     BCS bra_9425
 C - - - - - 0x005431 01:9421: 49 FF     EOR #$FF
 C - - - - - 0x005433 01:9423: 69 01     ADC #$01
@@ -3371,8 +3371,8 @@ C - - - - - 0x005466 01:9456: 9D 10 07  STA ram_0710_obj,X
 C - - - - - 0x005469 01:9459: 20 AA 94  JSR sub_94AA
 C - - - - - 0x00546C 01:945C: B9 BD 94  LDA tbl_94BD,Y
 C - - - - - 0x00546F 01:945F: 18        CLC
-C - - - - - 0x005470 01:9460: 7D 3C 05  ADC ram_pos_X_hi_enemy,X
-C - - - - - 0x005473 01:9463: 9D 3C 05  STA ram_pos_X_hi_enemy,X
+C - - - - - 0x005470 01:9460: 7D 3C 05  ADC ram_позиция_x_спрайта_врага_и_пуль,X
+C - - - - - 0x005473 01:9463: 9D 3C 05  STA ram_позиция_x_спрайта_врага_и_пуль,X
 C - - - - - 0x005476 01:9466: BD 9C 07  LDA ram_079C_obj,X
 C - - - - - 0x005479 01:9469: 79 CF 94  ADC tbl_94CF,Y
 C - - - - - 0x00547C 01:946C: 9D 9C 07  STA ram_079C_obj,X
@@ -3394,7 +3394,7 @@ C - - - - - 0x00549F 01:948F: A9 E0     LDA #$E0
 C - - - - - 0x0054A1 01:9491: 90 02     BCC bra_9495
 C - - - - - 0x0054A3 01:9493: A9 28     LDA #$28
 bra_9495:
-C - - - - - 0x0054A5 01:9495: DD 3C 05  CMP ram_pos_X_hi_enemy,X
+C - - - - - 0x0054A5 01:9495: DD 3C 05  CMP ram_позиция_x_спрайта_врага_и_пуль,X
 C - - - - - 0x0054A8 01:9498: 2A        ROL
 C - - - - - 0x0054A9 01:9499: 5D 72 07  EOR ram_0772_obj,X
 C - - - - - 0x0054AC 01:949C: 4A        LSR
@@ -3534,12 +3534,12 @@ C - - - - - 0x005546 01:9536: 85 0B     STA ram_000B
 C - - - - - 0x005548 01:9538: 20 AD 94  JSR sub_94AD
 C - - - - - 0x00554B 01:953B: B9 BD 94  LDA tbl_94BD,Y
 C - - - - - 0x00554E 01:953E: 18        CLC
-C - - - - - 0x00554F 01:953F: 7D 3C 05  ADC ram_pos_X_hi_enemy,X
+C - - - - - 0x00554F 01:953F: 7D 3C 05  ADC ram_позиция_x_спрайта_врага_и_пуль,X
 C - - - - - 0x005552 01:9542: 85 0E     STA ram_000E
 C - - - - - 0x005554 01:9544: BD 9C 07  LDA ram_079C_obj,X
 C - - - - - 0x005557 01:9547: 79 CF 94  ADC tbl_94CF,Y
 C - - - - - 0x00555A 01:954A: 85 0F     STA ram_000F
-C - - - - - 0x00555C 01:954C: BD 22 05  LDA ram_pos_Y_hi_enemy,X
+C - - - - - 0x00555C 01:954C: BD 22 05  LDA ram_позиция_y_спрайта_врага_и_пуль,X
 C - - - - - 0x00555F 01:954F: 85 0D     STA ram_000D
 C - - - - - 0x005561 01:9551: A6 1E     LDX ram_index_ppu_buffer
 C - - - - - 0x005563 01:9553: E0 20     CPX #$20
@@ -3764,7 +3764,7 @@ C - - - - - 0x0056AA 01:969A: D0 F9     BNE bra_9695_loop
 C - - - - - 0x0056AC 01:969C: A6 10     LDX ram_0010
 C - - - - - 0x0056AE 01:969E: BD 9C 07  LDA ram_079C_obj,X
 C - - - - - 0x0056B1 01:96A1: D0 26     BNE bra_96C9_RTS
-C - - - - - 0x0056B3 01:96A3: BD 3C 05  LDA ram_pos_X_hi_enemy,X
+C - - - - - 0x0056B3 01:96A3: BD 3C 05  LDA ram_позиция_x_спрайта_врага_и_пуль,X
 C - - - - - 0x0056B6 01:96A6: 38        SEC
 C - - - - - 0x0056B7 01:96A7: E9 18     SBC #$18
 C - - - - - 0x0056B9 01:96A9: 4A        LSR
@@ -4370,9 +4370,9 @@ bra_9A0D_RTS:
 C - - - - - 0x005A1D 01:9A0D: 60        RTS
 bra_9A0E:
 C - - - - - 0x005A1E 01:9A0E: A9 80     LDA #$80
-C - - - - - 0x005A20 01:9A10: 9D 3C 05  STA ram_pos_X_hi_enemy,X
+C - - - - - 0x005A20 01:9A10: 9D 3C 05  STA ram_позиция_x_спрайта_врага_и_пуль,X
 C - - - - - 0x005A23 01:9A13: A9 18     LDA #$18
-C - - - - - 0x005A25 01:9A15: 9D 22 05  STA ram_pos_Y_hi_enemy,X
+C - - - - - 0x005A25 01:9A15: 9D 22 05  STA ram_позиция_y_спрайта_врага_и_пуль,X
 C - - - - - 0x005A28 01:9A18: A9 01     LDA #$01
 C - - - - - 0x005A2A 01:9A1A: 9D 8E 07  STA ram_078E_obj,X
 C - - - - - 0x005A2D 01:9A1D: A9 00     LDA #$00
@@ -4451,7 +4451,7 @@ C - - - - - 0x005AAD 01:9A9D: 4C D7 A2  JMP loc_0x0062E7_increase_obj_state
 
 ofs_038_4B_9AA0_07:
 C - - J - - 0x005AB0 01:9AA0: A9 01     LDA #$01
-C - - - - - 0x005AB2 01:9AA2: 9D 08 05  STA ram_anim_id_enemy,X
+C - - - - - 0x005AB2 01:9AA2: 9D 08 05  STA ram_кадр_врага_и_пуль,X
 C - - - - - 0x005AB5 01:9AA5: 4C E8 9A  JMP loc_9AE8
 
 
@@ -4534,7 +4534,7 @@ C - - - - - 0x005B1D 01:9B0D: 20 DE FD  JSR sub_0x01FDEE_play_sound
 bra_9B10:
 C - - - - - 0x005B20 01:9B10: BD 8E 07  LDA ram_078E_obj,X
 C - - - - - 0x005B23 01:9B13: D0 51     BNE bra_9B66_RTS
-C - - - - - 0x005B25 01:9B15: BD 22 05  LDA ram_pos_Y_hi_enemy,X
+C - - - - - 0x005B25 01:9B15: BD 22 05  LDA ram_позиция_y_спрайта_врага_и_пуль,X
 C - - - - - 0x005B28 01:9B18: C9 48     CMP #$48
 C - - - - - 0x005B2A 01:9B1A: B0 4A     BCS bra_9B66_RTS
 C - - - - - 0x005B2C 01:9B1C: A9 00     LDA #$00
@@ -4818,10 +4818,10 @@ sub_9CAE:
 C - - - - - 0x005CBE 01:9CAE: A0 00     LDY #$00
 C - - - - - 0x005CC0 01:9CB0: A9 B7     LDA #$B7
 bra_9CB2:
-C - - - - - 0x005CC2 01:9CB2: 9D 08 05  STA ram_anim_id_enemy,X
+C - - - - - 0x005CC2 01:9CB2: 9D 08 05  STA ram_кадр_врага_и_пуль,X
 bra_9CB5:
 C - - - - - 0x005CC5 01:9CB5: 98        TYA
-C - - - - - 0x005CC6 01:9CB6: 9D 56 05  STA ram_attr_spr_enemy,X
+C - - - - - 0x005CC6 01:9CB6: 9D 56 05  STA ram_аттрибуты_спрайта_врага_и_пуль,X
 C - - - - - 0x005CC9 01:9CB9: 60        RTS
 
 
@@ -4835,16 +4835,16 @@ C - - - - - 0x005CD0 01:9CC0: BD 84 06  LDA ram_pos_Y_lo_enemy,X
 C - - - - - 0x005CD3 01:9CC3: 18        CLC
 C - - - - - 0x005CD4 01:9CC4: 79 E7 9C  ADC tbl_9CE7_position,Y
 C - - - - - 0x005CD7 01:9CC7: 9D 84 06  STA ram_pos_Y_lo_enemy,X
-C - - - - - 0x005CDA 01:9CCA: BD 22 05  LDA ram_pos_Y_hi_enemy,X
+C - - - - - 0x005CDA 01:9CCA: BD 22 05  LDA ram_позиция_y_спрайта_врага_и_пуль,X
 C - - - - - 0x005CDD 01:9CCD: 79 E8 9C  ADC tbl_9CE7_position + $01,Y
-C - - - - - 0x005CE0 01:9CD0: 9D 22 05  STA ram_pos_Y_hi_enemy,X
+C - - - - - 0x005CE0 01:9CD0: 9D 22 05  STA ram_позиция_y_спрайта_врага_и_пуль,X
 C - - - - - 0x005CE3 01:9CD3: BD 92 06  LDA ram_pos_X_lo_enemy,X
 C - - - - - 0x005CE6 01:9CD6: 18        CLC
 C - - - - - 0x005CE7 01:9CD7: 79 E9 9C  ADC tbl_9CE7_position + $02,Y
 C - - - - - 0x005CEA 01:9CDA: 9D 92 06  STA ram_pos_X_lo_enemy,X
-C - - - - - 0x005CED 01:9CDD: BD 3C 05  LDA ram_pos_X_hi_enemy,X
+C - - - - - 0x005CED 01:9CDD: BD 3C 05  LDA ram_позиция_x_спрайта_врага_и_пуль,X
 C - - - - - 0x005CF0 01:9CE0: 79 EA 9C  ADC tbl_9CE7_position + $03,Y
-C - - - - - 0x005CF3 01:9CE3: 9D 3C 05  STA ram_pos_X_hi_enemy,X
+C - - - - - 0x005CF3 01:9CE3: 9D 3C 05  STA ram_позиция_x_спрайта_врага_и_пуль,X
 C - - - - - 0x005CF6 01:9CE6: 60        RTS
 
 
@@ -4896,12 +4896,12 @@ C - - - - - 0x005D2D 01:9D1D: 85 00     STA ram_0000
 C - - - - - 0x005D2F 01:9D1F: B9 42 9D  LDA tbl_9D42,Y
 C - - - - - 0x005D32 01:9D22: BC 80 07  LDY ram_0780_obj,X
 C - - - - - 0x005D35 01:9D25: 18        CLC
-C - - - - - 0x005D36 01:9D26: 79 3C 05  ADC ram_pos_X_hi_enemy,Y
-C - - - - - 0x005D39 01:9D29: 9D 3C 05  STA ram_pos_X_hi_enemy,X
+C - - - - - 0x005D36 01:9D26: 79 3C 05  ADC ram_позиция_x_спрайта_врага_и_пуль,Y
+C - - - - - 0x005D39 01:9D29: 9D 3C 05  STA ram_позиция_x_спрайта_врага_и_пуль,X
 C - - - - - 0x005D3C 01:9D2C: A5 00     LDA ram_0000
 C - - - - - 0x005D3E 01:9D2E: 18        CLC
-C - - - - - 0x005D3F 01:9D2F: 79 22 05  ADC ram_pos_Y_hi_enemy,Y
-C - - - - - 0x005D42 01:9D32: 9D 22 05  STA ram_pos_Y_hi_enemy,X
+C - - - - - 0x005D3F 01:9D2F: 79 22 05  ADC ram_позиция_y_спрайта_врага_и_пуль,Y
+C - - - - - 0x005D42 01:9D32: 9D 22 05  STA ram_позиция_y_спрайта_врага_и_пуль,X
 C - - - - - 0x005D45 01:9D35: 60        RTS
 
 

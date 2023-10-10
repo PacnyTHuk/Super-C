@@ -186,17 +186,17 @@ C - - - - - 0x00C0E8 03:80D8: F0 02     BEQ bra_80DC
 C - - - - - 0x00C0EA 03:80DA: A9 FC     LDA #$FC
 bra_80DC:
 C - - - - - 0x00C0EC 03:80DC: 85 0B     STA ram_000B
-C - - - - - 0x00C0EE 03:80DE: AD 66 05  LDA ram_attr_spr_plr
+C - - - - - 0x00C0EE 03:80DE: AD 66 05  LDA ram_аттрибуты_спрайта_игрока
 C - - - - - 0x00C0F1 03:80E1: 29 03     AND #$03
 C - - - - - 0x00C0F3 03:80E3: 85 00     STA ram_0000
-C - - - - - 0x00C0F5 03:80E5: AD 66 05  LDA ram_attr_spr_plr
+C - - - - - 0x00C0F5 03:80E5: AD 66 05  LDA ram_аттрибуты_спрайта_игрока
 C - - - - - 0x00C0F8 03:80E8: 29 E0     AND #$E0
 C - - - - - 0x00C0FA 03:80EA: 85 0A     STA ram_000A
-C - - - - - 0x00C0FC 03:80EC: AD 32 05  LDA ram_pos_Y_hi_plr
+C - - - - - 0x00C0FC 03:80EC: AD 32 05  LDA ram_позиция_y_спрайта_игрока
 C - - - - - 0x00C0FF 03:80EF: 85 01     STA ram_0001
-C - - - - - 0x00C101 03:80F1: AD 4C 05  LDA ram_pos_X_hi_plr
+C - - - - - 0x00C101 03:80F1: AD 4C 05  LDA ram_позиция_x_спрайта_игрока
 C - - - - - 0x00C104 03:80F4: 85 02     STA ram_0002
-C - - - - - 0x00C106 03:80F6: AD 18 05  LDA ram_anim_id_plr
+C - - - - - 0x00C106 03:80F6: AD 18 05  LDA ram_кадр_игрока
 C - - - - - 0x00C109 03:80F9: F0 03     BEQ bra_80FE_skip
 C - - - - - 0x00C10B 03:80FB: 20 5E 80  JSR sub_805E_player_animation_sprite_data_handler
 bra_80FE_skip:
@@ -206,37 +206,37 @@ C - - - - - 0x00C112 03:8102: F0 02     BEQ bra_8106
 C - - - - - 0x00C114 03:8104: A9 FC     LDA #$FC
 bra_8106:
 C - - - - - 0x00C116 03:8106: 85 0B     STA ram_000B
-C - - - - - 0x00C118 03:8108: AD 67 05  LDA ram_attr_spr_plr + $01
+C - - - - - 0x00C118 03:8108: AD 67 05  LDA ram_аттрибуты_спрайта_игрока + $01
 C - - - - - 0x00C11B 03:810B: 29 03     AND #$03
 C - - - - - 0x00C11D 03:810D: 85 00     STA ram_0000
-C - - - - - 0x00C11F 03:810F: AD 67 05  LDA ram_attr_spr_plr + $01
+C - - - - - 0x00C11F 03:810F: AD 67 05  LDA ram_аттрибуты_спрайта_игрока + $01
 C - - - - - 0x00C122 03:8112: 29 E0     AND #$E0
 C - - - - - 0x00C124 03:8114: 85 0A     STA ram_000A
-C - - - - - 0x00C126 03:8116: AD 33 05  LDA ram_pos_Y_hi_plr + $01
+C - - - - - 0x00C126 03:8116: AD 33 05  LDA ram_позиция_y_спрайта_игрока + $01
 C - - - - - 0x00C129 03:8119: 85 01     STA ram_0001
-C - - - - - 0x00C12B 03:811B: AD 4D 05  LDA ram_pos_X_hi_plr + $01
+C - - - - - 0x00C12B 03:811B: AD 4D 05  LDA ram_позиция_x_спрайта_игрока + $01
 C - - - - - 0x00C12E 03:811E: 85 02     STA ram_0002
-C - - - - - 0x00C130 03:8120: AD 19 05  LDA ram_anim_id_plr + $01
+C - - - - - 0x00C130 03:8120: AD 19 05  LDA ram_кадр_игрока + $01
 C - - - - - 0x00C133 03:8123: F0 03     BEQ bra_8128_skip
 C - - - - - 0x00C135 03:8125: 20 5E 80  JSR sub_805E_player_animation_sprite_data_handler
 bra_8128_skip:
 C - - - - - 0x00C138 03:8128: A0 17     LDY #$17
 bra_812A_loop:
-C - - - - - 0x00C13A 03:812A: B9 4E 05  LDA ram_attr_spr_obj,Y
+C - - - - - 0x00C13A 03:812A: B9 4E 05  LDA ram_аттрибуты_спрайта,Y
 C - - - - - 0x00C13D 03:812D: 29 3F     AND #$3F
 C - - - - - 0x00C13F 03:812F: 85 00     STA ram_0000
 C - - - - - 0x00C141 03:8131: 4A        LSR
 C - - - - - 0x00C142 03:8132: 4A        LSR
 C - - - - - 0x00C143 03:8133: 85 0B     STA ram_000B
-C - - - - - 0x00C145 03:8135: B9 4E 05  LDA ram_attr_spr_obj,Y
+C - - - - - 0x00C145 03:8135: B9 4E 05  LDA ram_аттрибуты_спрайта,Y
 C - - - - - 0x00C148 03:8138: 29 C0     AND #$C0
 C - - - - - 0x00C14A 03:813A: 85 0A     STA ram_000A
-C - - - - - 0x00C14C 03:813C: B9 1A 05  LDA ram_pos_Y_hi_obj,Y
+C - - - - - 0x00C14C 03:813C: B9 1A 05  LDA ram_позиция_y_спрайта,Y
 C - - - - - 0x00C14F 03:813F: 85 01     STA ram_0001
-C - - - - - 0x00C151 03:8141: B9 34 05  LDA ram_pos_X_hi_obj,Y
+C - - - - - 0x00C151 03:8141: B9 34 05  LDA ram_позиция_x_спрайта,Y
 C - - - - - 0x00C154 03:8144: 85 02     STA ram_0002
-; bzk optimize, check ram_anim_id_obj first
-C - - - - - 0x00C156 03:8146: B9 00 05  LDA ram_anim_id_obj,Y
+; bzk optimize, check ram_кадр_анимации first
+C - - - - - 0x00C156 03:8146: B9 00 05  LDA ram_кадр_анимации,Y
 C - - - - - 0x00C159 03:8149: F0 07     BEQ bra_8152_skip
 C - - - - - 0x00C15B 03:814B: 84 05     STY ram_0005
 C - - - - - 0x00C15D 03:814D: 20 6B 81  JSR sub_816B_enemy_animation_sprite_data_handler
