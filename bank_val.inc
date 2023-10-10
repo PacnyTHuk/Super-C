@@ -15,6 +15,9 @@ con_mirroring_V                         = $00 ; vertical
 con_mirroring_H                         = $01 ; horisontal
 con__hp_F0                              = $F0 ; unkillable object
 con__hp_F1                              = $F1 ; unkillable object
+con_макс_индекс_пули_игрока             = $0F ; для пуль игрока
+con_макс_индекс_враги                   = $0D ; для врагов и их пуль
+con_макс_индекс_общий                   = $17 ; для пуль игрока + враги и их пули
 
 
 

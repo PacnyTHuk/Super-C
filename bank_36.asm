@@ -186,10 +186,10 @@ C - - - - - 0x00C0E8 03:80D8: F0 02     BEQ bra_80DC
 C - - - - - 0x00C0EA 03:80DA: A9 FC     LDA #$FC
 bra_80DC:
 C - - - - - 0x00C0EC 03:80DC: 85 0B     STA ram_000B
-C - - - - - 0x00C0EE 03:80DE: AD 66 05  LDA ram_аттрибуты_спрайта_игрока
+C - - - - - 0x00C0EE 03:80DE: AD 66 05  LDA ram_атрибуты_спрайта_игрока
 C - - - - - 0x00C0F1 03:80E1: 29 03     AND #$03
 C - - - - - 0x00C0F3 03:80E3: 85 00     STA ram_0000
-C - - - - - 0x00C0F5 03:80E5: AD 66 05  LDA ram_аттрибуты_спрайта_игрока
+C - - - - - 0x00C0F5 03:80E5: AD 66 05  LDA ram_атрибуты_спрайта_игрока
 C - - - - - 0x00C0F8 03:80E8: 29 E0     AND #$E0
 C - - - - - 0x00C0FA 03:80EA: 85 0A     STA ram_000A
 C - - - - - 0x00C0FC 03:80EC: AD 32 05  LDA ram_позиция_y_спрайта_игрока
@@ -206,10 +206,10 @@ C - - - - - 0x00C112 03:8102: F0 02     BEQ bra_8106
 C - - - - - 0x00C114 03:8104: A9 FC     LDA #$FC
 bra_8106:
 C - - - - - 0x00C116 03:8106: 85 0B     STA ram_000B
-C - - - - - 0x00C118 03:8108: AD 67 05  LDA ram_аттрибуты_спрайта_игрока + $01
+C - - - - - 0x00C118 03:8108: AD 67 05  LDA ram_атрибуты_спрайта_игрока + $01
 C - - - - - 0x00C11B 03:810B: 29 03     AND #$03
 C - - - - - 0x00C11D 03:810D: 85 00     STA ram_0000
-C - - - - - 0x00C11F 03:810F: AD 67 05  LDA ram_аттрибуты_спрайта_игрока + $01
+C - - - - - 0x00C11F 03:810F: AD 67 05  LDA ram_атрибуты_спрайта_игрока + $01
 C - - - - - 0x00C122 03:8112: 29 E0     AND #$E0
 C - - - - - 0x00C124 03:8114: 85 0A     STA ram_000A
 C - - - - - 0x00C126 03:8116: AD 33 05  LDA ram_позиция_y_спрайта_игрока + $01
@@ -220,15 +220,15 @@ C - - - - - 0x00C130 03:8120: AD 19 05  LDA ram_кадр_игрока + $01
 C - - - - - 0x00C133 03:8123: F0 03     BEQ bra_8128_skip
 C - - - - - 0x00C135 03:8125: 20 5E 80  JSR sub_805E_player_animation_sprite_data_handler
 bra_8128_skip:
-C - - - - - 0x00C138 03:8128: A0 17     LDY #$17
+C - - - - - 0x00C138 03:8128: A0 17     LDY #con_макс_индекс_общий
 bra_812A_loop:
-C - - - - - 0x00C13A 03:812A: B9 4E 05  LDA ram_аттрибуты_спрайта,Y
+C - - - - - 0x00C13A 03:812A: B9 4E 05  LDA ram_атрибуты_спрайта,Y
 C - - - - - 0x00C13D 03:812D: 29 3F     AND #$3F
 C - - - - - 0x00C13F 03:812F: 85 00     STA ram_0000
 C - - - - - 0x00C141 03:8131: 4A        LSR
 C - - - - - 0x00C142 03:8132: 4A        LSR
 C - - - - - 0x00C143 03:8133: 85 0B     STA ram_000B
-C - - - - - 0x00C145 03:8135: B9 4E 05  LDA ram_аттрибуты_спрайта,Y
+C - - - - - 0x00C145 03:8135: B9 4E 05  LDA ram_атрибуты_спрайта,Y
 C - - - - - 0x00C148 03:8138: 29 C0     AND #$C0
 C - - - - - 0x00C14A 03:813A: 85 0A     STA ram_000A
 C - - - - - 0x00C14C 03:813C: B9 1A 05  LDA ram_позиция_y_спрайта,Y
@@ -4385,7 +4385,7 @@ C - - - - - 0x00D3BB 03:93AB: F0 01     BEQ bra_93AE
 C - - - - - 0x00D3BD 03:93AD: 60        RTS
 bra_93AE:
 C - - - - - 0x00D3BE 03:93AE: 20 55 94  JSR sub_9455
-C - - - - - 0x00D3C1 03:93B1: A5 61     LDA ram_0061
+C - - - - - 0x00D3C1 03:93B1: A5 61     LDA ram_0061_конфиг_уровня
 C - - - - - 0x00D3C3 03:93B3: D0 1A     BNE bra_93CF_RTS
 C - - - - - 0x00D3C5 03:93B5: A5 8C     LDA ram_008C
 C - - - - - 0x00D3C7 03:93B7: 0A        ASL
@@ -4512,11 +4512,11 @@ C - - - - - 0x00D448 03:9438: 4C 51 94  JMP loc_9451
 
 ofs_019_943B_09:
 C - - J - - 0x00D44B 03:943B: A9 C0     LDA #$C0
-C - - - - - 0x00D44D 03:943D: 85 7D     STA ram_007D_flag
-C - - - - - 0x00D44F 03:943F: 85 71     STA ram_0071_flag
+C - - - - - 0x00D44D 03:943D: 85 7D     STA ram_007D_тип_скролла
+C - - - - - 0x00D44F 03:943F: 85 71     STA ram_0071_тип_скролла
 ofs_019_9441_0B:
 C - - - - - 0x00D451 03:9441: A9 01     LDA #$01
-C - - - - - 0x00D453 03:9443: 85 61     STA ram_0061
+C - - - - - 0x00D453 03:9443: 85 61     STA ram_0061_конфиг_уровня
 C - - - - - 0x00D455 03:9445: D0 0A     BNE bra_9451    ; jmp
 
 
@@ -4539,11 +4539,11 @@ ofs_019_9454_0C_RTS:
 
 
 sub_9455:
-C - - - - - 0x00D465 03:9455: A5 8D     LDA ram_008D
+C - - - - - 0x00D465 03:9455: A5 8D     LDA ram_008D_событие_на_уровне
 C - - - - - 0x00D467 03:9457: 0A        ASL
 C - - - - - 0x00D468 03:9458: A8        TAY
 C - - - - - 0x00D469 03:9459: B9 6E 94  LDA tbl_946E,Y
-C - - - - - 0x00D46C 03:945C: C5 82     CMP ram_0082
+C - - - - - 0x00D46C 03:945C: C5 82     CMP ram_0082_конфиг_уровня
 C - - - - - 0x00D46E 03:945E: 90 09     BCC bra_9469
 C - - - - - 0x00D470 03:9460: D0 0B     BNE bra_946D_RTS
 C - - - - - 0x00D472 03:9462: B9 6F 94  LDA tbl_946E + $01,Y
@@ -4568,7 +4568,7 @@ tbl_946E:
 
 
 sub_9473:
-C - - - - - 0x00D483 03:9473: A5 8D     LDA ram_008D
+C - - - - - 0x00D483 03:9473: A5 8D     LDA ram_008D_событие_на_уровне
 C - - - - - 0x00D485 03:9475: 20 09 E6  JSR sub_0x01E619_jump_to_pointers_after_jsr
 - D 0 - I - 0x00D488 03:9478: 7E 94     .word ofs_020_947E_00
 - D 0 - I - 0x00D48A 03:947A: 86 94     .word ofs_020_9486_01
@@ -4580,7 +4580,7 @@ ofs_020_947E_00:
 C - - J - - 0x00D48E 03:947E: A0 64     LDY #con_F97C_colors + $64
 C - - - - - 0x00D490 03:9480: 20 64 F9  JSR sub_0x01F974_write_3_colors_with_condition
 bra_9483:
-C - - - - - 0x00D493 03:9483: E6 8D     INC ram_008D
+C - - - - - 0x00D493 03:9483: E6 8D     INC ram_008D_событие_на_уровне
 C - - - - - 0x00D495 03:9485: 60        RTS
 
 
@@ -4589,7 +4589,7 @@ ofs_020_9486_01:
 C - - J - - 0x00D496 03:9486: A9 38     LDA #con_chr_bank + $38
 C - - - - - 0x00D498 03:9488: 8D F0 07  STA ram_bg_bank_1
 C - - - - - 0x00D49B 03:948B: A9 40     LDA #$40
-C - - - - - 0x00D49D 03:948D: 85 7D     STA ram_007D_flag
+C - - - - - 0x00D49D 03:948D: 85 7D     STA ram_007D_тип_скролла
 C - - - - - 0x00D49F 03:948F: D0 F2     BNE bra_9483    ; jmp
 
 
@@ -4604,11 +4604,11 @@ C - - J - - 0x00D4A2 03:9492: A5 39     LDA ram_пауза
 C - - - - - 0x00D4A4 03:9494: F0 01     BEQ bra_9497
 C - - - - - 0x00D4A6 03:9496: 60        RTS
 bra_9497:
-C - - - - - 0x00D4A7 03:9497: A5 8D     LDA ram_008D
+C - - - - - 0x00D4A7 03:9497: A5 8D     LDA ram_008D_событие_на_уровне
 C - - - - - 0x00D4A9 03:9499: 0A        ASL
 C - - - - - 0x00D4AA 03:949A: A8        TAY
 C - - - - - 0x00D4AB 03:949B: B9 B2 94  LDA tbl_94B2,Y
-C - - - - - 0x00D4AE 03:949E: C5 82     CMP ram_0082
+C - - - - - 0x00D4AE 03:949E: C5 82     CMP ram_0082_конфиг_уровня
 C - - - - - 0x00D4B0 03:94A0: 90 0F     BCC bra_94B1_RTS
 C - - - - - 0x00D4B2 03:94A2: F0 02     BEQ bra_94A6
 C - - - - - 0x00D4B4 03:94A4: B0 07     BCS bra_94AD    ; jmp
@@ -4646,7 +4646,7 @@ tbl_94B2:
 
 
 sub_94CD:
-C - - - - - 0x00D4DD 03:94CD: A5 8D     LDA ram_008D
+C - - - - - 0x00D4DD 03:94CD: A5 8D     LDA ram_008D_событие_на_уровне
 C - - - - - 0x00D4DF 03:94CF: 20 09 E6  JSR sub_0x01E619_jump_to_pointers_after_jsr
 - D 0 - I - 0x00D4E2 03:94D2: EE 94     .word ofs_021_94EE_00
 - D 0 - I - 0x00D4E4 03:94D4: 2B 95     .word ofs_021_952B_01
@@ -4678,7 +4678,7 @@ bra_94FE:
 C - - - - - 0x00D50E 03:94FE: 20 64 F9  JSR sub_0x01F974_write_3_colors_with_condition
 bra_9501:
 loc_9501:
-C D 0 - - - 0x00D511 03:9501: E6 8D     INC ram_008D
+C D 0 - - - 0x00D511 03:9501: E6 8D     INC ram_008D_событие_на_уровне
 C - - - - - 0x00D513 03:9503: 60        RTS
 
 
@@ -4738,8 +4738,8 @@ ofs_021_953A_0C:
 C - - J - - 0x00D54A 03:953A: A9 00     LDA #$00
 C - - - - - 0x00D54C 03:953C: 85 98     STA ram_0098
 C - - - - - 0x00D54E 03:953E: A9 C0     LDA #$C0
-C - - - - - 0x00D550 03:9540: 85 7D     STA ram_007D_flag
-C - - - - - 0x00D552 03:9542: 85 71     STA ram_0071_flag
+C - - - - - 0x00D550 03:9540: 85 7D     STA ram_007D_тип_скролла
+C - - - - - 0x00D552 03:9542: 85 71     STA ram_0071_тип_скролла
 C - - - - - 0x00D554 03:9544: D0 BB     BNE bra_9501    ; jmp
 
 
@@ -4752,7 +4752,7 @@ C - - J - - 0x00D556 03:9546: 60        RTS
 ofs_044_0x00D557_02_area_3:
 C - - J - - 0x00D557 03:9547: AD CD 03  LDA ram_03CD
 C - - - - - 0x00D55A 03:954A: 30 1B     BMI bra_9567
-C - - - - - 0x00D55C 03:954C: A5 1B     LDA ram_счетчик_кадров
+C - - - - - 0x00D55C 03:954C: A5 1B     LDA ram_счетчик_кадров_1
 C - - - - - 0x00D55E 03:954E: 29 07     AND #$07
 C - - - - - 0x00D560 03:9550: D0 15     BNE bra_9567
 C - - - - - 0x00D562 03:9552: EE CD 03  INC ram_03CD
@@ -4845,7 +4845,7 @@ C - - - - - 0x00D5CF 03:95BF: CA        DEX
 C - - - - - 0x00D5D0 03:95C0: D0 17     BNE bra_95D9
 ; 02 
 C - - - - - 0x00D5D2 03:95C2: A9 01     LDA #$01
-C - - - - - 0x00D5D4 03:95C4: 85 61     STA ram_0061
+C - - - - - 0x00D5D4 03:95C4: 85 61     STA ram_0061_конфиг_уровня
 C - - - - - 0x00D5D6 03:95C6: A9 12     LDA #con_chr_bank + $12
 C - - - - - 0x00D5D8 03:95C8: 8D F0 07  STA ram_bg_bank_1
 C - - - - - 0x00D5DB 03:95CB: A9 14     LDA #con_chr_bank + $14
@@ -4877,7 +4877,7 @@ C - - - - - 0x00D606 03:95F6: CA        DEX
 C - - - - - 0x00D607 03:95F7: D0 06     BNE bra_95FF_RTS
 ; 05 
 C - - - - - 0x00D609 03:95F9: A9 02     LDA #$02
-C - - - - - 0x00D60B 03:95FB: 85 61     STA ram_0061
+C - - - - - 0x00D60B 03:95FB: 85 61     STA ram_0061_конфиг_уровня
 C - - - - - 0x00D60D 03:95FD: D0 BD     BNE bra_95BC    ; jmp
 bra_95FF_RTS:
 - - - - - - 0x00D60F 03:95FF: 60        RTS
@@ -4885,7 +4885,7 @@ bra_95FF_RTS:
 
 
 ofs_044_0x00D610_03_area_4:
-C - - J - - 0x00D610 03:9600: A5 1B     LDA ram_счетчик_кадров
+C - - J - - 0x00D610 03:9600: A5 1B     LDA ram_счетчик_кадров_1
 C - - - - - 0x00D612 03:9602: 29 07     AND #$07
 C - - - - - 0x00D614 03:9604: D0 15     BNE bra_961B
 C - - - - - 0x00D616 03:9606: EE CD 03  INC ram_03CD
@@ -4968,7 +4968,7 @@ C - - - - - 0x00D66F 03:965F: D0 04     BNE bra_9665    ; jmp
 
 ofs_022_9661_01:
 C - - J - - 0x00D671 03:9661: A9 01     LDA #$01
-C - - - - - 0x00D673 03:9663: 85 61     STA ram_0061
+C - - - - - 0x00D673 03:9663: 85 61     STA ram_0061_конфиг_уровня
 bra_9665:
 C - - - - - 0x00D675 03:9665: E6 8C     INC ram_008C
 C - - - - - 0x00D677 03:9667: 60        RTS
@@ -4977,7 +4977,7 @@ C - - - - - 0x00D677 03:9667: 60        RTS
 
 ofs_022_9668_02:
 C - - J - - 0x00D678 03:9668: A9 01     LDA #$01
-C - - - - - 0x00D67A 03:966A: 85 61     STA ram_0061
+C - - - - - 0x00D67A 03:966A: 85 61     STA ram_0061_конфиг_уровня
 C - - - - - 0x00D67C 03:966C: D0 F7     BNE bra_9665    ; jmp
 
 
@@ -4988,11 +4988,11 @@ ofs_022_966E_03_RTS:
 
 
 sub_966F:
-C - - - - - 0x00D67F 03:966F: A5 8D     LDA ram_008D
+C - - - - - 0x00D67F 03:966F: A5 8D     LDA ram_008D_событие_на_уровне
 C - - - - - 0x00D681 03:9671: 0A        ASL
 C - - - - - 0x00D682 03:9672: A8        TAY
 C - - - - - 0x00D683 03:9673: B9 8A 96  LDA tbl_968A,Y
-C - - - - - 0x00D686 03:9676: C5 82     CMP ram_0082
+C - - - - - 0x00D686 03:9676: C5 82     CMP ram_0082_конфиг_уровня
 C - - - - - 0x00D688 03:9678: 90 0F     BCC bra_9689_RTS
 C - - - - - 0x00D68A 03:967A: F0 02     BEQ bra_967E
 C - - - - - 0x00D68C 03:967C: B0 07     BCS bra_9685    ; jmp
@@ -5026,7 +5026,7 @@ tbl_968A:
 
 
 sub_969D:
-C - - - - - 0x00D6AD 03:969D: A5 8D     LDA ram_008D
+C - - - - - 0x00D6AD 03:969D: A5 8D     LDA ram_008D_событие_на_уровне
 C - - - - - 0x00D6AF 03:969F: 20 09 E6  JSR sub_0x01E619_jump_to_pointers_after_jsr
 - D 0 - I - 0x00D6B2 03:96A2: B6 96     .word ofs_023_96B6_00
 - D 0 - I - 0x00D6B4 03:96A4: BD 96     .word ofs_023_96BD_01
@@ -5059,8 +5059,8 @@ ofs_023_96C3_02:
 C - - J - - 0x00D6D3 03:96C3: A9 00     LDA #$00
 C - - - - - 0x00D6D5 03:96C5: 85 98     STA ram_0098
 C - - - - - 0x00D6D7 03:96C7: A9 C0     LDA #$C0
-C - - - - - 0x00D6D9 03:96C9: 85 7D     STA ram_007D_flag
-C - - - - - 0x00D6DB 03:96CB: 85 71     STA ram_0071_flag
+C - - - - - 0x00D6D9 03:96C9: 85 7D     STA ram_007D_тип_скролла
+C - - - - - 0x00D6DB 03:96CB: 85 71     STA ram_0071_тип_скролла
 C - - - - - 0x00D6DD 03:96CD: D0 20     BNE bra_96EF    ; jmp
 
 
@@ -5080,7 +5080,7 @@ C - - - - - 0x00D6EB 03:96DB: D0 12     BNE bra_96EF    ; jmp
 ofs_023_96DD_04:
 ofs_023_96DD_08:
 C - - J - - 0x00D6ED 03:96DD: A9 C0     LDA #$C0
-C - - - - - 0x00D6EF 03:96DF: 85 71     STA ram_0071_flag
+C - - - - - 0x00D6EF 03:96DF: 85 71     STA ram_0071_тип_скролла
 C - - - - - 0x00D6F1 03:96E1: A9 00     LDA #$00
 C - - - - - 0x00D6F3 03:96E3: 85 7E     STA ram_007E
 C - - - - - 0x00D6F5 03:96E5: F0 08     BEQ bra_96EF    ; jmp
@@ -5098,7 +5098,7 @@ C - - J - - 0x00D6FB 03:96EB: A9 00     LDA #$00
 bra_96ED:
 C - - - - - 0x00D6FD 03:96ED: 85 9F     STA ram_009F
 bra_96EF:
-C - - - - - 0x00D6FF 03:96EF: E6 8D     INC ram_008D
+C - - - - - 0x00D6FF 03:96EF: E6 8D     INC ram_008D_событие_на_уровне
 C - - - - - 0x00D701 03:96F1: 60        RTS
 
 
@@ -5111,7 +5111,7 @@ C - - J - - 0x00D702 03:96F2: 60        RTS
 ofs_044_0x00D703_04_area_5:
 C - - J - - 0x00D703 03:96F3: AD CD 03  LDA ram_03CD
 C - - - - - 0x00D706 03:96F6: 30 1C     BMI bra_9714
-C - - - - - 0x00D708 03:96F8: A5 1B     LDA ram_счетчик_кадров
+C - - - - - 0x00D708 03:96F8: A5 1B     LDA ram_счетчик_кадров_1
 C - - - - - 0x00D70A 03:96FA: 29 07     AND #$07
 C - - - - - 0x00D70C 03:96FC: D0 16     BNE bra_9714
 C - - - - - 0x00D70E 03:96FE: EE CD 03  INC ram_03CD
@@ -5127,7 +5127,7 @@ C - - - - - 0x00D721 03:9711: 20 64 F9  JSR sub_0x01F974_write_3_colors_with_con
 bra_9714:
 C - - - - - 0x00D724 03:9714: AD CF 03  LDA ram_03CF
 C - - - - - 0x00D727 03:9717: 30 30     BMI bra_9749
-C - - - - - 0x00D729 03:9719: A5 1B     LDA ram_счетчик_кадров
+C - - - - - 0x00D729 03:9719: A5 1B     LDA ram_счетчик_кадров_1
 C - - - - - 0x00D72B 03:971B: 29 03     AND #$03
 C - - - - - 0x00D72D 03:971D: D0 2A     BNE bra_9749
 C - - - - - 0x00D72F 03:971F: EE CF 03  INC ram_03CF
@@ -5183,7 +5183,7 @@ tbl_9754_color:
 
 bra_975D:
 C - - - - - 0x00D76D 03:975D: 20 E1 97  JSR sub_97E1
-C - - - - - 0x00D770 03:9760: A5 61     LDA ram_0061
+C - - - - - 0x00D770 03:9760: A5 61     LDA ram_0061_конфиг_уровня
 C - - - - - 0x00D772 03:9762: D0 1A     BNE bra_977E_RTS
 C - - - - - 0x00D774 03:9764: A5 8C     LDA ram_008C
 C - - - - - 0x00D776 03:9766: 0A        ASL
@@ -5256,8 +5256,8 @@ C - - - - - 0x00D7C9 03:97B9: D0 F1     BNE bra_97AC    ; jmp
 ofs_024_97BB_02:
 C - - J - - 0x00D7CB 03:97BB: A9 80     LDA #$80
 bra_97BD:
-C - - - - - 0x00D7CD 03:97BD: 85 7D     STA ram_007D_flag
-C - - - - - 0x00D7CF 03:97BF: 85 71     STA ram_0071_flag
+C - - - - - 0x00D7CD 03:97BD: 85 7D     STA ram_007D_тип_скролла
+C - - - - - 0x00D7CF 03:97BF: 85 71     STA ram_0071_тип_скролла
 C - - - - - 0x00D7D1 03:97C1: D0 EC     BNE bra_97AF    ; jmp
 
 
@@ -5270,7 +5270,7 @@ C - - - - - 0x00D7DA 03:97CA: 20 64 F9  JSR sub_0x01F974_write_3_colors_with_con
 C - - - - - 0x00D7DD 03:97CD: A0 A8     LDY #con_F97C_colors + $A8
 C - - - - - 0x00D7DF 03:97CF: 20 64 F9  JSR sub_0x01F974_write_3_colors_with_condition
 C - - - - - 0x00D7E2 03:97D2: A9 02     LDA #$02
-C - - - - - 0x00D7E4 03:97D4: 85 61     STA ram_0061
+C - - - - - 0x00D7E4 03:97D4: 85 61     STA ram_0061_конфиг_уровня
 C - - - - - 0x00D7E6 03:97D6: A9 C0     LDA #$C0
 C - - - - - 0x00D7E8 03:97D8: D0 E3     BNE bra_97BD    ; jmp
 
@@ -5278,7 +5278,7 @@ C - - - - - 0x00D7E8 03:97D8: D0 E3     BNE bra_97BD    ; jmp
 
 ofs_024_97DA_04:
 C - - J - - 0x00D7EA 03:97DA: A9 01     LDA #$01
-C - - - - - 0x00D7EC 03:97DC: 85 61     STA ram_0061
+C - - - - - 0x00D7EC 03:97DC: 85 61     STA ram_0061_конфиг_уровня
 C - - - - - 0x00D7EE 03:97DE: D0 CF     BNE bra_97AF    ; jmp
 
 
@@ -5289,11 +5289,11 @@ ofs_024_97E0_05_RTS:
 
 
 sub_97E1:
-C - - - - - 0x00D7F1 03:97E1: A5 8D     LDA ram_008D
+C - - - - - 0x00D7F1 03:97E1: A5 8D     LDA ram_008D_событие_на_уровне
 C - - - - - 0x00D7F3 03:97E3: 0A        ASL
 C - - - - - 0x00D7F4 03:97E4: A8        TAY
 C - - - - - 0x00D7F5 03:97E5: B9 FC 97  LDA tbl_97FC,Y
-C - - - - - 0x00D7F8 03:97E8: C5 82     CMP ram_0082
+C - - - - - 0x00D7F8 03:97E8: C5 82     CMP ram_0082_конфиг_уровня
 C - - - - - 0x00D7FA 03:97EA: 90 0F     BCC bra_97FB_RTS
 C - - - - - 0x00D7FC 03:97EC: F0 02     BEQ bra_97F0
 C - - - - - 0x00D7FE 03:97EE: B0 07     BCS bra_97F7    ; jmp
@@ -5320,7 +5320,7 @@ tbl_97FC:
 
 
 sub_9801:
-C - - - - - 0x00D811 03:9801: A6 8D     LDX ram_008D
+C - - - - - 0x00D811 03:9801: A6 8D     LDX ram_008D_событие_на_уровне
 C - - - - - 0x00D813 03:9803: D0 07     BNE bra_980C
 C - - - - - 0x00D815 03:9805: A9 FF     LDA #$FF
 C - - - - - 0x00D817 03:9807: 8D CF 03  STA ram_03CF
@@ -5330,9 +5330,9 @@ C - - - - - 0x00D81C 03:980C: CA        DEX
 C - - - - - 0x00D81D 03:980D: D0 0A     BNE bra_9819_RTS
 C - - - - - 0x00D81F 03:980F: 20 90 F1  JSR sub_0x01F1A0
 C - - - - - 0x00D822 03:9812: A9 00     LDA #$00
-C - - - - - 0x00D824 03:9814: 85 61     STA ram_0061
+C - - - - - 0x00D824 03:9814: 85 61     STA ram_0061_конфиг_уровня
 bra_9816:
-C - - - - - 0x00D826 03:9816: E6 8D     INC ram_008D
+C - - - - - 0x00D826 03:9816: E6 8D     INC ram_008D_событие_на_уровне
 C - - - - - 0x00D828 03:9818: 60        RTS
 bra_9819_RTS:   ; bzk optimize
 C - - - - - 0x00D829 03:9819: 60        RTS
@@ -5342,7 +5342,7 @@ C - - - - - 0x00D829 03:9819: 60        RTS
 ofs_044_0x00D82A_05_area_6:
 C - - J - - 0x00D82A 03:981A: AC CD 03  LDY ram_03CD
 C - - - - - 0x00D82D 03:981D: 30 1B     BMI bra_983A
-C - - - - - 0x00D82F 03:981F: A5 1B     LDA ram_счетчик_кадров
+C - - - - - 0x00D82F 03:981F: A5 1B     LDA ram_счетчик_кадров_1
 C - - - - - 0x00D831 03:9821: 29 0F     AND #$0F
 C - - - - - 0x00D833 03:9823: D0 15     BNE bra_983A
 C - - - - - 0x00D835 03:9825: EE CD 03  INC ram_03CD
@@ -5356,7 +5356,7 @@ C - - - - - 0x00D847 03:9837: 8D CD 03  STA ram_03CD
 bra_983A:
 C - - - - - 0x00D84A 03:983A: AD CF 03  LDA ram_03CF
 C - - - - - 0x00D84D 03:983D: 30 1B     BMI bra_985A
-C - - - - - 0x00D84F 03:983F: A5 1B     LDA ram_счетчик_кадров
+C - - - - - 0x00D84F 03:983F: A5 1B     LDA ram_счетчик_кадров_1
 C - - - - - 0x00D851 03:9841: 29 07     AND #$07
 C - - - - - 0x00D853 03:9843: D0 15     BNE bra_985A
 C - - - - - 0x00D855 03:9845: EE CF 03  INC ram_03CF
@@ -5395,11 +5395,11 @@ tbl_9863_color:
 
 
 bra_986A:
-C - - - - - 0x00D87A 03:986A: A5 8D     LDA ram_008D
+C - - - - - 0x00D87A 03:986A: A5 8D     LDA ram_008D_событие_на_уровне
 C - - - - - 0x00D87C 03:986C: 0A        ASL
 C - - - - - 0x00D87D 03:986D: A8        TAY
 C - - - - - 0x00D87E 03:986E: B9 85 98  LDA tbl_9885,Y
-C - - - - - 0x00D881 03:9871: C5 82     CMP ram_0082
+C - - - - - 0x00D881 03:9871: C5 82     CMP ram_0082_конфиг_уровня
 C - - - - - 0x00D883 03:9873: 90 0F     BCC bra_9884_RTS
 C - - - - - 0x00D885 03:9875: F0 02     BEQ bra_9879
 C - - - - - 0x00D887 03:9877: B0 07     BCS bra_9880    ; jmp
@@ -5431,7 +5431,7 @@ tbl_9885:
 
 
 sub_9894:
-C - - - - - 0x00D8A4 03:9894: A5 8D     LDA ram_008D
+C - - - - - 0x00D8A4 03:9894: A5 8D     LDA ram_008D_событие_на_уровне
 C - - - - - 0x00D8A6 03:9896: 20 09 E6  JSR sub_0x01E619_jump_to_pointers_after_jsr
 - D 0 - I - 0x00D8A9 03:9899: A9 98     .word ofs_025_98A9_00
 - D 0 - I - 0x00D8AB 03:989B: B1 98     .word ofs_025_98B1_01
@@ -5449,7 +5449,7 @@ C - - J - - 0x00D8B9 03:98A9: A0 94     LDY #con_F97C_colors + $94
 C - - - - - 0x00D8BB 03:98AB: 20 64 F9  JSR sub_0x01F974_write_3_colors_with_condition
 bra_98AE:
 loc_98AE:
-C D 0 - - - 0x00D8BE 03:98AE: E6 8D     INC ram_008D
+C D 0 - - - 0x00D8BE 03:98AE: E6 8D     INC ram_008D_событие_на_уровне
 C - - - - - 0x00D8C0 03:98B0: 60        RTS
 
 
@@ -5495,8 +5495,8 @@ C - - - - - 0x00D8E3 03:98D3: 20 64 F9  JSR sub_0x01F974_write_3_colors_with_con
 C - - - - - 0x00D8E6 03:98D6: A9 00     LDA #$00
 C - - - - - 0x00D8E8 03:98D8: 85 98     STA ram_0098
 C - - - - - 0x00D8EA 03:98DA: A9 C0     LDA #$C0
-C - - - - - 0x00D8EC 03:98DC: 85 7D     STA ram_007D_flag
-C - - - - - 0x00D8EE 03:98DE: 85 71     STA ram_0071_flag
+C - - - - - 0x00D8EC 03:98DC: 85 7D     STA ram_007D_тип_скролла
+C - - - - - 0x00D8EE 03:98DE: 85 71     STA ram_0071_тип_скролла
 C - - - - - 0x00D8F0 03:98E0: D0 CC     BNE bra_98AE    ; jmp
 
 
@@ -5511,11 +5511,11 @@ C - - J - - 0x00D8F3 03:98E3: A5 39     LDA ram_пауза
 C - - - - - 0x00D8F5 03:98E5: F0 01     BEQ bra_98E8
 C - - - - - 0x00D8F7 03:98E7: 60        RTS
 bra_98E8:
-C - - - - - 0x00D8F8 03:98E8: A5 8D     LDA ram_008D
+C - - - - - 0x00D8F8 03:98E8: A5 8D     LDA ram_008D_событие_на_уровне
 C - - - - - 0x00D8FA 03:98EA: 0A        ASL
 C - - - - - 0x00D8FB 03:98EB: A8        TAY
 C - - - - - 0x00D8FC 03:98EC: B9 01 99  LDA tbl_9901,Y
-C - - - - - 0x00D8FF 03:98EF: C5 82     CMP ram_0082
+C - - - - - 0x00D8FF 03:98EF: C5 82     CMP ram_0082_конфиг_уровня
 C - - - - - 0x00D901 03:98F1: 90 09     BCC bra_98FC
 C - - - - - 0x00D903 03:98F3: D0 0B     BNE bra_9900_RTS
 C - - - - - 0x00D905 03:98F5: B9 02 99  LDA tbl_9901 + $01,Y
@@ -5543,7 +5543,7 @@ tbl_9901:
 
 
 sub_990C:
-C - - - - - 0x00D91C 03:990C: A6 8D     LDX ram_008D
+C - - - - - 0x00D91C 03:990C: A6 8D     LDX ram_008D_событие_на_уровне
 C - - - - - 0x00D91E 03:990E: D0 0C     BNE bra_991C
 C - - - - - 0x00D920 03:9910: A9 33     LDA #$33
 C - - - - - 0x00D922 03:9912: A0 7F     LDY #$7F
@@ -5561,7 +5561,7 @@ C - - - - - 0x00D934 03:9924: A0 30     LDY #con_F97C_colors + $30
 bra_9926:
 C - - - - - 0x00D936 03:9926: 20 64 F9  JSR sub_0x01F974_write_3_colors_with_condition
 bra_9929:
-C - - - - - 0x00D939 03:9929: E6 8D     INC ram_008D
+C - - - - - 0x00D939 03:9929: E6 8D     INC ram_008D_событие_на_уровне
 C - - - - - 0x00D93B 03:992B: 60        RTS
 bra_992C:
 C - - - - - 0x00D93C 03:992C: CA        DEX
@@ -5591,7 +5591,7 @@ bra_995D:
 C - - - - - 0x00D96D 03:995D: CA        DEX
 C - - - - - 0x00D96E 03:995E: D0 06     BNE bra_9966_RTS
 C - - - - - 0x00D970 03:9960: A9 C0     LDA #$C0
-C - - - - - 0x00D972 03:9962: 85 7D     STA ram_007D_flag
+C - - - - - 0x00D972 03:9962: 85 7D     STA ram_007D_тип_скролла
 C - - - - - 0x00D974 03:9964: D0 C3     BNE bra_9929    ; jmp
 bra_9966_RTS:
 - - - - - - 0x00D976 03:9966: 60        RTS
@@ -5599,7 +5599,7 @@ bra_9966_RTS:
 
 
 ofs_044_0x00D977_07_area_8:
-C - - J - - 0x00D977 03:9967: A5 1B     LDA ram_счетчик_кадров
+C - - J - - 0x00D977 03:9967: A5 1B     LDA ram_счетчик_кадров_1
 C - - - - - 0x00D979 03:9969: 29 07     AND #$07
 C - - - - - 0x00D97B 03:996B: D0 16     BNE bra_9983
 C - - - - - 0x00D97D 03:996D: EE CD 03  INC ram_03CD
@@ -5691,8 +5691,8 @@ C - - - - - 0x00D9D7 03:99C7: 20 09 E6  JSR sub_0x01E619_jump_to_pointers_after_
 
 ofs_026_99E4_00:
 C - - J - - 0x00D9F4 03:99E4: A9 40     LDA #$40
-C - - - - - 0x00D9F6 03:99E6: 85 7D     STA ram_007D_flag
-C - - - - - 0x00D9F8 03:99E8: 85 71     STA ram_0071_flag
+C - - - - - 0x00D9F6 03:99E6: 85 7D     STA ram_007D_тип_скролла
+C - - - - - 0x00D9F8 03:99E8: 85 71     STA ram_0071_тип_скролла
 C - - - - - 0x00D9FA 03:99EA: D0 08     BNE bra_99F4    ; jmp
 
 
@@ -5700,7 +5700,7 @@ C - - - - - 0x00D9FA 03:99EA: D0 08     BNE bra_99F4    ; jmp
 ofs_026_99EC_02:
 ofs_026_99EC_04:
 C - - J - - 0x00D9FC 03:99EC: A9 02     LDA #$02
-C - - - - - 0x00D9FE 03:99EE: 85 61     STA ram_0061
+C - - - - - 0x00D9FE 03:99EE: 85 61     STA ram_0061_конфиг_уровня
 C - - - - - 0x00DA00 03:99F0: A9 00     LDA #$00
 C - - - - - 0x00DA02 03:99F2: 85 6F     STA ram_006F
 bra_99F4:
@@ -5713,8 +5713,8 @@ C - - - - - 0x00DA06 03:99F6: 60        RTS
 ofs_026_99F7_05:
 ofs_026_99F7_08:
 C - - J - - 0x00DA07 03:99F7: A9 C0     LDA #$C0
-C - - - - - 0x00DA09 03:99F9: 85 7D     STA ram_007D_flag
-C - - - - - 0x00DA0B 03:99FB: 85 71     STA ram_0071_flag
+C - - - - - 0x00DA09 03:99F9: 85 7D     STA ram_007D_тип_скролла
+C - - - - - 0x00DA0B 03:99FB: 85 71     STA ram_0071_тип_скролла
 C - - - - - 0x00DA0D 03:99FD: A9 01     LDA #$01
 C - - - - - 0x00DA0F 03:99FF: A4 FC     LDY ram_scroll_Y
 C - - - - - 0x00DA11 03:9A01: 30 02     BMI bra_9A05
@@ -5738,8 +5738,8 @@ C - - - - - 0x00DA29 03:9A19: D0 D9     BNE bra_99F4    ; jmp
 
 ofs_026_9A1B_07:
 C - - J - - 0x00DA2B 03:9A1B: A9 80     LDA #$80
-C - - - - - 0x00DA2D 03:9A1D: 85 7D     STA ram_007D_flag
-C - - - - - 0x00DA2F 03:9A1F: 85 71     STA ram_0071_flag
+C - - - - - 0x00DA2D 03:9A1D: 85 7D     STA ram_007D_тип_скролла
+C - - - - - 0x00DA2F 03:9A1F: 85 71     STA ram_0071_тип_скролла
 C - - - - - 0x00DA31 03:9A21: D0 D1     BNE bra_99F4    ; jmp
 
 
@@ -5764,7 +5764,7 @@ C - - - - - 0x00DA41 03:9A31: D0 C1     BNE bra_99F4    ; jmp
 
 ofs_026_9A33_0B:
 C - - J - - 0x00DA43 03:9A33: A9 01     LDA #$01
-C - - - - - 0x00DA45 03:9A35: 85 61     STA ram_0061
+C - - - - - 0x00DA45 03:9A35: 85 61     STA ram_0061_конфиг_уровня
 C - - - - - 0x00DA47 03:9A37: D0 BB     BNE bra_99F4    ; jmp
 
 
@@ -5776,11 +5776,11 @@ C - - - - - 0x00DA49 03:9A39: 60        RTS
 
 
 sub_9A3A:
-C - - - - - 0x00DA4A 03:9A3A: A5 8D     LDA ram_008D
+C - - - - - 0x00DA4A 03:9A3A: A5 8D     LDA ram_008D_событие_на_уровне
 C - - - - - 0x00DA4C 03:9A3C: 0A        ASL
 C - - - - - 0x00DA4D 03:9A3D: A8        TAY
 C - - - - - 0x00DA4E 03:9A3E: B9 55 9A  LDA tbl_9A55,Y
-C - - - - - 0x00DA51 03:9A41: C5 82     CMP ram_0082
+C - - - - - 0x00DA51 03:9A41: C5 82     CMP ram_0082_конфиг_уровня
 C - - - - - 0x00DA53 03:9A43: 90 0F     BCC bra_9A54_RTS
 C - - - - - 0x00DA55 03:9A45: F0 02     BEQ bra_9A49
 C - - - - - 0x00DA57 03:9A47: B0 07     BCS bra_9A50    ; jmp
@@ -5808,7 +5808,7 @@ tbl_9A55:
 
 
 sub_9A5C:
-C - - - - - 0x00DA6C 03:9A5C: A5 8D     LDA ram_008D
+C - - - - - 0x00DA6C 03:9A5C: A5 8D     LDA ram_008D_событие_на_уровне
 C - - - - - 0x00DA6E 03:9A5E: 20 09 E6  JSR sub_0x01E619_jump_to_pointers_after_jsr
 - D 0 - I - 0x00DA71 03:9A61: 69 9A     .word ofs_027_9A69_00
 - D 0 - I - 0x00DA73 03:9A63: 69 9A     .word ofs_027_9A69_01
@@ -5820,16 +5820,16 @@ C - - - - - 0x00DA6E 03:9A5E: 20 09 E6  JSR sub_0x01E619_jump_to_pointers_after_
 ofs_027_9A69_00:
 ofs_027_9A69_01:
 C - - J - - 0x00DA79 03:9A69: A9 00     LDA #$00
-C - - - - - 0x00DA7B 03:9A6B: 85 61     STA ram_0061
+C - - - - - 0x00DA7B 03:9A6B: 85 61     STA ram_0061_конфиг_уровня
 bra_9A6D:
-C - - - - - 0x00DA7D 03:9A6D: E6 8D     INC ram_008D
+C - - - - - 0x00DA7D 03:9A6D: E6 8D     INC ram_008D_событие_на_уровне
 C - - - - - 0x00DA7F 03:9A6F: 60        RTS
 
 
 
 ofs_027_9A70_02:
 C - - J - - 0x00DA80 03:9A70: A9 C0     LDA #$C0
-C - - - - - 0x00DA82 03:9A72: 85 71     STA ram_0071_flag
+C - - - - - 0x00DA82 03:9A72: 85 71     STA ram_0071_тип_скролла
 C - - - - - 0x00DA84 03:9A74: D0 F7     BNE bra_9A6D    ; jmp
 
 
@@ -7981,7 +7981,7 @@ C - - - - - 0x00F8A9 03:B899: 85 00     STA ram_0000
 C - - - - - 0x00F8AB 03:B89B: B9 B4 B8  LDA tbl_B8B3 + $01,Y
 C - - - - - 0x00F8AE 03:B89E: 85 01     STA ram_0001
 ; skip 1st color in each palette set
-C - - - - - 0x00F8B0 03:B8A0: A0 17     LDY #$17
+C - - - - - 0x00F8B0 03:B8A0: A0 17     LDY #con_макс_индекс_общий
 C - - - - - 0x00F8B2 03:B8A2: A2 1F     LDX #$1F
 bra_B8A4_loop:
 C - - - - - 0x00F8B4 03:B8A4: 8A        TXA
