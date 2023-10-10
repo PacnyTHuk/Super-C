@@ -4844,6 +4844,20 @@ bra_FB2A_loop:
 C - - - - - 0x01FB3A 07:FB2A: 9D 00 07  STA $0700,X
 C - - - - - 0x01FB3D 07:FB2D: E8        INX
 C - - - - - 0x01FB3E 07:FB2E: D0 FA     BNE bra_FB2A_loop
+; очистка батарейки
+                                        LDY #> $6000    ; начальный адрес для очистки
+                                        STY ram_0001
+                                        LDY #< $6000
+                                        STY ram_0000
+; A, X, Y = 00
+bra_FB2F_loop:
+                                        STA (ram_0000),Y
+                                        INY
+                                        BNE bra_FB2F_loop
+                                        INC ram_0001    ; увеличить старший байт адреса
+                                        INX
+                                        CPX #$20        ; очистить 20 страниц
+                                        BNE bra_FB2F_loop
 C - - - - - 0x01FB40 07:FB30: A9 53     LDA #$53
 C - - - - - 0x01FB42 07:FB32: 8D EA 07  STA ram_reset_check
 C - - - - - 0x01FB45 07:FB35: A9 B1     LDA #$B1
