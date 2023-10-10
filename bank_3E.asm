@@ -4779,8 +4779,10 @@ bra_FAC9_RTS:
 C - - - - - 0x01FAD9 07:FAC9: 60        RTS
 
 
-
-vec_FACA_RESET:
+; 1путин: подключение батарейки
+vec_Ресет:
+		LDA #$80
+		STA $A001
 C - - - - - 0x01FADA 07:FACA: D8        CLD
 C - - - - - 0x01FADB 07:FACB: 78        SEI
 C - - - - - 0x01FADC 07:FACC: A2 FF     LDX #$FF
@@ -5582,7 +5584,7 @@ C - - - - - 0x01FF61 07:FF51: 60        RTS
 
 .segment "VECTORS"
 - D 3 - - - 0x02000A 07:FFFA: 67 FB     .word vec_FB67_NMI
-- D 3 - - - 0x02000C 07:FFFC: CA FA     .word vec_FACA_RESET
+- D 3 - - - 0x02000C 07:FFFC: CA FA     .word vec_Ресет
 - D 3 - - - 0x02000E 07:FFFE: 7F E0     .word vec_E07F_IRQ
 
 
