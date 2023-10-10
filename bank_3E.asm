@@ -1073,7 +1073,7 @@ C - - - - - 0x01E5C6 07:E5B6: 10 DE     BPL bra_E596_loop
 C - - - - - 0x01E5C8 07:E5B8: A9 00     LDA #$00
 C - - - - - 0x01E5CA 07:E5BA: A0 05     LDY #$05
 bra_E5BC_loop:
-C - - - - - 0x01E5CC 07:E5BC: 99 E3 07  STA ram_plr_score,Y
+C - - - - - 0x01E5CC 07:E5BC: 99 E3 07  STA ram_очки_игрока,Y
 C - - - - - 0x01E5CF 07:E5BF: 88        DEY
 C - - - - - 0x01E5D0 07:E5C0: 10 FA     BPL bra_E5BC_loop
 C - - - - - 0x01E5D2 07:E5C2: 60        RTS
@@ -1210,10 +1210,10 @@ C - - - - - 0x01E657 07:E647: F0 02     BEQ bra_E64B
 C - - - - - 0x01E659 07:E649: A9 01     LDA #$01
 bra_E64B:   ; A = 00
 C - - - - - 0x01E65B 07:E64B: 85 21     STA ram_0021    ; player index
-C - - - - - 0x01E65D 07:E64D: A9 E3     LDA #< ram_1p_score
+C - - - - - 0x01E65D 07:E64D: A9 E3     LDA #< ram_1p_очки
 C - - - - - 0x01E65F 07:E64F: A4 21     LDY ram_0021    ; player index
 C - - - - - 0x01E661 07:E651: F0 02     BEQ bra_E655
-C - - - - - 0x01E663 07:E653: A9 E6     LDA #< ram_2p_score
+C - - - - - 0x01E663 07:E653: A9 E6     LDA #< ram_2p_очки
 bra_E655:
 C - - - - - 0x01E665 07:E655: 85 04     STA ram_0004
 C - - - - - 0x01E667 07:E657: A0 07     LDY #$07
@@ -1236,7 +1236,7 @@ C - - - - - 0x01E681 07:E671: 90 0B     BCC bra_E67E
 - - - - - - 0x01E683 07:E673: A2 02     LDX #$02
 - - - - - - 0x01E685 07:E675: A9 99     LDA #$99
 bra_E677_loop:
-- - - - - - 0x01E687 07:E677: 9D E0 07  STA ram_hi_score,X
+- - - - - - 0x01E687 07:E677: 9D E0 07  STA ram_hi_очки,X
 - - - - - - 0x01E68A 07:E67A: CA        DEX
 - - - - - - 0x01E68B 07:E67B: 10 FA     BPL bra_E677_loop
 - - - - - - 0x01E68D 07:E67D: 60        RTS
@@ -1282,7 +1282,7 @@ C - - - - - 0x01E6D3 07:E6C3: 20 DE FD  JSR sub_FDDE_play_sound
 bra_E6C6:
 C - - - - - 0x01E6D6 07:E6C6: A0 02     LDY #$02
 bra_E6C8_loop:
-C - - - - - 0x01E6D8 07:E6C8: B9 E0 07  LDA ram_hi_score,Y
+C - - - - - 0x01E6D8 07:E6C8: B9 E0 07  LDA ram_hi_очки,Y
 C - - - - - 0x01E6DB 07:E6CB: D1 04     CMP (ram_0004),Y
 C - - - - - 0x01E6DD 07:E6CD: 90 05     BCC bra_E6D4
 C - - - - - 0x01E6DF 07:E6CF: D0 0D     BNE bra_E6DE_RTS
@@ -1292,7 +1292,7 @@ bra_E6D4:
 C - - - - - 0x01E6E4 07:E6D4: A0 02     LDY #$02
 bra_E6D6_loop:
 C - - - - - 0x01E6E6 07:E6D6: B1 04     LDA (ram_0004),Y
-C - - - - - 0x01E6E8 07:E6D8: 99 E0 07  STA ram_hi_score,Y
+C - - - - - 0x01E6E8 07:E6D8: 99 E0 07  STA ram_hi_очки,Y
 C - - - - - 0x01E6EB 07:E6DB: 88        DEY
 C - - - - - 0x01E6EC 07:E6DC: 10 F8     BPL bra_E6D6_loop
 bra_E6DE_RTS:
@@ -1381,15 +1381,15 @@ C - - - - - 0x01E76B 07:E75B: A0 01     LDY #$01
 C - - - - - 0x01E76D 07:E75D: 20 A4 E7  JSR sub_E7A4_display_lives_counter_with_sprites
 C - - - - - 0x01E770 07:E760: A9 03     LDA #con_0x0017EA_1p_score
 C - - - - - 0x01E772 07:E762: 20 7A FE  JSR sub_FE7A_print_text_on_the_screen
-C - - - - - 0x01E775 07:E765: A9 E3     LDA #< ram_1p_score
+C - - - - - 0x01E775 07:E765: A9 E3     LDA #< ram_1p_очки
 C - - - - - 0x01E777 07:E767: 20 7B E7  JSR sub_E77B_print_score
 C - - - - - 0x01E77A 07:E76A: A9 04     LDA #con_0x0017EA_2p_score
 C - - - - - 0x01E77C 07:E76C: 20 7A FE  JSR sub_FE7A_print_text_on_the_screen
-C - - - - - 0x01E77F 07:E76F: A9 E6     LDA #< ram_2p_score
+C - - - - - 0x01E77F 07:E76F: A9 E6     LDA #< ram_2p_очки
 C - - - - - 0x01E781 07:E771: 20 7B E7  JSR sub_E77B_print_score
 C - - - - - 0x01E784 07:E774: A9 05     LDA #con_0x0017EA_hi_score
 C - - - - - 0x01E786 07:E776: 20 7A FE  JSR sub_FE7A_print_text_on_the_screen
-C - - - - - 0x01E789 07:E779: A9 E0     LDA #< ram_hi_score
+C - - - - - 0x01E789 07:E779: A9 E0     LDA #< ram_hi_очки
 sub_E77B_print_score:
 C - - - - - 0x01E78B 07:E77B: 85 00     STA ram_0000
 C - - - - - 0x01E78D 07:E77D: A9 07     LDA #$07
@@ -3421,13 +3421,13 @@ sub_F396_write_speed_XY:
 sub_0x01F3A6_write_speed_XY:
 loc_0x01F3A6_write_speed_XY:
 C D 3 - - - 0x01F3A6 07:F396: A5 05     LDA ram_0005
-C - - - - - 0x01F3A8 07:F398: 9D AE 06  STA ram_spd_Y_hi_obj,X
+C - - - - - 0x01F3A8 07:F398: 9D AE 06  STA ram_скорость_объектов_y_старш,X
 C - - - - - 0x01F3AB 07:F39B: A5 04     LDA ram_0004
-C - - - - - 0x01F3AD 07:F39D: 9D A0 06  STA ram_spd_Y_lo_obj,X
+C - - - - - 0x01F3AD 07:F39D: 9D A0 06  STA ram_скорость_объектов_y_младш,X
 C - - - - - 0x01F3B0 07:F3A0: A5 0B     LDA ram_000B
-C - - - - - 0x01F3B2 07:F3A2: 9D CA 06  STA ram_spd_X_hi_obj,X
+C - - - - - 0x01F3B2 07:F3A2: 9D CA 06  STA ram_скорость_объектов_x_старш,X
 C - - - - - 0x01F3B5 07:F3A5: A5 0A     LDA ram_000A
-C - - - - - 0x01F3B7 07:F3A7: 9D BC 06  STA ram_spd_X_lo_obj,X
+C - - - - - 0x01F3B7 07:F3A7: 9D BC 06  STA ram_скорость_объектов_x_младш,X
 C - - - - - 0x01F3BA 07:F3AA: 60        RTS
 
 
@@ -3819,7 +3819,7 @@ bra_F588:
 bra_F595:
 - - - - - - 0x01F5A5 07:F595: A9 00     LDA #$00
 - - - - - - 0x01F5A7 07:F597: 85 0E     STA ram_000E
-- - - - - - 0x01F5A9 07:F599: B9 CA 06  LDA ram_spd_X_hi_obj,Y
+- - - - - - 0x01F5A9 07:F599: B9 CA 06  LDA ram_скорость_объектов_x_старш,Y
 - - - - - - 0x01F5AC 07:F59C: 18        CLC
 - - - - - - 0x01F5AD 07:F59D: 69 20     ADC #$20
 - - - - - - 0x01F5AF 07:F59F: C9 40     CMP #$40
@@ -3829,7 +3829,7 @@ bra_F595:
 bra_F5A7:
 - - - - - - 0x01F5B7 07:F5A7: 85 0D     STA ram_000D
 - - - - - - 0x01F5B9 07:F5A9: A5 0C     LDA ram_000C
-- - - - - - 0x01F5BB 07:F5AB: D9 CA 06  CMP ram_spd_X_hi_obj,Y
+- - - - - - 0x01F5BB 07:F5AB: D9 CA 06  CMP ram_скорость_объектов_x_старш,Y
 - - - - - - 0x01F5BE 07:F5AE: F0 17     BEQ bra_F5C7
 - - - - - - 0x01F5C0 07:F5B0: A4 0E     LDY ram_000E
 - - - - - - 0x01F5C2 07:F5B2: D0 0A     BNE bra_F5BE
@@ -4090,19 +4090,19 @@ sub_F6D0:
 ; bzk garbage
 - - - - - - 0x01F6E0 07:F6D0: A9 00     LDA #$00
 - - - - - - 0x01F6E2 07:F6D2: 9D 68 05  STA ram_тип_пули_игрока,X
-- - - - - - 0x01F6E5 07:F6D5: 9D 78 05  STA ram_plr_bullet_pos_Y_hi,X
-- - - - - - 0x01F6E8 07:F6D8: 9D 88 05  STA ram_plr_bullet_pos_X_hi,X
-- - - - - - 0x01F6EB 07:F6DB: 9D 98 05  STA ram_plr_bullet_attr_spr,X
-- - - - - - 0x01F6EE 07:F6DE: 9D A8 05  STA ram_05A8_plr_bullet,X
-- - - - - - 0x01F6F1 07:F6E1: 9D B8 05  STA ram_plr_bullet_anim_id,X
-- - - - - - 0x01F6F4 07:F6E4: 9D C8 05  STA ram_plr_bullet_pos_Y_lo,X
-- - - - - - 0x01F6F7 07:F6E7: 9D D8 05  STA ram_plr_bullet_pos_X_lo,X
-- - - - - - 0x01F6FA 07:F6EA: 9D E8 05  STA ram_plr_bullet_spd_Y_lo,X
-- - - - - - 0x01F6FD 07:F6ED: 9D 58 06  STA ram_plr_bullet_spd_Y_hi,X
-- - - - - - 0x01F700 07:F6F0: 9D 08 06  STA ram_plr_bullet_spd_X_lo,X
-- - - - - - 0x01F703 07:F6F3: 9D 18 06  STA ram_plr_bullet_spd_X_hi,X
-- - - - - - 0x01F706 07:F6F6: 9D 28 06  STA ram_0628_plr_bullet,X
-- - - - - - 0x01F709 07:F6F9: 9D 38 06  STA ram_0638_plr_bullet_hitbox_index,X
+- - - - - - 0x01F6E5 07:F6D5: 9D 78 05  STA ram_пули_игрока_позиция_y_старш,X
+- - - - - - 0x01F6E8 07:F6D8: 9D 88 05  STA ram_пули_игрока_позиция_x_старш,X
+- - - - - - 0x01F6EB 07:F6DB: 9D 98 05  STA ram_пули_игрока_аттрибуты_спрайта,X
+- - - - - - 0x01F6EE 07:F6DE: 9D A8 05  STA ram_пули_игрока_аттрибуты,X
+- - - - - - 0x01F6F1 07:F6E1: 9D B8 05  STA ram_пули_игрока_тип_анимации,X
+- - - - - - 0x01F6F4 07:F6E4: 9D C8 05  STA ram_пули_игрока_позиция_y_младш,X
+- - - - - - 0x01F6F7 07:F6E7: 9D D8 05  STA ram_пули_игрока_позиция_x_младш,X
+- - - - - - 0x01F6FA 07:F6EA: 9D E8 05  STA ram_пули_игрока_скорость_y_младш,X
+- - - - - - 0x01F6FD 07:F6ED: 9D 58 06  STA ram_пули_игрока_скорость_y_старш,X
+- - - - - - 0x01F700 07:F6F0: 9D 08 06  STA ram_пули_игрока_скорость_x_младш,X
+- - - - - - 0x01F703 07:F6F3: 9D 18 06  STA ram_пули_игрока_скорость_x_старш,X
+- - - - - - 0x01F706 07:F6F6: 9D 28 06  STA ram_пули_игрока_счетчик_жизни,X
+- - - - - - 0x01F709 07:F6F9: 9D 38 06  STA ram_пули_игрока_хитбокс,X
 - - - - - - 0x01F70C 07:F6FC: 60        RTS
 
 
@@ -4141,7 +4141,7 @@ sub_F711_find_free_object:
 C - - - - - 0x01F721 07:F711: A2 0D     LDX #$0D
 sub_F713_find_free_object_custom_X:
 bra_F713_loop:
-C - - - - - 0x01F723 07:F713: BD 68 06  LDA ram_obj_state,X
+C - - - - - 0x01F723 07:F713: BD 68 06  LDA ram_состояние_объектов,X
 C - - - - - 0x01F726 07:F716: F0 03     BEQ bra_F71B_RTS
 C - - - - - 0x01F728 07:F718: CA        DEX
 C - - - - - 0x01F729 07:F719: 10 F8     BPL bra_F713_loop
@@ -4167,7 +4167,7 @@ C - - - - - 0x01F734 07:F724: 60        RTS
 sub_F725_find_bullet_in_obj_list:
 C - - - - - 0x01F735 07:F725: A2 0D     LDX #$0D
 bra_F727_loop:
-C - - - - - 0x01F737 07:F727: BD D8 06  LDA ram_obj_id,X
+C - - - - - 0x01F737 07:F727: BD D8 06  LDA ram_тип_объектов,X
 C - - - - - 0x01F73A 07:F72A: C9 02     CMP #con_obj_id_02
 C - - - - - 0x01F73C 07:F72C: F0 03     BEQ bra_F731_RTS    ; if found
 C - - - - - 0x01F73E 07:F72E: CA        DEX
@@ -4197,8 +4197,8 @@ loc_F73F_start_preparing_new_object:
 sub_0x01F74F_start_preparing_new_object:
 C D 3 - - - 0x01F74F 07:F73F: 20 9E F7  JSR sub_F79E_prepare_object
 C - - - - - 0x01F752 07:F742: A9 01     LDA #$01
-C - - - - - 0x01F754 07:F744: 9D 68 06  STA ram_obj_state,X
-C - - - - - 0x01F757 07:F747: 9D 76 06  STA ram_obj_hp,X
+C - - - - - 0x01F754 07:F744: 9D 68 06  STA ram_состояние_объектов,X
+C - - - - - 0x01F757 07:F747: 9D 76 06  STA ram_жизни_объектов,X
 C - - - - - 0x01F75A 07:F74A: A9 00     LDA #$00    ; success flag
 C - - - - - 0x01F75C 07:F74C: F0 0B     BEQ bra_F759    ; jmp
 
@@ -4207,8 +4207,8 @@ C - - - - - 0x01F75C 07:F74C: F0 0B     BEQ bra_F759    ; jmp
 sub_F74E_delete_object_and_clear_its_data:
 C - - - - - 0x01F75E 07:F74E: 20 9C F7  JSR sub_F79C_delete_object_01
 C - - - - - 0x01F761 07:F751: A9 00     LDA #$00
-C - - - - - 0x01F763 07:F753: 9D 68 06  STA ram_obj_state,X
-C - - - - - 0x01F766 07:F756: 9D 76 06  STA ram_obj_hp,X
+C - - - - - 0x01F763 07:F753: 9D 68 06  STA ram_состояние_объектов,X
+C - - - - - 0x01F766 07:F756: 9D 76 06  STA ram_жизни_объектов,X
 bra_F759:
 C - - - - - 0x01F769 07:F759: 9D 1E 07  STA ram_obj_flags,X
 C - - - - - 0x01F76C 07:F75C: 9D 08 05  STA ram_кадр_врага_и_пуль,X
@@ -4218,10 +4218,10 @@ C - - - - - 0x01F775 07:F765: 9D 9C 07  STA ram_079C_obj,X
 C - - - - - 0x01F778 07:F768: 9D 22 05  STA ram_позиция_y_спрайта_врага_и_пуль,X
 C - - - - - 0x01F77B 07:F76B: 9D 84 06  STA ram_pos_Y_lo_enemy,X
 C - - - - - 0x01F77E 07:F76E: 9D 92 06  STA ram_pos_X_lo_enemy,X
-C - - - - - 0x01F781 07:F771: 9D A0 06  STA ram_spd_Y_lo_obj,X
-C - - - - - 0x01F784 07:F774: 9D BC 06  STA ram_spd_X_lo_obj,X
-C - - - - - 0x01F787 07:F777: 9D AE 06  STA ram_spd_Y_hi_obj,X
-C - - - - - 0x01F78A 07:F77A: 9D CA 06  STA ram_spd_X_hi_obj,X
+C - - - - - 0x01F781 07:F771: 9D A0 06  STA ram_скорость_объектов_y_младш,X
+C - - - - - 0x01F784 07:F774: 9D BC 06  STA ram_скорость_объектов_x_младш,X
+C - - - - - 0x01F787 07:F777: 9D AE 06  STA ram_скорость_объектов_y_старш,X
+C - - - - - 0x01F78A 07:F77A: 9D CA 06  STA ram_скорость_объектов_x_старш,X
 C - - - - - 0x01F78D 07:F77D: 9D E6 06  STA ram_06E6_obj,X
 C - - - - - 0x01F790 07:F780: 9D F4 06  STA ram_06F4_obj,X
 C - - - - - 0x01F793 07:F783: 9D 10 07  STA ram_0710_obj,X
@@ -4243,9 +4243,9 @@ C - - - - - 0x01F7AC 07:F79C: A0 7F     LDY #$7F
 sub_F79E_prepare_object:
 sub_0x01F7AE_prepare_object:
 C - - - - - 0x01F7AE 07:F79E: B9 E4 F8  LDA tbl_F8E4,Y
-C - - - - - 0x01F7B1 07:F7A1: 9D 3A 07  STA ram_073A_obj_hitbox_index,X
+C - - - - - 0x01F7B1 07:F7A1: 9D 3A 07  STA ram_хитбоксы_объектов,X
 C - - - - - 0x01F7B4 07:F7A4: 98        TYA
-C - - - - - 0x01F7B5 07:F7A5: 9D D8 06  STA ram_obj_id,X
+C - - - - - 0x01F7B5 07:F7A5: 9D D8 06  STA ram_тип_объектов,X
 C - - - - - 0x01F7B8 07:F7A8: 60        RTS
 
 
@@ -4341,10 +4341,10 @@ tbl_F7F8:
 
 loc_0x01F811:
 C D 3 - - - 0x01F811 07:F801: A9 00     LDA #$00
-C - - - - - 0x01F813 07:F803: 9D A8 05  STA ram_05A8_plr_bullet,X
+C - - - - - 0x01F813 07:F803: 9D A8 05  STA ram_пули_игрока_аттрибуты,X
 C - - - - - 0x01F816 07:F806: 9D 68 05  STA ram_тип_пули_игрока,X
-C - - - - - 0x01F819 07:F809: 9D 98 05  STA ram_plr_bullet_attr_spr,X
-C - - - - - 0x01F81C 07:F80C: 9D 38 06  STA ram_0638_plr_bullet_hitbox_index,X
+C - - - - - 0x01F819 07:F809: 9D 98 05  STA ram_пули_игрока_аттрибуты_спрайта,X
+C - - - - - 0x01F81C 07:F80C: 9D 38 06  STA ram_пули_игрока_хитбокс,X
 C - - - - - 0x01F81F 07:F80F: 60        RTS
 
 
@@ -4835,9 +4835,9 @@ C - - - - - 0x01FB2C 07:FB1C: F0 0C     BEQ bra_FB2A_passed
 bra_FB1E_failed:
 ; if check failed
 C - - - - - 0x01FB2E 07:FB1E: A0 00     LDY #$00
-C - - - - - 0x01FB30 07:FB20: 8C E0 07  STY ram_hi_score
+C - - - - - 0x01FB30 07:FB20: 8C E0 07  STY ram_hi_очки
 C - - - - - 0x01FB33 07:FB23: A0 20     LDY #$20    ; 20000 points
-C - - - - - 0x01FB35 07:FB25: 8C E1 07  STY ram_hi_score + $01
+C - - - - - 0x01FB35 07:FB25: 8C E1 07  STY ram_hi_очки + $01
 C - - - - - 0x01FB38 07:FB28: A2 E2     LDX #$E2    ; clear 07E2-07FF
 bra_FB2A_passed:
 bra_FB2A_loop:

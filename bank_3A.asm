@@ -323,13 +323,13 @@ C - - - - - 0x0141C3 05:81B3: 0A        ASL
 C - - - - - 0x0141C4 05:81B4: 0A        ASL
 C - - - - - 0x0141C5 05:81B5: A8        TAY
 C - - - - - 0x0141C6 05:81B6: B9 CF 81  LDA tbl_81CF_speed,Y
-C - - - - - 0x0141C9 05:81B9: 9D A0 06  STA ram_spd_Y_lo_obj,X
+C - - - - - 0x0141C9 05:81B9: 9D A0 06  STA ram_скорость_объектов_y_младш,X
 C - - - - - 0x0141CC 05:81BC: B9 D0 81  LDA tbl_81CF_speed + $01,Y
-C - - - - - 0x0141CF 05:81BF: 9D AE 06  STA ram_spd_Y_hi_obj,X
+C - - - - - 0x0141CF 05:81BF: 9D AE 06  STA ram_скорость_объектов_y_старш,X
 C - - - - - 0x0141D2 05:81C2: B9 D1 81  LDA tbl_81CF_speed + $02,Y
-C - - - - - 0x0141D5 05:81C5: 9D BC 06  STA ram_spd_X_lo_obj,X
+C - - - - - 0x0141D5 05:81C5: 9D BC 06  STA ram_скорость_объектов_x_младш,X
 C - - - - - 0x0141D8 05:81C8: B9 D2 81  LDA tbl_81CF_speed + $03,Y
-C - - - - - 0x0141DB 05:81CB: 9D CA 06  STA ram_spd_X_hi_obj,X
+C - - - - - 0x0141DB 05:81CB: 9D CA 06  STA ram_скорость_объектов_x_старш,X
 C - - - - - 0x0141DE 05:81CE: 60        RTS
 
 
@@ -725,13 +725,13 @@ C - - - - - 0x014421 05:8411: 0A        ASL
 C - - - - - 0x014422 05:8412: 0A        ASL
 C - - - - - 0x014423 05:8413: A8        TAY
 C - - - - - 0x014424 05:8414: B9 2D 84  LDA tbl_842D_speed,Y
-C - - - - - 0x014427 05:8417: 9D A0 06  STA ram_spd_Y_lo_obj,X
+C - - - - - 0x014427 05:8417: 9D A0 06  STA ram_скорость_объектов_y_младш,X
 C - - - - - 0x01442A 05:841A: B9 2E 84  LDA tbl_842D_speed + $01,Y
-C - - - - - 0x01442D 05:841D: 9D AE 06  STA ram_spd_Y_hi_obj,X
+C - - - - - 0x01442D 05:841D: 9D AE 06  STA ram_скорость_объектов_y_старш,X
 C - - - - - 0x014430 05:8420: B9 2F 84  LDA tbl_842D_speed + $02,Y
-C - - - - - 0x014433 05:8423: 9D BC 06  STA ram_spd_X_lo_obj,X
+C - - - - - 0x014433 05:8423: 9D BC 06  STA ram_скорость_объектов_x_младш,X
 C - - - - - 0x014436 05:8426: B9 30 84  LDA tbl_842D_speed + $03,Y
-C - - - - - 0x014439 05:8429: 9D CA 06  STA ram_spd_X_hi_obj,X
+C - - - - - 0x014439 05:8429: 9D CA 06  STA ram_скорость_объектов_x_старш,X
 C - - - - - 0x01443C 05:842C: 60        RTS
 
 
@@ -786,10 +786,10 @@ C - - - - - 0x014487 05:8477: A9 00     LDA #$00
 C - - - - - 0x014489 05:8479: 9D 64 07  STA ram_0764_obj,X
 C - - - - - 0x01448C 05:847C: 4C 04 85  JMP loc_8504
 bra_847F:
-C - - - - - 0x01448F 05:847F: BD CA 06  LDA ram_spd_X_hi_obj,X
-C - - - - - 0x014492 05:8482: 1D BC 06  ORA ram_spd_X_lo_obj,X
+C - - - - - 0x01448F 05:847F: BD CA 06  LDA ram_скорость_объектов_x_старш,X
+C - - - - - 0x014492 05:8482: 1D BC 06  ORA ram_скорость_объектов_x_младш,X
 C - - - - - 0x014495 05:8485: F0 40     BEQ bra_84C7
-C - - - - - 0x014497 05:8487: BD CA 06  LDA ram_spd_X_hi_obj,X
+C - - - - - 0x014497 05:8487: BD CA 06  LDA ram_скорость_объектов_x_старш,X
 C - - - - - 0x01449A 05:848A: 2A        ROL
 C - - - - - 0x01449B 05:848B: 2A        ROL
 C - - - - - 0x01449C 05:848C: 29 01     AND #$01
@@ -799,9 +799,9 @@ C - - - - - 0x0144A2 05:8492: D9 B2 85  CMP tbl_85B2,Y
 C - - - - - 0x0144A5 05:8495: C8        INY
 C - - - - - 0x0144A6 05:8496: 84 13     STY ram_0013
 C - - - - - 0x0144A8 05:8498: 6A        ROR
-C - - - - - 0x0144A9 05:8499: 5D CA 06  EOR ram_spd_X_hi_obj,X
+C - - - - - 0x0144A9 05:8499: 5D CA 06  EOR ram_скорость_объектов_x_старш,X
 C - - - - - 0x0144AC 05:849C: 30 1B     BMI bra_84B9
-C - - - - - 0x0144AE 05:849E: BD CA 06  LDA ram_spd_X_hi_obj,X
+C - - - - - 0x0144AE 05:849E: BD CA 06  LDA ram_скорость_объектов_x_старш,X
 C - - - - - 0x0144B1 05:84A1: 0A        ASL
 C - - - - - 0x0144B2 05:84A2: A9 08     LDA #$08
 C - - - - - 0x0144B4 05:84A4: A0 01     LDY #$01
@@ -823,10 +823,10 @@ bra_84C1:
 C - - - - - 0x0144D1 05:84C1: 20 2B 86  JSR sub_862B
 C - - - - - 0x0144D4 05:84C4: 4C 04 85  JMP loc_8504
 bra_84C7:
-C - - - - - 0x0144D7 05:84C7: BD AE 06  LDA ram_spd_Y_hi_obj,X
-C - - - - - 0x0144DA 05:84CA: 1D A0 06  ORA ram_spd_Y_lo_obj,X
+C - - - - - 0x0144D7 05:84C7: BD AE 06  LDA ram_скорость_объектов_y_старш,X
+C - - - - - 0x0144DA 05:84CA: 1D A0 06  ORA ram_скорость_объектов_y_младш,X
 C - - - - - 0x0144DD 05:84CD: F0 2B     BEQ bra_84FA
-C - - - - - 0x0144DF 05:84CF: BD AE 06  LDA ram_spd_Y_hi_obj,X
+C - - - - - 0x0144DF 05:84CF: BD AE 06  LDA ram_скорость_объектов_y_старш,X
 C - - - - - 0x0144E2 05:84D2: 0A        ASL
 C - - - - - 0x0144E3 05:84D3: A9 10     LDA #$10
 C - - - - - 0x0144E5 05:84D5: A0 03     LDY #$03
@@ -871,7 +871,7 @@ C - - - - - 0x01452F 05:851F: 20 66 86  JSR sub_8666
 C - - - - - 0x014532 05:8522: BD 22 05  LDA ram_позиция_y_спрайта_врага_и_пуль,X
 C - - - - - 0x014535 05:8525: C5 0C     CMP ram_000C
 C - - - - - 0x014537 05:8527: 6A        ROR
-C - - - - - 0x014538 05:8528: 5D AE 06  EOR ram_spd_Y_hi_obj,X
+C - - - - - 0x014538 05:8528: 5D AE 06  EOR ram_скорость_объектов_y_старш,X
 C - - - - - 0x01453B 05:852B: 30 2A     BMI bra_8557
 C - - - - - 0x01453D 05:852D: BD 3C 05  LDA ram_позиция_x_спрайта_врага_и_пуль,X
 C - - - - - 0x014540 05:8530: C5 0B     CMP ram_000B
@@ -888,7 +888,7 @@ C D 0 - - - 0x01454B 05:853B: 20 66 86  JSR sub_8666
 C - - - - - 0x01454E 05:853E: BD 3C 05  LDA ram_позиция_x_спрайта_врага_и_пуль,X
 C - - - - - 0x014551 05:8541: C5 0B     CMP ram_000B
 C - - - - - 0x014553 05:8543: 6A        ROR
-C - - - - - 0x014554 05:8544: 5D CA 06  EOR ram_spd_X_hi_obj,X
+C - - - - - 0x014554 05:8544: 5D CA 06  EOR ram_скорость_объектов_x_старш,X
 C - - - - - 0x014557 05:8547: 30 0E     BMI bra_8557
 C - - - - - 0x014559 05:8549: BD 22 05  LDA ram_позиция_y_спрайта_врага_и_пуль,X
 C - - - - - 0x01455C 05:854C: C5 0C     CMP ram_000C
@@ -1622,13 +1622,13 @@ C - - - - - 0x01496E 05:895E: 0A        ASL
 C - - - - - 0x01496F 05:895F: 0A        ASL
 C - - - - - 0x014970 05:8960: A8        TAY
 C - - - - - 0x014971 05:8961: B9 7A 89  LDA tbl_897A_speed,Y
-C - - - - - 0x014974 05:8964: 9D A0 06  STA ram_spd_Y_lo_obj,X
+C - - - - - 0x014974 05:8964: 9D A0 06  STA ram_скорость_объектов_y_младш,X
 C - - - - - 0x014977 05:8967: B9 7B 89  LDA tbl_897A_speed + $01,Y
-C - - - - - 0x01497A 05:896A: 9D AE 06  STA ram_spd_Y_hi_obj,X
+C - - - - - 0x01497A 05:896A: 9D AE 06  STA ram_скорость_объектов_y_старш,X
 C - - - - - 0x01497D 05:896D: B9 7C 89  LDA tbl_897A_speed + $02,Y
-C - - - - - 0x014980 05:8970: 9D BC 06  STA ram_spd_X_lo_obj,X
+C - - - - - 0x014980 05:8970: 9D BC 06  STA ram_скорость_объектов_x_младш,X
 C - - - - - 0x014983 05:8973: B9 7D 89  LDA tbl_897A_speed + $03,Y
-C - - - - - 0x014986 05:8976: 9D CA 06  STA ram_spd_X_hi_obj,X
+C - - - - - 0x014986 05:8976: 9D CA 06  STA ram_скорость_объектов_x_старш,X
 C - - - - - 0x014989 05:8979: 60        RTS
 
 
@@ -1669,7 +1669,7 @@ C - - - - - 0x0149B3 05:89A3: 4C DC A7  JMP loc_0x0067EC_inverse_spd_X
 
 
 ofs_030_89A6_01:
-C - - J - - 0x0149B6 05:89A6: BD CA 06  LDA ram_spd_X_hi_obj,X
+C - - J - - 0x0149B6 05:89A6: BD CA 06  LDA ram_скорость_объектов_x_старш,X
 C - - - - - 0x0149B9 05:89A9: 2A        ROL
 C - - - - - 0x0149BA 05:89AA: 2A        ROL
 C - - - - - 0x0149BB 05:89AB: 29 01     AND #$01
@@ -1677,7 +1677,7 @@ C - - - - - 0x0149BD 05:89AD: A8        TAY
 C - - - - - 0x0149BE 05:89AE: BD 3C 05  LDA ram_позиция_x_спрайта_врага_и_пуль,X
 C - - - - - 0x0149C1 05:89B1: D9 F7 89  CMP tbl_89F7_pos_X,Y
 C - - - - - 0x0149C4 05:89B4: 6A        ROR
-C - - - - - 0x0149C5 05:89B5: 5D CA 06  EOR ram_spd_X_hi_obj,X
+C - - - - - 0x0149C5 05:89B5: 5D CA 06  EOR ram_скорость_объектов_x_старш,X
 C - - - - - 0x0149C8 05:89B8: 10 3C     BPL bra_89F6_RTS
 C - - - - - 0x0149CA 05:89BA: A9 20     LDA #$20
 C - - - - - 0x0149CC 05:89BC: 9D E6 06  STA ram_06E6_obj,X
@@ -2075,7 +2075,7 @@ C - - - - - 0x014BE4 05:8BD4: 9D 08 05  STA ram_кадр_врага_и_пуль,
 C - - - - - 0x014BE7 05:8BD7: B9 30 8C  LDA tbl_8C30_spr_attr,Y
 C - - - - - 0x014BEA 05:8BDA: 9D 56 05  STA ram_аттрибуты_спрайта_врага_и_пуль,X
 C - - - - - 0x014BED 05:8BDD: 20 D3 A6  JSR sub_0x0066E3
-C - - - - - 0x014BF0 05:8BE0: BD CA 06  LDA ram_spd_X_hi_obj,X
+C - - - - - 0x014BF0 05:8BE0: BD CA 06  LDA ram_скорость_объектов_x_старш,X
 C - - - - - 0x014BF3 05:8BE3: 2A        ROL
 C - - - - - 0x014BF4 05:8BE4: 2A        ROL
 C - - - - - 0x014BF5 05:8BE5: 29 01     AND #$01
@@ -2083,7 +2083,7 @@ C - - - - - 0x014BF7 05:8BE7: A8        TAY
 C - - - - - 0x014BF8 05:8BE8: BD 3C 05  LDA ram_позиция_x_спрайта_врага_и_пуль,X
 C - - - - - 0x014BFB 05:8BEB: D9 2B 8C  CMP tbl_8C2B_pos_X,Y
 C - - - - - 0x014BFE 05:8BEE: 6A        ROR
-C - - - - - 0x014BFF 05:8BEF: 5D CA 06  EOR ram_spd_X_hi_obj,X
+C - - - - - 0x014BFF 05:8BEF: 5D CA 06  EOR ram_скорость_объектов_x_старш,X
 C - - - - - 0x014C02 05:8BF2: 10 03     BPL bra_8BF7
 C - - - - - 0x014C04 05:8BF4: 20 39 8C  JSR sub_8C39
 bra_8BF7:
@@ -2156,9 +2156,9 @@ C - - - - - 0x014C51 05:8C41: BD 48 07  LDA ram_0748_obj,X
 C - - - - - 0x014C54 05:8C44: 0A        ASL
 C - - - - - 0x014C55 05:8C45: A8        TAY
 C - - - - - 0x014C56 05:8C46: B9 53 8C  LDA tbl_8C53_spd_X,Y
-C - - - - - 0x014C59 05:8C49: 9D BC 06  STA ram_spd_X_lo_obj,X
+C - - - - - 0x014C59 05:8C49: 9D BC 06  STA ram_скорость_объектов_x_младш,X
 C - - - - - 0x014C5C 05:8C4C: B9 54 8C  LDA tbl_8C53_spd_X + $01,Y
-C - - - - - 0x014C5F 05:8C4F: 9D CA 06  STA ram_spd_X_hi_obj,X
+C - - - - - 0x014C5F 05:8C4F: 9D CA 06  STA ram_скорость_объектов_x_старш,X
 C - - - - - 0x014C62 05:8C52: 60        RTS
 
 
@@ -2210,15 +2210,15 @@ C - - - - - 0x014C9C 05:8C8C: 85 08     STA ram_0008
 C - - - - - 0x014C9E 05:8C8E: 85 09     STA ram_0009
 C - - - - - 0x014CA0 05:8C90: A0 0F     LDY #$0F
 bra_8C92_loop:
-C - - - - - 0x014CA2 05:8C92: B9 A8 05  LDA ram_05A8_plr_bullet,Y
+C - - - - - 0x014CA2 05:8C92: B9 A8 05  LDA ram_пули_игрока_аттрибуты,Y
 C - - - - - 0x014CA5 05:8C95: C9 01     CMP #$01
 C - - - - - 0x014CA7 05:8C97: D0 16     BNE bra_8CAF
-C - - - - - 0x014CA9 05:8C99: B9 88 05  LDA ram_plr_bullet_pos_X_hi,Y
+C - - - - - 0x014CA9 05:8C99: B9 88 05  LDA ram_пули_игрока_позиция_x_старш,Y
 C - - - - - 0x014CAC 05:8C9C: C9 38     CMP #$38
 C - - - - - 0x014CAE 05:8C9E: 90 0F     BCC bra_8CAF
 C - - - - - 0x014CB0 05:8CA0: C9 C8     CMP #$C8
 C - - - - - 0x014CB2 05:8CA2: B0 0B     BCS bra_8CAF
-C - - - - - 0x014CB4 05:8CA4: B9 78 05  LDA ram_plr_bullet_pos_Y_hi,Y
+C - - - - - 0x014CB4 05:8CA4: B9 78 05  LDA ram_пули_игрока_позиция_y_старш,Y
 C - - - - - 0x014CB7 05:8CA7: C5 08     CMP ram_0008
 C - - - - - 0x014CB9 05:8CA9: B0 04     BCS bra_8CAF
 C - - - - - 0x014CBB 05:8CAB: 85 08     STA ram_0008
@@ -2229,7 +2229,7 @@ C - - - - - 0x014CC0 05:8CB0: 10 E0     BPL bra_8C92_loop
 C - - - - - 0x014CC2 05:8CB2: A9 80     LDA #$80
 C - - - - - 0x014CC4 05:8CB4: A4 09     LDY ram_0009
 C - - - - - 0x014CC6 05:8CB6: 30 03     BMI bra_8CBB
-C - - - - - 0x014CC8 05:8CB8: B9 88 05  LDA ram_plr_bullet_pos_X_hi,Y
+C - - - - - 0x014CC8 05:8CB8: B9 88 05  LDA ram_пули_игрока_позиция_x_старш,Y
 bra_8CBB:
 C - - - - - 0x014CCB 05:8CBB: 9D 3C 05  STA ram_позиция_x_спрайта_врага_и_пуль,X
 C - - - - - 0x014CCE 05:8CBE: 4C B7 A6  JMP loc_0x0066C7_delete_object_03
@@ -2372,7 +2372,7 @@ ofs_038_2D_8DB4_01_initialize_object:
 C - - J - - 0x014DC4 05:8DB4: A9 62     LDA #$62
 C - - - - - 0x014DC6 05:8DB6: 9D 08 05  STA ram_кадр_врага_и_пуль,X
 C - - - - - 0x014DC9 05:8DB9: A9 04     LDA #$04
-C - - - - - 0x014DCB 05:8DBB: 9D 76 06  STA ram_obj_hp,X
+C - - - - - 0x014DCB 05:8DBB: 9D 76 06  STA ram_жизни_объектов,X
 C - - - - - 0x014DCE 05:8DBE: 20 B7 A6  JSR sub_0x0066C7_delete_object_03
 bra_8DC1:
 C - - - - - 0x014DD1 05:8DC1: 4C D7 A2  JMP loc_0x0062E7_increase_obj_state
@@ -2380,13 +2380,13 @@ C - - - - - 0x014DD1 05:8DC1: 4C D7 A2  JMP loc_0x0062E7_increase_obj_state
 
 
 ofs_038_2D_8DC4_02:
-C - - J - - 0x014DD4 05:8DC4: BD A0 06  LDA ram_spd_Y_lo_obj,X
+C - - J - - 0x014DD4 05:8DC4: BD A0 06  LDA ram_скорость_объектов_y_младш,X
 C - - - - - 0x014DD7 05:8DC7: 18        CLC
 C - - - - - 0x014DD8 05:8DC8: 69 20     ADC #< $0020
-C - - - - - 0x014DDA 05:8DCA: 9D A0 06  STA ram_spd_Y_lo_obj,X
-C - - - - - 0x014DDD 05:8DCD: BD AE 06  LDA ram_spd_Y_hi_obj,X
+C - - - - - 0x014DDA 05:8DCA: 9D A0 06  STA ram_скорость_объектов_y_младш,X
+C - - - - - 0x014DDD 05:8DCD: BD AE 06  LDA ram_скорость_объектов_y_старш,X
 C - - - - - 0x014DE0 05:8DD0: 69 00     ADC #> $0020
-C - - - - - 0x014DE2 05:8DD2: 9D AE 06  STA ram_spd_Y_hi_obj,X
+C - - - - - 0x014DE2 05:8DD2: 9D AE 06  STA ram_скорость_объектов_y_старш,X
 C - - - - - 0x014DE5 05:8DD5: 20 D3 A6  JSR sub_0x0066E3
 C - - - - - 0x014DE8 05:8DD8: A9 00     LDA #$00
 C - - - - - 0x014DEA 05:8DDA: 20 0A A8  JSR sub_0x00681A
@@ -2972,9 +2972,9 @@ sub_911D:
 C - - - - - 0x01512D 05:911D: 0A        ASL
 C - - - - - 0x01512E 05:911E: A8        TAY
 C - - - - - 0x01512F 05:911F: B9 3C 91  LDA tbl_913C_spd_X,Y
-C - - - - - 0x015132 05:9122: 9D BC 06  STA ram_spd_X_lo_obj,X
+C - - - - - 0x015132 05:9122: 9D BC 06  STA ram_скорость_объектов_x_младш,X
 C - - - - - 0x015135 05:9125: B9 3D 91  LDA tbl_913C_spd_X + $01,Y
-C - - - - - 0x015138 05:9128: 9D CA 06  STA ram_spd_X_hi_obj,X
+C - - - - - 0x015138 05:9128: 9D CA 06  STA ram_скорость_объектов_x_старш,X
 C - - - - - 0x01513B 05:912B: 20 31 91  JSR sub_9131
 C - - - - - 0x01513E 05:912E: 4C D7 A2  JMP loc_0x0062E7_increase_obj_state
 
@@ -3006,7 +3006,7 @@ C - - - - - 0x01515A 05:914A: A5 03     LDA ram_0003
 C - - - - - 0x01515C 05:914C: 29 01     AND #$01
 C - - - - - 0x01515E 05:914E: 85 03     STA ram_0003
 C - - - - - 0x015160 05:9150: A9 01     LDA #$01
-C - - - - - 0x015162 05:9152: BC CA 06  LDY ram_spd_X_hi_obj,X
+C - - - - - 0x015162 05:9152: BC CA 06  LDY ram_скорость_объектов_x_старш,X
 C - - - - - 0x015165 05:9155: 10 02     BPL bra_9159
 C - - - - - 0x015167 05:9157: A9 FF     LDA #$FF
 bra_9159:
@@ -3025,7 +3025,7 @@ C - - - - - 0x01517B 05:916B: A8        TAY
 C - - - - - 0x01517C 05:916C: 20 1B BB  JSR sub_0x007B2B
 C - - - - - 0x01517F 05:916F: F0 4F     BEQ bra_91C0
 C - - - - - 0x015181 05:9171: A9 08     LDA #$08
-C - - - - - 0x015183 05:9173: BC CA 06  LDY ram_spd_X_hi_obj,X
+C - - - - - 0x015183 05:9173: BC CA 06  LDY ram_скорость_объектов_x_старш,X
 C - - - - - 0x015186 05:9176: 10 02     BPL bra_917A
 C - - - - - 0x015188 05:9178: A9 F8     LDA #$F8
 bra_917A:
@@ -3088,13 +3088,13 @@ C - - - - - 0x0151EC 05:91DC: B0 02     BCS bra_91E0
 C - - - - - 0x0151EE 05:91DE: A0 04     LDY #$04
 bra_91E0:
 C - - - - - 0x0151F0 05:91E0: B9 FD 91  LDA tbl_91FD_speed,Y
-C - - - - - 0x0151F3 05:91E3: 9D A0 06  STA ram_spd_Y_lo_obj,X
+C - - - - - 0x0151F3 05:91E3: 9D A0 06  STA ram_скорость_объектов_y_младш,X
 C - - - - - 0x0151F6 05:91E6: B9 FE 91  LDA tbl_91FD_speed + $01,Y
-C - - - - - 0x0151F9 05:91E9: 9D AE 06  STA ram_spd_Y_hi_obj,X
+C - - - - - 0x0151F9 05:91E9: 9D AE 06  STA ram_скорость_объектов_y_старш,X
 C - - - - - 0x0151FC 05:91EC: B9 FF 91  LDA tbl_91FD_speed + $02,Y
-C - - - - - 0x0151FF 05:91EF: 9D BC 06  STA ram_spd_X_lo_obj,X
+C - - - - - 0x0151FF 05:91EF: 9D BC 06  STA ram_скорость_объектов_x_младш,X
 C - - - - - 0x015202 05:91F2: B9 00 92  LDA tbl_91FD_speed + $03,Y
-C - - - - - 0x015205 05:91F5: 9D CA 06  STA ram_spd_X_hi_obj,X
+C - - - - - 0x015205 05:91F5: 9D CA 06  STA ram_скорость_объектов_x_старш,X
 C - - - - - 0x015208 05:91F8: 4C D7 A2  JMP loc_0x0062E7_increase_obj_state
 
 
@@ -3118,15 +3118,15 @@ ofs_038_40_9205_04:
 C - - J - - 0x015215 05:9205: A9 6C     LDA #$6C
 C - - - - - 0x015217 05:9207: 9D 08 05  STA ram_кадр_врага_и_пуль,X
 C - - - - - 0x01521A 05:920A: 20 07 A7  JSR sub_0x006717
-C - - - - - 0x01521D 05:920D: BD A0 06  LDA ram_spd_Y_lo_obj,X
+C - - - - - 0x01521D 05:920D: BD A0 06  LDA ram_скорость_объектов_y_младш,X
 C - - - - - 0x015220 05:9210: 18        CLC
 C - - - - - 0x015221 05:9211: 69 18     ADC #< $0018
-C - - - - - 0x015223 05:9213: 9D A0 06  STA ram_spd_Y_lo_obj,X
-C - - - - - 0x015226 05:9216: BD AE 06  LDA ram_spd_Y_hi_obj,X
+C - - - - - 0x015223 05:9213: 9D A0 06  STA ram_скорость_объектов_y_младш,X
+C - - - - - 0x015226 05:9216: BD AE 06  LDA ram_скорость_объектов_y_старш,X
 C - - - - - 0x015229 05:9219: 69 00     ADC #> $0018
-C - - - - - 0x01522B 05:921B: 9D AE 06  STA ram_spd_Y_hi_obj,X
+C - - - - - 0x01522B 05:921B: 9D AE 06  STA ram_скорость_объектов_y_старш,X
 C - - - - - 0x01522E 05:921E: A9 08     LDA #$08
-C - - - - - 0x015230 05:9220: BC CA 06  LDY ram_spd_X_hi_obj,X
+C - - - - - 0x015230 05:9220: BC CA 06  LDY ram_скорость_объектов_x_старш,X
 C - - - - - 0x015233 05:9223: 10 02     BPL bra_9227
 C - - - - - 0x015235 05:9225: A9 F8     LDA #$F8
 bra_9227:
@@ -3135,7 +3135,7 @@ C - - - - - 0x01523A 05:922A: F0 06     BEQ bra_9232
 C - - - - - 0x01523C 05:922C: 20 DC A7  JSR sub_0x0067EC_inverse_spd_X
 C - - - - - 0x01523F 05:922F: FE 48 07  INC ram_0748_obj,X
 bra_9232:
-C - - - - - 0x015242 05:9232: BD AE 06  LDA ram_spd_Y_hi_obj,X
+C - - - - - 0x015242 05:9232: BD AE 06  LDA ram_скорость_объектов_y_старш,X
 C - - - - - 0x015245 05:9235: C9 02     CMP #$02
 C - - - - - 0x015247 05:9237: 90 12     BCC bra_924B_RTS
 C - - - - - 0x015249 05:9239: A9 12     LDA #$12
@@ -3288,10 +3288,10 @@ C - - - - - 0x01532D 05:931D: A4 11     LDY ram_0011
 C - - - - - 0x01532F 05:931F: 8A        TXA
 C - - - - - 0x015330 05:9320: 99 80 07  STA ram_0780_obj,Y
 bra_9323:
-C - - - - - 0x015333 05:9323: BD 76 06  LDA ram_obj_hp,X
+C - - - - - 0x015333 05:9323: BD 76 06  LDA ram_жизни_объектов,X
 C - - - - - 0x015336 05:9326: 9D 56 07  STA ram_0756_obj,X
 C - - - - - 0x015339 05:9329: A9 F0     LDA #con__hp_F0
-C - - - - - 0x01533B 05:932B: 9D 76 06  STA ram_obj_hp,X
+C - - - - - 0x01533B 05:932B: 9D 76 06  STA ram_жизни_объектов,X
 C - - - - - 0x01533E 05:932E: A9 10     LDA #$10
 C - - - - - 0x015340 05:9330: 4C E0 A2  JMP loc_0x0062F0
 
@@ -3302,7 +3302,7 @@ C - - J - - 0x015343 05:9333: 20 94 93  JSR sub_9394
 C - - - - - 0x015346 05:9336: DE E6 06  DEC ram_06E6_obj,X
 C - - - - - 0x015349 05:9339: D0 CD     BNE bra_9308_RTS
 C - - - - - 0x01534B 05:933B: BD 56 07  LDA ram_0756_obj,X
-C - - - - - 0x01534E 05:933E: 9D 76 06  STA ram_obj_hp,X
+C - - - - - 0x01534E 05:933E: 9D 76 06  STA ram_жизни_объектов,X
 C - - - - - 0x015351 05:9341: 4C D7 A2  JMP loc_0x0062E7_increase_obj_state
 
 
@@ -3467,9 +3467,9 @@ C - - - - - 0x01542E 05:941E: 69 08     ADC #$08
 C - - - - - 0x015430 05:9420: 9D 22 05  STA ram_позиция_y_спрайта_врага_и_пуль,X
 C - - - - - 0x015433 05:9423: 9D 48 07  STA ram_0748_obj,X
 C - - - - - 0x015436 05:9426: A9 00     LDA #< $0800
-C - - - - - 0x015438 05:9428: 9D A0 06  STA ram_spd_Y_lo_obj,X
+C - - - - - 0x015438 05:9428: 9D A0 06  STA ram_скорость_объектов_y_младш,X
 C - - - - - 0x01543B 05:942B: A9 08     LDA #> $0800
-C - - - - - 0x01543D 05:942D: 9D AE 06  STA ram_spd_Y_hi_obj,X
+C - - - - - 0x01543D 05:942D: 9D AE 06  STA ram_скорость_объектов_y_старш,X
 C - - - - - 0x015440 05:9430: A9 10     LDA #con_sound_10
 C - - - - - 0x015442 05:9432: 20 DE FD  JSR sub_0x01FDEE_play_sound
 C - - - - - 0x015445 05:9435: 4C D7 A2  JMP loc_0x0062E7_increase_obj_state
@@ -3599,9 +3599,9 @@ C - - - - - 0x015506 05:94F6: 29 07     AND #$07
 C - - - - - 0x015508 05:94F8: 0A        ASL
 C - - - - - 0x015509 05:94F9: A8        TAY
 C - - - - - 0x01550A 05:94FA: B9 28 95  LDA tbl_9528_spd_Y,Y
-C - - - - - 0x01550D 05:94FD: 9D A0 06  STA ram_spd_Y_lo_obj,X
+C - - - - - 0x01550D 05:94FD: 9D A0 06  STA ram_скорость_объектов_y_младш,X
 C - - - - - 0x015510 05:9500: B9 29 95  LDA tbl_9528_spd_Y + $01,Y
-C - - - - - 0x015513 05:9503: 9D AE 06  STA ram_spd_Y_hi_obj,X
+C - - - - - 0x015513 05:9503: 9D AE 06  STA ram_скорость_объектов_y_старш,X
 C - - - - - 0x015516 05:9506: A5 23     LDA ram_рандом_байт
 C - - - - - 0x015518 05:9508: 4A        LSR
 C - - - - - 0x015519 05:9509: 4A        LSR
@@ -3612,9 +3612,9 @@ C - - - - - 0x01551D 05:950D: 29 03     AND #$03
 C - - - - - 0x01551F 05:950F: 0A        ASL
 C - - - - - 0x015520 05:9510: A8        TAY
 C - - - - - 0x015521 05:9511: B9 38 95  LDA tbl_9538_spd_X,Y
-C - - - - - 0x015524 05:9514: 9D BC 06  STA ram_spd_X_lo_obj,X
+C - - - - - 0x015524 05:9514: 9D BC 06  STA ram_скорость_объектов_x_младш,X
 C - - - - - 0x015527 05:9517: B9 39 95  LDA tbl_9538_spd_X + $01,Y
-C - - - - - 0x01552A 05:951A: 9D CA 06  STA ram_spd_X_hi_obj,X
+C - - - - - 0x01552A 05:951A: 9D CA 06  STA ram_скорость_объектов_x_старш,X
 C - - - - - 0x01552D 05:951D: 68        PLA
 C - - - - - 0x01552E 05:951E: 4A        LSR
 C - - - - - 0x01552F 05:951F: 4A        LSR
@@ -3646,18 +3646,18 @@ tbl_9538_spd_X:
 
 
 ofs_038_6B_9540_02:
-C - - J - - 0x015550 05:9540: BD AE 06  LDA ram_spd_Y_hi_obj,X
+C - - J - - 0x015550 05:9540: BD AE 06  LDA ram_скорость_объектов_y_старш,X
 C - - - - - 0x015553 05:9543: 10 04     BPL bra_9549_00_08
 C - - - - - 0x015555 05:9545: C9 FF     CMP #$FF
 C - - - - - 0x015557 05:9547: F0 11     BEQ bra_955A_FF
 bra_9549_00_08:
-C - - - - - 0x015559 05:9549: BD A0 06  LDA ram_spd_Y_lo_obj,X
+C - - - - - 0x015559 05:9549: BD A0 06  LDA ram_скорость_объектов_y_младш,X
 C - - - - - 0x01555C 05:954C: 38        SEC
 C - - - - - 0x01555D 05:954D: E9 80     SBC #< $0080
-C - - - - - 0x01555F 05:954F: 9D A0 06  STA ram_spd_Y_lo_obj,X
-C - - - - - 0x015562 05:9552: BD AE 06  LDA ram_spd_Y_hi_obj,X
+C - - - - - 0x01555F 05:954F: 9D A0 06  STA ram_скорость_объектов_y_младш,X
+C - - - - - 0x015562 05:9552: BD AE 06  LDA ram_скорость_объектов_y_старш,X
 C - - - - - 0x015565 05:9555: E9 00     SBC #> $0080
-C - - - - - 0x015567 05:9557: 9D AE 06  STA ram_spd_Y_hi_obj,X
+C - - - - - 0x015567 05:9557: 9D AE 06  STA ram_скорость_объектов_y_старш,X
 bra_955A_FF:
 C - - - - - 0x01556A 05:955A: 20 D3 A6  JSR sub_0x0066E3
 C - - - - - 0x01556D 05:955D: 20 84 95  JSR sub_9584
@@ -3687,7 +3687,7 @@ C - - - - - 0x015591 05:9581: 4C DC A7  JMP loc_0x0067EC_inverse_spd_X
 
 sub_9584:
 C - - - - - 0x015594 05:9584: A9 04     LDA #$04
-C - - - - - 0x015596 05:9586: BC AE 06  LDY ram_spd_Y_hi_obj,X
+C - - - - - 0x015596 05:9586: BC AE 06  LDY ram_скорость_объектов_y_старш,X
 C - - - - - 0x015599 05:9589: 10 02     BPL bra_958D
 C - - - - - 0x01559B 05:958B: A9 FC     LDA #$FC
 bra_958D:
@@ -3700,7 +3700,7 @@ C - - - - - 0x0155A5 05:9595: 4C C0 BA  JMP loc_0x007AD0
 
 
 sub_9598:
-C - - - - - 0x0155A8 05:9598: BD CA 06  LDA ram_spd_X_hi_obj,X
+C - - - - - 0x0155A8 05:9598: BD CA 06  LDA ram_скорость_объектов_x_старш,X
 C - - - - - 0x0155AB 05:959B: 2A        ROL
 C - - - - - 0x0155AC 05:959C: 2A        ROL
 C - - - - - 0x0155AD 05:959D: 29 01     AND #$01
@@ -3708,7 +3708,7 @@ C - - - - - 0x0155AF 05:959F: A8        TAY
 C - - - - - 0x0155B0 05:95A0: BD 3C 05  LDA ram_позиция_x_спрайта_врага_и_пуль,X
 C - - - - - 0x0155B3 05:95A3: D9 AF 95  CMP tbl_95AF_pos_Y,Y
 C - - - - - 0x0155B6 05:95A6: 6A        ROR
-C - - - - - 0x0155B7 05:95A7: 5D CA 06  EOR ram_spd_X_hi_obj,X
+C - - - - - 0x0155B7 05:95A7: 5D CA 06  EOR ram_скорость_объектов_x_старш,X
 C - - - - - 0x0155BA 05:95AA: 30 02     BMI bra_95AE_RTS
 C - - - - - 0x0155BC 05:95AC: A9 00     LDA #$00
 bra_95AE_RTS:
@@ -3734,7 +3734,7 @@ _off001_0x0155C1_6C_spawner_blue_bubbles:
 ofs_038_6C_95BB_01_initialize_object:
 C - - J - - 0x0155CB 05:95BB: A9 01     LDA #$01
 C - - - - - 0x0155CD 05:95BD: A9 20     LDA #$20
-C - - - - - 0x0155CF 05:95BF: 9D 76 06  STA ram_obj_hp,X
+C - - - - - 0x0155CF 05:95BF: 9D 76 06  STA ram_жизни_объектов,X
 C - - - - - 0x0155D2 05:95C2: A9 14     LDA #$14
 C - - - - - 0x0155D4 05:95C4: 9D 48 07  STA ram_0748_obj,X
 C - - - - - 0x0155D7 05:95C7: BD 3C 05  LDA ram_позиция_x_спрайта_врага_и_пуль,X
@@ -3873,9 +3873,9 @@ C - - - - - 0x0156B9 05:96A9: 9D 72 07  STA ram_0772_obj,X
 C - - - - - 0x0156BC 05:96AC: A9 40     LDA #$40
 C - - - - - 0x0156BE 05:96AE: 9D F4 06  STA ram_06F4_obj,X
 C - - - - - 0x0156C1 05:96B1: A9 00     LDA #< $F900
-C - - - - - 0x0156C3 05:96B3: 9D BC 06  STA ram_spd_X_lo_obj,X
+C - - - - - 0x0156C3 05:96B3: 9D BC 06  STA ram_скорость_объектов_x_младш,X
 C - - - - - 0x0156C6 05:96B6: A9 F9     LDA #> $F900
-C - - - - - 0x0156C8 05:96B8: 9D CA 06  STA ram_spd_X_hi_obj,X
+C - - - - - 0x0156C8 05:96B8: 9D CA 06  STA ram_скорость_объектов_x_старш,X
 C - - - - - 0x0156CB 05:96BB: 4C D7 A2  JMP loc_0x0062E7_increase_obj_state
 
 
@@ -3906,9 +3906,9 @@ C - - - - - 0x0156F1 05:96E1: BD 64 07  LDA ram_0764_obj,X
 C - - - - - 0x0156F4 05:96E4: 29 0E     AND #$0E
 C - - - - - 0x0156F6 05:96E6: A8        TAY
 C - - - - - 0x0156F7 05:96E7: B9 F4 96  LDA tbl_96F4_spd_X,Y
-C - - - - - 0x0156FA 05:96EA: 9D BC 06  STA ram_spd_X_lo_obj,X
+C - - - - - 0x0156FA 05:96EA: 9D BC 06  STA ram_скорость_объектов_x_младш,X
 C - - - - - 0x0156FD 05:96ED: B9 F5 96  LDA tbl_96F4_spd_X + $01,Y
-C - - - - - 0x015700 05:96F0: 9D CA 06  STA ram_spd_X_hi_obj,X
+C - - - - - 0x015700 05:96F0: 9D CA 06  STA ram_скорость_объектов_x_старш,X
 C - - - - - 0x015703 05:96F3: 60        RTS
 
 
@@ -3934,13 +3934,13 @@ C - - - - - 0x015711 05:9701: 20 09 E6  JSR sub_0x01E619_jump_to_pointers_after_
 
 
 ofs_031_970E_00:
-C - - J - - 0x01571E 05:970E: BD BC 06  LDA ram_spd_X_lo_obj,X
+C - - J - - 0x01571E 05:970E: BD BC 06  LDA ram_скорость_объектов_x_младш,X
 C - - - - - 0x015721 05:9711: 18        CLC
 C - - - - - 0x015722 05:9712: 69 16     ADC #< $0016
-C - - - - - 0x015724 05:9714: 9D BC 06  STA ram_spd_X_lo_obj,X
-C - - - - - 0x015727 05:9717: BD CA 06  LDA ram_spd_X_hi_obj,X
+C - - - - - 0x015724 05:9714: 9D BC 06  STA ram_скорость_объектов_x_младш,X
+C - - - - - 0x015727 05:9717: BD CA 06  LDA ram_скорость_объектов_x_старш,X
 C - - - - - 0x01572A 05:971A: 69 00     ADC #> $0016
-C - - - - - 0x01572C 05:971C: 9D CA 06  STA ram_spd_X_hi_obj,X
+C - - - - - 0x01572C 05:971C: 9D CA 06  STA ram_скорость_объектов_x_старш,X
 C - - - - - 0x01572F 05:971F: 30 0F     BMI bra_9730_RTS
 C - - - - - 0x015731 05:9721: A9 08     LDA #$08
 C - - - - - 0x015733 05:9723: D0 36     BNE bra_975B    ; jmp

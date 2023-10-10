@@ -2344,7 +2344,7 @@ C - - - - - 0x000D27 00:8D17: A8        TAY
 C - - - - - 0x000D28 00:8D18: A9 05     LDA #$05
 C - - - - - 0x000D2A 00:8D1A: 85 0D     STA ram_000D
 bra_8D1C_loop:
-C - - - - - 0x000D2C 00:8D1C: B9 A8 05  LDA ram_05A8_plr_bullet,Y
+C - - - - - 0x000D2C 00:8D1C: B9 A8 05  LDA ram_пули_игрока_аттрибуты,Y
 C - - - - - 0x000D2F 00:8D1F: D0 1A     BNE bra_8D3B
 C - - - - - 0x000D31 00:8D21: C8        INY
 C - - - - - 0x000D32 00:8D22: C6 0D     DEC ram_000D
@@ -2400,7 +2400,7 @@ C - - - - - 0x000D80 00:8D70: A9 05     LDA #$05
 C - - - - - 0x000D82 00:8D72: 85 0D     STA ram_000D
 C - - - - - 0x000D84 00:8D74: A9 00     LDA #$00
 bra_8D76_loop:
-C - - - - - 0x000D86 00:8D76: 99 A8 05  STA ram_05A8_plr_bullet,Y
+C - - - - - 0x000D86 00:8D76: 99 A8 05  STA ram_пули_игрока_аттрибуты,Y
 C - - - - - 0x000D89 00:8D79: C8        INY
 C - - - - - 0x000D8A 00:8D7A: C6 0D     DEC ram_000D
 C - - - - - 0x000D8C 00:8D7C: D0 F8     BNE bra_8D76_loop
@@ -2469,7 +2469,7 @@ C - - - - - 0x000DEF 00:8DDF: AA        TAX
 C - - - - - 0x000DF0 00:8DE0: A9 00     LDA #$00
 C - - - - - 0x000DF2 00:8DE2: 85 01     STA ram_0001
 bra_8DE4_loop:
-C - - - - - 0x000DF4 00:8DE4: BD A8 05  LDA ram_05A8_plr_bullet,X
+C - - - - - 0x000DF4 00:8DE4: BD A8 05  LDA ram_пули_игрока_аттрибуты,X
 C - - - - - 0x000DF7 00:8DE7: F0 0C     BEQ bra_8DF5
 C - - - - - 0x000DF9 00:8DE9: E8        INX
 C - - - - - 0x000DFA 00:8DEA: A5 01     LDA ram_0001
@@ -2519,7 +2519,7 @@ tbl_8E04:
 sub_8E0B:
 C - - - - - 0x000E1B 00:8E0B: A4 02     LDY ram_0002
 C - - - - - 0x000E1D 00:8E0D: B9 E8 8E  LDA tbl_8EE8_bullet_dir,Y
-C - - - - - 0x000E20 00:8E10: 9D 48 06  STA ram_plr_bullet_dir,X
+C - - - - - 0x000E20 00:8E10: 9D 48 06  STA ram_пули_игрока_направление,X
 C - - - - - 0x000E23 00:8E13: 98        TYA
 C - - - - - 0x000E24 00:8E14: 0A        ASL
 C - - - - - 0x000E25 00:8E15: 0A        ASL
@@ -2532,13 +2532,13 @@ C - - - - - 0x000E2D 00:8E1D: A8        TAY
 C - - - - - 0x000E2E 00:8E1E: A5 03     LDA ram_0003
 C - - - - - 0x000E30 00:8E20: 18        CLC
 C - - - - - 0x000E31 00:8E21: 79 19 91  ADC tbl_9119,Y
-C - - - - - 0x000E34 00:8E24: 9D 78 05  STA ram_plr_bullet_pos_Y_hi,X
+C - - - - - 0x000E34 00:8E24: 9D 78 05  STA ram_пули_игрока_позиция_y_старш,X
 C - - - - - 0x000E37 00:8E27: A5 04     LDA ram_0004
 C - - - - - 0x000E39 00:8E29: 18        CLC
 C - - - - - 0x000E3A 00:8E2A: 79 1A 91  ADC tbl_9119 + $01,Y
-C - - - - - 0x000E3D 00:8E2D: 9D 88 05  STA ram_plr_bullet_pos_X_hi,X
+C - - - - - 0x000E3D 00:8E2D: 9D 88 05  STA ram_пули_игрока_позиция_x_старш,X
 C - - - - - 0x000E40 00:8E30: B9 1C 91  LDA tbl_9119 + $03,Y
-C - - - - - 0x000E43 00:8E33: 9D 98 05  STA ram_plr_bullet_attr_spr,X
+C - - - - - 0x000E43 00:8E33: 9D 98 05  STA ram_пули_игрока_аттрибуты_спрайта,X
 C - - - - - 0x000E46 00:8E36: B9 1B 91  LDA tbl_9119 + $02,Y
 C - - - - - 0x000E49 00:8E39: 85 0A     STA ram_000A
 C - - - - - 0x000E4B 00:8E3B: A5 0E     LDA ram_000E    ; R cut weapon value
@@ -2580,43 +2580,43 @@ C - - - - - 0x000E83 00:8E73: B9 16 8F  LDA tbl_8F15_bullet_speed + $01,Y
 C - - - - - 0x000E86 00:8E76: 85 09     STA ram_0009
 C - - - - - 0x000E88 00:8E78: A4 0A     LDY ram_000A
 C - - - - - 0x000E8A 00:8E7A: B1 08     LDA (ram_0008),Y
-C - - - - - 0x000E8C 00:8E7C: 9D E8 05  STA ram_plr_bullet_spd_Y_lo,X
+C - - - - - 0x000E8C 00:8E7C: 9D E8 05  STA ram_пули_игрока_скорость_y_младш,X
 C - - - - - 0x000E8F 00:8E7F: C8        INY
 C - - - - - 0x000E90 00:8E80: B1 08     LDA (ram_0008),Y
-C - - - - - 0x000E92 00:8E82: 9D 58 06  STA ram_plr_bullet_spd_Y_hi,X
+C - - - - - 0x000E92 00:8E82: 9D 58 06  STA ram_пули_игрока_скорость_y_старш,X
 C - - - - - 0x000E95 00:8E85: C8        INY
 C - - - - - 0x000E96 00:8E86: B1 08     LDA (ram_0008),Y
-C - - - - - 0x000E98 00:8E88: 9D 08 06  STA ram_plr_bullet_spd_X_lo,X
+C - - - - - 0x000E98 00:8E88: 9D 08 06  STA ram_пули_игрока_скорость_x_младш,X
 C - - - - - 0x000E9B 00:8E8B: C8        INY
 C - - - - - 0x000E9C 00:8E8C: B1 08     LDA (ram_0008),Y
-C - - - - - 0x000E9E 00:8E8E: 9D 18 06  STA ram_plr_bullet_spd_X_hi,X
+C - - - - - 0x000E9E 00:8E8E: 9D 18 06  STA ram_пули_игрока_скорость_x_старш,X
 C - - - - - 0x000EA1 00:8E91: A9 00     LDA #$00
-C - - - - - 0x000EA3 00:8E93: 9D 28 06  STA ram_0628_plr_bullet,X
+C - - - - - 0x000EA3 00:8E93: 9D 28 06  STA ram_пули_игрока_счетчик_жизни,X
 C - - - - - 0x000EA6 00:8E96: A0 01     LDY #$01
 C - - - - - 0x000EA8 00:8E98: A5 0F     LDA ram_000F
 C - - - - - 0x000EAA 00:8E9A: 05 12     ORA ram_0012
-C - - - - - 0x000EAC 00:8E9C: 9D B8 05  STA ram_plr_bullet_anim_id,X
+C - - - - - 0x000EAC 00:8E9C: 9D B8 05  STA ram_пули_игрока_тип_анимации,X
 C - - - - - 0x000EAF 00:8E9F: 29 0F     AND #$0F
 C - - - - - 0x000EB1 00:8EA1: C9 03     CMP #$03
 C - - - - - 0x000EB3 00:8EA3: D0 12     BNE bra_8EB7
-C - - - - - 0x000EB5 00:8EA5: BC 48 06  LDY ram_plr_bullet_dir,X
+C - - - - - 0x000EB5 00:8EA5: BC 48 06  LDY ram_пули_игрока_направление,X
 C - - - - - 0x000EB8 00:8EA8: B9 D6 8E  LDA tbl_8ED6_offset,Y
 C - - - - - 0x000EBB 00:8EAB: 18        CLC
 C - - - - - 0x000EBC 00:8EAC: 65 01     ADC ram_0001
 C - - - - - 0x000EBE 00:8EAE: A8        TAY
 C - - - - - 0x000EBF 00:8EAF: B9 DE 8E  LDA tbl_8EDE,Y
-C - - - - - 0x000EC2 00:8EB2: 9D 28 06  STA ram_0628_plr_bullet,X
+C - - - - - 0x000EC2 00:8EB2: 9D 28 06  STA ram_пули_игрока_счетчик_жизни,X
 C - - - - - 0x000EC5 00:8EB5: A0 03     LDY #$03
 bra_8EB7:
 C - - - - - 0x000EC7 00:8EB7: 98        TYA
-C - - - - - 0x000EC8 00:8EB8: 9D A8 05  STA ram_05A8_plr_bullet,X
-C - - - - - 0x000ECB 00:8EBB: BD B8 05  LDA ram_plr_bullet_anim_id,X
+C - - - - - 0x000EC8 00:8EB8: 9D A8 05  STA ram_пули_игрока_аттрибуты,X
+C - - - - - 0x000ECB 00:8EBB: BD B8 05  LDA ram_пули_игрока_тип_анимации,X
 C - - - - - 0x000ECE 00:8EBE: 29 0F     AND #$0F
 C - - - - - 0x000ED0 00:8EC0: A8        TAY
 C - - - - - 0x000ED1 00:8EC1: B9 F5 8E  LDA tbl_8EF5,Y
 C - - - - - 0x000ED4 00:8EC4: 9D 68 05  STA ram_тип_пули_игрока,X
 C - - - - - 0x000ED7 00:8EC7: B9 FC 8E  LDA tbl_8EFC_bullet_damage,Y
-C - - - - - 0x000EDA 00:8ECA: 9D F8 05  STA ram_plr_bullet_damage,X
+C - - - - - 0x000EDA 00:8ECA: 9D F8 05  STA ram_пули_игрока_урон,X
 C - - - - - 0x000EDD 00:8ECD: B9 03 8F  LDA tbl_8F03,Y
 ; bzk optimize, useless check, all values are > 00
 C - - - - - 0x000EE0 00:8ED0: F0 03     BEQ bra_8ED5_RTS
@@ -3199,11 +3199,11 @@ bra_9193:
 bra_9193_loop:
 C - - - - - 0x0011A3 00:9193: BD 68 05  LDA ram_тип_пули_игрока,X
 C - - - - - 0x0011A6 00:9196: 99 00 05  STA ram_кадр_пули_игрока,Y
-C - - - - - 0x0011A9 00:9199: BD 98 05  LDA ram_plr_bullet_attr_spr,X 
+C - - - - - 0x0011A9 00:9199: BD 98 05  LDA ram_пули_игрока_аттрибуты_спрайта,X 
 C - - - - - 0x0011AC 00:919C: 99 4E 05  STA ram_аттрибуты_спрайта_пули_игрока,Y
-C - - - - - 0x0011AF 00:919F: BD 78 05  LDA ram_plr_bullet_pos_Y_hi,X
+C - - - - - 0x0011AF 00:919F: BD 78 05  LDA ram_пули_игрока_позиция_y_старш,X
 C - - - - - 0x0011B2 00:91A2: 99 1A 05  STA ram_позиция_y_спрайта_пули_игрока,Y
-C - - - - - 0x0011B5 00:91A5: BD 88 05  LDA ram_plr_bullet_pos_X_hi,X
+C - - - - - 0x0011B5 00:91A5: BD 88 05  LDA ram_пули_игрока_позиция_x_старш,X
 C - - - - - 0x0011B8 00:91A8: 99 34 05  STA ram_позиция_x_спрайта_пули_игрока,Y
 C - - - - - 0x0011BB 00:91AB: CA        DEX
 C - - - - - 0x0011BC 00:91AC: CA        DEX
@@ -3214,21 +3214,21 @@ C - - - - - 0x0011C0 00:91B0: 60        RTS
 
 
 sub_91B1:
-C - - - - - 0x0011C1 00:91B1: BD B8 05  LDA ram_plr_bullet_anim_id,X
+C - - - - - 0x0011C1 00:91B1: BD B8 05  LDA ram_пули_игрока_тип_анимации,X
 C - - - - - 0x0011C4 00:91B4: 29 0F     AND #$0F
 C - - - - - 0x0011C6 00:91B6: 85 13     STA ram_0013
-C - - - - - 0x0011C8 00:91B8: BC A8 05  LDY ram_05A8_plr_bullet,X
+C - - - - - 0x0011C8 00:91B8: BC A8 05  LDY ram_пули_игрока_аттрибуты,X
 C - - - - - 0x0011CB 00:91BB: D0 28     BNE bra_91E5
 bra_91BD:
 C - - - - - 0x0011CD 00:91BD: A9 00     LDA #$00
-C - - - - - 0x0011CF 00:91BF: 9D 38 06  STA ram_0638_plr_bullet_hitbox_index,X
+C - - - - - 0x0011CF 00:91BF: 9D 38 06  STA ram_пули_игрока_хитбокс,X
 C - - - - - 0x0011D2 00:91C2: 60        RTS
 bra_91C3:
 C - - - - - 0x0011D3 00:91C3: 20 8C 92  JSR sub_928C
-C - - - - - 0x0011D6 00:91C6: DE 28 06  DEC ram_0628_plr_bullet,X
+C - - - - - 0x0011D6 00:91C6: DE 28 06  DEC ram_пули_игрока_счетчик_жизни,X
 C - - - - - 0x0011D9 00:91C9: D0 F2     BNE bra_91BD
 C - - - - - 0x0011DB 00:91CB: A9 01     LDA #$01
-C - - - - - 0x0011DD 00:91CD: 9D A8 05  STA ram_05A8_plr_bullet,X
+C - - - - - 0x0011DD 00:91CD: 9D A8 05  STA ram_пули_игрока_аттрибуты,X
 C - - - - - 0x0011E0 00:91D0: D0 EB     BNE bra_91BD    ; jmp
 bra_91D2:
 C - - - - - 0x0011E2 00:91D2: 88        DEY
@@ -3236,54 +3236,54 @@ C - - - - - 0x0011E3 00:91D3: D0 EE     BNE bra_91C3
 C - - - - - 0x0011E5 00:91D5: 20 8C 92  JSR sub_928C
 C - - - - - 0x0011E8 00:91D8: A9 04     LDA #$04
 C - - - - - 0x0011EA 00:91DA: 9D 68 05  STA ram_тип_пули_игрока,X
-C - - - - - 0x0011ED 00:91DD: DE 28 06  DEC ram_0628_plr_bullet,X
+C - - - - - 0x0011ED 00:91DD: DE 28 06  DEC ram_пули_игрока_счетчик_жизни,X
 C - - - - - 0x0011F0 00:91E0: D0 DB     BNE bra_91BD
 bra_91E2:
 C - - - - - 0x0011F2 00:91E2: 4C 01 F8  JMP loc_0x01F811
 bra_91E5:
 C - - - - - 0x0011F5 00:91E5: 88        DEY
 C - - - - - 0x0011F6 00:91E6: D0 EA     BNE bra_91D2
-C - - - - - 0x0011F8 00:91E8: FE 28 06  INC ram_0628_plr_bullet,X
+C - - - - - 0x0011F8 00:91E8: FE 28 06  INC ram_пули_игрока_счетчик_жизни,X
 C - - - - - 0x0011FB 00:91EB: A5 5D     LDA ram_005D
 C - - - - - 0x0011FD 00:91ED: F0 07     BEQ bra_91F6
-C - - - - - 0x0011FF 00:91EF: BD 28 06  LDA ram_0628_plr_bullet,X
+C - - - - - 0x0011FF 00:91EF: BD 28 06  LDA ram_пули_игрока_счетчик_жизни,X
 C - - - - - 0x001202 00:91F2: C9 1A     CMP #$1A
 C - - - - - 0x001204 00:91F4: B0 6B     BCS bra_9261
 bra_91F6:
 C - - - - - 0x001206 00:91F6: 20 EF 92  JSR sub_92EF
 C - - - - - 0x001209 00:91F9: A9 9F     LDA #$9F
-C - - - - - 0x00120B 00:91FB: 9D 38 06  STA ram_0638_plr_bullet_hitbox_index,X
-C - - - - - 0x00120E 00:91FE: BD C8 05  LDA ram_plr_bullet_pos_Y_lo,X
+C - - - - - 0x00120B 00:91FB: 9D 38 06  STA ram_пули_игрока_хитбокс,X
+C - - - - - 0x00120E 00:91FE: BD C8 05  LDA ram_пули_игрока_позиция_y_младш,X
 C - - - - - 0x001211 00:9201: 18        CLC
-C - - - - - 0x001212 00:9202: 7D E8 05  ADC ram_plr_bullet_spd_Y_lo,X
-C - - - - - 0x001215 00:9205: 9D C8 05  STA ram_plr_bullet_pos_Y_lo,X
-C - - - - - 0x001218 00:9208: BD 78 05  LDA ram_plr_bullet_pos_Y_hi,X
-C - - - - - 0x00121B 00:920B: 7D 58 06  ADC ram_plr_bullet_spd_Y_hi,X
+C - - - - - 0x001212 00:9202: 7D E8 05  ADC ram_пули_игрока_скорость_y_младш,X
+C - - - - - 0x001215 00:9205: 9D C8 05  STA ram_пули_игрока_позиция_y_младш,X
+C - - - - - 0x001218 00:9208: BD 78 05  LDA ram_пули_игрока_позиция_y_старш,X
+C - - - - - 0x00121B 00:920B: 7D 58 06  ADC ram_пули_игрока_скорость_y_старш,X
 C - - - - - 0x00121E 00:920E: 38        SEC
 C - - - - - 0x00121F 00:920F: E5 72     SBC ram_cam_spd_Y
-C - - - - - 0x001221 00:9211: 9D 78 05  STA ram_plr_bullet_pos_Y_hi,X
+C - - - - - 0x001221 00:9211: 9D 78 05  STA ram_пули_игрока_позиция_y_старш,X
 C - - - - - 0x001224 00:9214: C9 F0     CMP #$F0
 C - - - - - 0x001226 00:9216: B0 CA     BCS bra_91E2
-C - - - - - 0x001228 00:9218: BD D8 05  LDA ram_plr_bullet_pos_X_lo,X
-C - - - - - 0x00122B 00:921B: 7D 08 06  ADC ram_plr_bullet_spd_X_lo,X
-C - - - - - 0x00122E 00:921E: 9D D8 05  STA ram_plr_bullet_pos_X_lo,X
-C - - - - - 0x001231 00:9221: BD 88 05  LDA ram_plr_bullet_pos_X_hi,X
-C - - - - - 0x001234 00:9224: 7D 18 06  ADC ram_plr_bullet_spd_X_hi,X
-C - - - - - 0x001237 00:9227: 9D 88 05  STA ram_plr_bullet_pos_X_hi,X
+C - - - - - 0x001228 00:9218: BD D8 05  LDA ram_пули_игрока_позиция_x_младш,X
+C - - - - - 0x00122B 00:921B: 7D 08 06  ADC ram_пули_игрока_скорость_x_младш,X
+C - - - - - 0x00122E 00:921E: 9D D8 05  STA ram_пули_игрока_позиция_x_младш,X
+C - - - - - 0x001231 00:9221: BD 88 05  LDA ram_пули_игрока_позиция_x_старш,X
+C - - - - - 0x001234 00:9224: 7D 18 06  ADC ram_пули_игрока_скорость_x_старш,X
+C - - - - - 0x001237 00:9227: 9D 88 05  STA ram_пули_игрока_позиция_x_старш,X
 C - - - - - 0x00123A 00:922A: C9 08     CMP #$08
 C - - - - - 0x00123C 00:922C: 90 B4     BCC bra_91E2
-C - - - - - 0x00123E 00:922E: BC 28 06  LDY ram_0628_plr_bullet,X
+C - - - - - 0x00123E 00:922E: BC 28 06  LDY ram_пули_игрока_счетчик_жизни,X
 C - - - - - 0x001241 00:9231: 88        DEY
 C - - - - - 0x001242 00:9232: F0 4D     BEQ bra_9281_RTS
 C - - - - - 0x001244 00:9234: A5 13     LDA ram_0013
 C - - - - - 0x001246 00:9236: C9 06     CMP #$06
 C - - - - - 0x001248 00:9238: F0 48     BEQ bra_9282
-C - - - - - 0x00124A 00:923A: BD 78 05  LDA ram_plr_bullet_pos_Y_hi,X
+C - - - - - 0x00124A 00:923A: BD 78 05  LDA ram_пули_игрока_позиция_y_старш,X
 C - - - - - 0x00124D 00:923D: C9 0C     CMP #$0C
 C - - - - - 0x00124F 00:923F: 90 40     BCC bra_9281_RTS
 C - - - - - 0x001251 00:9241: E9 04     SBC #$04
 C - - - - - 0x001253 00:9243: A8        TAY
-C - - - - - 0x001254 00:9244: BD 88 05  LDA ram_plr_bullet_pos_X_hi,X
+C - - - - - 0x001254 00:9244: BD 88 05  LDA ram_пули_игрока_позиция_x_старш,X
 C - - - - - 0x001257 00:9247: 20 AA BA  JSR sub_0x007ABA_calculate_surface_type
 C - - - - - 0x00125A 00:924A: C9 06     CMP #$06
 C - - - - - 0x00125C 00:924C: 90 06     BCC bra_9254
@@ -3300,7 +3300,7 @@ C - - - - - 0x00126E 00:925E: 20 3B 93  JSR sub_933B
 bra_9261:
 sub_0x001271:
 C - - - - - 0x001271 00:9261: A0 03     LDY #$03
-C - - - - - 0x001273 00:9263: BD B8 05  LDA ram_plr_bullet_anim_id,X
+C - - - - - 0x001273 00:9263: BD B8 05  LDA ram_пули_игрока_тип_анимации,X
 C - - - - - 0x001276 00:9266: 29 0F     AND #$0F
 C - - - - - 0x001278 00:9268: C9 04     CMP #$04
 C - - - - - 0x00127A 00:926A: F0 2A     BEQ bra_9296
@@ -3309,30 +3309,30 @@ C - - - - - 0x00127E 00:926E: C9 05     CMP #$05
 C - - - - - 0x001280 00:9270: F0 24     BEQ bra_9296
 loc_9272:
 C D 0 - - - 0x001282 00:9272: A9 06     LDA #$06
-C - - - - - 0x001284 00:9274: 9D 28 06  STA ram_0628_plr_bullet,X
+C - - - - - 0x001284 00:9274: 9D 28 06  STA ram_пули_игрока_счетчик_жизни,X
 C - - - - - 0x001287 00:9277: A9 02     LDA #$02
-C - - - - - 0x001289 00:9279: 9D A8 05  STA ram_05A8_plr_bullet,X
+C - - - - - 0x001289 00:9279: 9D A8 05  STA ram_пули_игрока_аттрибуты,X
 C - - - - - 0x00128C 00:927C: A9 00     LDA #$00
-C - - - - - 0x00128E 00:927E: 9D 38 06  STA ram_0638_plr_bullet_hitbox_index,X
+C - - - - - 0x00128E 00:927E: 9D 38 06  STA ram_пули_игрока_хитбокс,X
 bra_9281_RTS:
 C - - - - - 0x001291 00:9281: 60        RTS
 bra_9282:
-C - - - - - 0x001292 00:9282: BD 28 06  LDA ram_0628_plr_bullet,X
+C - - - - - 0x001292 00:9282: BD 28 06  LDA ram_пули_игрока_счетчик_жизни,X
 C - - - - - 0x001295 00:9285: C9 0A     CMP #$0A
 C - - - - - 0x001297 00:9287: 90 F8     BCC bra_9281_RTS
 C - - - - - 0x001299 00:9289: 4C 01 F8  JMP loc_0x01F811
 sub_928C:
-C - - - - - 0x00129C 00:928C: BD 78 05  LDA ram_plr_bullet_pos_Y_hi,X
+C - - - - - 0x00129C 00:928C: BD 78 05  LDA ram_пули_игрока_позиция_y_старш,X
 C - - - - - 0x00129F 00:928F: 38        SEC
 C - - - - - 0x0012A0 00:9290: E5 72     SBC ram_cam_spd_Y
-C - - - - - 0x0012A2 00:9292: 9D 78 05  STA ram_plr_bullet_pos_Y_hi,X
+C - - - - - 0x0012A2 00:9292: 9D 78 05  STA ram_пули_игрока_позиция_y_старш,X
 C - - - - - 0x0012A5 00:9295: 60        RTS
 bra_9296:
 C - - - - - 0x0012A6 00:9296: 86 10     STX ram_0010
 C - - - - - 0x0012A8 00:9298: 84 00     STY ram_0000
 bra_929A_loop:
 C - - - - - 0x0012AA 00:929A: A6 10     LDX ram_0010
-C - - - - - 0x0012AC 00:929C: BD B8 05  LDA ram_plr_bullet_anim_id,X
+C - - - - - 0x0012AC 00:929C: BD B8 05  LDA ram_пули_игрока_тип_анимации,X
 C - - - - - 0x0012AF 00:929F: 29 40     AND #$40
 C - - - - - 0x0012B1 00:92A1: 85 12     STA ram_0012
 C - - - - - 0x0012B3 00:92A3: A9 06     LDA #$06
@@ -3356,19 +3356,19 @@ C - - - - - 0x0012CD 00:92BD: 4C 72 92  JMP loc_9272
 
 sub_92C0:
 C - - - - - 0x0012D0 00:92C0: A4 10     LDY ram_0010
-C - - - - - 0x0012D2 00:92C2: B9 78 05  LDA ram_plr_bullet_pos_Y_hi,Y
+C - - - - - 0x0012D2 00:92C2: B9 78 05  LDA ram_пули_игрока_позиция_y_старш,Y
 C - - - - - 0x0012D5 00:92C5: 85 0C     STA ram_000C
-C - - - - - 0x0012D7 00:92C7: B9 88 05  LDA ram_plr_bullet_pos_X_hi,Y
+C - - - - - 0x0012D7 00:92C7: B9 88 05  LDA ram_пули_игрока_позиция_x_старш,Y
 C - - - - - 0x0012DA 00:92CA: 85 0D     STA ram_000D
 C - - - - - 0x0012DC 00:92CC: A4 00     LDY ram_0000
 C - - - - - 0x0012DE 00:92CE: B9 E7 92  LDA tbl_92E7,Y
 C - - - - - 0x0012E1 00:92D1: 85 0A     STA ram_000A
 C - - - - - 0x0012E3 00:92D3: A5 0C     LDA ram_000C
-C - - - - - 0x0012E5 00:92D5: 9D 78 05  STA ram_plr_bullet_pos_Y_hi,X
+C - - - - - 0x0012E5 00:92D5: 9D 78 05  STA ram_пули_игрока_позиция_y_старш,X
 C - - - - - 0x0012E8 00:92D8: A5 0D     LDA ram_000D
-C - - - - - 0x0012EA 00:92DA: 9D 88 05  STA ram_plr_bullet_pos_X_hi,X
+C - - - - - 0x0012EA 00:92DA: 9D 88 05  STA ram_пули_игрока_позиция_x_старш,X
 C - - - - - 0x0012ED 00:92DD: A9 02     LDA #$02
-C - - - - - 0x0012EF 00:92DF: 9D 98 05  STA ram_plr_bullet_attr_spr,X
+C - - - - - 0x0012EF 00:92DF: 9D 98 05  STA ram_пули_игрока_аттрибуты_спрайта,X
 C - - - - - 0x0012F2 00:92E2: A9 00     LDA #$00
 C - - - - - 0x0012F4 00:92E4: 4C 6C 8E  JMP loc_8E6C
 
@@ -3408,7 +3408,7 @@ C - - - - - 0x001316 00:9306: 60        RTS
 
 
 ofs_005_9307_03:
-C - - J - - 0x001317 00:9307: BC 48 06  LDY ram_plr_bullet_dir,X
+C - - J - - 0x001317 00:9307: BC 48 06  LDY ram_пули_игрока_направление,X
 C - - - - - 0x00131A 00:930A: B9 11 93  LDA tbl_9311,Y
 C - - - - - 0x00131D 00:930D: 9D 68 05  STA ram_тип_пули_игрока,X
 C - - - - - 0x001320 00:9310: 60        RTS
@@ -3434,7 +3434,7 @@ tbl_9311:
 
 ofs_005_9319_04:
 C - - J - - 0x001329 00:9319: A9 19     LDA #$19
-C - - - - - 0x00132B 00:931B: BC 28 06  LDY ram_0628_plr_bullet,X
+C - - - - - 0x00132B 00:931B: BC 28 06  LDY ram_пули_игрока_счетчик_жизни,X
 C - - - - - 0x00132E 00:931E: C0 04     CPY #$04
 C - - - - - 0x001330 00:9320: 90 15     BCC bra_9337
 C - - - - - 0x001332 00:9322: A9 03     LDA #$03
@@ -3444,7 +3444,7 @@ C - - - - - 0x001334 00:9324: B0 11     BCS bra_9337    ; jmp
 
 ofs_005_9326_05:
 C - - J - - 0x001336 00:9326: A9 19     LDA #$19
-C - - - - - 0x001338 00:9328: BC 28 06  LDY ram_0628_plr_bullet,X
+C - - - - - 0x001338 00:9328: BC 28 06  LDY ram_пули_игрока_счетчик_жизни,X
 C - - - - - 0x00133B 00:932B: C0 04     CPY #$04
 C - - - - - 0x00133D 00:932D: 90 08     BCC bra_9337
 C - - - - - 0x00133F 00:932F: A9 03     LDA #$03
@@ -3459,14 +3459,14 @@ C - - - - - 0x00134A 00:933A: 60        RTS
 
 sub_933B:
 ; triggers during area 4 boss attacking
-C - - - - - 0x00134B 00:933B: BD 88 05  LDA ram_plr_bullet_pos_X_hi,X
+C - - - - - 0x00134B 00:933B: BD 88 05  LDA ram_пули_игрока_позиция_x_старш,X
 C - - - - - 0x00134E 00:933E: 4A        LSR
 C - - - - - 0x00134F 00:933F: 4A        LSR
 C - - - - - 0x001350 00:9340: 4A        LSR
 C - - - - - 0x001351 00:9341: 85 00     STA ram_0000
 C - - - - - 0x001353 00:9343: A9 08     LDA #$08
 C - - - - - 0x001355 00:9345: 85 01     STA ram_0001
-C - - - - - 0x001357 00:9347: BD 78 05  LDA ram_plr_bullet_pos_Y_hi,X
+C - - - - - 0x001357 00:9347: BD 78 05  LDA ram_пули_игрока_позиция_y_старш,X
 C - - - - - 0x00135A 00:934A: 18        CLC
 C - - - - - 0x00135B 00:934B: 69 FC     ADC #$FC
 C - - - - - 0x00135D 00:934D: 18        CLC
@@ -6314,7 +6314,7 @@ C - - - - - 0x002447 00:A437: 60        RTS
 
 sub_A438_helicopter_handler:
 ; during credits
-C - - - - - 0x002448 00:A438: AD 68 06  LDA ram_obj_state
+C - - - - - 0x002448 00:A438: AD 68 06  LDA ram_состояние_объектов
 C - - - - - 0x00244B 00:A43B: 20 09 E6  JSR sub_0x01E619_jump_to_pointers_after_jsr
 - D 1 - I - 0x00244E 00:A43E: 42 A4     .word ofs_012_A442_00
 - D 1 - I - 0x002450 00:A440: 4B A4     .word ofs_012_A44B_01
@@ -6324,7 +6324,7 @@ C - - - - - 0x00244B 00:A43B: 20 09 E6  JSR sub_0x01E619_jump_to_pointers_after_
 ofs_012_A442_00:
 C - - J - - 0x002452 00:A442: A9 48     LDA #$48
 C - - - - - 0x002454 00:A444: 8D 3C 05  STA ram_позиция_x_спрайта_врага_и_пуль
-C - - - - - 0x002457 00:A447: EE 68 06  INC ram_obj_state
+C - - - - - 0x002457 00:A447: EE 68 06  INC ram_состояние_объектов
 C - - - - - 0x00245A 00:A44A: 60        RTS
 
 
