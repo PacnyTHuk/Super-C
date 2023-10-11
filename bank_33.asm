@@ -539,7 +539,7 @@ C - - - - - 0x006143 01:A133: D0 D8     BNE bra_A10D_RTS
 C - - - - - 0x006145 01:A135: B9 D4 00  LDA ram_бессмертие_игрока,Y
 C - - - - - 0x006148 01:A138: D0 05     BNE bra_A13F
 C - - - - - 0x00614A 01:A13A: A6 11     LDX ram_0011
-C - - - - - 0x00614C 01:A13C: 4C AC F6  JMP loc_0x01F6BC
+C - - - - - 0x00614C 01:A13C: 4C AC F6  JMP loc_0x01F6BC_убить_игрока
 bra_A13F:
 C - - - - - 0x00614F 01:A13F: 84 21     STY ram_0021
 C - - - - - 0x006151 01:A141: BD 76 06  LDA ram_жизни_объектов,X
@@ -3013,7 +3013,7 @@ C - - - - - 0x006CFA 01:ACEA: A9 80     LDA #$80
 C - - - - - 0x006CFC 01:ACEC: 9D 2C 07  STA ram_072C_obj,X
 C - - - - - 0x006CFF 01:ACEF: A9 F0     LDA #con__hp_F0
 C - - - - - 0x006D01 01:ACF1: 9D 76 06  STA ram_жизни_объектов,X
-C - - - - - 0x006D04 01:ACF4: A5 5D     LDA ram_005D_конфиг_уровня
+C - - - - - 0x006D04 01:ACF4: A5 5D     LDA ram_конфиг_уровня_вид
 C - - - - - 0x006D06 01:ACF6: 0A        ASL
 C - - - - - 0x006D07 01:ACF7: A8        TAY
 C - - - - - 0x006D08 01:ACF8: B9 0C AD  LDA tbl_AD0C_spd_Y,Y
@@ -3027,22 +3027,23 @@ C - - - - - 0x006D19 01:AD09: 4C E0 A2  JMP loc_A2E0
 
 
 tbl_AD0C_spd_Y:
-- D 1 - - - 0x006D1C 01:AD0C: 40 FC     .word $FC40 ; 00 
-- D 1 - - - 0x006D1E 01:AD0E: 00 FD     .word $FD00 ; 01 
+- D 1 - - - 0x006D1C 01:AD0C: 40 FC     .word $FC40 ; 00 вид сверху
+- D 1 - - - 0x006D1E 01:AD0E: 00 FD     .word $FD00 ; 01 вид сбоку
 
 
 
 ofs_038_00_AD10_02:
 C - - J - - 0x006D20 01:AD10: 20 6F AD  JSR sub_AD6F
 C - - - - - 0x006D23 01:AD13: 20 07 A7  JSR sub_A707
-C - - - - - 0x006D26 01:AD16: A5 5D     LDA ram_005D_конфиг_уровня
-C - - - - - 0x006D28 01:AD18: F0 0C     BEQ bra_AD26
+C - - - - - 0x006D26 01:AD16: A5 5D     LDA ram_конфиг_уровня_вид
+C - - - - - 0x006D28 01:AD18: F0 0C     BEQ bra_AD26_вид_сбоку
+; вид сверху
 C - - - - - 0x006D2A 01:AD1A: BD AE 06  LDA ram_скорость_объектов_y_старш,X
 C - - - - - 0x006D2D 01:AD1D: 30 35     BMI bra_AD54
 C - - - - - 0x006D2F 01:AD1F: C9 03     CMP #$03
 C - - - - - 0x006D31 01:AD21: 90 31     BCC bra_AD54
 C - - - - - 0x006D33 01:AD23: 4C D7 A2  JMP loc_A2D7_increase_obj_state
-bra_AD26:
+bra_AD26_вид_сбоку:
 C - - - - - 0x006D36 01:AD26: BD 22 05  LDA ram_позиция_y_спрайта_врага_и_пуль,X
 C - - - - - 0x006D39 01:AD29: C9 08     CMP #$08
 C - - - - - 0x006D3B 01:AD2B: 90 27     BCC bra_AD54
@@ -5268,9 +5269,9 @@ C - - - - - 0x007ACF 01:BABF: 60        RTS
 sub_BAC0:
 sub_0x007AD0:
 loc_0x007AD0:
-C D 1 - - - 0x007AD0 01:BAC0: 85 00     STA ram_0000
-C - - - - - 0x007AD2 01:BAC2: 84 06     STY ram_0006
-C - - - - - 0x007AD4 01:BAC4: C4 45     CPY ram_0045
+C D 1 - - - 0x007AD0 01:BAC0: 85 00     STA ram_0000    ; pos X
+C - - - - - 0x007AD2 01:BAC2: 84 06     STY ram_0006    ; pos Y
+C - - - - - 0x007AD4 01:BAC4: C4 45     CPY ram_номер_сканлинии
 C - - - - - 0x007AD6 01:BAC6: 90 13     BCC bra_BADB
 C - - - - - 0x007AD8 01:BAC8: C4 49     CPY ram_0049
 C - - - - - 0x007ADA 01:BACA: B0 0F     BCS bra_BADB
@@ -5361,7 +5362,7 @@ C - - - - - 0x007B46 01:BB36: 85 00     STA ram_0000
 C - - - - - 0x007B48 01:BB38: A5 F9     LDA ram_00F9
 C - - - - - 0x007B4A 01:BB3A: C9 FF     CMP #$FF
 C - - - - - 0x007B4C 01:BB3C: D0 04     BNE bra_BB42
-C - - - - - 0x007B4E 01:BB3E: C4 45     CPY ram_0045
+C - - - - - 0x007B4E 01:BB3E: C4 45     CPY ram_номер_сканлинии
 C - - - - - 0x007B50 01:BB40: B0 35     BCS bra_BB77
 bra_BB42:
 C - - - - - 0x007B52 01:BB42: A5 00     LDA ram_0000
@@ -5456,11 +5457,12 @@ C - - - - - 0x007BD2 01:BBC2: 60        RTS
 
 sub_BBC3:
 C - - - - - 0x007BD3 01:BBC3: AA        TAX
-C - - - - - 0x007BD4 01:BBC4: A5 5D     LDA ram_005D_конфиг_уровня
-C - - - - - 0x007BD6 01:BBC6: D0 04     BNE bra_BBCC
+C - - - - - 0x007BD4 01:BBC4: A5 5D     LDA ram_конфиг_уровня_вид
+C - - - - - 0x007BD6 01:BBC6: D0 04     BNE bra_BBCC_вид_сверху
+; вид сбоку
 C - - - - - 0x007BD8 01:BBC8: BD DD BB  LDA tbl_BBDD,X
 C - - - - - 0x007BDB 01:BBCB: 60        RTS
-bra_BBCC:
+bra_BBCC_вид_сверху:
 C - - - - - 0x007BDC 01:BBCC: BD E9 BB  LDA tbl_BBE9,X
 C - - - - - 0x007BDF 01:BBCF: 60        RTS
 
@@ -5469,11 +5471,12 @@ C - - - - - 0x007BDF 01:BBCF: 60        RTS
 loc_BBD0:
 sub_BBD0:
 C D 1 - - - 0x007BE0 01:BBD0: A8        TAY
-C - - - - - 0x007BE1 01:BBD1: A5 5D     LDA ram_005D_конфиг_уровня
-C - - - - - 0x007BE3 01:BBD3: D0 04     BNE bra_BBD9
+C - - - - - 0x007BE1 01:BBD1: A5 5D     LDA ram_конфиг_уровня_вид
+C - - - - - 0x007BE3 01:BBD3: D0 04     BNE bra_BBD9_вид_сверху
+; вид сбоку
 C - - - - - 0x007BE5 01:BBD5: B9 DD BB  LDA tbl_BBDD,Y
 C - - - - - 0x007BE8 01:BBD8: 60        RTS
-bra_BBD9:
+bra_BBD9_вид_сверху:
 - - - - - - 0x007BE9 01:BBD9: B9 E9 BB  LDA tbl_BBE9,Y
 - - - - - - 0x007BEC 01:BBDC: 60        RTS
 

@@ -37,8 +37,8 @@
 .export tbl_0x01F4E4
 .export sub_0x01F4FC
 .export sub_0x01F500
-.export loc_0x01F6BC
-.export loc_0x01F6BD
+.export loc_0x01F6BC_убить_игрока
+.export loc_0x01F6BD_убить_игрока
 .export sub_0x01F70D_try_to_find_free_object
 .export sub_0x01F716_try_to_find_free_object
 .export sub_0x01F718_try_to_find_free_object
@@ -3386,10 +3386,11 @@ bra_F35B:
 loc_F35D:
 C D 3 - - - 0x01F36D 07:F35D: 86 10     STX ram_0010
 C - - - - - 0x01F36F 07:F35F: A0 02     LDY #$02
-C - - - - - 0x01F371 07:F361: A5 5D     LDA ram_005D_конфиг_уровня
-C - - - - - 0x01F373 07:F363: F0 02     BEQ bra_F367
+C - - - - - 0x01F371 07:F361: A5 5D     LDA ram_конфиг_уровня_вид
+C - - - - - 0x01F373 07:F363: F0 02     BEQ bra_F367_вид_сбоку
+; вид сверху
 C - - - - - 0x01F375 07:F365: A0 0E     LDY #$0E
-bra_F367:
+bra_F367_вид_сбоку:
 C - - - - - 0x01F377 07:F367: 20 FD F6  JSR sub_F6FD_try_to_find_free_object
 C - - - - - 0x01F37A 07:F36A: D0 25     BNE bra_F391
 C - - - - - 0x01F37C 07:F36C: A5 06     LDA ram_0006
@@ -4056,10 +4057,10 @@ C - - - - - 0x01F6BB 07:F6AB: 60        RTS
 
 
 
-loc_0x01F6BC:
+loc_0x01F6BC_убить_игрока:
 ; bzk optimize
 C D 3 - - - 0x01F6BC 07:F6AC: EA        NOP
-loc_0x01F6BD:
+loc_0x01F6BD_убить_игрока:
 C D 3 - - - 0x01F6BD 07:F6AD: A5 5C     LDA ram_005C_unk
 C - - - - - 0x01F6BF 07:F6AF: D0 15     BNE bra_F6C6_RTS
 C - - - - - 0x01F6C1 07:F6B1: A9 25     LDA #con_sound_25
@@ -4384,7 +4385,7 @@ sub_F83A:
 C - - - - - 0x01F84A 07:F83A: A9 FF     LDA #$FF
 C - - - - - 0x01F84C 07:F83C: 85 48     STA ram_0048
 C - - - - - 0x01F84E 07:F83E: 85 49     STA ram_0049
-C - - - - - 0x01F850 07:F840: A5 45     LDA ram_0045
+C - - - - - 0x01F850 07:F840: A5 45     LDA ram_номер_сканлинии
 C - - - - - 0x01F852 07:F842: 18        CLC
 C - - - - - 0x01F853 07:F843: 65 46     ADC ram_0046
 C - - - - - 0x01F855 07:F845: B0 08     BCS bra_F84F_RTS
@@ -5000,7 +5001,7 @@ C - - - - - 0x01FC4A 07:FC3A: A6 27     LDX ram_irq_handler_hi
 C - - - - - 0x01FC4C 07:FC3C: F0 02     BEQ bra_FC40
 C - - - - - 0x01FC4E 07:FC3E: A2 01     LDX #$01
 bra_FC40:
-C - - - - - 0x01FC50 07:FC40: A5 45     LDA ram_0045
+C - - - - - 0x01FC50 07:FC40: A5 45     LDA ram_номер_сканлинии
 C - - - - - 0x01FC52 07:FC42: 8D 00 C0  STA $C000
 C - - - - - 0x01FC55 07:FC45: 8D 01 C0  STA $C001
 ; write to E000 (disable IRQ) if handler is 00
@@ -5055,7 +5056,7 @@ C - - - - - 0x01FC9E 07:FC8E: 60        RTS
 
 sub_FC8F:
 C - - - - - 0x01FC9F 07:FC8F: A9 FF     LDA #$FF
-C - - - - - 0x01FCA1 07:FC91: 85 45     STA ram_0045
+C - - - - - 0x01FCA1 07:FC91: 85 45     STA ram_номер_сканлинии
 C - - - - - 0x01FCA3 07:FC93: 85 46     STA ram_0046
 C - - - - - 0x01FCA5 07:FC95: 85 47     STA ram_0047
 C - - - - - 0x01FCA7 07:FC97: A9 00     LDA #$00    ; con_irq_disable

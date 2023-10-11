@@ -896,7 +896,7 @@ C - - - - - 0x004590 01:8580: 85 26     STA ram_for_A000
 C - - - - - 0x004592 01:8582: A9 01     LDA #con_irq_area_1_boss
 C - - - - - 0x004594 01:8584: 85 27     STA ram_irq_handler_hi
 C - - - - - 0x004596 01:8586: A9 A2     LDA #$A2
-C - - - - - 0x004598 01:8588: 85 45     STA ram_0045
+C - - - - - 0x004598 01:8588: 85 45     STA ram_номер_сканлинии
 C - - - - - 0x00459A 01:858A: A5 FC     LDA ram_scroll_Y
 C - - - - - 0x00459C 01:858C: 85 F9     STA ram_00F9
 C - - - - - 0x00459E 01:858E: A5 FD     LDA ram_scroll_X
@@ -4392,7 +4392,7 @@ C - - - - - 0x005A48 01:9A38: 20 CE A9  JSR sub_0x0069DE
 C - - - - - 0x005A4B 01:9A3B: A9 08     LDA #con_irq_area_3_boss
 C - - - - - 0x005A4D 01:9A3D: 85 27     STA ram_irq_handler_hi
 C - - - - - 0x005A4F 01:9A3F: A9 A2     LDA #$A2
-C - - - - - 0x005A51 01:9A41: 85 45     STA ram_0045
+C - - - - - 0x005A51 01:9A41: 85 45     STA ram_номер_сканлинии
 C - - - - - 0x005A53 01:9A43: A0 4F     LDY #$4F
 C - - - - - 0x005A55 01:9A45: 20 12 BD  JSR sub_0x007D22_clear_0400_Y
 C - - - - - 0x005A58 01:9A48: A9 09     LDA #$09
@@ -4420,9 +4420,9 @@ C - - - - - 0x005A73 01:9A63: 4C D7 A2  JMP loc_0x0062E7_increase_obj_state
 ofs_038_4B_9A66_05:
 C - - J - - 0x005A76 01:9A66: A9 AA     LDA #$AA
 C - - - - - 0x005A78 01:9A68: 85 FB     STA ram_00FB
-C - - - - - 0x005A7A 01:9A6A: E6 45     INC ram_0045
+C - - - - - 0x005A7A 01:9A6A: E6 45     INC ram_номер_сканлинии
 C - - - - - 0x005A7C 01:9A6C: 20 9D 9B  JSR sub_9B9D
-C - - - - - 0x005A7F 01:9A6F: A5 45     LDA ram_0045
+C - - - - - 0x005A7F 01:9A6F: A5 45     LDA ram_номер_сканлинии
 C - - - - - 0x005A81 01:9A71: C9 C8     CMP #$C8
 C - - - - - 0x005A83 01:9A73: 90 EA     BCC bra_9A5F_RTS
 C - - - - - 0x005A85 01:9A75: A9 16     LDA #con_chr_bank + $16
@@ -4614,16 +4614,16 @@ C - - - - - 0x005B9C 01:9B8C: 60        RTS
 
 ofs_015_9B8D_04:
 C - - J - - 0x005B9D 01:9B8D: 20 87 AB  JSR sub_0x006B97
-C - - - - - 0x005BA0 01:9B90: A5 45     LDA ram_0045
+C - - - - - 0x005BA0 01:9B90: A5 45     LDA ram_номер_сканлинии
 C - - - - - 0x005BA2 01:9B92: C9 A3     CMP #$A3
 C - - - - - 0x005BA4 01:9B94: F0 07     BEQ bra_9B9D
 C - - - - - 0x005BA6 01:9B96: A5 5B     LDA ram_счетчик_кадров_2
 C - - - - - 0x005BA8 01:9B98: 4A        LSR
 C - - - - - 0x005BA9 01:9B99: 90 02     BCC bra_9B9D
-C - - - - - 0x005BAB 01:9B9B: C6 45     DEC ram_0045
+C - - - - - 0x005BAB 01:9B9B: C6 45     DEC ram_номер_сканлинии
 bra_9B9D:
 sub_9B9D:
-C - - - - - 0x005BAD 01:9B9D: A5 45     LDA ram_0045
+C - - - - - 0x005BAD 01:9B9D: A5 45     LDA ram_номер_сканлинии
 C - - - - - 0x005BAF 01:9B9F: 38        SEC
 C - - - - - 0x005BB0 01:9BA0: E9 A2     SBC #$A2
 C - - - - - 0x005BB2 01:9BA2: 85 00     STA ram_0000

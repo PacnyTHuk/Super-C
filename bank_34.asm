@@ -535,7 +535,7 @@ C - - - - - 0x0082F2 02:82E2: 85 26     STA ram_for_A000
 C - - - - - 0x0082F4 02:82E4: A9 06     LDA #con_irq_area_8_ceiling
 C - - - - - 0x0082F6 02:82E6: 85 27     STA ram_irq_handler_hi
 C - - - - - 0x0082F8 02:82E8: A9 B9     LDA #$B9
-C - - - - - 0x0082FA 02:82EA: 85 45     STA ram_0045
+C - - - - - 0x0082FA 02:82EA: 85 45     STA ram_номер_сканлинии
 C - - - - - 0x0082FC 02:82EC: A9 E0     LDA #$E0
 C - - - - - 0x0082FE 02:82EE: 85 4A     STA ram_004A
 C - - - - - 0x008300 02:82F0: BD 1E 07  LDA ram_obj_flags,X
@@ -1470,12 +1470,12 @@ C - - - - - 0x0088B1 02:88A1: 38        SEC
 C - - - - - 0x0088B2 02:88A2: E5 F9     SBC ram_00F9
 C - - - - - 0x0088B4 02:88A4: 18        CLC
 C - - - - - 0x0088B5 02:88A5: 69 31     ADC #$31
-C - - - - - 0x0088B7 02:88A7: 85 45     STA ram_0045
+C - - - - - 0x0088B7 02:88A7: 85 45     STA ram_номер_сканлинии
 C - - - - - 0x0088B9 02:88A9: A9 05     LDA #$05
 C - - - - - 0x0088BB 02:88AB: 85 46     STA ram_0046
 C - - - - - 0x0088BD 02:88AD: A9 BA     LDA #$BA
 C - - - - - 0x0088BF 02:88AF: 38        SEC
-C - - - - - 0x0088C0 02:88B0: E5 45     SBC ram_0045
+C - - - - - 0x0088C0 02:88B0: E5 45     SBC ram_номер_сканлинии
 C - - - - - 0x0088C2 02:88B2: 85 47     STA ram_0047
 C - - - - - 0x0088C4 02:88B4: A9 C0     LDA #$C0
 C - - - - - 0x0088C6 02:88B6: 85 4A     STA ram_004A
@@ -2696,7 +2696,7 @@ C - - - - - 0x009044 02:9034: 9D 3C 05  STA ram_позиция_x_спрайта_
 C - - - - - 0x009047 02:9037: A9 0A     LDA #con_irq_area_7_boss
 C - - - - - 0x009049 02:9039: 85 27     STA ram_irq_handler_hi
 C - - - - - 0x00904B 02:903B: A9 52     LDA #$52
-C - - - - - 0x00904D 02:903D: 85 45     STA ram_0045
+C - - - - - 0x00904D 02:903D: 85 45     STA ram_номер_сканлинии
 C - - - - - 0x00904F 02:903F: A9 E0     LDA #$E0
 C - - - - - 0x009051 02:9041: 85 FC     STA ram_scroll_Y
 C - - - - - 0x009053 02:9043: 85 F9     STA ram_00F9
