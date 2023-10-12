@@ -1096,11 +1096,11 @@ C - - - - - 0x01E5DE 07:E5CE: F0 0F     BEQ bra_E5DF    ; jmp
 sub_E5D0_clear_memory:
 sub_0x01E5E0_clear_memory:
 C - - - - - 0x01E5E0 07:E5D0: A2 38     LDX #$38
-C - - - - - 0x01E5E2 07:E5D2: D0 02     BNE bra_E5D6    ; jmp
+;C - - - - - 0x01E5E2 07:E5D2: D0 02     BNE bra_E5D6    ; jmp
 
 
 ; bzk garbage
-- - - - - - 0x01E5E4 07:E5D4: A2 50     LDX #$50
+;- - - - - - 0x01E5E4 07:E5D4: A2 50     LDX #$50
 
 
 
@@ -1130,6 +1130,24 @@ C - - - - - 0x01E5FF 07:E5EF: 9D 00 03  STA $0300,X
 C - - - - - 0x01E602 07:E5F2: E8        INX
 C - - - - - 0x01E603 07:E5F3: D0 FA     BNE bra_E5EF_loop
 ; A = 00
+; 1путин - очистка слотов объектов на батарейке
+; 6000-64FF
+	LDX #$00
+bra_E5F0_loop:	
+	STA $6000,X
+	STA $6100,X
+	STA $6200,X
+	STA $6300,X
+	STA $6400,X
+	INX
+	BNE bra_E5F0_loop
+; 6500-65A8
+	LDX #$A9
+bra_E5F2_loop:
+	STA $64FF,X	
+	DEX
+	BNE bra_E5F2_loop
+; A = 00
 ; clear 0700-07DF
 C - - - - - 0x01E605 07:E5F5: A2 E0     LDX #$E0
 bra_E5F7_loop:
@@ -1141,11 +1159,14 @@ C - - - - - 0x01E60D 07:E5FD: 60        RTS
 
 
 sub_E5FE_clear_0500_0567:
-C - - - - - 0x01E60E 07:E5FE: A0 68     LDY #$68
+; 1путин
+; original clear 0500-0567
+C - - - - - 0x01E60E 07:E5FE: A0 68     LDY #$C8
 C - - - - - 0x01E610 07:E600: A9 00     LDA #$00
 bra_E602_loop:
 C - - - - - 0x01E612 07:E602: 88        DEY
-C - - - - - 0x01E613 07:E603: 99 00 05  STA $0500,Y
+; clear 6000-06C7
+C - - - - - 0x01E613 07:E603: 99 00 05  STA $6000,Y
 C - - - - - 0x01E616 07:E606: D0 FA     BNE bra_E602_loop
 C - - - - - 0x01E618 07:E608: 60        RTS
 

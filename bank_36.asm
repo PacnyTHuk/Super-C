@@ -7981,7 +7981,7 @@ C - - - - - 0x00F8A9 03:B899: 85 00     STA ram_0000
 C - - - - - 0x00F8AB 03:B89B: B9 B4 B8  LDA tbl_B8B3 + $01,Y
 C - - - - - 0x00F8AE 03:B89E: 85 01     STA ram_0001
 ; skip 1st color in each palette set
-C - - - - - 0x00F8B0 03:B8A0: A0 17     LDY #con_макс_индекс_общий
+C - - - - - 0x00F8B0 03:B8A0: A0 17     LDY #$17
 C - - - - - 0x00F8B2 03:B8A2: A2 1F     LDX #$1F
 bra_B8A4_loop:
 C - - - - - 0x00F8B4 03:B8A4: 8A        TXA
