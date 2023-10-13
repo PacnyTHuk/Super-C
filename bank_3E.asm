@@ -1543,7 +1543,7 @@ C - - - - - 0x01E84A 07:E83A: F0 02     BEQ bra_E83E
 C - - - - - 0x01E84C 07:E83C: A0 01     LDY #$01
 bra_E83E:
 loc_E83E:
-C D 3 - - - 0x01E84E 07:E83E: 95 C0     STA ram_00C0_таймер_респавна_игрока,X
+C D 3 - - - 0x01E84E 07:E83E: 95 C0     STA ram_таймер_респавна_игрока,X
 C - - - - - 0x01E850 07:E840: 98        TYA
 C - - - - - 0x01E851 07:E841: 95 A0     STA ram_статус_игрока,X
 C - - - - - 0x01E853 07:E843: F0 02     BEQ bra_E847
@@ -4089,9 +4089,9 @@ C - - - - - 0x01F6C3 07:F6B3: 20 DE FD  JSR sub_FDDE_play_sound
 C - - - - - 0x01F6C6 07:F6B6: A9 00     LDA #$00
 C - - - - - 0x01F6C8 07:F6B8: 95 C4     STA ram_инвиз_игрока,X
 C - - - - - 0x01F6CA 07:F6BA: A9 01     LDA #$01
-C - - - - - 0x01F6CC 07:F6BC: 95 C0     STA ram_00C0_таймер_респавна_игрока,X
+C - - - - - 0x01F6CC 07:F6BC: 95 C0     STA ram_таймер_респавна_игрока,X
 C - - - - - 0x01F6CE 07:F6BE: A9 01     LDA #$01
-C - - - - - 0x01F6D0 07:F6C0: 95 C2     STA ram_00C2_игрок,X
+C - - - - - 0x01F6D0 07:F6C0: 95 C2     STA ram_флаг_статус_игрока,X
 C - - - - - 0x01F6D2 07:F6C2: A9 03     LDA #$03
 C - - - - - 0x01F6D4 07:F6C4: 95 A0     STA ram_статус_игрока,X
 bra_F6C6_RTS:
