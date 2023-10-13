@@ -5362,7 +5362,7 @@ C - - - - - 0x01FE24 07:FE14: 4C 8B FD  JMP loc_FD8B_restore_prg_bank
 sub_FE17:
 C - - - - - 0x01FE27 07:FE17: A9 36     LDA #con_prg_bank + $36
 C - - - - - 0x01FE29 07:FE19: 20 6F FD  JSR sub_FD6F_prg_bankswitch___no_return
-C - - - - - 0x01FE2C 07:FE1C: 4C BE 80  JMP loc_0x00C0CE_sprite_engine
+C - - - - - 0x01FE2C 07:FE1C: 4C BE 80  JMP loc_0x00C0CE_спрайтовый_движок
 
 
 
@@ -5432,7 +5432,7 @@ C - - - - - 0x01FE75 07:FE65: 4C 58 FD  JMP loc_FD58_prg_bankswitch___select_sec
 sub_FE68:
 C - - - - - 0x01FE78 07:FE68: A9 36     LDA #con_prg_bank + $36
 C - - - - - 0x01FE7A 07:FE6A: 20 6F FD  JSR sub_FD6F_prg_bankswitch___no_return
-C - - - - - 0x01FE7D 07:FE6D: 4C 84 B8  JMP loc_0x00F894_set_palette_for_area
+C - - - - - 0x01FE7D 07:FE6D: 4C 84 B8  JMP loc_0x00F894_загрузка_палитры_для_уровня
 
 
 
@@ -5441,7 +5441,7 @@ C - - - - - 0x01FE80 07:FE70: 48        PHA
 C - - - - - 0x01FE81 07:FE71: A9 36     LDA #con_prg_bank + $36
 C - - - - - 0x01FE83 07:FE73: 20 6F FD  JSR sub_FD6F_prg_bankswitch___no_return
 C - - - - - 0x01FE86 07:FE76: 68        PLA
-C - - - - - 0x01FE87 07:FE77: 4C 86 B8  JMP loc_0x00F896_set_palette
+C - - - - - 0x01FE87 07:FE77: 4C 86 B8  JMP loc_0x00F896_загрузка_палитры
 
 
 
