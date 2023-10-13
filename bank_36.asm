@@ -181,16 +181,16 @@ C - - - - - 0x00C0DC 03:80CC: A9 00     LDA #$00
 C - - - - - 0x00C0DE 03:80CE: 99 01 02  STA ram_spr_T,Y
 C - - - - - 0x00C0E1 03:80D1: 20 01 80  JSR sub_8001_отображение_жизней_игроков
 ; 1путин, опт
-										LDY ram_колво_игроков
+                                        LDY ram_колво_игроков
 bra_80D0_loop:
-										LDA ram_кадр_игрока,Y
-										BEQ bra_8100_skip
+                                        LDA ram_кадр_игрока,Y
+                                        BEQ bra_8100_skip
 C - - - - - 0x00C0E6 03:80D6: A4 D4     LDA ram_бессмертие_игрока,Y
 C - - - - - 0x00C0E8 03:80D8: F0 02     BEQ bra_80DC
 C - - - - - 0x00C0EA 03:80DA: A9 FC     LDA #$FC
-										BNE bra_80DE
+                                        BNE bra_80DE    ; jmp
 bra_80DC:
-										LDA #$FF
+                                        LDA #$FF
 bra_80DE:	
 C - - - - - 0x00C0EC 03:80DC: 85 0B     STA ram_000B
 C - - - - - 0x00C0EE 03:80DE: AD 66 05  LDA ram_атрибуты_спрайта_игрока,Y
@@ -204,17 +204,16 @@ C - - - - - 0x00C0FF 03:80EF: 85 01     STA ram_0001
 C - - - - - 0x00C101 03:80F1: AD 4C 05  LDA ram_позиция_x_спрайта_игрока,Y
 C - - - - - 0x00C104 03:80F4: 85 02     STA ram_0002
 C - - - - - 0x00C106 03:80F6: AD 18 05  LDA ram_кадр_игрока,Y
-										STY ram_0005
+                                        STY ram_0005
 C - - - - - 0x00C10B 03:80FB: 20 5E 80  JSR sub_805E_обработчик_анимации_спрайтов_игроков
-										LDY ram_0005
+                                        LDY ram_0005
 bra_8100_skip:	
-										DEY
-										BPL bra_80D0_loop
-bra_8128_skip:
+                                        DEY
+                                        BPL bra_80D0_loop
 C - - - - - 0x00C138 03:8128: A0 17     LDY #con_макс_индекс_общий
 bra_812A_loop:
-										LDA ram_кадр_анимации,Y
-										BEQ bra_8152_skip
+                                        LDA ram_кадр_анимации,Y
+                                        BEQ bra_8152_skip
 C - - - - - 0x00C13A 03:812A: B9 4E 05  LDA ram_атрибуты_спрайта,Y
 C - - - - - 0x00C13D 03:812D: 29 3F     AND #$3F
 C - - - - - 0x00C13F 03:812F: 85 00     STA ram_0000

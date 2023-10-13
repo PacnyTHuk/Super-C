@@ -1132,21 +1132,21 @@ C - - - - - 0x01E603 07:E5F3: D0 FA     BNE bra_E5EF_loop
 ; A = 00
 ; 1путин - очистка слотов объектов на батарейке
 ; 6000-64FF
-										LDX #$00
+                                        LDX #$00
 bra_E5F0_loop:	
-										STA $6000,X
-										STA $6100,X
-										STA $6200,X
-										STA $6300,X
-										STA $6400,X
-										INX
-										BNE bra_E5F0_loop
+                                        STA $6000,X
+                                        STA $6100,X
+                                        STA $6200,X
+                                        STA $6300,X
+                                        STA $6400,X
+                                        INX
+                                        BNE bra_E5F0_loop
 ; 6500-65A8
-										LDX #$A9
+                                        LDX #$A9
 bra_E5F2_loop:
-										STA $64FF,X	
-										DEX
-										BNE bra_E5F2_loop
+                                        STA $64FF,X	
+                                        DEX
+                                        BNE bra_E5F2_loop
 ; A = 00
 ; clear 0700-07DF
 C - - - - - 0x01E605 07:E5F5: A2 E0     LDX #$E0
@@ -4803,8 +4803,8 @@ C - - - - - 0x01FAD9 07:FAC9: 60        RTS
 
 ; 1путин: подключение батарейки
 vec_Ресет:
-										LDA #$80
-										STA $A001
+                                        LDA #$80
+                                        STA $A001
 C - - - - - 0x01FADA 07:FACA: D8        CLD
 C - - - - - 0x01FADB 07:FACB: 78        SEI
 C - - - - - 0x01FADC 07:FACC: A2 FF     LDX #$FF
@@ -4866,6 +4866,7 @@ bra_FB2A_loop:
 C - - - - - 0x01FB3A 07:FB2A: 9D 00 07  STA $0700,X
 C - - - - - 0x01FB3D 07:FB2D: E8        INX
 C - - - - - 0x01FB3E 07:FB2E: D0 FA     BNE bra_FB2A_loop
+; cyneprepou4uk
 ; очистка батарейки
                                         LDY #> $6000    ; начальный адрес для очистки
                                         STY ram_0001
