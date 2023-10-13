@@ -180,48 +180,41 @@ C - - - - - 0x00C0DA 03:80CA: 84 07     STY ram_0007
 C - - - - - 0x00C0DC 03:80CC: A9 00     LDA #$00
 C - - - - - 0x00C0DE 03:80CE: 99 01 02  STA ram_spr_T,Y
 C - - - - - 0x00C0E1 03:80D1: 20 01 80  JSR sub_8001_display_lives_with_sprites
-C - - - - - 0x00C0E4 03:80D4: A9 FF     LDA #$FF
-C - - - - - 0x00C0E6 03:80D6: A4 D4     LDY ram_бессмертие_игрока
+; 1путин, опт
+										LDY ram_колво_игроков
+bra_80D0_loop:
+										LDA ram_кадр_игрока,Y
+										BEQ bra_8100_skip
+C - - - - - 0x00C0E6 03:80D6: A4 D4     LDA ram_бессмертие_игрока,Y
 C - - - - - 0x00C0E8 03:80D8: F0 02     BEQ bra_80DC
 C - - - - - 0x00C0EA 03:80DA: A9 FC     LDA #$FC
+										BNE bra_80DE
 bra_80DC:
+										LDA #$FF
+bra_80DE:	
 C - - - - - 0x00C0EC 03:80DC: 85 0B     STA ram_000B
-C - - - - - 0x00C0EE 03:80DE: AD 66 05  LDA ram_атрибуты_спрайта_игрока
+C - - - - - 0x00C0EE 03:80DE: AD 66 05  LDA ram_атрибуты_спрайта_игрока,Y
 C - - - - - 0x00C0F1 03:80E1: 29 03     AND #$03
 C - - - - - 0x00C0F3 03:80E3: 85 00     STA ram_0000
-C - - - - - 0x00C0F5 03:80E5: AD 66 05  LDA ram_атрибуты_спрайта_игрока
+C - - - - - 0x00C0F5 03:80E5: AD 66 05  LDA ram_атрибуты_спрайта_игрока,Y
 C - - - - - 0x00C0F8 03:80E8: 29 E0     AND #$E0
 C - - - - - 0x00C0FA 03:80EA: 85 0A     STA ram_000A
-C - - - - - 0x00C0FC 03:80EC: AD 32 05  LDA ram_позиция_y_спрайта_игрока
+C - - - - - 0x00C0FC 03:80EC: AD 32 05  LDA ram_позиция_y_спрайта_игрока,Y
 C - - - - - 0x00C0FF 03:80EF: 85 01     STA ram_0001
-C - - - - - 0x00C101 03:80F1: AD 4C 05  LDA ram_позиция_x_спрайта_игрока
+C - - - - - 0x00C101 03:80F1: AD 4C 05  LDA ram_позиция_x_спрайта_игрока,Y
 C - - - - - 0x00C104 03:80F4: 85 02     STA ram_0002
-C - - - - - 0x00C106 03:80F6: AD 18 05  LDA ram_кадр_игрока
-C - - - - - 0x00C109 03:80F9: F0 03     BEQ bra_80FE_skip
+C - - - - - 0x00C106 03:80F6: AD 18 05  LDA ram_кадр_игрока,Y
+										STY ram_0005
 C - - - - - 0x00C10B 03:80FB: 20 5E 80  JSR sub_805E_player_animation_sprite_data_handler
-bra_80FE_skip:
-C - - - - - 0x00C10E 03:80FE: A9 FF     LDA #$FF
-C - - - - - 0x00C110 03:8100: A4 D5     LDY ram_бессмертие_игрока + $01
-C - - - - - 0x00C112 03:8102: F0 02     BEQ bra_8106
-C - - - - - 0x00C114 03:8104: A9 FC     LDA #$FC
-bra_8106:
-C - - - - - 0x00C116 03:8106: 85 0B     STA ram_000B
-C - - - - - 0x00C118 03:8108: AD 67 05  LDA ram_атрибуты_спрайта_игрока + $01
-C - - - - - 0x00C11B 03:810B: 29 03     AND #$03
-C - - - - - 0x00C11D 03:810D: 85 00     STA ram_0000
-C - - - - - 0x00C11F 03:810F: AD 67 05  LDA ram_атрибуты_спрайта_игрока + $01
-C - - - - - 0x00C122 03:8112: 29 E0     AND #$E0
-C - - - - - 0x00C124 03:8114: 85 0A     STA ram_000A
-C - - - - - 0x00C126 03:8116: AD 33 05  LDA ram_позиция_y_спрайта_игрока + $01
-C - - - - - 0x00C129 03:8119: 85 01     STA ram_0001
-C - - - - - 0x00C12B 03:811B: AD 4D 05  LDA ram_позиция_x_спрайта_игрока + $01
-C - - - - - 0x00C12E 03:811E: 85 02     STA ram_0002
-C - - - - - 0x00C130 03:8120: AD 19 05  LDA ram_кадр_игрока + $01
-C - - - - - 0x00C133 03:8123: F0 03     BEQ bra_8128_skip
-C - - - - - 0x00C135 03:8125: 20 5E 80  JSR sub_805E_player_animation_sprite_data_handler
+										LDY ram_0005
+bra_8100_skip:	
+										DEY
+										BPL bra_80D0_loop
 bra_8128_skip:
 C - - - - - 0x00C138 03:8128: A0 17     LDY #con_макс_индекс_общий
 bra_812A_loop:
+										LDA ram_кадр_анимации,Y
+										BEQ bra_8152_skip
 C - - - - - 0x00C13A 03:812A: B9 4E 05  LDA ram_атрибуты_спрайта,Y
 C - - - - - 0x00C13D 03:812D: 29 3F     AND #$3F
 C - - - - - 0x00C13F 03:812F: 85 00     STA ram_0000
@@ -237,7 +230,6 @@ C - - - - - 0x00C151 03:8141: B9 34 05  LDA ram_позиция_x_спрайта,
 C - - - - - 0x00C154 03:8144: 85 02     STA ram_0002
 ; bzk optimize, check ram_кадр_анимации first
 C - - - - - 0x00C156 03:8146: B9 00 05  LDA ram_кадр_анимации,Y
-C - - - - - 0x00C159 03:8149: F0 07     BEQ bra_8152_skip
 C - - - - - 0x00C15B 03:814B: 84 05     STY ram_0005
 C - - - - - 0x00C15D 03:814D: 20 6B 81  JSR sub_816B_enemy_animation_sprite_data_handler
 C - - - - - 0x00C160 03:8150: A4 05     LDY ram_0005
