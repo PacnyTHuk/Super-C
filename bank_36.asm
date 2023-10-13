@@ -6,7 +6,7 @@
 
 
 
-.export loc_0x00C0CE_sprite_engine
+.export loc_0x00C0CE_спрайтовый_движок
 .export ofs_044_0x00D3B9_00_area_1
 .export ofs_044_0x00D4A2_01_area_2
 .export ofs_044_0x00D557_02_area_3
@@ -23,8 +23,8 @@
 .export _off005_0x00EB92_02_area_3
 .export _off006_0x00EFF4_02_area_3
 .export _off007_0x00F804_02_area_3
-.export loc_0x00F894_set_palette_for_area
-.export loc_0x00F896_set_palette
+.export loc_0x00F894_загрузка_палитры_для_уровня
+.export loc_0x00F896_загрузка_палитры
 
 
 
@@ -33,7 +33,7 @@
 
 
 
-sub_8001_display_lives_with_sprites:
+sub_8001_отображение_жизней_игроков:
 C - - - - - 0x00C011 03:8001: A5 87     LDA ram_game_over_flag
 C - - - - - 0x00C013 03:8003: F0 48     BEQ bra_804D_RTS
 C - - - - - 0x00C015 03:8005: A4 20     LDY ram_колво_игроков
@@ -106,7 +106,7 @@ tbl_8056_spr_X:
 
 
 
-sub_805E_player_animation_sprite_data_handler:
+sub_805E_обработчик_анимации_спрайтов_игроков:
 C - - - - - 0x00C06E 03:805E: 0A        ASL
 C - - - - - 0x00C06F 03:805F: A8        TAY
 C - - - - - 0x00C070 03:8060: B9 2F 8F  LDA tbl_8F31 - $02,Y
@@ -167,7 +167,7 @@ C - - - - - 0x00C0CD 03:80BD: 60        RTS
 
 
 
-loc_0x00C0CE_sprite_engine:
+loc_0x00C0CE_спрайтовый_движок:
 C D 0 - - - 0x00C0CE 03:80BE: A5 24     LDA ram_начальный_индекс_спрайтов
 C - - - - - 0x00C0D0 03:80C0: 18        CLC
 C - - - - - 0x00C0D1 03:80C1: 69 4C     ADC #$4C
@@ -179,7 +179,7 @@ C - - - - - 0x00C0D9 03:80C9: A8        TAY
 C - - - - - 0x00C0DA 03:80CA: 84 07     STY ram_0007
 C - - - - - 0x00C0DC 03:80CC: A9 00     LDA #$00
 C - - - - - 0x00C0DE 03:80CE: 99 01 02  STA ram_spr_T,Y
-C - - - - - 0x00C0E1 03:80D1: 20 01 80  JSR sub_8001_display_lives_with_sprites
+C - - - - - 0x00C0E1 03:80D1: 20 01 80  JSR sub_8001_отображение_жизней_игроков
 ; 1путин, опт
 										LDY ram_колво_игроков
 bra_80D0_loop:
@@ -205,7 +205,7 @@ C - - - - - 0x00C101 03:80F1: AD 4C 05  LDA ram_позиция_x_спрайта_
 C - - - - - 0x00C104 03:80F4: 85 02     STA ram_0002
 C - - - - - 0x00C106 03:80F6: AD 18 05  LDA ram_кадр_игрока,Y
 										STY ram_0005
-C - - - - - 0x00C10B 03:80FB: 20 5E 80  JSR sub_805E_player_animation_sprite_data_handler
+C - - - - - 0x00C10B 03:80FB: 20 5E 80  JSR sub_805E_обработчик_анимации_спрайтов_игроков
 										LDY ram_0005
 bra_8100_skip:	
 										DEY
@@ -228,10 +228,9 @@ C - - - - - 0x00C14C 03:813C: B9 1A 05  LDA ram_позиция_y_спрайта,
 C - - - - - 0x00C14F 03:813F: 85 01     STA ram_0001
 C - - - - - 0x00C151 03:8141: B9 34 05  LDA ram_позиция_x_спрайта,Y
 C - - - - - 0x00C154 03:8144: 85 02     STA ram_0002
-; bzk optimize, check ram_кадр_анимации first
 C - - - - - 0x00C156 03:8146: B9 00 05  LDA ram_кадр_анимации,Y
 C - - - - - 0x00C15B 03:814B: 84 05     STY ram_0005
-C - - - - - 0x00C15D 03:814D: 20 6B 81  JSR sub_816B_enemy_animation_sprite_data_handler
+C - - - - - 0x00C15D 03:814D: 20 6B 81  JSR sub_816B_обработчик_анимации_спрайтов_врагов
 C - - - - - 0x00C160 03:8150: A4 05     LDY ram_0005
 bra_8152_skip:
 C - - - - - 0x00C162 03:8152: 88        DEY
@@ -253,7 +252,7 @@ C - - - - - 0x00C17A 03:816A: 60        RTS
 
 
 
-sub_816B_enemy_animation_sprite_data_handler:
+sub_816B_обработчик_анимации_спрайтов_врагов:
 C - - - - - 0x00C17B 03:816B: 0A        ASL
 C - - - - - 0x00C17C 03:816C: A8        TAY
 C - - - - - 0x00C17D 03:816D: 90 0A     BCC bra_8179
@@ -3300,10 +3299,7 @@ _off028_8F2E_FE:
 _off028_8F2E_FF:
 - - - - - - 0x00CF3E 03:8F2E: FF        .byte $FF   ; end token
 
-
-; bzk garbage
-- - - - - - 0x00CF3F 03:8F2F: 2F        .byte $2F   ; 
-- - - - - - 0x00CF40 03:8F30: 90        .byte $90   ; 
+ 
 
 
 
@@ -4373,9 +4369,9 @@ _off020_93A6_7F:
 
 ofs_044_0x00D3B9_00_area_1:
 C - - J - - 0x00D3B9 03:93A9: A5 39     LDA ram_пауза
-C - - - - - 0x00D3BB 03:93AB: F0 01     BEQ bra_93AE
-C - - - - - 0x00D3BD 03:93AD: 60        RTS
-bra_93AE:
+C - - - - - 0x00D3BB 03:93AB: F0 01     BEQ bra_93AE_игра
+C - - - - - 0x00D3BD 03:93AD: 60        RTS ; Пауза
+bra_93AE_игра:
 C - - - - - 0x00D3BE 03:93AE: 20 55 94  JSR sub_9455
 C - - - - - 0x00D3C1 03:93B1: A5 61     LDA ram_0061_конфиг_уровня
 C - - - - - 0x00D3C3 03:93B3: D0 1A     BNE bra_93CF_RTS
@@ -4419,21 +4415,42 @@ tbl_93D0:
 
 
 sub_93E9:
-C - - - - - 0x00D3F9 03:93E9: A5 8C     LDA ram_008C
-C - - - - - 0x00D3FB 03:93EB: 20 09 E6  JSR sub_0x01E619_jump_to_pointers_after_jsr
-- D 0 - I - 0x00D3FE 03:93EE: 08 94     .word ofs_019_9408_00
-- D 0 - I - 0x00D400 03:93F0: 0F 94     .word ofs_019_940F_01
-- D 0 - I - 0x00D402 03:93F2: 19 94     .word ofs_019_9419_02
-- D 0 - I - 0x00D404 03:93F4: 23 94     .word ofs_019_9423_03
-- D 0 - I - 0x00D406 03:93F6: 2D 94     .word ofs_019_942D_04
-- D 0 - I - 0x00D408 03:93F8: 13 94     .word ofs_019_9413_05
-- D 0 - I - 0x00D40A 03:93FA: 1D 94     .word ofs_019_941D_06
-- D 0 - I - 0x00D40C 03:93FC: 27 94     .word ofs_019_9427_07
-- D 0 - I - 0x00D40E 03:93FE: 31 94     .word ofs_019_9431_08
-- D 0 - I - 0x00D410 03:9400: 3B 94     .word ofs_019_943B_09
-- D 0 - I - 0x00D412 03:9402: 47 94     .word ofs_019_9447_0A
-- D 0 - I - 0x00D414 03:9404: 41 94     .word ofs_019_9441_0B
-- - - - - - 0x00D416 03:9406: 54 94     .word ofs_019_9454_0C_RTS
+; 1путин опт
+                                        LDY ram_008C
+                                        LDA tbl_93EE_lo,Y
+                                        STA ram_0000
+                                        LDA tbl_93EE_hi,Y
+                                        STA ram_0001
+                                        JMP (ram_0000)
+
+tbl_93EE_lo:
+- D 0 - I - 0x00D3FE 03:93EE: 08 94     .byte < ofs_019_9408_00
+- D 0 - I - 0x00D400 03:93F0: 0F 94     .byte < ofs_019_940F_01
+- D 0 - I - 0x00D402 03:93F2: 19 94     .byte < ofs_019_9419_02
+- D 0 - I - 0x00D404 03:93F4: 23 94     .byte < ofs_019_9423_03
+- D 0 - I - 0x00D406 03:93F6: 2D 94     .byte < ofs_019_942D_04
+- D 0 - I - 0x00D408 03:93F8: 13 94     .byte < ofs_019_9413_05
+- D 0 - I - 0x00D40A 03:93FA: 1D 94     .byte < ofs_019_941D_06
+- D 0 - I - 0x00D40C 03:93FC: 27 94     .byte < ofs_019_9427_07
+- D 0 - I - 0x00D40E 03:93FE: 31 94     .byte < ofs_019_9431_08
+- D 0 - I - 0x00D410 03:9400: 3B 94     .byte < ofs_019_943B_09
+- D 0 - I - 0x00D412 03:9402: 47 94     .byte < ofs_019_9447_0A
+- D 0 - I - 0x00D414 03:9404: 41 94     .byte < ofs_019_9441_0B
+- - - - - - 0x00D416 03:9406: 54 94     .byte < ofs_019_9454_0C_RTS
+tbl_93EE_hi:
+- D 0 - I - 0x00D3FE 03:93EE: 08 94     .byte > ofs_019_9408_00
+- D 0 - I - 0x00D400 03:93F0: 0F 94     .byte > ofs_019_940F_01
+- D 0 - I - 0x00D402 03:93F2: 19 94     .byte > ofs_019_9419_02
+- D 0 - I - 0x00D404 03:93F4: 23 94     .byte > ofs_019_9423_03
+- D 0 - I - 0x00D406 03:93F6: 2D 94     .byte > ofs_019_942D_04
+- D 0 - I - 0x00D408 03:93F8: 13 94     .byte > ofs_019_9413_05
+- D 0 - I - 0x00D40A 03:93FA: 1D 94     .byte > ofs_019_941D_06
+- D 0 - I - 0x00D40C 03:93FC: 27 94     .byte > ofs_019_9427_07
+- D 0 - I - 0x00D40E 03:93FE: 31 94     .byte > ofs_019_9431_08
+- D 0 - I - 0x00D410 03:9400: 3B 94     .byte > ofs_019_943B_09
+- D 0 - I - 0x00D412 03:9402: 47 94     .byte > ofs_019_9447_0A
+- D 0 - I - 0x00D414 03:9404: 41 94     .byte > ofs_019_9441_0B
+- - - - - - 0x00D416 03:9406: 54 94     .byte > ofs_019_9454_0C_RTS
 
 
 
@@ -4560,11 +4577,21 @@ tbl_946E:
 
 
 sub_9473:
-C - - - - - 0x00D483 03:9473: A5 8D     LDA ram_008D_событие_на_уровне
-C - - - - - 0x00D485 03:9475: 20 09 E6  JSR sub_0x01E619_jump_to_pointers_after_jsr
-- D 0 - I - 0x00D488 03:9478: 7E 94     .word ofs_020_947E_00
-- D 0 - I - 0x00D48A 03:947A: 86 94     .word ofs_020_9486_01
-- - - - - - 0x00D48C 03:947C: 91 94     .word ofs_020_9491_02_RTS
+; 1путин опт
+                                        LDY ram_008D_событие_на_уровне
+                                        LDA tbl_9478_lo,Y
+                                        STA ram_0000
+                                        LDA tbl_9478_hi,Y
+                                        STA ram_0001
+                                        JMP (ram_0000)
+tbl_9478_lo:
+- D 0 - I - 0x00D488 03:9478: 7E 94     .byte < ofs_020_947E_00
+- D 0 - I - 0x00D48A 03:947A: 86 94     .byte < ofs_020_9486_01
+- - - - - - 0x00D48C 03:947C: 91 94     .byte < ofs_020_9491_02_RTS
+tbl_9478_hi:
+- D 0 - I - 0x00D488 03:9478: 7E 94     .byte > ofs_020_947E_00
+- D 0 - I - 0x00D48A 03:947A: 86 94     .byte > ofs_020_9486_01
+- - - - - - 0x00D48C 03:947C: 91 94     .byte > ofs_020_9491_02_RTS
 
 
 
@@ -4593,9 +4620,9 @@ ofs_020_9491_02_RTS:
 
 ofs_044_0x00D4A2_01_area_2:
 C - - J - - 0x00D4A2 03:9492: A5 39     LDA ram_пауза
-C - - - - - 0x00D4A4 03:9494: F0 01     BEQ bra_9497
-C - - - - - 0x00D4A6 03:9496: 60        RTS
-bra_9497:
+C - - - - - 0x00D4A4 03:9494: F0 01     BEQ bra_9497_игра
+C - - - - - 0x00D4A6 03:9496: 60        RTS ; пауза
+bra_9497_игра:
 C - - - - - 0x00D4A7 03:9497: A5 8D     LDA ram_008D_событие_на_уровне
 C - - - - - 0x00D4A9 03:9499: 0A        ASL
 C - - - - - 0x00D4AA 03:949A: A8        TAY
@@ -4638,22 +4665,44 @@ tbl_94B2:
 
 
 sub_94CD:
-C - - - - - 0x00D4DD 03:94CD: A5 8D     LDA ram_008D_событие_на_уровне
-C - - - - - 0x00D4DF 03:94CF: 20 09 E6  JSR sub_0x01E619_jump_to_pointers_after_jsr
-- D 0 - I - 0x00D4E2 03:94D2: EE 94     .word ofs_021_94EE_00
-- D 0 - I - 0x00D4E4 03:94D4: 2B 95     .word ofs_021_952B_01
-- D 0 - I - 0x00D4E6 03:94D6: 3A 95     .word ofs_021_953A_02
-- D 0 - I - 0x00D4E8 03:94D8: 2B 95     .word ofs_021_952B_03
-- D 0 - I - 0x00D4EA 03:94DA: 3A 95     .word ofs_021_953A_04
-- D 0 - I - 0x00D4EC 03:94DC: FC 94     .word ofs_021_94FC_05
-- D 0 - I - 0x00D4EE 03:94DE: 04 95     .word ofs_021_9504_06
-- D 0 - I - 0x00D4F0 03:94E0: 1C 95     .word ofs_021_951C_07
-- D 0 - I - 0x00D4F2 03:94E2: 33 95     .word ofs_021_9533_08
-- D 0 - I - 0x00D4F4 03:94E4: 20 95     .word ofs_021_9520_09
-- D 0 - I - 0x00D4F6 03:94E6: 33 95     .word ofs_021_9533_0A
-- D 0 - I - 0x00D4F8 03:94E8: 3A 95     .word ofs_021_953A_0B
-- D 0 - I - 0x00D4FA 03:94EA: 3A 95     .word ofs_021_953A_0C
-- D 0 - I - 0x00D4FC 03:94EC: 46 95     .word ofs_021_9546_0D_RTS
+; 1путин опт
+                                        LDY ram_008D_событие_на_уровне
+                                        LDA tbl_94D2_lo,Y
+                                        STA ram_0000
+                                        LDA tbl_94D2_hi,Y
+                                        STA ram_0001
+                                        JMP (ram_0000)
+
+tbl_94D2_lo:
+- D 0 - I - 0x00D4E2 03:94D2: EE 94     .byte < ofs_021_94EE_00
+- D 0 - I - 0x00D4E4 03:94D4: 2B 95     .byte < ofs_021_952B_01
+- D 0 - I - 0x00D4E6 03:94D6: 3A 95     .byte < ofs_021_953A_02
+- D 0 - I - 0x00D4E8 03:94D8: 2B 95     .byte < ofs_021_952B_03
+- D 0 - I - 0x00D4EA 03:94DA: 3A 95     .byte < ofs_021_953A_04
+- D 0 - I - 0x00D4EC 03:94DC: FC 94     .byte < ofs_021_94FC_05
+- D 0 - I - 0x00D4EE 03:94DE: 04 95     .byte < ofs_021_9504_06
+- D 0 - I - 0x00D4F0 03:94E0: 1C 95     .byte < ofs_021_951C_07
+- D 0 - I - 0x00D4F2 03:94E2: 33 95     .byte < ofs_021_9533_08
+- D 0 - I - 0x00D4F4 03:94E4: 20 95     .byte < ofs_021_9520_09
+- D 0 - I - 0x00D4F6 03:94E6: 33 95     .byte < ofs_021_9533_0A
+- D 0 - I - 0x00D4F8 03:94E8: 3A 95     .byte < ofs_021_953A_0B
+- D 0 - I - 0x00D4FA 03:94EA: 3A 95     .byte < ofs_021_953A_0C
+- D 0 - I - 0x00D4FC 03:94EC: 46 95     .byte < ofs_021_9546_0D_RTS
+tbl_94D2_hi:
+- D 0 - I - 0x00D4E2 03:94D2: EE 94     .byte > ofs_021_94EE_00
+- D 0 - I - 0x00D4E4 03:94D4: 2B 95     .byte > ofs_021_952B_01
+- D 0 - I - 0x00D4E6 03:94D6: 3A 95     .byte > ofs_021_953A_02
+- D 0 - I - 0x00D4E8 03:94D8: 2B 95     .byte > ofs_021_952B_03
+- D 0 - I - 0x00D4EA 03:94DA: 3A 95     .byte > ofs_021_953A_04
+- D 0 - I - 0x00D4EC 03:94DC: FC 94     .byte > ofs_021_94FC_05
+- D 0 - I - 0x00D4EE 03:94DE: 04 95     .byte > ofs_021_9504_06
+- D 0 - I - 0x00D4F0 03:94E0: 1C 95     .byte > ofs_021_951C_07
+- D 0 - I - 0x00D4F2 03:94E2: 33 95     .byte > ofs_021_9533_08
+- D 0 - I - 0x00D4F4 03:94E4: 20 95     .byte > ofs_021_9520_09
+- D 0 - I - 0x00D4F6 03:94E6: 33 95     .byte > ofs_021_9533_0A
+- D 0 - I - 0x00D4F8 03:94E8: 3A 95     .byte > ofs_021_953A_0B
+- D 0 - I - 0x00D4FA 03:94EA: 3A 95     .byte > ofs_021_953A_0C
+- D 0 - I - 0x00D4FC 03:94EC: 46 95     .byte > ofs_021_9546_0D_RTS
 
 
 
@@ -4942,12 +4991,23 @@ tbl_9647:
 
 
 sub_964E:
-C - - - - - 0x00D65E 03:964E: A5 8C     LDA ram_008C
-C - - - - - 0x00D660 03:9650: 20 09 E6  JSR sub_0x01E619_jump_to_pointers_after_jsr
-- D 0 - I - 0x00D663 03:9653: 5B 96     .word ofs_022_965B_00
-- D 0 - I - 0x00D665 03:9655: 61 96     .word ofs_022_9661_01
-- D 0 - I - 0x00D667 03:9657: 68 96     .word ofs_022_9668_02
-- - - - - - 0x00D669 03:9659: 6E 96     .word ofs_022_966E_03_RTS
+; 1путин опт
+                                        LDY ram_008C
+                                        LDA tbl_9653_lo,Y
+                                        STA ram_0000
+                                        LDA tbl_9653_hi,Y
+                                        STA ram_0001
+                                        JMP (ram_0000)
+tbl_9653_lo:                                       
+- D 0 - I - 0x00D663 03:9653: 5B 96     .byte < ofs_022_965B_00
+- D 0 - I - 0x00D665 03:9655: 61 96     .byte < ofs_022_9661_01
+- D 0 - I - 0x00D667 03:9657: 68 96     .byte < ofs_022_9668_02
+- - - - - - 0x00D669 03:9659: 6E 96     .byte < ofs_022_966E_03_RTS
+tbl_9653_hi:                                       
+- D 0 - I - 0x00D663 03:9653: 5B 96     .byte > ofs_022_965B_00
+- D 0 - I - 0x00D665 03:9655: 61 96     .byte > ofs_022_9661_01
+- D 0 - I - 0x00D667 03:9657: 68 96     .byte > ofs_022_9668_02
+- - - - - - 0x00D669 03:9659: 6E 96     .byte > ofs_022_966E_03_RTS
 
 
 
@@ -5018,18 +5078,35 @@ tbl_968A:
 
 
 sub_969D:
-C - - - - - 0x00D6AD 03:969D: A5 8D     LDA ram_008D_событие_на_уровне
-C - - - - - 0x00D6AF 03:969F: 20 09 E6  JSR sub_0x01E619_jump_to_pointers_after_jsr
-- D 0 - I - 0x00D6B2 03:96A2: B6 96     .word ofs_023_96B6_00
-- D 0 - I - 0x00D6B4 03:96A4: BD 96     .word ofs_023_96BD_01
-- D 0 - I - 0x00D6B6 03:96A6: C3 96     .word ofs_023_96C3_02
-- D 0 - I - 0x00D6B8 03:96A8: CF 96     .word ofs_023_96CF_03
-- D 0 - I - 0x00D6BA 03:96AA: DD 96     .word ofs_023_96DD_04
-- D 0 - I - 0x00D6BC 03:96AC: CF 96     .word ofs_023_96CF_05
-- D 0 - I - 0x00D6BE 03:96AE: E7 96     .word ofs_023_96E7_06
-- D 0 - I - 0x00D6C0 03:96B0: EB 96     .word ofs_023_96EB_07
-- D 0 - I - 0x00D6C2 03:96B2: DD 96     .word ofs_023_96DD_08
-- D 0 - I - 0x00D6C4 03:96B4: F2 96     .word ofs_023_96F2_09_RTS
+; 1путин опт
+                                        LDY ram_008D_событие_на_уровне
+                                        LDA tbl_96A2_lo,Y
+                                        STA ram_0000
+                                        LDA tbl_96A2_hi,Y
+                                        STA ram_0001
+                                        JMP (ram_0000)
+tbl_96A2_lo:
+- D 0 - I - 0x00D6B2 03:96A2: B6 96     .byte < ofs_023_96B6_00
+- D 0 - I - 0x00D6B4 03:96A4: BD 96     .byte < ofs_023_96BD_01
+- D 0 - I - 0x00D6B6 03:96A6: C3 96     .byte < ofs_023_96C3_02
+- D 0 - I - 0x00D6B8 03:96A8: CF 96     .byte < ofs_023_96CF_03
+- D 0 - I - 0x00D6BA 03:96AA: DD 96     .byte < ofs_023_96DD_04
+- D 0 - I - 0x00D6BC 03:96AC: CF 96     .byte < ofs_023_96CF_05
+- D 0 - I - 0x00D6BE 03:96AE: E7 96     .byte < ofs_023_96E7_06
+- D 0 - I - 0x00D6C0 03:96B0: EB 96     .byte < ofs_023_96EB_07
+- D 0 - I - 0x00D6C2 03:96B2: DD 96     .byte < ofs_023_96DD_08
+- D 0 - I - 0x00D6C4 03:96B4: F2 96     .byte < ofs_023_96F2_09_RTS
+tbl_96A2_hi:
+- D 0 - I - 0x00D6B2 03:96A2: B6 96     .byte > ofs_023_96B6_00
+- D 0 - I - 0x00D6B4 03:96A4: BD 96     .byte > ofs_023_96BD_01
+- D 0 - I - 0x00D6B6 03:96A6: C3 96     .byte > ofs_023_96C3_02
+- D 0 - I - 0x00D6B8 03:96A8: CF 96     .byte > ofs_023_96CF_03
+- D 0 - I - 0x00D6BA 03:96AA: DD 96     .byte > ofs_023_96DD_04
+- D 0 - I - 0x00D6BC 03:96AC: CF 96     .byte > ofs_023_96CF_05
+- D 0 - I - 0x00D6BE 03:96AE: E7 96     .byte > ofs_023_96E7_06
+- D 0 - I - 0x00D6C0 03:96B0: EB 96     .byte > ofs_023_96EB_07
+- D 0 - I - 0x00D6C2 03:96B2: DD 96     .byte > ofs_023_96DD_08
+- D 0 - I - 0x00D6C4 03:96B4: F2 96     .byte > ofs_023_96F2_09_RTS
 
 
 
@@ -5145,7 +5222,7 @@ bra_9746:
 C - - - - - 0x00D756 03:9746: 8D EB 03  STA ram_pal_buffer + $0B
 bra_9749:
 C - - - - - 0x00D759 03:9749: A5 39     LDA ram_пауза
-C - - - - - 0x00D75B 03:974B: F0 10     BEQ bra_975D
+C - - - - - 0x00D75B 03:974B: F0 10     BEQ bra_975D_игра
 C - - - - - 0x00D75D 03:974D: 60        RTS
 
 
@@ -5173,7 +5250,7 @@ tbl_9754_color:
 
 
 
-bra_975D:
+bra_975D_игра:
 C - - - - - 0x00D76D 03:975D: 20 E1 97  JSR sub_97E1
 C - - - - - 0x00D770 03:9760: A5 61     LDA ram_0061_конфиг_уровня
 C - - - - - 0x00D772 03:9762: D0 1A     BNE bra_977E_RTS
@@ -5210,14 +5287,27 @@ tbl_977F:
 
 
 sub_978A:
-C - - - - - 0x00D79A 03:978A: A5 8C     LDA ram_008C
-C - - - - - 0x00D79C 03:978C: 20 09 E6  JSR sub_0x01E619_jump_to_pointers_after_jsr
-- D 0 - I - 0x00D79F 03:978F: 9B 97     .word ofs_024_979B_00
-- D 0 - I - 0x00D7A1 03:9791: B2 97     .word ofs_024_97B2_01
-- D 0 - I - 0x00D7A3 03:9793: BB 97     .word ofs_024_97BB_02
-- D 0 - I - 0x00D7A5 03:9795: C3 97     .word ofs_024_97C3_03
-- D 0 - I - 0x00D7A7 03:9797: DA 97     .word ofs_024_97DA_04
-- - - - - - 0x00D7A9 03:9799: E0 97     .word ofs_024_97E0_05_RTS
+; 1путин опт
+                                        LDY ram_008C
+                                        LDA tbl_978F_lo,Y
+                                        STA ram_0000
+                                        LDA tbl_978F_hi,Y
+                                        STA ram_0001
+                                        JMP (ram_0000)
+tbl_978F_lo:
+- D 0 - I - 0x00D79F 03:978F: 9B 97     .byte < ofs_024_979B_00
+- D 0 - I - 0x00D7A1 03:9791: B2 97     .byte < ofs_024_97B2_01
+- D 0 - I - 0x00D7A3 03:9793: BB 97     .byte < ofs_024_97BB_02
+- D 0 - I - 0x00D7A5 03:9795: C3 97     .byte < ofs_024_97C3_03
+- D 0 - I - 0x00D7A7 03:9797: DA 97     .byte < ofs_024_97DA_04
+- - - - - - 0x00D7A9 03:9799: E0 97     .byte < ofs_024_97E0_05_RTS
+tbl_978F_hi:
+- D 0 - I - 0x00D79F 03:978F: 9B 97     .byte > ofs_024_979B_00
+- D 0 - I - 0x00D7A1 03:9791: B2 97     .byte > ofs_024_97B2_01
+- D 0 - I - 0x00D7A3 03:9793: BB 97     .byte > ofs_024_97BB_02
+- D 0 - I - 0x00D7A5 03:9795: C3 97     .byte > ofs_024_97C3_03
+- D 0 - I - 0x00D7A7 03:9797: DA 97     .byte > ofs_024_97DA_04
+- - - - - - 0x00D7A9 03:9799: E0 97     .byte > ofs_024_97E0_05_RTS
 
 
 
@@ -5423,16 +5513,31 @@ tbl_9885:
 
 
 sub_9894:
-C - - - - - 0x00D8A4 03:9894: A5 8D     LDA ram_008D_событие_на_уровне
-C - - - - - 0x00D8A6 03:9896: 20 09 E6  JSR sub_0x01E619_jump_to_pointers_after_jsr
-- D 0 - I - 0x00D8A9 03:9899: A9 98     .word ofs_025_98A9_00
-- D 0 - I - 0x00D8AB 03:989B: B1 98     .word ofs_025_98B1_01
-- D 0 - I - 0x00D8AD 03:989D: B8 98     .word ofs_025_98B8_02
-- D 0 - I - 0x00D8AF 03:989F: C0 98     .word ofs_025_98C0_03
-- D 0 - I - 0x00D8B1 03:98A1: C7 98     .word ofs_025_98C7_04
-- D 0 - I - 0x00D8B3 03:98A3: CB 98     .word ofs_025_98CB_05
-- D 0 - I - 0x00D8B5 03:98A5: D1 98     .word ofs_025_98D1_06
-- D 0 - I - 0x00D8B7 03:98A7: E2 98     .word ofs_025_98E2_07_RTS
+; 1путин опт
+                                        LDY ram_008D_событие_на_уровне
+                                        LDA tbl_9899_lo,Y
+                                        STA ram_0000
+                                        LDA tbl_9899_hi,Y
+                                        STA ram_0001
+                                        JMP (ram_0000)
+tbl_9899_lo:
+- D 0 - I - 0x00D8A9 03:9899: A9 98     .byte < ofs_025_98A9_00
+- D 0 - I - 0x00D8AB 03:989B: B1 98     .byte < ofs_025_98B1_01
+- D 0 - I - 0x00D8AD 03:989D: B8 98     .byte < ofs_025_98B8_02
+- D 0 - I - 0x00D8AF 03:989F: C0 98     .byte < ofs_025_98C0_03
+- D 0 - I - 0x00D8B1 03:98A1: C7 98     .byte < ofs_025_98C7_04
+- D 0 - I - 0x00D8B3 03:98A3: CB 98     .byte < ofs_025_98CB_05
+- D 0 - I - 0x00D8B5 03:98A5: D1 98     .byte < ofs_025_98D1_06
+- D 0 - I - 0x00D8B7 03:98A7: E2 98     .byte < ofs_025_98E2_07_RTS
+tbl_9899_hi:
+- D 0 - I - 0x00D8A9 03:9899: A9 98     .byte > ofs_025_98A9_00
+- D 0 - I - 0x00D8AB 03:989B: B1 98     .byte > ofs_025_98B1_01
+- D 0 - I - 0x00D8AD 03:989D: B8 98     .byte > ofs_025_98B8_02
+- D 0 - I - 0x00D8AF 03:989F: C0 98     .byte > ofs_025_98C0_03
+- D 0 - I - 0x00D8B1 03:98A1: C7 98     .byte > ofs_025_98C7_04
+- D 0 - I - 0x00D8B3 03:98A3: CB 98     .byte > ofs_025_98CB_05
+- D 0 - I - 0x00D8B5 03:98A5: D1 98     .byte > ofs_025_98D1_06
+- D 0 - I - 0x00D8B7 03:98A7: E2 98     .byte > ofs_025_98E2_07_RTS
 
 
 
@@ -5606,7 +5711,7 @@ C - - - - - 0x00D98F 03:997F: A8        TAY
 C - - - - - 0x00D990 03:9980: 20 64 F9  JSR sub_0x01F974_write_3_colors_with_condition
 bra_9983:
 C - - - - - 0x00D993 03:9983: A5 39     LDA ram_пауза
-C - - - - - 0x00D995 03:9985: F0 07     BEQ bra_998E
+C - - - - - 0x00D995 03:9985: F0 07     BEQ bra_998E_игра
 C - - - - - 0x00D997 03:9987: 60        RTS
 
 
@@ -5621,7 +5726,7 @@ tbl_9988:
 
 
 
-bra_998E:
+bra_998E_игра:
 C - - - - - 0x00D99E 03:998E: 20 3A 9A  JSR sub_9A3A
 C - - - - - 0x00D9A1 03:9991: A5 8C     LDA ram_008C
 C - - - - - 0x00D9A3 03:9993: 0A        ASL
@@ -5663,21 +5768,41 @@ tbl_99AC:
 
 
 sub_99C5:
-C - - - - - 0x00D9D5 03:99C5: A5 8C     LDA ram_008C
-C - - - - - 0x00D9D7 03:99C7: 20 09 E6  JSR sub_0x01E619_jump_to_pointers_after_jsr
-- D 0 - I - 0x00D9DA 03:99CA: E4 99     .word ofs_026_99E4_00
-- D 0 - I - 0x00D9DC 03:99CC: 2D 9A     .word ofs_026_9A2D_01
-- D 0 - I - 0x00D9DE 03:99CE: EC 99     .word ofs_026_99EC_02
-- D 0 - I - 0x00D9E0 03:99D0: 2D 9A     .word ofs_026_9A2D_03
-- D 0 - I - 0x00D9E2 03:99D2: EC 99     .word ofs_026_99EC_04
-- D 0 - I - 0x00D9E4 03:99D4: F7 99     .word ofs_026_99F7_05
-- D 0 - I - 0x00D9E6 03:99D6: 0A 9A     .word ofs_026_9A0A_06
-- D 0 - I - 0x00D9E8 03:99D8: 1B 9A     .word ofs_026_9A1B_07
-- D 0 - I - 0x00D9EA 03:99DA: F7 99     .word ofs_026_99F7_08
-- D 0 - I - 0x00D9EC 03:99DC: 23 9A     .word ofs_026_9A23_09
-- D 0 - I - 0x00D9EE 03:99DE: 2D 9A     .word ofs_026_9A2D_0A
-- D 0 - I - 0x00D9F0 03:99E0: 33 9A     .word ofs_026_9A33_0B
-- - - - - - 0x00D9F2 03:99E2: 39 9A     .word ofs_026_9A39_0C_RTS
+; 1путин опт
+                                        LDY ram_008C
+                                        LDA tbl_99CA_lo,Y
+                                        STA ram_0000
+                                        LDA tbl_99CA_hi,Y
+                                        STA ram_0001
+                                        JMP (ram_0000)
+tbl_99CA_lo:
+- D 0 - I - 0x00D9DA 03:99CA: E4 99     .byte < ofs_026_99E4_00
+- D 0 - I - 0x00D9DC 03:99CC: 2D 9A     .byte < ofs_026_9A2D_01
+- D 0 - I - 0x00D9DE 03:99CE: EC 99     .byte < ofs_026_99EC_02
+- D 0 - I - 0x00D9E0 03:99D0: 2D 9A     .byte < ofs_026_9A2D_03
+- D 0 - I - 0x00D9E2 03:99D2: EC 99     .byte < ofs_026_99EC_04
+- D 0 - I - 0x00D9E4 03:99D4: F7 99     .byte < ofs_026_99F7_05
+- D 0 - I - 0x00D9E6 03:99D6: 0A 9A     .byte < ofs_026_9A0A_06
+- D 0 - I - 0x00D9E8 03:99D8: 1B 9A     .byte < ofs_026_9A1B_07
+- D 0 - I - 0x00D9EA 03:99DA: F7 99     .byte < ofs_026_99F7_08
+- D 0 - I - 0x00D9EC 03:99DC: 23 9A     .byte < ofs_026_9A23_09
+- D 0 - I - 0x00D9EE 03:99DE: 2D 9A     .byte < ofs_026_9A2D_0A
+- D 0 - I - 0x00D9F0 03:99E0: 33 9A     .byte < ofs_026_9A33_0B
+- - - - - - 0x00D9F2 03:99E2: 39 9A     .byte < ofs_026_9A39_0C_RTS
+tbl_99CA_hi:
+- D 0 - I - 0x00D9DA 03:99CA: E4 99     .byte > ofs_026_99E4_00
+- D 0 - I - 0x00D9DC 03:99CC: 2D 9A     .byte > ofs_026_9A2D_01
+- D 0 - I - 0x00D9DE 03:99CE: EC 99     .byte > ofs_026_99EC_02
+- D 0 - I - 0x00D9E0 03:99D0: 2D 9A     .byte > ofs_026_9A2D_03
+- D 0 - I - 0x00D9E2 03:99D2: EC 99     .byte > ofs_026_99EC_04
+- D 0 - I - 0x00D9E4 03:99D4: F7 99     .byte > ofs_026_99F7_05
+- D 0 - I - 0x00D9E6 03:99D6: 0A 9A     .byte > ofs_026_9A0A_06
+- D 0 - I - 0x00D9E8 03:99D8: 1B 9A     .byte > ofs_026_9A1B_07
+- D 0 - I - 0x00D9EA 03:99DA: F7 99     .byte > ofs_026_99F7_08
+- D 0 - I - 0x00D9EC 03:99DC: 23 9A     .byte > ofs_026_9A23_09
+- D 0 - I - 0x00D9EE 03:99DE: 2D 9A     .byte > ofs_026_9A2D_0A
+- D 0 - I - 0x00D9F0 03:99E0: 33 9A     .byte > ofs_026_9A33_0B
+- - - - - - 0x00D9F2 03:99E2: 39 9A     .byte > ofs_026_9A39_0C_RTS
 
 
 
@@ -5800,12 +5925,23 @@ tbl_9A55:
 
 
 sub_9A5C:
-C - - - - - 0x00DA6C 03:9A5C: A5 8D     LDA ram_008D_событие_на_уровне
-C - - - - - 0x00DA6E 03:9A5E: 20 09 E6  JSR sub_0x01E619_jump_to_pointers_after_jsr
-- D 0 - I - 0x00DA71 03:9A61: 69 9A     .word ofs_027_9A69_00
-- D 0 - I - 0x00DA73 03:9A63: 69 9A     .word ofs_027_9A69_01
-- D 0 - I - 0x00DA75 03:9A65: 70 9A     .word ofs_027_9A70_02
-- D 0 - I - 0x00DA77 03:9A67: 76 9A     .word ofs_027_9A76_03_RTS
+; 1путин опт
+                                        LDY ram_008D_событие_на_уровне
+                                        LDA tbl_9A61_lo,Y
+                                        STA ram_0000
+                                        LDA tbl_9A61_hi,Y
+                                        STA ram_0001
+                                        JMP (ram_0000)
+tbl_9A61_lo:
+- D 0 - I - 0x00DA71 03:9A61: 69 9A     .byte < ofs_027_9A69_00
+- D 0 - I - 0x00DA73 03:9A63: 69 9A     .byte < ofs_027_9A69_01
+- D 0 - I - 0x00DA75 03:9A65: 70 9A     .byte < ofs_027_9A70_02
+- D 0 - I - 0x00DA77 03:9A67: 76 9A     .byte < ofs_027_9A76_03_RTS
+tbl_9A61_hi:
+- D 0 - I - 0x00DA71 03:9A61: 69 9A     .byte > ofs_027_9A69_00
+- D 0 - I - 0x00DA73 03:9A63: 69 9A     .byte > ofs_027_9A69_01
+- D 0 - I - 0x00DA75 03:9A65: 70 9A     .byte > ofs_027_9A70_02
+- D 0 - I - 0x00DA77 03:9A67: 76 9A     .byte > ofs_027_9A76_03_RTS
 
 
 
@@ -7935,28 +8071,12 @@ _off007_0x00F804_02_area_3:
 - D 1 - I - 0x00F884 03:B874: FF        .byte $FF                                                                              ; 80
 
 
-; bzk garbage
-- - - - - - 0x00F885 03:B875: 00        .byte $00   ; 
-- - - - - - 0x00F886 03:B876: 00        .byte $00   ; 
-- - - - - - 0x00F887 03:B877: 00        .byte $00   ; 
-- - - - - - 0x00F888 03:B878: 03        .byte $03   ; 
-- - - - - - 0x00F889 03:B879: 00        .byte $00   ; 
-- - - - - - 0x00F88A 03:B87A: 00        .byte $00   ; 
-- - - - - - 0x00F88B 03:B87B: 00        .byte $00   ; 
-- - - - - - 0x00F88C 03:B87C: 00        .byte $00   ; 
-- - - - - - 0x00F88D 03:B87D: 00        .byte $00   ; 
-- - - - - - 0x00F88E 03:B87E: 00        .byte $00   ; 
-- - - - - - 0x00F88F 03:B87F: 00        .byte $00   ; 
-- - - - - - 0x00F890 03:B880: 00        .byte $00   ; 
-- - - - - - 0x00F891 03:B881: 00        .byte $00   ; 
-- - - - - - 0x00F892 03:B882: 00        .byte $00   ; 
-- - - - - - 0x00F893 03:B883: 00        .byte $00   ; 
 
 
 
-loc_0x00F894_set_palette_for_area:
+loc_0x00F894_загрузка_палитры_для_уровня:
 C D 1 - - - 0x00F894 03:B884: A5 50     LDA ram_номер_уровня
-loc_0x00F896_set_palette:
+loc_0x00F896_загрузка_палитры:
 C D 1 - - - 0x00F896 03:B886: 85 08     STA ram_0008
 ; fill 0F color by default
 C - - - - - 0x00F898 03:B888: A9 0F     LDA #$0F
