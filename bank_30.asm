@@ -1557,25 +1557,25 @@ bra_88C2_вид_сбоку:
                                         STA ram_0001
                                         JMP (ram_0000)
 tbl_88C7_lo:                                        
-- D 0 - I - 0x0008D7 00:88C7: F5 88     .byte < ofs_001_88F5_00_RTS
-- D 0 - I - 0x0008D9 00:88C9: F5 88     .byte < ofs_001_88F5_01_RTS
+- D 0 - I - 0x0008D7 00:88C7: F5 88     .byte < _общий_RTS ; 00
+- D 0 - I - 0x0008D9 00:88C9: F5 88     .byte < _общий_RTS ; 01
 - D 0 - I - 0x0008DB 00:88CB: DD 88     .byte < ofs_001_88DD_02
 - D 0 - I - 0x0008DD 00:88CD: E3 88     .byte < ofs_001_88E3_03
 - D 0 - I - 0x0008DF 00:88CF: E3 88     .byte < ofs_001_88E3_04
 - D 0 - I - 0x0008E1 00:88D1: E9 88     .byte < ofs_001_88E9_05
-- D 0 - I - 0x0008E3 00:88D3: F5 88     .byte < ofs_001_88F5_06_RTS
+- D 0 - I - 0x0008E3 00:88D3: F5 88     .byte < _общий_RTS ; 06
 - D 0 - I - 0x0008E5 00:88D5: D9 88     .byte < ofs_001_88D9_07
-- D 0 - I - 0x0008E7 00:88D7: F5 88     .byte < ofs_001_88F5_08_RTS
+- D 0 - I - 0x0008E7 00:88D7: F5 88     .byte < _общий_RTS ; 08
 tbl_88C7_hi:                                        
-- D 0 - I - 0x0008D7 00:88C7: F5 88     .byte > ofs_001_88F5_00_RTS
-- D 0 - I - 0x0008D9 00:88C9: F5 88     .byte > ofs_001_88F5_01_RTS
+- D 0 - I - 0x0008D7 00:88C7: F5 88     .byte > _общий_RTS ; 00
+- D 0 - I - 0x0008D9 00:88C9: F5 88     .byte > _общий_RTS ; 01
 - D 0 - I - 0x0008DB 00:88CB: DD 88     .byte > ofs_001_88DD_02
 - D 0 - I - 0x0008DD 00:88CD: E3 88     .byte > ofs_001_88E3_03
 - D 0 - I - 0x0008DF 00:88CF: E3 88     .byte > ofs_001_88E3_04
 - D 0 - I - 0x0008E1 00:88D1: E9 88     .byte > ofs_001_88E9_05
-- D 0 - I - 0x0008E3 00:88D3: F5 88     .byte > ofs_001_88F5_06_RTS
+- D 0 - I - 0x0008E3 00:88D3: F5 88     .byte > _общий_RTS ; 06
 - D 0 - I - 0x0008E5 00:88D5: D9 88     .byte > ofs_001_88D9_07
-- D 0 - I - 0x0008E7 00:88D7: F5 88     .byte > ofs_001_88F5_08_RTS
+- D 0 - I - 0x0008E7 00:88D7: F5 88     .byte > _общий_RTS ; 08
 
 
 ofs_001_88D9_07:
@@ -1601,10 +1601,6 @@ C - - - - - 0x0008FC 00:88EC: C9 E0     CMP #$E0
 C - - - - - 0x0008FE 00:88EE: 90 F3     BCC bra_88E3
 C - - - - - 0x000900 00:88F0: A9 00     LDA #$00
 C - - - - - 0x000902 00:88F2: 9D 18 05  STA ram_кадр_игрока,X
-ofs_001_88F5_00_RTS:
-ofs_001_88F5_01_RTS:
-ofs_001_88F5_06_RTS:
-ofs_001_88F5_08_RTS:
 C - - J - - 0x000905 00:88F5: 60        RTS
 
 
@@ -1811,8 +1807,8 @@ tbl_8A29_lo:
 - D 0 - I - 0x000A3F 00:8A2F: 5E 8A     .byte < ofs_003_8A5E_03
 - D 0 - I - 0x000A41 00:8A31: 81 8A     .byte < ofs_003_8A81_04
 - D 0 - I - 0x000A43 00:8A33: 9F 8A     .byte < ofs_003_8A9F_05
-- - - - - - 0x000A45 00:8A35: 5D 8A     .byte < ofs_003_8A5D_06_RTS
-- - - - - - 0x000A47 00:8A37: 5D 8A     .byte < ofs_003_8A5D_07_RTS
+- - - - - - 0x000A45 00:8A35: 5D 8A     .byte < _общий_RTS ; 06
+- - - - - - 0x000A47 00:8A37: 5D 8A     .byte < _общий_RTS ; 07
 - D 0 - I - 0x000A49 00:8A39: 4E 85     .byte < ofs_003_854E_08
 tbl_8A29_hi:                                        
 - D 0 - I - 0x000A39 00:8A29: 3E 85     .byte > ofs_003_853E_00
@@ -1821,8 +1817,8 @@ tbl_8A29_hi:
 - D 0 - I - 0x000A3F 00:8A2F: 5E 8A     .byte > ofs_003_8A5E_03
 - D 0 - I - 0x000A41 00:8A31: 81 8A     .byte > ofs_003_8A81_04
 - D 0 - I - 0x000A43 00:8A33: 9F 8A     .byte > ofs_003_8A9F_05
-- - - - - - 0x000A45 00:8A35: 5D 8A     .byte > ofs_003_8A5D_06_RTS
-- - - - - - 0x000A47 00:8A37: 5D 8A     .byte > ofs_003_8A5D_07_RTS
+- - - - - - 0x000A45 00:8A35: 5D 8A     .byte > _общий_RTS ; 06
+- - - - - - 0x000A47 00:8A37: 5D 8A     .byte > _общий_RTS ; 07
 - D 0 - I - 0x000A49 00:8A39: 4E 85     .byte > ofs_003_854E_08
 
 
@@ -1849,12 +1845,6 @@ C - - - - - 0x000A61 00:8A51: 20 BF 8A  JSR sub_8ABF
 C - - - - - 0x000A64 00:8A54: 20 AA 8B  JSR sub_8BAA
 C - - - - - 0x000A67 00:8A57: 20 18 8C  JSR sub_8C18
 C - - - - - 0x000A6A 00:8A5A: 4C 13 83  JMP loc_8313
-
-
-
-ofs_003_8A5D_06_RTS:
-ofs_003_8A5D_07_RTS:
-- - - - - - 0x000A6D 00:8A5D: 60        RTS
 
 
 
@@ -2217,25 +2207,25 @@ loc_8C28:
                                         STA ram_0001
                                         JMP (ram_0000)
 tbl_8C2D_lo:                                        
-- D 0 - I - 0x000C3D 00:8C2D: 52 8C     .byte < ofs_004_8C52_00_RTS
-- D 0 - I - 0x000C3F 00:8C2F: 52 8C     .byte < ofs_004_8C52_01_RTS
+- D 0 - I - 0x000C3D 00:8C2D: 52 8C     .byte < _общий_RTS ; 00
+- D 0 - I - 0x000C3F 00:8C2F: 52 8C     .byte < _общий_RTS ; 01
 - D 0 - I - 0x000C41 00:8C31: 53 8C     .byte < ofs_004_8C53_02
 - D 0 - I - 0x000C43 00:8C33: 3F 8C     .byte < ofs_004_8C3F_03
 - D 0 - I - 0x000C45 00:8C35: 3F 8C     .byte < ofs_004_8C3F_04
 - D 0 - I - 0x000C47 00:8C37: 4F 8C     .byte < ofs_004_8C4F_05
-- - - - - - 0x000C49 00:8C39: 52 8C     .byte < ofs_004_8C52_06_RTS
-- - - - - - 0x000C4B 00:8C3B: 52 8C     .byte < ofs_004_8C52_07_RTS
-- D 0 - I - 0x000C4D 00:8C3D: 52 8C     .byte < ofs_004_8C52_08_RTS
+- - - - - - 0x000C49 00:8C39: 52 8C     .byte < _общий_RTS ; 06
+- - - - - - 0x000C4B 00:8C3B: 52 8C     .byte < _общий_RTS ; 07
+- D 0 - I - 0x000C4D 00:8C3D: 52 8C     .byte < _общий_RTS ; 08
 tbl_8C2D_hi:                                        
-- D 0 - I - 0x000C3D 00:8C2D: 52 8C     .byte > ofs_004_8C52_00_RTS
-- D 0 - I - 0x000C3F 00:8C2F: 52 8C     .byte > ofs_004_8C52_01_RTS
+- D 0 - I - 0x000C3D 00:8C2D: 52 8C     .byte > _общий_RTS ; 00
+- D 0 - I - 0x000C3F 00:8C2F: 52 8C     .byte > _общий_RTS ; 01
 - D 0 - I - 0x000C41 00:8C31: 53 8C     .byte > ofs_004_8C53_02
 - D 0 - I - 0x000C43 00:8C33: 3F 8C     .byte > ofs_004_8C3F_03
 - D 0 - I - 0x000C45 00:8C35: 3F 8C     .byte > ofs_004_8C3F_04
 - D 0 - I - 0x000C47 00:8C37: 4F 8C     .byte > ofs_004_8C4F_05
-- - - - - - 0x000C49 00:8C39: 52 8C     .byte > ofs_004_8C52_06_RTS
-- - - - - - 0x000C4B 00:8C3B: 52 8C     .byte > ofs_004_8C52_07_RTS
-- D 0 - I - 0x000C4D 00:8C3D: 52 8C     .byte > ofs_004_8C52_08_RTS
+- - - - - - 0x000C49 00:8C39: 52 8C     .byte > _общий_RTS ; 06
+- - - - - - 0x000C4B 00:8C3B: 52 8C     .byte > _общий_RTS ; 07
+- D 0 - I - 0x000C4D 00:8C3D: 52 8C     .byte > _общий_RTS ; 08
 
 
 ofs_004_8C3F_03:
@@ -2256,11 +2246,6 @@ C - - J - - 0x000C5F 00:8C4F: 4C 53 8C  JMP loc_8C53
 
 
 bra_8C52_RTS:
-ofs_004_8C52_00_RTS:
-ofs_004_8C52_01_RTS:
-ofs_004_8C52_06_RTS:
-ofs_004_8C52_07_RTS:
-ofs_004_8C52_08_RTS:
 C - - - - - 0x000C62 00:8C52: 60        RTS
 
 
@@ -3409,15 +3394,14 @@ tbl_92FE_lo:
 - D 0 - I - 0x00130E 00:92FE: 07 93     .byte < ofs_005_9307_03
 - D 0 - I - 0x001310 00:9300: 19 93     .byte < ofs_005_9319_04
 - D 0 - I - 0x001312 00:9302: 26 93     .byte < ofs_005_9326_05
-- D 0 - I - 0x001314 00:9304: 06 93     .byte < ofs_005_9306_06_RTS
+- D 0 - I - 0x001314 00:9304: 06 93     .byte < _общий_RTS ; 06
 tbl_92FE_hi:
 - D 0 - I - 0x00130E 00:92FE: 07 93     .byte > ofs_005_9307_03
 - D 0 - I - 0x001310 00:9300: 19 93     .byte > ofs_005_9319_04
 - D 0 - I - 0x001312 00:9302: 26 93     .byte > ofs_005_9326_05
-- D 0 - I - 0x001314 00:9304: 06 93     .byte > ofs_005_9306_06_RTS
+- D 0 - I - 0x001314 00:9304: 06 93     .byte > _общий_RTS ; 06
 
 bra_9306_RTS:
-ofs_005_9306_06_RTS:
 C - - - - - 0x001316 00:9306: 60        RTS
 
 

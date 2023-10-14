@@ -69,6 +69,7 @@
 .export loc_0x01FE1E_sprite_engine
 .export loc_0x01FE6D
 .export sub_0x01FEB4
+.export _общий_RTS
 
 
 
@@ -2075,6 +2076,7 @@ tbl_EAC8_chr_banks:
 
 loc_EAF8:
 C D 3 - - - 0x01EB08 07:EAF8: 20 80 ED  JSR sub_ED80
+<<<<<<< HEAD
 ; 1путин опт
                                         LDY ram_0060_unk
                                         LDA tbl_EB00_lo,y
@@ -2083,16 +2085,15 @@ C D 3 - - - 0x01EB08 07:EAF8: 20 80 ED  JSR sub_ED80
                                         STA ram_0001
                                         JMP (ram_0000)
 tbl_EB00_lo:
-- D 3 - I - 0x01EB10 07:EB00: D6 EC     .byte < ofs_035_ECD6_00_RTS
+- D 3 - I - 0x01EB10 07:EB00: D6 EC     .byte < _общий_RTS
 - D 3 - I - 0x01EB12 07:EB02: 08 EB     .byte < ofs_035_EB08_01
 - D 3 - I - 0x01EB14 07:EB04: 0B EB     .byte < ofs_035_EB0B_02
 - D 3 - I - 0x01EB16 07:EB06: 58 EB     .byte < ofs_035_EB58_03
 tbl_EB00_hi:
-- D 3 - I - 0x01EB10 07:EB00: D6 EC     .byte > ofs_035_ECD6_00_RTS
+- D 3 - I - 0x01EB10 07:EB00: D6 EC     .byte > _общий_RTS
 - D 3 - I - 0x01EB12 07:EB02: 08 EB     .byte > ofs_035_EB08_01
 - D 3 - I - 0x01EB14 07:EB04: 0B EB     .byte > ofs_035_EB0B_02
 - D 3 - I - 0x01EB16 07:EB06: 58 EB     .byte > ofs_035_EB58_03
-
 
 
 ofs_035_EB08_01:
@@ -2368,7 +2369,6 @@ C - - - - - 0x01ECE0 07:ECD0: 85 6B     STA ram_006B
 C - - - - - 0x01ECE2 07:ECD2: 90 02     BCC bra_ECD6_RTS
 C - - - - - 0x01ECE4 07:ECD4: E6 6C     INC ram_006C
 bra_ECD6_RTS:
-ofs_035_ECD6_00_RTS:
 C - - - - - 0x01ECE6 07:ECD6: 60        RTS
 
 
@@ -2510,6 +2510,7 @@ tbl_ED70:
 
 
 sub_ED80:
+<<<<<<< HEAD
 ; 1путин опт
                                         LDY ram_0070
                                         LDA tbl_ED85_lo,y
@@ -2518,18 +2519,13 @@ sub_ED80:
                                         STA ram_0001
                                         JMP (ram_0000)
 tbl_ED85_lo:
-- D 3 - I - 0x01ED95 07:ED85: 3D EE     .byte < ofs_036_EE3D_00_RTS
+- D 3 - I - 0x01ED95 07:ED85: 3D EE     .byte < .byte < _общий_RTS
 - D 3 - I - 0x01ED97 07:ED87: 8C ED     .byte < ofs_036_ED8C_01
 - D 3 - I - 0x01ED99 07:ED89: C7 ED     .byte < ofs_036_EDC7_02
 tbl_ED85_hi:
-- D 3 - I - 0x01ED95 07:ED85: 3D EE     .byte > ofs_036_EE3D_00_RTS
+- D 3 - I - 0x01ED95 07:ED85: 3D EE     .byte > .byte < _общий_RTS
 - D 3 - I - 0x01ED97 07:ED87: 8C ED     .byte > ofs_036_ED8C_01
 - D 3 - I - 0x01ED99 07:ED89: C7 ED     .byte > ofs_036_EDC7_02
-
-
-; bzk garbage
-- - - - - - 0x01ED9B 07:ED8B: 60        RTS
-
 
 
 ofs_036_ED8C_01:
@@ -2637,7 +2633,6 @@ C - - - - - 0x01EE47 07:EE37: 85 01     STA ram_0001
 C - - - - - 0x01EE49 07:EE39: CA        DEX
 C - - - - - 0x01EE4A 07:EE3A: 20 95 EE  JSR sub_EE95
 bra_EE3D_RTS:
-ofs_036_EE3D_00_RTS:
 C - - J - - 0x01EE4D 07:EE3D: 60        RTS
 
 
@@ -3589,6 +3584,7 @@ tbl_F40E:
 
 
 sub_F41C:
+<<<<<<< HEAD
 ; 1путин опт
                                         LDY ram_0006
                                         LDA tbl_F421_lo,y
@@ -3599,7 +3595,7 @@ sub_F41C:
 tbl_F421_lo:
 - D 3 - I - 0x01F431 07:F421: 33 F4     .byte < ofs_037_F433_00
 - D 3 - I - 0x01F433 07:F423: 38 F4     .byte < ofs_037_F438_01
-- D 3 - I - 0x01F435 07:F425: 59 F4     .byte < ofs_037_F459_02_RTS
+- D 3 - I - 0x01F435 07:F425: 59 F4     .byte < .byte < _общий_RTS
 - D 3 - I - 0x01F437 07:F427: 3F F4     .byte < ofs_037_F43F_03
 - D 3 - I - 0x01F439 07:F429: 48 F4     .byte < ofs_037_F448_04
 - D 3 - I - 0x01F43B 07:F42B: 5A F4     .byte < ofs_037_F45A_05
@@ -3609,14 +3605,13 @@ tbl_F421_lo:
 tbl_F421_hi:
 - D 3 - I - 0x01F431 07:F421: 33 F4     .byte > ofs_037_F433_00
 - D 3 - I - 0x01F433 07:F423: 38 F4     .byte > ofs_037_F438_01
-- D 3 - I - 0x01F435 07:F425: 59 F4     .byte > ofs_037_F459_02_RTS
+- D 3 - I - 0x01F435 07:F425: 59 F4     .byte > .byte < _общий_RTS
 - D 3 - I - 0x01F437 07:F427: 3F F4     .byte > ofs_037_F43F_03
 - D 3 - I - 0x01F439 07:F429: 48 F4     .byte > ofs_037_F448_04
 - D 3 - I - 0x01F43B 07:F42B: 5A F4     .byte > ofs_037_F45A_05
 - D 3 - I - 0x01F43D 07:F42D: 65 F4     .byte > ofs_037_F465_06
 - D 3 - I - 0x01F43F 07:F42F: 74 F4     .byte > ofs_037_F474_07
 - - - - - - 0x01F441 07:F431: 8A F4     .byte > ofs_037_F48A_08
-
 
 
 ofs_037_F433_00:
@@ -3654,7 +3649,6 @@ C - - - - - 0x01F461 07:F451: 85 04     STA ram_0004
 C - - - - - 0x01F463 07:F453: A5 05     LDA ram_0005
 C - - - - - 0x01F465 07:F455: 69 00     ADC #$00
 C - - - - - 0x01F467 07:F457: 85 05     STA ram_0005
-ofs_037_F459_02_RTS:
 C - - - - - 0x01F469 07:F459: 60        RTS
 
 
@@ -5676,6 +5670,13 @@ C - - - - - 0x01FF58 07:FF48: 8C 00 80  STY $8000
 C - - - - - 0x01FF5B 07:FF4B: AD F5 07  LDA ram_bg_bank_1 + $05
 C - - - - - 0x01FF5E 07:FF4E: 8D 01 80  STA $8001
 C - - - - - 0x01FF61 07:FF51: 60        RTS
+
+
+
+_общий_RTS:
+; cyneprepou4uk
+                                        RTS
+
 
 
 .out .sprintf("Free bytes in bank 3E: %Xh [%d]", ($FFFA - *), ($FFFA - *))
