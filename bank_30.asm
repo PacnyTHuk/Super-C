@@ -866,14 +866,6 @@ bra_84C9_RTS:
 C - - - - - 0x0004D9 00:84C9: 60        RTS
 
 
-; bzk garbage
-- - - - - - 0x0004DA 00:84CA: A9 00     LDA #$00    ; con_weapon_default
-- - - - - - 0x0004DC 00:84CC: 95 B8     STA ram_оружие_игрока,X
-- - - - - - 0x0004DE 00:84CE: 9D 32 05  STA ram_позиция_y_спрайта_игрока,X
-- - - - - - 0x0004E1 00:84D1: 9D 4C 05  STA ram_позиция_x_спрайта_игрока,X
-- - - - - - 0x0004E4 00:84D4: 95 C4     STA ram_инвиз_игрока,X
-
-
 
 sub_84D6:
 C - - - - - 0x0004E6 00:84D6: A9 00     LDA #$00
@@ -1033,10 +1025,6 @@ C - - - - - 0x0005AC 00:859C: 20 C9 86  JSR sub_86C9
 C - - - - - 0x0005AF 00:859F: 20 B5 80  JSR sub_80B5
 C - - - - - 0x0005B2 00:85A2: 20 24 82  JSR sub_8224
 C - - - - - 0x0005B5 00:85A5: 4C 13 83  JMP loc_8313
-
-
-; bzk garbage
-- - - - - - 0x0005B8 00:85A8: 60        RTS
 
 
 
@@ -2362,15 +2350,6 @@ loc_8CE4_RTS:
 C D 0 - - - 0x000CF4 00:8CE4: 60        RTS
 
 
-; bzk garbage
-- - - - - - 0x000CF5 00:8CE5: 00        .byte $00   ; 
-- - - - - - 0x000CF6 00:8CE6: 00        .byte $00   ; 
-- - - - - - 0x000CF7 00:8CE7: 01        .byte $01   ; 
-- - - - - - 0x000CF8 00:8CE8: 01        .byte $01   ; 
-- - - - - - 0x000CF9 00:8CE9: 01        .byte $01   ; 
-- - - - - - 0x000CFA 00:8CEA: 00        .byte $00   ; 
-
-
 
 tbl_8CEB:
 - D 0 - - - 0x000CFB 00:8CEB: 80        .byte $80   ; 00 
@@ -2683,41 +2662,31 @@ C - - - - - 0x000ED4 00:8EC4: 9D 68 05  STA ram_тип_пули_игрока,X
 C - - - - - 0x000ED7 00:8EC7: B9 FC 8E  LDA tbl_8EFC_bullet_damage,Y
 C - - - - - 0x000EDA 00:8ECA: 9D F8 05  STA ram_пули_игрока_урон,X
 C - - - - - 0x000EDD 00:8ECD: B9 03 8F  LDA tbl_8F03,Y
-; bzk optimize, useless check, all values are > 00
-C - - - - - 0x000EE0 00:8ED0: F0 03     BEQ bra_8ED5_RTS
+; 1путин опт
 C - - - - - 0x000EE2 00:8ED2: 4C DE FD  JMP loc_0x01FDEE_play_sound
-bra_8ED5_RTS:
-- - - - - - 0x000EE5 00:8ED5: 60        RTS
 
 
 
 tbl_8ED6_offset:
 - D 0 - - - 0x000EE6 00:8ED6: 00        .byte off_8EDE_00 - tbl_8EDE   ; 00 
-- D 0 - - - 0x000EE7 00:8ED7: 05        .byte off_8EE3_05 - tbl_8EDE   ; 01 
+- D 0 - - - 0x000EE7 00:8ED7: 05        .byte off_8EDE_00 - tbl_8EDE   ; 01 
 - D 0 - - - 0x000EE8 00:8ED8: 00        .byte off_8EDE_00 - tbl_8EDE   ; 02 
-- D 0 - - - 0x000EE9 00:8ED9: 05        .byte off_8EE3_05 - tbl_8EDE   ; 03 
+- D 0 - - - 0x000EE9 00:8ED9: 05        .byte off_8EDE_00 - tbl_8EDE   ; 03 
 - D 0 - - - 0x000EEA 00:8EDA: 00        .byte off_8EDE_00 - tbl_8EDE   ; 04 
-- D 0 - - - 0x000EEB 00:8EDB: 05        .byte off_8EE3_05 - tbl_8EDE   ; 05 
+- D 0 - - - 0x000EEB 00:8EDB: 05        .byte off_8EDE_00 - tbl_8EDE   ; 05 
 - D 0 - - - 0x000EEC 00:8EDC: 00        .byte off_8EDE_00 - tbl_8EDE   ; 06 
-- D 0 - - - 0x000EED 00:8EDD: 05        .byte off_8EE3_05 - tbl_8EDE   ; 07 
+- D 0 - - - 0x000EED 00:8EDD: 05        .byte off_8EDE_00 - tbl_8EDE   ; 07 
 
 
 
 tbl_8EDE:
-; bzk optimize, same bytes
+; 1путин опт
 off_8EDE_00:
 - D 0 - - - 0x000EEE 00:8EDE: 01        .byte $01   ; 00 
 - D 0 - - - 0x000EEF 00:8EDF: 03        .byte $03   ; 01 
 - D 0 - - - 0x000EF0 00:8EE0: 05        .byte $05   ; 02 
 - D 0 - - - 0x000EF1 00:8EE1: 07        .byte $07   ; 03 
 - D 0 - - - 0x000EF2 00:8EE2: 09        .byte $09   ; 04 
-
-off_8EE3_05:
-- D 0 - - - 0x000EF3 00:8EE3: 01        .byte $01   ; 00 
-- D 0 - - - 0x000EF4 00:8EE4: 03        .byte $03   ; 01 
-- D 0 - - - 0x000EF5 00:8EE5: 05        .byte $05   ; 02 
-- D 0 - - - 0x000EF6 00:8EE6: 07        .byte $07   ; 03 
-- D 0 - - - 0x000EF7 00:8EE7: 09        .byte $09   ; 04 
 
 
 
@@ -3183,32 +3152,6 @@ _off003_90E1_01_02:
 - D 0 - I - 0x00110F 00:90FF: 12 06     .word $0612 ; X
 
 
-; bzk garbage
-- - - - - - 0x001111 00:9101: 00        .byte $00   ; 
-- - - - - - 0x001112 00:9102: 21        .byte $21   ; 
-- - - - - - 0x001113 00:9103: 42        .byte $42   ; 
-- - - - - - 0x001114 00:9104: 61        .byte $61   ; 
-- - - - - - 0x001115 00:9105: 7F        .byte $7F   ; 
-- - - - - - 0x001116 00:9106: 9B        .byte $9B   ; 
-- - - - - - 0x001117 00:9107: B5        .byte $B5   ; 
-- - - - - - 0x001118 00:9108: CB        .byte $CB   ; 
-- - - - - - 0x001119 00:9109: DD        .byte $DD   ; 
-- - - - - - 0x00111A 00:910A: EC        .byte $EC   ; 
-- - - - - - 0x00111B 00:910B: F7        .byte $F7   ; 
-- - - - - - 0x00111C 00:910C: FD        .byte $FD   ; 
-- - - - - - 0x00111D 00:910D: FF        .byte $FF   ; 
-- - - - - - 0x00111E 00:910E: FD        .byte $FD   ; 
-- - - - - - 0x00111F 00:910F: F7        .byte $F7   ; 
-- - - - - - 0x001120 00:9110: EC        .byte $EC   ; 
-- - - - - - 0x001121 00:9111: DD        .byte $DD   ; 
-- - - - - - 0x001122 00:9112: CB        .byte $CB   ; 
-- - - - - - 0x001123 00:9113: B5        .byte $B5   ; 
-- - - - - - 0x001124 00:9114: 9B        .byte $9B   ; 
-- - - - - - 0x001125 00:9115: 80        .byte $80   ; 
-- - - - - - 0x001126 00:9116: 61        .byte $61   ; 
-- - - - - - 0x001127 00:9117: 42        .byte $42   ; 
-- - - - - - 0x001128 00:9118: 21        .byte $21   ; 
-
 
 
 tbl_9119:
@@ -3453,21 +3396,29 @@ tbl_92E7:
 
 
 sub_92EF:
-C - - - - - 0x0012FF 00:92EF: A5 13     LDA ram_0013
-C - - - - - 0x001301 00:92F1: C9 03     CMP #$03
-C - - - - - 0x001303 00:92F3: 90 11     BCC bra_9306_RTS
-C - - - - - 0x001305 00:92F5: 20 09 E6  JSR sub_0x01E619_jump_to_pointers_after_jsr
-- - - - - - 0x001308 00:92F8: 06 93     .word ofs_005_9306_00_RTS
-- - - - - - 0x00130A 00:92FA: 06 93     .word ofs_005_9306_01_RTS
-- - - - - - 0x00130C 00:92FC: 06 93     .word ofs_005_9306_02_RTS
+; 1путин опт
+                                        STY ram_0003
+                                        LDY ram_0013
+                                        CPY #$03
+                                        BCC bra_9306_RTS
+                                        LDA tbl_92FE_lo - $03,y
+                                        STA ram_0000
+                                        LDA tbl_92FE_hi - $03,y
+                                        STA ram_0001
+                                        LDY ram_0003
+                                        JMP (ram_0000)
+tbl_92FE_lo:
 - D 0 - I - 0x00130E 00:92FE: 07 93     .word ofs_005_9307_03
 - D 0 - I - 0x001310 00:9300: 19 93     .word ofs_005_9319_04
 - D 0 - I - 0x001312 00:9302: 26 93     .word ofs_005_9326_05
 - D 0 - I - 0x001314 00:9304: 06 93     .word ofs_005_9306_06_RTS
+tbl_92FE_hi:
+- D 0 - I - 0x00130E 00:92FE: 07 93     .word ofs_005_9307_03
+- D 0 - I - 0x001310 00:9300: 19 93     .word ofs_005_9319_04
+- D 0 - I - 0x001312 00:9302: 26 93     .word ofs_005_9326_05
+- D 0 - I - 0x001314 00:9304: 06 93     .word ofs_005_9306_06_RTS
+
 bra_9306_RTS:
-ofs_005_9306_00_RTS:
-ofs_005_9306_01_RTS:
-ofs_005_9306_02_RTS:
 ofs_005_9306_06_RTS:
 C - - - - - 0x001316 00:9306: 60        RTS
 
@@ -3519,12 +3470,17 @@ C - - - - - 0x001343 00:9333: 90 02     BCC bra_9337
 C - - - - - 0x001345 00:9335: A9 1A     LDA #$1A
 bra_9337:
 C - - - - - 0x001347 00:9337: 9D 68 05  STA ram_тип_пули_игрока,X
+bra_933A:
 C - - - - - 0x00134A 00:933A: 60        RTS
 
 
 
 sub_933B:
 ; triggers during area 4 boss attacking
+; 1путин опт
+                                        LDA ram_index_ppu_buffer
+                                        CMP #$40
+                                        BCS bra_933A
 C - - - - - 0x00134B 00:933B: BD 88 05  LDA ram_пули_игрока_позиция_x_старш,X
 C - - - - - 0x00134E 00:933E: 4A        LSR
 C - - - - - 0x00134F 00:933F: 4A        LSR
@@ -3552,10 +3508,7 @@ C - - - - - 0x001370 00:9360: 05 00     ORA ram_0000
 C - - - - - 0x001372 00:9362: 29 FE     AND #$FE
 C - - - - - 0x001374 00:9364: 85 00     STA ram_0000
 C - - - - - 0x001376 00:9366: 86 10     STX ram_0010
-; bzk optimize, check ram_index_ppu_buffer first
 C - - - - - 0x001378 00:9368: A6 1E     LDX ram_index_ppu_buffer
-C - - - - - 0x00137A 00:936A: E0 40     CPX #$40
-C - - - - - 0x00137C 00:936C: B0 4D     BCS bra_93BB
 ; if buffer is not too loaded
 C - - - - - 0x00137E 00:936E: A9 06     LDA #con_buf_mode_06
 C - - - - - 0x001380 00:9370: 9D 00 03  STA ram_nmt_buffer,X
@@ -3599,7 +3552,6 @@ C - - - - - 0x0013C2 00:93B2: 9D 00 03  STA ram_nmt_buffer,X
 C - - - - - 0x0013C5 00:93B5: E8        INX
 C - - - - - 0x0013C6 00:93B6: 86 1E     STX ram_index_ppu_buffer
 C - - - - - 0x0013C8 00:93B8: 20 CA 93  JSR sub_93CA
-bra_93BB:
 C - - - - - 0x0013CB 00:93BB: A6 10     LDX ram_0010
 C - - - - - 0x0013CD 00:93BD: 60        RTS
 
@@ -4378,15 +4330,14 @@ tbl_9768:
 loc_0x00178C_print_text_on_the_screen:
 ; see con_0x0017EA
 ; +80 = hide text
+; 1путин опт
+                                        STA ram_0002
+                                        ASL
 C D 0 - - - 0x00178C 00:977C: A8        TAY
 C - - - - - 0x00178D 00:977D: A9 02     LDA #$02
 C - - - - - 0x00178F 00:977F: 85 03     STA ram_0003
 C - - - - - 0x001791 00:9781: A9 01     LDA #$01
 C - - - - - 0x001793 00:9783: 20 D1 97  JSR sub_97D1
-C - - - - - 0x001796 00:9786: 98        TYA ; bzk optimize, write to 0002 from the beginning
-C - - - - - 0x001797 00:9787: 85 02     STA ram_0002
-C - - - - - 0x001799 00:9789: 0A        ASL
-C - - - - - 0x00179A 00:978A: A8        TAY
 C - - - - - 0x00179B 00:978B: B9 DA 97  LDA tbl_97DA,Y
 C - - - - - 0x00179E 00:978E: 85 00     STA ram_0000
 C - - - - - 0x0017A0 00:9790: B9 DB 97  LDA tbl_97DA + $01,Y
@@ -4396,9 +4347,6 @@ C - - - - - 0x0017A7 00:9797: A0 00     LDY #$00
 bra_9799_loop:
 C - - - - - 0x0017A9 00:9799: B1 00     LDA (ram_0000),Y
 C - - - - - 0x0017AB 00:979B: C8        INY
-; bzk optimize, there are no FF bytes in this data
-C - - - - - 0x0017AC 00:979C: C9 FF     CMP #$FF
-C - - - - - 0x0017AE 00:979E: F0 37     BEQ bra_97D7_FF
 C - - - - - 0x0017B0 00:97A0: C9 FE     CMP #$FE
 C - - - - - 0x0017B2 00:97A2: F0 27     BEQ bra_97CB_FE
 C - - - - - 0x0017B4 00:97A4: C9 FD     CMP #$FD
@@ -4429,20 +4377,12 @@ sub_97CB:
 ; write byte FF and close buffer
 C - - - - - 0x0017DB 00:97CB: A9 FF     LDA #$FF
 C - - - - - 0x0017DD 00:97CD: D0 04     BNE bra_97D3    ; jmp
-
-
-; bzk garbage
-- - - - - - 0x0017DF 00:97CF: A9 FF     LDA #$FF
-
-
-
 sub_97D1:
 C - - - - - 0x0017E1 00:97D1: A6 1E     LDX ram_index_ppu_buffer
 bra_97D3:
 sub_97D3:
 C - - - - - 0x0017E3 00:97D3: 9D 00 03  STA ram_nmt_buffer,X
 C - - - - - 0x0017E6 00:97D6: E8        INX
-bra_97D7_FF:
 ; close buffer
 C - - - - - 0x0017E7 00:97D7: 86 1E     STX ram_index_ppu_buffer
 C - - - - - 0x0017E9 00:97D9: 60        RTS
@@ -9572,15 +9512,6 @@ _off007_0x003E9F_01_area_2:
 - D 1 - I - 0x003F7F 00:BF6F: FA        .byte $FA, $FA, $35, $C5, $19, $8A, $2A, $46, $99, $AA, $AA, $66, $59, $5A, $5A, $56   ; E0
 - D 1 - I - 0x003F8F 00:BF7F: 55        .byte $55, $55, $A0, $A0, $A0                                                          ; F0
 
-
-; bzk garbage
-- - - - - - 0x003F94 00:BF84: 00        .byte $00   ; 
-- - - - - - 0x003F95 00:BF85: 00        .byte $00   ; 
-- - - - - - 0x003F96 00:BF86: 00        .byte $00   ; 
-- - - - - - 0x003F97 00:BF87: 00        .byte $00   ; 
-- - - - - - 0x003F98 00:BF88: 00        .byte $00   ; 
-- - - - - - 0x003F99 00:BF89: 00        .byte $00   ; 
-- - - - - - 0x003F9A 00:BF8A: 00        .byte $00   ; 
 
 
 .out .sprintf("Free bytes in bank 30: %Xh [%d]", ($BFFF - *), ($BFFF - *))
