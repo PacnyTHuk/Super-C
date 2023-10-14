@@ -2076,7 +2076,6 @@ tbl_EAC8_chr_banks:
 
 loc_EAF8:
 C D 3 - - - 0x01EB08 07:EAF8: 20 80 ED  JSR sub_ED80
-<<<<<<< HEAD
 ; 1путин опт
                                         LDY ram_0060_unk
                                         LDA tbl_EB00_lo,y
@@ -2510,7 +2509,6 @@ tbl_ED70:
 
 
 sub_ED80:
-<<<<<<< HEAD
 ; 1путин опт
                                         LDY ram_0070
                                         LDA tbl_ED85_lo,y
@@ -2519,11 +2517,11 @@ sub_ED80:
                                         STA ram_0001
                                         JMP (ram_0000)
 tbl_ED85_lo:
-- D 3 - I - 0x01ED95 07:ED85: 3D EE     .byte < .byte < _общий_RTS
+- D 3 - I - 0x01ED95 07:ED85: 3D EE     .byte < _общий_RTS
 - D 3 - I - 0x01ED97 07:ED87: 8C ED     .byte < ofs_036_ED8C_01
 - D 3 - I - 0x01ED99 07:ED89: C7 ED     .byte < ofs_036_EDC7_02
 tbl_ED85_hi:
-- D 3 - I - 0x01ED95 07:ED85: 3D EE     .byte > .byte < _общий_RTS
+- D 3 - I - 0x01ED95 07:ED85: 3D EE     .byte > _общий_RTS
 - D 3 - I - 0x01ED97 07:ED87: 8C ED     .byte > ofs_036_ED8C_01
 - D 3 - I - 0x01ED99 07:ED89: C7 ED     .byte > ofs_036_EDC7_02
 
@@ -3584,7 +3582,6 @@ tbl_F40E:
 
 
 sub_F41C:
-<<<<<<< HEAD
 ; 1путин опт
                                         LDY ram_0006
                                         LDA tbl_F421_lo,y
@@ -3595,7 +3592,7 @@ sub_F41C:
 tbl_F421_lo:
 - D 3 - I - 0x01F431 07:F421: 33 F4     .byte < ofs_037_F433_00
 - D 3 - I - 0x01F433 07:F423: 38 F4     .byte < ofs_037_F438_01
-- D 3 - I - 0x01F435 07:F425: 59 F4     .byte < .byte < _общий_RTS
+- D 3 - I - 0x01F435 07:F425: 59 F4     .byte < _общий_RTS
 - D 3 - I - 0x01F437 07:F427: 3F F4     .byte < ofs_037_F43F_03
 - D 3 - I - 0x01F439 07:F429: 48 F4     .byte < ofs_037_F448_04
 - D 3 - I - 0x01F43B 07:F42B: 5A F4     .byte < ofs_037_F45A_05
@@ -3605,7 +3602,7 @@ tbl_F421_lo:
 tbl_F421_hi:
 - D 3 - I - 0x01F431 07:F421: 33 F4     .byte > ofs_037_F433_00
 - D 3 - I - 0x01F433 07:F423: 38 F4     .byte > ofs_037_F438_01
-- D 3 - I - 0x01F435 07:F425: 59 F4     .byte > .byte < _общий_RTS
+- D 3 - I - 0x01F435 07:F425: 59 F4     .byte > _общий_RTS
 - D 3 - I - 0x01F437 07:F427: 3F F4     .byte > ofs_037_F43F_03
 - D 3 - I - 0x01F439 07:F429: 48 F4     .byte > ofs_037_F448_04
 - D 3 - I - 0x01F43B 07:F42B: 5A F4     .byte > ofs_037_F45A_05
