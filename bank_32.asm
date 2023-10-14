@@ -516,13 +516,13 @@ C - - - - - 0x004323 01:8313: 4C 83 A2  JMP loc_0x006293_set_obj_state
 
 
 sub_8316_draw_helicopter_door:
+; 1путин опт
+                                        LDX ram_index_ppu_buffer
+                                        CPX #$40
+                                        BCS bra_8375_skip
 C - - - - - 0x004326 01:8316: BD 10 07  LDA ram_0710_obj,X
 C - - - - - 0x004329 01:8319: 0A        ASL
 C - - - - - 0x00432A 01:831A: A8        TAY
-; bzk optimize, check ram_index_ppu_buffer first
-C - - - - - 0x00432B 01:831B: A6 1E     LDX ram_index_ppu_buffer
-C - - - - - 0x00432D 01:831D: E0 40     CPX #$40
-C - - - - - 0x00432F 01:831F: B0 54     BCS bra_8375_skip
 ; if buffer is not too loaded
 C - - - - - 0x004331 01:8321: B9 78 83  LDA tbl_8378_helicopter_door,Y
 C - - - - - 0x004334 01:8324: 85 08     STA ram_0008
@@ -636,7 +636,12 @@ ofs_038_23_83E1_02:
 C - - J - - 0x0043F1 01:83E1: A9 00     LDA #$00
 C - - - - - 0x0043F3 01:83E3: 20 90 84  JSR sub_8490
 C - - - - - 0x0043F6 01:83E6: 20 B7 A6  JSR sub_0x0066C7_delete_object_03
+; 1путин опт
+                                        LDA ram_index_ppu_buffer
+                                        CMP #$20
+                                        BCS bra_841F_RTS
 C - - - - - 0x0043F9 01:83E9: BD 10 07  LDA ram_0710_obj,X
+
 C - - - - - 0x0043FC 01:83EC: 0A        ASL
 C - - - - - 0x0043FD 01:83ED: A8        TAY
 C - - - - - 0x0043FE 01:83EE: B9 26 84  LDA tbl_8426,Y
@@ -644,11 +649,7 @@ C - - - - - 0x004401 01:83F1: 85 08     STA ram_0008
 C - - - - - 0x004403 01:83F3: B9 27 84  LDA tbl_8426 + $01,Y
 C - - - - - 0x004406 01:83F6: 85 09     STA ram_0009
 ; bzk optimize, check ram_index_ppu_buffer first
-C - - - - - 0x004408 01:83F8: A5 1E     LDA ram_index_ppu_buffer
-C - - - - - 0x00440A 01:83FA: C9 20     CMP #$20
-C - - - - - 0x00440C 01:83FC: B0 21     BCS bra_841F_RTS
-; if buffer is not too loaded
-C - - - - - 0x00440E 01:83FE: AA        TAX
+C - - - - - 0x004408 01:83F8: A5 1E     LDX ram_index_ppu_buffer
 C - - - - - 0x00440F 01:83FF: A0 00     LDY #$00
 bra_8401_loop:
 C - - - - - 0x004411 01:8401: B1 08     LDA (ram_0008),Y
@@ -669,15 +670,6 @@ bra_841C:
 C - - - - - 0x00442C 01:841C: 9D 10 07  STA ram_0710_obj,X
 bra_841F_RTS:
 C - - - - - 0x00442F 01:841F: 60        RTS
-
-
-; bzk garbage
-- - - - - - 0x004430 01:8420: 00        .byte $00   ; 
-- - - - - - 0x004431 01:8421: 02        .byte $02   ; 
-- - - - - - 0x004432 01:8422: 04        .byte $04   ; 
-- - - - - - 0x004433 01:8423: 06        .byte $06   ; 
-- - - - - - 0x004434 01:8424: 04        .byte $04   ; 
-- - - - - - 0x004435 01:8425: 02        .byte $02   ; 
 
 
 
@@ -1033,7 +1025,7 @@ C D 0 - - - 0x00466C 01:865C: 20 4F A7  JSR sub_0x00675F
 sub_865F:
 C - - - - - 0x00466F 01:865F: 20 0A AA  JSR sub_0x006A1A
 C - - - - - 0x004672 01:8662: 20 CC 87  JSR sub_87CC_draw_helicopter
-C - - - - - 0x004675 01:8665: 4C 90 89  JMP loc_8990
+C - - - - - 0x004675 01:8665: 4C 90 89  JMP loc_анимация_винтов_1босс
 
 
 
@@ -1287,13 +1279,13 @@ tbl_8797:
 
 
 sub_8799:
+; 1путин опт
+                                        LDX ram_index_ppu_buffer
+                                        CPX #$40
+                                        BCS bra_87B4_skip
 C - - - - - 0x0047A9 01:8799: A9 14     LDA #$14
 C - - - - - 0x0047AB 01:879B: 85 08     STA ram_0008
 C - - - - - 0x0047AD 01:879D: A0 00     LDY #$00
-; bzk optimize, check ram_index_ppu_buffer first
-C - - - - - 0x0047AF 01:879F: A6 1E     LDX ram_index_ppu_buffer
-C - - - - - 0x0047B1 01:87A1: E0 40     CPX #$40
-C - - - - - 0x0047B3 01:87A3: B0 0F     BCS bra_87B4_skip
 ; if buffer is not too loaded
 bra_87A5_loop:
 C - - - - - 0x0047B5 01:87A5: B9 B7 87  LDA tbl_87B7,Y
@@ -1386,10 +1378,10 @@ C - - - - - 0x00482C 01:881C: E8        INX
 C - - - - - 0x00482D 01:881D: A5 0B     LDA ram_000B
 C - - - - - 0x00482F 01:881F: 18        CLC
 C - - - - - 0x004830 01:8820: 69 E0     ADC #< $29E0
-C - - - - - 0x004832 01:8822: 9D 01 03  STA ram_nmt_buffer + $01,X  ; ppu hi
+C - - - - - 0x004832 01:8822: 9D 01 03  STA ram_nmt_buffer + $01,X  ; ppu lo
 C - - - - - 0x004835 01:8825: A9 00     LDA #$00
 C - - - - - 0x004837 01:8827: 69 29     ADC #> $29E0
-C - - - - - 0x004839 01:8829: 9D 00 03  STA ram_nmt_buffer,X    ; ppu lo
+C - - - - - 0x004839 01:8829: 9D 00 03  STA ram_nmt_buffer,X    ; ppu hi
 C - - - - - 0x00483C 01:882C: E8        INX
 C - - - - - 0x00483D 01:882D: E8        INX
 C - - - - - 0x00483E 01:882E: A9 0B     LDA #$0B    ; counter
@@ -1750,13 +1742,8 @@ tbl_885C:
 
 
 
-loc_8990:
-C D 0 - - - 0x0049A0 01:8990: A5 5B     LDA ram_счетчик_кадров_2
-; bzk optimize, useless, always branches
-C - - - - - 0x0049A2 01:8992: 29 00     AND #$00
-C - - - - - 0x0049A4 01:8994: F0 03     BEQ bra_8999    ; jmp
-- - - - - - 0x0049A6 01:8996: 4C 85 8A  JMP loc_8A85
-bra_8999:
+loc_анимация_винтов_1босс:
+; путин опт
 C - - - - - 0x0049A9 01:8999: BD 10 07  LDA ram_0710_obj,X
 C - - - - - 0x0049AC 01:899C: 0A        ASL
 C - - - - - 0x0049AD 01:899D: A8        TAY
@@ -1906,11 +1893,6 @@ bra_8A81:
 C - - - - - 0x004A91 01:8A81: 9D 10 07  STA ram_0710_obj,X
 C - - - - - 0x004A94 01:8A84: 60        RTS
 
-
-
-loc_8A85:
-- - - - - - 0x004A95 01:8A85: A6 10     LDX ram_0010
-- - - - - - 0x004A97 01:8A87: 60        RTS
 
 
 
@@ -3605,7 +3587,7 @@ C - - - - - 0x005599 01:9589: 85 05     STA ram_0005
 C - - - - - 0x00559B 01:958B: C8        INY
 C - - - - - 0x00559C 01:958C: C8        INY
 C - - - - - 0x00559D 01:958D: B1 08     LDA (ram_0008),Y    ; counter
-C - - - - - 0x00559F 01:958F: 30 0C     BMI bra_959D    ; bzk optimize, no 80+ bytes there
+; 1путин опт
 C - - - - - 0x0055A1 01:9591: A5 02     LDA ram_0002    ; 00/FF
 C - - - - - 0x0055A3 01:9593: 65 0F     ADC ram_000F
 C - - - - - 0x0055A5 01:9595: D0 44     BNE bra_95DB
@@ -3631,7 +3613,7 @@ C - - - - - 0x0055C6 01:95B6: A5 00     LDA ram_0000
 C - - - - - 0x0055C8 01:95B8: 9D 00 03  STA ram_nmt_buffer,X    ; ppu lo
 C - - - - - 0x0055CB 01:95BB: E8        INX
 C - - - - - 0x0055CC 01:95BC: B1 08     LDA (ram_0008),Y    ; counter
-C - - - - - 0x0055CE 01:95BE: 29 7F     AND #$7F    ; bzk optimize, no 80+ bytes there
+; 1путин опт
 C - - - - - 0x0055D0 01:95C0: 9D 00 03  STA ram_nmt_buffer,X    ; counter
 C - - - - - 0x0055D3 01:95C3: 85 0B     STA ram_000B
 C - - - - - 0x0055D5 01:95C5: E8        INX
@@ -3649,7 +3631,7 @@ C - - - - - 0x0055E6 01:95D6: E6 0C     INC ram_000C
 C - - - - - 0x0055E8 01:95D8: 4C 75 95  JMP loc_9575_loop
 bra_95DB:
 C - - - - - 0x0055EB 01:95DB: B1 08     LDA (ram_0008),Y    ; counter
-C - - - - - 0x0055ED 01:95DD: 29 7F     AND #$7F    ; bzk optimize, no 80+ bytes there
+; 1путин опт
 C - - - - - 0x0055EF 01:95DF: 85 02     STA ram_0002
 C - - - - - 0x0055F1 01:95E1: C8        INY
 C - - - - - 0x0055F2 01:95E2: 98        TYA
@@ -3760,14 +3742,6 @@ tbl_9676:
 - D 0 - - - 0x005688 01:9678: 70        .word $2270 ; 04
 - D 0 - - - 0x00568A 01:967A: E0        .word $22E0 ; 05
 
-
-; bzk garbage
-- - - - - - 0x00568C 01:967C: 80        .byte $80   ; 
-- - - - - - 0x00568D 01:967D: 04        .byte $04   ; 
-- - - - - - 0x00568E 01:967E: 9C        .byte $9C   ; 
-- - - - - - 0x00568F 01:967F: 04        .byte $04   ; 
-- - - - - - 0x005690 01:9680: B8        .byte $B8   ; 
-- - - - - - 0x005691 01:9681: 04        .byte $04   ; 
 
 
 
@@ -4670,52 +4644,6 @@ C - - - - - 0x005BB6 01:9BA6: 38        SEC
 C - - - - - 0x005BB7 01:9BA7: E5 00     SBC ram_0000
 C - - - - - 0x005BB9 01:9BA9: 85 F9     STA ram_00F9
 C - - - - - 0x005BBB 01:9BAB: 60        RTS
-
-
-; bzk garbage, same code as 0x0047A9
-- - - - - - 0x005BBC 01:9BAC: A9 14     LDA #$14
-- - - - - - 0x005BBE 01:9BAE: 85 08     STA ram_0008
-- - - - - - 0x005BC0 01:9BB0: A0 00     LDY #$00
-; bzk optimize, check ram_index_ppu_buffer first
-- - - - - - 0x005BC2 01:9BB2: A6 1E     LDX ram_index_ppu_buffer
-- - - - - - 0x005BC4 01:9BB4: E0 40     CPX #$40
-- - - - - - 0x005BC6 01:9BB6: B0 0F     BCS bra_9BC7_skip
-; if buffer is not too loaded
-bra_9BB8_loop:
-- - - - - - 0x005BC8 01:9BB8: B9 CA 9B  LDA tbl_9BCA,Y
-- - - - - - 0x005BCB 01:9BBB: 9D 00 03  STA ram_nmt_buffer,X
-- - - - - - 0x005BCE 01:9BBE: E8        INX
-- - - - - - 0x005BCF 01:9BBF: C8        INY
-- - - - - - 0x005BD0 01:9BC0: C6 08     DEC ram_0008
-- - - - - - 0x005BD2 01:9BC2: D0 F4     BNE bra_9BB8_loop
-- - - - - - 0x005BD4 01:9BC4: 86 1E     STX ram_index_ppu_buffer
-- - - - - - 0x005BD6 01:9BC6: 18        CLC
-bra_9BC7_skip:
-- - - - - - 0x005BD7 01:9BC7: A6 10     LDX ram_0010
-- - - - - - 0x005BD9 01:9BC9: 60        RTS
-
-
-
-tbl_9BCA:
-; bzk garbage, same table as 0x0047C7
-- - - - - - 0x005BDA 01:9BCA: 03        .byte con_buf_mode_03   ; 
-
-- - - - - - 0x005BDB 01:9BCB: 2B D8     .dbyt $2BD8 ; ppu address
-- - - - - - 0x005BDD 01:9BCD: 12        .byte $12, $AA   ; counter + fill tile
-
-- - - - - - 0x005BDF 01:9BCF: 06        .byte con_buf_mode_06   ; 
-
-- - - - - - 0x005BE0 01:9BD0: 2B EA     .dbyt $2BEA ; ppu address
-- - - - - - 0x005BE2 01:9BD2: 05        .byte $05   ; counter
-- - - - - - 0x005BE3 01:9BD3: AE        .byte $AE, $FA, $FA, $FA, $FA   ; tiles
-
-- - - - - - 0x005BE8 01:9BD8: FF        .byte $FF   ; change mode
-
-- - - - - - 0x005BE9 01:9BD9: 03        .byte con_buf_mode_03   ; 
-
-- - - - - - 0x005BEA 01:9BDA: 2B EF     .dbyt $2BEF ; ppu address
-- - - - - - 0x005BEC 01:9BDC: 08        .byte $08, $AA   ; counter + fill tile
-
 
 
 _off001_0x005BEE_50_boss_3_ball_violet:

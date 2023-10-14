@@ -3397,7 +3397,6 @@ tbl_92E7:
 
 sub_92EF:
 ; 1путин опт
-                                        STY ram_0003
                                         LDY ram_0013
                                         CPY #$03
                                         BCC bra_9306_RTS
@@ -3405,7 +3404,6 @@ sub_92EF:
                                         STA ram_0000
                                         LDA tbl_92FE_hi - $03,y
                                         STA ram_0001
-                                        LDY ram_0003
                                         JMP (ram_0000)
 tbl_92FE_lo:
 - D 0 - I - 0x00130E 00:92FE: 07 93     .byte < ofs_005_9307_03
