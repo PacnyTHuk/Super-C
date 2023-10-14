@@ -1648,14 +1648,8 @@ _off001_A5AF_7C:
 _off001_A5AF_7D:
 _off001_A5AF_7E:
 _off001_A5AF_7F_null:
-- D 1 - I - 0x0065BF 01:A5AF: B3 A5     .word ofs_038_7F_A5B3_00_RTS
-- - - - - - 0x0065C1 01:A5B1: B3 A5     .word ofs_038_7F_A5B3_01_RTS
-
-
-
-ofs_038_7F_A5B3_00_RTS:
-ofs_038_7F_A5B3_01_RTS:
-C - - J - - 0x0065C3 01:A5B3: 60        RTS
+- D 1 - I - 0x0065BF 01:A5AF: B3 A5     .word _общий_RTS ; 00
+- - - - - - 0x0065C1 01:A5B1: B3 A5     .word _общий_RTS ; 01
 
 
 
