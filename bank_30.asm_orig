@@ -926,33 +926,18 @@ C - - - - - 0x000532 00:8522: F0 03     BEQ bra_8527_вид_сбоку
 ; вид сверху
 C - - - - - 0x000534 00:8524: 4C 24 8A  JMP loc_8A24
 bra_8527_вид_сбоку:
-;leon опт
-                                        LDY ram_статус_игрока,X
-                                        LDA tbl_852C_lo,y
-                                        STA ram_0000
-                                        LDA tbl_852C_hi,y
-                                        STA ram_0001
-                                        JMP (ram_0000)
-tbl_852C_lo:
-- D 0 - I - 0x00053C 00:852C: 3E 85     .byte < ofs_000_853E_00
-- D 0 - I - 0x00053E 00:852E: 5B 85     .byte < ofs_000_855B_01
-- D 0 - I - 0x000540 00:8530: 99 85     .byte < ofs_000_8599_02
-- D 0 - I - 0x000542 00:8532: A9 85     .byte < ofs_000_85A9_03
-- D 0 - I - 0x000544 00:8534: C6 85     .byte < ofs_000_85C6_04
-- D 0 - I - 0x000546 00:8536: 46 86     .byte < ofs_000_8646_05
-- D 0 - I - 0x000548 00:8538: 71 86     .byte < ofs_000_8671_06
-- D 0 - I - 0x00054A 00:853A: 82 86     .byte < ofs_000_8682_07
-- D 0 - I - 0x00054C 00:853C: 4E 85     .byte < ofs_000_854E_08
-tbl_852C_hi:
-- D 0 - I - 0x00053C 00:852C: 3E 85     .byte > ofs_000_853E_00
-- D 0 - I - 0x00053E 00:852E: 5B 85     .byte > ofs_000_855B_01
-- D 0 - I - 0x000540 00:8530: 99 85     .byte > ofs_000_8599_02
-- D 0 - I - 0x000542 00:8532: A9 85     .byte > ofs_000_85A9_03
-- D 0 - I - 0x000544 00:8534: C6 85     .byte > ofs_000_85C6_04
-- D 0 - I - 0x000546 00:8536: 46 86     .byte > ofs_000_8646_05
-- D 0 - I - 0x000548 00:8538: 71 86     .byte > ofs_000_8671_06
-- D 0 - I - 0x00054A 00:853A: 82 86     .byte > ofs_000_8682_07
-- D 0 - I - 0x00054C 00:853C: 4E 85     .byte > ofs_000_854E_08
+C - - - - - 0x000537 00:8527: B5 A0     LDA ram_статус_игрока,X
+C - - - - - 0x000539 00:8529: 20 09 E6  JSR sub_0x01E619_jump_to_pointers_after_jsr
+- D 0 - I - 0x00053C 00:852C: 3E 85     .word ofs_000_853E_00
+- D 0 - I - 0x00053E 00:852E: 5B 85     .word ofs_000_855B_01
+- D 0 - I - 0x000540 00:8530: 99 85     .word ofs_000_8599_02
+- D 0 - I - 0x000542 00:8532: A9 85     .word ofs_000_85A9_03
+- D 0 - I - 0x000544 00:8534: C6 85     .word ofs_000_85C6_04
+- D 0 - I - 0x000546 00:8536: 46 86     .word ofs_000_8646_05
+- D 0 - I - 0x000548 00:8538: 71 86     .word ofs_000_8671_06
+- D 0 - I - 0x00054A 00:853A: 82 86     .word ofs_000_8682_07
+- D 0 - I - 0x00054C 00:853C: 4E 85     .word ofs_000_854E_08
+
 
 
 ofs_000_853E_00:
@@ -1561,33 +1546,18 @@ C - - - - - 0x0008CD 00:88BD: F0 03     BEQ bra_88C2_вид_сбоку
 ; вид сверху
 C - - - - - 0x0008CF 00:88BF: 4C 28 8C  JMP loc_8C28
 bra_88C2_вид_сбоку:
-;leon опт
-                                        LDY ram_статус_игрока,X
-                                        LDA tbl_88C7_lo,y
-                                        STA ram_0000
-                                        LDA tbl_88C7_hi,y
-                                        STA ram_0001
-                                        JMP (ram_0000)
-tbl_88C7_lo:                                        
-- D 0 - I - 0x0008D7 00:88C7: F5 88     .byte < ofs_001_88F5_00_RTS
-- D 0 - I - 0x0008D9 00:88C9: F5 88     .byte < ofs_001_88F5_01_RTS
-- D 0 - I - 0x0008DB 00:88CB: DD 88     .byte < ofs_001_88DD_02
-- D 0 - I - 0x0008DD 00:88CD: E3 88     .byte < ofs_001_88E3_03
-- D 0 - I - 0x0008DF 00:88CF: E3 88     .byte < ofs_001_88E3_04
-- D 0 - I - 0x0008E1 00:88D1: E9 88     .byte < ofs_001_88E9_05
-- D 0 - I - 0x0008E3 00:88D3: F5 88     .byte < ofs_001_88F5_06_RTS
-- D 0 - I - 0x0008E5 00:88D5: D9 88     .byte < ofs_001_88D9_07
-- D 0 - I - 0x0008E7 00:88D7: F5 88     .byte < ofs_001_88F5_08_RTS
-tbl_88C7_hi:                                        
-- D 0 - I - 0x0008D7 00:88C7: F5 88     .byte > ofs_001_88F5_00_RTS
-- D 0 - I - 0x0008D9 00:88C9: F5 88     .byte > ofs_001_88F5_01_RTS
-- D 0 - I - 0x0008DB 00:88CB: DD 88     .byte > ofs_001_88DD_02
-- D 0 - I - 0x0008DD 00:88CD: E3 88     .byte > ofs_001_88E3_03
-- D 0 - I - 0x0008DF 00:88CF: E3 88     .byte > ofs_001_88E3_04
-- D 0 - I - 0x0008E1 00:88D1: E9 88     .byte > ofs_001_88E9_05
-- D 0 - I - 0x0008E3 00:88D3: F5 88     .byte > ofs_001_88F5_06_RTS
-- D 0 - I - 0x0008E5 00:88D5: D9 88     .byte > ofs_001_88D9_07
-- D 0 - I - 0x0008E7 00:88D7: F5 88     .byte > ofs_001_88F5_08_RTS
+C - - - - - 0x0008D2 00:88C2: B5 A0     LDA ram_статус_игрока,X
+C - - - - - 0x0008D4 00:88C4: 20 09 E6  JSR sub_0x01E619_jump_to_pointers_after_jsr
+- D 0 - I - 0x0008D7 00:88C7: F5 88     .word ofs_001_88F5_00_RTS
+- D 0 - I - 0x0008D9 00:88C9: F5 88     .word ofs_001_88F5_01_RTS
+- D 0 - I - 0x0008DB 00:88CB: DD 88     .word ofs_001_88DD_02
+- D 0 - I - 0x0008DD 00:88CD: E3 88     .word ofs_001_88E3_03
+- D 0 - I - 0x0008DF 00:88CF: E3 88     .word ofs_001_88E3_04
+- D 0 - I - 0x0008E1 00:88D1: E9 88     .word ofs_001_88E9_05
+- D 0 - I - 0x0008E3 00:88D3: F5 88     .word ofs_001_88F5_06_RTS
+- D 0 - I - 0x0008E5 00:88D5: D9 88     .word ofs_001_88D9_07
+- D 0 - I - 0x0008E7 00:88D7: F5 88     .word ofs_001_88F5_08_RTS
+
 
 
 ofs_001_88D9_07:
@@ -1809,33 +1779,17 @@ C - - - - - 0x000A33 00:8A23: 60        RTS
 
 
 loc_8A24:
-;leon опт
-                                        LDY ram_статус_игрока,X
-                                        LDA tbl_8A29_lo,y
-                                        STA ram_0000
-                                        LDA tbl_8A29_hi,y
-                                        STA ram_0001
-                                        JMP (ram_0000)
-tbl_8A29_lo:                                        
-- D 0 - I - 0x000A39 00:8A29: 3E 85     .byte < ofs_003_853E_00
-- D 0 - I - 0x000A3B 00:8A2B: 3B 8A     .byte < ofs_003_8A3B_01
-- D 0 - I - 0x000A3D 00:8A2D: 4E 8A     .byte < ofs_003_8A4E_02
-- D 0 - I - 0x000A3F 00:8A2F: 5E 8A     .byte < ofs_003_8A5E_03
-- D 0 - I - 0x000A41 00:8A31: 81 8A     .byte < ofs_003_8A81_04
-- D 0 - I - 0x000A43 00:8A33: 9F 8A     .byte < ofs_003_8A9F_05
-- - - - - - 0x000A45 00:8A35: 5D 8A     .byte < ofs_003_8A5D_06_RTS
-- - - - - - 0x000A47 00:8A37: 5D 8A     .byte < ofs_003_8A5D_07_RTS
-- D 0 - I - 0x000A49 00:8A39: 4E 85     .byte < ofs_003_854E_08
-tbl_8A29_hi:                                        
-- D 0 - I - 0x000A39 00:8A29: 3E 85     .byte > ofs_003_853E_00
-- D 0 - I - 0x000A3B 00:8A2B: 3B 8A     .byte > ofs_003_8A3B_01
-- D 0 - I - 0x000A3D 00:8A2D: 4E 8A     .byte > ofs_003_8A4E_02
-- D 0 - I - 0x000A3F 00:8A2F: 5E 8A     .byte > ofs_003_8A5E_03
-- D 0 - I - 0x000A41 00:8A31: 81 8A     .byte > ofs_003_8A81_04
-- D 0 - I - 0x000A43 00:8A33: 9F 8A     .byte > ofs_003_8A9F_05
-- - - - - - 0x000A45 00:8A35: 5D 8A     .byte > ofs_003_8A5D_06_RTS
-- - - - - - 0x000A47 00:8A37: 5D 8A     .byte > ofs_003_8A5D_07_RTS
-- D 0 - I - 0x000A49 00:8A39: 4E 85     .byte > ofs_003_854E_08
+C D 0 - - - 0x000A34 00:8A24: B5 A0     LDA ram_статус_игрока,X
+C - - - - - 0x000A36 00:8A26: 20 09 E6  JSR sub_0x01E619_jump_to_pointers_after_jsr
+- D 0 - I - 0x000A39 00:8A29: 3E 85     .word ofs_003_853E_00
+- D 0 - I - 0x000A3B 00:8A2B: 3B 8A     .word ofs_003_8A3B_01
+- D 0 - I - 0x000A3D 00:8A2D: 4E 8A     .word ofs_003_8A4E_02
+- D 0 - I - 0x000A3F 00:8A2F: 5E 8A     .word ofs_003_8A5E_03
+- D 0 - I - 0x000A41 00:8A31: 81 8A     .word ofs_003_8A81_04
+- D 0 - I - 0x000A43 00:8A33: 9F 8A     .word ofs_003_8A9F_05
+- - - - - - 0x000A45 00:8A35: 5D 8A     .word ofs_003_8A5D_06_RTS
+- - - - - - 0x000A47 00:8A37: 5D 8A     .word ofs_003_8A5D_07_RTS
+- D 0 - I - 0x000A49 00:8A39: 4E 85     .word ofs_003_854E_08
 
 
 
@@ -2221,33 +2175,18 @@ tbl_8C20:
 
 
 loc_8C28:
-;leon опт
-                                        LDY ram_статус_игрока,X
-                                        LDA tbl_8C2D_lo,y
-                                        STA ram_0000
-                                        LDA tbl_8C2D_hi,y
-                                        STA ram_0001
-                                        JMP (ram_0000)
-tbl_8C2D_lo:                                        
-- D 0 - I - 0x000C3D 00:8C2D: 52 8C     .byte < ofs_004_8C52_00_RTS
-- D 0 - I - 0x000C3F 00:8C2F: 52 8C     .byte < ofs_004_8C52_01_RTS
-- D 0 - I - 0x000C41 00:8C31: 53 8C     .byte < ofs_004_8C53_02
-- D 0 - I - 0x000C43 00:8C33: 3F 8C     .byte < ofs_004_8C3F_03
-- D 0 - I - 0x000C45 00:8C35: 3F 8C     .byte < ofs_004_8C3F_04
-- D 0 - I - 0x000C47 00:8C37: 4F 8C     .byte < ofs_004_8C4F_05
-- - - - - - 0x000C49 00:8C39: 52 8C     .byte < ofs_004_8C52_06_RTS
-- - - - - - 0x000C4B 00:8C3B: 52 8C     .byte < ofs_004_8C52_07_RTS
-- D 0 - I - 0x000C4D 00:8C3D: 52 8C     .byte < ofs_004_8C52_08_RTS
-tbl_8C2D_hi:                                        
-- D 0 - I - 0x000C3D 00:8C2D: 52 8C     .byte > ofs_004_8C52_00_RTS
-- D 0 - I - 0x000C3F 00:8C2F: 52 8C     .byte > ofs_004_8C52_01_RTS
-- D 0 - I - 0x000C41 00:8C31: 53 8C     .byte > ofs_004_8C53_02
-- D 0 - I - 0x000C43 00:8C33: 3F 8C     .byte > ofs_004_8C3F_03
-- D 0 - I - 0x000C45 00:8C35: 3F 8C     .byte > ofs_004_8C3F_04
-- D 0 - I - 0x000C47 00:8C37: 4F 8C     .byte > ofs_004_8C4F_05
-- - - - - - 0x000C49 00:8C39: 52 8C     .byte > ofs_004_8C52_06_RTS
-- - - - - - 0x000C4B 00:8C3B: 52 8C     .byte > ofs_004_8C52_07_RTS
-- D 0 - I - 0x000C4D 00:8C3D: 52 8C     .byte > ofs_004_8C52_08_RTS
+C D 0 - - - 0x000C38 00:8C28: B5 A0     LDA ram_статус_игрока,X
+C - - - - - 0x000C3A 00:8C2A: 20 09 E6  JSR sub_0x01E619_jump_to_pointers_after_jsr
+- D 0 - I - 0x000C3D 00:8C2D: 52 8C     .word ofs_004_8C52_00_RTS
+- D 0 - I - 0x000C3F 00:8C2F: 52 8C     .word ofs_004_8C52_01_RTS
+- D 0 - I - 0x000C41 00:8C31: 53 8C     .word ofs_004_8C53_02
+- D 0 - I - 0x000C43 00:8C33: 3F 8C     .word ofs_004_8C3F_03
+- D 0 - I - 0x000C45 00:8C35: 3F 8C     .word ofs_004_8C3F_04
+- D 0 - I - 0x000C47 00:8C37: 4F 8C     .word ofs_004_8C4F_05
+- - - - - - 0x000C49 00:8C39: 52 8C     .word ofs_004_8C52_06_RTS
+- - - - - - 0x000C4B 00:8C3B: 52 8C     .word ofs_004_8C52_07_RTS
+- D 0 - I - 0x000C4D 00:8C3D: 52 8C     .word ofs_004_8C52_08_RTS
+
 
 
 ofs_004_8C3F_03:
@@ -3690,19 +3629,11 @@ C - - - - - 0x001428 00:9418: 85 92     STA ram_0092
 C - - - - - 0x00142A 00:941A: A9 00     LDA #$00
 C - - - - - 0x00142C 00:941C: 85 90     STA ram_колво_спавн_мобов
 bra_941E:
-;leon опт
-                                        LDY ram_0091
-                                        LDA tbl_9423_lo,y
-                                        STA ram_0000
-                                        LDA tbl_9423_hi,y
-                                        STA ram_0001
-                                        JMP (ram_0000)
-tbl_9423_lo:
-- D 0 - I - 0x001433 00:9423: 27 94     .byte < ofs_006_9427_00
-- D 0 - I - 0x001435 00:9425: 5B 94     .byte < ofs_006_945B_01
-tbl_9423_hi:
-- D 0 - I - 0x001433 00:9423: 27 94     .byte < ofs_006_9427_00
-- D 0 - I - 0x001435 00:9425: 5B 94     .byte < ofs_006_945B_01
+C - - - - - 0x00142E 00:941E: A5 91     LDA ram_0091
+C - - - - - 0x001430 00:9420: 20 09 E6  JSR sub_0x01E619_jump_to_pointers_after_jsr
+- D 0 - I - 0x001433 00:9423: 27 94     .word ofs_006_9427_00
+- D 0 - I - 0x001435 00:9425: 5B 94     .word ofs_006_945B_01
+
 
 
 ofs_006_9427_00:
@@ -5844,19 +5775,11 @@ _off012_01_A08C_02:
 
 
 loc_0x002178_stage_complete_handler:
-;leon опт
-                                        LDY ram_0040
-                                        LDA tbl_A16D_lo,y
-                                        STA ram_0000
-                                        LDA tbl_A16D_hi,y
-                                        STA ram_0001
-                                        JMP (ram_0000)
-tbl_A16D_lo:
-- D 1 - I - 0x00217D 00:A16D: 71 A1     .byte < ofs_007_A171_00
-- D 1 - I - 0x00217F 00:A16F: B5 A1     .byte < ofs_007_A1B5_01
-tbl_A16D_hi:
-- D 1 - I - 0x00217D 00:A16D: 71 A1     .byte < ofs_007_A171_00
-- D 1 - I - 0x00217F 00:A16F: B5 A1     .byte < ofs_007_A1B5_01
+C D 1 - - - 0x002178 00:A168: A5 40     LDA ram_0040
+C - - - - - 0x00217A 00:A16A: 20 09 E6  JSR sub_0x01E619_jump_to_pointers_after_jsr
+- D 1 - I - 0x00217D 00:A16D: 71 A1     .word ofs_007_A171_00
+- D 1 - I - 0x00217F 00:A16F: B5 A1     .word ofs_007_A1B5_01
+
 
 
 ofs_007_A171_00:
@@ -5867,31 +5790,17 @@ C - - - - - 0x002186 00:A176: 60        RTS
 
 
 sub_A177:
-;leon опт
-                                        LDY ram_номер_уровня
-                                        LDA tbl_A17C_lo,y
-                                        STA ram_0000
-                                        LDA tbl_A17C_hi,y
-                                        STA ram_0001
-                                        JMP (ram_0000)
-tbl_A17C_lo:
-- D 1 - I - 0x00218C 00:A17C: 8C A1     .byte < ofs_008_A18C_00_area_1
-- D 1 - I - 0x00218E 00:A17E: 95 A1     .byte < ofs_008_A195_01_area_2
-- D 1 - I - 0x002190 00:A180: A0 A1     .byte < ofs_008_A1A0_02_area_3
-- D 1 - I - 0x002192 00:A182: 8C A1     .byte < ofs_008_A18C_03_area_4
-- D 1 - I - 0x002194 00:A184: 8C A1     .byte < ofs_008_A18C_04_area_5
-- D 1 - I - 0x002196 00:A186: A5 A1     .byte < ofs_008_A1A5_05_area_6
-- D 1 - I - 0x002198 00:A188: A0 A1     .byte < ofs_008_A1A0_06_area_7
-- D 1 - I - 0x00219A 00:A18A: B0 A1     .byte < ofs_008_A1B0_07_area_8
-tbl_A17C_hi:
-- D 1 - I - 0x00218C 00:A17C: 8C A1     .byte > ofs_008_A18C_00_area_1
-- D 1 - I - 0x00218E 00:A17E: 95 A1     .byte > ofs_008_A195_01_area_2
-- D 1 - I - 0x002190 00:A180: A0 A1     .byte > ofs_008_A1A0_02_area_3
-- D 1 - I - 0x002192 00:A182: 8C A1     .byte > ofs_008_A18C_03_area_4
-- D 1 - I - 0x002194 00:A184: 8C A1     .byte > ofs_008_A18C_04_area_5
-- D 1 - I - 0x002196 00:A186: A5 A1     .byte > ofs_008_A1A5_05_area_6
-- D 1 - I - 0x002198 00:A188: A0 A1     .byte > ofs_008_A1A0_06_area_7
-- D 1 - I - 0x00219A 00:A18A: B0 A1     .byte > ofs_008_A1B0_07_area_8
+C - - - - - 0x002187 00:A177: A5 50     LDA ram_номер_уровня
+C - - - - - 0x002189 00:A179: 20 09 E6  JSR sub_0x01E619_jump_to_pointers_after_jsr
+- D 1 - I - 0x00218C 00:A17C: 8C A1     .word ofs_008_A18C_00_area_1
+- D 1 - I - 0x00218E 00:A17E: 95 A1     .word ofs_008_A195_01_area_2
+- D 1 - I - 0x002190 00:A180: A0 A1     .word ofs_008_A1A0_02_area_3
+- D 1 - I - 0x002192 00:A182: 8C A1     .word ofs_008_A18C_03_area_4
+- D 1 - I - 0x002194 00:A184: 8C A1     .word ofs_008_A18C_04_area_5
+- D 1 - I - 0x002196 00:A186: A5 A1     .word ofs_008_A1A5_05_area_6
+- D 1 - I - 0x002198 00:A188: A0 A1     .word ofs_008_A1A0_06_area_7
+- D 1 - I - 0x00219A 00:A18A: B0 A1     .word ofs_008_A1B0_07_area_8
+
 
 
 ofs_008_A18C_00_area_1:
@@ -5955,31 +5864,17 @@ C - - - - - 0x0021D1 00:A1C1: 60        RTS
 
 
 sub_A1C2:
-;leon опт
-                                        LDY ram_номер_уровня
-                                        LDA tbl_A1C7_lo,y
-                                        STA ram_0000
-                                        LDA tbl_A1C7_hi,y
-                                        STA ram_0001
-                                        JMP (ram_0000)
-tbl_A1C7_lo:
-- D 1 - I - 0x0021D7 00:A1C7: D7 A1     .byte < ofs_009_A1D7_00_area_1
-- D 1 - I - 0x0021D9 00:A1C9: FA A1     .byte < ofs_009_A1FA_01_area_2
-- D 1 - I - 0x0021DB 00:A1CB: 2F A2     .byte < ofs_009_A22F_02_area_3
-- D 1 - I - 0x0021DD 00:A1CD: 3F A2     .byte < ofs_009_A23F_03_area_4
-- D 1 - I - 0x0021DF 00:A1CF: 48 A2     .byte < ofs_009_A248_04_area_5
-- D 1 - I - 0x0021E1 00:A1D1: E2 A1     .byte < ofs_009_A1E2_05_area_6
-- D 1 - I - 0x0021E3 00:A1D3: 2F A2     .byte < ofs_009_A22F_06_area_7
-- D 1 - I - 0x0021E5 00:A1D5: 53 A2     .byte < ofs_009_A253_07_area_8
-tbl_A1C7_hi:
-- D 1 - I - 0x0021D7 00:A1C7: D7 A1     .byte > ofs_009_A1D7_00_area_1
-- D 1 - I - 0x0021D9 00:A1C9: FA A1     .byte > ofs_009_A1FA_01_area_2
-- D 1 - I - 0x0021DB 00:A1CB: 2F A2     .byte > ofs_009_A22F_02_area_3
-- D 1 - I - 0x0021DD 00:A1CD: 3F A2     .byte > ofs_009_A23F_03_area_4
-- D 1 - I - 0x0021DF 00:A1CF: 48 A2     .byte > ofs_009_A248_04_area_5
-- D 1 - I - 0x0021E1 00:A1D1: E2 A1     .byte > ofs_009_A1E2_05_area_6
-- D 1 - I - 0x0021E3 00:A1D3: 2F A2     .byte > ofs_009_A22F_06_area_7
-- D 1 - I - 0x0021E5 00:A1D5: 53 A2     .byte > ofs_009_A253_07_area_8
+C - - - - - 0x0021D2 00:A1C2: A5 50     LDA ram_номер_уровня
+C - - - - - 0x0021D4 00:A1C4: 20 09 E6  JSR sub_0x01E619_jump_to_pointers_after_jsr
+- D 1 - I - 0x0021D7 00:A1C7: D7 A1     .word ofs_009_A1D7_00_area_1
+- D 1 - I - 0x0021D9 00:A1C9: FA A1     .word ofs_009_A1FA_01_area_2
+- D 1 - I - 0x0021DB 00:A1CB: 2F A2     .word ofs_009_A22F_02_area_3
+- D 1 - I - 0x0021DD 00:A1CD: 3F A2     .word ofs_009_A23F_03_area_4
+- D 1 - I - 0x0021DF 00:A1CF: 48 A2     .word ofs_009_A248_04_area_5
+- D 1 - I - 0x0021E1 00:A1D1: E2 A1     .word ofs_009_A1E2_05_area_6
+- D 1 - I - 0x0021E3 00:A1D3: 2F A2     .word ofs_009_A22F_06_area_7
+- D 1 - I - 0x0021E5 00:A1D5: 53 A2     .word ofs_009_A253_07_area_8
+
 
 
 ofs_009_A1D7_00_area_1:
@@ -6214,23 +6109,13 @@ bra_A309_RTS:
 
 
 loc_0x00231A_title_screen_handler:
-;leon опт
-                                        LDY ram_0080
-                                        LDA tbl_A30F_lo,y
-                                        STA ram_0000
-                                        LDA tbl_A30F_hi,y
-                                        STA ram_0001
-                                        JMP (ram_0000)
-tbl_A30F_lo:
-- D 1 - I - 0x00231F 00:A30F: 17 A3     .byte < ofs_010_A317_00
-- D 1 - I - 0x002321 00:A311: 3C A3     .byte < ofs_010_A33C_01
-- D 1 - I - 0x002323 00:A313: 6D A3     .byte < ofs_010_A36D_02
-- D 1 - I - 0x002325 00:A315: B1 A3     .byte < ofs_010_A3B1_03
-tbl_A30F_hi:
-- D 1 - I - 0x00231F 00:A30F: 17 A3     .byte < ofs_010_A317_00
-- D 1 - I - 0x002321 00:A311: 3C A3     .byte < ofs_010_A33C_01
-- D 1 - I - 0x002323 00:A313: 6D A3     .byte < ofs_010_A36D_02
-- D 1 - I - 0x002325 00:A315: B1 A3     .byte < ofs_010_A3B1_03
+C D 1 - - - 0x00231A 00:A30A: A5 80     LDA ram_0080
+C - - - - - 0x00231C 00:A30C: 20 09 E6  JSR sub_0x01E619_jump_to_pointers_after_jsr
+- D 1 - I - 0x00231F 00:A30F: 17 A3     .word ofs_010_A317_00
+- D 1 - I - 0x002321 00:A311: 3C A3     .word ofs_010_A33C_01
+- D 1 - I - 0x002323 00:A313: 6D A3     .word ofs_010_A36D_02
+- D 1 - I - 0x002325 00:A315: B1 A3     .word ofs_010_A3B1_03
+
 
 
 ofs_010_A317_00:
@@ -6348,25 +6233,14 @@ C - - - - - 0x0023C6 00:A3B6: 60        RTS
 
 
 loc_0x0023C7_credits_handler:
-;leon опт
-                                        LDY ram_0061_конфиг_уровня
-                                        LDA tbl_A3BC_lo,y
-                                        STA ram_0000
-                                        LDA tbl_A3BC_hi,y
-                                        STA ram_0001
-                                        JMP (ram_0000)
-tbl_A3BC_lo:
-- D 1 - I - 0x0023CC 00:A3BC: C6 A3     .byte < ofs_011_A3C6_00
-- D 1 - I - 0x0023CE 00:A3BE: EF A3     .byte < ofs_011_A3EF_01
-- D 1 - I - 0x0023D0 00:A3C0: 02 A4     .byte < ofs_011_A402_02
-- D 1 - I - 0x0023D2 00:A3C2: 16 A4     .byte < ofs_011_A416_03
-- D 1 - I - 0x0023D4 00:A3C4: 26 A4     .byte < ofs_011_A426_04
-tbl_A3BC_hi:
-- D 1 - I - 0x0023CC 00:A3BC: C6 A3     .byte > ofs_011_A3C6_00
-- D 1 - I - 0x0023CE 00:A3BE: EF A3     .byte > ofs_011_A3EF_01
-- D 1 - I - 0x0023D0 00:A3C0: 02 A4     .byte > ofs_011_A402_02
-- D 1 - I - 0x0023D2 00:A3C2: 16 A4     .byte > ofs_011_A416_03
-- D 1 - I - 0x0023D4 00:A3C4: 26 A4     .byte > ofs_011_A426_04
+C D 1 - - - 0x0023C7 00:A3B7: A5 61     LDA ram_0061_конфиг_уровня
+C - - - - - 0x0023C9 00:A3B9: 20 09 E6  JSR sub_0x01E619_jump_to_pointers_after_jsr
+- D 1 - I - 0x0023CC 00:A3BC: C6 A3     .word ofs_011_A3C6_00
+- D 1 - I - 0x0023CE 00:A3BE: EF A3     .word ofs_011_A3EF_01
+- D 1 - I - 0x0023D0 00:A3C0: 02 A4     .word ofs_011_A402_02
+- D 1 - I - 0x0023D2 00:A3C2: 16 A4     .word ofs_011_A416_03
+- D 1 - I - 0x0023D4 00:A3C4: 26 A4     .word ofs_011_A426_04
+
 
 
 ofs_011_A3C6_00:
@@ -6447,19 +6321,11 @@ C - - - - - 0x002447 00:A437: 60        RTS
 
 sub_A438_helicopter_handler:
 ; during credits
-;leon опт
-                                        LDY ram_состояние_объектов
-                                        LDA tbl_A43E_lo,y
-                                        STA ram_0000
-                                        LDA tbl_A43E_hi,y
-                                        STA ram_0001
-                                        JMP (ram_0000)
-tbl_A43E_lo:
-- D 1 - I - 0x00244E 00:A43E: 42 A4     .byte < ofs_012_A442_00
-- D 1 - I - 0x002450 00:A440: 4B A4     .byte < ofs_012_A44B_01
-tbl_A43E_hi:
-- D 1 - I - 0x00244E 00:A43E: 42 A4     .byte > ofs_012_A442_00
-- D 1 - I - 0x002450 00:A440: 4B A4     .byte > ofs_012_A44B_01
+C - - - - - 0x002448 00:A438: AD 68 06  LDA ram_состояние_объектов
+C - - - - - 0x00244B 00:A43B: 20 09 E6  JSR sub_0x01E619_jump_to_pointers_after_jsr
+- D 1 - I - 0x00244E 00:A43E: 42 A4     .word ofs_012_A442_00
+- D 1 - I - 0x002450 00:A440: 4B A4     .word ofs_012_A44B_01
+
 
 
 ofs_012_A442_00:
