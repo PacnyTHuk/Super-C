@@ -1096,37 +1096,19 @@ tbl_8687_speed:
 
 
 sub_86B7:
-;leon опт
-                                        LDY ram_0748_obj,X
-                                        LDA tbl_86BD_lo,y
-                                        STA ram_0000
-                                        LDA tbl_86BD_hi,y
-                                        STA ram_0001
-                                        JMP (ram_0000)
-tbl_86BD_lo:
-- D 0 - I - 0x0046CD 01:86BD: D3 86     .byte < ofs_013_86D3_00
-- D 0 - I - 0x0046CF 01:86BF: E5 86     .byte < ofs_013_86E5_01
-- D 0 - I - 0x0046D1 01:86C1: F9 86     .byte < ofs_013_86F9_02
-- D 0 - I - 0x0046D3 01:86C3: 01 87     .byte < ofs_013_8701_03
-- D 0 - I - 0x0046D5 01:86C5: 09 87     .byte < ofs_013_8709_04
-- D 0 - I - 0x0046D7 01:86C7: 18 87     .byte < ofs_013_8718_05
-- D 0 - I - 0x0046D9 01:86C9: 25 87     .byte < ofs_013_8725_06
-- D 0 - I - 0x0046DB 01:86CB: 2D 87     .byte < ofs_013_872D_07
-- D 0 - I - 0x0046DD 01:86CD: 3A 87     .byte < ofs_013_873A_08
-- D 0 - I - 0x0046DF 01:86CF: 45 87     .byte < ofs_013_8745_09
-- D 0 - I - 0x0046E1 01:86D1: 5A 87     .byte < ofs_013_875A_0A
-tbl_86BD_hi:
-- D 0 - I - 0x0046CD 01:86BD: D3 86     .byte > ofs_013_86D3_00
-- D 0 - I - 0x0046CF 01:86BF: E5 86     .byte > ofs_013_86E5_01
-- D 0 - I - 0x0046D1 01:86C1: F9 86     .byte > ofs_013_86F9_02
-- D 0 - I - 0x0046D3 01:86C3: 01 87     .byte > ofs_013_8701_03
-- D 0 - I - 0x0046D5 01:86C5: 09 87     .byte > ofs_013_8709_04
-- D 0 - I - 0x0046D7 01:86C7: 18 87     .byte > ofs_013_8718_05
-- D 0 - I - 0x0046D9 01:86C9: 25 87     .byte > ofs_013_8725_06
-- D 0 - I - 0x0046DB 01:86CB: 2D 87     .byte > ofs_013_872D_07
-- D 0 - I - 0x0046DD 01:86CD: 3A 87     .byte > ofs_013_873A_08
-- D 0 - I - 0x0046DF 01:86CF: 45 87     .byte > ofs_013_8745_09
-- D 0 - I - 0x0046E1 01:86D1: 5A 87     .byte > ofs_013_875A_0A
+C - - - - - 0x0046C7 01:86B7: BD 48 07  LDA ram_0748_obj,X
+C - - - - - 0x0046CA 01:86BA: 20 09 E6  JSR sub_0x01E619_jump_to_pointers_after_jsr
+- D 0 - I - 0x0046CD 01:86BD: D3 86     .word ofs_013_86D3_00
+- D 0 - I - 0x0046CF 01:86BF: E5 86     .word ofs_013_86E5_01
+- D 0 - I - 0x0046D1 01:86C1: F9 86     .word ofs_013_86F9_02
+- D 0 - I - 0x0046D3 01:86C3: 01 87     .word ofs_013_8701_03
+- D 0 - I - 0x0046D5 01:86C5: 09 87     .word ofs_013_8709_04
+- D 0 - I - 0x0046D7 01:86C7: 18 87     .word ofs_013_8718_05
+- D 0 - I - 0x0046D9 01:86C9: 25 87     .word ofs_013_8725_06
+- D 0 - I - 0x0046DB 01:86CB: 2D 87     .word ofs_013_872D_07
+- D 0 - I - 0x0046DD 01:86CD: 3A 87     .word ofs_013_873A_08
+- D 0 - I - 0x0046DF 01:86CF: 45 87     .word ofs_013_8745_09
+- D 0 - I - 0x0046E1 01:86D1: 5A 87     .word ofs_013_875A_0A
 
 
 
@@ -3175,21 +3157,12 @@ C - - - - - 0x00531D 01:930D: 4C 3D A3  JMP loc_0x00634D_delete_object_04
 
 
 sub_9310:
-;leon опт
-                                        LDY ram_0748_obj,X
-                                        LDA tbl_9316_lo,y
-                                        STA ram_0000
-                                        LDA tbl_9316_hi,y
-                                        STA ram_0001
-                                        JMP (ram_0000)
-tbl_9316_lo:
-- D 0 - I - 0x005326 01:9316: 1C 93     .byte < ofs_014_931C_00
-- D 0 - I - 0x005328 01:9318: 3E 93     .byte < ofs_014_933E_01
-- D 0 - I - 0x00532A 01:931A: 71 93     .byte < ofs_014_9371_02
-tbl_9316_hi:
-- D 0 - I - 0x005326 01:9316: 1C 93     .byte > ofs_014_931C_00
-- D 0 - I - 0x005328 01:9318: 3E 93     .byte > ofs_014_933E_01
-- D 0 - I - 0x00532A 01:931A: 71 93     .byte > ofs_014_9371_02
+C - - - - - 0x005320 01:9310: BD 48 07  LDA ram_0748_obj,X
+C - - - - - 0x005323 01:9313: 20 09 E6  JSR sub_0x01E619_jump_to_pointers_after_jsr
+- D 0 - I - 0x005326 01:9316: 1C 93     .word ofs_014_931C_00
+- D 0 - I - 0x005328 01:9318: 3E 93     .word ofs_014_933E_01
+- D 0 - I - 0x00532A 01:931A: 71 93     .word ofs_014_9371_02
+
 
 
 ofs_014_931C_00:
@@ -4540,25 +4513,14 @@ loc_9AE8:
 sub_9AE8:
 C D 0 - - - 0x005AF8 01:9AE8: 20 5D A7  JSR sub_0x00676D
 C - - - - - 0x005AFB 01:9AEB: 20 0A AA  JSR sub_0x006A1A
-;leon опт
-                                        LDY ram_0748_obj,X
-                                        LDA tbl_9AF4_lo,y
-                                        STA ram_0000
-                                        LDA tbl_9AF4_hi,y
-                                        STA ram_0001
-                                        JMP (ram_0000)
-tbl_9AF4_lo:
-- D 0 - I - 0x005B04 01:9AF4: FE 9A     .byte < ofs_015_9AFE_00
-- D 0 - I - 0x005B06 01:9AF6: 2C 9B     .byte < ofs_015_9B2C_01
-- D 0 - I - 0x005B08 01:9AF8: 6B 9B     .byte < ofs_015_9B6B_02
-- D 0 - I - 0x005B0A 01:9AFA: 7D 9B     .byte < ofs_015_9B7D_03
-- D 0 - I - 0x005B0C 01:9AFC: 8D 9B     .byte < ofs_015_9B8D_04
-tbl_9AF4_hi:
-- D 0 - I - 0x005B04 01:9AF4: FE 9A     .byte > ofs_015_9AFE_00
-- D 0 - I - 0x005B06 01:9AF6: 2C 9B     .byte > ofs_015_9B2C_01
-- D 0 - I - 0x005B08 01:9AF8: 6B 9B     .byte > ofs_015_9B6B_02
-- D 0 - I - 0x005B0A 01:9AFA: 7D 9B     .byte > ofs_015_9B7D_03
-- D 0 - I - 0x005B0C 01:9AFC: 8D 9B     .byte > ofs_015_9B8D_04
+C - - - - - 0x005AFE 01:9AEE: BD 48 07  LDA ram_0748_obj,X
+C - - - - - 0x005B01 01:9AF1: 20 09 E6  JSR sub_0x01E619_jump_to_pointers_after_jsr
+- D 0 - I - 0x005B04 01:9AF4: FE 9A     .word ofs_015_9AFE_00
+- D 0 - I - 0x005B06 01:9AF6: 2C 9B     .word ofs_015_9B2C_01
+- D 0 - I - 0x005B08 01:9AF8: 6B 9B     .word ofs_015_9B6B_02
+- D 0 - I - 0x005B0A 01:9AFA: 7D 9B     .word ofs_015_9B7D_03
+- D 0 - I - 0x005B0C 01:9AFC: 8D 9B     .word ofs_015_9B8D_04
+
 
 
 ofs_015_9AFE_00:
