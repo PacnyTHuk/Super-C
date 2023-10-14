@@ -633,7 +633,7 @@ C - - - - - 0x00839E 02:838E: 60        RTS
 
 
 sub_838F:
-;leon опт
+; leon опт
                                         LDY ram_0748_obj,X
                                         LDA tbl_8395_lo,y
                                         STA ram_0000
@@ -6566,8 +6566,8 @@ _off019_07_9AD8_3F:
 
 
 loc_0x009AE9_sound_mode_handler:
-C D 0 - - - 0x009AE9 02:9AD9: A5 50     LDA ram_sound_mode_handler
-;leon опт
+; leon опт
+                                        LDY ram_sound_mode_handler
                                         LDA tbl_9ADE_lo,y
                                         STA ram_0000
                                         LDA tbl_9ADE_hi,y
@@ -7155,8 +7155,7 @@ C - - - - - 0x009F2F 02:9F1F: B1 5C     LDA (ram_005C_sound_mode_data),Y
 C - - - - - 0x009F31 02:9F21: C9 FF     CMP #$FF
 C - - - - - 0x009F33 02:9F23: F0 2C     BEQ bra_9F51_FF
 C - - - - - 0x009F35 02:9F25: 85 09     STA ram_0009
-; bzk optimize, no bytes >= 40 in there (except FF)
-C - - - - - 0x009F37 02:9F27: 29 3F     AND #$3F
+; 1путин опт
 C - - - - - 0x009F39 02:9F29: 85 5B     STA ram_005B_sound_mode
 C - - - - - 0x009F3B 02:9F2B: C8        INY
 C - - - - - 0x009F3C 02:9F2C: B1 5C     LDA (ram_005C_sound_mode_data),Y
@@ -7164,12 +7163,8 @@ C - - - - - 0x009F3E 02:9F2E: 85 5A     STA ram_005A_sound_mode
 C - - - - - 0x009F40 02:9F30: C8        INY
 C - - - - - 0x009F41 02:9F31: B1 5C     LDA (ram_005C_sound_mode_data),Y
 C - - - - - 0x009F43 02:9F33: 85 08     STA ram_0008
-C - - - - - 0x009F45 02:9F35: A5 09     LDA ram_0009
-C - - - - - 0x009F47 02:9F37: 0A        ASL
-; bzk optimize, no bytes >= 80 in there
-C - - - - - 0x009F48 02:9F38: 30 03     BMI bra_9F3D
+; 1путин опт
 C - - - - - 0x009F4A 02:9F3A: 20 0E FE  JSR sub_0x01FE1E_sprite_engine
-bra_9F3D:
 C - - - - - 0x009F4D 02:9F3D: A5 08     LDA ram_0008
 C - - - - - 0x009F4F 02:9F3F: 20 DE FD  JSR sub_0x01FDEE_play_sound
 C - - - - - 0x009F52 02:9F42: 4C 45 9F  JMP loc_9F45
@@ -8857,16 +8852,6 @@ _off007_0x00B428_00_area_1:
 - D 1 - I - 0x00B508 02:B4F8: 00        .byte $00, $00, $00, $00, $00, $00, $00, $00, $AA, $AA, $A0, $00, $AA, $2A, $FA, $AA   ; E0 
 - D 1 - I - 0x00B518 02:B508: 00        .byte $00, $00, $00, $00                                                               ; F0 
 
-
-; bzk garbage
-- - - - - - 0x00B51C 02:B50C: 00        .byte $00   ; 
-- - - - - - 0x00B51D 02:B50D: 00        .byte $00   ; 
-- - - - - - 0x00B51E 02:B50E: 00        .byte $00   ; 
-- - - - - - 0x00B51F 02:B50F: 00        .byte $00   ; 
-- - - - - - 0x00B520 02:B510: 00        .byte $00   ; 
-- - - - - - 0x00B521 02:B511: 00        .byte $00   ; 
-- - - - - - 0x00B522 02:B512: 00        .byte $00   ; 
-- - - - - - 0x00B523 02:B513: 00        .byte $00   ; 
 
 
 .out .sprintf("Free bytes in bank 34: %Xh [%d]", ($BFFF - *), ($BFFF - *))

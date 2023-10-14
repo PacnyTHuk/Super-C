@@ -517,10 +517,10 @@ C - - - - - 0x004323 01:8313: 4C 83 A2  JMP loc_0x006293_set_obj_state
 
 sub_8316_draw_helicopter_door:
 ; 1путин опт
+                                        LDA ram_0710_obj,X
                                         LDX ram_index_ppu_buffer
                                         CPX #$40
                                         BCS bra_8375_skip
-C - - - - - 0x004326 01:8316: BD 10 07  LDA ram_0710_obj,X
 C - - - - - 0x004329 01:8319: 0A        ASL
 C - - - - - 0x00432A 01:831A: A8        TAY
 ; if buffer is not too loaded
@@ -1088,7 +1088,7 @@ tbl_8687_speed:
 
 
 sub_86B7:
-;leon опт
+; leon опт
                                         LDY ram_0748_obj,X
                                         LDA tbl_86BD_lo,y
                                         STA ram_0000
@@ -3157,7 +3157,7 @@ C - - - - - 0x00531D 01:930D: 4C 3D A3  JMP loc_0x00634D_delete_object_04
 
 
 sub_9310:
-;leon опт
+; leon опт
                                         LDY ram_0748_obj,X
                                         LDA tbl_9316_lo,y
                                         STA ram_0000
@@ -4514,7 +4514,7 @@ loc_9AE8:
 sub_9AE8:
 C D 0 - - - 0x005AF8 01:9AE8: 20 5D A7  JSR sub_0x00676D
 C - - - - - 0x005AFB 01:9AEB: 20 0A AA  JSR sub_0x006A1A
-;leon опт
+; leon опт
                                         LDY ram_0748_obj,X
                                         LDA tbl_9AF4_lo,y
                                         STA ram_0000

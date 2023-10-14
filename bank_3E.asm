@@ -10,7 +10,6 @@
 .export sub_0x01E552
 .export sub_0x01E594
 .export sub_0x01E5E0_clear_memory
-.export sub_0x01E619_jump_to_pointers_after_jsr
 .export sub_0x01E632_inc_pointer_by_A
 .export sub_0x01E648
 .export loc_0x01E64C_add_points_to_score
@@ -724,19 +723,33 @@ C - - - - - 0x01E3C6 07:E3B6: 4C 5D E2  JMP loc_E25D
 
 sub_E3B9:
 C - - - - - 0x01E3C9 07:E3B9: E6 1B     INC ram_счетчик_кадров_1
-C - - - - - 0x01E3CB 07:E3BB: A5 18     LDA ram_демка
-C - - - - - 0x01E3CD 07:E3BD: C9 04     CMP #$04
+; 1путин опт
+C - - - - - 0x01E3CB 07:E3BB: A5 18     LDY ram_демка
+C - - - - - 0x01E3CD 07:E3BD: C9 04     CPY #$04
 C - - - - - 0x01E3CF 07:E3BF: D0 03     BNE bra_E3C4
 ; 04
-C - - - - - 0x01E3D1 07:E3C1: 4C E9 E7  JMP loc_E7E9
+C - - - - - 0x01E3D1 07:E3C1: 4C E9 E7  JMP loc_E7E9 ; игра
 bra_E3C4:
-C - - - - - 0x01E3D4 07:E3C4: 20 09 E6  JSR sub_E609_jump_to_pointers_after_jsr
-- D 3 - I - 0x01E3D7 07:E3C7: D3 E3     .word ofs_032_E3D3_00
-- D 3 - I - 0x01E3D9 07:E3C9: 72 E4     .word ofs_032_E472_01
-- D 3 - I - 0x01E3DB 07:E3CB: A3 E4     .word ofs_032_E4A3_02
-- D 3 - I - 0x01E3DD 07:E3CD: C2 E4     .word ofs_032_E4C2_03
-- - - - - - 0x01E3DF 07:E3CF: E9 E7     .word ofs_032_E7E9_04   ; never used 0x01E3CF
-- D 3 - I - 0x01E3E1 07:E3D1: C9 E4     .word ofs_032_E4C9_05
+; 1путин опт
+                                        LDA tbl_E3C7_lo,y
+                                        STA ram_0000
+                                        LDA tbl_E3C7_hi,y
+                                        STA ram_0001
+                                        JMP (ram_0000)
+tbl_E3C7_lo:
+- D 3 - I - 0x01E3D7 07:E3C7: D3 E3     .byte < ofs_032_E3D3_00
+- D 3 - I - 0x01E3D9 07:E3C9: 72 E4     .byte < ofs_032_E472_01
+- D 3 - I - 0x01E3DB 07:E3CB: A3 E4     .byte < ofs_032_E4A3_02
+- D 3 - I - 0x01E3DD 07:E3CD: C2 E4     .byte < ofs_032_E4C2_03
+- - - - - - 0x01E3DF 07:E3CF: E9 E7     .byte < ofs_032_E7E9_04   ; never used 0x01E3CF
+- D 3 - I - 0x01E3E1 07:E3D1: C9 E4     .byte < ofs_032_E4C9_05
+tbl_E3C7_hi:
+- D 3 - I - 0x01E3D7 07:E3C7: D3 E3     .byte > ofs_032_E3D3_00
+- D 3 - I - 0x01E3D9 07:E3C9: 72 E4     .byte > ofs_032_E472_01
+- D 3 - I - 0x01E3DB 07:E3CB: A3 E4     .byte > ofs_032_E4A3_02
+- D 3 - I - 0x01E3DD 07:E3CD: C2 E4     .byte > ofs_032_E4C2_03
+- - - - - - 0x01E3DF 07:E3CF: E9 E7     .byte > ofs_032_E7E9_04   ; never used 0x01E3CF
+- D 3 - I - 0x01E3E1 07:E3D1: C9 E4     .byte > ofs_032_E4C9_05
 
 
 
@@ -1172,26 +1185,6 @@ C - - - - - 0x01E618 07:E608: 60        RTS
 
 
 
-sub_E609_jump_to_pointers_after_jsr:
-sub_0x01E619_jump_to_pointers_after_jsr:
-C - - - - - 0x01E619 07:E609: 0A        ASL
-C - - - - - 0x01E61A 07:E60A: 84 03     STY ram_0003
-C - - - - - 0x01E61C 07:E60C: A8        TAY
-C - - - - - 0x01E61D 07:E60D: C8        INY
-C - - - - - 0x01E61E 07:E60E: 68        PLA
-C - - - - - 0x01E61F 07:E60F: 85 00     STA ram_0000
-C - - - - - 0x01E621 07:E611: 68        PLA
-C - - - - - 0x01E622 07:E612: 85 01     STA ram_0001
-C - - - - - 0x01E624 07:E614: B1 00     LDA (ram_0000),Y
-C - - - - - 0x01E626 07:E616: 85 02     STA ram_0002
-C - - - - - 0x01E628 07:E618: C8        INY
-C - - - - - 0x01E629 07:E619: B1 00     LDA (ram_0000),Y
-C - - - - - 0x01E62B 07:E61B: A4 03     LDY ram_0003
-C - - - - - 0x01E62D 07:E61D: 85 03     STA ram_0003
-C - - - - - 0x01E62F 07:E61F: 6C 02 00  JMP (ram_0002)
-
-
-
 sub_0x01E632_inc_pointer_by_A:
 ; bzk optimize, X always 00
 ; bzk optimize, move to bank 30
@@ -1495,22 +1488,39 @@ C - - - - - 0x01E7F6 07:E7E6: 4C 56 EA  JMP loc_EA56
 bra_E7E9:
 loc_E7E9:
 ofs_032_E7E9_04:
-C D 3 - - - 0x01E7F9 07:E7E9: A5 38     LDA ram_номер_экрана
-C - - - - - 0x01E7FB 07:E7EB: C9 03     CMP #$03
+; 1путин опт
+C D 3 - - - 0x01E7F9 07:E7E9: A5 38     LDY ram_номер_экрана
+C - - - - - 0x01E7FB 07:E7EB: C9 03     CPY #$03
 C - - - - - 0x01E7FD 07:E7ED: D0 03     BNE bra_E7F2
 ; 03
-C - - - - - 0x01E7FF 07:E7EF: 4C D6 E8  JMP loc_E8D6
+C - - - - - 0x01E7FF 07:E7EF: 4C D6 E8  JMP loc_E8D6 ; Игра
 bra_E7F2:
-C - - - - - 0x01E802 07:E7F2: 20 09 E6  JSR sub_E609_jump_to_pointers_after_jsr
-- D 3 - I - 0x01E805 07:E7F5: 07 E8     .word ofs_033_E807_00
-- D 3 - I - 0x01E807 07:E7F7: 69 E8     .word ofs_033_E869_01
-- D 3 - I - 0x01E809 07:E7F9: 7C E8     .word ofs_033_E87C_02
-- - - - - - 0x01E80B 07:E7FB: D6 E8     .word ofs_033_E8D6_03   ; never used 0x01E7FD
-- D 3 - I - 0x01E80D 07:E7FD: 23 E9     .word ofs_033_E923_04
-- D 3 - I - 0x01E80F 07:E7FF: F7 E9     .word ofs_033_E9F7_05
-- D 3 - I - 0x01E811 07:E801: 16 EA     .word ofs_033_EA16_06
-- D 3 - I - 0x01E813 07:E803: 2A EA     .word ofs_033_EA2A_07
-- D 3 - I - 0x01E815 07:E805: 5C EA     .word ofs_033_EA5C_08
+; 1путин опт
+                                        LDA tbl_E7F5_lo,y
+                                        STA ram_0000
+                                        LDA tbl_E7F5_hi,y
+                                        STA ram_0001
+                                        JMP (ram_0000)
+tbl_E7F5_lo:
+- D 3 - I - 0x01E805 07:E7F5: 07 E8     .byte < ofs_033_E807_00
+- D 3 - I - 0x01E807 07:E7F7: 69 E8     .byte < ofs_033_E869_01
+- D 3 - I - 0x01E809 07:E7F9: 7C E8     .byte < ofs_033_E87C_02
+- - - - - - 0x01E80B 07:E7FB: D6 E8     .byte < ofs_033_E8D6_03   ; never used 0x01E7FD
+- D 3 - I - 0x01E80D 07:E7FD: 23 E9     .byte < ofs_033_E923_04
+- D 3 - I - 0x01E80F 07:E7FF: F7 E9     .byte < ofs_033_E9F7_05
+- D 3 - I - 0x01E811 07:E801: 16 EA     .byte < ofs_033_EA16_06
+- D 3 - I - 0x01E813 07:E803: 2A EA     .byte < ofs_033_EA2A_07
+- D 3 - I - 0x01E815 07:E805: 5C EA     .byte < ofs_033_EA5C_08
+tbl_E7F5_hi:
+- D 3 - I - 0x01E805 07:E7F5: 07 E8     .byte > ofs_033_E807_00
+- D 3 - I - 0x01E807 07:E7F7: 69 E8     .byte > ofs_033_E869_01
+- D 3 - I - 0x01E809 07:E7F9: 7C E8     .byte > ofs_033_E87C_02
+- - - - - - 0x01E80B 07:E7FB: D6 E8     .byte > ofs_033_E8D6_03   ; never used 0x01E7FD
+- D 3 - I - 0x01E80D 07:E7FD: 23 E9     .byte > ofs_033_E923_04
+- D 3 - I - 0x01E80F 07:E7FF: F7 E9     .byte > ofs_033_E9F7_05
+- D 3 - I - 0x01E811 07:E801: 16 EA     .byte > ofs_033_EA16_06
+- D 3 - I - 0x01E813 07:E803: 2A EA     .byte > ofs_033_EA2A_07
+- D 3 - I - 0x01E815 07:E805: 5C EA     .byte > ofs_033_EA5C_08
 
 
 
@@ -1700,22 +1710,36 @@ C - - - - - 0x01E930 07:E920: 4C A9 F7  JMP loc_F7A9
 
 
 ofs_033_E923_04:
-C - - J - - 0x01E933 07:E923: A5 3E     LDA ram_003E
-C - - - - - 0x01E935 07:E925: C9 02     CMP #$02
+; 1путин опт
+C - - J - - 0x01E933 07:E923: A5 3E     LDY ram_003E
+C - - - - - 0x01E935 07:E925: C9 02     CPY #$02
 C - - - - - 0x01E937 07:E927: 90 0A     BCC bra_E933
-C - - - - - 0x01E939 07:E929: A0 00     LDY #$00
-C - - - - - 0x01E93B 07:E92B: 84 F1     STY ram_нажатая_кнопка
-C - - - - - 0x01E93D 07:E92D: 84 F2     STY ram_нажатая_кнопка+ $01
-C - - - - - 0x01E93F 07:E92F: 84 F3     STY ram_удержанная_кнопка
-C - - - - - 0x01E941 07:E931: 84 F4     STY ram_удержанная_кнопка + $01
+C - - - - - 0x01E939 07:E929: A0 00     LDA #$00
+C - - - - - 0x01E93B 07:E92B: 84 F1     STA ram_нажатая_кнопка
+C - - - - - 0x01E93D 07:E92D: 84 F2     STA ram_нажатая_кнопка+ $01
+C - - - - - 0x01E93F 07:E92F: 84 F3     STA ram_удержанная_кнопка
+C - - - - - 0x01E941 07:E931: 84 F4     STA ram_удержанная_кнопка + $01
 bra_E933:
-C - - - - - 0x01E943 07:E933: 20 09 E6  JSR sub_E609_jump_to_pointers_after_jsr
-- D 3 - I - 0x01E946 07:E936: 42 E9     .word ofs_034_E942_00
-- D 3 - I - 0x01E948 07:E938: 4C E9     .word ofs_034_E94C_01
-- D 3 - I - 0x01E94A 07:E93A: 79 E9     .word ofs_034_E979_02
-- D 3 - I - 0x01E94C 07:E93C: B2 E9     .word ofs_034_E9B2_03
-- D 3 - I - 0x01E94E 07:E93E: BC E9     .word ofs_034_E9BC_04
-- D 3 - I - 0x01E950 07:E940: CC E9     .word ofs_034_E9CC_05
+; 1путин опт
+                                        LDA tbl_E636_lo,y
+                                        STA ram_0000
+                                        LDA tbl_E636_hi,y
+                                        STA ram_0001
+                                        JMP (ram_0000)
+tbl_E636_lo:
+- D 3 - I - 0x01E946 07:E936: 42 E9     .byte < ofs_034_E942_00
+- D 3 - I - 0x01E948 07:E938: 4C E9     .byte < ofs_034_E94C_01
+- D 3 - I - 0x01E94A 07:E93A: 79 E9     .byte < ofs_034_E979_02
+- D 3 - I - 0x01E94C 07:E93C: B2 E9     .byte < ofs_034_E9B2_03
+- D 3 - I - 0x01E94E 07:E93E: BC E9     .byte < ofs_034_E9BC_04
+- D 3 - I - 0x01E950 07:E940: CC E9     .byte < ofs_034_E9CC_05
+tbl_E636_hi:
+- D 3 - I - 0x01E946 07:E936: 42 E9     .byte > ofs_034_E942_00
+- D 3 - I - 0x01E948 07:E938: 4C E9     .byte > ofs_034_E94C_01
+- D 3 - I - 0x01E94A 07:E93A: 79 E9     .byte > ofs_034_E979_02
+- D 3 - I - 0x01E94C 07:E93C: B2 E9     .byte > ofs_034_E9B2_03
+- D 3 - I - 0x01E94E 07:E93E: BC E9     .byte > ofs_034_E9BC_04
+- D 3 - I - 0x01E950 07:E940: CC E9     .byte > ofs_034_E9CC_05
 
 
 
@@ -2051,12 +2075,23 @@ tbl_EAC8_chr_banks:
 
 loc_EAF8:
 C D 3 - - - 0x01EB08 07:EAF8: 20 80 ED  JSR sub_ED80
-C - - - - - 0x01EB0B 07:EAFB: A5 60     LDA ram_0060_unk
-C - - - - - 0x01EB0D 07:EAFD: 20 09 E6  JSR sub_E609_jump_to_pointers_after_jsr
-- D 3 - I - 0x01EB10 07:EB00: D6 EC     .word ofs_035_ECD6_00_RTS
-- D 3 - I - 0x01EB12 07:EB02: 08 EB     .word ofs_035_EB08_01
-- D 3 - I - 0x01EB14 07:EB04: 0B EB     .word ofs_035_EB0B_02
-- D 3 - I - 0x01EB16 07:EB06: 58 EB     .word ofs_035_EB58_03
+; 1путин опт
+                                        LDY ram_0060_unk
+                                        LDA tbl_EB00_lo,y
+                                        STA ram_0000
+                                        LDA tbl_EB00_hi,y
+                                        STA ram_0001
+                                        JMP (ram_0000)
+tbl_EB00_lo:
+- D 3 - I - 0x01EB10 07:EB00: D6 EC     .byte < ofs_035_ECD6_00_RTS
+- D 3 - I - 0x01EB12 07:EB02: 08 EB     .byte < ofs_035_EB08_01
+- D 3 - I - 0x01EB14 07:EB04: 0B EB     .byte < ofs_035_EB0B_02
+- D 3 - I - 0x01EB16 07:EB06: 58 EB     .byte < ofs_035_EB58_03
+tbl_EB00_hi:
+- D 3 - I - 0x01EB10 07:EB00: D6 EC     .byte > ofs_035_ECD6_00_RTS
+- D 3 - I - 0x01EB12 07:EB02: 08 EB     .byte > ofs_035_EB08_01
+- D 3 - I - 0x01EB14 07:EB04: 0B EB     .byte > ofs_035_EB0B_02
+- D 3 - I - 0x01EB16 07:EB06: 58 EB     .byte > ofs_035_EB58_03
 
 
 
@@ -2475,11 +2510,21 @@ tbl_ED70:
 
 
 sub_ED80:
-C - - - - - 0x01ED90 07:ED80: A5 70     LDA ram_0070
-C - - - - - 0x01ED92 07:ED82: 20 09 E6  JSR sub_E609_jump_to_pointers_after_jsr
-- D 3 - I - 0x01ED95 07:ED85: 3D EE     .word ofs_036_EE3D_00_RTS
-- D 3 - I - 0x01ED97 07:ED87: 8C ED     .word ofs_036_ED8C_01
-- D 3 - I - 0x01ED99 07:ED89: C7 ED     .word ofs_036_EDC7_02
+; 1путин опт
+                                        LDY ram_0070
+                                        LDA tbl_ED85_lo,y
+                                        STA ram_0000
+                                        LDA tbl_ED85_hi,y
+                                        STA ram_0001
+                                        JMP (ram_0000)
+tbl_ED85_lo:
+- D 3 - I - 0x01ED95 07:ED85: 3D EE     .byte < ofs_036_EE3D_00_RTS
+- D 3 - I - 0x01ED97 07:ED87: 8C ED     .byte < ofs_036_ED8C_01
+- D 3 - I - 0x01ED99 07:ED89: C7 ED     .byte < ofs_036_EDC7_02
+tbl_ED85_hi:
+- D 3 - I - 0x01ED95 07:ED85: 3D EE     .byte > ofs_036_EE3D_00_RTS
+- D 3 - I - 0x01ED97 07:ED87: 8C ED     .byte > ofs_036_ED8C_01
+- D 3 - I - 0x01ED99 07:ED89: C7 ED     .byte > ofs_036_EDC7_02
 
 
 ; bzk garbage
@@ -3544,17 +3589,33 @@ tbl_F40E:
 
 
 sub_F41C:
-C - - - - - 0x01F42C 07:F41C: A5 06     LDA ram_0006
-C - - - - - 0x01F42E 07:F41E: 20 09 E6  JSR sub_E609_jump_to_pointers_after_jsr
-- D 3 - I - 0x01F431 07:F421: 33 F4     .word ofs_037_F433_00
-- D 3 - I - 0x01F433 07:F423: 38 F4     .word ofs_037_F438_01
-- D 3 - I - 0x01F435 07:F425: 59 F4     .word ofs_037_F459_02_RTS
-- D 3 - I - 0x01F437 07:F427: 3F F4     .word ofs_037_F43F_03
-- D 3 - I - 0x01F439 07:F429: 48 F4     .word ofs_037_F448_04
-- D 3 - I - 0x01F43B 07:F42B: 5A F4     .word ofs_037_F45A_05
-- D 3 - I - 0x01F43D 07:F42D: 65 F4     .word ofs_037_F465_06
-- D 3 - I - 0x01F43F 07:F42F: 74 F4     .word ofs_037_F474_07
-- - - - - - 0x01F441 07:F431: 8A F4     .word ofs_037_F48A_08
+; 1путин опт
+                                        LDY ram_0006
+                                        LDA tbl_F421_lo,y
+                                        STA ram_0000
+                                        LDA tbl_F421_hi,y
+                                        STA ram_0001
+                                        JMP (ram_0000)
+tbl_F421_lo:
+- D 3 - I - 0x01F431 07:F421: 33 F4     .byte < ofs_037_F433_00
+- D 3 - I - 0x01F433 07:F423: 38 F4     .byte < ofs_037_F438_01
+- D 3 - I - 0x01F435 07:F425: 59 F4     .byte < ofs_037_F459_02_RTS
+- D 3 - I - 0x01F437 07:F427: 3F F4     .byte < ofs_037_F43F_03
+- D 3 - I - 0x01F439 07:F429: 48 F4     .byte < ofs_037_F448_04
+- D 3 - I - 0x01F43B 07:F42B: 5A F4     .byte < ofs_037_F45A_05
+- D 3 - I - 0x01F43D 07:F42D: 65 F4     .byte < ofs_037_F465_06
+- D 3 - I - 0x01F43F 07:F42F: 74 F4     .byte < ofs_037_F474_07
+- - - - - - 0x01F441 07:F431: 8A F4     .byte < ofs_037_F48A_08
+tbl_F421_hi:
+- D 3 - I - 0x01F431 07:F421: 33 F4     .byte > ofs_037_F433_00
+- D 3 - I - 0x01F433 07:F423: 38 F4     .byte > ofs_037_F438_01
+- D 3 - I - 0x01F435 07:F425: 59 F4     .byte > ofs_037_F459_02_RTS
+- D 3 - I - 0x01F437 07:F427: 3F F4     .byte > ofs_037_F43F_03
+- D 3 - I - 0x01F439 07:F429: 48 F4     .byte > ofs_037_F448_04
+- D 3 - I - 0x01F43B 07:F42B: 5A F4     .byte > ofs_037_F45A_05
+- D 3 - I - 0x01F43D 07:F42D: 65 F4     .byte > ofs_037_F465_06
+- D 3 - I - 0x01F43F 07:F42F: 74 F4     .byte > ofs_037_F474_07
+- - - - - - 0x01F441 07:F431: 8A F4     .byte > ofs_037_F48A_08
 
 
 

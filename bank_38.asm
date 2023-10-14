@@ -1296,7 +1296,7 @@ off_8798_01:
 
 
 sub_87B6:
-;leon опт
+; leon опт
                                         LDY ram_0764_obj,X
                                         LDA tbl_87BC_lo,y
                                         STA ram_0000
@@ -4669,11 +4669,21 @@ tbl_9C46_spr_attr:
 
 
 sub_9C4F:
-C - - - - - 0x011C5F 04:9C4F: BD 56 07  LDA ram_0756_obj,X
-C - - - - - 0x011C62 04:9C52: 20 09 E6  JSR sub_0x01E619_jump_to_pointers_after_jsr
-- D 0 - I - 0x011C65 04:9C55: 5B 9C     .word ofs_029_9C5B_00
-- D 0 - I - 0x011C67 04:9C57: 79 9C     .word ofs_029_9C79_01
-- D 0 - I - 0x011C69 04:9C59: 9E 9C     .word ofs_029_9C9E_02
+; 1путин опт
+                                        LDY ram_0756_obj,X
+                                        LDA tbl_9C55_lo,y
+                                        STA ram_0000
+                                        LDA tbl_9C55_hi,y
+                                        STA ram_0001
+                                        JMP (ram_0000)
+tbl_9C55_lo:
+- D 0 - I - 0x011C65 04:9C55: 5B 9C     .byte < ofs_029_9C5B_00
+- D 0 - I - 0x011C67 04:9C57: 79 9C     .byte < ofs_029_9C79_01
+- D 0 - I - 0x011C69 04:9C59: 9E 9C     .byte < ofs_029_9C9E_02
+tbl_9C55_hi:
+- D 0 - I - 0x011C65 04:9C55: 5B 9C     .byte > ofs_029_9C5B_00
+- D 0 - I - 0x011C67 04:9C57: 79 9C     .byte > ofs_029_9C79_01
+- D 0 - I - 0x011C69 04:9C59: 9E 9C     .byte > ofs_029_9C9E_02
 
 
 
@@ -4753,81 +4763,32 @@ C - - - - - 0x011CE9 04:9CD9: 60        RTS
 
 
 tbl_9CDA_index:
-- D 0 - - - 0x011CEA 04:9CDA: 02        .byte $02   ; 00 
-- D 0 - - - 0x011CEB 04:9CDB: 03        .byte $03   ; 01 
-- D 0 - - - 0x011CEC 04:9CDC: 02        .byte $02   ; 02 
-- - - - - - 0x011CED 04:9CDD: 03        .byte $03   ; 03 
+; 1путин опт
+- D 0 - - - 0x011CEA 04:9CDA: 02        .byte $00   ; 00 
+- D 0 - - - 0x011CEB 04:9CDB: 03        .byte $01   ; 01 
+- D 0 - - - 0x011CEC 04:9CDC: 02        .byte $00   ; 02 
+- - - - - - 0x011CED 04:9CDD: 03        .byte $01   ; 03 
 
 
 
 tbl_9CDE_pos_Y:
-; bzk garbage 00 and 01, no such indexes 0x011CEA
-- - - - - - 0x011CEE 04:9CDE: 48        .byte $48   ; 00 
-- - - - - - 0x011CEF 04:9CDF: 48        .byte $48   ; 01 
+; 1путин опт
 - D 0 - - - 0x011CF0 04:9CE0: 48        .byte $48   ; 02 
 - D 0 - - - 0x011CF1 04:9CE1: 48        .byte $48   ; 03 
 
 
 
 tbl_9CE2_pos_X:
-; bzk garbage 00 and 01, no such indexes 0x011CEA
-- - - - - - 0x011CF2 04:9CE2: F0        .byte $F0   ; 00 
-- - - - - - 0x011CF3 04:9CE3: 10        .byte $10   ; 01 
+; 1путин опт
 - D 0 - - - 0x011CF4 04:9CE4: F0        .byte $F0   ; 02 
 - D 0 - - - 0x011CF5 04:9CE5: 10        .byte $10   ; 03 
 
 
 
 tbl_9CE6:
-- - - - - - 0x011CF6 04:9CE6: EE 9C     .word _off024_9CEE_00
-- - - - - - 0x011CF8 04:9CE8: 09 9D     .word _off024_9D09_01
+; 1путин опт
 - D 0 - - - 0x011CFA 04:9CEA: 24 9D     .word _off024_9D24_02
 - D 0 - - - 0x011CFC 04:9CEC: 6F 9D     .word _off024_9D6F_03
-
-
-
-_off024_9CEE_00:
-; bzk garbage, no such index 0x011CEA
-;                                              ----------- 
-;                                              |    ------ 
-;                                              |    |
-- - - - - - 0x011CFE 04:9CEE: 09        .byte $09, $16   ; 00 
-- - - - - - 0x011D00 04:9CF0: 07        .byte $07, $40   ; 01 
-- - - - - - 0x011D02 04:9CF2: 08        .byte $08, $10   ; 02 
-- - - - - - 0x011D04 04:9CF4: 09        .byte $09, $10   ; 03 
-- - - - - - 0x011D06 04:9CF6: 0A        .byte $0A, $10   ; 04 
-- - - - - - 0x011D08 04:9CF8: 0B        .byte $0B, $10   ; 05 
-- - - - - - 0x011D0A 04:9CFA: 0C        .byte $0C, $10   ; 06 
-- - - - - - 0x011D0C 04:9CFC: 0D        .byte $0D, $10   ; 07 
-- - - - - - 0x011D0E 04:9CFE: 0E        .byte $0E, $10   ; 08 
-- - - - - - 0x011D10 04:9D00: 0F        .byte $0F, $10   ; 09 
-- - - - - - 0x011D12 04:9D02: 10        .byte $10, $10   ; 0A 
-- - - - - - 0x011D14 04:9D04: 11        .byte $11, $40   ; 0B 
-- - - - - - 0x011D16 04:9D06: 0F        .byte $0F, $16   ; 0C 
-- - - - - - 0x011D18 04:9D08: FF        .byte $FF   ; 0D final
-
-
-
-_off024_9D09_01:
-; bzk garbage, no such index 0x011CEA
-;                                              ----------- 
-;                                              |    ------ 
-;                                              |    |
-- - - - - - 0x011D19 04:9D09: 03        .byte $03, $16   ; 
-- - - - - - 0x011D1B 04:9D0B: 05        .byte $05, $40   ; 
-- - - - - - 0x011D1D 04:9D0D: 04        .byte $04, $10   ; 
-- - - - - - 0x011D1F 04:9D0F: 03        .byte $03, $10   ; 
-- - - - - - 0x011D21 04:9D11: 02        .byte $02, $10   ; 
-- - - - - - 0x011D23 04:9D13: 01        .byte $01, $10   ; 
-- - - - - - 0x011D25 04:9D15: 00        .byte $00, $10   ; 
-- - - - - - 0x011D27 04:9D17: 17        .byte $17, $10   ; 
-- - - - - - 0x011D29 04:9D19: 16        .byte $16, $10   ; 
-- - - - - - 0x011D2B 04:9D1B: 15        .byte $15, $10   ; 
-- - - - - - 0x011D2D 04:9D1D: 14        .byte $14, $10   ; 
-- - - - - - 0x011D2F 04:9D1F: 13        .byte $13, $40   ; 
-- - - - - - 0x011D31 04:9D21: 15        .byte $15, $16   ; 
-- - - - - - 0x011D33 04:9D23: FF        .byte $FF   ; 
-
 
 
 _off024_9D24_02:
@@ -6008,13 +5969,6 @@ _off007_0x012C96_04_area_5:
 - D 1 - I - 0x012D26 04:AD16: 55        .byte $55, $55, $55, $05, $45, $55, $55, $55, $55, $55, $55, $05                       ; 90
 
 
-; bzk garbage
-- - - - - - 0x012D32 04:AD22: 00        .byte $00   ; 
-- - - - - - 0x012D33 04:AD23: 00        .byte $00   ; 
-- - - - - - 0x012D34 04:AD24: 00        .byte $00   ; 
-- - - - - - 0x012D35 04:AD25: 00        .byte $00   ; 
-
-
 
 _off004_0x012D36_05_area_6:
 - D 1 - I - 0x012D36 04:AD26: 02        .byte $02   ; столбцы
@@ -6961,21 +6915,6 @@ _off007_0x01399A_05_area_6:
 - D 1 - I - 0x013A1A 04:BA0A: 00        .byte $00, $05, $05, $00, $00, $00, $00, $00, $00, $54, $51, $00, $55, $C0, $F0, $30   ; 80 
 - D 1 - I - 0x013A2A 04:BA1A: 00        .byte $00, $00, $00                                                                    ; 90 
 
-
-; bzk garbage
-- - - - - - 0x013A2D 04:BA1D: 00        .byte $00   ; 
-- - - - - - 0x013A2E 04:BA1E: 00        .byte $00   ; 
-- - - - - - 0x013A2F 04:BA1F: 00        .byte $00   ; 
-- - - - - - 0x013A30 04:BA20: 00        .byte $00   ; 
-- - - - - - 0x013A31 04:BA21: 00        .byte $00   ; 
-- - - - - - 0x013A32 04:BA22: 00        .byte $00   ; 
-- - - - - - 0x013A33 04:BA23: 00        .byte $00   ; 
-- - - - - - 0x013A34 04:BA24: 00        .byte $00   ; 
-- - - - - - 0x013A35 04:BA25: 00        .byte $00   ; 
-- - - - - - 0x013A36 04:BA26: 00        .byte $00   ; 
-- - - - - - 0x013A37 04:BA27: 00        .byte $00   ; 
-- - - - - - 0x013A38 04:BA28: 00        .byte $00   ; 
-- - - - - - 0x013A39 04:BA29: 00        .byte $00   ; 
 
 
 .out .sprintf("Free bytes in bank 38: %Xh [%d]", ($BFFF - *), ($BFFF - *))

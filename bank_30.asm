@@ -918,7 +918,7 @@ C - - - - - 0x000532 00:8522: F0 03     BEQ bra_8527_вид_сбоку
 ; вид сверху
 C - - - - - 0x000534 00:8524: 4C 24 8A  JMP loc_8A24
 bra_8527_вид_сбоку:
-;leon опт
+; leon опт
                                         LDY ram_статус_игрока,X
                                         LDA tbl_852C_lo,y
                                         STA ram_0000
@@ -1549,7 +1549,7 @@ C - - - - - 0x0008CD 00:88BD: F0 03     BEQ bra_88C2_вид_сбоку
 ; вид сверху
 C - - - - - 0x0008CF 00:88BF: 4C 28 8C  JMP loc_8C28
 bra_88C2_вид_сбоку:
-;leon опт
+; leon опт
                                         LDY ram_статус_игрока,X
                                         LDA tbl_88C7_lo,y
                                         STA ram_0000
@@ -1797,7 +1797,7 @@ C - - - - - 0x000A33 00:8A23: 60        RTS
 
 
 loc_8A24:
-;leon опт
+; leon опт
                                         LDY ram_статус_игрока,X
                                         LDA tbl_8A29_lo,y
                                         STA ram_0000
@@ -2209,7 +2209,7 @@ tbl_8C20:
 
 
 loc_8C28:
-;leon опт
+; leon опт
                                         LDY ram_статус_игрока,X
                                         LDA tbl_8C2D_lo,y
                                         STA ram_0000
@@ -3640,7 +3640,7 @@ C - - - - - 0x001428 00:9418: 85 92     STA ram_0092
 C - - - - - 0x00142A 00:941A: A9 00     LDA #$00
 C - - - - - 0x00142C 00:941C: 85 90     STA ram_колво_спавн_мобов
 bra_941E:
-;leon опт
+; leon опт
                                         LDY ram_0091
                                         LDA tbl_9423_lo,y
                                         STA ram_0000
@@ -5782,7 +5782,7 @@ _off012_01_A08C_02:
 
 
 loc_0x002178_stage_complete_handler:
-;leon опт
+; leon опт
                                         LDY ram_0040
                                         LDA tbl_A16D_lo,y
                                         STA ram_0000
@@ -5805,7 +5805,7 @@ C - - - - - 0x002186 00:A176: 60        RTS
 
 
 sub_A177:
-;leon опт
+; leon опт
                                         LDY ram_номер_уровня
                                         LDA tbl_A17C_lo,y
                                         STA ram_0000
@@ -5893,7 +5893,7 @@ C - - - - - 0x0021D1 00:A1C1: 60        RTS
 
 
 sub_A1C2:
-;leon опт
+; leon опт
                                         LDY ram_номер_уровня
                                         LDA tbl_A1C7_lo,y
                                         STA ram_0000
@@ -6152,7 +6152,7 @@ bra_A309_RTS:
 
 
 loc_0x00231A_title_screen_handler:
-;leon опт
+; leon опт
                                         LDY ram_0080
                                         LDA tbl_A30F_lo,y
                                         STA ram_0000
@@ -6286,7 +6286,7 @@ C - - - - - 0x0023C6 00:A3B6: 60        RTS
 
 
 loc_0x0023C7_credits_handler:
-;leon опт
+; leon опт
                                         LDY ram_0061_конфиг_уровня
                                         LDA tbl_A3BC_lo,y
                                         STA ram_0000
@@ -6385,7 +6385,7 @@ C - - - - - 0x002447 00:A437: 60        RTS
 
 sub_A438_helicopter_handler:
 ; during credits
-;leon опт
+; leon опт
                                         LDY ram_состояние_объектов
                                         LDA tbl_A43E_lo,y
                                         STA ram_0000

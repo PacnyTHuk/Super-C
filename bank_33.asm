@@ -554,18 +554,33 @@ C - - - - - 0x006161 01:A151: 20 38 E6  JSR sub_0x01E648
 C - - - - - 0x006164 01:A154: A9 19     LDA #con_sound_19
 C - - - - - 0x006166 01:A156: 20 DE FD  JSR sub_0x01FDEE_play_sound
 ; bonus pickup handler
+; 1путин опт
 C - - - - - 0x006169 01:A159: A6 10     LDX ram_0010
 C - - - - - 0x00616B 01:A15B: BD 1E 07  LDA ram_obj_flags,X
 C - - - - - 0x00616E 01:A15E: 29 0F     AND #$0F
-C - - - - - 0x006170 01:A160: A4 11     LDY ram_0011
-C - - - - - 0x006172 01:A162: 20 09 E6  JSR sub_0x01E619_jump_to_pointers_after_jsr
-- D 1 - I - 0x006175 01:A165: 88 A1     .word ofs_016_A188_00_M
-- D 1 - I - 0x006177 01:A167: 88 A1     .word ofs_016_A188_01_S
-- D 1 - I - 0x006179 01:A169: 88 A1     .word ofs_016_A188_02_L
-- D 1 - I - 0x00617B 01:A16B: 88 A1     .word ofs_016_A188_03_F
-- D 1 - I - 0x00617D 01:A16D: 81 A1     .word ofs_016_A181_04_R
-- D 1 - I - 0x00617F 01:A16F: 73 A1     .word ofs_016_A173_05_B
-- D 1 - I - 0x006181 01:A171: 7B A1     .word ofs_016_A17B_06_falcon
+                                        TAY
+                                        LDA tbl_A165_lo,y
+                                        STA ram_0000
+                                        LDA tbl_A165_hi,y
+                                        STA ram_0001
+C - - - - - 0x006170 01:A160: A4 11     LDY ram_0011                                       
+                                        JMP (ram_0000)
+tbl_A165_lo:
+- D 1 - I - 0x006175 01:A165: 88 A1     .byte < ofs_016_A188_00_M
+- D 1 - I - 0x006177 01:A167: 88 A1     .byte < ofs_016_A188_01_S
+- D 1 - I - 0x006179 01:A169: 88 A1     .byte < ofs_016_A188_02_L
+- D 1 - I - 0x00617B 01:A16B: 88 A1     .byte < ofs_016_A188_03_F
+- D 1 - I - 0x00617D 01:A16D: 81 A1     .byte < ofs_016_A181_04_R
+- D 1 - I - 0x00617F 01:A16F: 73 A1     .byte < ofs_016_A173_05_B
+- D 1 - I - 0x006181 01:A171: 7B A1     .byte < ofs_016_A17B_06_falcon
+tbl_A165_hi:
+- D 1 - I - 0x006175 01:A165: 88 A1     .byte > ofs_016_A188_00_M
+- D 1 - I - 0x006177 01:A167: 88 A1     .byte > ofs_016_A188_01_S
+- D 1 - I - 0x006179 01:A169: 88 A1     .byte > ofs_016_A188_02_L
+- D 1 - I - 0x00617B 01:A16B: 88 A1     .byte > ofs_016_A188_03_F
+- D 1 - I - 0x00617D 01:A16D: 81 A1     .byte > ofs_016_A181_04_R
+- D 1 - I - 0x00617F 01:A16F: 73 A1     .byte > ofs_016_A173_05_B
+- D 1 - I - 0x006181 01:A171: 7B A1     .byte > ofs_016_A17B_06_falcon
 
 
 
@@ -1327,12 +1342,7 @@ C - - - - - 0x0064A1 01:A491: 9D 76 06  STA ram_жизни_объектов,X
 C - - - - - 0x0064A4 01:A494: BD 2C 07  LDA ram_072C_obj,X
 C - - - - - 0x0064A7 01:A497: 09 80     ORA #$80
 C - - - - - 0x0064A9 01:A499: 9D 2C 07  STA ram_072C_obj,X
-C - - - - - 0x0064AC 01:A49C: BD 2C 07  LDA ram_072C_obj,X  ; bzk optimize, loading the same value
-C - - - - - 0x0064AF 01:A49F: 0A        ASL
-C - - - - - 0x0064B0 01:A4A0: 10 05     BPL bra_A4A7_RTS
-; bzk optimize, will never be used
-- - - - - - 0x0064B2 01:A4A2: A9 01     LDA #$01
-- - - - - - 0x0064B4 01:A4A4: 9D E6 06  STA ram_счетчкики_для_объектов,X
+; 1путин опт
 bra_A4A7_RTS:
 C - - - - - 0x0064B7 01:A4A7: 60        RTS
 
@@ -1342,9 +1352,7 @@ sub_A4A8_add_points_to_score:
 C - - - - - 0x0064B8 01:A4A8: BC D8 06  LDY ram_тип_объектов,X
 C - - - - - 0x0064BB 01:A4AB: B9 C0 A4  LDA tbl_A4C0_index,Y
 C - - - - - 0x0064BE 01:A4AE: A8        TAY
-C - - - - - 0x0064BF 01:A4AF: C0 16     CPY #$16
-; bzk optimize, no indexex > 14
-C - - - - - 0x0064C1 01:A4B1: B0 F4     BCS bra_A4A7_RTS
+; 1путин опт
 C - - - - - 0x0064C3 01:A4B3: B9 40 A5  LDA tbl_A540_points,Y
 C - - - - - 0x0064C6 01:A4B6: 85 01     STA ram_0001
 C - - - - - 0x0064C8 01:A4B8: B9 41 A5  LDA tbl_A540_points + $01,Y
@@ -2066,24 +2074,18 @@ C - - - - - 0x006855 01:A845: 60        RTS
 
 
 sub_0x006856:
-; bzk optimize, A always 00
-C - - - - - 0x006856 01:A846: 0A        ASL
-C - - - - - 0x006857 01:A847: 0A        ASL
-C - - - - - 0x006858 01:A848: 85 0D     STA ram_000D
+; 1путин опт
+                                        LDA ram_index_ppu_buffer
+                                        CMP #$01
+                                        BCS bra_A88B
 C - - - - - 0x00685A 01:A84A: BD 22 05  LDA ram_позиция_y_спрайта_врага_и_пуль,X
 C - - - - - 0x00685D 01:A84D: 85 12     STA ram_0012
 C - - - - - 0x00685F 01:A84F: BD 3C 05  LDA ram_позиция_x_спрайта_врага_и_пуль,X
 C - - - - - 0x006862 01:A852: 85 13     STA ram_0013
-C - - - - - 0x006864 01:A854: A5 1E     LDA ram_index_ppu_buffer
-C - - - - - 0x006866 01:A856: C9 01     CMP #$01
-C - - - - - 0x006868 01:A858: B0 31     BCS bra_A88B
 C - - - - - 0x00686A 01:A85A: A0 03     LDY #$03
 bra_A85C_loop:
 C - - - - - 0x00686C 01:A85C: 84 0F     STY ram_000F
-C - - - - - 0x00686E 01:A85E: 98        TYA
-C - - - - - 0x00686F 01:A85F: 18        CLC
-C - - - - - 0x006870 01:A860: 65 0D     ADC ram_000D    ; bzk optimize, always 00
-C - - - - - 0x006872 01:A862: A8        TAY
+; 1путин опт
 C - - - - - 0x006873 01:A863: B9 8E A8  LDA tbl_A88E,Y
 C - - - - - 0x006876 01:A866: 85 08     STA ram_0008
 C - - - - - 0x006878 01:A868: A5 12     LDA ram_0012
@@ -2182,12 +2184,6 @@ C - - - - - 0x0068EB 01:A8DB: A6 10     LDX ram_0010
 C - - - - - 0x0068ED 01:A8DD: 60        RTS
 
 
-; bzk garbage
-- - - - - - 0x0068EE 01:A8DE: 85 08     STA ram_0008
-- - - - - - 0x0068F0 01:A8E0: BD 3C 05  LDA ram_позиция_x_спрайта_врага_и_пуль,X
-- - - - - - 0x0068F3 01:A8E3: BC 22 05  LDY ram_позиция_y_спрайта_врага_и_пуль,X
-
-
 
 sub_0x0068F6:
 C - - - - - 0x0068F6 01:A8E6: 20 02 BC  JSR sub_BC02
@@ -2272,10 +2268,6 @@ C - - - - - 0x006976 01:A966: 20 AB F3  JSR sub_0x01F3BB
 C - - - - - 0x006979 01:A969: 4C 96 F3  JMP loc_0x01F3A6_write_speed_XY
 
 
-; bzk garbage
-- - - - - - 0x00697C 01:A96C: A0 00     LDY #$00
-
-
 
 sub_A96E:
 sub_0x00697E:
@@ -2292,10 +2284,6 @@ C - - - - - 0x006993 01:A983: BD AE 06  LDA ram_скорость_объекто�
 C - - - - - 0x006996 01:A986: E5 00     SBC ram_0000
 C - - - - - 0x006998 01:A988: 9D AE 06  STA ram_скорость_объектов_y_старш,X
 C - - - - - 0x00699B 01:A98B: 60        RTS
-
-
-; bzk garbage
-- - - - - - 0x00699C 01:A98C: A0 00     LDY #$00
 
 
 
@@ -2315,9 +2303,6 @@ C - - - - - 0x0069B6 01:A9A6: E5 00     SBC ram_0000
 C - - - - - 0x0069B8 01:A9A8: 9D CA 06  STA ram_скорость_объектов_x_старш,X
 C - - - - - 0x0069BB 01:A9AB: 60        RTS
 
-
-; bzk garbage
-- - - - - - 0x0069BC 01:A9AC: A0 00     LDY #$00
 
 
 
@@ -2519,9 +2504,6 @@ C - - - - - 0x006AD2 01:AAC2: 7D 3C 05  ADC ram_позиция_x_спрайта_
 C - - - - - 0x006AD5 01:AAC5: 9D 3C 05  STA ram_позиция_x_спрайта_врага_и_пуль,X
 C - - - - - 0x006AD8 01:AAC8: 60        RTS
 
-
-; bzk garbage
-- - - - - - 0x006AD9 01:AAC9: A9 10     LDA #$10
 
 
 
@@ -5208,11 +5190,6 @@ bra_BA79_RTS:
 C - - - - - 0x007A89 01:BA79: 60        RTS
 
 
-; bzk garbage
-- - - - - - 0x007A8A 01:BA7A: BC 22 05  LDY ram_позиция_y_спрайта_врага_и_пуль,X
-- - - - - - 0x007A8D 01:BA7D: BD 3C 05  LDA ram_позиция_x_спрайта_врага_и_пуль,X
-
-
 
 sub_0x007A90:
 C - - - - - 0x007A90 01:BA80: 85 03     STA ram_0003
@@ -5626,87 +5603,6 @@ tbl_BC83:
 ; 04
 - D 1 - - - 0x007CA3 01:BC93: C2        .byte $C2, $C3   ; 
 - D 1 - - - 0x007CA5 01:BC95: C4        .byte $C4, $C5   ; 
-
-
-; bzk garbage
-- - - - - - 0x007CA7 01:BC97: A9 06     LDA #con_buf_mode_06
-- - - - - - 0x007CA9 01:BC99: 9D 00 03  STA ram_nmt_buffer,X
-- - - - - - 0x007CAC 01:BC9C: E8        INX
-- - - - - - 0x007CAD 01:BC9D: A9 04     LDA #$04
-- - - - - - 0x007CAF 01:BC9F: 85 04     STA ram_0004
-- - - - - - 0x007CB1 01:BCA1: A5 08     LDA ram_0008
-- - - - - - 0x007CB3 01:BCA3: 0A        ASL
-- - - - - - 0x007CB4 01:BCA4: 0A        ASL
-- - - - - - 0x007CB5 01:BCA5: 0A        ASL
-- - - - - - 0x007CB6 01:BCA6: A8        TAY
-bra_BCA7_loop:
-- - - - - - 0x007CB7 01:BCA7: A5 01     LDA ram_0001    ; ppu hi
-- - - - - - 0x007CB9 01:BCA9: 9D 00 03  STA ram_nmt_buffer,X
-- - - - - - 0x007CBC 01:BCAC: E8        INX
-- - - - - - 0x007CBD 01:BCAD: A5 00     LDA ram_0000    ; ppu lo
-- - - - - - 0x007CBF 01:BCAF: 9D 00 03  STA ram_nmt_buffer,X
-- - - - - - 0x007CC2 01:BCB2: E8        INX
-- - - - - - 0x007CC3 01:BCB3: A9 02     LDA #$02    ; counter
-- - - - - - 0x007CC5 01:BCB5: 85 05     STA ram_0005
-- - - - - - 0x007CC7 01:BCB7: 9D 00 03  STA ram_nmt_buffer,X
-- - - - - - 0x007CCA 01:BCBA: E8        INX
-bra_BCBB_loop:
-- - - - - - 0x007CCB 01:BCBB: B9 E0 BC  LDA tbl_BCE0,Y
-- - - - - - 0x007CCE 01:BCBE: 9D 00 03  STA ram_nmt_buffer,X
-- - - - - - 0x007CD1 01:BCC1: C8        INY
-- - - - - - 0x007CD2 01:BCC2: E8        INX
-- - - - - - 0x007CD3 01:BCC3: C6 05     DEC ram_0005
-- - - - - - 0x007CD5 01:BCC5: D0 F4     BNE bra_BCBB_loop
-- - - - - - 0x007CD7 01:BCC7: A5 00     LDA ram_0000
-- - - - - - 0x007CD9 01:BCC9: 18        CLC
-- - - - - - 0x007CDA 01:BCCA: 69 20     ADC #$20
-- - - - - - 0x007CDC 01:BCCC: 85 00     STA ram_0000
-- - - - - - 0x007CDE 01:BCCE: 90 02     BCC bra_BCD2_not_overflow
-- - - - - - 0x007CE0 01:BCD0: E6 01     INC ram_0001
-bra_BCD2_not_overflow:
-- - - - - - 0x007CE2 01:BCD2: C6 04     DEC ram_0004
-- - - - - - 0x007CE4 01:BCD4: D0 D1     BNE bra_BCA7_loop
-- - - - - - 0x007CE6 01:BCD6: A9 FF     LDA #$FF
-- - - - - - 0x007CE8 01:BCD8: 9D 00 03  STA ram_nmt_buffer,X
-- - - - - - 0x007CEB 01:BCDB: E8        INX
-- - - - - - 0x007CEC 01:BCDC: 86 1E     STX ram_index_ppu_buffer
-- - - - - - 0x007CEE 01:BCDE: 18        CLC
-- - - - - - 0x007CEF 01:BCDF: 60        RTS
-
-
-
-tbl_BCE0:
-; bzk garbage
-; 00 
-- - - - - - 0x007CF0 01:BCE0: A6        .byte $A6, $A7   ; 
-- - - - - - 0x007CF2 01:BCE2: A8        .byte $A8, $A9   ; 
-- - - - - - 0x007CF4 01:BCE4: AA        .byte $AA, $AB   ; 
-- - - - - - 0x007CF6 01:BCE6: AC        .byte $AC, $AD   ; 
-; 01 
-- - - - - - 0x007CF8 01:BCE8: AE        .byte $AE, $AF   ; 
-- - - - - - 0x007CFA 01:BCEA: B0        .byte $B0, $B1   ; 
-- - - - - - 0x007CFC 01:BCEC: B2        .byte $B2, $B3   ; 
-- - - - - - 0x007CFE 01:BCEE: B4        .byte $B4, $B5   ; 
-; 02 
-- - - - - - 0x007D00 01:BCF0: B6        .byte $B6, $B6   ; 
-- - - - - - 0x007D02 01:BCF2: B7        .byte $B7, $B8   ; 
-- - - - - - 0x007D04 01:BCF4: B9        .byte $B9, $BA   ; 
-- - - - - - 0x007D06 01:BCF6: BB        .byte $BB, $BC   ; 
-; 03 
-- - - - - - 0x007D08 01:BCF8: B6        .byte $B6, $B6   ; 
-- - - - - - 0x007D0A 01:BCFA: BD        .byte $BD, $BE   ; 
-- - - - - - 0x007D0C 01:BCFC: BF        .byte $BF, $C0   ; 
-- - - - - - 0x007D0E 01:BCFE: C1        .byte $C1, $C2   ; 
-; 04 
-- - - - - - 0x007D10 01:BD00: D5        .byte $D5, $D6   ; 
-- - - - - - 0x007D12 01:BD02: D7        .byte $D7, $D8   ; 
-- - - - - - 0x007D14 01:BD04: D9        .byte $D9, $DA   ; 
-- - - - - - 0x007D16 01:BD06: DB        .byte $DB, $DC   ; 
-; 05 
-- - - - - - 0x007D18 01:BD08: DD        .byte $DD, $DE   ; 
-- - - - - - 0x007D1A 01:BD0A: DF        .byte $DF, $E0   ; 
-- - - - - - 0x007D1C 01:BD0C: E1        .byte $E1, $E2   ; 
-- - - - - - 0x007D1E 01:BD0E: DB        .byte $DB, $DC   ; 
 
 
 

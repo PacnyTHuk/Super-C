@@ -250,7 +250,7 @@ C - - - - - 0x014163 05:8153: A9 40     LDA #$40
 C - - - - - 0x014165 05:8155: 85 7D     STA ram_007D_тип_скролла
 C - - - - - 0x014167 05:8157: 85 71     STA ram_0071_тип_скролла
 bra_8159:
-C - - - - - 0x014169 05:8159: A9 00     LDA #$00
+; 1путин опт
 C - - - - - 0x01416B 05:815B: 20 46 A8  JSR sub_0x006856
 C - - - - - 0x01416E 05:815E: B0 03     BCS bra_8163
 C - - - - - 0x014170 05:8160: 4C 9A A2  JMP loc_0x0062AA
@@ -1650,7 +1650,7 @@ tbl_897A_speed:
 
 
 sub_898A:
-;leon опт
+; leon опт
                                         LDY ram_0772_obj,X
                                         LDA tbl_8990_lo,y
                                         STA ram_0000
@@ -3933,7 +3933,7 @@ tbl_96F4_spd_X:
 
 
 sub_96FE:
-;leon опт
+; leon опт
                                         LDY ram_0748_obj,X
                                         LDA tbl_9704_lo,y
                                         STA ram_0000
