@@ -641,14 +641,12 @@ C - - - - - 0x0043F6 01:83E6: 20 B7 A6  JSR sub_0x0066C7_delete_object_03
                                         CMP #$20
                                         BCS bra_841F_RTS
 C - - - - - 0x0043F9 01:83E9: BD 10 07  LDA ram_0710_obj,X
-
 C - - - - - 0x0043FC 01:83EC: 0A        ASL
 C - - - - - 0x0043FD 01:83ED: A8        TAY
 C - - - - - 0x0043FE 01:83EE: B9 26 84  LDA tbl_8426,Y
 C - - - - - 0x004401 01:83F1: 85 08     STA ram_0008
 C - - - - - 0x004403 01:83F3: B9 27 84  LDA tbl_8426 + $01,Y
 C - - - - - 0x004406 01:83F6: 85 09     STA ram_0009
-; bzk optimize, check ram_index_ppu_buffer first
 C - - - - - 0x004408 01:83F8: A5 1E     LDX ram_index_ppu_buffer
 C - - - - - 0x00440F 01:83FF: A0 00     LDY #$00
 bra_8401_loop:
@@ -1002,7 +1000,8 @@ C - - J - - 0x004648 01:8638: 4C A2 A2  JMP loc_0x0062B2
 
 
 ofs_038_21_863B_0A:
-C - - J - - 0x00464B 01:863B: 20 8C FC  JSR sub_0x01FC9C_increase_002B
+; 1путин опт
+                                        INC ram_002B
 C - - - - - 0x00464E 01:863E: A9 AA     LDA #$AA
 C - - - - - 0x004650 01:8640: 85 FF     STA ram_for_2000
 C - - - - - 0x004652 01:8642: A5 FE     LDA ram_for_2001
@@ -3586,7 +3585,6 @@ C - - - - - 0x005597 01:9587: 65 0E     ADC ram_000E
 C - - - - - 0x005599 01:9589: 85 05     STA ram_0005
 C - - - - - 0x00559B 01:958B: C8        INY
 C - - - - - 0x00559C 01:958C: C8        INY
-C - - - - - 0x00559D 01:958D: B1 08     LDA (ram_0008),Y    ; counter
 ; 1путин опт
 C - - - - - 0x0055A1 01:9591: A5 02     LDA ram_0002    ; 00/FF
 C - - - - - 0x0055A3 01:9593: 65 0F     ADC ram_000F
@@ -3594,7 +3592,6 @@ C - - - - - 0x0055A5 01:9595: D0 44     BNE bra_95DB
 C - - - - - 0x0055A7 01:9597: A5 05     LDA ram_0005
 C - - - - - 0x0055A9 01:9599: C9 04     CMP #$04
 C - - - - - 0x0055AB 01:959B: 90 3E     BCC bra_95DB
-bra_959D:
 C - - - - - 0x0055AD 01:959D: 88        DEY
 C - - - - - 0x0055AE 01:959E: 84 12     STY ram_0012
 C - - - - - 0x0055B0 01:95A0: A5 0D     LDA ram_000D

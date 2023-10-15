@@ -1528,7 +1528,8 @@ C - - - - - 0x0148FB 05:88EB: 4C D8 A3  JMP loc_0x0063E8
 
 
 ofs_038_69_88EE_08:
-C - - J - - 0x0148FE 05:88EE: 20 8C FC  JSR sub_0x01FC9C_increase_002B
+; 1путин опт
+                                        INC ram_002B
 C - - - - - 0x014901 05:88F1: 4C A2 A2  JMP loc_0x0062B2
 
 
@@ -2568,7 +2569,8 @@ C - - J - - 0x014EEE 05:8EDE: 20 C5 90  JSR sub_90C5
 C - - - - - 0x014EF1 05:8EE1: A0 02     LDY #$02
 C - - - - - 0x014EF3 05:8EE3: 20 F7 8E  JSR sub_8EF7
 C - - - - - 0x014EF6 05:8EE6: 90 0E     BCC bra_8EF6_RTS
-C - - - - - 0x014EF8 05:8EE8: 20 8C FC  JSR sub_0x01FC9C_increase_002B
+; 1путин опт
+                                        INC ram_002B
 C - - - - - 0x014EFB 05:8EEB: A9 40     LDA #$40
 C - - - - - 0x014EFD 05:8EED: 85 71     STA ram_0071_тип_скролла
 C - - - - - 0x014EFF 05:8EEF: A9 00     LDA #$00
@@ -3900,7 +3902,8 @@ C - - - - - 0x0156D9 05:96C9: 4C D7 A2  JMP loc_0x0062E7_increase_obj_state
 
 
 ofs_038_42_96CC_0A:
-C - - J - - 0x0156DC 05:96CC: 20 8C FC  JSR sub_0x01FC9C_increase_002B
+; 1путин опт
+                                        INC ram_002B
 C - - - - - 0x0156DF 05:96CF: 20 88 F1  JSR sub_0x01F198
 C - - - - - 0x0156E2 05:96D2: E6 65     INC ram_0065
 C - - - - - 0x0156E4 05:96D4: A9 08     LDA #con_chr_bank + $08

@@ -895,7 +895,8 @@ C - - - - - 0x01055B 04:854B: 4C F6 A2  JMP loc_0x006306
 
 
 ofs_038_59_854E_0A:
-C - - J - - 0x01055E 04:854E: 20 8C FC  JSR sub_0x01FC9C_increase_002B
+; 1путин опт
+                                        INC ram_002B
 C - - - - - 0x010561 04:8551: 20 88 F1  JSR sub_0x01F198
 C - - - - - 0x010564 04:8554: E6 65     INC ram_0065
 C - - - - - 0x010566 04:8556: 20 A1 AA  JSR sub_0x006AB1_restore_reg_values
@@ -3463,7 +3464,8 @@ C - - - - - 0x011418 04:9408: 30 09     BMI bra_9413_RTS
 C - - - - - 0x01141A 04:940A: 4C 7F FC  JMP loc_0x01FC8F_copy_reg_values
 bra_940D:
 C - - - - - 0x01141D 04:940D: 20 75 A2  JSR sub_0x006285_delete_object_02
-C - - - - - 0x011420 04:9410: 4C 8C FC  JMP loc_0x01FC9C_increase_002B
+; 1путин опт
+                                        INC ram_002B
 bra_9413_RTS:
 C - - - - - 0x011423 04:9413: 60        RTS
 

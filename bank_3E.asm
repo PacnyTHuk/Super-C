@@ -10,7 +10,6 @@
 .export sub_0x01E552
 .export sub_0x01E594
 .export sub_0x01E5E0_clear_memory
-.export sub_0x01E632_inc_pointer_by_A
 .export sub_0x01E648
 .export loc_0x01E64C_add_points_to_score
 .export sub_0x01E7D0
@@ -57,8 +56,6 @@
 .export sub_0x01FA40
 .export sub_0x01FC8F_copy_reg_values
 .export loc_0x01FC8F_copy_reg_values
-.export sub_0x01FC9C_increase_002B
-.export loc_0x01FC9C_increase_002B
 .export loc_0x01FCCA_enable_nmi
 .export sub_0x01FCF9
 .export sub_0x01FDBB
@@ -79,22 +76,8 @@
 
 ; bzk garbage
 ; first byte at DF00 is technically a part of DPCM
-- D 2 - - A 0x01DF10 07:DF00: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x01DF20 07:DF10: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x01DF30 07:DF20: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x01DF40 07:DF30: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x01DF50 07:DF40: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x01DF60 07:DF50: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x01DF70 07:DF60: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x01DF80 07:DF70: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x01DF90 07:DF80: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x01DFA0 07:DF90: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x01DFB0 07:DFA0: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x01DFC0 07:DFB0: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x01DFD0 07:DFC0: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x01DFE0 07:DFD0: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x01DFF0 07:DFE0: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x01E000 07:DFF0: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
+- D 2 - - A 0x01DF10 07:DF00: FF        .byte $FF
+
 
 
 
@@ -310,10 +293,7 @@ _off000_E0EA_0F_area_6_boss:
 
 
 ofs_040_01_E0EC_00:
-C - - J - - 0x01E0FC 07:E0EC: A0 01     LDY #$01
-bra_E0EE_garbage_loop:
-C - - - - - 0x01E0FE 07:E0EE: 88        DEY
-C - - - - - 0x01E0FF 07:E0EF: D0 FD     BNE bra_E0EE_garbage_loop
+; 1путин опт
 C - - - - - 0x01E101 07:E0F1: AD 02 20  LDA $2002
 C - - - - - 0x01E104 07:E0F4: A2 22     LDX #> $2240
 C - - - - - 0x01E106 07:E0F6: A9 40     LDA #< $2240
@@ -334,10 +314,7 @@ C - - - - - 0x01E122 07:E112: 4C 5D E2  JMP loc_E25D
 ofs_040_02_E115_00:
 C - - J - - 0x01E125 07:E115: AD F9 07  LDA ram_07F9
 C - - - - - 0x01E128 07:E118: 8D 00 C0  STA $C000
-C - - - - - 0x01E12B 07:E11B: A0 1E     LDY #$1E
-bra_E11D_garbage_loop:
-C - - - - - 0x01E12D 07:E11D: 88        DEY
-C - - - - - 0x01E12E 07:E11E: D0 FD     BNE bra_E11D_garbage_loop
+; 1путин опт
 C - - - - - 0x01E130 07:E120: AD 02 20  LDA $2002
 C - - - - - 0x01E133 07:E123: A2 22     LDX #> $2280
 C - - - - - 0x01E135 07:E125: A9 80     LDA #< $2280
@@ -362,10 +339,7 @@ C - - - - - 0x01E158 07:E148: 4C 36 E2  JMP loc_E236
 ofs_040_02_E14B_01:
 C - - J - - 0x01E15B 07:E14B: AD FA 07  LDA ram_07FA
 C - - - - - 0x01E15E 07:E14E: 8D 00 C0  STA $C000
-C - - - - - 0x01E161 07:E151: A0 14     LDY #$14
-bra_E153_garbage_loop:
-C - - - - - 0x01E163 07:E153: 88        DEY
-C - - - - - 0x01E164 07:E154: D0 FD     BNE bra_E153_garbage_loop
+; 1путин опт
 C - - - - - 0x01E166 07:E156: 20 EC FB  JSR sub_FBEC
 C - - - - - 0x01E169 07:E159: AD 02 20  LDA $2002
 C - - - - - 0x01E16C 07:E15C: A0 00     LDY #$00
@@ -383,10 +357,7 @@ C - - - - - 0x01E187 07:E177: 4C CB FB  JMP loc_FBCB
 
 
 ofs_040_02_E17A_02:
-C - - J - - 0x01E18A 07:E17A: A0 0F     LDY #$0F
-bra_E17C_garbage_loop:
-C - - - - - 0x01E18C 07:E17C: 88        DEY
-C - - - - - 0x01E18D 07:E17D: D0 FD     BNE bra_E17C_garbage_loop
+; 1путин опт
 bra_E17F:
 C - - - - - 0x01E18F 07:E17F: A0 05     LDY #$05
 C - - - - - 0x01E191 07:E181: AD F5 07  LDA ram_bg_bank_1 + $05
@@ -403,10 +374,7 @@ C - - - - - 0x01E1A5 07:E195: 4C 5D E2  JMP loc_E25D
 ofs_040_03_E198_00:
 C - - J - - 0x01E1A8 07:E198: A9 20     LDA #$20
 C - - - - - 0x01E1AA 07:E19A: 8D 00 C0  STA $C000
-C - - - - - 0x01E1AD 07:E19D: A0 08     LDY #$08
-bra_E19F_garbage_loop:
-C - - - - - 0x01E1AF 07:E19F: 88        DEY
-C - - - - - 0x01E1B0 07:E1A0: D0 FD     BNE bra_E19F_garbage_loop
+; 1путин опт
 C - - - - - 0x01E1B2 07:E1A2: A5 73     LDA ram_0073
 C - - - - - 0x01E1B4 07:E1A4: 8D 05 20  STA $2005
 C - - - - - 0x01E1B7 07:E1A7: 8D 05 20  STA $2005
@@ -417,10 +385,7 @@ C - - - - - 0x01E1BA 07:E1AA: 4C 36 E2  JMP loc_E236
 ofs_040_03_E1AD_01:
 C - - J - - 0x01E1BD 07:E1AD: AD F9 07  LDA ram_07F9
 C - - - - - 0x01E1C0 07:E1B0: 8D 00 C0  STA $C000
-C - - - - - 0x01E1C3 07:E1B3: A0 08     LDY #$08
-bra_E1B5_garbage_loop:
-C - - - - - 0x01E1C5 07:E1B5: 88        DEY
-C - - - - - 0x01E1C6 07:E1B6: D0 FD     BNE bra_E1B5_garbage_loop
+; 1путин опт
 C - - - - - 0x01E1C8 07:E1B8: A5 74     LDA ram_0074_конфиг_уровня
 C - - - - - 0x01E1CA 07:E1BA: 8D 05 20  STA $2005
 C - - - - - 0x01E1CD 07:E1BD: 8D 05 20  STA $2005
@@ -432,10 +397,7 @@ ofs_040_03_E1C3_02:
 C - - J - - 0x01E1D3 07:E1C3: AD FA 07  LDA ram_07FA
 C - - - - - 0x01E1D6 07:E1C6: 8D 00 C0  STA $C000
 C - - - - - 0x01E1D9 07:E1C9: 20 EC FB  JSR sub_FBEC
-C - - - - - 0x01E1DC 07:E1CC: A0 14     LDY #$14
-bra_E1CE_garbage_loop:
-C - - - - - 0x01E1DE 07:E1CE: 88        DEY
-C - - - - - 0x01E1DF 07:E1CF: D0 FD     BNE bra_E1CE_garbage_loop
+; 1путин опт
 C - - - - - 0x01E1E1 07:E1D1: AD 02 20  LDA $2002
 C - - - - - 0x01E1E4 07:E1D4: AE FC 07  LDX ram_07FC
 C - - - - - 0x01E1E7 07:E1D7: AD FB 07  LDA ram_07FB
@@ -453,10 +415,7 @@ C - - - - - 0x01E1FE 07:E1EE: 4C 36 E2  JMP loc_E236
 ofs_040_03_E1F1_03:
 C - - J - - 0x01E201 07:E1F1: A9 40     LDA #$40
 C - - - - - 0x01E203 07:E1F3: 8D 00 C0  STA $C000
-C - - - - - 0x01E206 07:E1F6: A0 02     LDY #$02
-bra_E1F8_garbage_loop:
-C - - - - - 0x01E208 07:E1F8: 88        DEY
-C - - - - - 0x01E209 07:E1F9: D0 FD     BNE bra_E1F8_garbage_loop
+; 1путин опт
 C - - - - - 0x01E20B 07:E1FB: AD F0 07  LDA ram_bg_bank_1
 C - - - - - 0x01E20E 07:E1FE: AE F1 07  LDX ram_bg_bank_1 + $01
 C - - - - - 0x01E211 07:E201: 20 EF FB  JSR sub_FBEF
@@ -465,10 +424,7 @@ C - - - - - 0x01E214 07:E204: 4C 36 E2  JMP loc_E236
 
 
 ofs_040_03_E207_04:
-C - - J - - 0x01E217 07:E207: A0 08     LDY #$08
-bra_E209_garbage_loop:
-C - - - - - 0x01E219 07:E209: 88        DEY
-C - - - - - 0x01E21A 07:E20A: D0 FD     BNE bra_E209_garbage_loop
+; 1путин опт
 C - - - - - 0x01E21C 07:E20C: 20 EC FB  JSR sub_FBEC
 C - - - - - 0x01E21F 07:E20F: 4C 5D E2  JMP loc_E25D
 
@@ -477,10 +433,7 @@ C - - - - - 0x01E21F 07:E20F: 4C 5D E2  JMP loc_E25D
 ofs_040_05_E212_00:
 C - - J - - 0x01E222 07:E212: AD F9 07  LDA ram_07F9
 C - - - - - 0x01E225 07:E215: 8D 00 C0  STA $C000
-C - - - - - 0x01E228 07:E218: A0 09     LDY #$09
-bra_E21A_garbage_loop:
-C - - - - - 0x01E22A 07:E21A: 88        DEY
-C - - - - - 0x01E22B 07:E21B: D0 FD     BNE bra_E21A_garbage_loop
+; 1путин опт
 C - - - - - 0x01E22D 07:E21D: AD 02 20  LDA $2002
 C - - - - - 0x01E230 07:E220: AD F7 07  LDA ram_07F7
 C - - - - - 0x01E233 07:E223: 8D 00 20  STA $2000
@@ -504,10 +457,7 @@ C - - - - - 0x01E251 07:E241: 4C 36 E2  JMP loc_E236
 
 
 ofs_040_05_E244_02:
-C - - J - - 0x01E254 07:E244: A0 09     LDY #$09
-bra_E246_garbage_loop:
-C - - - - - 0x01E256 07:E246: 88        DEY
-C - - - - - 0x01E257 07:E247: D0 FD     BNE bra_E246_garbage_loop
+; 1путин опт
 C - - - - - 0x01E259 07:E249: A5 FF     LDA ram_for_2000
 C - - - - - 0x01E25B 07:E24B: 8D 00 20  STA $2000
 C - - - - - 0x01E25E 07:E24E: A9 00     LDA #$00
@@ -523,10 +473,7 @@ C - - - - - 0x01E270 07:E260: 4C CB FB  JMP loc_FBCB
 
 
 ofs_040_06_E263_00:
-C - - J - - 0x01E273 07:E263: A0 09     LDY #$09
-bra_E265_garbage_loop:
-C - - - - - 0x01E275 07:E265: 88        DEY
-C - - - - - 0x01E276 07:E266: D0 FD     BNE bra_E265_garbage_loop
+; 1путин опт
 C - - - - - 0x01E278 07:E268: AD 02 20  LDA $2002
 C - - - - - 0x01E27B 07:E26B: AE FC 07  LDX ram_07FC
 C - - - - - 0x01E27E 07:E26E: AD FB 07  LDA ram_07FB
@@ -540,10 +487,7 @@ C - - - - - 0x01E290 07:E280: 4C 5D E2  JMP loc_E25D
 
 
 ofs_040_08_E283_00:
-C - - J - - 0x01E293 07:E283: A0 04     LDY #$04
-bra_E285_garbage_loop:
-C - - - - - 0x01E295 07:E285: 88        DEY
-C - - - - - 0x01E296 07:E286: D0 FD     BNE bra_E285_garbage_loop
+; 1путин опт
 C - - - - - 0x01E298 07:E288: AD 02 20  LDA $2002
 C - - - - - 0x01E29B 07:E28B: A2 22     LDX #> $2280
 C - - - - - 0x01E29D 07:E28D: A9 80     LDA #< $2280
@@ -567,10 +511,7 @@ C - - - - - 0x01E2C6 07:E2B6: 4C 5D E2  JMP loc_E25D
 
 
 ofs_040_0A_E2B9_00:
-C - - J - - 0x01E2C9 07:E2B9: A0 0D     LDY #$0D
-bra_E2BB_garbage_loop:
-C - - - - - 0x01E2CB 07:E2BB: 88        DEY
-C - - - - - 0x01E2CC 07:E2BC: D0 FD     BNE bra_E2BB_garbage_loop
+; 1путин опт
 C - - - - - 0x01E2CE 07:E2BE: AD 02 20  LDA $2002
 C - - - - - 0x01E2D1 07:E2C1: A9 30     LDA #con_chr_bank + $30
 C - - - - - 0x01E2D3 07:E2C3: A2 2E     LDX #con_chr_bank + $2E
@@ -580,10 +521,7 @@ C - - - - - 0x01E2D8 07:E2C8: 4C 5D E2  JMP loc_E25D
 
 
 ofs_040_0B_E2CB_00:
-C - - J - - 0x01E2DB 07:E2CB: A0 07     LDY #$07
-bra_E2CD_garbage_loop:
-C - - - - - 0x01E2DD 07:E2CD: 88        DEY
-C - - - - - 0x01E2DE 07:E2CE: D0 FD     BNE bra_E2CD_garbage_loop
+; 1путин опт
 C - - - - - 0x01E2E0 07:E2D0: AD 02 20  LDA $2002
 C - - - - - 0x01E2E3 07:E2D3: A2 2E     LDX #> $2E20
 C - - - - - 0x01E2E5 07:E2D5: A9 20     LDA #< $2E20
@@ -602,10 +540,7 @@ C - - - - - 0x01E2FC 07:E2EC: 4C 5D E2  JMP loc_E25D
 ofs_040_0C_E2EF_00:
 C - - J - - 0x01E2FF 07:E2EF: AD F9 07  LDA ram_07F9
 C - - - - - 0x01E302 07:E2F2: 8D 00 C0  STA $C000
-C - - - - - 0x01E305 07:E2F5: A0 06     LDY #$06
-bra_E2F7_garbage_loop:
-C - - - - - 0x01E307 07:E2F7: 88        DEY
-C - - - - - 0x01E308 07:E2F8: D0 FD     BNE bra_E2F7_garbage_loop
+; 1путин опт
 C - - - - - 0x01E30A 07:E2FA: AD 02 20  LDA $2002
 C - - - - - 0x01E30D 07:E2FD: AE FC 07  LDX ram_07FC
 C - - - - - 0x01E310 07:E300: AD FB 07  LDA ram_07FB
@@ -621,19 +556,13 @@ C - - - - - 0x01E322 07:E312: 4C 36 E2  JMP loc_E236
 ofs_040_0C_E315_01:
 C - - J - - 0x01E325 07:E315: AD FA 07  LDA ram_07FA
 C - - - - - 0x01E328 07:E318: 8D 00 C0  STA $C000
-C - - - - - 0x01E32B 07:E31B: A0 02     LDY #$02
-bra_E31D_garbage_loop:
-C - - - - - 0x01E32D 07:E31D: 88        DEY
-C - - - - - 0x01E32E 07:E31E: D0 FD     BNE bra_E31D_garbage_loop
+; 1путин опт
 C - - - - - 0x01E330 07:E320: 4C 36 E2  JMP loc_E236
 
 
 
 ofs_040_0C_E323_02:
-C - - J - - 0x01E333 07:E323: A0 08     LDY #$08
-bra_E325_garbage_loop:
-C - - - - - 0x01E335 07:E325: 88        DEY
-C - - - - - 0x01E336 07:E326: D0 FD     BNE bra_E325_garbage_loop
+; 1путин опт
 C - - - - - 0x01E338 07:E328: AD 02 20  LDA $2002
 C - - - - - 0x01E33B 07:E32B: A2 23     LDX #> $2300
 C - - - - - 0x01E33D 07:E32D: A9 00     LDA #< $2300
@@ -648,10 +577,7 @@ C - - - - - 0x01E34B 07:E33B: 4C 5D E2  JMP loc_E25D
 ofs_040_0D_E33E_00:
 C - - J - - 0x01E34E 07:E33E: AD F9 07  LDA ram_07F9
 C - - - - - 0x01E351 07:E341: 8D 00 C0  STA $C000
-C - - - - - 0x01E354 07:E344: A0 09     LDY #$09
-bra_E346_garbage_loop:
-C - - - - - 0x01E356 07:E346: 88        DEY
-C - - - - - 0x01E357 07:E347: D0 FD     BNE bra_E346_garbage_loop
+; 1путин опт
 C - - - - - 0x01E359 07:E349: A9 70     LDA #con_chr_bank + $70
 C - - - - - 0x01E35B 07:E34B: A2 72     LDX #con_chr_bank + $72
 C - - - - - 0x01E35D 07:E34D: 20 EF FB  JSR sub_FBEF
@@ -670,26 +596,17 @@ C - - - - - 0x01E378 07:E368: 4C 36 E2  JMP loc_E236
 ofs_040_0D_E36B_01:
 C - - J - - 0x01E37B 07:E36B: AD FA 07  LDA ram_07FA
 C - - - - - 0x01E37E 07:E36E: 8D 00 C0  STA $C000
-C - - - - - 0x01E381 07:E371: A0 03     LDY #$03
-bra_E373_garbage_loop:
-C - - - - - 0x01E383 07:E373: 88        DEY
-C - - - - - 0x01E384 07:E374: D0 FD     BNE bra_E373_garbage_loop
+; 1путин опт
 C - - - - - 0x01E386 07:E376: 4C 36 E2  JMP loc_E236
 
 
 
 ofs_040_0D_E379_02:
-C - - J - - 0x01E389 07:E379: A0 07     LDY #$07
-bra_E37B_garbage_loop:
-C - - - - - 0x01E38B 07:E37B: 88        DEY
-C - - - - - 0x01E38C 07:E37C: D0 FD     BNE bra_E37B_garbage_loop
+; 1путин опт
 C - - - - - 0x01E38E 07:E37E: AD F0 07  LDA ram_bg_bank_1
 C - - - - - 0x01E391 07:E381: AE F1 07  LDX ram_bg_bank_1 + $01
 C - - - - - 0x01E394 07:E384: 20 EF FB  JSR sub_FBEF
-C - - - - - 0x01E397 07:E387: A0 0E     LDY #$0E
-bra_E389_garbage_loop:
-C - - - - - 0x01E399 07:E389: 88        DEY
-C - - - - - 0x01E39A 07:E38A: D0 FD     BNE bra_E389_garbage_loop
+; 1путин опт
 C - - - - - 0x01E39C 07:E38C: AD 02 20  LDA $2002
 C - - - - - 0x01E39F 07:E38F: A2 23     LDX #> $2300
 C - - - - - 0x01E3A1 07:E391: A9 00     LDA #< $2300
@@ -713,10 +630,7 @@ ofs_040_0F_E3AA_00:
 C - - J - - 0x01E3BA 07:E3AA: A9 50     LDA #con_chr_bank + $50
 C - - - - - 0x01E3BC 07:E3AC: A2 52     LDX #con_chr_bank + $52
 bra_E3AE:
-C - - - - - 0x01E3BE 07:E3AE: A0 05     LDY #$05
-bra_E3B0_garbage_loop:
-C - - - - - 0x01E3C0 07:E3B0: 88        DEY
-C - - - - - 0x01E3C1 07:E3B1: D0 FD     BNE bra_E3B0_garbage_loop
+; 1путин опт
 C - - - - - 0x01E3C3 07:E3B3: 20 EF FB  JSR sub_FBEF
 C - - - - - 0x01E3C6 07:E3B6: 4C 5D E2  JMP loc_E25D
 
@@ -898,11 +812,11 @@ C - - - - - 0x01E4BB 07:E4AB: E6 19     INC ram_номер_действия_на
 C - - - - - 0x01E4BD 07:E4AD: 60        RTS
 bra_E4AE:
 C - - - - - 0x01E4BE 07:E4AE: CA        DEX
-C - - - - - 0x01E4BF 07:E4AF: D0 09     BNE bra_E4BA
+C - - - - - 0x01E4BF 07:E4AF: D0 09     BNE bra_E4BA_код_выбор_уровня
 C - - - - - 0x01E4C1 07:E4B1: 20 D0 E5  JSR sub_E5D0_clear_memory
 C - - - - - 0x01E4C4 07:E4B4: 20 82 E5  JSR sub_E582
 C - - - - - 0x01E4C7 07:E4B7: 4C E5 E4  JMP loc_E4E5
-bra_E4BA:
+bra_E4BA_код_выбор_уровня:
 ; bzk garbage
 - - - - - - 0x01E4CA 07:E4BA: A9 0C     LDA #con_0x0017EA__area_1
 - - - - - - 0x01E4CC 07:E4BC: 20 7A FE  JSR sub_FE7A_print_text_on_the_screen
@@ -919,7 +833,7 @@ C - - - - - 0x01E4D6 07:E4C6: 4C E5 E4  JMP loc_E4E5
 
 ofs_032_E4C9_05:
 C - - J - - 0x01E4D9 07:E4C9: A6 19     LDX ram_номер_действия_на_заставке
-C - - - - - 0x01E4DB 07:E4CB: D0 0E     BNE bra_E4DB_sound_mode
+C - - - - - 0x01E4DB 07:E4CB: D0 0E     BNE bra_E4DB_соунд_тест
 C - - - - - 0x01E4DD 07:E4CD: A9 00     LDA #$00
 C - - - - - 0x01E4DF 07:E4CF: 8D 00 05  STA ram_кадр_анимации
 C - - - - - 0x01E4E2 07:E4D2: E6 19     INC ram_номер_действия_на_заставке
@@ -927,7 +841,7 @@ C - - - - - 0x01E4E4 07:E4D4: A9 00     LDA #$00
 C - - - - - 0x01E4E6 07:E4D6: 85 50     STA ram_номер_уровня
 C - - - - - 0x01E4E8 07:E4D8: 85 51     STA ram_номер_круга
 C - - - - - 0x01E4EA 07:E4DA: 60        RTS
-bra_E4DB_sound_mode:
+bra_E4DB_соунд_тест:
 C - - - - - 0x01E4EB 07:E4DB: 20 D7 FE  JSR sub_FED7_sound_mode_handler
 C - - - - - 0x01E4EE 07:E4DE: A5 F5     LDA ram_копия_нажатая_кнопка
 C - - - - - 0x01E4F0 07:E4E0: 29 10     AND #con_btn_Start
@@ -987,7 +901,8 @@ C - - - - - 0x01E528 07:E518: 85 1F     STA ram_001F_flag
 C - - - - - 0x01E52A 07:E51A: 85 50     STA ram_номер_уровня
 C - - - - - 0x01E52C 07:E51C: 20 D0 E5  JSR sub_E5D0_clear_memory
 C - - - - - 0x01E52F 07:E51F: 20 C0 E7  JSR sub_E7C0
-C - - - - - 0x01E532 07:E522: 20 8C FC  JSR sub_FC8C_increase_002B
+; 1путин опт
+                                        INC ram_002B
 C - - - - - 0x01E535 07:E525: A9 1E     LDA #$1E
 C - - - - - 0x01E537 07:E527: 85 FE     STA ram_for_2001
 C - - - - - 0x01E539 07:E529: 60        RTS
@@ -1110,15 +1025,6 @@ C - - - - - 0x01E5DE 07:E5CE: F0 0F     BEQ bra_E5DF    ; jmp
 sub_E5D0_clear_memory:
 sub_0x01E5E0_clear_memory:
 C - - - - - 0x01E5E0 07:E5D0: A2 38     LDX #$38
-;C - - - - - 0x01E5E2 07:E5D2: D0 02     BNE bra_E5D6    ; jmp
-
-
-; bzk garbage
-;- - - - - - 0x01E5E4 07:E5D4: A2 50     LDX #$50
-
-
-
-bra_E5D6:
 ; clear 0038-00DF
 C - - - - - 0x01E5E6 07:E5D6: A9 00     LDA #$00
 bra_E5D8_loop:
@@ -1184,29 +1090,6 @@ C - - - - - 0x01E613 07:E603: 99 00 05  STA $6000,Y
 C - - - - - 0x01E616 07:E606: D0 FA     BNE bra_E602_loop
 C - - - - - 0x01E618 07:E608: 60        RTS
 
-
-
-sub_0x01E632_inc_pointer_by_A:
-; bzk optimize, X always 00
-; bzk optimize, move to bank 30
-C - - - - - 0x01E632 07:E622: 18        CLC
-C - - - - - 0x01E633 07:E623: 75 00     ADC ram_0000,X
-C - - - - - 0x01E635 07:E625: 95 00     STA ram_0000,X
-C - - - - - 0x01E637 07:E627: 90 02     BCC bra_E62B_RTS
-C - - - - - 0x01E639 07:E629: F6 01     INC ram_0001,X
-bra_E62B_RTS:
-C - - - - - 0x01E63B 07:E62B: 60        RTS
-
-
-; bzk garbage
-- - - - - - 0x01E63C 07:E62C: 38        SEC
-- - - - - - 0x01E63D 07:E62D: 49 FF     EOR #$FF
-- - - - - - 0x01E63F 07:E62F: 75 00     ADC ram_0000,X
-- - - - - - 0x01E641 07:E631: 95 00     STA ram_0000,X
-- - - - - - 0x01E643 07:E633: B0 02     BCS bra_E637_RTS
-- - - - - - 0x01E645 07:E635: D6 01     DEC ram_0001,X
-bra_E637_RTS:
-- - - - - - 0x01E647 07:E637: 60        RTS
 
 
 
@@ -1344,24 +1227,6 @@ C - - - - - 0x01E719 07:E709: E9 A0     SBC #$A0
 C - - - - - 0x01E71B 07:E70B: 38        SEC
 bra_E70C_RTS:
 C - - - - - 0x01E71C 07:E70C: 60        RTS
-
-
-; bzk garbage
-- - - - - - 0x01E71D 07:E70D: 84 02     STY ram_0002
-- - - - - - 0x01E71F 07:E70F: 85 00     STA ram_0000
-- - - - - - 0x01E721 07:E711: A9 00     LDA #$00
-- - - - - - 0x01E723 07:E713: A0 08     LDY #$08
-bra_E715_loop:
-- - - - - - 0x01E725 07:E715: 46 02     LSR ram_0002
-- - - - - - 0x01E727 07:E717: 90 03     BCC bra_E71C
-- - - - - - 0x01E729 07:E719: 18        CLC
-- - - - - - 0x01E72A 07:E71A: 65 00     ADC ram_0000
-bra_E71C:
-- - - - - - 0x01E72C 07:E71C: 6A        ROR
-- - - - - - 0x01E72D 07:E71D: 88        DEY
-- - - - - - 0x01E72E 07:E71E: D0 F5     BNE bra_E715_loop
-- - - - - - 0x01E730 07:E720: 85 00     STA ram_0000
-- - - - - - 0x01E732 07:E722: 60        RTS
 
 
 
@@ -1564,7 +1429,8 @@ C - - - - - 0x01E857 07:E847: CA        DEX
 C - - - - - 0x01E858 07:E848: 10 D2     BPL bra_E81C_loop
 C - - - - - 0x01E85A 07:E84A: 20 9E FE  JSR sub_FE9E
 C - - - - - 0x01E85D 07:E84D: 20 C7 FE  JSR sub_FEC7_prepare_area_config
-C - - - - - 0x01E860 07:E850: 20 8C FC  JSR sub_FC8C_increase_002B
+; 1путин опт
+                                        INC ram_002B
 C - - - - - 0x01E863 07:E853: A9 01     LDA #$01
 C - - - - - 0x01E865 07:E855: A4 1F     LDY ram_001F_flag
 C - - - - - 0x01E867 07:E857: D0 0B     BNE bra_E864
@@ -1872,7 +1738,8 @@ C - - - - - 0x01EA04 07:E9F4: 4C 01 E9  JMP loc_E901
 
 
 ofs_033_E9F7_05:
-C - - J - - 0x01EA07 07:E9F7: 20 8C FC  JSR sub_FC8C_increase_002B
+; 1путин опт
+                                        INC ram_002B
 C - - - - - 0x01EA0A 07:E9FA: 20 FE E5  JSR sub_E5FE_clear_0500_0567
 C - - - - - 0x01EA0D 07:E9FD: 20 57 E5  JSR sub_E557
 C - - - - - 0x01EA10 07:EA00: A9 00     LDA #$00
@@ -1976,10 +1843,6 @@ C - - - - - 0x01EAAC 07:EA9C: A9 01     LDA #$01
 C - - - - - 0x01EAAE 07:EA9E: 85 39     STA ram_пауза
 C - - - - - 0x01EAB0 07:EAA0: A9 27     LDA #con_sound_27
 C - - - - - 0x01EAB2 07:EAA2: 4C DE FD  JMP loc_FDDE_play_sound
-
-
-; bzk garbage
-- - - - - - 0x01EAB5 07:EAA5: 60        RTS
 
 
 
@@ -3422,25 +3285,6 @@ tbl_F33F:
 - D 3 - - - 0x01F352 07:F342: F8        .byte $F8   ; 03 
 
 
-; bzk garbage
-- - - - - - 0x01F353 07:F343: 0A        ASL
-- - - - - - 0x01F354 07:F344: 84 06     STY ram_0006
-- - - - - - 0x01F356 07:F346: 85 0A     STA ram_000A
-- - - - - - 0x01F358 07:F348: 29 1F     AND #$1F
-- - - - - - 0x01F35A 07:F34A: A0 00     LDY #$00
-- - - - - - 0x01F35C 07:F34C: C9 07     CMP #$07
-- - - - - - 0x01F35E 07:F34E: 90 06     BCC bra_F356
-- - - - - - 0x01F360 07:F350: C9 12     CMP #$12
-- - - - - - 0x01F362 07:F352: B0 02     BCS bra_F356
-- - - - - - 0x01F364 07:F354: A0 02     LDY #$02
-bra_F356:
-- - - - - - 0x01F366 07:F356: C9 0D     CMP #$0D
-- - - - - - 0x01F368 07:F358: 90 01     BCC bra_F35B
-- - - - - - 0x01F36A 07:F35A: C8        INY ; 01 or 03
-bra_F35B:
-- - - - - - 0x01F36B 07:F35B: 84 07     STY ram_0007
-
-
 
 loc_F35D:
 C D 3 - - - 0x01F36D 07:F35D: 86 10     STX ram_0010
@@ -3583,11 +3427,13 @@ tbl_F40E:
 
 sub_F41C:
 ; 1путин опт
+                                        STY ram_0002
                                         LDY ram_0006
                                         LDA tbl_F421_lo,y
                                         STA ram_0000
                                         LDA tbl_F421_hi,y
                                         STA ram_0001
+                                        LDY ram_0002
                                         JMP (ram_0000)
 tbl_F421_lo:
 - D 3 - I - 0x01F431 07:F421: 33 F4     .byte < ofs_037_F433_00
@@ -3694,10 +3540,6 @@ ofs_037_F48A_08:
 - - - - - - 0x01F49C 07:F48C: 26 05     ROL ram_0005
 - - - - - - 0x01F49E 07:F48E: 60        RTS
 
-
-; bzk garbage
-- - - - - - 0x01F49F 07:F48F: 20 A5 F4  JSR sub_F4A5
-- - - - - - 0x01F4A2 07:F492: 4C 98 F4  JMP loc_F498
 
 
 
@@ -3868,65 +3710,6 @@ C - - - - - 0x01F57B 07:F56B: A9 80     LDA #$80
 C - - - - - 0x01F57D 07:F56D: D0 FB     BNE bra_F56A_RTS    ; jmp
 
 
-; bzk garbage up to 0x01F5D9
-- - - - - - 0x01F57F 07:F56F: A9 02     LDA #$02
-- - - - - - 0x01F581 07:F571: 85 0F     STA ram_000F
-- - - - - - 0x01F583 07:F573: 20 CB F5  JSR sub_F5CB
-- - - - - - 0x01F586 07:F576: 85 0C     STA ram_000C
-- - - - - - 0x01F588 07:F578: BC 64 07  LDY ram_0764_obj,X
-- - - - - - 0x01F58B 07:F57B: A5 07     LDA ram_0007
-- - - - - - 0x01F58D 07:F57D: 4A        LSR
-- - - - - - 0x01F58E 07:F57E: 4A        LSR
-- - - - - - 0x01F58F 07:F57F: 90 07     BCC bra_F588
-- - - - - - 0x01F591 07:F581: A9 20     LDA #$20
-- - - - - - 0x01F593 07:F583: 38        SEC
-- - - - - - 0x01F594 07:F584: E5 0C     SBC ram_000C
-- - - - - - 0x01F596 07:F586: 85 0C     STA ram_000C
-bra_F588:
-- - - - - - 0x01F598 07:F588: 46 07     LSR ram_0007
-- - - - - - 0x01F59A 07:F58A: 90 09     BCC bra_F595
-- - - - - - 0x01F59C 07:F58C: A9 40     LDA #$40
-- - - - - - 0x01F59E 07:F58E: 38        SEC
-- - - - - - 0x01F59F 07:F58F: E5 0C     SBC ram_000C
-- - - - - - 0x01F5A1 07:F591: 29 3F     AND #$3F
-- - - - - - 0x01F5A3 07:F593: 85 0C     STA ram_000C
-bra_F595:
-- - - - - - 0x01F5A5 07:F595: A9 00     LDA #$00
-- - - - - - 0x01F5A7 07:F597: 85 0E     STA ram_000E
-- - - - - - 0x01F5A9 07:F599: B9 CA 06  LDA ram_скорость_объектов_x_старш,Y
-- - - - - - 0x01F5AC 07:F59C: 18        CLC
-- - - - - - 0x01F5AD 07:F59D: 69 20     ADC #$20
-- - - - - - 0x01F5AF 07:F59F: C9 40     CMP #$40
-- - - - - - 0x01F5B1 07:F5A1: 90 04     BCC bra_F5A7
-- - - - - - 0x01F5B3 07:F5A3: E6 0E     INC ram_000E
-- - - - - - 0x01F5B5 07:F5A5: E9 40     SBC #$40
-bra_F5A7:
-- - - - - - 0x01F5B7 07:F5A7: 85 0D     STA ram_000D
-- - - - - - 0x01F5B9 07:F5A9: A5 0C     LDA ram_000C
-- - - - - - 0x01F5BB 07:F5AB: D9 CA 06  CMP ram_скорость_объектов_x_старш,Y
-- - - - - - 0x01F5BE 07:F5AE: F0 17     BEQ bra_F5C7
-- - - - - - 0x01F5C0 07:F5B0: A4 0E     LDY ram_000E
-- - - - - - 0x01F5C2 07:F5B2: D0 0A     BNE bra_F5BE
-- - - - - - 0x01F5C4 07:F5B4: 90 0E     BCC bra_F5C4
-- - - - - - 0x01F5C6 07:F5B6: C5 0D     CMP ram_000D
-- - - - - - 0x01F5C8 07:F5B8: B0 0A     BCS bra_F5C4
-bra_F5BA:
-- - - - - - 0x01F5CA 07:F5BA: A9 00     LDA #$00
-- - - - - - 0x01F5CC 07:F5BC: F0 08     BEQ bra_F5C6_RTS    ; jmp
-bra_F5BE:
-- - - - - - 0x01F5CE 07:F5BE: B0 FA     BCS bra_F5BA
-- - - - - - 0x01F5D0 07:F5C0: C5 0D     CMP ram_000D
-- - - - - - 0x01F5D2 07:F5C2: 90 F6     BCC bra_F5BA
-bra_F5C4:
-- - - - - - 0x01F5D4 07:F5C4: A9 01     LDA #$01
-bra_F5C6_RTS:
-- - - - - - 0x01F5D6 07:F5C6: 60        RTS
-bra_F5C7:
-- - - - - - 0x01F5D7 07:F5C7: A9 80     LDA #$80
-- - - - - - 0x01F5D9 07:F5C9: D0 FB     BNE bra_F5C6_RTS    ; jmp
-
-
-
 sub_F5CB:
 C - - - - - 0x01F5DB 07:F5CB: 20 82 F6  JSR sub_F682
 sub_F5CE:
@@ -3989,9 +3772,9 @@ C - - - - - 0x01F62B 07:F61B: 60        RTS
 
 ; ???
 tbl_F61C:
+; 1путин опт
 - D 3 - - - 0x01F62C 07:F61C: 22 F6     .word off_F622_00
 - D 3 - - - 0x01F62E 07:F61E: 42 F6     .word off_F642_01
-- - - - - - 0x01F630 07:F620: 62 F6     .word off_F662_02
 
 
 
@@ -4066,43 +3849,6 @@ off_F642_01:
 - - - - - - 0x01F671 07:F661: 33        .byte $33   ; 
 
 
-
-off_F662_02:
-- - - - - - 0x01F672 07:F662: 80        .byte $80   ; 
-- - - - - - 0x01F673 07:F663: 00        .byte $00   ; 
-- - - - - - 0x01F674 07:F664: 00        .byte $00   ; 
-- - - - - - 0x01F675 07:F665: 00        .byte $00   ; 
-- - - - - - 0x01F676 07:F666: F8        .byte $F8   ; 
-- - - - - - 0x01F677 07:F667: 53        .byte $53   ; 
-- - - - - - 0x01F678 07:F668: 32        .byte $32   ; 
-- - - - - - 0x01F679 07:F669: 21        .byte $21   ; 
-- - - - - - 0x01F67A 07:F66A: FB        .byte $FB   ; 
-- - - - - - 0x01F67B 07:F66B: 86        .byte $86   ; 
-- - - - - - 0x01F67C 07:F66C: 54        .byte $54   ; 
-- - - - - - 0x01F67D 07:F66D: 33        .byte $33   ; 
-- - - - - - 0x01F67E 07:F66E: FD        .byte $FD   ; 
-- - - - - - 0x01F67F 07:F66F: A8        .byte $A8   ; 
-- - - - - - 0x01F680 07:F670: 75        .byte $75   ; 
-- - - - - - 0x01F681 07:F671: 54        .byte $54   ; 
-- - - - - - 0x01F682 07:F672: FE        .byte $FE   ; 
-- - - - - - 0x01F683 07:F673: B9        .byte $B9   ; 
-- - - - - - 0x01F684 07:F674: 87        .byte $87   ; 
-- - - - - - 0x01F685 07:F675: 65        .byte $65   ; 
-- - - - - - 0x01F686 07:F676: FE        .byte $FE   ; 
-- - - - - - 0x01F687 07:F677: CB        .byte $CB   ; 
-- - - - - - 0x01F688 07:F678: 98        .byte $98   ; 
-- - - - - - 0x01F689 07:F679: 76        .byte $76   ; 
-- - - - - - 0x01F68A 07:F67A: FE        .byte $FE   ; 
-- - - - - - 0x01F68B 07:F67B: DB        .byte $DB   ; 
-- - - - - - 0x01F68C 07:F67C: A9        .byte $A9   ; 
-- - - - - - 0x01F68D 07:F67D: 87        .byte $87   ; 
-- - - - - - 0x01F68E 07:F67E: FF        .byte $FF   ; 
-- - - - - - 0x01F68F 07:F67F: DC        .byte $DC   ; 
-- - - - - - 0x01F690 07:F680: BA        .byte $BA   ; 
-- - - - - - 0x01F691 07:F681: 98        .byte $98   ; 
-
-
-
 sub_F682:
 C - - - - - 0x01F692 07:F682: A5 0A     LDA ram_000A
 C - - - - - 0x01F694 07:F684: 29 01     AND #$01
@@ -4148,36 +3894,6 @@ C - - - - - 0x01F6D2 07:F6C2: A9 03     LDA #$03
 C - - - - - 0x01F6D4 07:F6C4: 95 A0     STA ram_статус_игрока,X
 bra_F6C6_RTS:
 C - - - - - 0x01F6D6 07:F6C6: 60        RTS
-
-
-; bzk garbage
-- - - - - - 0x01F6D7 07:F6C7: A2 0F     LDX #$0F
-bra_F6C9_loop:
-- - - - - - 0x01F6D9 07:F6C9: 20 D0 F6  JSR sub_F6D0
-- - - - - - 0x01F6DC 07:F6CC: CA        DEX
-- - - - - - 0x01F6DD 07:F6CD: 10 FA     BPL bra_F6C9_loop
-- - - - - - 0x01F6DF 07:F6CF: 60        RTS
-
-
-
-sub_F6D0:
-; bzk garbage
-- - - - - - 0x01F6E0 07:F6D0: A9 00     LDA #$00
-- - - - - - 0x01F6E2 07:F6D2: 9D 68 05  STA ram_тип_пули_игрока,X
-- - - - - - 0x01F6E5 07:F6D5: 9D 78 05  STA ram_пули_игрока_позиция_y_старш,X
-- - - - - - 0x01F6E8 07:F6D8: 9D 88 05  STA ram_пули_игрока_позиция_x_старш,X
-- - - - - - 0x01F6EB 07:F6DB: 9D 98 05  STA ram_пули_игрока_атрибуты_спрайта,X
-- - - - - - 0x01F6EE 07:F6DE: 9D A8 05  STA ram_пули_игрока_аттрибуты,X
-- - - - - - 0x01F6F1 07:F6E1: 9D B8 05  STA ram_пули_игрока_тип_анимации,X
-- - - - - - 0x01F6F4 07:F6E4: 9D C8 05  STA ram_пули_игрока_позиция_y_младш,X
-- - - - - - 0x01F6F7 07:F6E7: 9D D8 05  STA ram_пули_игрока_позиция_x_младш,X
-- - - - - - 0x01F6FA 07:F6EA: 9D E8 05  STA ram_пули_игрока_скорость_y_младш,X
-- - - - - - 0x01F6FD 07:F6ED: 9D 58 06  STA ram_пули_игрока_скорость_y_старш,X
-- - - - - - 0x01F700 07:F6F0: 9D 08 06  STA ram_пули_игрока_скорость_x_младш,X
-- - - - - - 0x01F703 07:F6F3: 9D 18 06  STA ram_пули_игрока_скорость_x_старш,X
-- - - - - - 0x01F706 07:F6F6: 9D 28 06  STA ram_пули_игрока_счетчик_жизни,X
-- - - - - - 0x01F709 07:F6F9: 9D 38 06  STA ram_пули_игрока_хитбокс,X
-- - - - - - 0x01F70C 07:F6FC: 60        RTS
 
 
 
@@ -4261,11 +3977,6 @@ C - - - - - 0x01F748 07:F738: 10 FA     BPL bra_F734_loop
 C - - - - - 0x01F74A 07:F73A: 60        RTS
 
 
-; bzk garbage
-- - - - - - 0x01F74B 07:F73B: A9 00     LDA #$00
-- - - - - - 0x01F74D 07:F73D: F0 4D     BEQ bra_F78C    ; jmp
-
-
 
 loc_F73F_start_preparing_new_object:
 sub_0x01F74F_start_preparing_new_object:
@@ -4336,11 +4047,6 @@ bra_F7B3_RTS:
 C - - - - - 0x01F7C3 07:F7B3: 60        RTS
 
 
-; bzk garbage
-- - - - - - 0x01F7C4 07:F7B4: A0 05     LDY #$05
-- - - - - - 0x01F7C6 07:F7B6: D0 02     BNE bra_F7BA    ; jmp
-
-
 
 sub_0x01F7C8:
 C - - - - - 0x01F7C8 07:F7B8: A0 02     LDY #$02
@@ -4391,10 +4097,6 @@ tbl_F7F2:
 ; 02
 - D 3 - - - 0x01F802 07:F7F2: 00 3F     .word $3F00 ; ppu address
 - D 3 - - - 0x01F804 07:F7F4: 01        .byte con_buf_mode_01   ; 
-; 05
-; bzk garbage 0x01F7C4
-- - - - - - 0x01F805 07:F7F5: 10 3F     .word $3F10 ; ppu address
-- - - - - - 0x01F807 07:F7F7: 01        .byte con_buf_mode_01   ; 
 
 
 
@@ -4938,7 +4640,14 @@ C - - - - - 0x01FB42 07:FB32: 8D EA 07  STA ram_reset_check
 C - - - - - 0x01FB45 07:FB35: A9 B1     LDA #$B1
 C - - - - - 0x01FB47 07:FB37: 8D EB 07  STA ram_reset_check + $01
 C - - - - - 0x01FB4A 07:FB3A: 20 0E FE  JSR sub_FE0E_sprite_engine
-C - - - - - 0x01FB4D 07:FB3D: 20 D9 FC  JSR sub_FCD9
+; 1путин опт
+C - - - - - 0x01FCE9 07:FCD9: A9 A8     LDA #$A8
+C - - - - - 0x01FCEB 07:FCDB: 85 FF     STA ram_for_2000
+C - - - - - 0x01FCED 07:FCDD: 8D 00 20  STA $2000
+C - - - - - 0x01FCF0 07:FCE0: A9 1E     LDA #$1E
+C - - - - - 0x01FCF2 07:FCE2: 85 FE     STA ram_for_2001
+C - - - - - 0x01FCF4 07:FCE4: A9 05     LDA #$05
+C - - - - - 0x01FCF6 07:FCE6: 85 1D     STA ram_001D
 C - - - - - 0x01FB50 07:FB40: A9 00     LDA #$00
 C - - - - - 0x01FB52 07:FB42: 8D 00 E0  STA $E000
 C - - - - - 0x01FB55 07:FB45: AD 02 20  LDA $2002
@@ -5119,15 +4828,6 @@ C - - - - - 0x01FC9B 07:FC8B: 60        RTS
 
 
 
-sub_FC8C_increase_002B:
-sub_0x01FC9C_increase_002B:
-loc_0x01FC9C_increase_002B:
-; bzk optimize
-C D 3 - - - 0x01FC9C 07:FC8C: E6 2B     INC ram_002B
-C - - - - - 0x01FC9E 07:FC8E: 60        RTS
-
-
-
 sub_FC8F:
 C - - - - - 0x01FC9F 07:FC8F: A9 FF     LDA #$FF
 C - - - - - 0x01FCA1 07:FC91: 85 45     STA ram_номер_сканлинии
@@ -5178,19 +4878,6 @@ C - - - - - 0x01FCE0 07:FCD0: 8D 15 40  STA $4015
 C - - - - - 0x01FCE3 07:FCD3: A9 C0     LDA #$C0
 C - - - - - 0x01FCE5 07:FCD5: 8D 17 40  STA $4017
 C - - - - - 0x01FCE8 07:FCD8: 60        RTS
-
-
-
-sub_FCD9:
-; bzk optimize, single subroutine usage
-C - - - - - 0x01FCE9 07:FCD9: A9 A8     LDA #$A8
-C - - - - - 0x01FCEB 07:FCDB: 85 FF     STA ram_for_2000
-C - - - - - 0x01FCED 07:FCDD: 8D 00 20  STA $2000
-C - - - - - 0x01FCF0 07:FCE0: A9 1E     LDA #$1E
-C - - - - - 0x01FCF2 07:FCE2: 85 FE     STA ram_for_2001
-C - - - - - 0x01FCF4 07:FCE4: A9 05     LDA #$05
-C - - - - - 0x01FCF6 07:FCE6: 85 1D     STA ram_001D
-C - - - - - 0x01FCF8 07:FCE8: 60        RTS
 
 
 

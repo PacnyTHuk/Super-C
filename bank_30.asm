@@ -4507,7 +4507,7 @@ C - - - - - 0x0018C0 00:98B0: B1 00     LDA (ram_0000),Y
 C - - - - - 0x0018C2 00:98B2: 8D 06 20  STA $2006
 C - - - - - 0x0018C5 00:98B5: A2 00     LDX #$00
 C - - - - - 0x0018C7 00:98B7: A9 02     LDA #$02
-C - - - - - 0x0018C9 00:98B9: 20 22 E6  JSR sub_0x01E632_inc_pointer_by_A
+C - - - - - 0x0018C9 00:98B9: 20 22 E6  JSR sub_9903_inc_pointer_by_A
 loc_98BC_loop:
 C D 0 - - - 0x0018CC 00:98BC: A0 00     LDY #$00
 C - - - - - 0x0018CE 00:98BE: B1 00     LDA (ram_0000),Y
@@ -4533,7 +4533,7 @@ C - - - - - 0x0018ED 00:98DD: A9 01     LDA #$01
 C - - - - - 0x0018EF 00:98DF: 18        CLC
 C - - - - - 0x0018F0 00:98E0: 65 02     ADC ram_0002
 bra_98E2:
-C - - - - - 0x0018F2 00:98E2: 20 22 E6  JSR sub_0x01E632_inc_pointer_by_A
+C - - - - - 0x0018F2 00:98E2: 20 22 E6  JSR sub_9903_inc_pointer_by_A
 C - - - - - 0x0018F5 00:98E5: 4C BC 98  JMP loc_98BC_loop
 bra_98E8_00_7E:
 C - - - - - 0x0018F8 00:98E8: A0 01     LDY #$01
@@ -4548,10 +4548,21 @@ C - - - - - 0x001906 00:98F6: A9 02     LDA #$02
 C - - - - - 0x001908 00:98F8: D0 E8     BNE bra_98E2    ; jmp
 bra_98FA_7F:
 C - - - - - 0x00190A 00:98FA: A9 01     LDA #$01
-C - - - - - 0x00190C 00:98FC: 20 22 E6  JSR sub_0x01E632_inc_pointer_by_A
+C - - - - - 0x00190C 00:98FC: 20 22 E6  JSR sub_9903_inc_pointer_by_A
 C - - - - - 0x00190F 00:98FF: 4C A5 98  JMP loc_98A5_loop
 bra_9902_FF_end_token:
 C - - - - - 0x001912 00:9902: 4C BA FC  JMP loc_0x01FCCA_enable_nmi
+
+; 1путин перенесен с фикс банка 3E
+sub_9903_inc_pointer_by_A:
+; bzk optimize, X always 00
+                                        CLC
+                                        ADC ram_0000
+                                        STA ram_0000
+                                        BCC bra_9904_RTS
+                                        INC ram_0001
+bra_9904_RTS:
+                                        RTS
 
 
 

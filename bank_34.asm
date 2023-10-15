@@ -612,7 +612,8 @@ C - - - - - 0x008377 02:8367: 85 85     STA ram_0085
 C - - - - - 0x008379 02:8369: 20 82 F1  JSR sub_0x01F192
 C - - - - - 0x00837C 02:836C: E6 74     INC ram_0074_конфиг_уровня
 C - - - - - 0x00837E 02:836E: C6 65     DEC ram_0065
-C - - - - - 0x008380 02:8370: 20 8C FC  JSR sub_0x01FC9C_increase_002B
+; 1путин опт
+                                        INC ram_002B
 C - - - - - 0x008383 02:8373: 4C 75 A2  JMP loc_0x006285_delete_object_02
 
 
@@ -1215,7 +1216,8 @@ C - - - - - 0x00872B 02:871B: 4C D8 A3  JMP loc_0x0063E8
 
 
 ofs_038_6D_871E_0A:
-C - - J - - 0x00872E 02:871E: 20 8C FC  JSR sub_0x01FC9C_increase_002B
+; 1путин опт
+                                        INC ram_002B
 C - - - - - 0x008731 02:8721: 20 32 88  JSR sub_8832
 C - - - - - 0x008734 02:8724: 4C A2 A2  JMP loc_0x0062B2
 
