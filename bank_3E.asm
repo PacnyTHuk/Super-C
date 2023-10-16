@@ -823,9 +823,9 @@ C - - - - - 0x01E419 07:E409: D0 3E     BNE bra_E449_x03
 ; X=02 заставка
 C - - - - - 0x01E41B 07:E40B: 20 DF FE  JSR sub_FEDF_bankswitch_чит_коды
 C - - - - - 0x01E41E 07:E40E: 20 F1 E4  JSR sub_E4F1_проверка_на_демку
-C - - - - - 0x01E421 07:E411: D0 03     BNE bra_E416
-C - - - - - 0x01E423 07:E413: 4C E5 E4  JMP loc_E4E5
-bra_E416:
+C - - - - - 0x01E421 07:E411: D0 03     BNE bra_E416_нет_демки
+C - - - - - 0x01E423 07:E413: 4C E5 E4  JMP loc_E4E5_демка_вкл
+bra_E416_нет_демки:
 C - - - - - 0x01E426 07:E416: A6 22     LDX ram_номер_опции_колво_игроков
 C - - - - - 0x01E428 07:E418: A9 A7     LDA #$A7 ; Y координата стрелки
 C - - - - - 0x01E42A 07:E41A: BC 70 E4  LDY tbl_E470_x_координаты_стрелки,X
@@ -856,7 +856,7 @@ bra_E443_RTS:
 C - - - - - 0x01E453 07:E443: 60        RTS
 bra_E444_соунд_тест:
 C - - - - - 0x01E454 07:E444: A9 05     LDA #$05
-C - - - - - 0x01E456 07:E446: 4C EC E4  JMP loc_E4EC
+C - - - - - 0x01E456 07:E446: 4C EC E4  JMP loc_E4EC_запись_в_демку
 bra_E449_x03:
 ; X=03 мигание надписей
 C - - - - - 0x01E459 07:E449: A5 3C     LDA ram_таймер_до_демки
@@ -872,7 +872,7 @@ C - - - - - 0x01E463 07:E453: 20 7A FE  JSR sub_FE7A_bankswitch_отрисовк
 C - - - - - 0x01E466 07:E456: C6 3C     DEC ram_таймер_до_демки
 C - - - - - 0x01E468 07:E458: D0 E9     BNE bra_E443_RTS
 C - - - - - 0x01E46A 07:E45A: A9 02     LDA #$02
-C - - - - - 0x01E46C 07:E45C: 4C EC E4  JMP loc_E4EC
+C - - - - - 0x01E46C 07:E45C: 4C EC E4  JMP loc_E4EC_запись_в_демку
 
 
 
@@ -913,7 +913,7 @@ bra_E48F_exit_sound_mode:
 C - - - - - 0x01E49F 07:E48F: 20 96 E4  JSR sub_E496_выбрать_следующий_уровень_для_демки
 loc_E492:
 C D 3 - - - 0x01E4A2 07:E492: A9 00     LDA #$00
-C - - - - - 0x01E4A4 07:E494: F0 56     BEQ bra_E4EC    ; jmp
+C - - - - - 0x01E4A4 07:E494: F0 56     BEQ bra_E4EC_запись_в_демку    ; jmp
 
 
 
@@ -941,7 +941,7 @@ C - - - - - 0x01E4BE 07:E4AE: CA        DEX
 C - - - - - 0x01E4BF 07:E4AF: D0 09     BNE bra_E4BA_код_выбор_уровня
 C - - - - - 0x01E4C1 07:E4B1: 20 D0 E5  JSR sub_E5D0_очистка_памяти_ram
 C - - - - - 0x01E4C4 07:E4B4: 20 82 E5  JSR sub_E582
-C - - - - - 0x01E4C7 07:E4B7: 4C E5 E4  JMP loc_E4E5
+C - - - - - 0x01E4C7 07:E4B7: 4C E5 E4  JMP loc_E4E5_демка_вкл
 bra_E4BA_код_выбор_уровня:
 ; bzk garbage
 - - - - - - 0x01E4CA 07:E4BA: A9 0C     LDA #con_0x0017EA__area_1
@@ -953,7 +953,7 @@ bra_E4BA_код_выбор_уровня:
 ofs_032_E4C2_03:
 C - - J - - 0x01E4D2 07:E4C2: A9 00     LDA #$00
 C - - - - - 0x01E4D4 07:E4C4: 85 38     STA ram_номер_экрана
-C - - - - - 0x01E4D6 07:E4C6: 4C E5 E4  JMP loc_E4E5
+C - - - - - 0x01E4D6 07:E4C6: 4C E5 E4  JMP loc_E4E5_демка_вкл
 
 
 
@@ -976,7 +976,7 @@ C - - - - - 0x01E4F4 07:E4E4: 60        RTS
 
 
 
-loc_E4E5:
+loc_E4E5_демка_вкл:
 loc_0x01E4F5:
 C D 3 - - - 0x01E4F5 07:E4E5: E6 18     INC ram_демка
 loc_E4E7:
@@ -986,8 +986,8 @@ C - - - - - 0x01E4FB 07:E4EB: 60        RTS
 
 
 
-bra_E4EC:
-loc_E4EC:
+bra_E4EC_запись_в_демку:
+loc_E4EC_запись_в_демку:
 C D 3 - - - 0x01E4FC 07:E4EC: 85 18     STA ram_демка
 C - - - - - 0x01E4FE 07:E4EE: 4C E7 E4  JMP loc_E4E7
 
