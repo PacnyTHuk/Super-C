@@ -909,7 +909,7 @@ C - - - - - 0x01E4DF 07:E4CF: 8D 00 05  STA ram_кадр_анимации
 C - - - - - 0x01E4E2 07:E4D2: E6 19     INC ram_номер_действия_на_заставке
 C - - - - - 0x01E4E4 07:E4D4: A9 00     LDA #$00
 C - - - - - 0x01E4E6 07:E4D6: 85 50     STA ram_номер_уровня
-C - - - - - 0x01E4E8 07:E4D8: 85 51     STA ram_номер_круга
+; 1путин опт
 C - - - - - 0x01E4EA 07:E4DA: 60        RTS
 bra_E4DB_соунд_тест:
 C - - - - - 0x01E4EB 07:E4DB: 20 D7 FE  JSR sub_FED7_sound_mode_handler
@@ -1788,15 +1788,9 @@ C - - - - - 0x01E9E7 07:E9D7: C9 08     CMP #$08
 C - - - - - 0x01E9E9 07:E9D9: 90 17     BCC bra_E9F2_not_finished_yet
 ; if next loop
 ; C = 1
+; 1путин: удалены круги
 C - - - - - 0x01E9EB 07:E9DB: A9 00     LDA #$00
 C - - - - - 0x01E9ED 07:E9DD: 85 50     STA ram_номер_уровня
-C - - - - - 0x01E9EF 07:E9DF: A5 51     LDA ram_номер_круга
-C - - - - - 0x01E9F1 07:E9E1: 69 00     ADC #$00
-C - - - - - 0x01E9F3 07:E9E3: C9 02     CMP #$02
-C - - - - - 0x01E9F5 07:E9E5: 90 02     BCC bra_E9E9_not_overflow
-C - - - - - 0x01E9F7 07:E9E7: A9 01     LDA #$01
-bra_E9E9_not_overflow:
-C - - - - - 0x01E9F9 07:E9E9: 85 51     STA ram_номер_круга
 C - - - - - 0x01E9FB 07:E9EB: 20 C3 E5  JSR sub_E5C3_clear_memory
 C - - - - - 0x01E9FE 07:E9EE: A9 08     LDA #$08
 C - - - - - 0x01EA00 07:E9F0: D0 02     BNE bra_E9F4    ; jmp

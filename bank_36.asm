@@ -209,8 +209,10 @@ C - - - - - 0x00C10B 03:80FB: 20 5E 80  JSR sub_805E_обработчик_ани
                                         LDY ram_0005
 bra_8100_skip:	
                                         DEY
-                                        BPL bra_80D0_loop
-C - - - - - 0x00C138 03:8128: A0 17     LDY #con_макс_индекс_общий
+                                        BPL bra_80D0_loop 
+; 1путин: считывание игроков и врагов отдельно
+; игроки                                    
+C - - - - - 0x00C138 03:8128: A0 17     LDY #$07
 bra_812A_loop:
                                         LDA ram_кадр_анимации,Y
                                         BEQ bra_8152_skip
@@ -234,6 +236,31 @@ C - - - - - 0x00C160 03:8150: A4 05     LDY ram_0005
 bra_8152_skip:
 C - - - - - 0x00C162 03:8152: 88        DEY
 C - - - - - 0x00C163 03:8153: 10 D5     BPL bra_812A_loop
+; враги
+                                        LDY #$0D
+bra_8157_loop:
+                                        LDA ram_кадр_анимации + $10,Y
+                                        BEQ bra_815A_skip
+                                        LDA ram_атрибуты_спрайта + $10,Y
+                                        AND #$3F
+                                        STA ram_0000
+                                        LSR
+                                        LSR
+                                        STA ram_000B
+                                        LDA ram_атрибуты_спрайта + $10,Y
+                                        AND #$C0
+                                        STA ram_000A
+                                        LDA ram_позиция_y_спрайта + $10,Y
+                                        STA ram_0001
+                                        LDA ram_позиция_x_спрайта + $10,Y
+                                        STA ram_0002
+                                        LDA ram_кадр_анимации + $10,Y
+                                        STY ram_0005
+                                        JSR sub_816B_обработчик_анимации_спрайтов_врагов
+                                        LDY ram_0005
+bra_815A_skip:
+                                        DEY
+                                        BPL bra_8157_loop
 C - - - - - 0x00C165 03:8155: A4 07     LDY ram_0007
 C - - - - - 0x00C167 03:8157: B9 01 02  LDA ram_spr_T,Y
 C - - - - - 0x00C16A 03:815A: D0 0E     BNE bra_816A_RTS
@@ -248,7 +275,6 @@ C - - - - - 0x00C176 03:8166: E4 24     CPX ram_начальный_индекс_
 C - - - - - 0x00C178 03:8168: D0 F2     BNE bra_815C_loop
 bra_816A_RTS:
 C - - - - - 0x00C17A 03:816A: 60        RTS
-
 
 
 sub_816B_обработчик_анимации_спрайтов_врагов:

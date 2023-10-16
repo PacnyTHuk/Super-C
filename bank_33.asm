@@ -2663,16 +2663,8 @@ bra_AB9B:
 sub_AB9B_set_dynamic_hp_to_obj:
 sub_0x006BAB_set_dynamic_hp_to_obj:
 C - - - - - 0x006BAB 01:AB9B: 85 08     STA ram_0008
-C - - - - - 0x006BAD 01:AB9D: 84 09     STY ram_0009
+; 1путин: удалено чтение кол-во S
 ; bzk optimize, CLC + LDA, that's it
-C - - - - - 0x006BAF 01:AB9F: A5 52     LDA ram_колво_s
-C - - - - - 0x006BB1 01:ABA1: C9 02     CMP #$02
-C - - - - - 0x006BB3 01:ABA3: 90 02     BCC bra_ABA7
-; C = 1
-C - - - - - 0x006BB5 01:ABA5: A9 01     LDA #$01
-bra_ABA7:   ; C = 0
-C - - - - - 0x006BB7 01:ABA7: 65 09     ADC ram_0009
-C - - - - - 0x006BB9 01:ABA9: A8        TAY
 C - - - - - 0x006BBA 01:ABAA: B9 B4 AB  LDA tbl_ABB4,Y
 C - - - - - 0x006BBD 01:ABAD: 18        CLC
 C - - - - - 0x006BBE 01:ABAE: 65 08     ADC ram_0008
