@@ -5975,10 +5975,7 @@ C - - - - - 0x009F43 02:9F33: 85 08     STA ram_0008
 C - - - - - 0x009F4A 02:9F3A: 20 0E FE  JSR sub_0x01FE1E_sprite_engine
 C - - - - - 0x009F4D 02:9F3D: A5 08     LDA ram_0008
 C - - - - - 0x009F4F 02:9F3F: 20 DE FD  JSR sub_0x01FDEE_play_sound
-C - - - - - 0x009F52 02:9F42: 4C 45 9F  JMP loc_9F45
-
-
-
+C - - - - - 0x009F52 02:9F42: 4C 45 9F  JMP loc_9F45    ; bzk optimize, useless JMP
 loc_9F45:
 C D 0 - - - 0x009F55 02:9F45: A5 5C     LDA ram_005C_sound_mode_data
 C - - - - - 0x009F57 02:9F47: 18        CLC
