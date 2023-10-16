@@ -11,15 +11,15 @@
 .export loc_0x001199
 .export sub_0x001271
 .export loc_0x001411
-.export loc_0x00178C_print_text_on_the_screen
-.export loc_0x00189E_draw_static_screen
+.export loc_0x00178C_отрисовка_текста_через_буфер_0300x
+.export loc_0x00189E_отрисовка_экранов
 .export loc_0x001C02_prepare_area_config
 .export loc_0x001CA6
 .export loc_0x001DA4
 .export loc_0x002178_stage_complete_handler
-.export loc_0x0022AC_cheat_code
+.export loc_0x0022AC_чит_коды
 .export loc_0x0022D4_выбор_уровня_в_японке
-.export loc_0x00231A_title_screen_handler
+.export loc_0x00231A_обработчик_главного_экрана
 .export loc_0x0023C7_credits_handler
 .export _off014_32_0x00263F_00
 .export _off014_32_0x002730_01
@@ -4283,9 +4283,9 @@ tbl_9768:
 
 
 
-loc_0x00178C_print_text_on_the_screen:
+loc_0x00178C_отрисовка_текста_через_буфер_0300x:
 ; see con_0x0017EA
-; +80 = hide text
+; +80 (N+) Скрыть текст 
 ; 1путин опт
                                         STA ram_0002
                                         ASL
@@ -4459,8 +4459,8 @@ _off009_9885_0C_area_1:
 
 
 
-sub_988E_draw_static_screen:
-loc_0x00189E_draw_static_screen:
+sub_988E_отрисовка_экранов:
+loc_0x00189E_отрисовка_экранов:
 C D 0 - - - 0x00189E 00:988E: A9 04     LDA #$04
 C - - - - - 0x0018A0 00:9890: 85 1D     STA ram_001D
 C - - - - - 0x0018A2 00:9892: BD 05 99  LDA tbl_9905_screen_data,X
@@ -6035,7 +6035,7 @@ C - - - - - 0x0022AB 00:A29B: 60        RTS
 
 
 
-loc_0x0022AC_cheat_code:
+loc_0x0022AC_чит_коды:
 C D 1 - - - 0x0022AC 00:A29C: A4 50     LDY ram_cheat_input_cnt
 C - - - - - 0x0022AE 00:A29E: 30 1C     BMI bra_A2BC_RTS    ; if cheat was entered/incorrect input and no second chance
 C - - - - - 0x0022B0 00:A2A0: A5 F1     LDA ram_нажатая_кнопка
@@ -6111,7 +6111,7 @@ bra_A2F6:
 - - - - - - 0x00230A 00:A2FA: F0 0D     BEQ bra_A309_RTS
 - - - - - - 0x00230C 00:A2FC: A5 50     LDA ram_номер_уровня
 - - - - - - 0x00230E 00:A2FE: 48        PHA
-- - - - - - 0x00230F 00:A2FF: 20 D0 E5  JSR sub_0x01E5E0_clear_memory
+- - - - - - 0x00230F 00:A2FF: 20 D0 E5  JSR sub_0x01E5E0_очистка_памяти_ram
 - - - - - - 0x002312 00:A302: 68        PLA
 - - - - - - 0x002313 00:A303: 20 84 E5  JSR sub_0x01E594
 - - - - - - 0x002316 00:A306: 4C E5 E4  JMP loc_0x01E4F5
@@ -6120,7 +6120,7 @@ bra_A309_RTS:
 
 
 
-loc_0x00231A_title_screen_handler:
+loc_0x00231A_обработчик_главного_экрана:
 ; leon опт
                                         LDY ram_0080
                                         LDA tbl_A30F_lo,y
@@ -6158,7 +6158,7 @@ C - - - - - 0x00233D 00:A32D: A9 00     LDA #$00
 C - - - - - 0x00233F 00:A32F: 85 FD     STA ram_scroll_X
 C - - - - - 0x002341 00:A331: 85 FC     STA ram_scroll_Y
 C - - - - - 0x002343 00:A333: A2 02     LDX #$02    ; title screen
-C - - - - - 0x002345 00:A335: 20 8E 98  JSR sub_988E_draw_static_screen
+C - - - - - 0x002345 00:A335: 20 8E 98  JSR sub_988E_отрисовка_экранов
 loc_A338:
 C D 1 - - - 0x002348 00:A338: E6 80     INC ram_0080
 C - - - - - 0x00234A 00:A33A: 18        CLC

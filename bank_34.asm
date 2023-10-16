@@ -5469,7 +5469,7 @@ sub_9B50:
 C - - - - - 0x009B60 02:9B50: A5 F5     LDA ram_копия_нажатая_кнопка
 C - - - - - 0x009B62 02:9B52: 10 06     BPL bra_9B5A    ; if not con_btn_A
 C - - - - - 0x009B64 02:9B54: 20 51 9F  JSR sub_9F51
-C - - - - - 0x009B67 02:9B57: 4C 0E FE  JMP loc_0x01FE1E_sprite_engine
+C - - - - - 0x009B67 02:9B57: 4C 0E FE  JMP loc_0x01FE1E_спрайтовый_движок
 bra_9B5A:
 C - - - - - 0x009B6A 02:9B5A: 0A        ASL
 C - - - - - 0x009B6B 02:9B5B: 30 01     BMI bra_9B5E
@@ -5481,14 +5481,14 @@ C - - - - - 0x009B73 02:9B63: C9 26     CMP #$26
 C - - - - - 0x009B75 02:9B65: F0 0F     BEQ bra_9B76_26
 C - - - - - 0x009B77 02:9B67: C9 0E     CMP #$0E
 C - - - - - 0x009B79 02:9B69: B0 03     BCS bra_9B6E
-C - - - - - 0x009B7B 02:9B6B: 20 0E FE  JSR sub_0x01FE1E_sprite_engine
+C - - - - - 0x009B7B 02:9B6B: 20 0E FE  JSR sub_0x01FE1E_спрайтовый_движок
 bra_9B6E:
 C - - - - - 0x009B7E 02:9B6E: A4 53     LDY ram_sound_mode_track_cur
 C - - - - - 0x009B80 02:9B70: B9 A4 9C  LDA tbl_9CA4_track_list,Y
 C - - - - - 0x009B83 02:9B73: 4C DE FD  JMP loc_0x01FDEE_play_sound
 bra_9B76_26:
 ; play all one by one
-C - - - - - 0x009B86 02:9B76: 20 0E FE  JSR sub_0x01FE1E_sprite_engine
+C - - - - - 0x009B86 02:9B76: 20 0E FE  JSR sub_0x01FE1E_спрайтовый_движок
 C - - - - - 0x009B89 02:9B79: AD 5E 9F  LDA tbl_9F5E_auto_playlist
 C - - - - - 0x009B8C 02:9B7C: 85 5C     STA ram_005C_sound_mode_data
 C - - - - - 0x009B8E 02:9B7E: AD 5F 9F  LDA tbl_9F5E_auto_playlist + $01
@@ -5972,7 +5972,7 @@ C - - - - - 0x009F40 02:9F30: C8        INY
 C - - - - - 0x009F41 02:9F31: B1 5C     LDA (ram_005C_sound_mode_data),Y
 C - - - - - 0x009F43 02:9F33: 85 08     STA ram_0008
 ; 1путин опт
-C - - - - - 0x009F4A 02:9F3A: 20 0E FE  JSR sub_0x01FE1E_sprite_engine
+C - - - - - 0x009F4A 02:9F3A: 20 0E FE  JSR sub_0x01FE1E_спрайтовый_движок
 C - - - - - 0x009F4D 02:9F3D: A5 08     LDA ram_0008
 C - - - - - 0x009F4F 02:9F3F: 20 DE FD  JSR sub_0x01FDEE_play_sound
 C - - - - - 0x009F52 02:9F42: 4C 45 9F  JMP loc_9F45    ; bzk optimize, useless JMP
