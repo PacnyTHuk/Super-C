@@ -3197,112 +3197,46 @@ _off013_0x0092D9_00_area_1:
 
 
 _off019_00_9339_00:
-- - - - - - 0x009349 02:9339: FF        .byte $FF   ; end token
-
-
-
 _off019_00_933A_01:
-- - - - - - 0x00934A 02:933A: FF        .byte $FF   ; end token
-
-
-
 _off019_00_933B_02:
-- - - - - - 0x00934B 02:933B: FF        .byte $FF   ; end token
-
-
-
 _off019_00_933C_03:
-- - - - - - 0x00934C 02:933C: FF        .byte $FF   ; end token
-
-
-
 _off019_00_933D_04:
-- - - - - - 0x00934D 02:933D: FF        .byte $FF   ; end token
-
-
-
 _off019_00_933E_05:
-- - - - - - 0x00934E 02:933E: FF        .byte $FF   ; end token
-
-
-
 _off019_00_933F_06:
-- - - - - - 0x00934F 02:933F: FF        .byte $FF   ; end token
-
-
-
 _off019_00_9340_07:
-- - - - - - 0x009350 02:9340: FF        .byte $FF   ; end token
-
-
-
 _off019_00_9341_08:
-- - - - - - 0x009351 02:9341: FF        .byte $FF   ; end token
-
-
-
 _off019_00_9342_09:
-- - - - - - 0x009352 02:9342: FF        .byte $FF   ; end token
-
-
-
 _off019_00_9343_0A:
-- D 0 - I - 0x009353 02:9343: FF        .byte $FF   ; end token
-
-
-
 _off019_00_9344_0B:
-- D 0 - I - 0x009354 02:9344: FF        .byte $FF   ; end token
-
-
-
 _off019_00_9345_0C:
-- D 0 - I - 0x009355 02:9345: FF        .byte $FF   ; end token
-
-
-
 _off019_00_9346_0D:
-- - - - - - 0x009356 02:9346: FF        .byte $FF   ; end token
-
-
-
 _off019_00_9347_0E:
-- - - - - - 0x009357 02:9347: FF        .byte $FF   ; end token
-
-
-
 _off019_00_9348_0F:
-- - - - - - 0x009358 02:9348: FF        .byte $FF   ; end token
-
-
-
 _off019_00_9349_10:
-- - - - - - 0x009359 02:9349: FF        .byte $FF   ; end token
-
-
-
 _off019_00_934A_11:
-- - - - - - 0x00935A 02:934A: FF        .byte $FF   ; end token
-
-
-
 _off019_00_934B_12:
-- - - - - - 0x00935B 02:934B: FF        .byte $FF   ; end token
-
-
-
 _off019_00_934C_13:
-- D 0 - I - 0x00935C 02:934C: FF        .byte $FF   ; end token
-
-
-
 _off019_00_934D_14:
-- D 0 - I - 0x00935D 02:934D: FF        .byte $FF   ; end token
-
-
-
 _off019_00_934E_15:
-- D 0 - I - 0x00935E 02:934E: FF        .byte $FF   ; end token
+_off019_00_9372_1B:
+_off019_00_9373_1C:
+_off019_00_9374_1D:
+_off019_00_9375_1E:
+_off019_00_9376_1F:
+_off019_00_939F_27:
+_off019_00_93A0_28:
+_off019_00_93A1_29:
+_off019_00_93A2_2A:
+_off019_00_93D0_2E:
+_off019_00_93D5_30:
+_off019_00_93D6_31:
+_off019_00_93D7_32:
+_off019_00_93D8_33:
+_off019_00_93D9_34:
+_off019_00_93DA_35:
+_off019_00_93DB_36:
+_off019_00_93DC_37:
+- - - - - - 0x009349 02:9339: FF        .byte $FF   ; end token
 
 
 
@@ -3368,31 +3302,6 @@ _off019_00_936B_1A:
 - D 0 - I - 0x009380 02:9370: 21        .byte con_obj_id_21   ; 
 
 - D 0 - I - 0x009381 02:9371: FF        .byte $FF   ; end token
-
-
-
-_off019_00_9372_1B:
-- - - - - - 0x009382 02:9372: FF        .byte $FF   ; end token
-
-
-
-_off019_00_9373_1C:
-- D 0 - I - 0x009383 02:9373: FF        .byte $FF   ; end token
-
-
-
-_off019_00_9374_1D:
-- D 0 - I - 0x009384 02:9374: FF        .byte $FF   ; end token
-
-
-
-_off019_00_9375_1E:
-- D 0 - I - 0x009385 02:9375: FF        .byte $FF   ; end token
-
-
-
-_off019_00_9376_1F:
-- D 0 - I - 0x009386 02:9376: FF        .byte $FF   ; end token
 
 
 
@@ -3475,26 +3384,6 @@ _off019_00_939B_26:
 
 
 
-_off019_00_939F_27:
-- D 0 - I - 0x0093AF 02:939F: FF        .byte $FF   ; end token
-
-
-
-_off019_00_93A0_28:
-- - - - - - 0x0093B0 02:93A0: FF        .byte $FF   ; end token
-
-
-
-_off019_00_93A1_29:
-- - - - - - 0x0093B1 02:93A1: FF        .byte $FF   ; end token
-
-
-
-_off019_00_93A2_2A:
-- D 0 - I - 0x0093B2 02:93A2: FF        .byte $FF   ; end token
-
-
-
 _off019_00_93A3_2B:
 - D 0 - I - 0x0093B3 02:93A3: 35        .byte $10 * $03 + $05   ; pos YX
 - D 0 - I - 0x0093B4 02:93A4: 90        .byte $80 + $00 + $10   ; flags
@@ -3566,57 +3455,12 @@ _off019_00_93C9_2D:
 
 
 
-_off019_00_93D0_2E:
-- D 0 - I - 0x0093E0 02:93D0: FF        .byte $FF   ; end token
-
-
-
 _off019_00_93D1_2F:
 - D 0 - I - 0x0093E1 02:93D1: 11        .byte $10 * $01 + $01   ; pos YX
 - D 0 - I - 0x0093E2 02:93D2: 85        .byte $80 + $00 + $05   ; flags
 - D 0 - I - 0x0093E3 02:93D3: 07        .byte con_obj_id_07   ; 
 
 - D 0 - I - 0x0093E4 02:93D4: FF        .byte $FF   ; end token
-
-
-
-_off019_00_93D5_30:
-- D 0 - I - 0x0093E5 02:93D5: FF        .byte $FF   ; end token
-
-
-
-_off019_00_93D6_31:
-- - - - - - 0x0093E6 02:93D6: FF        .byte $FF   ; end token
-
-
-
-_off019_00_93D7_32:
-- - - - - - 0x0093E7 02:93D7: FF        .byte $FF   ; end token
-
-
-
-_off019_00_93D8_33:
-- - - - - - 0x0093E8 02:93D8: FF        .byte $FF   ; end token
-
-
-
-_off019_00_93D9_34:
-- - - - - - 0x0093E9 02:93D9: FF        .byte $FF   ; end token
-
-
-
-_off019_00_93DA_35:
-- - - - - - 0x0093EA 02:93DA: FF        .byte $FF   ; end token
-
-
-
-_off019_00_93DB_36:
-- - - - - - 0x0093EB 02:93DB: FF        .byte $FF   ; end token
-
-
-
-_off019_00_93DC_37:
-- - - - - - 0x0093EC 02:93DC: FF        .byte $FF   ; end token
 
 
 
@@ -3665,7 +3509,9 @@ _off019_01_9415_11:
 _off019_01_9415_13:
 _off019_01_9415_15:
 _off019_01_9415_17:
+_off019_01_9481_18:
 _off019_01_9415_19:
+_off019_01_9482_1A:
 _off019_01_9415_1B:
 - D 0 - I - 0x009425 02:9415: FF        .byte $FF   ; end token
 
@@ -3854,16 +3700,6 @@ _off019_01_947A_16:
 
 
 
-_off019_01_9481_18:
-- - - - - - 0x009491 02:9481: FF        .byte $FF   ; end token
-
-
-
-_off019_01_9482_1A:
-- - - - - - 0x009492 02:9482: FF        .byte $FF   ; end token
-
-
-
 _off013_0x009493_02_area_3:
 - - - - - - 0x009493 02:9483: AF 94     .word _off019_02_94AF_00
 - D 0 - I - 0x009495 02:9485: B0 94     .word _off019_02_94B0_01
@@ -3891,6 +3727,10 @@ _off013_0x009493_02_area_3:
 
 
 _off019_02_94AF_00:
+_off019_02_954C_10:
+_off019_02_9554_12:
+_off019_02_9559_14:
+_off019_02_955A_15:
 - - - - - - 0x0094BF 02:94AF: FF        .byte $FF   ; end token
 
 
@@ -4157,11 +3997,6 @@ _off019_02_9545_0F:
 
 
 
-_off019_02_954C_10:
-- D 0 - I - 0x00955C 02:954C: FF        .byte $FF   ; end token
-
-
-
 _off019_02_954D_11:
 - D 0 - I - 0x00955D 02:954D: 45        .byte $10 * $04 + $05   ; pos YX
 - D 0 - I - 0x00955E 02:954E: 11        .byte $10 + $00 + $01   ; flags
@@ -4175,27 +4010,12 @@ _off019_02_954D_11:
 
 
 
-_off019_02_9554_12:
-- D 0 - I - 0x009564 02:9554: FF        .byte $FF   ; end token
-
-
-
 _off019_02_9555_13:
 - D 0 - I - 0x009565 02:9555: 8E        .byte $10 * $08 + $0E   ; pos YX
 - D 0 - I - 0x009566 02:9556: C0        .byte $80 + $40 + $00   ; flags
 - D 0 - I - 0x009567 02:9557: 4B        .byte con_obj_id_4B   ; 
 
 - D 0 - I - 0x009568 02:9558: FF        .byte $FF   ; end token
-
-
-
-_off019_02_9559_14:
-- - - - - - 0x009569 02:9559: FF        .byte $FF   ; end token
-
-
-
-_off019_02_955A_15:
-- - - - - - 0x00956A 02:955A: FF        .byte $FF   ; end token
 
 
 
@@ -4295,51 +4115,82 @@ _off013_0x00956B_03_area_4:
 
 
 _off019_03_9611_00:
-- - - - - - 0x009621 02:9611: FF        .byte $FF   ; end token
-
-
-
 _off019_03_9612_01:
-- - - - - - 0x009622 02:9612: FF        .byte $FF   ; end token
-
-
-
 _off019_03_9613_02:
-- - - - - - 0x009623 02:9613: FF        .byte $FF   ; end token
-
-
-
 _off019_03_9614_03:
-- D 0 - I - 0x009624 02:9614: FF        .byte $FF   ; end token
-
-
-
 _off019_03_9615_04:
-- D 0 - I - 0x009625 02:9615: FF        .byte $FF   ; end token
-
-
-
 _off019_03_9616_05:
-- - - - - - 0x009626 02:9616: FF        .byte $FF   ; end token
-
-
-
 _off019_03_9617_06:
-- - - - - - 0x009627 02:9617: FF        .byte $FF   ; end token
-
-
-
 _off019_03_9618_07:
-- - - - - - 0x009628 02:9618: FF        .byte $FF   ; end token
-
-
-
 _off019_03_9619_08:
-- - - - - - 0x009629 02:9619: FF        .byte $FF   ; end token
-
-
-
 _off019_03_961A_09:
+_off019_03_9643_0B:
+_off019_03_9644_0C:
+_off019_03_9645_0D:
+_off019_03_9646_0E:
+_off019_03_9647_0F:
+_off019_03_9648_10:
+_off019_03_9671_12:
+_off019_03_9672_13:
+_off019_03_9673_14:
+_off019_03_9674_15:
+_off019_03_9675_16:
+_off019_03_9676_17:
+_off019_03_9696_19:
+_off019_03_9697_1A:
+_off019_03_9698_1B:
+_off019_03_9699_1C:
+_off019_03_969A_1D:
+_off019_03_969B_1E:
+_off019_03_96A6_20:
+_off019_03_96A7_21:
+_off019_03_96A8_22:
+_off019_03_96A9_23:
+_off019_03_96AA_24:
+_off019_03_96AB_25:
+_off019_03_96B9_27:
+_off019_03_96BA_28:
+_off019_03_96BB_29:
+_off019_03_96BC_2A:
+_off019_03_96BD_2B:
+_off019_03_96BE_2C:
+_off019_03_96CC_2E:
+_off019_03_96CD_2F:
+_off019_03_96CE_30:
+_off019_03_96CF_31:
+_off019_03_96D0_32:
+_off019_03_96D1_33:
+_off019_03_96D9_35:
+_off019_03_96DA_36:
+_off019_03_96DB_37:
+_off019_03_96DC_38:
+_off019_03_96DD_39:
+_off019_03_96DE_3A:
+_off019_03_96EF_3C:
+_off019_03_96F0_3D:
+_off019_03_96F1_3E:
+_off019_03_96F2_3F:
+_off019_03_96F3_40:
+_off019_03_96F4_41:
+_off019_03_96FF_43:
+_off019_03_9700_44:
+_off019_03_9701_45:
+_off019_03_9702_46:
+_off019_03_9703_47:
+_off019_03_9704_48:
+_off019_03_970F_4A:
+_off019_03_9710_4B:
+_off019_03_9711_4C:
+_off019_03_9712_4D:
+_off019_03_9713_4E:
+_off019_03_9714_4F:
+_off019_03_9722_51:
+_off019_03_9723_52:
+_off019_03_9724_53:
+_off019_03_9725_54:
+_off019_03_976B_58:
+_off019_03_976C_59:
+_off019_03_976D_5A:
 - - - - - - 0x00962A 02:961A: FF        .byte $FF   ; end token
 
 
@@ -4401,36 +4252,6 @@ _off019_03_961B_0A:
 
 
 
-_off019_03_9643_0B:
-- D 0 - I - 0x009653 02:9643: FF        .byte $FF   ; end token
-
-
-
-_off019_03_9644_0C:
-- - - - - - 0x009654 02:9644: FF        .byte $FF   ; end token
-
-
-
-_off019_03_9645_0D:
-- - - - - - 0x009655 02:9645: FF        .byte $FF   ; end token
-
-
-
-_off019_03_9646_0E:
-- - - - - - 0x009656 02:9646: FF        .byte $FF   ; end token
-
-
-
-_off019_03_9647_0F:
-- - - - - - 0x009657 02:9647: FF        .byte $FF   ; end token
-
-
-
-_off019_03_9648_10:
-- - - - - - 0x009658 02:9648: FF        .byte $FF   ; end token
-
-
-
 _off019_03_9649_11:
 - D 0 - I - 0x009659 02:9649: 15        .byte $10 * $01 + $05   ; pos YX
 - D 0 - I - 0x00965A 02:964A: 81        .byte $80 + $00 + $01   ; flags
@@ -4488,36 +4309,6 @@ _off019_03_9649_11:
 
 
 
-_off019_03_9671_12:
-- D 0 - I - 0x009681 02:9671: FF        .byte $FF   ; end token
-
-
-
-_off019_03_9672_13:
-- - - - - - 0x009682 02:9672: FF        .byte $FF   ; end token
-
-
-
-_off019_03_9673_14:
-- - - - - - 0x009683 02:9673: FF        .byte $FF   ; end token
-
-
-
-_off019_03_9674_15:
-- - - - - - 0x009684 02:9674: FF        .byte $FF   ; end token
-
-
-
-_off019_03_9675_16:
-- - - - - - 0x009685 02:9675: FF        .byte $FF   ; end token
-
-
-
-_off019_03_9676_17:
-- - - - - - 0x009686 02:9676: FF        .byte $FF   ; end token
-
-
-
 _off019_03_9677_18:
 - D 0 - I - 0x009687 02:9677: 22        .byte $10 * $02 + $02   ; pos YX
 - D 0 - I - 0x009688 02:9678: 80        .byte $80 + $00 + $00   ; flags
@@ -4563,36 +4354,6 @@ _off019_03_9677_18:
 
 
 
-_off019_03_9696_19:
-- D 0 - I - 0x0096A6 02:9696: FF        .byte $FF   ; end token
-
-
-
-_off019_03_9697_1A:
-- - - - - - 0x0096A7 02:9697: FF        .byte $FF   ; end token
-
-
-
-_off019_03_9698_1B:
-- - - - - - 0x0096A8 02:9698: FF        .byte $FF   ; end token
-
-
-
-_off019_03_9699_1C:
-- - - - - - 0x0096A9 02:9699: FF        .byte $FF   ; end token
-
-
-
-_off019_03_969A_1D:
-- - - - - - 0x0096AA 02:969A: FF        .byte $FF   ; end token
-
-
-
-_off019_03_969B_1E:
-- - - - - - 0x0096AB 02:969B: FF        .byte $FF   ; end token
-
-
-
 _off019_03_969C_1F:
 - D 0 - I - 0x0096AC 02:969C: 62        .byte $10 * $06 + $02   ; pos YX
 - D 0 - I - 0x0096AD 02:969D: 92        .byte $80 + $00 + $12   ; flags
@@ -4607,36 +4368,6 @@ _off019_03_969C_1F:
 - D 0 - I - 0x0096B4 02:96A4: 25        .byte con_obj_id_25   ; 
 
 - D 0 - I - 0x0096B5 02:96A5: FF        .byte $FF   ; end token
-
-
-
-_off019_03_96A6_20:
-- D 0 - I - 0x0096B6 02:96A6: FF        .byte $FF   ; end token
-
-
-
-_off019_03_96A7_21:
-- - - - - - 0x0096B7 02:96A7: FF        .byte $FF   ; end token
-
-
-
-_off019_03_96A8_22:
-- - - - - - 0x0096B8 02:96A8: FF        .byte $FF   ; end token
-
-
-
-_off019_03_96A9_23:
-- - - - - - 0x0096B9 02:96A9: FF        .byte $FF   ; end token
-
-
-
-_off019_03_96AA_24:
-- - - - - - 0x0096BA 02:96AA: FF        .byte $FF   ; end token
-
-
-
-_off019_03_96AB_25:
-- - - - - - 0x0096BB 02:96AB: FF        .byte $FF   ; end token
 
 
 
@@ -4661,36 +4392,6 @@ _off019_03_96AC_26:
 
 
 
-_off019_03_96B9_27:
-- D 0 - I - 0x0096C9 02:96B9: FF        .byte $FF   ; end token
-
-
-
-_off019_03_96BA_28:
-- - - - - - 0x0096CA 02:96BA: FF        .byte $FF   ; end token
-
-
-
-_off019_03_96BB_29:
-- - - - - - 0x0096CB 02:96BB: FF        .byte $FF   ; end token
-
-
-
-_off019_03_96BC_2A:
-- - - - - - 0x0096CC 02:96BC: FF        .byte $FF   ; end token
-
-
-
-_off019_03_96BD_2B:
-- - - - - - 0x0096CD 02:96BD: FF        .byte $FF   ; end token
-
-
-
-_off019_03_96BE_2C:
-- - - - - - 0x0096CE 02:96BE: FF        .byte $FF   ; end token
-
-
-
 _off019_03_96BF_2D:
 - D 0 - I - 0x0096CF 02:96BF: 11        .byte $10 * $01 + $01   ; pos YX
 - D 0 - I - 0x0096D0 02:96C0: 81        .byte $80 + $00 + $01   ; flags
@@ -4712,36 +4413,6 @@ _off019_03_96BF_2D:
 
 
 
-_off019_03_96CC_2E:
-- D 0 - I - 0x0096DC 02:96CC: FF        .byte $FF   ; end token
-
-
-
-_off019_03_96CD_2F:
-- - - - - - 0x0096DD 02:96CD: FF        .byte $FF   ; end token
-
-
-
-_off019_03_96CE_30:
-- - - - - - 0x0096DE 02:96CE: FF        .byte $FF   ; end token
-
-
-
-_off019_03_96CF_31:
-- - - - - - 0x0096DF 02:96CF: FF        .byte $FF   ; end token
-
-
-
-_off019_03_96D0_32:
-- - - - - - 0x0096E0 02:96D0: FF        .byte $FF   ; end token
-
-
-
-_off019_03_96D1_33:
-- - - - - - 0x0096E1 02:96D1: FF        .byte $FF   ; end token
-
-
-
 _off019_03_96D2_34:
 - D 0 - I - 0x0096E2 02:96D2: 44        .byte $10 * $04 + $04   ; pos YX
 - D 0 - I - 0x0096E3 02:96D3: 92        .byte $80 + $00 + $12   ; flags
@@ -4752,36 +4423,6 @@ _off019_03_96D2_34:
 - D 0 - I - 0x0096E7 02:96D7: 0A        .byte con_obj_id_0A   ; 
 
 - D 0 - I - 0x0096E8 02:96D8: FF        .byte $FF   ; end token
-
-
-
-_off019_03_96D9_35:
-- D 0 - I - 0x0096E9 02:96D9: FF        .byte $FF   ; end token
-
-
-
-_off019_03_96DA_36:
-- - - - - - 0x0096EA 02:96DA: FF        .byte $FF   ; end token
-
-
-
-_off019_03_96DB_37:
-- - - - - - 0x0096EB 02:96DB: FF        .byte $FF   ; end token
-
-
-
-_off019_03_96DC_38:
-- - - - - - 0x0096EC 02:96DC: FF        .byte $FF   ; end token
-
-
-
-_off019_03_96DD_39:
-- - - - - - 0x0096ED 02:96DD: FF        .byte $FF   ; end token
-
-
-
-_off019_03_96DE_3A:
-- - - - - - 0x0096EE 02:96DE: FF        .byte $FF   ; end token
 
 
 
@@ -4810,36 +4451,6 @@ _off019_03_96DF_3B:
 
 
 
-_off019_03_96EF_3C:
-- D 0 - I - 0x0096FF 02:96EF: FF        .byte $FF   ; end token
-
-
-
-_off019_03_96F0_3D:
-- - - - - - 0x009700 02:96F0: FF        .byte $FF   ; end token
-
-
-
-_off019_03_96F1_3E:
-- - - - - - 0x009701 02:96F1: FF        .byte $FF   ; end token
-
-
-
-_off019_03_96F2_3F:
-- - - - - - 0x009702 02:96F2: FF        .byte $FF   ; end token
-
-
-
-_off019_03_96F3_40:
-- - - - - - 0x009703 02:96F3: FF        .byte $FF   ; end token
-
-
-
-_off019_03_96F4_41:
-- - - - - - 0x009704 02:96F4: FF        .byte $FF   ; end token
-
-
-
 _off019_03_96F5_42:
 - D 0 - I - 0x009705 02:96F5: 18        .byte $10 * $01 + $08   ; pos YX
 - D 0 - I - 0x009706 02:96F6: C0        .byte $80 + $40 + $00   ; flags
@@ -4857,36 +4468,6 @@ _off019_03_96F5_42:
 
 
 
-_off019_03_96FF_43:
-- D 0 - I - 0x00970F 02:96FF: FF        .byte $FF   ; end token
-
-
-
-_off019_03_9700_44:
-- - - - - - 0x009710 02:9700: FF        .byte $FF   ; end token
-
-
-
-_off019_03_9701_45:
-- - - - - - 0x009711 02:9701: FF        .byte $FF   ; end token
-
-
-
-_off019_03_9702_46:
-- - - - - - 0x009712 02:9702: FF        .byte $FF   ; end token
-
-
-
-_off019_03_9703_47:
-- - - - - - 0x009713 02:9703: FF        .byte $FF   ; end token
-
-
-
-_off019_03_9704_48:
-- - - - - - 0x009714 02:9704: FF        .byte $FF   ; end token
-
-
-
 _off019_03_9705_49:
 - D 0 - I - 0x009715 02:9705: 08        .byte $10 * $00 + $08   ; pos YX
 - D 0 - I - 0x009716 02:9706: 82        .byte $80 + $00 + $02   ; flags
@@ -4901,36 +4482,6 @@ _off019_03_9705_49:
 - D 0 - I - 0x00971D 02:970D: 41        .byte con_obj_id_41   ; 
 
 - D 0 - I - 0x00971E 02:970E: FF        .byte $FF   ; end token
-
-
-
-_off019_03_970F_4A:
-- D 0 - I - 0x00971F 02:970F: FF        .byte $FF   ; end token
-
-
-
-_off019_03_9710_4B:
-- - - - - - 0x009720 02:9710: FF        .byte $FF   ; end token
-
-
-
-_off019_03_9711_4C:
-- - - - - - 0x009721 02:9711: FF        .byte $FF   ; end token
-
-
-
-_off019_03_9712_4D:
-- - - - - - 0x009722 02:9712: FF        .byte $FF   ; end token
-
-
-
-_off019_03_9713_4E:
-- - - - - - 0x009723 02:9713: FF        .byte $FF   ; end token
-
-
-
-_off019_03_9714_4F:
-- - - - - - 0x009724 02:9714: FF        .byte $FF   ; end token
 
 
 
@@ -4952,26 +4503,6 @@ _off019_03_9715_50:
 - D 0 - I - 0x009730 02:9720: 41        .byte con_obj_id_41   ; 
 
 - D 0 - I - 0x009731 02:9721: FF        .byte $FF   ; end token
-
-
-
-_off019_03_9722_51:
-- D 0 - I - 0x009732 02:9722: FF        .byte $FF   ; end token
-
-
-
-_off019_03_9723_52:
-- - - - - - 0x009733 02:9723: FF        .byte $FF   ; end token
-
-
-
-_off019_03_9724_53:
-- - - - - - 0x009734 02:9724: FF        .byte $FF   ; end token
-
-
-
-_off019_03_9725_54:
-- - - - - - 0x009735 02:9725: FF        .byte $FF   ; end token
 
 
 
@@ -5078,21 +4609,6 @@ _off019_03_9755_57:
 
 
 
-_off019_03_976B_58:
-- - - - - - 0x00977B 02:976B: FF        .byte $FF   ; end token
-
-
-
-_off019_03_976C_59:
-- - - - - - 0x00977C 02:976C: FF        .byte $FF   ; end token
-
-
-
-_off019_03_976D_5A:
-- - - - - - 0x00977D 02:976D: FF        .byte $FF   ; end token
-
-
-
 _off013_0x00977E_04_area_5:
 - D 0 - I - 0x00977E 02:976E: EC 97     .word _off019_04_97EC_00
 - D 0 - I - 0x009780 02:9770: F6 97     .word _off019_04_97F6_01
@@ -5160,6 +4676,62 @@ _off013_0x00977E_04_area_5:
 
 
 
+_off019_04_97F6_01:
+_off019_04_97F7_02:
+_off019_04_97F8_03:
+_off019_04_97F9_04:
+_off019_04_97FA_05:
+_off019_04_97FB_06:
+_off019_04_97FC_07:
+_off019_04_97FD_08:
+_off019_04_980B_0A:
+_off019_04_9814_0D:
+_off019_04_9815_0E:
+_off019_04_9816_0F:
+_off019_04_9817_10:
+_off019_04_9818_11:
+_off019_04_9826_13:
+_off019_04_9827_14:
+_off019_04_9834_18:
+_off019_04_9835_19:
+_off019_04_9836_1A:
+_off019_04_9847_1C:
+_off019_04_9848_1D:
+_off019_04_9849_1E:
+_off019_04_984A_1F:
+_off019_04_984B_20:
+_off019_04_984C_21:
+_off019_04_984D_22:
+_off019_04_984E_23:
+_off019_04_9859_25:
+_off019_04_985A_26:
+_off019_04_985B_27:
+_off019_04_985C_28:
+_off019_04_985D_29:
+_off019_04_985E_2A:
+_off019_04_985F_2B:
+_off019_04_9860_2C:
+_off019_04_9871_2E:
+_off019_04_9872_2F:
+_off019_04_9873_30:
+_off019_04_9874_31:
+_off019_04_9875_32:
+_off019_04_9876_33:
+_off019_04_9877_34:
+_off019_04_9878_35:
+_off019_04_9879_36:
+_off019_04_987A_37:
+_off019_04_987B_38:
+_off019_04_987C_39:
+_off019_04_987D_3A:
+_off019_04_987E_3B:
+_off019_04_987F_3C:
+_off019_04_9880_3D:
+_off019_04_9881_3E:
+- D 0 - I - 0x009806 02:97F6: FF        .byte $FF   ; end token
+
+
+
 _off019_04_97EC_00:
 - D 0 - I - 0x0097FC 02:97EC: AA        .byte $10 * $0A + $0A   ; pos YX
 - D 0 - I - 0x0097FD 02:97ED: 80        .byte $80 + $00 + $00   ; flags
@@ -5174,46 +4746,6 @@ _off019_04_97EC_00:
 - D 0 - I - 0x009804 02:97F4: 2F        .byte con_obj_id_2F   ; 
 
 - D 0 - I - 0x009805 02:97F5: FF        .byte $FF   ; end token
-
-
-
-_off019_04_97F6_01:
-- D 0 - I - 0x009806 02:97F6: FF        .byte $FF   ; end token
-
-
-
-_off019_04_97F7_02:
-- D 0 - I - 0x009807 02:97F7: FF        .byte $FF   ; end token
-
-
-
-_off019_04_97F8_03:
-- D 0 - I - 0x009808 02:97F8: FF        .byte $FF   ; end token
-
-
-
-_off019_04_97F9_04:
-- - - - - - 0x009809 02:97F9: FF        .byte $FF   ; end token
-
-
-
-_off019_04_97FA_05:
-- - - - - - 0x00980A 02:97FA: FF        .byte $FF   ; end token
-
-
-
-_off019_04_97FB_06:
-- - - - - - 0x00980B 02:97FB: FF        .byte $FF   ; end token
-
-
-
-_off019_04_97FC_07:
-- - - - - - 0x00980C 02:97FC: FF        .byte $FF   ; end token
-
-
-
-_off019_04_97FD_08:
-- - - - - - 0x00980D 02:97FD: FF        .byte $FF   ; end token
 
 
 
@@ -5238,11 +4770,6 @@ _off019_04_97FE_09:
 
 
 
-_off019_04_980B_0A:
-- D 0 - I - 0x00981B 02:980B: FF        .byte $FF   ; end token
-
-
-
 _off019_04_980C_0B:
 - D 0 - I - 0x00981C 02:980C: 59        .byte $10 * $05 + $09   ; pos YX
 - D 0 - I - 0x00981D 02:980D: 80        .byte $80 + $00 + $00   ; flags
@@ -5258,31 +4785,6 @@ _off019_04_9810_0C:
 - D 0 - I - 0x009822 02:9812: 32        .byte con_obj_id_32   ; 
 
 - D 0 - I - 0x009823 02:9813: FF        .byte $FF   ; end token
-
-
-
-_off019_04_9814_0D:
-- D 0 - I - 0x009824 02:9814: FF        .byte $FF   ; end token
-
-
-
-_off019_04_9815_0E:
-- D 0 - I - 0x009825 02:9815: FF        .byte $FF   ; end token
-
-
-
-_off019_04_9816_0F:
-- - - - - - 0x009826 02:9816: FF        .byte $FF   ; end token
-
-
-
-_off019_04_9817_10:
-- - - - - - 0x009827 02:9817: FF        .byte $FF   ; end token
-
-
-
-_off019_04_9818_11:
-- - - - - - 0x009828 02:9818: FF        .byte $FF   ; end token
 
 
 
@@ -5304,16 +4806,6 @@ _off019_04_9819_12:
 - D 0 - I - 0x009834 02:9824: 34        .byte con_obj_id_34   ; 
 
 - D 0 - I - 0x009835 02:9825: FF        .byte $FF   ; end token
-
-
-
-_off019_04_9826_13:
-- D 0 - I - 0x009836 02:9826: FF        .byte $FF   ; end token
-
-
-
-_off019_04_9827_14:
-- D 0 - I - 0x009837 02:9827: FF        .byte $FF   ; end token
 
 
 
@@ -5344,21 +4836,6 @@ _off019_04_9830_17:
 
 
 
-_off019_04_9834_18:
-- - - - - - 0x009844 02:9834: FF        .byte $FF   ; end token
-
-
-
-_off019_04_9835_19:
-- - - - - - 0x009845 02:9835: FF        .byte $FF   ; end token
-
-
-
-_off019_04_9836_1A:
-- - - - - - 0x009846 02:9836: FF        .byte $FF   ; end token
-
-
-
 _off019_04_9837_1B:
 - D 0 - I - 0x009847 02:9837: 0E        .byte $10 * $00 + $0E   ; pos YX
 - D 0 - I - 0x009848 02:9838: 80        .byte $80 + $00 + $00   ; flags
@@ -5384,46 +4861,6 @@ _off019_04_9837_1B:
 
 
 
-_off019_04_9847_1C:
-- D 0 - I - 0x009857 02:9847: FF        .byte $FF   ; end token
-
-
-
-_off019_04_9848_1D:
-- - - - - - 0x009858 02:9848: FF        .byte $FF   ; end token
-
-
-
-_off019_04_9849_1E:
-- - - - - - 0x009859 02:9849: FF        .byte $FF   ; end token
-
-
-
-_off019_04_984A_1F:
-- - - - - - 0x00985A 02:984A: FF        .byte $FF   ; end token
-
-
-
-_off019_04_984B_20:
-- - - - - - 0x00985B 02:984B: FF        .byte $FF   ; end token
-
-
-
-_off019_04_984C_21:
-- - - - - - 0x00985C 02:984C: FF        .byte $FF   ; end token
-
-
-
-_off019_04_984D_22:
-- - - - - - 0x00985D 02:984D: FF        .byte $FF   ; end token
-
-
-
-_off019_04_984E_23:
-- - - - - - 0x00985E 02:984E: FF        .byte $FF   ; end token
-
-
-
 _off019_04_984F_24:
 - D 0 - I - 0x00985F 02:984F: 0A        .byte $10 * $00 + $0A   ; pos YX
 - D 0 - I - 0x009860 02:9850: 8B        .byte $80 + $00 + $0B   ; flags
@@ -5438,46 +4875,6 @@ _off019_04_984F_24:
 - D 0 - I - 0x009867 02:9857: 0A        .byte con_obj_id_0A   ; 
 
 - D 0 - I - 0x009868 02:9858: FF        .byte $FF   ; end token
-
-
-
-_off019_04_9859_25:
-- D 0 - I - 0x009869 02:9859: FF        .byte $FF   ; end token
-
-
-
-_off019_04_985A_26:
-- - - - - - 0x00986A 02:985A: FF        .byte $FF   ; end token
-
-
-
-_off019_04_985B_27:
-- - - - - - 0x00986B 02:985B: FF        .byte $FF   ; end token
-
-
-
-_off019_04_985C_28:
-- - - - - - 0x00986C 02:985C: FF        .byte $FF   ; end token
-
-
-
-_off019_04_985D_29:
-- - - - - - 0x00986D 02:985D: FF        .byte $FF   ; end token
-
-
-
-_off019_04_985E_2A:
-- - - - - - 0x00986E 02:985E: FF        .byte $FF   ; end token
-
-
-
-_off019_04_985F_2B:
-- - - - - - 0x00986F 02:985F: FF        .byte $FF   ; end token
-
-
-
-_off019_04_9860_2C:
-- - - - - - 0x009870 02:9860: FF        .byte $FF   ; end token
 
 
 
@@ -5503,91 +4900,6 @@ _off019_04_9861_2D:
 - D 0 - I - 0x00987F 02:986F: 04        .byte con_obj_id_04   ; 
 
 - D 0 - I - 0x009880 02:9870: FF        .byte $FF   ; end token
-
-
-
-_off019_04_9871_2E:
-- D 0 - I - 0x009881 02:9871: FF        .byte $FF   ; end token
-
-
-
-_off019_04_9872_2F:
-- - - - - - 0x009882 02:9872: FF        .byte $FF   ; end token
-
-
-
-_off019_04_9873_30:
-- - - - - - 0x009883 02:9873: FF        .byte $FF   ; end token
-
-
-
-_off019_04_9874_31:
-- - - - - - 0x009884 02:9874: FF        .byte $FF   ; end token
-
-
-
-_off019_04_9875_32:
-- - - - - - 0x009885 02:9875: FF        .byte $FF   ; end token
-
-
-
-_off019_04_9876_33:
-- - - - - - 0x009886 02:9876: FF        .byte $FF   ; end token
-
-
-
-_off019_04_9877_34:
-- - - - - - 0x009887 02:9877: FF        .byte $FF   ; end token
-
-
-
-_off019_04_9878_35:
-- - - - - - 0x009888 02:9878: FF        .byte $FF   ; end token
-
-
-
-_off019_04_9879_36:
-- - - - - - 0x009889 02:9879: FF        .byte $FF   ; end token
-
-
-
-_off019_04_987A_37:
-- - - - - - 0x00988A 02:987A: FF        .byte $FF   ; end token
-
-
-
-_off019_04_987B_38:
-- - - - - - 0x00988B 02:987B: FF        .byte $FF   ; end token
-
-
-
-_off019_04_987C_39:
-- - - - - - 0x00988C 02:987C: FF        .byte $FF   ; end token
-
-
-
-_off019_04_987D_3A:
-- - - - - - 0x00988D 02:987D: FF        .byte $FF   ; end token
-
-
-
-_off019_04_987E_3B:
-- - - - - - 0x00988E 02:987E: FF        .byte $FF   ; end token
-
-
-
-_off019_04_987F_3C:
-- - - - - - 0x00988F 02:987F: FF        .byte $FF   ; end token
-
-
-
-_off019_04_9880_3D:
-- - - - - - 0x009890 02:9880: FF        .byte $FF   ; end token
-
-
-
-_off019_04_9881_3E:
-- - - - - - 0x009891 02:9881: FF        .byte $FF   ; end token
 
 
 
@@ -5638,6 +4950,12 @@ _off019_05_98BA_15:
 _off019_05_98BA_17:
 _off019_05_98BA_19:
 _off019_05_98BA_1B:
+_off019_05_9905_0C:
+_off019_05_9913_10:
+_off019_05_9921_14:
+_off019_05_9922_16:
+_off019_05_9923_18:
+_off019_05_9924_1A:
 - D 0 - I - 0x0098CA 02:98BA: FF        .byte $FF   ; end token
 
 
@@ -5759,11 +5077,6 @@ _off019_05_98EC_0A:
 
 
 
-_off019_05_9905_0C:
-- D 0 - I - 0x009915 02:9905: FF        .byte $FF   ; end token
-
-
-
 _off019_05_9906_0E:
 - D 0 - I - 0x009916 02:9906: 14        .byte $10 * $01 + $04   ; pos YX
 - D 0 - I - 0x009917 02:9907: 81        .byte $80 + $00 + $01   ; flags
@@ -5785,11 +5098,6 @@ _off019_05_9906_0E:
 
 
 
-_off019_05_9913_10:
-- D 0 - I - 0x009923 02:9913: FF        .byte $FF   ; end token
-
-
-
 _off019_05_9914_12:
 - D 0 - I - 0x009924 02:9914: 1A        .byte $10 * $01 + $0A   ; pos YX
 - D 0 - I - 0x009925 02:9915: 81        .byte $80 + $00 + $01   ; flags
@@ -5808,26 +5116,6 @@ _off019_05_9914_12:
 - D 0 - I - 0x00992F 02:991F: 5E        .byte con_obj_id_5E   ; 
 
 - D 0 - I - 0x009930 02:9920: FF        .byte $FF   ; end token
-
-
-
-_off019_05_9921_14:
-- D 0 - I - 0x009931 02:9921: FF        .byte $FF   ; end token
-
-
-
-_off019_05_9922_16:
-- D 0 - I - 0x009932 02:9922: FF        .byte $FF   ; end token
-
-
-
-_off019_05_9923_18:
-- - - - - - 0x009933 02:9923: FF        .byte $FF   ; end token
-
-
-
-_off019_05_9924_1A:
-- - - - - - 0x009934 02:9924: FF        .byte $FF   ; end token
 
 
 
@@ -5878,12 +5166,10 @@ _off019_06_995D_15:
 _off019_06_995D_17:
 _off019_06_995D_19:
 _off019_06_995D_1B:
-- D 0 - I - 0x00996D 02:995D: FF        .byte $FF   ; end token
-
-
-
 _off019_06_995E_02:
-- D 0 - I - 0x00996E 02:995E: FF        .byte $FF   ; end token
+_off019_06_9986_10:
+_off019_06_99B8_1A:
+- D 0 - I - 0x00996D 02:995D: FF        .byte $FF   ; end token
 
 
 
@@ -5958,11 +5244,6 @@ _off019_06_997F_0E:
 - D 0 - I - 0x009994 02:9984: 01        .byte con_obj_id_01   ; 
 
 - D 0 - I - 0x009995 02:9985: FF        .byte $FF   ; end token
-
-
-
-_off019_06_9986_10:
-- D 0 - I - 0x009996 02:9986: FF        .byte $FF   ; end token
 
 
 
@@ -6046,11 +5327,6 @@ _off019_06_99B4_18:
 
 
 
-_off019_06_99B8_1A:
-- D 0 - I - 0x0099C8 02:99B8: FF        .byte $FF   ; end token
-
-
-
 _off013_0x0099C9_07_area_8:
 - - - - - - 0x0099C9 02:99B9: 39 9A     .word _off019_07_9A39_00
 - - - - - - 0x0099CB 02:99BB: 3A 9A     .word _off019_07_9A3A_01
@@ -6120,112 +5396,58 @@ _off013_0x0099C9_07_area_8:
 
 
 _off019_07_9A39_00:
-- - - - - - 0x009A49 02:9A39: FF        .byte $FF   ; end token
-
-
-
 _off019_07_9A3A_01:
-- - - - - - 0x009A4A 02:9A3A: FF        .byte $FF   ; end token
-
-
-
 _off019_07_9A3B_02:
-- - - - - - 0x009A4B 02:9A3B: FF        .byte $FF   ; end token
-
-
-
 _off019_07_9A3C_03:
-- - - - - - 0x009A4C 02:9A3C: FF        .byte $FF   ; end token
-
-
-
 _off019_07_9A3D_04:
-- - - - - - 0x009A4D 02:9A3D: FF        .byte $FF   ; end token
-
-
-
 _off019_07_9A3E_05:
-- D 0 - I - 0x009A4E 02:9A3E: FF        .byte $FF   ; end token
-
-
-
 _off019_07_9A3F_06:
-- D 0 - I - 0x009A4F 02:9A3F: FF        .byte $FF   ; end token
-
-
-
 _off019_07_9A40_07:
-- D 0 - I - 0x009A50 02:9A40: FF        .byte $FF   ; end token
-
-
-
 _off019_07_9A41_08:
-- - - - - - 0x009A51 02:9A41: FF        .byte $FF   ; end token
-
-
-
 _off019_07_9A42_09:
-- - - - - - 0x009A52 02:9A42: FF        .byte $FF   ; end token
-
-
-
 _off019_07_9A43_0A:
-- - - - - - 0x009A53 02:9A43: FF        .byte $FF   ; end token
-
-
-
 _off019_07_9A44_0B:
-- - - - - - 0x009A54 02:9A44: FF        .byte $FF   ; end token
-
-
-
 _off019_07_9A45_0C:
-- - - - - - 0x009A55 02:9A45: FF        .byte $FF   ; end token
-
-
-
 _off019_07_9A46_0D:
-- - - - - - 0x009A56 02:9A46: FF        .byte $FF   ; end token
-
-
-
 _off019_07_9A47_0E:
-- - - - - - 0x009A57 02:9A47: FF        .byte $FF   ; end token
-
-
-
 _off019_07_9A48_0F:
-- - - - - - 0x009A58 02:9A48: FF        .byte $FF   ; end token
-
-
-
 _off019_07_9A49_10:
-- - - - - - 0x009A59 02:9A49: FF        .byte $FF   ; end token
-
-
-
 _off019_07_9A4A_11:
-- - - - - - 0x009A5A 02:9A4A: FF        .byte $FF   ; end token
-
-
-
 _off019_07_9A4B_12:
-- - - - - - 0x009A5B 02:9A4B: FF        .byte $FF   ; end token
-
-
-
 _off019_07_9A4C_13:
-- - - - - - 0x009A5C 02:9A4C: FF        .byte $FF   ; end token
-
-
-
 _off019_07_9A4D_14:
-- - - - - - 0x009A5D 02:9A4D: FF        .byte $FF   ; end token
-
-
-
 _off019_07_9A4E_15:
-- D 0 - I - 0x009A5E 02:9A4E: FF        .byte $FF   ; end token
+_off019_07_9A66_1B:
+_off019_07_9A6B_1D:
+_off019_07_9A6C_1E:
+_off019_07_9A6D_1F:
+_off019_07_9A6E_20:
+_off019_07_9A6F_21:
+_off019_07_9A70_22:
+_off019_07_9A71_23:
+_off019_07_9A72_24:
+_off019_07_9A81_27:
+_off019_07_9A82_28:
+_off019_07_9A83_29:
+_off019_07_9A84_2A:
+_off019_07_9A85_2B:
+_off019_07_9A86_2C:
+_off019_07_9A87_2D:
+_off019_07_9A88_2E:
+_off019_07_9A89_2F:
+_off019_07_9A8A_30:
+_off019_07_9ACE_35:
+_off019_07_9ACF_36:
+_off019_07_9AD0_37:
+_off019_07_9AD1_38:
+_off019_07_9AD2_39:
+_off019_07_9AD3_3A:
+_off019_07_9AD4_3B:
+_off019_07_9AD5_3C:
+_off019_07_9AD6_3D:
+_off019_07_9AD7_3E:
+_off019_07_9AD8_3F:
+- - - - - - 0x009A49 02:9A39: FF        .byte $FF   ; end token
 
 
 
@@ -6278,57 +5500,12 @@ _off019_07_9A62_1A:
 
 
 
-_off019_07_9A66_1B:
-- D 0 - I - 0x009A76 02:9A66: FF        .byte $FF   ; end token
-
-
-
 _off019_07_9A67_1C:
 - D 0 - I - 0x009A77 02:9A67: 88        .byte $10 * $08 + $08   ; pos YX
 - D 0 - I - 0x009A78 02:9A68: C0        .byte $80 + $40 + $00   ; flags
 - D 0 - I - 0x009A79 02:9A69: 6D        .byte con_obj_id_6D   ; 
 
 - D 0 - I - 0x009A7A 02:9A6A: FF        .byte $FF   ; end token
-
-
-
-_off019_07_9A6B_1D:
-- D 0 - I - 0x009A7B 02:9A6B: FF        .byte $FF   ; end token
-
-
-
-_off019_07_9A6C_1E:
-- - - - - - 0x009A7C 02:9A6C: FF        .byte $FF   ; end token
-
-
-
-_off019_07_9A6D_1F:
-- - - - - - 0x009A7D 02:9A6D: FF        .byte $FF   ; end token
-
-
-
-_off019_07_9A6E_20:
-- - - - - - 0x009A7E 02:9A6E: FF        .byte $FF   ; end token
-
-
-
-_off019_07_9A6F_21:
-- - - - - - 0x009A7F 02:9A6F: FF        .byte $FF   ; end token
-
-
-
-_off019_07_9A70_22:
-- - - - - - 0x009A80 02:9A70: FF        .byte $FF   ; end token
-
-
-
-_off019_07_9A71_23:
-- D 0 - I - 0x009A81 02:9A71: FF        .byte $FF   ; end token
-
-
-
-_off019_07_9A72_24:
-- D 0 - I - 0x009A82 02:9A72: FF        .byte $FF   ; end token
 
 
 
@@ -6355,56 +5532,6 @@ _off019_07_9A7D_26:
 - D 0 - I - 0x009A8F 02:9A7F: 47        .byte con_obj_id_47   ; 
 
 - D 0 - I - 0x009A90 02:9A80: FF        .byte $FF   ; end token
-
-
-
-_off019_07_9A81_27:
-- - - - - - 0x009A91 02:9A81: FF        .byte $FF   ; end token
-
-
-
-_off019_07_9A82_28:
-- - - - - - 0x009A92 02:9A82: FF        .byte $FF   ; end token
-
-
-
-_off019_07_9A83_29:
-- - - - - - 0x009A93 02:9A83: FF        .byte $FF   ; end token
-
-
-
-_off019_07_9A84_2A:
-- - - - - - 0x009A94 02:9A84: FF        .byte $FF   ; end token
-
-
-
-_off019_07_9A85_2B:
-- D 0 - I - 0x009A95 02:9A85: FF        .byte $FF   ; end token
-
-
-
-_off019_07_9A86_2C:
-- D 0 - I - 0x009A96 02:9A86: FF        .byte $FF   ; end token
-
-
-
-_off019_07_9A87_2D:
-- D 0 - I - 0x009A97 02:9A87: FF        .byte $FF   ; end token
-
-
-
-_off019_07_9A88_2E:
-- D 0 - I - 0x009A98 02:9A88: FF        .byte $FF   ; end token
-
-
-
-_off019_07_9A89_2F:
-- - - - - - 0x009A99 02:9A89: FF        .byte $FF   ; end token
-
-
-
-_off019_07_9A8A_30:
-- - - - - - 0x009A9A 02:9A8A: FF        .byte $FF   ; end token
 
 
 
@@ -6509,61 +5636,6 @@ _off019_07_9AC4_34:
 - D 0 - I - 0x009ADC 02:9ACC: 45        .byte con_obj_id_45   ; 
 
 - D 0 - I - 0x009ADD 02:9ACD: FF        .byte $FF   ; end token
-
-
-
-_off019_07_9ACE_35:
-- D 0 - I - 0x009ADE 02:9ACE: FF        .byte $FF   ; end token
-
-
-
-_off019_07_9ACF_36:
-- D 0 - I - 0x009ADF 02:9ACF: FF        .byte $FF   ; end token
-
-
-
-_off019_07_9AD0_37:
-- - - - - - 0x009AE0 02:9AD0: FF        .byte $FF   ; end token
-
-
-
-_off019_07_9AD1_38:
-- - - - - - 0x009AE1 02:9AD1: FF        .byte $FF   ; end token
-
-
-
-_off019_07_9AD2_39:
-- - - - - - 0x009AE2 02:9AD2: FF        .byte $FF   ; end token
-
-
-
-_off019_07_9AD3_3A:
-- - - - - - 0x009AE3 02:9AD3: FF        .byte $FF   ; end token
-
-
-
-_off019_07_9AD4_3B:
-- - - - - - 0x009AE4 02:9AD4: FF        .byte $FF   ; end token
-
-
-
-_off019_07_9AD5_3C:
-- - - - - - 0x009AE5 02:9AD5: FF        .byte $FF   ; end token
-
-
-
-_off019_07_9AD6_3D:
-- - - - - - 0x009AE6 02:9AD6: FF        .byte $FF   ; end token
-
-
-
-_off019_07_9AD7_3E:
-- - - - - - 0x009AE7 02:9AD7: FF        .byte $FF   ; end token
-
-
-
-_off019_07_9AD8_3F:
-- - - - - - 0x009AE8 02:9AD8: FF        .byte $FF   ; end token
 
 
 

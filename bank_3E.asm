@@ -3268,8 +3268,6 @@ tbl_F2C4_атрибуты_метатайлов:
 
 
 tbl_0x01F2E4_area_objects_spawner:
-; bzk optimize, most of internal links point to various FF's.
-; choose a single FF and repoint them to it, delete other FF's
 - D 3 - - - 0x01F2E4 07:F2D4: C9 92     .word _off013_0x0092D9_00_area_1
 - D 3 - - - 0x01F2E6 07:F2D6: DD 93     .word _off013_0x0093ED_01_area_2
 - D 3 - - - 0x01F2E8 07:F2D8: 83 94     .word _off013_0x009493_02_area_3
