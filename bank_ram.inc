@@ -3753,3 +3753,27 @@ ram_позиция_объектов_x_старш            = $6580 ;
 ; ram_659D                                = $659D ;
 ; ram_659E                                = $659E ;
 ; ram_659F                                = $659F ;
+
+
+
+; вечное бессмертие на селект + вниз
+ram_режим_бессмертия                    = $7FF0 ; 00 = выкл, 01 = вкл
+; ram_7FF1                                = $7FF1 ; 
+
+
+
+; свободные адреса
+; ram_7FF2                                = $7FF2 ; 
+; ram_7FF3                                = $7FF3 ; 
+; ram_7FF4                                = $7FF4 ; 
+; ram_7FF5                                = $7FF5 ; 
+; ram_7FF6                                = $7FF6 ; 
+; ram_7FF7                                = $7FF7 ; 
+; ram_7FF8                                = $7FF8 ; 
+; ram_7FF9                                = $7FF9 ; 
+; ram_7FFA                                = $7FFA ; 
+; ram_7FFB                                = $7FFB ; 
+; ram_7FFC                                = $7FFC ; 
+; ram_7FFD                                = $7FFD ; 
+; ram_7FFE                                = $7FFE ; 
+; ram_7FFF                                = $7FFF ; 
