@@ -6,6 +6,7 @@
 
 
 
+.export sub_0x000000_чтение_комбинаций_кнопок_для_читов
 .export loc_0x01E4F5
 .export sub_0x01E552
 .export sub_0x01E594
@@ -78,6 +79,51 @@
 ; first byte at DF00 is technically a part of DPCM
 - D 2 - - A 0x01DF10 07:DF00: FF        .byte $FF
 
+
+
+sub_0x000000_чтение_комбинаций_кнопок_для_читов:
+; cyneprepou4uk
+; вечное бессмертие на вниз + селект
+                                        LDA ram_нажатая_кнопка,X
+                                        AND #con_btn_Select
+                                        PHP ; сохранить Z для дальнейшей проверки
+                                        BEQ bra_85A7_skip
+                                        LDA ram_удержанная_кнопка,X
+                                        AND #con_btn_Down
+                                        BEQ bra_85A7_skip
+                                        LDA ram_режим_бессмертия,X
+                                        EOR #$01    ; переключить режим
+                                        STA ram_режим_бессмертия,X
+                                        STA ram_бессмертие_игрока,X
+                                        LDA #con_sound_19
+                                        JSR sub_0x01FDEE_play_sound
+bra_85A7_skip:
+; переключение оружия на вверх + селект
+                                        PLP ; статус кнопки Select
+                                        BEQ bra_85A9_skip
+                                        LDA ram_удержанная_кнопка,X
+                                        AND #con_btn_Up
+                                        BEQ bra_85A9_skip
+                                        LDA ram_оружие_игрока,X
+                                        PHA
+                                        AND #$80    ; обрезать R
+                                        TAY
+                                        PLA
+                                        AND #$0F    ; обрезать вид оружия
+                                        CLC
+                                        ADC #$01    ; переключить на следующее
+                                        CMP #$07    ; огнемет тоже в списке
+                                        BCC bra_85A8_not_overflow
+                                        LDA #$00
+bra_85A8_not_overflow:
+                                        STA ram_оружие_игрока,X
+                                        TYA ; добавить R
+                                        ORA ram_оружие_игрока,X
+                                        STA ram_оружие_игрока,X
+                                        LDA #con_sound_19
+                                        JSR sub_0x01FDEE_play_sound
+bra_85A9_skip:
+                                        RTS
 
 
 

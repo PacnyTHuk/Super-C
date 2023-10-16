@@ -8,6 +8,7 @@
 
 
 ; MISC
+con_режим_читера                        = $01 ; 00 = выключить читы, остальные = включить читы
 con_prg_bank                            = $00 ; 
 con_chr_bank                            = $00 ; 
 con_F97C_colors                         = $00 ; for 0x01F98C
