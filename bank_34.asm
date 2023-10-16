@@ -6016,115 +6016,115 @@ tbl_9F62_auto_playlist:
 ; ???
 - D 0 - I - 0x009F72 02:9F62: 0E        .byte $0E   ; 
 - D 0 - I - 0x009F73 02:9F63: 5C        .byte $5C   ; 
-- D 0 - I - 0x009F74 02:9F64: 28        .byte con_obj_id_28   ; 
+- D 0 - I - 0x009F74 02:9F64: 28        .byte con_sound_28   ; 
 
 - D 0 - I - 0x009F75 02:9F65: 0D        .byte $0D   ; 
 - D 0 - I - 0x009F76 02:9F66: E4        .byte $E4   ; 
-- D 0 - I - 0x009F77 02:9F67: 30        .byte con_obj_id_30   ; 
+- D 0 - I - 0x009F77 02:9F67: 30        .byte con_sound_30   ; 
 
 - D 0 - I - 0x009F78 02:9F68: 02        .byte $02   ; 
 - D 0 - I - 0x009F79 02:9F69: 01        .byte $01   ; 
-- D 0 - I - 0x009F7A 02:9F6A: 33        .byte con_obj_id_33   ; 
+- D 0 - I - 0x009F7A 02:9F6A: 33        .byte con_sound_33   ; 
 
 - D 0 - I - 0x009F7B 02:9F6B: 09        .byte $09   ; 
 - D 0 - I - 0x009F7C 02:9F6C: 34        .byte $34   ; 
-- D 0 - I - 0x009F7D 02:9F6D: 2B        .byte con_obj_id_2B   ; 
+- D 0 - I - 0x009F7D 02:9F6D: 2B        .byte con_sound_2B   ; 
 
 - D 0 - I - 0x009F7E 02:9F6E: 06        .byte $06   ; 
 - D 0 - I - 0x009F7F 02:9F6F: DC        .byte $DC   ; 
-- D 0 - I - 0x009F80 02:9F70: 31        .byte con_obj_id_31   ; 
+- D 0 - I - 0x009F80 02:9F70: 31        .byte con_sound_31   ; 
 
 - D 0 - I - 0x009F81 02:9F71: 02        .byte $02   ; 
 - D 0 - I - 0x009F82 02:9F72: 01        .byte $01   ; 
-- D 0 - I - 0x009F83 02:9F73: 33        .byte con_obj_id_33   ; 
+- D 0 - I - 0x009F83 02:9F73: 33        .byte con_sound_33   ; 
 
 - D 0 - I - 0x009F84 02:9F74: 0C        .byte $0C   ; 
 - D 0 - I - 0x009F85 02:9F75: 40        .byte $40   ; 
-- D 0 - I - 0x009F86 02:9F76: 2A        .byte con_obj_id_2A   ; 
+- D 0 - I - 0x009F86 02:9F76: 2A        .byte con_sound_2A   ; 
 
 - D 0 - I - 0x009F87 02:9F77: 08        .byte $08   ; 
 - D 0 - I - 0x009F88 02:9F78: 08        .byte $08   ; 
-- D 0 - I - 0x009F89 02:9F79: 32        .byte con_obj_id_32   ; 
+- D 0 - I - 0x009F89 02:9F79: 32        .byte con_sound_32   ; 
 
 - D 0 - I - 0x009F8A 02:9F7A: 06        .byte $06   ; 
 - D 0 - I - 0x009F8B 02:9F7B: DC        .byte $DC   ; 
-- D 0 - I - 0x009F8C 02:9F7C: 31        .byte con_obj_id_31   ; 
+- D 0 - I - 0x009F8C 02:9F7C: 31        .byte con_sound_31   ; 
 
 - D 0 - I - 0x009F8D 02:9F7D: 02        .byte $02   ; 
 - D 0 - I - 0x009F8E 02:9F7E: 01        .byte $01   ; 
-- D 0 - I - 0x009F8F 02:9F7F: 33        .byte con_obj_id_33   ; 
+- D 0 - I - 0x009F8F 02:9F7F: 33        .byte con_sound_33   ; 
 
 - D 0 - I - 0x009F90 02:9F80: 0C        .byte $0C   ; 
 - D 0 - I - 0x009F91 02:9F81: B8        .byte $B8   ; 
-- D 0 - I - 0x009F92 02:9F82: 29        .byte con_obj_id_29   ; 
+- D 0 - I - 0x009F92 02:9F82: 29        .byte con_sound_29   ; 
 
 - D 0 - I - 0x009F93 02:9F83: 06        .byte $06   ; 
 - D 0 - I - 0x009F94 02:9F84: DC        .byte $DC   ; 
-- D 0 - I - 0x009F95 02:9F85: 31        .byte con_obj_id_31   ; 
+- D 0 - I - 0x009F95 02:9F85: 31        .byte con_sound_31   ; 
 
 - D 0 - I - 0x009F96 02:9F86: 02        .byte $02   ; 
 - D 0 - I - 0x009F97 02:9F87: 01        .byte $01   ; 
-- D 0 - I - 0x009F98 02:9F88: 33        .byte con_obj_id_33   ; 
+- D 0 - I - 0x009F98 02:9F88: 33        .byte con_sound_33   ; 
 
 - D 0 - I - 0x009F99 02:9F89: 09        .byte $09   ; 
 - D 0 - I - 0x009F9A 02:9F8A: 34        .byte $34   ; 
-- D 0 - I - 0x009F9B 02:9F8B: 2C        .byte con_obj_id_2C   ; 
+- D 0 - I - 0x009F9B 02:9F8B: 2C        .byte con_sound_2C   ; 
 
 - D 0 - I - 0x009F9C 02:9F8C: 06        .byte $06   ; 
 - D 0 - I - 0x009F9D 02:9F8D: DC        .byte $DC   ; 
-- D 0 - I - 0x009F9E 02:9F8E: 31        .byte con_obj_id_31   ; 
+- D 0 - I - 0x009F9E 02:9F8E: 31        .byte con_sound_31   ; 
 
 - D 0 - I - 0x009F9F 02:9F8F: 02        .byte $02   ; 
 - D 0 - I - 0x009FA0 02:9F90: 01        .byte $01   ; 
-- D 0 - I - 0x009FA1 02:9F91: 33        .byte con_obj_id_33   ; 
+- D 0 - I - 0x009FA1 02:9F91: 33        .byte con_sound_33   ; 
 
 - D 0 - I - 0x009FA2 02:9F92: 09        .byte $09   ; 
 - D 0 - I - 0x009FA3 02:9F93: AC        .byte $AC   ; 
-- D 0 - I - 0x009FA4 02:9F94: 2D        .byte con_obj_id_2D   ; 
+- D 0 - I - 0x009FA4 02:9F94: 2D        .byte con_sound_2D   ; 
 
 - D 0 - I - 0x009FA5 02:9F95: 08        .byte $08   ; 
 - D 0 - I - 0x009FA6 02:9F96: 08        .byte $08   ; 
-- D 0 - I - 0x009FA7 02:9F97: 32        .byte con_obj_id_32   ; 
+- D 0 - I - 0x009FA7 02:9F97: 32        .byte con_sound_32   ; 
 
 - D 0 - I - 0x009FA8 02:9F98: 0D        .byte $0D   ; 
 - D 0 - I - 0x009FA9 02:9F99: E4        .byte $E4   ; 
-- D 0 - I - 0x009FAA 02:9F9A: 30        .byte con_obj_id_30   ; 
+- D 0 - I - 0x009FAA 02:9F9A: 30        .byte con_sound_30   ; 
 
 - D 0 - I - 0x009FAB 02:9F9B: 02        .byte $02   ; 
 - D 0 - I - 0x009FAC 02:9F9C: 01        .byte $01   ; 
-- D 0 - I - 0x009FAD 02:9F9D: 33        .byte con_obj_id_33   ; 
+- D 0 - I - 0x009FAD 02:9F9D: 33        .byte con_sound_33   ; 
 
 - D 0 - I - 0x009FAE 02:9F9E: 0C        .byte $0C   ; 
 - D 0 - I - 0x009FAF 02:9F9F: B8        .byte $B8   ; 
-- D 0 - I - 0x009FB0 02:9FA0: 2E        .byte con_obj_id_2E   ; 
+- D 0 - I - 0x009FB0 02:9FA0: 2E        .byte con_sound_2E   ; 
 
 - D 0 - I - 0x009FB1 02:9FA1: 06        .byte $06   ; 
 - D 0 - I - 0x009FB2 02:9FA2: DC        .byte $DC   ; 
-- D 0 - I - 0x009FB3 02:9FA3: 31        .byte con_obj_id_31   ; 
+- D 0 - I - 0x009FB3 02:9FA3: 31        .byte con_sound_31   ; 
 
 - D 0 - I - 0x009FB4 02:9FA4: 02        .byte $02   ; 
 - D 0 - I - 0x009FB5 02:9FA5: 01        .byte $01   ; 
-- D 0 - I - 0x009FB6 02:9FA6: 33        .byte con_obj_id_33   ; 
+- D 0 - I - 0x009FB6 02:9FA6: 33        .byte con_sound_33   ; 
 
 - D 0 - I - 0x009FB7 02:9FA7: 0F        .byte $0F   ; 
 - D 0 - I - 0x009FB8 02:9FA8: 10        .byte $10   ; 
-- D 0 - I - 0x009FB9 02:9FA9: 2F        .byte con_obj_id_2F   ; 
+- D 0 - I - 0x009FB9 02:9FA9: 2F        .byte con_sound_2F   ; 
 
 - D 0 - I - 0x009FBA 02:9FAA: 0D        .byte $0D   ; 
 - D 0 - I - 0x009FBB 02:9FAB: E4        .byte $E4   ; 
-- D 0 - I - 0x009FBC 02:9FAC: 30        .byte con_obj_id_30   ; 
+- D 0 - I - 0x009FBC 02:9FAC: 30        .byte con_sound_30   ; 
 
 - D 0 - I - 0x009FBD 02:9FAD: 02        .byte $02   ; 
 - D 0 - I - 0x009FBE 02:9FAE: 68        .byte $68   ; 
-- D 0 - I - 0x009FBF 02:9FAF: 34        .byte con_obj_id_34   ; 
+- D 0 - I - 0x009FBF 02:9FAF: 34        .byte con_sound_34   ; 
 
 - D 0 - I - 0x009FC0 02:9FB0: 0C        .byte $0C   ; 
 - D 0 - I - 0x009FC1 02:9FB1: 62        .byte $62   ; 
-- D 0 - I - 0x009FC2 02:9FB2: 36        .byte con_obj_id_36   ; 
+- D 0 - I - 0x009FC2 02:9FB2: 36        .byte con_sound_36   ; 
 
 - D 0 - I - 0x009FC3 02:9FB3: 01        .byte $01   ; 
 - D 0 - I - 0x009FC4 02:9FB4: F0        .byte $F0   ; 
-- D 0 - I - 0x009FC5 02:9FB5: 35        .byte con_obj_id_35   ; 
+- D 0 - I - 0x009FC5 02:9FB5: 35        .byte con_sound_35   ; 
 
 - D 0 - I - 0x009FC6 02:9FB6: FF        .byte $FF   ; end token
 
