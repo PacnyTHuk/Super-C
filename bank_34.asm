@@ -3752,9 +3752,9 @@ _off019_02_94D8_05:
 - D 0 - I - 0x0094E9 02:94D9: 10        .byte $10 + $00 + $00   ; flags
 - D 0 - I - 0x0094EA 02:94DA: 01        .byte con_obj_id_01   ; 
 
-- D 0 - I - 0x0094EB 02:94DB: 8A        .byte $8A   ; 
-- D 0 - I - 0x0094EC 02:94DC: 00        .byte $00   ; 
-- D 0 - I - 0x0094ED 02:94DD: 28        .byte $28   ; 
+- D 0 - I - 0x0094EB 02:94DB: 8A        .byte $10 * $08 + $0A   ; pos YX
+- D 0 - I - 0x0094EC 02:94DC: 00        .byte $00 + $00 + $00   ; flags
+- D 0 - I - 0x0094ED 02:94DD: 28        .byte con_obj_id_28   ; 
 - D 0 - I - 0x0094EE 02:94DE: FF        .byte $FF   ; end token
 
 
