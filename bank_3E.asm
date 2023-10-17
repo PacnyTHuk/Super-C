@@ -10,7 +10,7 @@
 .export loc_0x01E4F5
 .export sub_0x01E552
 .export sub_0x01E594
-.export sub_0x01E5E0_очистка_памяти_ram
+.export sub_0x01E5E0_очистка_оперативки
 .export sub_0x01E648
 .export loc_0x01E64C_add_points_to_score
 .export sub_0x01E7D0
@@ -46,7 +46,8 @@
 .export sub_0x01F7AC_delete_object_01
 .export sub_0x01F7AE_prepare_object
 .export sub_0x01F7C8
-.export sub_0x01F7CE
+; leon
+.export sub_0x01F7CE_запись_палитры_из_03E0x_в_0300x
 .export loc_0x01F811
 .export sub_0x01F820
 .export sub_0x01F860
@@ -58,7 +59,6 @@
 .export sub_0x01FC8F_copy_reg_values
 .export loc_0x01FC8F_copy_reg_values
 .export loc_0x01FCCA_enable_nmi
-.export sub_0x01FCF9
 .export sub_0x01FDBB
 .export sub_0x01FDEE_play_sound
 .export loc_0x01FDEE_play_sound
@@ -939,7 +939,7 @@ C - - - - - 0x01E4BD 07:E4AD: 60        RTS
 bra_E4AE:
 C - - - - - 0x01E4BE 07:E4AE: CA        DEX
 C - - - - - 0x01E4BF 07:E4AF: D0 09     BNE bra_E4BA_код_выбор_уровня
-C - - - - - 0x01E4C1 07:E4B1: 20 D0 E5  JSR sub_E5D0_очистка_памяти_ram
+C - - - - - 0x01E4C1 07:E4B1: 20 D0 E5  JSR sub_E5D0_очистка_оперативки
 C - - - - - 0x01E4C4 07:E4B4: 20 82 E5  JSR sub_E582
 C - - - - - 0x01E4C7 07:E4B7: 4C E5 E4  JMP loc_E4E5_демка_вкл
 bra_E4BA_код_выбор_уровня:
@@ -1025,7 +1025,7 @@ C - - - - - 0x01E523 07:E513: 20 84 FE  JSR sub_FE84_bankswitch_отрисовк
 C - - - - - 0x01E526 07:E516: A9 00     LDA #$00
 C - - - - - 0x01E528 07:E518: 85 1F     STA ram_001F_flag
 C - - - - - 0x01E52A 07:E51A: 85 50     STA ram_номер_уровня
-C - - - - - 0x01E52C 07:E51C: 20 D0 E5  JSR sub_E5D0_очистка_памяти_ram
+C - - - - - 0x01E52C 07:E51C: 20 D0 E5  JSR sub_E5D0_очистка_оперативки
 C - - - - - 0x01E52F 07:E51F: 20 C0 E7  JSR sub_E7C0
 ; 1путин опт
                                         INC ram_002B
@@ -1070,7 +1070,7 @@ C - - - - - 0x01E569 07:E559: 4C 84 FE  JMP loc_FE84_bankswitch_отрисовк
 
 
 sub_E55C:
-C - - - - - 0x01E56C 07:E55C: 20 D0 E5  JSR sub_E5D0_очистка_памяти_ram
+C - - - - - 0x01E56C 07:E55C: 20 D0 E5  JSR sub_E5D0_очистка_оперативки
 C - - - - - 0x01E56F 07:E55F: A9 01     LDA #$01
 C - - - - - 0x01E571 07:E561: 85 1F     STA ram_001F_flag
 C - - - - - 0x01E573 07:E563: 85 20     STA ram_колво_игроков
@@ -1148,8 +1148,8 @@ C - - - - - 0x01E5DE 07:E5CE: F0 0F     BEQ bra_E5DF    ; jmp
 
 
 
-sub_E5D0_очистка_памяти_ram:
-sub_0x01E5E0_очистка_памяти_ram:
+sub_E5D0_очистка_оперативки:
+sub_0x01E5E0_очистка_оперативки:
 C - - - - - 0x01E5E0 07:E5D0: A2 38     LDX #$38
 ; clear 0038-00DF
 C - - - - - 0x01E5E6 07:E5D6: A9 00     LDA #$00
@@ -4159,7 +4159,8 @@ C D 3 - - - 0x01F7B9 07:F7A9: A5 86     LDA ram_0085 + $01
 C - - - - - 0x01F7BB 07:F7AB: D0 06     BNE bra_F7B3_RTS
 C - - - - - 0x01F7BD 07:F7AD: A5 1E     LDA ram_index_ppu_buffer
 C - - - - - 0x01F7BF 07:F7AF: C9 20     CMP #$20
-C - - - - - 0x01F7C1 07:F7B1: 90 0B     BCC bra_F7BE
+; leon
+C - - - - - 0x01F7C1 07:F7B1: 90 0B     BCC bra_F7BE_запись_палитры_из_03E0x_в_0300x
 ; if buffer is too loaded
 bra_F7B3_RTS:
 C - - - - - 0x01F7C3 07:F7B3: 60        RTS
@@ -4979,15 +4980,6 @@ C - - - - - 0x01FCD3 07:FCC3: 60        RTS
 
 
 
-sub_FCC4_disable_nmi:
-; bzk optimize, single subroutine usage
-C - - - - - 0x01FCD4 07:FCC4: A5 FF     LDA ram_for_2000
-C - - - - - 0x01FCD6 07:FCC6: 29 7F     AND #$7F
-C - - - - - 0x01FCD8 07:FCC8: 8D 00 20  STA $2000
-C - - - - - 0x01FCDB 07:FCCB: 85 FF     STA ram_for_2000
-C - - - - - 0x01FCDD 07:FCCD: 60        RTS
-
-
 
 sub_FCCE:
 ; bzk optimize, single subroutine usage
@@ -4998,16 +4990,6 @@ C - - - - - 0x01FCE5 07:FCD5: 8D 17 40  STA $4017
 C - - - - - 0x01FCE8 07:FCD8: 60        RTS
 
 
-
-sub_0x01FCF9:
-C - - - - - 0x01FCF9 07:FCE9: 20 C4 FC  JSR sub_FCC4_disable_nmi
-C - - - - - 0x01FCFC 07:FCEC: A9 00     LDA #$00
-C - - - - - 0x01FCFE 07:FCEE: 8D 06 20  STA $2006
-C - - - - - 0x01FD01 07:FCF1: 8D 06 20  STA $2006
-C - - - - - 0x01FD04 07:FCF4: A5 FE     LDA ram_for_2001
-C - - - - - 0x01FD06 07:FCF6: 29 E7     AND #$E7
-C - - - - - 0x01FD08 07:FCF8: 8D 01 20  STA $2001
-C - - - - - 0x01FD0B 07:FCFB: 60        RTS
 
 
 
@@ -5077,15 +5059,14 @@ C - - - - - 0x01FD6A 07:FD5A: B9 C0 FD  LDA tbl_FDC0_prg_bank,Y
 sub_FD5D_prg_bankswitch_30_33:  ; A = 30
 C - - - - - 0x01FD6D 07:FD5D: A0 33     LDY #con_prg_bank + $33
 C - - - - - 0x01FD6F 07:FD5F: D0 10     BNE bra_FD71    ; jmp
-
-
-
-sub_FD61_prg_bankswitch___with_return:
+sub_FD61_prg_bankswitch_3C_with_return:
+; 1путин: Загрузка банка 3C - подвинута повыше
+C - - - - - 0x01FD7D 07:FD6D: A9 3C     LDA #con_prg_bank + $3C
+sub_FD63_prg_bankswitch___with_return:
 C - - - - - 0x01FD71 07:FD61: AC 00 80  LDY $8000
 C - - - - - 0x01FD74 07:FD64: 8C EE 07  STY ram_prg_bank
 C - - - - - 0x01FD77 07:FD67: AC FF BF  LDY $BFFF
 C - - - - - 0x01FD7A 07:FD6A: 8C EF 07  STY ram_prg_bank + $01
-C - - - - - 0x01FD7D 07:FD6D: A9 3C     LDA #con_prg_bank + $3C
 sub_FD6F_prg_bankswitch___no_return:
 loc_FD6F_prg_bankswitch___no_return:
 C D 3 - - - 0x01FD7F 07:FD6F: A8        TAY
@@ -5182,7 +5163,7 @@ C D 3 - - - 0x01FDEE 07:FDDE: 48        PHA
 C - - - - - 0x01FDEF 07:FDDF: A5 1C     LDA ram_001C
 C - - - - - 0x01FDF1 07:FDE1: 09 80     ORA #$80
 C - - - - - 0x01FDF3 07:FDE3: 85 1C     STA ram_001C
-C - - - - - 0x01FDF5 07:FDE5: 20 61 FD  JSR sub_FD61_prg_bankswitch___with_return
+C - - - - - 0x01FDF5 07:FDE5: 20 61 FD  JSR sub_FD61_prg_bankswitch_3C_with_return
 C - - - - - 0x01FDF8 07:FDE8: 68        PLA
 C - - - - - 0x01FDF9 07:FDE9: 20 F6 FD  JSR sub_FDF6
 C - - - - - 0x01FDFC 07:FDEC: 20 8B FD  JSR sub_FD8B_restore_prg_bank
@@ -5211,7 +5192,7 @@ C - - - - - 0x01FE1B 07:FE0B: 4C B7 FD  JMP loc_FDB7
 sub_FE0E_спрайтовый_движок:
 sub_0x01FE1E_спрайтовый_движок:
 loc_0x01FE1E_спрайтовый_движок:
-C D 3 - - - 0x01FE1E 07:FE0E: 20 61 FD  JSR sub_FD61_prg_bankswitch___with_return
+C D 3 - - - 0x01FE1E 07:FE0E: 20 61 FD  JSR sub_FD61_prg_bankswitch_3C_with_return
 C - - - - - 0x01FE21 07:FE11: 20 01 80  JSR sub_0x018011
 C - - - - - 0x01FE24 07:FE14: 4C 8B FD  JMP loc_FD8B_restore_prg_bank
 
@@ -5293,8 +5274,8 @@ C - - - - - 0x01FE7A 07:FE6A: 20 6F FD  JSR sub_FD6F_prg_bankswitch___no_return
 C - - - - - 0x01FE7D 07:FE6D: 4C 84 B8  JMP loc_0x00F894_загрузка_палитры_для_уровня
 
 
-
-sub_FE70_bankswitch_загрузка_палитры_в_03E0x
+; leon
+sub_FE70_bankswitch_загрузка_палитры_в_03E0x:
 C - - - - - 0x01FE80 07:FE70: 48        PHA
 C - - - - - 0x01FE81 07:FE71: A9 36     LDA #con_prg_bank + $36
 C - - - - - 0x01FE83 07:FE73: 20 6F FD  JSR sub_FD6F_prg_bankswitch___no_return
@@ -5314,7 +5295,7 @@ C - - - - - 0x01FE91 07:FE81: 4C 7C 97  JMP loc_0x00178C_отрисовка_те
 
 sub_FE84_bankswitch_отрисовка_экранов:
 loc_FE84_bankswitch_отрисовка_экранов:
-C D 3 - - - 0x01FE94 07:FE84: A9 30     LDA #con_prg_bank + $30
+C D 3 - - - 0x01FE94 07:FE84: A9 30     LDA #con_prg_bank + $20
 C - - - - - 0x01FE96 07:FE86: 20 6F FD  JSR sub_FD6F_prg_bankswitch___no_return
 C - - - - - 0x01FE99 07:FE89: 4C 8E 98  JMP loc_0x00189E_отрисовка_экранов
 
@@ -5412,7 +5393,7 @@ loc_FEE7_выбор_уровня_в_японке:
 
 
 loc_0x00231A_bankswitch_обработчик_главного_экрана:
-C - - - - - 0x01FEFF 07:FEEF: A9 30     LDA #con_prg_bank + $30
+C - - - - - 0x01FEFF 07:FEEF: A9 30     LDA #con_prg_bank + $20
 C - - - - - 0x01FF01 07:FEF1: 20 6F FD  JSR sub_FD6F_prg_bankswitch___no_return
 C - - - - - 0x01FF04 07:FEF4: 4C 0A A3  JMP loc_0x00231A_обработчик_главного_экрана
 
