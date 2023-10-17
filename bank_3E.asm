@@ -46,7 +46,8 @@
 .export sub_0x01F7AC_delete_object_01
 .export sub_0x01F7AE_prepare_object
 .export sub_0x01F7C8
-.export sub_0x01F7CE
+; leon
+.export sub_0x01F7CE_запись_палитры_из_03E0x_в_0300x
 .export loc_0x01F811
 .export sub_0x01F820
 .export sub_0x01F860
@@ -4159,7 +4160,8 @@ C D 3 - - - 0x01F7B9 07:F7A9: A5 86     LDA ram_0085 + $01
 C - - - - - 0x01F7BB 07:F7AB: D0 06     BNE bra_F7B3_RTS
 C - - - - - 0x01F7BD 07:F7AD: A5 1E     LDA ram_index_ppu_buffer
 C - - - - - 0x01F7BF 07:F7AF: C9 20     CMP #$20
-C - - - - - 0x01F7C1 07:F7B1: 90 0B     BCC bra_F7BE
+; leon
+C - - - - - 0x01F7C1 07:F7B1: 90 0B     BCC bra_F7BE_запись_палитры_из_03E0x_в_0300x
 ; if buffer is too loaded
 bra_F7B3_RTS:
 C - - - - - 0x01F7C3 07:F7B3: 60        RTS
@@ -5293,8 +5295,8 @@ C - - - - - 0x01FE7A 07:FE6A: 20 6F FD  JSR sub_FD6F_prg_bankswitch___no_return
 C - - - - - 0x01FE7D 07:FE6D: 4C 84 B8  JMP loc_0x00F894_загрузка_палитры_для_уровня
 
 
-
-sub_FE70_bankswitch_загрузка_палитры_в_03E0x
+; leon
+sub_FE70_bankswitch_загрузка_палитры_в_03E0x:
 C - - - - - 0x01FE80 07:FE70: 48        PHA
 C - - - - - 0x01FE81 07:FE71: A9 36     LDA #con_prg_bank + $36
 C - - - - - 0x01FE83 07:FE73: 20 6F FD  JSR sub_FD6F_prg_bankswitch___no_return
