@@ -177,6 +177,7 @@ C - - - - - 0x01FD08 07:FCF8: 8D 01 20  STA $2001
 C - - - - - 0x0018AF 00:989F: A9 00     LDA #$00
 C - - - - - 0x0018B1 00:98A1: 85 FD     STA ram_scroll_X
 C - - - - - 0x0018B3 00:98A3: 85 FC     STA ram_scroll_Y
+                                        JSR sub_9900_очистить_все_ppu
 ; запись координат для ppu
                                         LDY #$00
 C D 0 - - - 0x0018B5 00:98A5: AD 02 20  LDA $2002
@@ -207,6 +208,39 @@ C - - - - - 0x01E639 07:E629: F6 01     INC ram_0000
 C - - - - - 0x001904 00:98F4: D0 FA     BNE bra_цикл_колво_записей
 C - - - - - 0x01E639 07:E629: F6 01     INC ram_0001
 C - - - - - 0x00190F 00:98FF: 4C A5 98  BMI bra_цикл_колво_записей
+
+
+
+sub_9900_очистить_все_ppu:
+; cyneprepou4uk
+; поскольку namatable дублируются, достаточно этих двух диапазонов
+                                        LDA #> $2000
+                                        STA $2006
+                                        LDA #< $2000
+                                        STA $2006
+                                        JSR sub_9901_очистить_диапазон_ppu
+                                        LDA #> $2C00
+                                        STA $2006
+                                        LDA #< $2C00
+                                        STA $2006
+                                        JSR sub_9901_очистить_диапазон_ppu
+                                        RTS
+
+
+
+sub_9901_очистить_диапазон_ppu:
+; cyneprepou4uk
+; очистка 400 адресов
+                                        LDY #$00
+                                        LDA #$00
+bra_9901_loop:
+                                        STA $2007
+                                        STA $2007
+                                        STA $2007
+                                        STA $2007
+                                        INY
+                                        BNE bra_9901_loop
+                                        RTS
 
 
 
