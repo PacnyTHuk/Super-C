@@ -5701,7 +5701,6 @@ bra_A309_RTS:
 - - - - - - 0x002319 00:A309: 60        RTS
 
 
-
 loc_0x0023C7_credits_handler:
 ; leon опт
                                         LDY ram_0061_конфиг_уровня
