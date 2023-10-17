@@ -160,82 +160,10 @@ sub_988E_отрисовка_экранов:
 loc_0x00189E_отрисовка_экранов:
 C D 0 - - - 0x00189E 00:988E: A9 04     LDA #$04
 C - - - - - 0x0018A0 00:9890: 85 1D     STA ram_001D
-C - - - - - 0x0018A2 00:9892: BD 05 99  LDA tbl_9905_screen_data,X
+C - - - - - 0x0018A2 00:9892: BD 05 99  LDA tbl_координаты_таблицы_экрана,X
 C - - - - - 0x0018A5 00:9895: 85 00     STA ram_0000
-C - - - - - 0x0018A7 00:9897: BD 06 99  LDA tbl_9905_screen_data + $01,X
+C - - - - - 0x0018A7 00:9897: BD 06 99  LDA tbl_координаты_таблицы_экрана + $01,X
 C - - - - - 0x0018AA 00:989A: 85 01     STA ram_0001
-C - - - - - 0x0018AC 00:989C: 20 E9 FC  JSR sub_FCC4
-C - - - - - 0x0018AF 00:989F: A9 00     LDA #$00
-C - - - - - 0x0018B1 00:98A1: 85 FD     STA ram_scroll_X
-C - - - - - 0x0018B3 00:98A3: 85 FC     STA ram_scroll_Y
-loc_98A5_loop:
-C D 0 - - - 0x0018B5 00:98A5: AD 02 20  LDA $2002
-C - - - - - 0x0018B8 00:98A8: A0 01     LDY #$01
-C - - - - - 0x0018BA 00:98AA: B1 00     LDA (ram_0000),Y
-C - - - - - 0x0018BC 00:98AC: 8D 06 20  STA $2006
-C - - - - - 0x0018BF 00:98AF: 88        DEY
-C - - - - - 0x0018C0 00:98B0: B1 00     LDA (ram_0000),Y
-C - - - - - 0x0018C2 00:98B2: 8D 06 20  STA $2006
-C - - - - - 0x0018C5 00:98B5: A2 00     LDX #$00
-C - - - - - 0x0018C7 00:98B7: A9 02     LDA #$02
-C - - - - - 0x0018C9 00:98B9: 20 22 E6  JSR sub_E622_inc_pointer_by_A
-loc_98BC_loop:
-C D 0 - - - 0x0018CC 00:98BC: A0 00     LDY #$00
-C - - - - - 0x0018CE 00:98BE: B1 00     LDA (ram_0000),Y
-C - - - - - 0x0018D0 00:98C0: C9 FF     CMP #$FF
-C - - - - - 0x0018D2 00:98C2: F0 3E     BEQ bra_9902_FF_end_token
-C - - - - - 0x0018D4 00:98C4: C9 7F     CMP #$7F
-C - - - - - 0x0018D6 00:98C6: F0 32     BEQ bra_98FA_7F
-C - - - - - 0x0018D8 00:98C8: A8        TAY
-C - - - - - 0x0018D9 00:98C9: 10 1D     BPL bra_98E8_00_7E
-; 80-FE
-C - - - - - 0x0018DB 00:98CB: 29 7F     AND #$7F
-C - - - - - 0x0018DD 00:98CD: 85 02     STA ram_0002
-C - - - - - 0x0018DF 00:98CF: A0 01     LDY #$01
-bra_98D1_loop:
-C - - - - - 0x0018E1 00:98D1: B1 00     LDA (ram_0000),Y
-C - - - - - 0x0018E3 00:98D3: 8D 07 20  STA $2007
-C - - - - - 0x0018E6 00:98D6: C4 02     CPY ram_0002
-C - - - - - 0x0018E8 00:98D8: F0 03     BEQ bra_98DD
-C - - - - - 0x0018EA 00:98DA: C8        INY
-C - - - - - 0x0018EB 00:98DB: D0 F4     BNE bra_98D1_loop
-bra_98DD:
-C - - - - - 0x0018ED 00:98DD: A9 01     LDA #$01
-C - - - - - 0x0018EF 00:98DF: 18        CLC
-C - - - - - 0x0018F0 00:98E0: 65 02     ADC ram_0002
-bra_98E2:
-C - - - - - 0x0018F2 00:98E2: 20 22 E6  JSR sub_E622_inc_pointer_by_A
-C - - - - - 0x0018F5 00:98E5: 4C BC 98  JMP loc_98BC_loop
-bra_98E8_00_7E:
-C - - - - - 0x0018F8 00:98E8: A0 01     LDY #$01
-C - - - - - 0x0018FA 00:98EA: 85 02     STA ram_0002
-C - - - - - 0x0018FC 00:98EC: B1 00     LDA (ram_0000),Y
-C - - - - - 0x0018FE 00:98EE: A4 02     LDY ram_0002
-bra_98F0_loop:
-C - - - - - 0x001900 00:98F0: 8D 07 20  STA $2007
-C - - - - - 0x001903 00:98F3: 88        DEY
-C - - - - - 0x001904 00:98F4: D0 FA     BNE bra_98F0_loop
-C - - - - - 0x001906 00:98F6: A9 02     LDA #$02
-C - - - - - 0x001908 00:98F8: D0 E8     BNE bra_98E2    ; jmp
-bra_98FA_7F:
-C - - - - - 0x00190A 00:98FA: A9 01     LDA #$01
-C - - - - - 0x00190C 00:98FC: 20 22 E6  JSR sub_E622_inc_pointer_by_A
-C - - - - - 0x00190F 00:98FF: 4C A5 98  JMP loc_98A5_loop
-bra_9902_FF_end_token:
-C - - - - - 0x001912 00:9902: 4C BA FC  JMP loc_0x01FCCA_enable_nmi
-
-; 1путин перенесен с фикс банка 3E
-sub_E622_inc_pointer_by_A:
-C - - - - - 0x01E632 07:E622: 18        CLC
-C - - - - - 0x01E633 07:E623: 75 00     ADC ram_0000
-C - - - - - 0x01E635 07:E625: 95 00     STA ram_0000
-C - - - - - 0x01E637 07:E627: 90 02     BCC bra_E62B_RTS
-C - - - - - 0x01E639 07:E629: F6 01     INC ram_0001
-bra_E62B_RTS:
-C - - - - - 0x01E63B 07:E62B: 60        RTS
-
-; 1путин перенесен с фикс банка 3E
-sub_FCC4:
 C - - - - - 0x01FCD4 07:FCC4: A5 FF     LDA ram_for_2000
 C - - - - - 0x01FCD6 07:FCC6: 29 7F     AND #$7F
 C - - - - - 0x01FCD8 07:FCC8: 8D 00 20  STA $2000
@@ -246,9 +174,56 @@ C - - - - - 0x01FD01 07:FCF1: 8D 06 20  STA $2006
 C - - - - - 0x01FD04 07:FCF4: A5 FE     LDA ram_for_2001
 C - - - - - 0x01FD06 07:FCF6: 29 E7     AND #$E7
 C - - - - - 0x01FD08 07:FCF8: 8D 01 20  STA $2001
-C - - - - - 0x01FD0B 07:FCFB: 60        RTS
+C - - - - - 0x0018AF 00:989F: A9 00     LDA #$00
+C - - - - - 0x0018B1 00:98A1: 85 FD     STA ram_scroll_X
+C - - - - - 0x0018B3 00:98A3: 85 FC     STA ram_scroll_Y
+; запись координат для ppu
+                                        LDY #$00
+C D 0 - - - 0x0018B5 00:98A5: AD 02 20  LDA $2002
+C - - - - - 0x0018BA 00:98AA: B1 00     LDA tbl_координаты_для_ppu,X
+C - - - - - 0x0018BC 00:98AC: 8D 06 20  STA $2006
+C - - - - - 0x0018C0 00:98B0: B1 00     LDA tbl_координаты_для_ppu + $01,X
+C - - - - - 0x0018C2 00:98B2: 8D 06 20  STA $2006
+; колво циклов чтения/записи
+                                        LDA tbl_колво_копируемых_данных,X
+                                        STA ram_0002
+                                        LDA tbl_колво_копируемых_данных + $01,X
+                                        STA ram_0003                                        
+bra_цикл_колво_записей:                                       
+                                        DEC ram_0002
+                                        LDA ram_0002
+                                        CMP #$FF
+                                        BNE bra_запись_в_ppu
+                                        DEC ram_0003
+                                        LDA ram_0003
+                                        CMP #$FF
+                                        BNE bra_запись_в_ppu
+; EXIT                                        
+C - - - - - 0x001912 00:9902: 4C BA FC  JMP loc_0x01FCCA_enable_nmi 
+bra_запись_в_ppu:                                      
+C - - - - - 0x0018CE 00:98BE: B1 00     LDA (ram_0000),Y
+C - - - - - 0x0018E3 00:98D3: 8D 07 20  STA $2007
+C - - - - - 0x01E639 07:E629: F6 01     INC ram_0000
+C - - - - - 0x001904 00:98F4: D0 FA     BNE bra_цикл_колво_записей
+C - - - - - 0x01E639 07:E629: F6 01     INC ram_0001
+C - - - - - 0x00190F 00:98FF: 4C A5 98  BMI bra_цикл_колво_записей
 
-tbl_9905_screen_data:
+
+
+tbl_колво_копируемых_данных:
+                                        .word $0800 ; X00
+                                        .word $0400 ; X02
+                                        .word $0400 ; X04
+                                        .word $0400 ; X06
+
+tbl_координаты_для_ppu:
+                                        .word $0020 ; X00
+                                        .word $0020 ; X02
+                                        .word $0020 ; X04
+                                        .word $0020 ; X06
+
+
+tbl_координаты_таблицы_экрана:
 - D 0 - - - 0x001915 00:9905: 0B 99     .word _off010_990B_x00_обнуление_ppu
 - D 0 - - - 0x001917 00:9907: 35 99     .word _off010_9935_x02_главный_экран
 - D 0 - - - 0x001919 00:9909: B3 9A     .word _off010_9AB3_x04_заставка
@@ -256,34 +231,7 @@ tbl_9905_screen_data:
 
 
 _off010_990B_x00_обнуление_ppu:
-- D 0 - I - 0x00191B 00:990B: 00 20     .word $2000 ; ppu address
-
-- D 0 - I - 0x00191D 00:990D: 78        .byte $78, $00   ; 
-- D 0 - I - 0x00191F 00:990F: 78        .byte $78, $00   ; 
-- D 0 - I - 0x001921 00:9911: 78        .byte $78, $00   ; 
-- D 0 - I - 0x001923 00:9913: 78        .byte $78, $00   ; 
-- D 0 - I - 0x001925 00:9915: 78        .byte $78, $00   ; 
-- D 0 - I - 0x001927 00:9917: 78        .byte $78, $00   ; 
-- D 0 - I - 0x001929 00:9919: 78        .byte $78, $00   ; 
-- D 0 - I - 0x00192B 00:991B: 78        .byte $78, $00   ; 
-- D 0 - I - 0x00192D 00:991D: 40        .byte $40, $00   ; 
-
-- D 0 - I - 0x00192F 00:991F: 7F        .byte $7F   ; set new ppu address
-
-- D 0 - I - 0x001930 00:9920: 00 2C     .word $2C00 ; ppu address
-
-- D 0 - I - 0x001932 00:9922: 78        .byte $78, $00   ; 
-- D 0 - I - 0x001934 00:9924: 78        .byte $78, $00   ; 
-- D 0 - I - 0x001936 00:9926: 78        .byte $78, $00   ; 
-- D 0 - I - 0x001938 00:9928: 78        .byte $78, $00   ; 
-- D 0 - I - 0x00193A 00:992A: 78        .byte $78, $00   ; 
-- D 0 - I - 0x00193C 00:992C: 78        .byte $78, $00   ; 
-- D 0 - I - 0x00193E 00:992E: 78        .byte $78, $00   ; 
-- D 0 - I - 0x001940 00:9930: 78        .byte $78, $00   ; 
-- D 0 - I - 0x001942 00:9932: 40        .byte $40, $00   ; 
-
-- D 0 - I - 0x001944 00:9934: FF        .byte $FF   ; end token
-
+.incbin "screens/00.bin"
 
 
 _off010_9935_x02_главный_экран:
@@ -291,167 +239,7 @@ _off010_9935_x02_главный_экран:
 
 
 _off010_9AB3_x04_заставка:
-- D 0 - I - 0x001AC3 00:9AB3: 00 20     .word $2000 ; 
-
-- D 0 - I - 0x001AC5 00:9AB5: 61        .byte $61, $8B   ; 
-
-- D 0 - I - 0x001AC7 00:9AB7: 90        .byte $80 + $10   ; print following tiles
-- D 0 - I - 0x001AC8 00:9AB8: 9D        .byte $9D, $8B, $8B, $9E, $9F, $A0, $9E, $A0, $8B, $A1, $A2, $A2, $A3, $A4, $A5, $A6   ; 
-
-- D 0 - I - 0x001AD8 00:9AC8: 03        .byte $03, $8B   ; 
-
-- D 0 - I - 0x001ADA 00:9ACA: 88        .byte $80 + $08   ; print following tiles
-- D 0 - I - 0x001ADB 00:9ACB: 9D        .byte $9D, $8B, $8B, $8C, $8B, $9F, $9E, $A0   ; 
-
-- D 0 - I - 0x001AE3 00:9AD3: 05        .byte $05, $8B   ; 
-
-- D 0 - I - 0x001AE5 00:9AD5: 88        .byte $80 + $08   ; print following tiles
-- D 0 - I - 0x001AE6 00:9AD6: A1        .byte $A1, $A2, $A3, $A4, $A5, $A4, $A5, $A6   ; 
-
-- D 0 - I - 0x001AEE 00:9ADE: 04        .byte $04, $8B   ; 
-
-- D 0 - I - 0x001AF0 00:9AE0: 94        .byte $80 + $14   ; print following tiles
-- D 0 - I - 0x001AF1 00:9AE1: 9D        .byte $9D, $8B, $8B, $9E, $9E, $A0, $8B, $A1, $A7, $A5, $A2, $A3, $A4, $A5, $A6, $A1   ; 
-- D 0 - I - 0x001B01 00:9AF1: A5        .byte $A5, $8B, $8B, $A0   ; 
-
-- D 0 - I - 0x001B05 00:9AF5: 03        .byte $03, $8B   ; 
-
-- D 0 - I - 0x001B07 00:9AF7: 83        .byte $80 + $03   ; print following tiles
-- D 0 - I - 0x001B08 00:9AF8: 9D        .byte $9D, $8B, $8B   ; 
-
-- D 0 - I - 0x001B0B 00:9AFB: 03        .byte $03, $9E   ; 
-
-- D 0 - I - 0x001B0D 00:9AFD: 89        .byte $80 + $09   ; print following tiles
-- D 0 - I - 0x001B0E 00:9AFE: A0        .byte $A0, $8B, $8B, $A1, $A2, $A3, $A4, $A5, $A6   ; 
-
-- D 0 - I - 0x001B17 00:9B07: 04        .byte $04, $8B   ; 
-
-- D 0 - I - 0x001B19 00:9B09: 83        .byte $80 + $03   ; print following tiles
-- D 0 - I - 0x001B1A 00:9B0A: 9E        .byte $9E, $9E, $A0   ; 
-
-- D 0 - I - 0x001B1D 00:9B0D: 06        .byte $06, $8B   ; 
-
-- D 0 - I - 0x001B1F 00:9B0F: 81        .byte $80 + $01   ; print following tiles
-- D 0 - I - 0x001B20 00:9B10: A6        .byte $A6   ; 
-
-- D 0 - I - 0x001B21 00:9B11: 03        .byte $03, $8B   ; 
-
-- D 0 - I - 0x001B23 00:9B13: 87        .byte $80 + $07   ; print following tiles
-- D 0 - I - 0x001B24 00:9B14: A1        .byte $A1, $A7, $A5, $A2, $A3, $A5, $A6   ; 
-
-- D 0 - I - 0x001B2B 00:9B1B: 07        .byte $07, $8B   ; 
-
-- D 0 - I - 0x001B2D 00:9B1D: 8E        .byte $80 + $0E   ; print following tiles
-- D 0 - I - 0x001B2E 00:9B1E: A1        .byte $A1, $A2, $A5, $A2, $A5, $A5, $A6, $A6, $8B, $A1, $A2, $A2, $A3, $A5   ; 
-
-- D 0 - I - 0x001B3C 00:9B2C: 0D        .byte $0D, $8B   ; 
-
-- D 0 - I - 0x001B3E 00:9B2E: 86        .byte $80 + $06   ; print following tiles
-- D 0 - I - 0x001B3F 00:9B2F: 9D        .byte $9D, $8B, $8C, $8B, $9E, $A0   ; 
-
-- D 0 - I - 0x001B45 00:9B35: 06        .byte $06, $8B   ; 
-
-- D 0 - I - 0x001B47 00:9B37: 82        .byte $80 + $02   ; print following tiles
-- D 0 - I - 0x001B48 00:9B38: 9E        .byte $9E, $A0   ; 
-
-- D 0 - I - 0x001B4A 00:9B3A: 07        .byte $07, $8B   ; 
-
-- D 0 - I - 0x001B4C 00:9B3C: 84        .byte $80 + $04   ; print following tiles
-- D 0 - I - 0x001B4D 00:9B3D: 9D        .byte $9D, $8B, $8C, $A0   ; 
-
-- D 0 - I - 0x001B51 00:9B41: 05        .byte $05, $8B   ; 
-
-- D 0 - I - 0x001B53 00:9B43: 88        .byte $80 + $08   ; print following tiles
-- D 0 - I - 0x001B54 00:9B44: 9E        .byte $9E, $8B, $A1, $A2, $A2, $A3, $A5, $A6   ; 
-
-- D 0 - I - 0x001B5C 00:9B4C: 03        .byte $03, $8B   ; 
-
-- D 0 - I - 0x001B5E 00:9B4E: 88        .byte $80 + $08   ; print following tiles
-- D 0 - I - 0x001B5F 00:9B4F: A1        .byte $A1, $A2, $A5, $A5, $A6, $8B, $9E, $A0   ; 
-
-- D 0 - I - 0x001B67 00:9B57: 04        .byte $04, $8B   ; 
-
-- D 0 - I - 0x001B69 00:9B59: 8B        .byte $80 + $0B   ; print following tiles
-- D 0 - I - 0x001B6A 00:9B5A: A1        .byte $A1, $A2, $A5, $A6, $8B, $8B, $A1, $A2, $A3, $A5, $A5   ; 
-
-- D 0 - I - 0x001B75 00:9B65: 0D        .byte $0D, $8B   ; 
-
-- D 0 - I - 0x001B77 00:9B67: 86        .byte $80 + $06   ; print following tiles
-- D 0 - I - 0x001B78 00:9B68: A1        .byte $A1, $A2, $A5, $A6, $8B, $8B   ; 
-
-- D 0 - I - 0x001B7E 00:9B6E: 20        .byte $20, $8D   ; 
-- D 0 - I - 0x001B80 00:9B70: 05        .byte $05, $8E   ; 
-
-- D 0 - I - 0x001B82 00:9B72: 82        .byte $80 + $02   ; print following tiles
-- D 0 - I - 0x001B83 00:9B73: 8F        .byte $8F, $90   ; 
-
-- D 0 - I - 0x001B85 00:9B75: 04        .byte $04, $8E   ; 
-
-- D 0 - I - 0x001B87 00:9B77: 82        .byte $80 + $02   ; print following tiles
-- D 0 - I - 0x001B88 00:9B78: 8F        .byte $8F, $90   ; 
-
-- D 0 - I - 0x001B8A 00:9B7A: 13        .byte $13, $8E   ; 
-
-- D 0 - I - 0x001B8C 00:9B7C: 91        .byte $80 + $11   ; print following tiles
-- D 0 - I - 0x001B8D 00:9B7D: 91        .byte $91, $92, $93, $92, $94, $8B, $95, $93, $92, $96, $94, $8B, $95, $93, $92, $96   ; 
-- D 0 - I - 0x001B9D 00:9B8D: 91        .byte $91   ; 
-
-- D 0 - I - 0x001B9E 00:9B8E: 06        .byte $06, $97   ; 
-
-- D 0 - I - 0x001BA0 00:9B90: 82        .byte $80 + $02   ; print following tiles
-- D 0 - I - 0x001BA1 00:9B91: 92        .byte $92, $91   ; 
-
-- D 0 - I - 0x001BA3 00:9B93: 06        .byte $06, $97   ; 
-
-- D 0 - I - 0x001BA5 00:9B95: A0        .byte $80 + $20   ; print following tiles
-- D 0 - I - 0x001BA6 00:9B96: 92        .byte $92, $00, $00, $A8, $A9, $00, $8B, $00, $A8, $A9, $00, $00, $8B, $00, $A8, $A9   ; 
-- D 0 - I - 0x001BB6 00:9BA6: 00        .byte $00, $95, $98, $99, $9A, $99, $9B, $9C, $8B, $95, $98, $99, $9A, $99, $9B, $9C   ; 
-
-- D 0 - I - 0x001BC6 00:9BB6: 03        .byte $03, $8B   ; 
-
-- D 0 - I - 0x001BC8 00:9BB8: 82        .byte $80 + $02   ; print following tiles
-- D 0 - I - 0x001BC9 00:9BB9: 00        .byte $00, $00   ; 
-
-- D 0 - I - 0x001BCB 00:9BBB: 03        .byte $03, $8B   ; 
-
-- D 0 - I - 0x001BCD 00:9BBD: 82        .byte $80 + $02   ; print following tiles
-- D 0 - I - 0x001BCE 00:9BBE: 00        .byte $00, $00   ; 
-
-- D 0 - I - 0x001BD0 00:9BC0: 04        .byte $04, $8B   ; 
-
-- D 0 - I - 0x001BD2 00:9BC2: 87        .byte $80 + $07   ; print following tiles
-- D 0 - I - 0x001BD3 00:9BC3: 00        .byte $00, $00, $8B, $00, $8B, $8B, $00   ; 
-
-- D 0 - I - 0x001BDA 00:9BCA: 05        .byte $05, $8B   ; 
-
-- D 0 - I - 0x001BDC 00:9BCC: 82        .byte $80 + $02   ; print following tiles
-- D 0 - I - 0x001BDD 00:9BCD: A8        .byte $A8, $A9   ; 
-
-- D 0 - I - 0x001BDF 00:9BCF: 16        .byte $16, $8B   ; 
-
-- D 0 - I - 0x001BE1 00:9BD1: 82        .byte $80 + $02   ; print following tiles
-- D 0 - I - 0x001BE2 00:9BD2: 00        .byte $00, $00   ; 
-
-- D 0 - I - 0x001BE4 00:9BD4: 7E        .byte $7E, $8B   ; 
-- D 0 - I - 0x001BE6 00:9BD6: 7E        .byte $7E, $8B   ; 
-- D 0 - I - 0x001BE8 00:9BD8: 7E        .byte $7E, $8B   ; 
-- D 0 - I - 0x001BEA 00:9BDA: 53        .byte $53, $8B   ; 
-- D 0 - I - 0x001BEC 00:9BDC: 04        .byte $04, $FA   ; 
-
-- D 0 - I - 0x001BEE 00:9BDE: 8C        .byte $80 + $0C   ; print following tiles
-- D 0 - I - 0x001BEF 00:9BDF: BA        .byte $BA, $FA, $FA, $BA, $EF, $FF, $FF, $AA, $EA, $FF, $BF, $AB   ; 
-
-- D 0 - I - 0x001BFB 00:9BEB: 08        .byte $08, $5A   ; 
-- D 0 - I - 0x001BFD 00:9BED: 08        .byte $08, $05   ; 
-- D 0 - I - 0x001BFF 00:9BEF: 20        .byte $20, $00   ; 
-
-- D 0 - I - 0x001C01 00:9BF1: FF        .byte $FF   ; end token
-
-
-
-
-
-
+.incbin "screens/04.bin"
 
 
 
