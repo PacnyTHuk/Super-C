@@ -147,7 +147,6 @@ C - - - - - 0x0180FF 06:80EF: 60        RTS
 
 sub_80F0:
 C - - - - - 0x018100 06:80F0: 8D 6C 01  STA ram_016A + $02
-C - - - - - 0x018103 06:80F3: C9 00     CMP #$00    ; bzk optimize
 C - - - - - 0x018105 06:80F5: F0 03     BEQ bra_80FA
 C - - - - - 0x018107 06:80F7: 4C 13 80  JMP loc_8013
 bra_80FA:
