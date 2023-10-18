@@ -1957,9 +1957,6 @@ C - - - - - 0x01EAAC 07:EA9C: A9 01     LDA #$01
 C - - - - - 0x01EAAE 07:EA9E: 85 39     STA ram_пауза
 C - - - - - 0x01EAB0 07:EAA0: A9 27     LDA #con_sound_27
 C - - - - - 0x01EAB2 07:EAA2: 4C DE FD  JMP loc_FDDE_play_sound
-
-
-
 bra_EAA6_игра_на_паузе:
 C - - - - - 0x01EAB6 07:EAA6: 29 10     AND #con_btn_Start
 C - - - - - 0x01EAB8 07:EAA8: F0 05     BEQ bra_EAAE_RTS
