@@ -849,8 +849,9 @@ C - - - - - 0x0062BA 01:A2AA: 4A        LSR
 C - - - - - 0x0062BB 01:A2AB: 4A        LSR
 C - - - - - 0x0062BC 01:A2AC: 29 0F     AND #$0F
 C - - - - - 0x0062BE 01:A2AE: A8        TAY
-C - - - - - 0x0062BF 01:A2AF: B9 E6 A2  LDA tbl_A2E6,Y
-C - - - - - 0x0062C2 01:A2B2: F0 0C     BEQ bra_A2C0
+C - - - - - 0x0062BF 01:A2AF: B9 E6 A2  LDA tbl_A2E6_звук_смерти,Y
+; bzk optimize, в таблице нет байтов 00
+C - - - - - 0x0062C2 01:A2B2: F0 0C     BEQ bra_A2C0_нет_звука
 C - - - - - 0x0062C4 01:A2B4: 10 07     BPL bra_A2BD
 C - - - - - 0x0062C6 01:A2B6: 48        PHA
 C - - - - - 0x0062C7 01:A2B7: 20 0E FE  JSR sub_0x01FE1E_спрайтовый_движок
@@ -858,7 +859,7 @@ C - - - - - 0x0062CA 01:A2BA: 68        PLA
 C - - - - - 0x0062CB 01:A2BB: 29 7F     AND #$7F
 bra_A2BD:
 C - - - - - 0x0062CD 01:A2BD: 20 DE FD  JSR sub_0x01FDEE_play_sound
-bra_A2C0:
+bra_A2C0_нет_звука:
 C - - - - - 0x0062D0 01:A2C0: A9 01     LDA #$01
 C - - - - - 0x0062D2 01:A2C2: 9D 08 05  STA ram_кадр_врага_и_пуль,X
 C - - - - - 0x0062D5 01:A2C5: A9 FF     LDA #$FF
@@ -888,23 +889,26 @@ C - - - - - 0x0062F3 01:A2E3: 4C D7 A2  JMP loc_A2D7_increase_obj_state
 
 
 
-tbl_A2E6:
+tbl_A2E6_звук_смерти:
 - D 1 - - - 0x0062F6 01:A2E6: 13        .byte $00 + con_sound_13   ; 00
 - D 1 - - - 0x0062F7 01:A2E7: 1B        .byte $00 + con_sound_1B   ; 04
 - D 1 - - - 0x0062F8 01:A2E8: 1C        .byte $00 + con_sound_1C   ; 08
 - D 1 - - - 0x0062F9 01:A2E9: 1A        .byte $00 + con_sound_1A   ; 0C
-- D 1 - - - 0x0062FA 01:A2EA: A6        .byte $80 + con_sound_26   ; 10
+- D 1 - - - 0x0062FA 01:A2EA: A6        .byte $80 + con_sound_26   ; 10 +
 - D 1 - - - 0x0062FB 01:A2EB: 14        .byte $00 + con_sound_14   ; 14
 - D 1 - - - 0x0062FC 01:A2EC: 12        .byte $00 + con_sound_12   ; 18
 - D 1 - - - 0x0062FD 01:A2ED: 18        .byte $00 + con_sound_18   ; 1C
 - D 1 - - - 0x0062FE 01:A2EE: 24        .byte $00 + con_sound_24   ; 20
-- - - - - - 0x0062FF 01:A2EF: 00        .byte $00                  ; 24
-- - - - - - 0x006300 01:A2F0: 00        .byte $00                  ; 28
-- - - - - - 0x006301 01:A2F1: 00        .byte $00                  ; 2C
-- - - - - - 0x006302 01:A2F2: 00        .byte $00                  ; 30
-- - - - - - 0x006303 01:A2F3: 00        .byte $00                  ; 34
-- - - - - - 0x006304 01:A2F4: 00        .byte $00                  ; 38
-- - - - - - 0x006305 01:A2F5: 00        .byte $00                  ; 3C
+
+
+; bzk garbage
+- - - - - - 0x0062FF 01:A2EF: 00        .byte $00   ; 
+- - - - - - 0x006300 01:A2F0: 00        .byte $00   ; 
+- - - - - - 0x006301 01:A2F1: 00        .byte $00   ; 
+- - - - - - 0x006302 01:A2F2: 00        .byte $00   ; 
+- - - - - - 0x006303 01:A2F3: 00        .byte $00   ; 
+- - - - - - 0x006304 01:A2F4: 00        .byte $00   ; 
+- - - - - - 0x006305 01:A2F5: 00        .byte $00   ; 
 
 
 
