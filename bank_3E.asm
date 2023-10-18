@@ -876,15 +876,19 @@ bra_E447_минус_x:
 ; X=04 выбор режима игры
 C - - - - - 0x01E41B 07:E40B: 20 DF FE  JSR sub_FEDF_bankswitch_чит_коды
 C - - - - - 0x01E426 07:E416: A6 22     LDX ram_номер_опции_колво_игроков
-C - - - - - 0x01E428 07:E418: A9 A7     LDA #$97 ; Y координата стрелки
-C - - - - - 0x01E42A 07:E41A: BC 70 E4  LDY tbl_E470_x_координаты_стрелки,X
+C - - - - - 0x01E428 07:E418: A9 A7     LDY #$50 ; Y координата стрелки
+C - - - - - 0x01E42A 07:E41A: BC 70 E4  LDA tbl_E470_x_координаты_стрелки,X
 C - - - - - 0x01E42D 07:E41D: 20 5F E4  JSR sub_E45F_запись_данных_для_стрелки
 C - - - - - 0x01E430 07:E420: A5 F5     LDA ram_копия_нажатая_кнопка
 C - - - - - 0x01E432 07:E422: 29 20     AND #con_btn_Select
 C - - - - - 0x01E434 07:E424: F0 09     BEQ bra_E42F_select_не_нажат
 ; нажат select
-C - - - - - 0x01E436 07:E426: A5 22     LDA ram_номер_опции_колво_игроков
-C - - - - - 0x01E438 07:E428: 49 01     EOR #$01
+C - - - - - 0x01E436 07:E426: A5 22     INC ram_номер_опции_колво_игроков
+                                        LDA ram_номер_опции_колво_игроков
+                                        CMP #$03
+                                        BCC bra_E42A
+                                        LDA #$00
+bra_E42A:
 C - - - - - 0x01E43A 07:E42A: 85 22     STA ram_номер_опции_колво_игроков
 C - - - - - 0x01E43C 07:E42C: 20 02 E5  JSR sub_E502_подготовка_счетчиков
 bra_E42F_select_не_нажат:
@@ -939,9 +943,9 @@ C - - - - - 0x01E47F 07:E46F: 60        RTS
 
 
 tbl_E470_x_координаты_стрелки:
-- D 3 - - - 0x01E480 07:E470: 20        .byte $20   ; 1 Player
-- D 3 - - - 0x01E481 07:E471: 80        .byte $80   ; 2 Players 
-
+- D 3 - - - 0x01E480 07:E470: 20        .byte $8F   ; 1 Player
+- D 3 - - - 0x01E481 07:E471: 80        .byte $9F   ; 2 Players 
+                                        .byte $AF   ; Options
 
 
 ofs_032_E472_01:
@@ -996,8 +1000,8 @@ C - - - - - 0x01E4C4 07:E4B4: 20 82 E5  JSR sub_E582
 C - - - - - 0x01E4C7 07:E4B7: 4C E5 E4  JMP loc_E4E5_демка_вкл
 bra_E4BA_код_выбор_уровня:
 ; bzk garbage
-- - - - - - 0x01E4CA 07:E4BA: A9 0C     LDA #con_0x0017EA__area_1
-- - - - - - 0x01E4CC 07:E4BC: 20 7A FE  JSR sub_FE7A_bankswitch_отрисовка_текста_через_буфер_0300x
+;- - - - - - 0x01E4CA 07:E4BA: A9 0C     LDA #con_0x0017EA__area_1
+;- - - - - - 0x01E4CC 07:E4BC: 20 7A FE  JSR sub_FE7A_bankswitch_отрисовка_текста_через_буфер_0300x
 - - - - - - 0x01E4CF 07:E4BF: 4C E7 FE  JMP loc_FEE7_выбор_уровня_в_японке
 
 
@@ -1102,6 +1106,8 @@ C - - - - - 0x01E548 07:E538: A9 00     LDA #con_0x0017EA_1_player
 C - - - - - 0x01E54A 07:E53A: 20 7A FE  JSR sub_FE7A_bankswitch_отрисовка_текста_через_буфер_0300x
 C - - - - - 0x01E54D 07:E53D: A9 01     LDA #con_0x0017EA_2_players
 C - - - - - 0x01E54F 07:E53F: 20 7A FE  JSR sub_FE7A_bankswitch_отрисовка_текста_через_буфер_0300x
+                                        LDA #con_0x0017EA_options
+                                        JSR sub_FE7A_bankswitch_отрисовка_текста_через_буфер_0300x
                                         RTS
                                         
 ; 1путин: удалено
@@ -1396,8 +1402,8 @@ C - - - - - 0x01E71C 07:E70C: 60        RTS
 
 
 sub_E723:
-C - - - - - 0x01E733 07:E723: A9 02     LDA #con_0x0017EA_area
-C - - - - - 0x01E735 07:E725: 20 7A FE  JSR sub_FE7A_bankswitch_отрисовка_текста_через_буфер_0300x
+;C - - - - - 0x01E733 07:E723: A9 02     LDA #con_0x0017EA_area
+;C - - - - - 0x01E735 07:E725: 20 7A FE  JSR sub_FE7A_bankswitch_отрисовка_текста_через_буфер_0300x
 C - - - - - 0x01E738 07:E728: A5 50     LDA ram_номер_уровня
 C - - - - - 0x01E73A 07:E72A: 18        CLC
 C - - - - - 0x01E73B 07:E72B: 69 02     ADC #$02
@@ -1416,24 +1422,24 @@ C - - - - - 0x01E754 07:E744: 85 FF     STA ram_for_2000
 C - - - - - 0x01E756 07:E746: A9 00     LDA #$00
 C - - - - - 0x01E758 07:E748: 85 FD     STA ram_scroll_X
 C - - - - - 0x01E75A 07:E74A: 85 FC     STA ram_scroll_Y
-C - - - - - 0x01E75C 07:E74C: A9 06     LDA #con_0x0017EA_rest_1p
-C - - - - - 0x01E75E 07:E74E: 20 7A FE  JSR sub_FE7A_bankswitch_отрисовка_текста_через_буфер_0300x
+;C - - - - - 0x01E75C 07:E74C: A9 06     LDA #con_0x0017EA_rest_1p
+;C - - - - - 0x01E75E 07:E74E: 20 7A FE  JSR sub_FE7A_bankswitch_отрисовка_текста_через_буфер_0300x
 C - - - - - 0x01E761 07:E751: A0 00     LDY #$00
 C - - - - - 0x01E763 07:E753: 20 A4 E7  JSR sub_E7A4_display_lives_counter_with_sprites
-C - - - - - 0x01E766 07:E756: A9 07     LDA #con_0x0017EA_rest_2p
-C - - - - - 0x01E768 07:E758: 20 7A FE  JSR sub_FE7A_bankswitch_отрисовка_текста_через_буфер_0300x
+;C - - - - - 0x01E766 07:E756: A9 07     LDA #con_0x0017EA_rest_2p
+;C - - - - - 0x01E768 07:E758: 20 7A FE  JSR sub_FE7A_bankswitch_отрисовка_текста_через_буфер_0300x
 C - - - - - 0x01E76B 07:E75B: A0 01     LDY #$01
 C - - - - - 0x01E76D 07:E75D: 20 A4 E7  JSR sub_E7A4_display_lives_counter_with_sprites
-C - - - - - 0x01E770 07:E760: A9 03     LDA #con_0x0017EA_1p_score
-C - - - - - 0x01E772 07:E762: 20 7A FE  JSR sub_FE7A_bankswitch_отрисовка_текста_через_буфер_0300x
+;C - - - - - 0x01E770 07:E760: A9 03     LDA #con_0x0017EA_1p_score
+;C - - - - - 0x01E772 07:E762: 20 7A FE  JSR sub_FE7A_bankswitch_отрисовка_текста_через_буфер_0300x
 C - - - - - 0x01E775 07:E765: A9 E3     LDA #< ram_1p_очки
 C - - - - - 0x01E777 07:E767: 20 7B E7  JSR sub_E77B_print_score
-C - - - - - 0x01E77A 07:E76A: A9 04     LDA #con_0x0017EA_2p_score
-C - - - - - 0x01E77C 07:E76C: 20 7A FE  JSR sub_FE7A_bankswitch_отрисовка_текста_через_буфер_0300x
+;C - - - - - 0x01E77A 07:E76A: A9 04     LDA #con_0x0017EA_2p_score
+;C - - - - - 0x01E77C 07:E76C: 20 7A FE  JSR sub_FE7A_bankswitch_отрисовка_текста_через_буфер_0300x
 C - - - - - 0x01E77F 07:E76F: A9 E6     LDA #< ram_2p_очки
 C - - - - - 0x01E781 07:E771: 20 7B E7  JSR sub_E77B_print_score
-C - - - - - 0x01E784 07:E774: A9 05     LDA #con_0x0017EA_hi_score
-C - - - - - 0x01E786 07:E776: 20 7A FE  JSR sub_FE7A_bankswitch_отрисовка_текста_через_буфер_0300x
+;C - - - - - 0x01E784 07:E774: A9 05     LDA #con_0x0017EA_hi_score
+;C - - - - - 0x01E786 07:E776: 20 7A FE  JSR sub_FE7A_bankswitch_отрисовка_текста_через_буфер_0300x
 C - - - - - 0x01E789 07:E779: A9 E0     LDA #< ram_hi_очки
 sub_E77B_print_score:
 C - - - - - 0x01E78B 07:E77B: 85 00     STA ram_0000
@@ -1904,8 +1910,8 @@ C - - - - - 0x01EA0A 07:E9FA: 20 FE E5  JSR sub_E5FE_clear_0500_0567
 C - - - - - 0x01EA0D 07:E9FD: 20 57 E5  JSR sub_FE84_XFF_обнуление_экранов_PPU
 C - - - - - 0x01EA10 07:EA00: A9 00     LDA #$00
 C - - - - - 0x01EA12 07:EA02: 85 87     STA ram_game_over_flag
-C - - - - - 0x01EA14 07:EA04: A9 09     LDA #con_0x0017EA_game_over
-C - - - - - 0x01EA16 07:EA06: 20 7A FE  JSR sub_FE7A_bankswitch_отрисовка_текста_через_буфер_0300x
+;C - - - - - 0x01EA14 07:EA04: A9 09     LDA #con_0x0017EA_game_over
+;C - - - - - 0x01EA16 07:EA06: 20 7A FE  JSR sub_FE7A_bankswitch_отрисовка_текста_через_буфер_0300x
 C - - - - - 0x01EA19 07:EA09: 20 31 E7  JSR sub_E731
 C - - - - - 0x01EA1C 07:EA0C: 20 C0 E7  JSR sub_E7C0
 C - - - - - 0x01EA1F 07:EA0F: A9 C0     LDA #$C0
@@ -1920,8 +1926,8 @@ C - - J - - 0x01EA26 07:EA16: C6 3F     DEC ram_таймер_на_экране_�
 C - - - - - 0x01EA28 07:EA18: D0 3F     BNE bra_EA59_RTS
 C - - - - - 0x01EA2A 07:EA1A: C6 59     DEC ram_конты
 C - - - - - 0x01EA2C 07:EA1C: 30 34     BMI bra_EA52
-C - - - - - 0x01EA2E 07:EA1E: A9 0A     LDA #con_0x0017EA_continue_end
-C - - - - - 0x01EA30 07:EA20: 20 7A FE  JSR sub_FE7A_bankswitch_отрисовка_текста_через_буфер_0300x
+;C - - - - - 0x01EA2E 07:EA1E: A9 0A     LDA #con_0x0017EA_continue_end
+;C - - - - - 0x01EA30 07:EA20: 20 7A FE  JSR sub_FE7A_bankswitch_отрисовка_текста_через_буфер_0300x
 C - - - - - 0x01EA33 07:EA23: A9 00     LDA #$00
 C - - - - - 0x01EA35 07:EA25: 85 2C     STA ram_002C
 C - - - - - 0x01EA37 07:EA27: 4C B2 E8  JMP loc_E8B2
