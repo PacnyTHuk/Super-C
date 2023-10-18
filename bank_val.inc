@@ -106,7 +106,7 @@ con_0x0017EA_continue_end               = $0A ;
 ; con_0x0017EA_0B                       = $0B ; unused (index not found)
 con_0x0017EA__area_1                    = $0C ;
 con_0x0017EA_press_start                = $0D ;
-
+con_0x0017EA_options                    = $0E ;
 
 
 ; ram_obj_id
