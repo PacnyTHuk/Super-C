@@ -931,6 +931,82 @@ C - - - - - 0x01E46C 07:E45C: 4C EC E4  JMP loc_E4EC_запись_в_демку
 
 
 
+; leon
+sub_E4BC_переключение_банков_анимация_contra:
+                                        LDA ram_счетчик_кадров_1
+                                        AND #$07
+                                        BNE bra_E4BA_RTS
+                                        DEC ram_счетчик_анимации_contra
+                                        BPL bra_E4BB
+                                        LDA #$03
+                                        STA ram_счетчик_анимации_contra
+bra_E4BB:                                        
+                                        LDY ram_счетчик_анимации_contra
+                                        LDA tbl_E4BD_banks,y
+                                        STA ram_bg_bank_2
+bra_E4BA_RTS:                                        
+                                        RTS
+                                        
+tbl_E4BD_banks:
+                                        .byte $84 ; 00
+                                        .byte $80 ; 01
+                                        .byte $82 ; 02  
+                                        .byte $86 ; 03
+
+
+
+sub_E4D0_переключение_банков_анимация_super:
+                                        LDA ram_счетчик_анимации_super
+                                        BEQ bra_E4D5
+                                        DEC ram_счетчик_анимации_super
+                                        JMP loc_E4E0                                     
+bra_E4D5:
+                                        LDA ram_демка
+                                        BNE bra_E4D6
+                                        LDA ram_номер_действия_на_заставке
+                                        CMP #$01
+                                        BEQ bra_E4D7
+bra_E4D6:                                        
+                                        LDA ram_счетчик_кадров_1
+                                        BEQ bra_E4D8
+                                        CMP #$80
+                                        BEQ bra_E4D8
+                                        RTS
+bra_E4D7:                                        
+                                        LDA ram_0080
+                                        CMP #$03
+                                        BNE bra_E4D1_RTS
+                                        LDA ram_0081
+                                        CMP #$30
+                                        BNE bra_E4D1_RTS
+bra_E4D8:                                        
+                                        LDA #$0D
+                                        STA ram_счетчик_анимации_super                                     
+                                        LDY ram_счетчик_анимации_super
+loc_E4E0:                                        
+                                        LDA tbl_E4D3_banks,y
+                                        STA ram_bg_bank_1
+bra_E4D1_RTS:                                        
+                                        RTS
+                                        
+tbl_E4D3_banks:
+                                        .byte $40 ; 00
+                                        .byte $40 ; 01
+                                        .byte $92 ; 02  
+                                        .byte $92 ; 03
+                                        .byte $90 ; 04
+                                        .byte $90 ; 05
+                                        .byte $8E ; 06
+                                        .byte $8E ; 07
+                                        .byte $8C ; 08
+                                        .byte $8C ; 09
+                                        .byte $8A ; 0A
+                                        .byte $8A ; 0B
+                                        .byte $88 ; 0C
+                                        .byte $88 ; 0D
+                                        
+                                        
+                                        
 sub_E45F_запись_данных_для_стрелки:
 C - - - - - 0x01E46F 07:E45F: 8D 1A 05  STA ram_позиция_y_спрайта
 C - - - - - 0x01E472 07:E462: 8C 34 05  STY ram_позиция_x_спрайта

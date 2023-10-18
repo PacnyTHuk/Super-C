@@ -3770,10 +3770,10 @@ ram_режим_бессмертия                    = $7FF0 ; 00 = выкл, 
 ; ram_7FF3                                = $7FF3 ; 
 ; ram_7FF4                                = $7FF4 ; 
 ; ram_7FF5                                = $7FF5 ; 
-; ram_7FF6                                = $7FF6 ; 
+ram_счетчик_анимации_super                = $7FF6 ; 
 ; ram_7FF7                                = $7FF7 ; 
 ; ram_7FF8                                = $7FF8 ; 
-; ram_7FF9                                = $7FF9 ; 
+ram_счетчик_анимации_contra               = $7FF9 ; 
 ; ram_7FFA                                = $7FFA ; 
 ; ram_7FFB                                = $7FFB ; 
 ; ram_7FFC                                = $7FFC ; 
