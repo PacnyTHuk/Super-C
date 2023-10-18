@@ -57,7 +57,7 @@
 .export sub_0x01FA40
 .export sub_0x01FC8F_copy_reg_values
 .export loc_0x01FC8F_copy_reg_values
-.export loc_0x01FCCA_enable_nmi
+.export loc_0x01FCCA_включить_NMI
 .export sub_0x01FDBB
 .export sub_0x01FDEE_play_sound
 .export loc_0x01FDEE_play_sound
@@ -1071,7 +1071,7 @@ C - - - - - 0x01E51A 07:E50A: 60        RTS
 
 sub_E50B_подготовка_главного_экрана:
 C - - - - - 0x01E51B 07:E50B: 20 0E FE  JSR sub_FE0E_спрайтовый_движок
-C - - - - - 0x01E51E 07:E50E: 20 57 E5  JSR sub_FE84_X00_обнуление_экранов_PPU
+C - - - - - 0x01E51E 07:E50E: 20 57 E5  JSR sub_FE84_XFF_обнуление_экранов_PPU
 C - - - - - 0x01E521 07:E511: A2 02     LDX #$00
 C - - - - - 0x01E523 07:E513: 20 84 FE  JSR sub_FE84_bankswitch_отрисовка_экранов
 C - - - - - 0x01E526 07:E516: A9 00     LDA #$00
@@ -1559,7 +1559,7 @@ ofs_033_E807_00:
 C - - J - - 0x01E817 07:E807: 20 0E FE  JSR sub_FE0E_спрайтовый_движок
 C - - - - - 0x01E81A 07:E80A: 20 FE E5  JSR sub_E5FE_clear_0500_0567
 C - - - - - 0x01E81D 07:E80D: 20 C3 E5  JSR sub_E5C3_clear_memory
-C - - - - - 0x01E820 07:E810: 20 57 E5  JSR sub_FE84_X00_обнуление_экранов_PPU
+C - - - - - 0x01E820 07:E810: 20 57 E5  JSR sub_FE84_XFF_обнуление_экранов_PPU
 C - - - - - 0x01E823 07:E813: A9 1E     LDA #$1E
 C - - - - - 0x01E825 07:E815: 85 FE     STA ram_for_2001
 C - - - - - 0x01E827 07:E817: 20 32 F7  JSR sub_F732_delete_all_objects_and_clear_their_data
@@ -1617,7 +1617,7 @@ tbl_E867:
 ofs_033_E869_01:
 C - - J - - 0x01E879 07:E869: C6 3F     DEC ram_таймер_на_экране_очков
 C - - - - - 0x01E87B 07:E86B: D0 25     BNE bra_E892_RTS
-C - - - - - 0x01E87D 07:E86D: 20 57 E5  JSR sub_FE84_X00_обнуление_экранов_PPU
+C - - - - - 0x01E87D 07:E86D: 20 57 E5  JSR sub_FE84_XFF_обнуление_экранов_PPU
 C - - - - - 0x01E880 07:E870: 20 B0 EA  JSR sub_EAB0_prepare_chr_banks_for_area
 C - - - - - 0x01E883 07:E873: 20 68 FE  JSR sub_FE68
 C - - - - - 0x01E886 07:E876: 20 BE F7  JSR sub_F7BE_запись_палитры_из_03E0x_в_0300x
@@ -1876,7 +1876,7 @@ C - - - - - 0x01E9DA 07:E9CA: D0 AA     BNE bra_E976    ; jmp
 ofs_034_E9CC_05:
 C - - J - - 0x01E9DC 07:E9CC: C6 3F     DEC ram_таймер_на_экране_очков
 C - - - - - 0x01E9DE 07:E9CE: D0 E1     BNE bra_E9B1_RTS
-C - - - - - 0x01E9E0 07:E9D0: 20 57 E5  JSR sub_FE84_X00_обнуление_экранов_PPU
+C - - - - - 0x01E9E0 07:E9D0: 20 57 E5  JSR sub_FE84_XFF_обнуление_экранов_PPU
 C - - - - - 0x01E9E3 07:E9D3: E6 50     INC ram_номер_уровня
 C - - - - - 0x01E9E5 07:E9D5: A5 50     LDA ram_номер_уровня
 C - - - - - 0x01E9E7 07:E9D7: C9 08     CMP #$08
@@ -1900,7 +1900,7 @@ ofs_033_E9F7_05:
 ; 1путин опт
                                         INC ram_002B
 C - - - - - 0x01EA0A 07:E9FA: 20 FE E5  JSR sub_E5FE_clear_0500_0567
-C - - - - - 0x01EA0D 07:E9FD: 20 57 E5  JSR sub_FE84_X00_обнуление_экранов_PPU
+C - - - - - 0x01EA0D 07:E9FD: 20 57 E5  JSR sub_FE84_XFF_обнуление_экранов_PPU
 C - - - - - 0x01EA10 07:EA00: A9 00     LDA #$00
 C - - - - - 0x01EA12 07:EA02: 85 87     STA ram_game_over_flag
 C - - - - - 0x01EA14 07:EA04: A9 09     LDA #con_0x0017EA_game_over
@@ -1967,7 +1967,7 @@ tbl_EA5A:
 ofs_033_EA5C_08:
 C - - J - - 0x01EA6C 07:EA5C: A5 3E     LDA ram_003E
 C - - - - - 0x01EA6E 07:EA5E: D0 18     BNE bra_EA78
-C - - - - - 0x01EA70 07:EA60: 20 57 E5  JSR sub_FE84_X00_обнуление_экранов_PPU
+C - - - - - 0x01EA70 07:EA60: 20 57 E5  JSR sub_FE84_XFF_обнуление_экранов_PPU
 C - - - - - 0x01EA73 07:EA63: A2 04     LDX #$02
 C - - - - - 0x01EA75 07:EA65: 20 84 FE  JSR sub_FE84_bankswitch_отрисовка_экранов
 C - - - - - 0x01EA78 07:EA68: A9 0A     LDA #$0A
@@ -4948,7 +4948,7 @@ C - - - - - 0x01FC55 07:FC45: 8D 01 C0  STA $C001
 ; write to E000 (disable IRQ) if handler is 00
 ; otherwise write to E001 (enable IRQ)
 C - - - - - 0x01FC58 07:FC48: 9D 00 E0  STA $E000,X
-C - - - - - 0x01FC5B 07:FC4B: 20 A0 FC  JSR sub_FCA0_write_scroll_and_enable_nmi
+C - - - - - 0x01FC5B 07:FC4B: 20 A0 FC  JSR sub_FCA0_записать_скролл_и_включить_NMI
 C - - - - - 0x01FC5E 07:FC4E: A5 27     LDA ram_irq_handler_hi
 C - - - - - 0x01FC60 07:FC50: 0A        ASL
 C - - - - - 0x01FC61 07:FC51: A8        TAY
@@ -4999,7 +4999,7 @@ C - - - - - 0x01FCAF 07:FC9F: 60        RTS
 
 
 
-sub_FCA0_write_scroll_and_enable_nmi:
+sub_FCA0_записать_скролл_и_включить_NMI:
 C - - - - - 0x01FCB0 07:FCA0: AD 02 20  LDA $2002
 C - - - - - 0x01FCB3 07:FCA3: A9 20     LDA #> $2000
 C - - - - - 0x01FCB5 07:FCA5: 8D 06 20  STA $2006
@@ -5010,7 +5010,7 @@ C - - - - - 0x01FCC0 07:FCB0: A5 FD     LDA ram_scroll_X
 C - - - - - 0x01FCC2 07:FCB2: 8D 05 20  STA $2005
 C - - - - - 0x01FCC5 07:FCB5: A5 FC     LDA ram_scroll_Y
 C - - - - - 0x01FCC7 07:FCB7: 8D 05 20  STA $2005
-loc_0x01FCCA_enable_nmi:
+loc_0x01FCCA_включить_NMI:
 C D 3 - - - 0x01FCCA 07:FCBA: A5 FF     LDA ram_for_2000
 C - - - - - 0x01FCCC 07:FCBC: 09 80     ORA #$80
 C - - - - - 0x01FCCE 07:FCBE: 85 FF     STA ram_for_2000
@@ -5331,7 +5331,7 @@ C - - - - - 0x01FE90 07:FE80: 68        PLA
 C - - - - - 0x01FE91 07:FE81: 4C 7C 97  JMP loc_0x00178C_отрисовка_текста_через_буфер_0300x
 
 
-sub_FE84_X00_обнуление_экранов_PPU:
+sub_FE84_XFF_обнуление_экранов_PPU:
                                         LDX #$FF
 sub_FE84_bankswitch_отрисовка_экранов:
 C D 3 - - - 0x01FE94 07:FE84: A9 30     LDA #con_prg_bank + $20

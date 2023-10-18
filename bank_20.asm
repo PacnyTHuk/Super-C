@@ -165,14 +165,14 @@ loc_0x00189E_отрисовка_экранов:
 C D 0 - - - 0x00189E 00:988E: A9 04     LDA #$04
 C - - - - - 0x0018A0 00:9890: 85 1D     STA ram_001D
 C - - - - - 0x01FCD4 07:FCC4: A5 FF     LDA ram_for_2000
-C - - - - - 0x01FCD6 07:FCC6: 29 7F     AND #$7F
+C - - - - - 0x01FCD6 07:FCC6: 29 7F     AND #$7F    ; отключить NMI
 C - - - - - 0x01FCD8 07:FCC8: 8D 00 20  STA $2000
 C - - - - - 0x01FCDB 07:FCCB: 85 FF     STA ram_for_2000
 C - - - - - 0x01FCFC 07:FCEC: A9 00     LDA #$00
 C - - - - - 0x01FCFE 07:FCEE: 8D 06 20  STA $2006
 C - - - - - 0x01FD01 07:FCF1: 8D 06 20  STA $2006
 C - - - - - 0x01FD04 07:FCF4: A5 FE     LDA ram_for_2001
-C - - - - - 0x01FD06 07:FCF6: 29 E7     AND #$E7
+C - - - - - 0x01FD06 07:FCF6: 29 E7     AND #$E7    ; отключить рендеринг экрана
 C - - - - - 0x01FD08 07:FCF8: 8D 01 20  STA $2001
 C - - - - - 0x0018AF 00:989F: A9 00     LDA #$00
 C - - - - - 0x0018B1 00:98A1: 85 FD     STA ram_scroll_X
@@ -206,7 +206,7 @@ bra_цикл_колво_записей:
                                         CMP #$FF
                                         BNE bra_запись_в_ppu
 bra_9902_выход:                                    
-C - - - - - 0x001912 00:9902: 4C BA FC  JMP loc_0x01FCCA_enable_nmi 
+C - - - - - 0x001912 00:9902: 4C BA FC  JMP loc_0x01FCCA_включить_NMI 
 bra_запись_в_ppu:                                      
 C - - - - - 0x0018CE 00:98BE: B1 00     LDA (ram_0000),Y
 C - - - - - 0x0018E3 00:98D3: 8D 07 20  STA $2007
@@ -229,6 +229,7 @@ sub_9900_очистить_все_ppu:
                                         STA $2006
                                         JSR sub_9901_очистить_диапазон_ppu
                                         RTS
+
 sub_9901_очистить_диапазон_ppu:
 ; cyneprepou4uk
 ; очистка 400 адресов
@@ -250,9 +251,9 @@ tbl_колво_копируемых_данных:
                                         .word $0400 ; X04
 
 tbl_координаты_для_ppu:
-                                        .word $0020 ; X00
-                                        .word $0020 ; X02
-                                        .word $0020 ; X04
+                                        .dbyt $2000 ; X00
+                                        .dbyt $2000 ; X02
+                                        .dbyt $2000 ; X04
 
 tbl_координаты_таблицы_экрана:
 - D 0 - - - 0x001917 00:9907: 35 99     .word _off010_9935_x00_главный_экран
@@ -260,11 +261,10 @@ tbl_координаты_таблицы_экрана:
 
 
 _off010_9935_x00_главный_экран:
-.incbin "screens/00.bin"
-
+    .incbin "screens/00.bin"
 
 _off010_9AB3_x02_заставка:
-.incbin "screens/02.bin"
+    .incbin "screens/02.bin"
 
 
 
