@@ -880,7 +880,6 @@ C - - - - - 0x0185DB 06:85CB: F0 00     BEQ bra_85CD
 bra_85CD:
 loc_85CD:
 C D 0 - - - 0x0185DD 06:85CD: 29 F0     AND #$F0
-C - - - - - 0x0185DF 06:85CF: C9 00     CMP #$00    ; bzk optimize
 C - - - - - 0x0185E1 06:85D1: D0 73     BNE bra_8646
 ; F0-F9
 C - - - - - 0x0185E3 06:85D3: B1 E0     LDA (ram_00E0),Y
