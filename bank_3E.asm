@@ -1406,7 +1406,7 @@ C - - - - - 0x01E79A 07:E78A: 4A        LSR
 C - - - - - 0x01E79B 07:E78B: 4A        LSR
 C - - - - - 0x01E79C 07:E78C: 4A        LSR
 C - - - - - 0x01E79D 07:E78D: 4A        LSR
-C - - - - - 0x01E79E 07:E78E: 20 9A E7  JSR sub_E79A_print_number   ; bzk optimize, JSR to 0x01E7AC
+C - - - - - 0x01E79E 07:E78E: 20 9A E7  JSR sub_E79C_print_number
 ; get lo nibble
 C - - - - - 0x01E7A1 07:E791: B1 00     LDA (ram_0000),Y
 C - - - - - 0x01E7A3 07:E793: 20 9A E7  JSR sub_E79A_print_number
@@ -1418,6 +1418,7 @@ C - - - - - 0x01E7A9 07:E799: 60        RTS
 
 sub_E79A_print_number:
 C - - - - - 0x01E7AA 07:E79A: 29 0F     AND #$0F
+sub_E79C_print_number:
 C - - - - - 0x01E7AC 07:E79C: 18        CLC
 C - - - - - 0x01E7AD 07:E79D: 69 01     ADC #$01
 C - - - - - 0x01E7AF 07:E79F: 9D 00 03  STA ram_nmt_buffer,X
