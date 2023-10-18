@@ -346,21 +346,21 @@ tbl_97DA:
 - D 0 - - - 0x0017FE 00:97EE: 73 98     .word _off009_9873_0A_continue_end
 - - - - - - 0x001800 00:97F0: F4 97     .word _off009_97F4_0B   ; unused
 - - - - - - 0x001802 00:97F2: 85 98     .word _off009_9885_0C_area_1
-- - - - - - 0x001802 00:97F2: 85 98     .word _off009_9885_0D_press_start
-
+- - - - - - 0x001802 00:97F4: 85 98     .word _off009_988E_0D_press_start
+- - - - - - 0x001802 00:97F6: 85 98     .word _off009_9895_0E_options
 
 
 _off009_97F4_00_1_player:
 _off009_97F4_08:
 _off009_97F4_0B:
-- D 0 - I - 0x001804 00:97F4: 22 A6     .dbyt $2266 ; ppu address
+- D 0 - I - 0x001804 00:97F4: 22 A6     .dbyt $224C ; ppu address
 - D 0 - I - 0x001806 00:97F6: 02        .byte $02, $00, $1A, $16, $0B, $23, $0F, $1C   ; "1 PLAYER"
 - D 0 - I - 0x00180E 00:97FE: FE        .byte $FE   ; end token
 
 
 
 _off009_97FF_01_2_players:
-- D 0 - I - 0x00180F 00:97FF: 22 B2     .dbyt $2272 ; ppu address
+- D 0 - I - 0x00180F 00:97FF: 22 B2     .dbyt $228C ; ppu address
 - D 0 - I - 0x001811 00:9801: 03        .byte $03, $00, $1A, $16, $0B, $23, $0F, $1C, $1D   ; "2 PLAYERS"
 - D 0 - I - 0x00181A 00:980A: FE        .byte $FE   ; end token
 
@@ -446,15 +446,19 @@ _off009_9885_0C_area_1:
 
 
 
-_off009_9885_0D_press_start:
+_off009_988E_0D_press_start:
                                         .dbyt $226A ; ppu address
                                         .byte $1A, $1C, $0F, $1D, $1D, $00, $1D, $1E, $0B, $1C, $1E   ; "PRESS START"
                                         .byte $FE   ; end token
 
 
 
-
-
+_off009_9895_0E_options:
+                                        .dbyt $22CC ; ppu address
+                                        .byte $19, $1A, $1E, $13, $19, $18, $1D   ; "OPTIONS"
+                                        .byte $FE   ; end token
+                                        
+                                        
 
 
 .out .sprintf("Free bytes in bank 20: %Xh [%d]", ($BFFF - *), ($BFFF - *))
