@@ -861,7 +861,7 @@ bra_E443_минус_x:
                                         INC ram_номер_действия_на_заставке
                                         JSR sub_E502_подготовка_счетчиков
                                         LDA #con_0x0017EA_press_start + $80 ; удалить надпись
-                                        JSR sub_FE7A_bankswitch_отрисовка_текста_через_буфер_0300x                                        
+                                        JSR sub_FE7A_bankswitch_отрисовка_текста_через_буфер_0300x
                                         JSR sub_E538_надписи_p1_p2
 bra_E446_RTS:
                                         RTS
