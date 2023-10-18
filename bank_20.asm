@@ -8,7 +8,7 @@
 
 .export loc_0x00231A_обработчик_главного_экрана
 .export loc_0x00189E_отрисовка_экранов
-
+.export loc_0x00178C_отрисовка_текста_через_буфер_0300x
 
 
 ; bzk this byte must be placed at 8000
@@ -85,7 +85,7 @@ C - - - - - 0x002367 00:A357: 85 FF     STA ram_for_2000
 C - - - - - 0x002369 00:A359: B5 83     LDA ram_0083,X
 C - - - - - 0x00236B 00:A35B: 85 FD     STA ram_scroll_X
 C - - - - - 0x00236D 00:A35D: D0 0A     BNE bra_A369
-C - - - - - 0x00236F 00:A35F: 20 42 E5  JSR sub_0x01E552
+; 1путин: удалено sub_0x01E552
 C - - - - - 0x002372 00:A362: A9 40     LDA #$40
 loc_A364:
 C D 1 - - - 0x002374 00:A364: 85 81     STA ram_0081
@@ -265,6 +265,193 @@ _off010_9935_x00_главный_экран:
 
 _off010_9AB3_x02_заставка:
     .incbin "screens/02.bin"
+
+
+
+
+loc_0x00178C_отрисовка_текста_через_буфер_0300x:
+; see con_0x0017EA
+; +80 (N+) Скрыть текст 
+; 1путин опт
+                                        STA ram_0002
+                                        ASL
+C D 0 - - - 0x00178C 00:977C: A8        TAY
+C - - - - - 0x00178D 00:977D: A9 02     LDA #$02
+C - - - - - 0x00178F 00:977F: 85 03     STA ram_0003
+C - - - - - 0x001791 00:9781: A9 01     LDA #$01
+C - - - - - 0x001793 00:9783: 20 D1 97  JSR sub_97D1
+C - - - - - 0x00179B 00:978B: B9 DA 97  LDA tbl_97DA,Y
+C - - - - - 0x00179E 00:978E: 85 00     STA ram_0000
+C - - - - - 0x0017A0 00:9790: B9 DB 97  LDA tbl_97DA + $01,Y
+C - - - - - 0x0017A3 00:9793: 85 01     STA ram_0001
+C - - - - - 0x0017A5 00:9795: A6 1E     LDX ram_index_ppu_buffer
+C - - - - - 0x0017A7 00:9797: A0 00     LDY #$00
+bra_9799_loop:
+C - - - - - 0x0017A9 00:9799: B1 00     LDA (ram_0000),Y
+C - - - - - 0x0017AB 00:979B: C8        INY
+C - - - - - 0x0017B0 00:97A0: C9 FE     CMP #$FE
+C - - - - - 0x0017B2 00:97A2: F0 27     BEQ bra_97CB_FE
+C - - - - - 0x0017B4 00:97A4: C9 FD     CMP #$FD
+C - - - - - 0x0017B6 00:97A6: F0 15     BEQ bra_97BD_FD
+C - - - - - 0x0017B8 00:97A8: 9D 00 03  STA ram_nmt_buffer,X
+C - - - - - 0x0017BB 00:97AB: A5 02     LDA ram_0002
+C - - - - - 0x0017BD 00:97AD: 10 0B     BPL bra_97BA
+; hide text if +80
+C - - - - - 0x0017BF 00:97AF: A5 03     LDA ram_0003
+C - - - - - 0x0017C1 00:97B1: D0 05     BNE bra_97B8
+; A = 00
+C - - - - - 0x0017C3 00:97B3: 9D 00 03  STA ram_nmt_buffer,X
+C - - - - - 0x0017C6 00:97B6: F0 02     BEQ bra_97BA    ; jmp
+bra_97B8:
+C - - - - - 0x0017C8 00:97B8: C6 03     DEC ram_0003
+bra_97BA:
+C - - - - - 0x0017CA 00:97BA: E8        INX
+C - - - - - 0x0017CB 00:97BB: D0 DC     BNE bra_9799_loop    ; jmp
+bra_97BD_FD:
+C - - - - - 0x0017CD 00:97BD: 20 CB 97  JSR sub_97CB
+C - - - - - 0x0017D0 00:97C0: A9 02     LDA #$02
+C - - - - - 0x0017D2 00:97C2: 85 03     STA ram_0003
+C - - - - - 0x0017D4 00:97C4: A9 01     LDA #$01
+C - - - - - 0x0017D6 00:97C6: 20 D3 97  JSR sub_97D3
+C - - - - - 0x0017D9 00:97C9: D0 CE     BNE bra_9799_loop    ; jmp
+bra_97CB_FE:
+sub_97CB:
+; write byte FF and close buffer
+C - - - - - 0x0017DB 00:97CB: A9 FF     LDA #$FF
+C - - - - - 0x0017DD 00:97CD: D0 04     BNE bra_97D3    ; jmp
+sub_97D1:
+C - - - - - 0x0017E1 00:97D1: A6 1E     LDX ram_index_ppu_buffer
+bra_97D3:
+sub_97D3:
+C - - - - - 0x0017E3 00:97D3: 9D 00 03  STA ram_nmt_buffer,X
+C - - - - - 0x0017E6 00:97D6: E8        INX
+; close buffer
+C - - - - - 0x0017E7 00:97D7: 86 1E     STX ram_index_ppu_buffer
+C - - - - - 0x0017E9 00:97D9: 60        RTS
+
+
+
+tbl_97DA:
+; see con_0x0017EA
+- D 0 - - - 0x0017EA 00:97DA: F4 97     .word _off009_97F4_00_1_player
+- D 0 - - - 0x0017EC 00:97DC: FF 97     .word _off009_97FF_01_2_players
+- D 0 - - - 0x0017EE 00:97DE: 5E 98     .word _off009_985E_02_area
+- D 0 - - - 0x0017F0 00:97E0: 0B 98     .word _off009_980B_03_1p_score
+- D 0 - - - 0x0017F2 00:97E2: 20 98     .word _off009_9820_04_2p_score
+- D 0 - - - 0x0017F4 00:97E4: 35 98     .word _off009_9835_05_hi_score
+- D 0 - - - 0x0017F6 00:97E6: 4A 98     .word _off009_984A_06_rest_1p
+- D 0 - - - 0x0017F8 00:97E8: 54 98     .word _off009_9854_07_rest_2p
+- - - - - - 0x0017FA 00:97EA: F4 97     .word _off009_97F4_08   ; unused
+- D 0 - - - 0x0017FC 00:97EC: 67 98     .word _off009_9867_09_game_over
+- D 0 - - - 0x0017FE 00:97EE: 73 98     .word _off009_9873_0A_continue_end
+- - - - - - 0x001800 00:97F0: F4 97     .word _off009_97F4_0B   ; unused
+- - - - - - 0x001802 00:97F2: 85 98     .word _off009_9885_0C_area_1
+- - - - - - 0x001802 00:97F2: 85 98     .word _off009_9885_0D_press_start
+
+
+
+_off009_97F4_00_1_player:
+_off009_97F4_08:
+_off009_97F4_0B:
+- D 0 - I - 0x001804 00:97F4: 22 A6     .dbyt $2266 ; ppu address
+- D 0 - I - 0x001806 00:97F6: 02        .byte $02, $00, $1A, $16, $0B, $23, $0F, $1C   ; "1 PLAYER"
+- D 0 - I - 0x00180E 00:97FE: FE        .byte $FE   ; end token
+
+
+
+_off009_97FF_01_2_players:
+- D 0 - I - 0x00180F 00:97FF: 22 B2     .dbyt $2272 ; ppu address
+- D 0 - I - 0x001811 00:9801: 03        .byte $03, $00, $1A, $16, $0B, $23, $0F, $1C, $1D   ; "2 PLAYERS"
+- D 0 - I - 0x00181A 00:980A: FE        .byte $FE   ; end token
+
+
+
+_off009_980B_03_1p_score:
+- D 0 - I - 0x00181B 00:980B: 21 03     .dbyt $2103 ; ppu address
+- D 0 - I - 0x00181D 00:980D: 02        .byte $02, $1A, $00, $1D, $0D, $19, $1C, $0F   ; "1P SCORE"
+- D 0 - I - 0x001825 00:9815: FD        .byte $FD   ; continue
+
+- D 0 - I - 0x001826 00:9816: 21 44     .dbyt $2144 ; ppu address
+- D 0 - I - 0x001828 00:9818: 00        .byte $00, $00, $00, $00, $00, $00, $01   ; "      0"
+- D 0 - I - 0x00182F 00:981F: FE        .byte $FE   ; end token
+
+
+
+_off009_9820_04_2p_score:
+- D 0 - I - 0x001830 00:9820: 21 15     .dbyt $2115 ; ppu address
+- D 0 - I - 0x001832 00:9822: 03        .byte $03, $1A, $00, $1D, $0D, $19, $1C, $0F   ; "2P SCORE"
+- D 0 - I - 0x00183A 00:982A: FD        .byte $FD   ; continue
+
+- D 0 - I - 0x00183B 00:982B: 21 56     .dbyt $2156 ; ppu address
+- D 0 - I - 0x00183D 00:982D: 00        .byte $00, $00, $00, $00, $00, $00, $01   ; "      0"
+- D 0 - I - 0x001844 00:9834: FE        .byte $FE   ; end token
+
+
+
+_off009_9835_05_hi_score:
+- D 0 - I - 0x001845 00:9835: 20 8C     .dbyt $208C ; ppu address
+- D 0 - I - 0x001847 00:9837: 12        .byte $12, $13, $00, $1D, $0D, $19, $1C, $0F   ; "HI SCORE"
+- D 0 - I - 0x00184F 00:983F: FD        .byte $FD   ; continue
+
+- D 0 - I - 0x001850 00:9840: 20 CD     .dbyt $20CD ; ppu address
+- D 0 - I - 0x001852 00:9842: 00        .byte $00, $00, $00, $00, $00, $00, $01   ; "      0"
+- D 0 - I - 0x001859 00:9849: FE        .byte $FE   ; end token
+
+
+
+_off009_984A_06_rest_1p:
+- D 0 - I - 0x00185A 00:984A: 21 84     .dbyt $2184 ; ppu address
+- D 0 - I - 0x00185C 00:984C: 1C        .byte $1C, $0F, $1D, $1E, $00, $00, $00   ; "REST   "
+- D 0 - I - 0x001863 00:9853: FE        .byte $FE   ; end token
+
+
+
+_off009_9854_07_rest_2p:
+- D 0 - I - 0x001864 00:9854: 21 96     .dbyt $2196 ; ppu address
+- D 0 - I - 0x001866 00:9856: 1C        .byte $1C, $0F, $1D, $1E, $00, $00, $00   ; "REST   "
+- D 0 - I - 0x00186D 00:985D: FE        .byte $FE   ; end token
+
+
+
+_off009_985E_02_area:
+- D 0 - I - 0x00186E 00:985E: 22 4D     .dbyt $224D ; ppu address
+- D 0 - I - 0x001870 00:9860: 0B        .byte $0B, $1C, $0F, $0B, $00, $00   ; "AREA  "
+- D 0 - I - 0x001876 00:9866: FE        .byte $FE   ; end token
+
+
+
+_off009_9867_09_game_over:
+- D 0 - I - 0x001877 00:9867: 22 4C     .dbyt $224C ; ppu address
+- D 0 - I - 0x001879 00:9869: 11        .byte $11, $0B, $17, $0F, $00, $19, $20, $0F, $1C   ; "GAME OVER"
+- D 0 - I - 0x001882 00:9872: FE        .byte $FE   ; end token
+
+
+
+_off009_9873_0A_continue_end:
+- D 0 - I - 0x001883 00:9873: 22 4C     .dbyt $224C ; ppu address
+- D 0 - I - 0x001885 00:9875: 0D        .byte $0D, $19, $18, $1E, $13, $18, $1F, $0F, $00   ; "CONTINUE "
+- D 0 - I - 0x00188E 00:987E: FD        .byte $FD   ; continue
+
+- D 0 - I - 0x00188F 00:987F: 22 AC     .dbyt $22AC ; ppu address
+- D 0 - I - 0x001891 00:9881: 0F        .byte $0F, $18, $0E   ; "END"
+- D 0 - I - 0x001894 00:9884: FE        .byte $FE   ; end token
+
+
+
+_off009_9885_0C_area_1:
+; bzk garbage?
+- - - - - - 0x001895 00:9885: 22 4D     .dbyt $224D ; ppu address
+- - - - - - 0x001897 00:9887: 0B        .byte $0B, $1C, $0F, $0B, $00, $02   ; "AREA 1"
+- - - - - - 0x00189D 00:988D: FE        .byte $FE   ; end token
+
+
+
+_off009_9885_0D_press_start:
+                                        .dbyt $226A ; ppu address
+                                        .byte $1A, $1C, $0F, $1D, $1D, $00, $1D, $1E, $0B, $1C, $1E   ; "PRESS START"
+                                        .byte $FE   ; end token
+
+
 
 
 
