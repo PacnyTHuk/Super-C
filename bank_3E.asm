@@ -4685,7 +4685,10 @@ C - - - - - 0x01FAEE 07:FADE: 2C 02 20  BIT $2002
 C - - - - - 0x01FAF1 07:FAE1: 30 FB     BMI bra_FADE_infinite_loop
 C - - - - - 0x01FAF3 07:FAE3: CA        DEX
 C - - - - - 0x01FAF4 07:FAE4: D0 F3     BNE bra_FAD9_loop
-C - - - - - 0x01FAF6 07:FAE6: 20 CE FC  JSR sub_FCCE
+C - - - - - 0x01FAF6 07:FAE6: 20 CE FC  LDA #$0F
+                                        STA $4015
+                                        LDA #$C0
+                                        STA $4017
 C - - - - - 0x01FAF9 07:FAE9: A2 00     LDX #$00
 C - - - - - 0x01FAFB 07:FAEB: 8A        TXA
 C - - - - - 0x01FAFC 07:FAEC: 85 00     STA ram_0000
@@ -4967,17 +4970,6 @@ C - - - - - 0x01FCCC 07:FCBC: 09 80     ORA #$80
 C - - - - - 0x01FCCE 07:FCBE: 85 FF     STA ram_for_2000
 C - - - - - 0x01FCD0 07:FCC0: 8D 00 20  STA $2000
 C - - - - - 0x01FCD3 07:FCC3: 60        RTS
-
-
-
-
-sub_FCCE:
-; bzk optimize, single subroutine usage
-C - - - - - 0x01FCDE 07:FCCE: A9 0F     LDA #$0F
-C - - - - - 0x01FCE0 07:FCD0: 8D 15 40  STA $4015
-C - - - - - 0x01FCE3 07:FCD3: A9 C0     LDA #$C0
-C - - - - - 0x01FCE5 07:FCD5: 8D 17 40  STA $4017
-C - - - - - 0x01FCE8 07:FCD8: 60        RTS
 
 
 
