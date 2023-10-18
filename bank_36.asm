@@ -8223,10 +8223,10 @@ _off021_B971_07_area_8:
 
 _off021_B989_08:
 ; background
-- D 1 - I - 0x00F999 03:B989: 10        .byte $10, $27, $16   ; 
-- D 1 - I - 0x00F99C 03:B98C: 20        .byte $20, $22, $02   ; 
-- D 1 - I - 0x00F99F 03:B98F: 20        .byte $20, $10, $00   ; 
-- D 1 - I - 0x00F9A2 03:B992: 27        .byte $27, $16, $06   ; 
+- D 1 - I - 0x00F999 03:B989: 10        .byte $16, $27, $30   ; leon
+- D 1 - I - 0x00F99C 03:B98C: 20        .byte $30, $27, $16   ; leon
+- D 1 - I - 0x00F99F 03:B98F: 20        .byte $12, $22, $30   ; leon
+- D 1 - I - 0x00F9A2 03:B992: 27        .byte $30, $21, $12   ; leon
 ; sprites
 - D 1 - I - 0x00F9A5 03:B995: 16        .byte $16, $06, $0F   ; 
 - D 1 - I - 0x00F9A8 03:B998: 20        .byte $20, $16, $17   ; 
@@ -8238,7 +8238,7 @@ _off021_B989_08:
 _off021_B9A1_09:
 ; background
 - D 1 - I - 0x00F9B1 03:B9A1: 0F        .byte $0F, $0F, $0F   ; 
-- D 1 - I - 0x00F9B4 03:B9A4: 20        .byte $20, $22, $02   ; 
+- D 1 - I - 0x00F9B4 03:B9A4: 20        .byte $30, $27, $16   ; leon
 - D 1 - I - 0x00F9B7 03:B9A7: 0F        .byte $0F, $0F, $0F   ; 
 - D 1 - I - 0x00F9BA 03:B9AA: 0F        .byte $0F, $0F, $0F   ; 
 ; sprites
