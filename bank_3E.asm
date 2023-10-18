@@ -1962,13 +1962,11 @@ C - - - - - 0x01EAB2 07:EAA2: 4C DE FD  JMP loc_FDDE_play_sound
 
 bra_EAA6_игра_на_паузе:
 C - - - - - 0x01EAB6 07:EAA6: 29 10     AND #con_btn_Start
-C - - - - - 0x01EAB8 07:EAA8: F0 05     BEQ bra_EAAF_RTS
+C - - - - - 0x01EAB8 07:EAA8: F0 05     BEQ bra_EAAE_RTS
 C - - - - - 0x01EABA 07:EAAA: A9 00     LDA #$00
 C - - - - - 0x01EABC 07:EAAC: 85 39     STA ram_пауза
 bra_EAAE_RTS:
 C - - - - - 0x01EABE 07:EAAE: 60        RTS
-bra_EAAF_RTS:   ; bzk optimize
-C - - - - - 0x01EABF 07:EAAF: 60        RTS
 
 
 
