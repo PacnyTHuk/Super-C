@@ -82,27 +82,23 @@
 
 sub_0x000000_чтение_комбинаций_кнопок_для_читов:
 ; cyneprepou4uk
-; вечное бессмертие на вниз + селект
                                         LDA ram_нажатая_кнопка,X
                                         AND #con_btn_Select
-                                        PHP ; сохранить Z для дальнейшей проверки
-                                        BEQ bra_85A7_skip
+                                        BEQ bra_85A9_RTS
                                         LDA ram_удержанная_кнопка,X
-                                        AND #con_btn_Down
-                                        BEQ bra_85A7_skip
+                                        AND #con_btns_UD
+                                        BEQ bra_85A9_RTS
+                                        CMP #con_btn_Up
+                                        BEQ bra_85A7_смена_оружия
+; вечное бессмертие на вниз + селект
                                         LDA ram_режим_бессмертия,X
                                         EOR #$01    ; переключить режим
                                         STA ram_режим_бессмертия,X
                                         STA ram_бессмертие_игрока,X
                                         LDA #con_sound_19
-                                        JSR sub_0x01FDEE_play_sound
-bra_85A7_skip:
+                                        JMP loc_FDDE_play_sound
+bra_85A7_смена_оружия:
 ; переключение оружия на вверх + селект
-                                        PLP ; статус кнопки Select
-                                        BEQ bra_85A9_skip
-                                        LDA ram_удержанная_кнопка,X
-                                        AND #con_btn_Up
-                                        BEQ bra_85A9_skip
                                         LDA ram_оружие_игрока,X
                                         PHA
                                         AND #$80    ; обрезать R
@@ -120,8 +116,8 @@ bra_85A8_not_overflow:
                                         ORA ram_оружие_игрока,X
                                         STA ram_оружие_игрока,X
                                         LDA #con_sound_19
-                                        JSR sub_0x01FDEE_play_sound
-bra_85A9_skip:
+                                        JMP loc_FDDE_play_sound
+bra_85A9_RTS:
                                         RTS
 
 
