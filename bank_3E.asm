@@ -820,6 +820,8 @@ C - - - - - 0x01E417 07:E407: 60        RTS
 
 ; =========================================
 bra_E408_минус_x:
+                                        JSR sub_E4D0_переключение_банков_анимация_super
+                                        JSR sub_E4BC_переключение_банков_анимация_contra
 C - - - - - 0x01E418 07:E408: CA        DEX
 C - - - - - 0x01E419 07:E409: D0 3E     BNE bra_E443_минус_x
 
@@ -981,8 +983,8 @@ bra_E4D7:
 bra_E4D8:
                                         LDA #$0D
                                         STA ram_счетчик_анимации_super
-                                        LDY ram_счетчик_анимации_super
 loc_E4E0:
+                                        LDY ram_счетчик_анимации_super
                                         LDA tbl_E4D3_банки_фона,Y
                                         STA ram_bg_bank_1
 bra_E4D1_RTS:
@@ -1099,6 +1101,8 @@ C - - - - - 0x01E4E6 07:E4D6: 85 50     STA ram_номер_уровня
 ; 1путин опт
 C - - - - - 0x01E4EA 07:E4DA: 60        RTS
 bra_E4DB_соунд_тест:
+                                        JSR sub_E4D0_переключение_банков_анимация_super
+                                        JSR sub_E4BC_переключение_банков_анимация_contra
 C - - - - - 0x01E4EB 07:E4DB: 20 D7 FE  JSR sub_FED7_sound_mode_handler
 C - - - - - 0x01E4EE 07:E4DE: A5 F5     LDA ram_копия_нажатая_кнопка
 C - - - - - 0x01E4F0 07:E4E0: 29 10     AND #con_btn_Start
