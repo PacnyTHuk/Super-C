@@ -9,6 +9,7 @@
 .export loc_0x00231A_обработчик_главного_экрана
 .export loc_0x00189E_отрисовка_экранов
 .export loc_0x00178C_отрисовка_текста_через_буфер_0300x
+.export loc_0x00A123_options
 
 
 ; bzk this byte must be placed at 8000
@@ -21,7 +22,7 @@
 
 loc_0x00231A_обработчик_главного_экрана:
 ; leon опт
-                                        LDY ram_0080
+                                        LDY ram_номер_анимации_логотипа
                                         LDA tbl_A30F_lo,y
                                         STA ram_0000
                                         LDA tbl_A30F_hi,y
@@ -29,12 +30,12 @@ loc_0x00231A_обработчик_главного_экрана:
                                         JMP (ram_0000)
 tbl_A30F_lo:
 - D 1 - I - 0x00231F 00:A30F: 17 A3     .byte < ofs_010_A317_00
-- D 1 - I - 0x002321 00:A311: 3C A3     .byte < ofs_010_A33C_01
+- D 1 - I - 0x002321 00:A311: 3C A3     .byte < ofs_010_A33C_01_слияние
 - D 1 - I - 0x002323 00:A313: 6D A3     .byte < ofs_010_A36D_02
 - D 1 - I - 0x002325 00:A315: B1 A3     .byte < ofs_010_A3B1_03
 tbl_A30F_hi:
 - D 1 - I - 0x00231F 00:A30F: 17 A3     .byte > ofs_010_A317_00
-- D 1 - I - 0x002321 00:A311: 3C A3     .byte > ofs_010_A33C_01
+- D 1 - I - 0x002321 00:A311: 3C A3     .byte > ofs_010_A33C_01_слияние
 - D 1 - I - 0x002323 00:A313: 6D A3     .byte > ofs_010_A36D_02
 - D 1 - I - 0x002325 00:A315: B1 A3     .byte > ofs_010_A3B1_03
 
@@ -59,23 +60,24 @@ C - - - - - 0x002341 00:A331: 85 FC     STA ram_scroll_Y
 C - - - - - 0x002343 00:A333: A2 02     LDX #$00    ; title screen
 C - - - - - 0x002345 00:A335: 20 8E 98  JSR sub_988E_отрисовка_экранов
 loc_A338:
-C D 1 - - - 0x002348 00:A338: E6 80     INC ram_0080
+C D 1 - - - 0x002348 00:A338: E6 80     INC ram_номер_анимации_логотипа
 C - - - - - 0x00234A 00:A33A: 18        CLC
 C - - - - - 0x00234B 00:A33B: 60        RTS
 
 
 
-ofs_010_A33C_01:
+ofs_010_A33C_01_слияние:
 C - - J - - 0x00234C 00:A33C: A5 1B     LDA ram_счетчик_кадров_1
 C - - - - - 0x00234E 00:A33E: 29 01     AND #$01
 C - - - - - 0x002350 00:A340: AA        TAX
-C - - - - - 0x002351 00:A341: BD 6B A3  LDA tbl_A36B,X
+C - - - - - 0x002351 00:A341: BD 6B A3  LDA tbl_A36B_x_скорость_смещения,X
 C - - - - - 0x002354 00:A344: 18        CLC
 C - - - - - 0x002355 00:A345: 75 83     ADC ram_0083,X
 C - - - - - 0x002357 00:A347: 95 83     STA ram_0083,X
 C - - - - - 0x002359 00:A349: 6A        ROR
-C - - - - - 0x00235A 00:A34A: 5D 6B A3  EOR tbl_A36B,X
+C - - - - - 0x00235A 00:A34A: 5D 6B A3  EOR tbl_A36B_x_скорость_смещения,X
 C - - - - - 0x00235D 00:A34D: 10 06     BPL bra_A355
+; N+
 C - - - - - 0x00235F 00:A34F: B5 85     LDA ram_0085,X
 C - - - - - 0x002361 00:A351: 49 01     EOR #$01
 C - - - - - 0x002363 00:A353: 95 85     STA ram_0085,X
@@ -96,9 +98,9 @@ C - - - - - 0x00237A 00:A36A: 60        RTS
 
 
 
-tbl_A36B:
-- D 1 - - - 0x00237B 00:A36B: 02        .byte $02   ; 00 
-- D 1 - - - 0x00237C 00:A36C: FE        .byte $FE   ; 01 
+tbl_A36B_x_скорость_смещения:
+- D 1 - - - 0x00237B 00:A36B: 02        .byte $02   ; 00 движение налево
+- D 1 - - - 0x00237C 00:A36C: FE        .byte $FE   ; 01 движение нарпаво
 
 
 
@@ -459,6 +461,50 @@ _off009_9895_0E_options:
                                         .byte $FE   ; end token
                                         
                                         
+
+
+
+loc_0x00A123_options:
+                                        LDY ram_sound_mode_handler
+                                        LDA tbl_9900_lo,y
+                                        STA ram_0000
+                                        LDA tbl_9904_hi,y
+                                        STA ram_0001
+                                        JMP (ram_0000)
+tbl_9900_lo:
+                                        .byte < ofs_options_9908_00
+                                        .byte < ofs_options_9AFF_01
+                                        .byte < ofs_options_9B11_02
+                                        .byte < ofs_options_9B2A_03
+tbl_9904_hi:
+                                        .byte > ofs_options_9908_00
+                                        .byte > ofs_options_9AFF_01
+                                        .byte > ofs_options_9B11_02
+                                        .byte > ofs_options_9B2A_03
+
+
+
+ofs_options_9908_00:
+                                        RTS
+                            
+                                        
+ofs_options_9AFF_01:
+
+                                        RTS
+
+ofs_options_9B11_02:
+               
+                                        RTS
+
+ofs_options_9B2A_03:
+                                        RTS
+
+
+
+
+
+
+
 
 
 .out .sprintf("Free bytes in bank 20: %Xh [%d]", ($BFFF - *), ($BFFF - *))
