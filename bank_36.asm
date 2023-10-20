@@ -5146,7 +5146,7 @@ C - - - - - 0x00D6E1 03:96D1: 85 7E     STA ram_007E
 C - - - - - 0x00D6E3 03:96D3: A9 00     LDA #$00
 C - - - - - 0x00D6E5 03:96D5: 85 7F     STA ram_007F
 C - - - - - 0x00D6E7 03:96D7: A9 FF     LDA #$FF
-C - - - - - 0x00D6E9 03:96D9: 85 80     STA ram_0080
+C - - - - - 0x00D6E9 03:96D9: 85 80     STA ram_номер_анимации_логотипа
 C - - - - - 0x00D6EB 03:96DB: D0 12     BNE bra_96EF    ; jmp
 
 
