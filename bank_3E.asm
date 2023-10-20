@@ -754,7 +754,7 @@ C - - - - - 0x01E3CB 07:E3BB: A5 18     LDY ram_демка
 C - - - - - 0x01E3CD 07:E3BD: C9 04     CPY #$04
 C - - - - - 0x01E3CF 07:E3BF: D0 03     BNE bra_E3C4
 ; 04
-C - - - - - 0x01E3D1 07:E3C1: 4C E9 E7  JMP loc_E7E9 ; игра
+C - - - - - 0x01E3D1 07:E3C1: 4C E9 E7  JMP loc_E7E9 ; 04 игра
 bra_E3C4:
 ; 1путин опт
                                         LDA tbl_E3C7_lo,y
@@ -768,14 +768,16 @@ tbl_E3C7_lo:
 - D 3 - I - 0x01E3DB 07:E3CB: A3 E4     .byte < ofs_032_E4A3_02
 - D 3 - I - 0x01E3DD 07:E3CD: C2 E4     .byte < ofs_032_E4C2_03
 - - - - - - 0x01E3DF 07:E3CF: E9 E7     .byte < ofs_032_E7E9_04   ; never used 0x01E3CF
-- D 3 - I - 0x01E3E1 07:E3D1: C9 E4     .byte < ofs_032_E4C9_05
+- D 3 - I - 0x01E3E1 07:E3D1: C9 E4     .byte < ofs_032_E4C9_05_соунд_тест
+                                        .byte < ofs_032_E4E5_06_options
 tbl_E3C7_hi:
 - D 3 - I - 0x01E3D7 07:E3C7: D3 E3     .byte > ofs_032_E3D3_00_главный_экран
 - D 3 - I - 0x01E3D9 07:E3C9: 72 E4     .byte > ofs_032_E472_01
 - D 3 - I - 0x01E3DB 07:E3CB: A3 E4     .byte > ofs_032_E4A3_02
 - D 3 - I - 0x01E3DD 07:E3CD: C2 E4     .byte > ofs_032_E4C2_03
 - - - - - - 0x01E3DF 07:E3CF: E9 E7     .byte > ofs_032_E7E9_04   ; never used 0x01E3CF
-- D 3 - I - 0x01E3E1 07:E3D1: C9 E4     .byte > ofs_032_E4C9_05
+- D 3 - I - 0x01E3E1 07:E3D1: C9 E4     .byte > ofs_032_E4C9_05_соунд_тест
+                                        .byte > ofs_032_E4E5_06_options
 
 
 
@@ -796,6 +798,7 @@ bra_E3E5_минус_x:
 C - - - - - 0x01E3F5 07:E3E5: CA        DEX
 C - - - - - 0x01E3F6 07:E3E6: D0 20     BNE bra_E408_минус_x
 ; X=01 слияние логотипа
+                                        JSR sub_E4D0_переключение_банков_анимация_super
 C - - - - - 0x01E3FB 07:E3EB: 20 EF FE  JSR loc_0x00231A_bankswitch_обработчик_главного_экрана
 C - - - - - 0x01E3FE 07:E3EE: B0 09     BCS bra_E3F9
 ; заставка еще идет
@@ -822,6 +825,15 @@ C - - - - - 0x01E418 07:E408: CA        DEX
 C - - - - - 0x01E419 07:E409: D0 3E     BNE bra_E443_минус_x
 
 ; X=02 логотип + press start
+                                        LDA ram_таймер_до_демки
+                                        AND #$10
+                                        ASL
+                                        ASL
+                                        ASL
+                                        CLC
+                                        ADC #con_0x0017EA_press_start
+                                        JSR sub_FE7A_bankswitch_отрисовка_текста_через_буфер_0300x
+bra_E40E:
 C - - - - - 0x01E41E 07:E40E: 20 F1 E4  JSR sub_E4F1_проверка_на_демку
 C - - - - - 0x01E421 07:E411: D0 03     BNE bra_E416_нет_демки
 C - - - - - 0x01E423 07:E413: 4C E5 E4  JMP loc_E4E5_демка_вкл
@@ -833,7 +845,7 @@ C - - - - - 0x01E443 07:E433: F0 0E     BEQ bra_E442_RTS
 C - - - - - 0x01E44D 07:E43D: A9 80     LDA #$51
 C - - - - - 0x01E44F 07:E43F: 85 3C     STA ram_таймер_до_демки
 C - - - - - 0x01E451 07:E441: E6 19     INC ram_номер_действия_на_заставке
-                                        LDA #$1A
+                                        LDA #con_sound_1A
                                         JMP loc_0x01FDEE_play_sound
 bra_E442_RTS:
 C - - - - - 0x01E453 07:E443: 60        RTS
@@ -898,7 +910,10 @@ C - - - - - 0x01E447 07:E437: 29 C0     AND #con_btns_AB
 C - - - - - 0x01E449 07:E439: C9 C0     CMP #con_btns_AB
 C - - - - - 0x01E44B 07:E43B: F0 07     BEQ bra_E444_соунд_тест
 ; чит код не введен
-C - - - - - 0x01E44D 07:E43D: A9 80     LDA #$40
+                                        LDA ram_номер_опции_колво_игроков
+                                        CMP #$02
+                                        BEQ bra_E448_options
+C - - - - - 0x01E44D 07:E43D: A9 80     LDA #$80
 C - - - - - 0x01E44F 07:E43F: 85 3C     STA ram_таймер_до_демки
 C - - - - - 0x01E451 07:E441: E6 19     INC ram_номер_действия_на_заставке
 bra_E443_RTS:
@@ -906,6 +921,11 @@ C - - - - - 0x01E453 07:E443: 60        RTS
 bra_E444_соунд_тест:
 C - - - - - 0x01E454 07:E444: A9 05     LDA #$05
 C - - - - - 0x01E456 07:E446: 4C EC E4  JMP loc_E4EC_запись_в_демку
+
+bra_E448_options:
+                                        LDA #$06
+                                        JMP loc_E4EC_запись_в_демку
+
 
 bra_E449_x05:
 ; X=05 мигание надписей
@@ -934,8 +954,8 @@ sub_E4BC_переключение_банков_анимация_contra:
                                         BNE bra_E4BA_RTS
                                         DEC ram_счетчик_анимации_contra
                                         BPL bra_E4BB
-                                        LDA #$03
-                                        STA ram_счетчик_анимации_contra
+                                        LDY #$03
+                                        STY ram_счетчик_анимации_contra
 bra_E4BB:
                                         LDY ram_счетчик_анимации_contra
                                         LDA tbl_E4BD_банки_фона,Y
@@ -953,10 +973,8 @@ tbl_E4BD_банки_фона:
 
 ; leon
 sub_E4D0_переключение_банков_анимация_super:
-                                        LDA ram_счетчик_анимации_super
-                                        BEQ bra_E4D5
-                                        DEC ram_счетчик_анимации_super
-                                        JMP loc_E4E0    ; bzk optimize, BPL
+                                        LDY ram_счетчик_анимации_super
+                                        BPL bra_E4E0
 bra_E4D5:
                                         LDA ram_демка
                                         BNE bra_E4D6
@@ -965,43 +983,36 @@ bra_E4D5:
                                         BEQ bra_E4D7
 bra_E4D6:
                                         LDA ram_счетчик_кадров_1
-                                        BEQ bra_E4D8
-                                        CMP #$80
-                                        BEQ bra_E4D8
+                                        BEQ bra_E4D8_запись
                                         RTS
 bra_E4D7:
-                                        LDA ram_0080
+                                        LDA ram_номер_анимации_логотипа
                                         CMP #$03
                                         BNE bra_E4D1_RTS
                                         LDA ram_0081
                                         CMP #$30
                                         BNE bra_E4D1_RTS
-bra_E4D8:
-                                        LDA #$0D
-                                        STA ram_счетчик_анимации_super
-loc_E4E0:
-                                        LDY ram_счетчик_анимации_super
+bra_E4D8_запись:
+                                        LDY #$06
+                                        STY ram_счетчик_анимации_super
+bra_E4E0:
+                                        LDA ram_счетчик_кадров_1
+                                        LSR
+                                        BCS bra_E4D1_RTS
                                         LDA tbl_E4D3_банки_фона,Y
                                         STA ram_bg_bank_1
+                                        DEC ram_счетчик_анимации_super
 bra_E4D1_RTS:
                                         RTS
                                         
 tbl_E4D3_банки_фона:
                                         .byte con_chr_bank + $40 ; 00
-                                        .byte con_chr_bank + $40 ; 01
-                                        .byte con_chr_bank + $92 ; 02
-                                        .byte con_chr_bank + $92 ; 03
-                                        .byte con_chr_bank + $90 ; 04
-                                        .byte con_chr_bank + $90 ; 05
-                                        .byte con_chr_bank + $8E ; 06
-                                        .byte con_chr_bank + $8E ; 07
-                                        .byte con_chr_bank + $8C ; 08
-                                        .byte con_chr_bank + $8C ; 09
-                                        .byte con_chr_bank + $8A ; 0A
-                                        .byte con_chr_bank + $8A ; 0B
-                                        .byte con_chr_bank + $88 ; 0C
-                                        .byte con_chr_bank + $88 ; 0D
-
+                                        .byte con_chr_bank + $92 ; 01
+                                        .byte con_chr_bank + $90 ; 02
+                                        .byte con_chr_bank + $8E ; 03
+                                        .byte con_chr_bank + $8C ; 04
+                                        .byte con_chr_bank + $8A ; 05
+                                        .byte con_chr_bank + $88 ; 06
 
 
 sub_E45F_запись_данных_для_стрелки:
@@ -1086,9 +1097,12 @@ C - - - - - 0x01E4D6 07:E4C6: 4C E5 E4  JMP loc_E4E5_демка_вкл
 
 
 
-ofs_032_E4C9_05:
+ofs_032_E4C9_05_соунд_тест:
+                                        JSR sub_E4D0_переключение_банков_анимация_super
+                                        JSR sub_E4BC_переключение_банков_анимация_contra
 C - - J - - 0x01E4D9 07:E4C9: A6 19     LDX ram_номер_действия_на_заставке
 C - - - - - 0x01E4DB 07:E4CB: D0 0E     BNE bra_E4DB_соунд_тест
+sub_E4CD:
 C - - - - - 0x01E4DD 07:E4CD: A9 00     LDA #$00
 C - - - - - 0x01E4DF 07:E4CF: 8D 00 05  STA ram_кадр_анимации
 C - - - - - 0x01E4E2 07:E4D2: E6 19     INC ram_номер_действия_на_заставке
@@ -1097,13 +1111,31 @@ C - - - - - 0x01E4E6 07:E4D6: 85 50     STA ram_номер_уровня
 ; 1путин опт
 C - - - - - 0x01E4EA 07:E4DA: 60        RTS
 bra_E4DB_соунд_тест:
-                                        JSR sub_E4D0_переключение_банков_анимация_super
-                                        JSR sub_E4BC_переключение_банков_анимация_contra
 C - - - - - 0x01E4EB 07:E4DB: 20 D7 FE  JSR sub_FED7_sound_mode_handler
 C - - - - - 0x01E4EE 07:E4DE: A5 F5     LDA ram_копия_нажатая_кнопка
 C - - - - - 0x01E4F0 07:E4E0: 29 10     AND #con_btn_Start
 C - - - - - 0x01E4F2 07:E4E2: D0 AB     BNE bra_E48F_exit_sound_mode
 C - - - - - 0x01E4F4 07:E4E4: 60        RTS
+
+
+ofs_032_E4E5_06_options:
+                                        JSR sub_E4D0_переключение_банков_анимация_super
+                                        JSR sub_E4BC_переключение_банков_анимация_contra
+                                        LDX ram_номер_действия_на_заставке
+                                        BNE bra_E4EA_options
+                                        JSR sub_E4CD
+                                        RTS
+bra_E4EA_options:                      
+                                        JSR sub_FEDD_options
+                                        RTS
+
+
+
+
+
+
+
+
 
 
 
@@ -5482,6 +5514,13 @@ sub_FED7_sound_mode_handler:
 C - - - - - 0x01FEE7 07:FED7: A9 34     LDA #con_prg_bank + $34
 C - - - - - 0x01FEE9 07:FED9: 20 6F FD  JSR sub_FD6F_prg_bankswitch___no_return
 C - - - - - 0x01FEEC 07:FEDC: 4C D9 9A  JMP loc_0x009AE9_sound_mode_handler
+
+
+
+sub_FEDD_options:
+                                        LDA #con_prg_bank + $20
+                                        JSR sub_FD6F_prg_bankswitch___no_return
+                                        JMP loc_0x00A123_options
 
 
 
