@@ -9,6 +9,8 @@
 .export loc_0x00231A_обработчик_главного_экрана
 .export loc_0x00189E_отрисовка_экранов
 .export loc_0x00178C_отрисовка_текста_через_буфер_0300x
+.export loc_0x00F894_загрузка_палитры_для_уровня
+.export loc_0x00F896_загрузка_палитры
 .export loc_0x00A123_options
 
 
@@ -337,24 +339,11 @@ tbl_97DA:
 ; see con_0x0017EA
 - D 0 - - - 0x0017EA 00:97DA: F4 97     .word _off009_97F4_00_1_player
 - D 0 - - - 0x0017EC 00:97DC: FF 97     .word _off009_97FF_01_2_players
-- D 0 - - - 0x0017EE 00:97DE: 5E 98     .word _off009_985E_02_area
-- D 0 - - - 0x0017F0 00:97E0: 0B 98     .word _off009_980B_03_1p_score
-- D 0 - - - 0x0017F2 00:97E2: 20 98     .word _off009_9820_04_2p_score
-- D 0 - - - 0x0017F4 00:97E4: 35 98     .word _off009_9835_05_hi_score
-- D 0 - - - 0x0017F6 00:97E6: 4A 98     .word _off009_984A_06_rest_1p
-- D 0 - - - 0x0017F8 00:97E8: 54 98     .word _off009_9854_07_rest_2p
-- - - - - - 0x0017FA 00:97EA: F4 97     .word _off009_97F4_08   ; unused
-- D 0 - - - 0x0017FC 00:97EC: 67 98     .word _off009_9867_09_game_over
-- D 0 - - - 0x0017FE 00:97EE: 73 98     .word _off009_9873_0A_continue_end
-- - - - - - 0x001800 00:97F0: F4 97     .word _off009_97F4_0B   ; unused
-- - - - - - 0x001802 00:97F2: 85 98     .word _off009_9885_0C_area_1
-- - - - - - 0x001802 00:97F4: 85 98     .word _off009_988E_0D_press_start
-- - - - - - 0x001802 00:97F6: 85 98     .word _off009_9895_0E_options
+                                        .word _off009_9808_02_options
+                                        .word _off009_9812_03_press_start
 
 
 _off009_97F4_00_1_player:
-_off009_97F4_08:
-_off009_97F4_0B:
 - D 0 - I - 0x001804 00:97F4: 22 A6     .dbyt $224C ; ppu address
 - D 0 - I - 0x001806 00:97F6: 02        .byte $02, $00, $1A, $16, $0B, $23, $0F, $1C   ; "1 PLAYER"
 - D 0 - I - 0x00180E 00:97FE: FE        .byte $FE   ; end token
@@ -367,105 +356,244 @@ _off009_97FF_01_2_players:
 - D 0 - I - 0x00181A 00:980A: FE        .byte $FE   ; end token
 
 
-
-_off009_980B_03_1p_score:
-- D 0 - I - 0x00181B 00:980B: 21 03     .dbyt $2103 ; ppu address
-- D 0 - I - 0x00181D 00:980D: 02        .byte $02, $1A, $00, $1D, $0D, $19, $1C, $0F   ; "1P SCORE"
-- D 0 - I - 0x001825 00:9815: FD        .byte $FD   ; continue
-
-- D 0 - I - 0x001826 00:9816: 21 44     .dbyt $2144 ; ppu address
-- D 0 - I - 0x001828 00:9818: 00        .byte $00, $00, $00, $00, $00, $00, $01   ; "      0"
-- D 0 - I - 0x00182F 00:981F: FE        .byte $FE   ; end token
-
-
-
-_off009_9820_04_2p_score:
-- D 0 - I - 0x001830 00:9820: 21 15     .dbyt $2115 ; ppu address
-- D 0 - I - 0x001832 00:9822: 03        .byte $03, $1A, $00, $1D, $0D, $19, $1C, $0F   ; "2P SCORE"
-- D 0 - I - 0x00183A 00:982A: FD        .byte $FD   ; continue
-
-- D 0 - I - 0x00183B 00:982B: 21 56     .dbyt $2156 ; ppu address
-- D 0 - I - 0x00183D 00:982D: 00        .byte $00, $00, $00, $00, $00, $00, $01   ; "      0"
-- D 0 - I - 0x001844 00:9834: FE        .byte $FE   ; end token
-
-
-
-_off009_9835_05_hi_score:
-- D 0 - I - 0x001845 00:9835: 20 8C     .dbyt $208C ; ppu address
-- D 0 - I - 0x001847 00:9837: 12        .byte $12, $13, $00, $1D, $0D, $19, $1C, $0F   ; "HI SCORE"
-- D 0 - I - 0x00184F 00:983F: FD        .byte $FD   ; continue
-
-- D 0 - I - 0x001850 00:9840: 20 CD     .dbyt $20CD ; ppu address
-- D 0 - I - 0x001852 00:9842: 00        .byte $00, $00, $00, $00, $00, $00, $01   ; "      0"
-- D 0 - I - 0x001859 00:9849: FE        .byte $FE   ; end token
-
-
-
-_off009_984A_06_rest_1p:
-- D 0 - I - 0x00185A 00:984A: 21 84     .dbyt $2184 ; ppu address
-- D 0 - I - 0x00185C 00:984C: 1C        .byte $1C, $0F, $1D, $1E, $00, $00, $00   ; "REST   "
-- D 0 - I - 0x001863 00:9853: FE        .byte $FE   ; end token
-
-
-
-_off009_9854_07_rest_2p:
-- D 0 - I - 0x001864 00:9854: 21 96     .dbyt $2196 ; ppu address
-- D 0 - I - 0x001866 00:9856: 1C        .byte $1C, $0F, $1D, $1E, $00, $00, $00   ; "REST   "
-- D 0 - I - 0x00186D 00:985D: FE        .byte $FE   ; end token
-
-
-
-_off009_985E_02_area:
-- D 0 - I - 0x00186E 00:985E: 22 4D     .dbyt $224D ; ppu address
-- D 0 - I - 0x001870 00:9860: 0B        .byte $0B, $1C, $0F, $0B, $00, $00   ; "AREA  "
-- D 0 - I - 0x001876 00:9866: FE        .byte $FE   ; end token
-
-
-
-_off009_9867_09_game_over:
-- D 0 - I - 0x001877 00:9867: 22 4C     .dbyt $224C ; ppu address
-- D 0 - I - 0x001879 00:9869: 11        .byte $11, $0B, $17, $0F, $00, $19, $20, $0F, $1C   ; "GAME OVER"
-- D 0 - I - 0x001882 00:9872: FE        .byte $FE   ; end token
-
-
-
-_off009_9873_0A_continue_end:
-- D 0 - I - 0x001883 00:9873: 22 4C     .dbyt $224C ; ppu address
-- D 0 - I - 0x001885 00:9875: 0D        .byte $0D, $19, $18, $1E, $13, $18, $1F, $0F, $00   ; "CONTINUE "
-- D 0 - I - 0x00188E 00:987E: FD        .byte $FD   ; continue
-
-- D 0 - I - 0x00188F 00:987F: 22 AC     .dbyt $22AC ; ppu address
-- D 0 - I - 0x001891 00:9881: 0F        .byte $0F, $18, $0E   ; "END"
-- D 0 - I - 0x001894 00:9884: FE        .byte $FE   ; end token
-
-
-
-_off009_9885_0C_area_1:
-; bzk garbage?
-- - - - - - 0x001895 00:9885: 22 4D     .dbyt $224D ; ppu address
-- - - - - - 0x001897 00:9887: 0B        .byte $0B, $1C, $0F, $0B, $00, $02   ; "AREA 1"
-- - - - - - 0x00189D 00:988D: FE        .byte $FE   ; end token
-
-
-
-_off009_988E_0D_press_start:
+_off009_9808_02_options:
+                                        .dbyt $22CC ; ppu address
+                                        .byte $19, $1A, $1E, $13, $19, $18, $1D   ; "OPTIONS"
+                                        .byte $FE   ; end token
+                                        
+_off009_9812_03_press_start:
                                         .dbyt $226A ; ppu address
                                         .byte $1A, $1C, $0F, $1D, $1D, $00, $1D, $1E, $0B, $1C, $1E   ; "PRESS START"
                                         .byte $FE   ; end token
 
 
 
-_off009_9895_0E_options:
-                                        .dbyt $22CC ; ppu address
-                                        .byte $19, $1A, $1E, $13, $19, $18, $1D   ; "OPTIONS"
-                                        .byte $FE   ; end token
+
+loc_0x00F894_загрузка_палитры_для_уровня:
+C D 1 - - - 0x00F894 03:B884: A5 50     LDA ram_номер_уровня
+loc_0x00F896_загрузка_палитры:
+sub_B886_загрузка_палитры:
+C D 1 - - - 0x00F896 03:B886: 85 08     STA ram_0008
+; fill 0F color by default
+C - - - - - 0x00F898 03:B888: A9 0F     LDA #$0F
+C - - - - - 0x00F89A 03:B88A: A0 1F     LDY #$1F
+bra_B88C_loop:
+C - - - - - 0x00F89C 03:B88C: 99 E0 03  STA ram_pal_buffer,Y
+C - - - - - 0x00F89F 03:B88F: 88        DEY
+C - - - - - 0x00F8A0 03:B890: 10 FA     BPL bra_B88C_loop
+C - - - - - 0x00F8A2 03:B892: A5 08     LDA ram_0008
+C - - - - - 0x00F8A4 03:B894: 0A        ASL
+C - - - - - 0x00F8A5 03:B895: A8        TAY
+C - - - - - 0x00F8A6 03:B896: B9 B3 B8  LDA tbl_B8B3,Y
+C - - - - - 0x00F8A9 03:B899: 85 00     STA ram_0000
+C - - - - - 0x00F8AB 03:B89B: B9 B4 B8  LDA tbl_B8B3 + $01,Y
+C - - - - - 0x00F8AE 03:B89E: 85 01     STA ram_0001
+; skip 1st color in each palette set
+C - - - - - 0x00F8B0 03:B8A0: A0 17     LDY #$17
+C - - - - - 0x00F8B2 03:B8A2: A2 1F     LDX #$1F
+bra_B8A4_loop:
+C - - - - - 0x00F8B4 03:B8A4: 8A        TXA
+C - - - - - 0x00F8B5 03:B8A5: 29 03     AND #$03
+C - - - - - 0x00F8B7 03:B8A7: F0 06     BEQ bra_B8AF_skip
+C - - - - - 0x00F8B9 03:B8A9: B1 00     LDA (ram_0000),Y
+C - - - - - 0x00F8BB 03:B8AB: 9D E0 03  STA ram_pal_buffer,X
+C - - - - - 0x00F8BE 03:B8AE: 88        DEY
+bra_B8AF_skip:
+C - - - - - 0x00F8BF 03:B8AF: CA        DEX
+C - - - - - 0x00F8C0 03:B8B0: 10 F2     BPL bra_B8A4_loop
+C - - - - - 0x00F8C2 03:B8B2: 60        RTS
+
+
+
+tbl_B8B3:
+- D 1 - - - 0x00F8C3 03:B8B3: C9 B8     .word _off021_B8C9_00_area_1
+- D 1 - - - 0x00F8C5 03:B8B5: E1 B8     .word _off021_B8E1_01_area_2
+- D 1 - - - 0x00F8C7 03:B8B7: F9 B8     .word _off021_B8F9_02_area_3
+- D 1 - - - 0x00F8C9 03:B8B9: 11 B9     .word _off021_B911_03_area_4
+- D 1 - - - 0x00F8CB 03:B8BB: 29 B9     .word _off021_B929_04_area_5
+- D 1 - - - 0x00F8CD 03:B8BD: 41 B9     .word _off021_B941_05_area_6
+- D 1 - - - 0x00F8CF 03:B8BF: 59 B9     .word _off021_B959_06_area_7
+- D 1 - - - 0x00F8D1 03:B8C1: 71 B9     .word _off021_B971_07_area_8
+- D 1 - - - 0x00F8D3 03:B8C3: 89 B9     .word _off021_B989_08
+- D 1 - - - 0x00F8D5 03:B8C5: A1 B9     .word _off021_B9A1_09
+- D 1 - - - 0x00F8D7 03:B8C7: B9 B9     .word _off021_B9B9_0A
+
+
+
+_off021_B8C9_00_area_1:
+; background
+- D 1 - I - 0x00F8D9 03:B8C9: 20        .byte $20, $10, $00   ; 
+- D 1 - I - 0x00F8DC 03:B8CC: 20        .byte $20, $10, $00   ; 
+- D 1 - I - 0x00F8DF 03:B8CF: 27        .byte $27, $16, $04   ; 
+- D 1 - I - 0x00F8E2 03:B8D2: 16        .byte $16, $06, $00   ; 
+; sprites
+- D 1 - I - 0x00F8E5 03:B8D5: 37        .byte $37, $1C, $0F   ; 
+- D 1 - I - 0x00F8E8 03:B8D8: 37        .byte $37, $16, $0F   ; 
+- D 1 - I - 0x00F8EB 03:B8DB: 20        .byte $20, $26, $16   ; 
+- D 1 - I - 0x00F8EE 03:B8DE: 34        .byte $34, $1B, $0F   ; 
+
+
+
+_off021_B8E1_01_area_2:
+; background
+- D 1 - I - 0x00F8F1 03:B8E1: 20        .byte $20, $10, $00   ; 
+- D 1 - I - 0x00F8F4 03:B8E4: 00        .byte $00, $10, $0C   ; 
+- D 1 - I - 0x00F8F7 03:B8E7: 20        .byte $20, $1C, $0C   ; 
+- D 1 - I - 0x00F8FA 03:B8EA: 06        .byte $06, $1C, $0C   ; 
+; sprites
+- D 1 - I - 0x00F8FD 03:B8ED: 37        .byte $37, $11, $0C   ; 
+- D 1 - I - 0x00F900 03:B8F0: 37        .byte $37, $16, $07   ; 
+- D 1 - I - 0x00F903 03:B8F3: 20        .byte $20, $26, $16   ; 
+- D 1 - I - 0x00F906 03:B8F6: 34        .byte $34, $1B, $0F   ; 
+
+
+
+_off021_B8F9_02_area_3:
+; background
+- D 1 - I - 0x00F909 03:B8F9: 2A        .byte $2A, $1A, $0A   ; 
+- D 1 - I - 0x00F90C 03:B8FC: 28        .byte $28, $18, $08   ; 
+- D 1 - I - 0x00F90F 03:B8FF: 10        .byte $10, $1A, $0A   ; 
+- D 1 - I - 0x00F912 03:B902: 20        .byte $20, $10, $00   ; 
+; sprites
+- D 1 - I - 0x00F915 03:B905: 37        .byte $37, $1C, $0F   ; 
+- D 1 - I - 0x00F918 03:B908: 37        .byte $37, $16, $0F   ; 
+- D 1 - I - 0x00F91B 03:B90B: 20        .byte $20, $26, $16   ; 
+- D 1 - I - 0x00F91E 03:B90E: 3B        .byte $3B, $14, $0F   ; 
+
+
+
+_off021_B911_03_area_4:
+; background
+- D 1 - I - 0x00F921 03:B911: 20        .byte $20, $1B, $0A   ; 
+- D 1 - I - 0x00F924 03:B914: 01        .byte $01, $00, $0A   ; 
+- D 1 - I - 0x00F927 03:B917: 01        .byte $01, $1B, $0A   ; 
+- D 1 - I - 0x00F92A 03:B91A: 01        .byte $01, $00, $06   ; 
+; sprites
+- D 1 - I - 0x00F92D 03:B91D: 37        .byte $37, $1C, $0F   ; 
+- D 1 - I - 0x00F930 03:B920: 37        .byte $37, $16, $0F   ; 
+- D 1 - I - 0x00F933 03:B923: 20        .byte $20, $26, $16   ; 
+- D 1 - I - 0x00F936 03:B926: 20        .byte $20, $1B, $0A   ; 
+
+
+
+_off021_B929_04_area_5:
+; background
+- D 1 - I - 0x00F939 03:B929: 20        .byte $20, $10, $00   ; 
+- D 1 - I - 0x00F93C 03:B92C: 2A        .byte $2A, $1A, $00   ; 
+- D 1 - I - 0x00F93F 03:B92F: 2C        .byte $2C, $1C, $0C   ; 
+- D 1 - I - 0x00F942 03:B932: 20        .byte $20, $10, $04   ; 
+; sprites
+- D 1 - I - 0x00F945 03:B935: 37        .byte $37, $1C, $0F   ; 
+- D 1 - I - 0x00F948 03:B938: 37        .byte $37, $16, $0F   ; 
+- D 1 - I - 0x00F94B 03:B93B: 20        .byte $20, $26, $16   ; 
+- D 1 - I - 0x00F94E 03:B93E: 3B        .byte $3B, $14, $0F   ; 
+
+
+
+_off021_B941_05_area_6:
+; background
+- D 1 - I - 0x00F951 03:B941: 20        .byte $20, $10, $00   ; 
+- D 1 - I - 0x00F954 03:B944: 29        .byte $29, $19, $09   ; 
+- D 1 - I - 0x00F957 03:B947: 20        .byte $20, $10, $06   ; 
+- D 1 - I - 0x00F95A 03:B94A: 10        .byte $10, $00, $06   ; 
+; sprites
+- D 1 - I - 0x00F95D 03:B94D: 37        .byte $37, $11, $0C   ; 
+- D 1 - I - 0x00F960 03:B950: 37        .byte $37, $16, $07   ; 
+- D 1 - I - 0x00F963 03:B953: 20        .byte $20, $26, $16   ; 
+- D 1 - I - 0x00F966 03:B956: 10        .byte $10, $16, $0F   ; 
+
+
+
+_off021_B959_06_area_7:
+; background
+- D 1 - I - 0x00F969 03:B959: 2C        .byte $2C, $12, $02   ; 
+- D 1 - I - 0x00F96C 03:B95C: 22        .byte $22, $12, $02   ; 
+- D 1 - I - 0x00F96F 03:B95F: 27        .byte $27, $16, $06   ; 
+- D 1 - I - 0x00F972 03:B962: 1C        .byte $1C, $1A, $0A   ; 
+; sprites
+- D 1 - I - 0x00F975 03:B965: 37        .byte $37, $1C, $0F   ; 
+- D 1 - I - 0x00F978 03:B968: 37        .byte $37, $16, $0F   ; 
+- D 1 - I - 0x00F97B 03:B96B: 20        .byte $20, $26, $16   ; 
+- D 1 - I - 0x00F97E 03:B96E: 24        .byte $24, $14, $04   ; 
+
+
+
+_off021_B971_07_area_8:
+; background
+- D 1 - I - 0x00F981 03:B971: 24        .byte $24, $14, $04   ; 
+- D 1 - I - 0x00F984 03:B974: 03        .byte $03, $02, $0C   ; 
+- D 1 - I - 0x00F987 03:B977: 20        .byte $20, $10, $00   ; 
+- D 1 - I - 0x00F98A 03:B97A: 09        .byte $09, $18, $08   ; 
+; sprites
+- D 1 - I - 0x00F98D 03:B97D: 37        .byte $37, $1C, $0F   ; 
+- D 1 - I - 0x00F990 03:B980: 37        .byte $37, $16, $0F   ; 
+- D 1 - I - 0x00F993 03:B983: 20        .byte $20, $26, $16   ; 
+- D 1 - I - 0x00F996 03:B986: 20        .byte $20, $00, $0C   ; 
+
+
+
+_off021_B989_08:
+; background
+- D 1 - I - 0x00F999 03:B989: 10        .byte $16, $27, $30   ; leon
+- D 1 - I - 0x00F99C 03:B98C: 20        .byte $30, $27, $16   ; leon
+- D 1 - I - 0x00F99F 03:B98F: 20        .byte $12, $22, $30   ; leon
+- D 1 - I - 0x00F9A2 03:B992: 27        .byte $30, $21, $12   ; leon
+; sprites
+- D 1 - I - 0x00F9A5 03:B995: 16        .byte $16, $06, $0F   ; 
+- D 1 - I - 0x00F9A8 03:B998: 20        .byte $20, $16, $17   ; 
+- D 1 - I - 0x00F9AB 03:B99B: 20        .byte $20, $26, $16   ; 
+- D 1 - I - 0x00F9AE 03:B99E: 20        .byte $20, $00, $0F   ; 
+
+
+
+_off021_B9A1_09:
+; background
+- D 1 - I - 0x00F9B1 03:B9A1: 0F        .byte $0F, $0F, $0F   ; 
+- D 1 - I - 0x00F9B4 03:B9A4: 20        .byte $30, $27, $16   ; leon
+- D 1 - I - 0x00F9B7 03:B9A7: 0F        .byte $0F, $0F, $0F   ; 
+- D 1 - I - 0x00F9BA 03:B9AA: 0F        .byte $0F, $0F, $0F   ; 
+; sprites
+- D 1 - I - 0x00F9BD 03:B9AD: 0F        .byte $0F, $0F, $0F   ; 
+- D 1 - I - 0x00F9C0 03:B9B0: 20        .byte $20, $16, $17   ; 
+- D 1 - I - 0x00F9C3 03:B9B3: 20        .byte $20, $26, $16   ; 
+- D 1 - I - 0x00F9C6 03:B9B6: 20        .byte $20, $00, $0F   ; 
+
+
+
+_off021_B9B9_0A:
+; background
+- D 1 - I - 0x00F9C9 03:B9B9: 20        .byte $20, $27, $16   ; 
+- D 1 - I - 0x00F9CC 03:B9BC: 27        .byte $27, $16, $04   ; 
+- D 1 - I - 0x00F9CF 03:B9BF: 27        .byte $27, $16, $04   ; 
+- D 1 - I - 0x00F9D2 03:B9C2: 26        .byte $26, $16, $05   ; 
+; sprites
+- D 1 - I - 0x00F9D5 03:B9C5: 20        .byte $20, $27, $0F   ; 
+- D 1 - I - 0x00F9D8 03:B9C8: 20        .byte $20, $16, $17   ; 
+- D 1 - I - 0x00F9DB 03:B9CB: 20        .byte $20, $26, $16   ; 
+- D 1 - I - 0x00F9DE 03:B9CE: 37        .byte $37, $00, $0F   ;                                         
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
                                         
                                         
 
 
 
 loc_0x00A123_options:
-                                        LDY ram_sound_mode_handler
+                                        LDY ram_номер_действия_на_заставке
                                         LDA tbl_9900_lo,y
                                         STA ram_0000
                                         LDA tbl_9904_hi,y
@@ -485,15 +613,22 @@ tbl_9904_hi:
 
 
 ofs_options_9908_00:
+                                        LDA #con_chr_bank + $B4
+                                        STA ram_bg_bank_1
+                                        LDA #con_chr_bank + $B5
+                                        STA ram_bg_bank_1 + $01
+                                        LDX #$00    ; title screen
+                                        JSR sub_988E_отрисовка_экранов
+                                        LDA #$08
+                                        JSR sub_B886_загрузка_палитры
+                                        JSR sub_0x01F7CE_запись_палитры_из_03E0x_в_0300x
+                                        INC ram_номер_действия_на_заставке
                                         RTS
                             
-                                        
 ofs_options_9AFF_01:
-
                                         RTS
 
 ofs_options_9B11_02:
-               
                                         RTS
 
 ofs_options_9B2A_03:
