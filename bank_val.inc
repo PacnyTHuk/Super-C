@@ -48,6 +48,7 @@ con_btns_AB                             = con_btn_A + con_btn_B                 
 
 
 
+
 ; ram_irq_handler_hi
 con_irq_disable                         = $00 ; 
 con_irq_area_1_boss                     = $01 ; 
@@ -64,8 +65,7 @@ con_irq_area_5_boss                     = $0B ;
 con_irq_area_2_boss                     = $0C ; 
 con_irq_area_8_boss                     = $0D ; 
 con_irq_area_6_change_floor_color       = $0E ; when you're attacked by small red spiked balls and floor changes color
-con_irq_area_6_boss                     = $0F ; 
-
+con_irq_area_6_boss                     = $0F ;
 
 
 ; ram_weapon
@@ -92,21 +92,10 @@ con_buf_mode_07                         = $07 ; 1й байт = счетчик, �
 
 
 ; for 0x0017EA
-con_0x0017EA_1_player                   = $00 ; 
-con_0x0017EA_2_players                  = $01 ; 
-con_0x0017EA_area                       = $02 ; 
-con_0x0017EA_1p_score                   = $03 ; 
-con_0x0017EA_2p_score                   = $04 ; 
-con_0x0017EA_hi_score                   = $05 ; 
-con_0x0017EA_rest_1p                    = $06 ; 
-con_0x0017EA_rest_2p                    = $07 ; 
-; con_0x0017EA_08                       = $08 ; unused (index not found)
-con_0x0017EA_game_over                  = $09 ; 
-con_0x0017EA_continue_end               = $0A ; 
-; con_0x0017EA_0B                       = $0B ; unused (index not found)
-con_0x0017EA__area_1                    = $0C ;
-con_0x0017EA_press_start                = $0D ;
-con_0x0017EA_options                    = $0E ;
+con_0x0017EA_1_player                   = $00 ;
+con_0x0017EA_2_players                  = $01 ;
+con_0x0017EA_options                    = $02 ;
+con_0x0017EA_press_start                = $03 ;
 
 
 ; ram_obj_id
