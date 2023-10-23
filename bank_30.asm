@@ -5556,7 +5556,7 @@ bra_A3CA_loop:
 C - - - - - 0x0023DA 00:A3CA: 99 70 00  STA $70,Y
 C - - - - - 0x0023DD 00:A3CD: 88        DEY
 C - - - - - 0x0023DE 00:A3CE: 10 FA     BPL bra_A3CA_loop
-C - - - - - 0x0023E0 00:A3D0: 20 C0 E7  JSR sub_0x01E7D0
+C - - - - - 0x0023E0 00:A3D0: 20 C0 E7  JSR sub_0x01E7D0_выбор_банков_графики
 C - - - - - 0x0023E3 00:A3D3: A9 18     LDA #con_chr_bank + $18
 C - - - - - 0x0023E5 00:A3D5: 8D F1 07  STA ram_bg_bank_1 + $01
 C - - - - - 0x0023E8 00:A3D8: A9 69     LDA #con_chr_bank + $69
