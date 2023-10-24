@@ -2047,8 +2047,8 @@ ram_sound_mode_draw_cooldown             = $07DA ; 01E608 01FB19
 
 
 ; free addresses
-; ram_07DB                                = $07DB ; 01E608 01FB19 
-; ram_07DC                                = $07DC ; 01E608 01FB19 
+ram_07DB                                = $07DB ; 01E608 01FB19 
+ram_07DC                                = $07DC ; 01E608 01FB19 
 ; ram_07DD                                = $07DD ; 01E608 01FB19 
 ; ram_07DE                                = $07DE ; 01E608 01FB19 
 ; ram_07DF                                = $07DF ; 01E608 01FB19 

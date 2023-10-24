@@ -583,7 +583,7 @@ _off021_B9B9_0A:
 _off021_B9D1_0B_options:
 ; background
                                         .byte $16, $27, $30   ;
-                                        .byte $30, $27, $16   ;
+                                        .byte $30, $28, $18   ;
                                         .byte $00, $00, $00   ;
                                         .byte $30, $21, $12   ;
 ; sprites
@@ -595,7 +595,7 @@ _off021_B9D1_0B_options:
 _off021_B9C9_0C_options_cheat_on:
  ; background
                                         .byte $16, $27, $30   ;
-                                        .byte $30, $27, $16   ;
+                                        .byte $30, $28, $18   ;
                                         .byte $16, $27, $30   ;
                                         .byte $30, $21, $12   ;
 ; sprites
@@ -607,15 +607,6 @@ _off021_B9C9_0C_options_cheat_on:
                                         
                                         
                                         
-                                        
-                                        
-                                        
-                                        
-                                        
-                                        
-                                        
-                                        
-
 
 
 loc_0x00A123_options:
@@ -629,12 +620,10 @@ tbl_9900_lo:
                                         .byte < ofs_options_9908_00
                                         .byte < ofs_options_9AFF_01
                                         .byte < ofs_options_9B11_02
-                                        .byte < ofs_options_9B2A_03
 tbl_9904_hi:
                                         .byte > ofs_options_9908_00
                                         .byte > ofs_options_9AFF_01
                                         .byte > ofs_options_9B11_02
-                                        .byte > ofs_options_9B2A_03
                                         
                                         
                                         
@@ -655,6 +644,7 @@ ofs_options_9908_00:
 
                                         
 ofs_options_9AFF_01:
+                                        JSR sub_test
                                         LDX ram_номер_опции_колво_игроков
                                         LDY tbl_9925_x_координаты_стрелки,X ; X координата стрелки
                                         LDA tbl_9925_y_координаты_стрелки,X ; Y координата стрелки
@@ -695,26 +685,6 @@ bra_E443_RTS:
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ofs_options_9B11_02:
                                         JSR sub_0x01FAAF_затемнение_экрана
                                         PHP
@@ -751,8 +721,6 @@ ofs_options_9B11_02:
                                         STA ram_номер_опции_колво_игроков
                                         RTS
 
-ofs_options_9B2A_03:
-                                        RTS
                                         
 tbl_9925_y_координаты_стрелки:
                                         .byte $2F   ; 00
@@ -771,6 +739,34 @@ tbl_9925_x_координаты_стрелки:
                                         .byte $20   ; 04
                                         .byte $20   ; 05
                                         .byte $60   ; 06
+
+
+sub_test:
+                                        INC ram_07DB
+                                        LDA ram_07DB
+                                        CMP #$08
+                                        BCC bra_0002
+                                        LDA #$00
+                                        STA ram_07DB
+                                        INC ram_07DC
+                                        LDY ram_07DC
+                                        CPY #$04
+                                        BCC bra_0001
+                                        LDY #$00
+bra_0001:
+                                        STY ram_07DC
+                                        LDA tbl_0004_байты,y
+                                        STA ram_pal_buffer + $05
+                                        JSR sub_0x01F7CE_запись_палитры_из_03E0x_в_0300x
+                                        
+bra_0002:
+                                        RTS
+
+tbl_0004_байты:
+                                        .byte $20   ; 00
+                                        .byte $38   ; 01
+                                        .byte $28   ; 02
+                                        .byte $38   ; 03
 
 
 
