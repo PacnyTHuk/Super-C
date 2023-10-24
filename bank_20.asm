@@ -257,11 +257,12 @@ tbl_колво_копируемых_данных:
 tbl_координаты_для_ppu:
                                         .dbyt $2000 ; X00
                                         .dbyt $2000 ; X02
-                                        .dbyt $2000 ; X04
+                                        .dbyt $2200 ; X04
 
 tbl_координаты_таблицы_экрана:
 - D 0 - - - 0x001917 00:9907: 35 99     .word _off010_9935_x00_главный_экран
 - D 0 - - - 0x001919 00:9909: B3 9A     .word _off010_9AB3_x02_заставка
+- D 0 - - - 0x00191B 00:990B: BA 9A     .word _off010_9ABA_x04_сокол_опции
 
 
 _off010_9935_x00_главный_экран:
@@ -269,6 +270,9 @@ _off010_9935_x00_главный_экран:
 
 _off010_9AB3_x02_заставка:
     .incbin "screens/02.bin"
+    
+_off010_9ABA_x04_сокол_опции:
+    .incbin "screens/04.bin"
 
 
 
@@ -615,9 +619,9 @@ tbl_9904_hi:
 ofs_options_9908_00:
                                         LDA #con_chr_bank + $B4
                                         STA ram_bg_bank_1
-                                        LDA #con_chr_bank + $B5
-                                        STA ram_bg_bank_1 + $01
-                                        LDX #$00    ; title screen
+;                                        LDA #con_chr_bank + $B5
+;                                        STA ram_bg_bank_1 + $01
+                                        LDX #$04    ; title screen
                                         JSR sub_988E_отрисовка_экранов
                                         LDA #$08
                                         JSR sub_B886_загрузка_палитры
