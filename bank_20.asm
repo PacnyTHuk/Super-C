@@ -645,31 +645,11 @@ ofs_options_9908_00:
                                         
 ofs_options_9AFF_01:
                                         JSR sub_test
+                                        JSR sub_E450_обработка_dpad
                                         LDX ram_номер_опции_колво_игроков
                                         LDY tbl_9925_x_координаты_стрелки,X ; X координата стрелки
                                         LDA tbl_9925_y_координаты_стрелки,X ; Y координата стрелки
                                         JSR sub_0x01E46F_запись_данных_для_стрелки
-                                        LDA ram_копия_нажатая_кнопка
-                                        AND #con_btn_Select
-                                        BEQ bra_E42F_select_не_нажат
-; нажат select
-                                        INC ram_номер_опции_колво_игроков
-                                        LDA ram_номер_опции_колво_игроков
-                                        CMP #$03
-                                        BCC bra_E42F_select_не_нажат
-; =>03
-                                        CMP #$07
-                                        BCC bra_E427
-; =>07
-                                        LDA #$00
-                                        BEQ bra_E42A
-bra_E427:
-                                        LDA ram_cheat_flag
-                                        BNE bra_E42F_select_не_нажат
-                                        LDA #$06
-bra_E42A:
-                                        STA ram_номер_опции_колво_игроков
-bra_E42F_select_не_нажат:
                                         LDA ram_копия_нажатая_кнопка
                                         AND #con_btn_Start
                                         BEQ bra_E443_RTS
@@ -681,6 +661,78 @@ bra_E42F_select_не_нажат:
                                         STA ram_0095
                                         INC ram_номер_действия_на_заставке
 bra_E443_RTS:
+                                        RTS
+
+
+
+sub_E450_обработка_dpad:
+; cyneprepou4uk
+                                        LDA ram_копия_нажатая_кнопка
+                                        LSR
+                                        BCC @bra_не_вправо
+                                        JMP loc_E450_right
+@bra_не_вправо:
+                                        LSR
+                                        BCC @bra_не_влево
+                                        JMP loc_E450_left
+@bra_не_влево:
+                                        LSR
+                                        BCC @bra_не_вниз
+                                        JMP loc_E450_down
+@bra_не_вниз:
+                                        LSR
+                                        BCC @bra_не_вверх
+                                        JMP loc_E450_up
+@bra_не_вверх:
+                                        RTS
+
+
+
+loc_E450_right:
+loc_E450_left:
+; обработчик смены текущей опции
+                                        RTS
+
+
+
+loc_E450_up:
+                                        DEC ram_номер_опции_колво_игроков
+                                        BMI bra_E451_предел
+                                        LDY #$02    ; номер опции при скипе
+                                        JMP loc_E453_скип_скрытых_опций
+bra_E451_предел:
+                                        LDA #$06    ; начальная опция
+                                        STA ram_номер_опции_колво_игроков
+                                        RTS
+
+
+
+loc_E450_down:
+                                        INC ram_номер_опции_колво_игроков
+                                        LDA ram_номер_опции_колво_игроков
+                                        CMP #$06
+                                        BCS bra_E452_предел
+                                        LDY #$06    ; номер опции при скипе
+                                        JMP loc_E453_скип_скрытых_опций
+bra_E452_предел:
+                                        LDA #$00    ; начальная опци
+                                        STA ram_номер_опции_колво_игроков
+                                        RTS
+
+
+
+loc_E453_скип_скрытых_опций:
+                                        LDA ram_cheat_flag
+                                        BNE bra_E454_RTS    ; если чит включен
+; скип опций
+                                        LDA ram_номер_опции_колво_игроков
+                                        CMP #$03
+                                        BCC bra_E454_RTS
+                                        CMP #$06
+                                        BCS bra_E454_RTS
+; запись заранее подготовленного номера
+                                        STY ram_номер_опции_колво_игроков
+bra_E454_RTS:
                                         RTS
 
 
