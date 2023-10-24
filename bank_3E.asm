@@ -7,6 +7,8 @@
 
 
 .export sub_0x000000_чтение_комбинаций_кнопок_для_читов
+.export sub_0x01E46F_запись_данных_для_стрелки
+.export loc_0x01E4A2
 .export loc_0x01E4F5
 .export sub_0x01E594
 .export sub_0x01E5E0_очистка_оперативки
@@ -44,8 +46,8 @@
 .export sub_0x01F74F_start_preparing_new_object
 .export sub_0x01F7AC_delete_object_01
 .export sub_0x01F7AE_prepare_object
+.export sub_0x01F7B9
 .export sub_0x01F7C8
-; leon
 .export sub_0x01F7CE_запись_палитры_из_03E0x_в_0300x
 .export loc_0x01F811
 .export sub_0x01F820
@@ -55,6 +57,7 @@
 .export sub_0x01F974_write_3_colors_with_condition
 .export sub_0x01F978_write_3_colors
 .export sub_0x01FA40
+.export sub_0x01FAAF_затемнение_экрана
 .export sub_0x01FC8F_copy_reg_values
 .export loc_0x01FC8F_copy_reg_values
 .export loc_0x01FCCA_включить_NMI
@@ -809,6 +812,7 @@ loc_E3F6:
 ; нажата кнопка ss/скип заставки
 C D 3 - - - 0x01E406 07:E3F6: 20 0B E5  JSR sub_E50B_подготовка_главного_экрана
 bra_E3F9:
+                                        JSR sub_E5D0_очистка_оперативки
 C - - - - - 0x01E409 07:E3F9: 20 2A E5  JSR sub_E52A_палитра_и_надпись_press_start
 C - - - - - 0x01E40C 07:E3FC: 20 02 E5  JSR sub_E502_подготовка_счетчиков
 C - - - - - 0x01E40F 07:E3FF: A9 00     LDA #$00
@@ -884,8 +888,8 @@ bra_E447_минус_x:
 ; X=04 выбор режима игры
 C - - - - - 0x01E41B 07:E40B: 20 DF FE  JSR sub_FEDF_bankswitch_чит_коды
 C - - - - - 0x01E426 07:E416: A6 22     LDX ram_номер_опции_колво_игроков
-C - - - - - 0x01E428 07:E418: A9 A7     LDY #$50 ; Y координата стрелки
-C - - - - - 0x01E42A 07:E41A: BC 70 E4  LDA tbl_E470_x_координаты_стрелки,X
+C - - - - - 0x01E428 07:E418: A9 A7     LDY #$50 ; X координата стрелки
+C - - - - - 0x01E42A 07:E41A: BC 70 E4  LDA tbl_E470_y_координаты_стрелки,X
 C - - - - - 0x01E42D 07:E41D: 20 5F E4  JSR sub_E45F_запись_данных_для_стрелки
 C - - - - - 0x01E430 07:E420: A5 F5     LDA ram_копия_нажатая_кнопка
 C - - - - - 0x01E432 07:E422: 29 20     AND #con_btn_Select
@@ -896,8 +900,8 @@ C - - - - - 0x01E436 07:E426: A5 22     INC ram_номер_опции_колво
                                         CMP #$03
                                         BCC bra_E42A
                                         LDA #$00
-bra_E42A:
 C - - - - - 0x01E43A 07:E42A: 85 22     STA ram_номер_опции_колво_игроков
+bra_E42A:
 C - - - - - 0x01E43C 07:E42C: 20 02 E5  JSR sub_E502_подготовка_счетчиков
 bra_E42F_select_не_нажат:
 C - - - - - 0x01E43F 07:E42F: A5 F5     LDA ram_копия_нажатая_кнопка
@@ -921,7 +925,7 @@ C - - - - - 0x01E453 07:E443: 60        RTS
 
 bra_E440_минус_x:
                                         DEX
-                                        BNE bra_E44F_x06
+                                        BNE bra_E460_x06
 bra_E449_x05:
 ; X=05 мигание надписей
 C - - - - - 0x01E459 07:E449: A5 3C     LDA ram_таймер_до_демки
@@ -947,19 +951,20 @@ C - - - - - 0x01E46A 07:E45A: A9 02     LDA #$02
 C - - - - - 0x01E46C 07:E45C: 4C EC E4  JMP loc_E4EC_запись_в_демку
 
 
-bra_E44F_x06:
+bra_E460_x06:
 ; X=06 options
                                         JSR sub_FA9F_затемнение_экрана
                                         PHP
-                                        JSR sub_F7A9
+                                        JSR sub_F7BE_запись_палитры_из_03E0x_в_0300x
                                         PLP
-                                        BCC bra_E45A_RTS
+                                        BCC bra_E4BA_RTS
                                         JSR sub_E5D0_очистка_оперативки
                                         LDA #$06
                                         STA ram_демка
                                         LDA #$00
                                         STA ram_номер_действия_на_заставке
-bra_E45A_RTS:
+                                        STA ram_номер_опции_колво_игроков
+bra_E4BA_RTS:
                                         RTS
 
 
@@ -970,7 +975,7 @@ bra_E45A_RTS:
 sub_E4BC_переключение_банков_анимация_contra:
                                         LDA ram_счетчик_кадров_1
                                         AND #$07
-                                        BNE bra_E4BA_RTS
+                                        BNE bra_E4BC_RTS
                                         DEC ram_счетчик_анимации_contra
                                         BPL bra_E4BB
                                         LDY #$03
@@ -979,7 +984,7 @@ bra_E4BB:
                                         LDY ram_счетчик_анимации_contra
                                         LDA tbl_E4BD_банки_фона,Y
                                         STA ram_bg_bank_2
-bra_E4BA_RTS:
+bra_E4BC_RTS:
                                         RTS
                                         
 tbl_E4BD_банки_фона:
@@ -1034,6 +1039,7 @@ tbl_E4D3_банки_фона:
                                         .byte con_chr_bank + $88 ; 06
 
 
+sub_0x01E46F_запись_данных_для_стрелки:
 sub_E45F_запись_данных_для_стрелки:
 C - - - - - 0x01E46F 07:E45F: 8D 1A 05  STA ram_позиция_y_спрайта
 C - - - - - 0x01E472 07:E462: 8C 34 05  STY ram_позиция_x_спрайта
@@ -1045,7 +1051,7 @@ C - - - - - 0x01E47F 07:E46F: 60        RTS
 
 
 
-tbl_E470_x_координаты_стрелки:
+tbl_E470_y_координаты_стрелки:
 - D 3 - - - 0x01E480 07:E470: 20        .byte $8F   ; 00 1 Player
 - D 3 - - - 0x01E481 07:E471: 80        .byte $9F   ; 01 2 Players
                                         .byte $AF   ; 02 Options
@@ -1069,6 +1075,7 @@ C - - - - - 0x01E49B 07:E48B: A5 3B     LDA ram_003B
 C - - - - - 0x01E49D 07:E48D: F0 B4     BEQ bra_E4A2_RTS
 bra_E48F_exit_sound_mode:
 C - - - - - 0x01E49F 07:E48F: 20 96 E4  JSR sub_E496_выбрать_следующий_уровень_для_демки
+loc_0x01E4A2:
 loc_E492:
 C D 3 - - - 0x01E4A2 07:E492: A9 00     LDA #$00
 C - - - - - 0x01E4A4 07:E494: F0 56     BEQ bra_E4EC_запись_в_демку    ; jmp
@@ -1185,7 +1192,7 @@ C - - - - - 0x01E51A 07:E50A: 60        RTS
 
 sub_E50B_подготовка_главного_экрана:
 C - - - - - 0x01E51B 07:E50B: 20 0E FE  JSR sub_FE0E_спрайтовый_движок
-C - - - - - 0x01E51E 07:E50E: 20 57 E5  JSR sub_FE84_XFF_обнуление_экранов_PPU
+;C - - - - - 0x01E51E 07:E50E: 20 57 E5  JSR sub_FE84_XFF_обнуление_экранов_PPU
 C - - - - - 0x01E521 07:E511: A2 02     LDX #$00
 C - - - - - 0x01E523 07:E513: 20 84 FE  JSR sub_FE84_bankswitch_отрисовка_экранов
 C - - - - - 0x01E526 07:E516: A9 00     LDA #$00
@@ -1632,7 +1639,7 @@ sub_E7DF:
 C - - - - - 0x01E7EF 07:E7DF: 20 B7 FE  JSR sub_FEB7
 C - - - - - 0x01E7F2 07:E7E2: A5 3B     LDA ram_003B
 C - - - - - 0x01E7F4 07:E7E4: F0 03     BEQ bra_E7E9
-C - - - - - 0x01E7F6 07:E7E6: 4C 56 EA  JMP loc_EA56
+C - - - - - 0x01E7F6 07:E7E6: 4C 56 EA  JMP loc_E492
 bra_E7E9:
 loc_E7E9:
 ofs_032_E7E9_04:
@@ -2068,7 +2075,6 @@ C - - - - - 0x01EA5F 07:EA4F: 4C 01 E9  JMP loc_E901
 bra_EA52:
 C - - - - - 0x01EA62 07:EA52: A9 00     LDA #$00
 C - - - - - 0x01EA64 07:EA54: 85 F0     STA ram_00F0
-loc_EA56:
 C D 3 - - - 0x01EA66 07:EA56: 4C 92 E4  JMP loc_E492
 bra_EA59_RTS:
 C - - - - - 0x01EA69 07:EA59: 60        RTS
@@ -4303,7 +4309,7 @@ C - - - - - 0x01F7B5 07:F7A5: 9D D8 06  STA ram_тип_объектов,X
 C - - - - - 0x01F7B8 07:F7A8: 60        RTS
 
 
-
+sub_0x01F7B9:
 loc_F7A9:
 sub_F7A9:
 C D 3 - - - 0x01F7B9 07:F7A9: A5 86     LDA ram_0085 + $01
@@ -4793,7 +4799,7 @@ tbl_FA3F:
 - D 3 - - - 0x01FA9F 07:FA8F: 01        .byte $01, $01, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 50 
 
 
-
+sub_0x01FAAF_затемнение_экрана:
 sub_FA9F_затемнение_экрана:
 C - - - - - 0x01FAAF 07:FA9F: C6 95     DEC ram_0095
 C - - - - - 0x01FAB1 07:FAA1: D0 25     BNE bra_FAC8

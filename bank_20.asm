@@ -166,6 +166,7 @@ loc_0x00189E_отрисовка_экранов:
 ; X=FF очистка PPU
 ; X=00 главный экран
 ; X=02 заставка
+; X=04 options
 C D 0 - - - 0x00189E 00:988E: A9 04     LDA #$04
 C - - - - - 0x0018A0 00:9890: 85 1D     STA ram_001D
 C - - - - - 0x01FCD4 07:FCC4: A5 FF     LDA ram_for_2000
@@ -257,12 +258,12 @@ tbl_колво_копируемых_данных:
 tbl_координаты_для_ppu:
                                         .dbyt $2000 ; X00
                                         .dbyt $2000 ; X02
-                                        .dbyt $2200 ; X04
+                                        .dbyt $2000 ; X04
 
 tbl_координаты_таблицы_экрана:
 - D 0 - - - 0x001917 00:9907: 35 99     .word _off010_9935_x00_главный_экран
 - D 0 - - - 0x001919 00:9909: B3 9A     .word _off010_9AB3_x02_заставка
-- D 0 - - - 0x00191B 00:990B: BA 9A     .word _off010_9ABA_x04_сокол_опции
+- D 0 - - - 0x00191B 00:990B: BA 9A     .word _off010_9ABA_x04_options
 
 
 _off010_9935_x00_главный_экран:
@@ -271,12 +272,12 @@ _off010_9935_x00_главный_экран:
 _off010_9AB3_x02_заставка:
     .incbin "screens/02.bin"
     
-_off010_9ABA_x04_сокол_опции:
+_off010_9ABA_x04_options:
     .incbin "screens/04.bin"
 
 
 
-
+sub_977C_отрисовка_текста_через_буфер_0300x:
 loc_0x00178C_отрисовка_текста_через_буфер_0300x:
 ; see con_0x0017EA
 ; +80 (N+) Скрыть текст 
@@ -421,6 +422,8 @@ tbl_B8B3:
 - D 1 - - - 0x00F8D3 03:B8C3: 89 B9     .word _off021_B989_08
 - D 1 - - - 0x00F8D5 03:B8C5: A1 B9     .word _off021_B9A1_09
 - D 1 - - - 0x00F8D7 03:B8C7: B9 B9     .word _off021_B9B9_0A
+                                        .word _off021_B9D1_0B_options   ; options screen
+                                        .word _off021_B9C9_0C_options_cheat_on  ; options screen + cheat
 
 
 
@@ -574,13 +577,32 @@ _off021_B9B9_0A:
 - D 1 - I - 0x00F9D5 03:B9C5: 20        .byte $20, $27, $0F   ; 
 - D 1 - I - 0x00F9D8 03:B9C8: 20        .byte $20, $16, $17   ; 
 - D 1 - I - 0x00F9DB 03:B9CB: 20        .byte $20, $26, $16   ; 
-- D 1 - I - 0x00F9DE 03:B9CE: 37        .byte $37, $00, $0F   ;                                         
+- D 1 - I - 0x00F9DE 03:B9CE: 37        .byte $37, $00, $0F   ;  
+
+
+_off021_B9D1_0B_options:
+; background
+                                        .byte $16, $27, $30   ;
+                                        .byte $30, $27, $16   ;
+                                        .byte $00, $00, $00   ;
+                                        .byte $30, $21, $12   ;
+; sprites
+                                        .byte $16, $06, $0F   ;
+                                        .byte $20, $16, $17   ;
+                                        .byte $20, $26, $16   ;
+                                        .byte $20, $00, $0F   ;
                                         
-                                        
-                                        
-                                        
-                                        
-                                        
+_off021_B9C9_0C_options_cheat_on:
+ ; background
+                                        .byte $16, $27, $30   ;
+                                        .byte $30, $27, $16   ;
+                                        .byte $16, $27, $30   ;
+                                        .byte $30, $21, $12   ;
+; sprites
+                                        .byte $16, $06, $0F   ;
+                                        .byte $20, $16, $17   ;
+                                        .byte $20, $26, $16   ;
+                                        .byte $20, $00, $0F   ;
                                         
                                         
                                         
@@ -613,31 +635,142 @@ tbl_9904_hi:
                                         .byte > ofs_options_9AFF_01
                                         .byte > ofs_options_9B11_02
                                         .byte > ofs_options_9B2A_03
-
-
-
+                                        
+                                        
+                                        
 ofs_options_9908_00:
                                         LDA #con_chr_bank + $B4
                                         STA ram_bg_bank_1
-;                                        LDA #con_chr_bank + $B5
-;                                        STA ram_bg_bank_1 + $01
-                                        LDX #$04    ; title screen
+                                        LDA #con_chr_bank + $40
+                                        STA ram_bg_bank_2
+                                        LDX #$04    ; options
                                         JSR sub_988E_отрисовка_экранов
-                                        LDA #$08
+                                        LDA #$0B
+                                        CLC
+                                        ADC ram_cheat_flag
                                         JSR sub_B886_загрузка_палитры
                                         JSR sub_0x01F7CE_запись_палитры_из_03E0x_в_0300x
                                         INC ram_номер_действия_на_заставке
-                                        RTS
-                            
+                                        RTS   
+
+                                        
 ofs_options_9AFF_01:
+                                        LDX ram_номер_опции_колво_игроков
+                                        LDY tbl_9925_x_координаты_стрелки,X ; X координата стрелки
+                                        LDA tbl_9925_y_координаты_стрелки,X ; Y координата стрелки
+                                        JSR sub_0x01E46F_запись_данных_для_стрелки
+                                        LDA ram_копия_нажатая_кнопка
+                                        AND #con_btn_Select
+                                        BEQ bra_E42F_select_не_нажат
+; нажат select
+                                        INC ram_номер_опции_колво_игроков
+                                        LDA ram_номер_опции_колво_игроков
+                                        CMP #$03
+                                        BCC bra_E42F_select_не_нажат
+; =>03
+                                        CMP #$07
+                                        BCC bra_E427
+; =>07
+                                        LDA #$00
+                                        BEQ bra_E42A
+bra_E427:
+                                        LDA ram_cheat_flag
+                                        BNE bra_E42F_select_не_нажат
+                                        LDA #$06
+bra_E42A:
+                                        STA ram_номер_опции_колво_игроков
+bra_E42F_select_не_нажат:
+                                        LDA ram_копия_нажатая_кнопка
+                                        AND #con_btn_Start
+                                        BEQ bra_E443_RTS
+; нажата start
+                                        LDA ram_номер_опции_колво_игроков
+                                        CMP #$06
+                                        BNE bra_E443_RTS
+                                        LDA #$01
+                                        STA ram_0095
+                                        INC ram_номер_действия_на_заставке
+bra_E443_RTS:
                                         RTS
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ofs_options_9B11_02:
+                                        JSR sub_0x01FAAF_затемнение_экрана
+                                        PHP
+                                        JSR sub_0x01F7CE_запись_палитры_из_03E0x_в_0300x
+                                        PLP
+                                        BCC bra_E443_RTS
+                                        JSR sub_0x01FE1E_спрайтовый_движок
+                                        JSR sub_0x01E5E0_очистка_оперативки
+                                        JSR sub_0x01E7D0_выбор_банков_графики
+                                        LDX #$00
+                                        JSR sub_988E_отрисовка_экранов
+                                        LDA ram_for_2000
+                                        AND #$FC
+                                        STA ram_for_2000
+                                        LDA #$08
+                                        JSR sub_B886_загрузка_палитры
+                                        JSR sub_0x01F7CE_запись_палитры_из_03E0x_в_0300x
+                                        LDA #con_0x0017EA_1_player
+                                        JSR sub_977C_отрисовка_текста_через_буфер_0300x
+                                        LDA #con_0x0017EA_2_players
+                                        JSR sub_977C_отрисовка_текста_через_буфер_0300x
+                                        LDA #con_0x0017EA_options
+                                        JSR sub_977C_отрисовка_текста_через_буфер_0300x
+                                        LDA #$00
+                                        STA ram_демка
+                                        STA ram_001F_flag
+                                        STA ram_номер_уровня
+                                        LDA #$04
+                                        STA ram_номер_действия_на_заставке
+                                        INC ram_002B
+                                        LDA #$1E
+                                        STA ram_for_2001
+                                        LDA #$02
+                                        STA ram_номер_опции_колво_игроков
                                         RTS
 
 ofs_options_9B2A_03:
                                         RTS
-
+                                        
+tbl_9925_y_координаты_стрелки:
+                                        .byte $2F   ; 00
+                                        .byte $3F   ; 01
+                                        .byte $4F   ; 02
+                                        .byte $5F   ; 03
+                                        .byte $6F   ; 04
+                                        .byte $7F   ; 05
+                                        .byte $8F   ; 06
+                                        
+tbl_9925_x_координаты_стрелки:
+                                        .byte $20   ; 00
+                                        .byte $20   ; 01
+                                        .byte $20   ; 02
+                                        .byte $20   ; 03
+                                        .byte $20   ; 04
+                                        .byte $20   ; 05
+                                        .byte $60   ; 06
 
 
 
