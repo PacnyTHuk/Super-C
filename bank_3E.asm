@@ -1355,7 +1355,7 @@ C - - - - - 0x01E603 07:E5F3: D0 FA     BNE bra_E5EF_loop
 ; 1путин - очистка слотов объектов на батарейке
 ; 6000-64FF
                                         LDX #$00
-bra_E5F0_loop:	
+bra_E5F0_loop:
                                         STA $6000,X
                                         STA $6100,X
                                         STA $6200,X
@@ -1366,7 +1366,7 @@ bra_E5F0_loop:
 ; 6500-65A8
                                         LDX #$A9
 bra_E5F2_loop:
-                                        STA $64FF,X	
+                                        STA $64FF,X
                                         DEX
                                         BNE bra_E5F2_loop
 ; A = 00

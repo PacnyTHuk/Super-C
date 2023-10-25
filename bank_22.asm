@@ -185,7 +185,7 @@ C - - - - - 0x00C0EA 03:80DA: A9 FC     LDA #$FC
                                         BNE bra_80DE    ; jmp
 bra_80DC:
                                         LDA #$FF
-bra_80DE:	
+bra_80DE:
 C - - - - - 0x00C0EC 03:80DC: 85 0B     STA ram_000B
 C - - - - - 0x00C0EE 03:80DE: AD 66 05  LDA ram_атрибуты_спрайта_игрока,Y
 C - - - - - 0x00C0F1 03:80E1: 29 03     AND #$03
@@ -201,7 +201,7 @@ C - - - - - 0x00C106 03:80F6: AD 18 05  LDA ram_кадр_игрока,Y
                                         STY ram_0005
 C - - - - - 0x00C10B 03:80FB: 20 5E 80  JSR sub_805E_обработчик_анимации_спрайтов_игроков
                                         LDY ram_0005
-bra_8100_skip:	
+bra_8100_skip:
                                         DEY
                                         BPL bra_80D0_loop 
 ; 1путин: считывание игроков и врагов отдельно
