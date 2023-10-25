@@ -250,14 +250,14 @@ bra_9901_loop:
 
 
 tbl_колво_копируемых_данных:
-                                        .word $0400 ; X00
-                                        .word $0400 ; X02
-                                        .word $0400 ; X04
+                                        .word $0400 ; X00 главный экран
+                                        .word $0400 ; X02 заставка
+                                        .word $0400 ; X04 options
 
 tbl_координаты_для_ppu:
-                                        .dbyt $2000 ; X00
-                                        .dbyt $2000 ; X02
-                                        .dbyt $2000 ; X04
+                                        .dbyt $2000 ; X00 главный экран
+                                        .dbyt $2000 ; X02 заставка
+                                        .dbyt $2000 ; X04 options
 
 tbl_координаты_таблицы_экрана:
 - D 0 - - - 0x001917 00:9907: 35 99     .word _off010_9935_x00_главный_экран
@@ -916,12 +916,12 @@ bra_E454_RTS:
                                         RTS
 
 tbl_E455_предел_опций:
-                                        .byte $02   ; X00
-                                        .byte $01   ; X01
-                                        .byte $01   ; X02
-                                        .byte $05   ; X03
-                                        .byte $05   ; X04
-                                        .byte $05   ; X05
+                                        .byte $02   ; X00 difficulty
+                                        .byte $01   ; X01 obj limit
+                                        .byte $01   ; X02 graphics
+                                        .byte $05   ; X03 continue
+                                        .byte $05   ; X04 level
+                                        .byte $05   ; X05 rest
 
 
 
