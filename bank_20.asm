@@ -659,18 +659,18 @@ loc_0x00A123_options:
                                         STA ram_0001
                                         JMP (ram_0000)
 tbl_9900_lo:
-                                        .byte < ofs_options_9908_00
-                                        .byte < ofs_options_9AFF_01
+                                        .byte < ofs_options_9908_00_подготовка_экрана_options
+                                        .byte < ofs_options_9AFF_01_выбор_опций
                                         .byte < ofs_options_9B11_02_мерцание_exit
-                                        .byte < ofs_options_9B27_03
+                                        .byte < ofs_options_9B27_03_выход_из_экрана_options
 tbl_9904_hi:
-                                        .byte > ofs_options_9908_00
-                                        .byte > ofs_options_9AFF_01
+                                        .byte > ofs_options_9908_00_подготовка_экрана_options
+                                        .byte > ofs_options_9AFF_01_выбор_опций
                                         .byte > ofs_options_9B11_02_мерцание_exit
-                                        .byte > ofs_options_9B27_03
+                                        .byte > ofs_options_9B27_03_выход_из_экрана_options
 
 
-ofs_options_9908_00:
+ofs_options_9908_00_подготовка_экрана_options:
                                         LDA #con_chr_bank + $B4
                                         STA ram_bg_bank_1
                                         LDA #con_chr_bank + $40
@@ -721,7 +721,7 @@ tbl_9945_атрибуты:
 
 
 
-ofs_options_9AFF_01:
+ofs_options_9AFF_01_выбор_опций:
                                         JSR sub_E455_смена_палитры_сокола
                                         JSR sub_E450_обработка_dpad_в_опциях
                                         LDA #con_0x0017EA_normal
@@ -765,7 +765,7 @@ ofs_options_9B11_02_мерцание_exit:
 bra_E455_RTS:
                                         RTS
 
-ofs_options_9B27_03:
+ofs_options_9B27_03_выход_из_экрана_options:
                                         JSR sub_0x01FAAF_затемнение_экрана
                                         PHP
                                         JSR sub_0x01F7CE_запись_палитры_из_03E0x_в_0300x

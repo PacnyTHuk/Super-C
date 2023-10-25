@@ -119,7 +119,7 @@ tbl_93EE_hi:
 
 ofs_019_9408_00:
 C - - J - - 0x00D418 03:9408: A9 3A     LDA #con_chr_bank + $3A
-C - - - - - 0x00D41A 03:940A: 8D F1 07  STA ram_bg_bank_1 + $01
+C - - - - - 0x00D41A 03:940A: 8D F1 07  STA ram_bg_bank_2
 C - - - - - 0x00D41D 03:940D: D0 42     BNE bra_9451    ; jmp
 
 
@@ -387,7 +387,7 @@ C - - - - - 0x00D520 03:9510: A9 5C     LDA #con_chr_bank + $5C
 C - - - - - 0x00D522 03:9512: A2 5E     LDX #con_chr_bank + $5E
 C - - - - - 0x00D524 03:9514: 8D F0 07  STA ram_bg_bank_1
 bra_9517:
-C - - - - - 0x00D527 03:9517: 8E F1 07  STX ram_bg_bank_1 + $01
+C - - - - - 0x00D527 03:9517: 8E F1 07  STX ram_bg_bank_2
 C - - - - - 0x00D52A 03:951A: D0 E2     BNE bra_94FE    ; jmp
 
 
@@ -512,7 +512,7 @@ C - - - - - 0x00D5AD 03:959D: A6 8C     LDX ram_008C
 C - - - - - 0x00D5AF 03:959F: D0 0E     BNE bra_95AF
 ; 00 
 C - - - - - 0x00D5B1 03:95A1: A9 10     LDA #con_chr_bank + $10
-C - - - - - 0x00D5B3 03:95A3: 8D F1 07  STA ram_bg_bank_1 + $01
+C - - - - - 0x00D5B3 03:95A3: 8D F1 07  STA ram_bg_bank_2
 C - - - - - 0x00D5B6 03:95A6: A0 08     LDY #con_F97C_colors + $08
 C - - - - - 0x00D5B8 03:95A8: 20 64 F9  JSR sub_0x01F974_write_3_colors_with_condition
 C - - - - - 0x00D5BB 03:95AB: A0 0C     LDY #con_F97C_colors + $0C
@@ -538,7 +538,7 @@ C - - - - - 0x00D5D4 03:95C4: 85 61     STA ram_0061_конфиг_уровня
 C - - - - - 0x00D5D6 03:95C6: A9 12     LDA #con_chr_bank + $12
 C - - - - - 0x00D5D8 03:95C8: 8D F0 07  STA ram_bg_bank_1
 C - - - - - 0x00D5DB 03:95CB: A9 14     LDA #con_chr_bank + $14
-C - - - - - 0x00D5DD 03:95CD: 8D F1 07  STA ram_bg_bank_1 + $01
+C - - - - - 0x00D5DD 03:95CD: 8D F1 07  STA ram_bg_bank_2
 C - - - - - 0x00D5E0 03:95D0: A0 18     LDY #con_F97C_colors + $18
 C - - - - - 0x00D5E2 03:95D2: 20 64 F9  JSR sub_0x01F974_write_3_colors_with_condition
 C - - - - - 0x00D5E5 03:95D5: A0 1C     LDY #con_F97C_colors + $1C
@@ -548,7 +548,7 @@ C - - - - - 0x00D5E9 03:95D9: CA        DEX
 C - - - - - 0x00D5EA 03:95DA: D0 0E     BNE bra_95EA
 ; 03 
 C - - - - - 0x00D5EC 03:95DC: A9 10     LDA #con_chr_bank + $10
-C - - - - - 0x00D5EE 03:95DE: 8D F1 07  STA ram_bg_bank_1 + $01
+C - - - - - 0x00D5EE 03:95DE: 8D F1 07  STA ram_bg_bank_2
 C - - - - - 0x00D5F1 03:95E1: A0 20     LDY #con_F97C_colors + $20
 C - - - - - 0x00D5F3 03:95E3: 20 64 F9  JSR sub_0x01F974_write_3_colors_with_condition
 C - - - - - 0x00D5F6 03:95E6: A0 24     LDY #con_F97C_colors + $24
@@ -755,7 +755,7 @@ tbl_96A2_hi:
 
 ofs_023_96B6_00:
 C - - J - - 0x00D6C6 03:96B6: A9 1B     LDA #con_chr_bank + $1B
-C - - - - - 0x00D6C8 03:96B8: 8D F5 07  STA ram_bg_bank_1 + $05
+C - - - - - 0x00D6C8 03:96B8: 8D F5 07  STA ram_spr_bank_4
 C - - - - - 0x00D6CB 03:96BB: D0 32     BNE bra_96EF    ; jmp
 
 
@@ -955,7 +955,7 @@ C - - - - - 0x00D7AD 03:979D: 20 30 FA  JSR sub_0x01FA40
 C - - - - - 0x00D7B0 03:97A0: A9 20     LDA #con_chr_bank + $20
 C - - - - - 0x00D7B2 03:97A2: 8D F0 07  STA ram_bg_bank_1
 C - - - - - 0x00D7B5 03:97A5: A9 22     LDA #con_chr_bank + $22
-C - - - - - 0x00D7B7 03:97A7: 8D F1 07  STA ram_bg_bank_1 + $01
+C - - - - - 0x00D7B7 03:97A7: 8D F1 07  STA ram_bg_bank_2
 C - - - - - 0x00D7BA 03:97AA: A0 28     LDY #con_F97C_colors + $28
 bra_97AC:
 C - - - - - 0x00D7BC 03:97AC: 20 64 F9  JSR sub_0x01F974_write_3_colors_with_condition
@@ -1186,7 +1186,7 @@ C - - - - - 0x00D8C0 03:98B0: 60        RTS
 
 ofs_025_98B1_01:
 C - - J - - 0x00D8C1 03:98B1: A9 52     LDA #con_chr_bank + $52
-C - - - - - 0x00D8C3 03:98B3: 8D F1 07  STA ram_bg_bank_1 + $01
+C - - - - - 0x00D8C3 03:98B3: 8D F1 07  STA ram_bg_bank_2
 C - - - - - 0x00D8C6 03:98B6: D0 F6     BNE bra_98AE    ; jmp
 
 
@@ -1292,9 +1292,9 @@ bra_992C:
 C - - - - - 0x00D93C 03:992C: CA        DEX
 C - - - - - 0x00D93D 03:992D: D0 0E     BNE bra_993D
 C - - - - - 0x00D93F 03:992F: A9 2A     LDA #con_chr_bank + $2A
-C - - - - - 0x00D941 03:9931: 8D F1 07  STA ram_bg_bank_1 + $01
+C - - - - - 0x00D941 03:9931: 8D F1 07  STA ram_bg_bank_2
 C - - - - - 0x00D944 03:9934: A9 65     LDA #con_chr_bank + $65
-C - - - - - 0x00D946 03:9936: 8D F5 07  STA ram_bg_bank_1 + $05
+C - - - - - 0x00D946 03:9936: 8D F5 07  STA ram_spr_bank_4
 C - - - - - 0x00D949 03:9939: A0 34     LDY #con_F97C_colors + $34
 C - - - - - 0x00D94B 03:993B: D0 E9     BNE bra_9926    ; jmp
 bra_993D:
@@ -1305,9 +1305,9 @@ C - - - - - 0x00D952 03:9942: 20 30 FA  JSR sub_0x01FA40
 C - - - - - 0x00D955 03:9945: A9 2C     LDA #con_chr_bank + $2C
 C - - - - - 0x00D957 03:9947: 8D F0 07  STA ram_bg_bank_1
 C - - - - - 0x00D95A 03:994A: A9 2E     LDA #con_chr_bank + $2E
-C - - - - - 0x00D95C 03:994C: 8D F1 07  STA ram_bg_bank_1 + $01
+C - - - - - 0x00D95C 03:994C: 8D F1 07  STA ram_bg_bank_2
 C - - - - - 0x00D95F 03:994F: A9 66     LDA #con_chr_bank + $66
-C - - - - - 0x00D961 03:9951: 8D F4 07  STA ram_bg_bank_1 + $04
+C - - - - - 0x00D961 03:9951: 8D F4 07  STA ram_spr_bank_3
 C - - - - - 0x00D964 03:9954: A0 50     LDY #con_F97C_colors + $50
 C - - - - - 0x00D966 03:9956: 20 64 F9  JSR sub_0x01F974_write_3_colors_with_condition
 C - - - - - 0x00D969 03:9959: A0 54     LDY #con_F97C_colors + $54
@@ -1476,7 +1476,7 @@ C - - - - - 0x00DA1C 03:9A0C: 20 30 FA  JSR sub_0x01FA40
 C - - - - - 0x00DA1F 03:9A0F: A9 6C     LDA #con_chr_bank + $6C
 C - - - - - 0x00DA21 03:9A11: 8D F0 07  STA ram_bg_bank_1
 C - - - - - 0x00DA24 03:9A14: A9 6E     LDA #con_chr_bank + $6E
-C - - - - - 0x00DA26 03:9A16: 8D F1 07  STA ram_bg_bank_1 + $01
+C - - - - - 0x00DA26 03:9A16: 8D F1 07  STA ram_bg_bank_2
 C - - - - - 0x00DA29 03:9A19: D0 D9     BNE bra_99F4    ; jmp
 
 

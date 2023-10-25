@@ -855,7 +855,7 @@ C - - - - - 0x004556 01:8546: 20 1B BD  JSR sub_0x007D2B_clear_0480_04FF
 C - - - - - 0x004559 01:8549: A9 04     LDA #con_chr_bank + $04
 C - - - - - 0x00455B 01:854B: 8D F0 07  STA ram_bg_bank_1
 C - - - - - 0x00455E 01:854E: A9 06     LDA #con_chr_bank + $06
-C - - - - - 0x004560 01:8550: 8D F1 07  STA ram_bg_bank_1 + $01
+C - - - - - 0x004560 01:8550: 8D F1 07  STA ram_bg_bank_2
 C - - - - - 0x004563 01:8553: A0 04     LDY #$04
 bra_8555_loop:
 C - - - - - 0x004565 01:8555: 84 08     STY ram_0008
@@ -1012,7 +1012,7 @@ C - - - - - 0x00465C 01:864C: 20 88 F1  JSR sub_0x01F198
 C - - - - - 0x00465F 01:864F: A9 38     LDA #con_chr_bank + $38
 C - - - - - 0x004661 01:8651: 8D F0 07  STA ram_bg_bank_1
 C - - - - - 0x004664 01:8654: A9 3A     LDA #con_chr_bank + $3A
-C - - - - - 0x004666 01:8656: 8D F1 07  STA ram_bg_bank_1 + $01
+C - - - - - 0x004666 01:8656: 8D F1 07  STA ram_bg_bank_2
 C - - - - - 0x004669 01:8659: 4C 37 A3  JMP loc_0x006347_delete_object_08
 
 
@@ -4425,7 +4425,7 @@ C - - - - - 0x005A83 01:9A73: 90 EA     BCC bra_9A5F_RTS
 C - - - - - 0x005A85 01:9A75: A9 16     LDA #con_chr_bank + $16
 C - - - - - 0x005A87 01:9A77: 8D F0 07  STA ram_bg_bank_1
 C - - - - - 0x005A8A 01:9A7A: A9 18     LDA #con_chr_bank + $18
-C - - - - - 0x005A8C 01:9A7C: 8D F1 07  STA ram_bg_bank_1 + $01
+C - - - - - 0x005A8C 01:9A7C: 8D F1 07  STA ram_bg_bank_2
 C - - - - - 0x005A8F 01:9A7F: A9 10     LDA #$10
 C - - - - - 0x005A91 01:9A81: 4C E0 A2  JMP loc_0x0062F0
 
@@ -4581,7 +4581,7 @@ C - - - - - 0x005B66 01:9B56: 8D CD 03  STA ram_03CD
 C - - - - - 0x005B69 01:9B59: A9 40     LDA #$40
 C - - - - - 0x005B6B 01:9B5B: 9D E6 06  STA ram_счетчкики_для_объектов,X
 C - - - - - 0x005B6E 01:9B5E: A9 1A     LDA #con_chr_bank + $1A
-C - - - - - 0x005B70 01:9B60: 8D F5 07  STA ram_bg_bank_1 + $05
+C - - - - - 0x005B70 01:9B60: 8D F5 07  STA ram_spr_bank_4
 bra_9B63:
 C - - - - - 0x005B73 01:9B63: FE 48 07  INC ram_0748_obj,X
 bra_9B66_RTS:

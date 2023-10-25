@@ -353,7 +353,7 @@ C - - - - - 0x01E116 07:E106: A9 A8     LDA #$A8
 C - - - - - 0x01E118 07:E108: 8D 00 20  STA $2000
 C - - - - - 0x01E11B 07:E10B: A9 38     LDA #con_chr_bank + $38
 C - - - - - 0x01E11D 07:E10D: A2 3A     LDX #con_chr_bank + $3A
-C - - - - - 0x01E11F 07:E10F: 20 EF FB  JSR sub_FBEF
+C - - - - - 0x01E11F 07:E10F: 20 EF FB  JSR sub_FBEF_запись_chr_банков_фона
 C - - - - - 0x01E122 07:E112: 4C 5D E2  JMP loc_E25D
 
 
@@ -393,7 +393,7 @@ C - - - - - 0x01E161 07:E151: A0 14     LDY #$14
 bra_E153_garbage_loop:
 C - - - - - 0x01E163 07:E153: 88        DEY
 C - - - - - 0x01E164 07:E154: D0 FD     BNE bra_E153_garbage_loop
-C - - - - - 0x01E166 07:E156: 20 EC FB  JSR sub_FBEC
+C - - - - - 0x01E166 07:E156: 20 EC FB  JSR sub_FBEC_запись_chr_банков_фона_42
 C - - - - - 0x01E169 07:E159: AD 02 20  LDA $2002
 C - - - - - 0x01E16C 07:E15C: A0 00     LDY #$00
 C - - - - - 0x01E16E 07:E15E: AE FC 07  LDX ram_07FC
@@ -416,13 +416,13 @@ C - - - - - 0x01E18C 07:E17C: 88        DEY
 C - - - - - 0x01E18D 07:E17D: D0 FD     BNE bra_E17C_garbage_loop
 bra_E17F:
 C - - - - - 0x01E18F 07:E17F: A0 05     LDY #$05
-C - - - - - 0x01E191 07:E181: AD F5 07  LDA ram_bg_bank_1 + $05
+C - - - - - 0x01E191 07:E181: AD F5 07  LDA ram_spr_bank_4
 C - - - - - 0x01E194 07:E184: 8C 00 80  STY $8000
 C - - - - - 0x01E197 07:E187: 8D 01 80  STA $8001
 C - - - - - 0x01E19A 07:E18A: A0 00     LDY #$00
 C - - - - - 0x01E19C 07:E18C: AD F0 07  LDA ram_bg_bank_1
-C - - - - - 0x01E19F 07:E18F: AE F1 07  LDX ram_bg_bank_1 + $01
-C - - - - - 0x01E1A2 07:E192: 20 EF FB  JSR sub_FBEF
+C - - - - - 0x01E19F 07:E18F: AE F1 07  LDX ram_bg_bank_2
+C - - - - - 0x01E1A2 07:E192: 20 EF FB  JSR sub_FBEF_запись_chr_банков_фона
 C - - - - - 0x01E1A5 07:E195: 4C 5D E2  JMP loc_E25D
 
 
@@ -458,7 +458,7 @@ C - - - - - 0x01E1D0 07:E1C0: 4C 36 E2  JMP loc_E236
 ofs_040_03_E1C3_02:
 C - - J - - 0x01E1D3 07:E1C3: AD FA 07  LDA ram_07FA
 C - - - - - 0x01E1D6 07:E1C6: 8D 00 C0  STA $C000
-C - - - - - 0x01E1D9 07:E1C9: 20 EC FB  JSR sub_FBEC
+C - - - - - 0x01E1D9 07:E1C9: 20 EC FB  JSR sub_FBEC_запись_chr_банков_фона_42
 C - - - - - 0x01E1DC 07:E1CC: A0 14     LDY #$14
 bra_E1CE_garbage_loop:
 C - - - - - 0x01E1DE 07:E1CE: 88        DEY
@@ -485,8 +485,8 @@ bra_E1F8_garbage_loop:
 C - - - - - 0x01E208 07:E1F8: 88        DEY
 C - - - - - 0x01E209 07:E1F9: D0 FD     BNE bra_E1F8_garbage_loop
 C - - - - - 0x01E20B 07:E1FB: AD F0 07  LDA ram_bg_bank_1
-C - - - - - 0x01E20E 07:E1FE: AE F1 07  LDX ram_bg_bank_1 + $01
-C - - - - - 0x01E211 07:E201: 20 EF FB  JSR sub_FBEF
+C - - - - - 0x01E20E 07:E1FE: AE F1 07  LDX ram_bg_bank_2
+C - - - - - 0x01E211 07:E201: 20 EF FB  JSR sub_FBEF_запись_chr_банков_фона
 C - - - - - 0x01E214 07:E204: 4C 36 E2  JMP loc_E236
 
 
@@ -496,7 +496,7 @@ C - - J - - 0x01E217 07:E207: A0 08     LDY #$08
 bra_E209_garbage_loop:
 C - - - - - 0x01E219 07:E209: 88        DEY
 C - - - - - 0x01E21A 07:E20A: D0 FD     BNE bra_E209_garbage_loop
-C - - - - - 0x01E21C 07:E20C: 20 EC FB  JSR sub_FBEC
+C - - - - - 0x01E21C 07:E20C: 20 EC FB  JSR sub_FBEC_запись_chr_банков_фона_42
 C - - - - - 0x01E21F 07:E20F: 4C 5D E2  JMP loc_E25D
 
 
@@ -516,7 +516,7 @@ C - - - - - 0x01E239 07:E229: 8D 05 20  STA $2005
 C - - - - - 0x01E23C 07:E22C: 8D 05 20  STA $2005
 C - - - - - 0x01E23F 07:E22F: A9 08     LDA #con_chr_bank + $08
 C - - - - - 0x01E241 07:E231: A2 14     LDX #con_chr_bank + $14
-C - - - - - 0x01E243 07:E233: 20 EF FB  JSR sub_FBEF
+C - - - - - 0x01E243 07:E233: 20 EF FB  JSR sub_FBEF_запись_chr_банков_фона
 loc_E236:
 C D 3 - - - 0x01E246 07:E236: E6 28     INC ram_irq_handler_lo
 C - - - - - 0x01E248 07:E238: 4C CB FB  JMP loc_FBCB
@@ -542,7 +542,7 @@ C - - - - - 0x01E260 07:E250: 8D 05 20  STA $2005
 C - - - - - 0x01E263 07:E253: 8D 05 20  STA $2005
 C - - - - - 0x01E266 07:E256: A9 08     LDA #con_chr_bank + $08
 C - - - - - 0x01E268 07:E258: A2 0A     LDX #con_chr_bank + $0A
-C - - - - - 0x01E26A 07:E25A: 20 EF FB  JSR sub_FBEF
+C - - - - - 0x01E26A 07:E25A: 20 EF FB  JSR sub_FBEF_запись_chr_банков_фона
 loc_E25D:
 C D 3 - - - 0x01E26D 07:E25D: 8D 00 E0  STA $E000
 C - - - - - 0x01E270 07:E260: 4C CB FB  JMP loc_FBCB
@@ -602,7 +602,7 @@ C - - - - - 0x01E2CC 07:E2BC: D0 FD     BNE bra_E2BB_garbage_loop
 C - - - - - 0x01E2CE 07:E2BE: AD 02 20  LDA $2002
 C - - - - - 0x01E2D1 07:E2C1: A9 30     LDA #con_chr_bank + $30
 C - - - - - 0x01E2D3 07:E2C3: A2 2E     LDX #con_chr_bank + $2E
-C - - - - - 0x01E2D5 07:E2C5: 20 EF FB  JSR sub_FBEF
+C - - - - - 0x01E2D5 07:E2C5: 20 EF FB  JSR sub_FBEF_запись_chr_банков_фона
 C - - - - - 0x01E2D8 07:E2C8: 4C 5D E2  JMP loc_E25D
 
 
@@ -622,7 +622,7 @@ C - - - - - 0x01E2EF 07:E2DF: 8C 05 20  STY $2005
 C - - - - - 0x01E2F2 07:E2E2: 8C 05 20  STY $2005
 C - - - - - 0x01E2F5 07:E2E5: A9 20     LDA #con_chr_bank + $20
 C - - - - - 0x01E2F7 07:E2E7: A2 22     LDX #con_chr_bank + $22
-C - - - - - 0x01E2F9 07:E2E9: 20 EF FB  JSR sub_FBEF
+C - - - - - 0x01E2F9 07:E2E9: 20 EF FB  JSR sub_FBEF_запись_chr_банков_фона
 C - - - - - 0x01E2FC 07:E2EC: 4C 5D E2  JMP loc_E25D
 
 
@@ -682,7 +682,7 @@ C - - - - - 0x01E356 07:E346: 88        DEY
 C - - - - - 0x01E357 07:E347: D0 FD     BNE bra_E346_garbage_loop
 C - - - - - 0x01E359 07:E349: A9 70     LDA #con_chr_bank + $70
 C - - - - - 0x01E35B 07:E34B: A2 72     LDX #con_chr_bank + $72
-C - - - - - 0x01E35D 07:E34D: 20 EF FB  JSR sub_FBEF
+C - - - - - 0x01E35D 07:E34D: 20 EF FB  JSR sub_FBEF_запись_chr_банков_фона
 C - - - - - 0x01E360 07:E350: AD 02 20  LDA $2002
 C - - - - - 0x01E363 07:E353: AE FC 07  LDX ram_07FC
 C - - - - - 0x01E366 07:E356: AD FB 07  LDA ram_07FB
@@ -712,8 +712,8 @@ bra_E37B_garbage_loop:
 C - - - - - 0x01E38B 07:E37B: 88        DEY
 C - - - - - 0x01E38C 07:E37C: D0 FD     BNE bra_E37B_garbage_loop
 C - - - - - 0x01E38E 07:E37E: AD F0 07  LDA ram_bg_bank_1
-C - - - - - 0x01E391 07:E381: AE F1 07  LDX ram_bg_bank_1 + $01
-C - - - - - 0x01E394 07:E384: 20 EF FB  JSR sub_FBEF
+C - - - - - 0x01E391 07:E381: AE F1 07  LDX ram_bg_bank_2
+C - - - - - 0x01E394 07:E384: 20 EF FB  JSR sub_FBEF_запись_chr_банков_фона
 C - - - - - 0x01E397 07:E387: A0 0E     LDY #$0E
 bra_E389_garbage_loop:
 C - - - - - 0x01E399 07:E389: 88        DEY
@@ -745,7 +745,7 @@ C - - - - - 0x01E3BE 07:E3AE: A0 05     LDY #$05
 bra_E3B0_garbage_loop:
 C - - - - - 0x01E3C0 07:E3B0: 88        DEY
 C - - - - - 0x01E3C1 07:E3B1: D0 FD     BNE bra_E3B0_garbage_loop
-C - - - - - 0x01E3C3 07:E3B3: 20 EF FB  JSR sub_FBEF
+C - - - - - 0x01E3C3 07:E3B3: 20 EF FB  JSR sub_FBEF_запись_chr_банков_фона
 C - - - - - 0x01E3C6 07:E3B6: 4C 5D E2  JMP loc_E25D
 
 
@@ -1636,15 +1636,15 @@ sub_0x01E7D0_выбор_банков_графики:
 C - - - - - 0x01E7D0 07:E7C0: A9 40     LDA #con_chr_bank + $40
 C - - - - - 0x01E7D2 07:E7C2: 8D F0 07  STA ram_bg_bank_1
 C - - - - - 0x01E7D5 07:E7C5: A9 6A     LDA #con_chr_bank + $6A
-C - - - - - 0x01E7D7 07:E7C7: 8D F1 07  STA ram_bg_bank_1 + $01
+C - - - - - 0x01E7D7 07:E7C7: 8D F1 07  STA ram_bg_bank_2
 C - - - - - 0x01E7DA 07:E7CA: A9 44     LDA #con_chr_bank + $44
-C - - - - - 0x01E7DC 07:E7CC: 8D F2 07  STA ram_bg_bank_1 + $02
+C - - - - - 0x01E7DC 07:E7CC: 8D F2 07  STA ram_spr_bank_1
 C - - - - - 0x01E7DF 07:E7CF: A9 45     LDA #con_chr_bank + $45
-C - - - - - 0x01E7E1 07:E7D1: 8D F3 07  STA ram_bg_bank_1 + $03
+C - - - - - 0x01E7E1 07:E7D1: 8D F3 07  STA ram_spr_bank_2
 C - - - - - 0x01E7E4 07:E7D4: A9 46     LDA #con_chr_bank + $46
-C - - - - - 0x01E7E6 07:E7D6: 8D F4 07  STA ram_bg_bank_1 + $04
+C - - - - - 0x01E7E6 07:E7D6: 8D F4 07  STA ram_spr_bank_3
 C - - - - - 0x01E7E9 07:E7D9: A9 07     LDA #con_chr_bank + $07
-C - - - - - 0x01E7EB 07:E7DB: 8D F5 07  STA ram_bg_bank_1 + $05
+C - - - - - 0x01E7EB 07:E7DB: 8D F5 07  STA ram_spr_bank_4
 C - - - - - 0x01E7EE 07:E7DE: 60        RTS
 
 
@@ -5117,10 +5117,10 @@ C - - - - - 0x01FBF9 07:FBE9: 4C CB FB  JMP loc_FBCB
 
 
 
-sub_FBEC:
+sub_FBEC_запись_chr_банков_фона_42:
 C - - - - - 0x01FBFC 07:FBEC: A9 42     LDA #con_chr_bank + $42
 C - - - - - 0x01FBFE 07:FBEE: AA        TAX
-sub_FBEF:
+sub_FBEF_запись_chr_банков_фона:
 C - - - - - 0x01FBFF 07:FBEF: A0 00     LDY #$00
 C - - - - - 0x01FC01 07:FBF1: 8C 00 80  STY $8000
 C - - - - - 0x01FC04 07:FBF4: 8D 01 80  STA $8001
@@ -5684,23 +5684,23 @@ C - - - - - 0x01FF29 07:FF19: AD F0 07  LDA ram_bg_bank_1
 C - - - - - 0x01FF2C 07:FF1C: 8D 01 80  STA $8001
 C - - - - - 0x01FF2F 07:FF1F: C8        INY ; 01
 C - - - - - 0x01FF30 07:FF20: 8C 00 80  STY $8000
-C - - - - - 0x01FF33 07:FF23: AD F1 07  LDA ram_bg_bank_1 + $01
+C - - - - - 0x01FF33 07:FF23: AD F1 07  LDA ram_bg_bank_2
 C - - - - - 0x01FF36 07:FF26: 8D 01 80  STA $8001
 C - - - - - 0x01FF39 07:FF29: C8        INY ; 02
 C - - - - - 0x01FF3A 07:FF2A: 8C 00 80  STY $8000
-C - - - - - 0x01FF3D 07:FF2D: AD F2 07  LDA ram_bg_bank_1 + $02
+C - - - - - 0x01FF3D 07:FF2D: AD F2 07  LDA ram_spr_bank_1
 C - - - - - 0x01FF40 07:FF30: 8D 01 80  STA $8001
 C - - - - - 0x01FF43 07:FF33: C8        INY ; 03
 C - - - - - 0x01FF44 07:FF34: 8C 00 80  STY $8000
-C - - - - - 0x01FF47 07:FF37: AD F3 07  LDA ram_bg_bank_1 + $03
+C - - - - - 0x01FF47 07:FF37: AD F3 07  LDA ram_spr_bank_2
 C - - - - - 0x01FF4A 07:FF3A: 8D 01 80  STA $8001
 C - - - - - 0x01FF4D 07:FF3D: C8        INY ; 04
 C - - - - - 0x01FF4E 07:FF3E: 8C 00 80  STY $8000
-C - - - - - 0x01FF51 07:FF41: AD F4 07  LDA ram_bg_bank_1 + $04
+C - - - - - 0x01FF51 07:FF41: AD F4 07  LDA ram_spr_bank_3
 C - - - - - 0x01FF54 07:FF44: 8D 01 80  STA $8001
 C - - - - - 0x01FF57 07:FF47: C8        INY ; 05
 C - - - - - 0x01FF58 07:FF48: 8C 00 80  STY $8000
-C - - - - - 0x01FF5B 07:FF4B: AD F5 07  LDA ram_bg_bank_1 + $05
+C - - - - - 0x01FF5B 07:FF4B: AD F5 07  LDA ram_spr_bank_4
 C - - - - - 0x01FF5E 07:FF4E: 8D 01 80  STA $8001
 C - - - - - 0x01FF61 07:FF51: 60        RTS
 
