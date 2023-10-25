@@ -2224,12 +2224,12 @@ C D 3 - - - 0x01EB08 07:EAF8: 20 80 ED  JSR sub_ED80
                                         STA ram_0001
                                         JMP (ram_0000)
 tbl_EB00_lo:
-- D 3 - I - 0x01EB10 07:EB00: D6 EC     .byte < _общий_RTS
+- D 3 - I - 0x01EB10 07:EB00: D6 EC     .byte < _общий_RTS ; 00
 - D 3 - I - 0x01EB12 07:EB02: 08 EB     .byte < ofs_035_EB08_01
 - D 3 - I - 0x01EB14 07:EB04: 0B EB     .byte < ofs_035_EB0B_02
 - D 3 - I - 0x01EB16 07:EB06: 58 EB     .byte < ofs_035_EB58_03
 tbl_EB00_hi:
-- D 3 - I - 0x01EB10 07:EB00: D6 EC     .byte > _общий_RTS
+- D 3 - I - 0x01EB10 07:EB00: D6 EC     .byte > _общий_RTS ; 00
 - D 3 - I - 0x01EB12 07:EB02: 08 EB     .byte > ofs_035_EB08_01
 - D 3 - I - 0x01EB14 07:EB04: 0B EB     .byte > ofs_035_EB0B_02
 - D 3 - I - 0x01EB16 07:EB06: 58 EB     .byte > ofs_035_EB58_03
@@ -2657,11 +2657,11 @@ sub_ED80:
                                         STA ram_0001
                                         JMP (ram_0000)
 tbl_ED85_lo:
-- D 3 - I - 0x01ED95 07:ED85: 3D EE     .byte < _общий_RTS
+- D 3 - I - 0x01ED95 07:ED85: 3D EE     .byte < _общий_RTS ; 00
 - D 3 - I - 0x01ED97 07:ED87: 8C ED     .byte < ofs_036_ED8C_01
 - D 3 - I - 0x01ED99 07:ED89: C7 ED     .byte < ofs_036_EDC7_02
 tbl_ED85_hi:
-- D 3 - I - 0x01ED95 07:ED85: 3D EE     .byte > _общий_RTS
+- D 3 - I - 0x01ED95 07:ED85: 3D EE     .byte > _общий_RTS ; 00
 - D 3 - I - 0x01ED97 07:ED87: 8C ED     .byte > ofs_036_ED8C_01
 - D 3 - I - 0x01ED99 07:ED89: C7 ED     .byte > ofs_036_EDC7_02
 
@@ -3713,7 +3713,7 @@ sub_F41C:
 tbl_F421_lo:
 - D 3 - I - 0x01F431 07:F421: 33 F4     .byte < ofs_037_F433_00
 - D 3 - I - 0x01F433 07:F423: 38 F4     .byte < ofs_037_F438_01
-- D 3 - I - 0x01F435 07:F425: 59 F4     .byte < _общий_RTS
+- D 3 - I - 0x01F435 07:F425: 59 F4     .byte < _общий_RTS ; 02
 - D 3 - I - 0x01F437 07:F427: 3F F4     .byte < ofs_037_F43F_03
 - D 3 - I - 0x01F439 07:F429: 48 F4     .byte < ofs_037_F448_04
 - D 3 - I - 0x01F43B 07:F42B: 5A F4     .byte < ofs_037_F45A_05
@@ -3723,7 +3723,7 @@ tbl_F421_lo:
 tbl_F421_hi:
 - D 3 - I - 0x01F431 07:F421: 33 F4     .byte > ofs_037_F433_00
 - D 3 - I - 0x01F433 07:F423: 38 F4     .byte > ofs_037_F438_01
-- D 3 - I - 0x01F435 07:F425: 59 F4     .byte > _общий_RTS
+- D 3 - I - 0x01F435 07:F425: 59 F4     .byte > _общий_RTS ; 02
 - D 3 - I - 0x01F437 07:F427: 3F F4     .byte > ofs_037_F43F_03
 - D 3 - I - 0x01F439 07:F429: 48 F4     .byte > ofs_037_F448_04
 - D 3 - I - 0x01F43B 07:F42B: 5A F4     .byte > ofs_037_F45A_05
