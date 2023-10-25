@@ -743,7 +743,7 @@ ofs_options_9B11_02:
                                         JSR sub_0x01F7CE_запись_палитры_из_03E0x_в_0300x
                                         PLP
                                         BCC bra_E443_RTS
-                                        JSR sub_0x01FE1E_спрайтовый_движок
+                                        JSR sub_0x01FE1E
                                         JSR sub_0x01E5E0_очистка_оперативки
                                         JSR sub_0x01E7D0_выбор_банков_графики
                                         LDX #$00

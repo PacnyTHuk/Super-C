@@ -65,8 +65,8 @@
 .export sub_0x01FDEE_play_sound
 .export loc_0x01FDEE_play_sound
 .export loc_0x01FE06
-.export sub_0x01FE1E_спрайтовый_движок
-.export loc_0x01FE1E_спрайтовый_движок
+.export sub_0x01FE1E
+.export loc_0x01FE1E
 .export loc_0x01FE6D
 .export sub_0x01FEB4
 .export _общий_RTS
@@ -1191,7 +1191,7 @@ C - - - - - 0x01E51A 07:E50A: 60        RTS
 
 
 sub_E50B_подготовка_главного_экрана:
-C - - - - - 0x01E51B 07:E50B: 20 0E FE  JSR sub_FE0E_спрайтовый_движок
+C - - - - - 0x01E51B 07:E50B: 20 0E FE  JSR sub_FE0E
 ;C - - - - - 0x01E51E 07:E50E: 20 57 E5  JSR sub_FE84_XFF_обнуление_экранов_PPU
 C - - - - - 0x01E521 07:E511: A2 02     LDX #$00
 C - - - - - 0x01E523 07:E513: 20 84 FE  JSR sub_FE84_bankswitch_отрисовка_экранов
@@ -1680,7 +1680,7 @@ tbl_E7F5_hi:
 
 
 ofs_033_E807_00_главный_экран:
-C - - J - - 0x01E817 07:E807: 20 0E FE  JSR sub_FE0E_спрайтовый_движок
+C - - J - - 0x01E817 07:E807: 20 0E FE  JSR sub_FE0E
 C - - - - - 0x01E81A 07:E80A: 20 FE E5  JSR sub_E5FE_clear_0500_0567
 C - - - - - 0x01E81D 07:E80D: 20 C3 E5  JSR sub_E5C3_clear_memory
 C - - - - - 0x01E820 07:E810: 20 57 E5  JSR sub_FE84_XFF_обнуление_экранов_PPU
@@ -4918,7 +4918,7 @@ C - - - - - 0x01FB40 07:FB30: A9 53     LDA #$53
 C - - - - - 0x01FB42 07:FB32: 8D EA 07  STA ram_reset_check
 C - - - - - 0x01FB45 07:FB35: A9 B1     LDA #$B1
 C - - - - - 0x01FB47 07:FB37: 8D EB 07  STA ram_reset_check + $01
-C - - - - - 0x01FB4A 07:FB3A: 20 0E FE  JSR sub_FE0E_спрайтовый_движок
+C - - - - - 0x01FB4A 07:FB3A: 20 0E FE  JSR sub_FE0E
 ; 1путин опт
 C - - - - - 0x01FCE9 07:FCD9: A9 A8     LDA #$A8
 C - - - - - 0x01FCEB 07:FCDB: 85 FF     STA ram_for_2000
@@ -4993,7 +4993,7 @@ C - - - - - 0x01FBC3 07:FBB3: 20 6F FD  JSR sub_FD6F_prg_bankswitch___no_return
 C - - - - - 0x01FBC6 07:FBB6: 20 3C 81  JSR sub_0x01814C
 C - - - - - 0x01FBC9 07:FBB9: 20 FC FC  JSR sub_FCFC_read_joy_regs
 C - - - - - 0x01FBCC 07:FBBC: 20 B9 E3  JSR sub_E3B9
-C - - - - - 0x01FBCF 07:FBBF: 20 17 FE  JSR sub_FE17
+C - - - - - 0x01FBCF 07:FBBF: 20 17 FE  JSR sub_FE17_спрайтовый_движок
 C - - - - - 0x01FBD2 07:FBC2: A6 1E     LDX ram_index_ppu_buffer
 C - - - - - 0x01FBD4 07:FBC4: A9 00     LDA #con_buf_mode_00
 C - - - - - 0x01FBD6 07:FBC6: 9D 00 03  STA ram_nmt_buffer,X
@@ -5338,16 +5338,16 @@ C - - - - - 0x01FE1B 07:FE0B: 4C B7 FD  JMP loc_FDB7
 
 
 
-sub_FE0E_спрайтовый_движок:
-sub_0x01FE1E_спрайтовый_движок:
-loc_0x01FE1E_спрайтовый_движок:
+sub_FE0E:
+sub_0x01FE1E:
+loc_0x01FE1E:
 C D 3 - - - 0x01FE1E 07:FE0E: 20 61 FD  JSR sub_FD61_prg_bankswitch_3C_with_return
 C - - - - - 0x01FE21 07:FE11: 20 01 80  JSR sub_0x018011
 C - - - - - 0x01FE24 07:FE14: 4C 8B FD  JMP loc_FD8B_restore_prg_bank
 
 
 
-sub_FE17:
+sub_FE17_спрайтовый_движок:
 C - - - - - 0x01FE27 07:FE17: A9 36     LDA #con_prg_bank + $36
 C - - - - - 0x01FE29 07:FE19: 20 6F FD  JSR sub_FD6F_prg_bankswitch___no_return
 C - - - - - 0x01FE2C 07:FE1C: 4C BE 80  JMP loc_0x00C0CE_спрайтовый_движок
