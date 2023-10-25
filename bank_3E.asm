@@ -2150,12 +2150,20 @@ C - - - - - 0x01EABE 07:EAAE: 60        RTS
 
 
 sub_EAB0_подготовить_начальные_chr_банки_для_уровня:
+; cyneprepou4uk
+; очищать C нигде не нужно, так как не перевалит за FF
 C - - - - - 0x01EAC0 07:EAB0: A5 50     LDA ram_номер_уровня
-; * 06
+; * 0C
 C - - - - - 0x01EAC2 07:EAB2: 0A        ASL
 C - - - - - 0x01EAC3 07:EAB3: 85 00     STA ram_0000
 C - - - - - 0x01EAC5 07:EAB5: 0A        ASL
 C - - - - - 0x01EAC6 07:EAB6: 65 00     ADC ram_0000
+                                        ASL
+                                        LDY ram_options_регион
+                                        BEQ bra_EAB8_американка
+; европейка
+                                        ADC #$06    ; вторые 6 байтов
+bra_EAB8_американка:
 C - - - - - 0x01EAC8 07:EAB8: A8        TAY
 C - - - - - 0x01EAC9 07:EAB9: A2 00     LDX #$00
 bra_EABB_loop:
@@ -2171,61 +2179,131 @@ C - - - - - 0x01EAD7 07:EAC7: 60        RTS
 
 tbl_EAC8_chr_banks:
 ; 00 area 1
+; US
 - D 3 - - - 0x01EAD8 07:EAC8: 00        .byte con_chr_bank + $00   ; bg
 - D 3 - - - 0x01EAD9 07:EAC9: 02        .byte con_chr_bank + $02   ; bg
 - D 3 - - - 0x01EADA 07:EACA: 44        .byte con_chr_bank + $44   ; spr
 - D 3 - - - 0x01EADB 07:EACB: 45        .byte con_chr_bank + $45   ; spr
 - D 3 - - - 0x01EADC 07:EACC: 46        .byte con_chr_bank + $46   ; spr
 - D 3 - - - 0x01EADD 07:EACD: 47        .byte con_chr_bank + $47   ; spr
+; EU
+                                        .byte con_chr_bank + $00   ; bg
+                                        .byte con_chr_bank + $02   ; bg
+                                        .byte con_chr_bank + $44   ; spr
+                                        .byte con_chr_bank + $45   ; spr
+                                        .byte con_chr_bank + $46   ; spr
+                                        .byte con_chr_bank + $47   ; spr
+
 ; 01 area 2
+; US
 - D 3 - - - 0x01EADE 07:EACE: 3C        .byte con_chr_bank + $3C   ; bg
 - D 3 - - - 0x01EADF 07:EACF: 3E        .byte con_chr_bank + $3E   ; bg
 - D 3 - - - 0x01EAE0 07:EAD0: 49        .byte con_chr_bank + $49   ; spr
 - D 3 - - - 0x01EAE1 07:EAD1: 4A        .byte con_chr_bank + $4A   ; spr
 - D 3 - - - 0x01EAE2 07:EAD2: 4B        .byte con_chr_bank + $4B   ; spr
 - D 3 - - - 0x01EAE3 07:EAD3: 1A        .byte con_chr_bank + $1A   ; spr
+; EU
+                                        .byte con_chr_bank + $3C   ; bg
+                                        .byte con_chr_bank + $3E   ; bg
+                                        .byte con_chr_bank + $49   ; spr
+                                        .byte con_chr_bank + $4A   ; spr
+                                        .byte con_chr_bank + $4B   ; spr
+                                        .byte con_chr_bank + $1A   ; spr
+
 ; 02 area 3
+; US
 - D 3 - - - 0x01EAE4 07:EAD4: 0C        .byte con_chr_bank + $0C   ; bg
 - D 3 - - - 0x01EAE5 07:EAD5: 0E        .byte con_chr_bank + $0E   ; bg
 - D 3 - - - 0x01EAE6 07:EAD6: 44        .byte con_chr_bank + $44   ; spr
 - D 3 - - - 0x01EAE7 07:EAD7: 45        .byte con_chr_bank + $45   ; spr
 - D 3 - - - 0x01EAE8 07:EAD8: 46        .byte con_chr_bank + $46   ; spr
 - D 3 - - - 0x01EAE9 07:EAD9: 48        .byte con_chr_bank + $48   ; spr
+; EU
+                                        .byte con_chr_bank + $0C   ; bg
+                                        .byte con_chr_bank + $0E   ; bg
+                                        .byte con_chr_bank + $44   ; spr
+                                        .byte con_chr_bank + $45   ; spr
+                                        .byte con_chr_bank + $46   ; spr
+                                        .byte con_chr_bank + $48   ; spr
+
 ; 03 area 4
+; US
 - D 3 - - - 0x01EAEA 07:EADA: 08        .byte con_chr_bank + $08   ; bg
 - D 3 - - - 0x01EAEB 07:EADB: 0A        .byte con_chr_bank + $0A   ; bg
 - D 3 - - - 0x01EAEC 07:EADC: 44        .byte con_chr_bank + $44   ; spr
 - D 3 - - - 0x01EAED 07:EADD: 45        .byte con_chr_bank + $45   ; spr
 - D 3 - - - 0x01EAEE 07:EADE: 46        .byte con_chr_bank + $46   ; spr
 - D 3 - - - 0x01EAEF 07:EADF: 47        .byte con_chr_bank + $47   ; spr
+; EU
+                                        .byte con_chr_bank + $08   ; bg
+                                        .byte con_chr_bank + $0A   ; bg
+                                        .byte con_chr_bank + $44   ; spr
+                                        .byte con_chr_bank + $45   ; spr
+                                        .byte con_chr_bank + $46   ; spr
+                                        .byte con_chr_bank + $47   ; spr
+
 ; 04 area 5
+; US
 - D 3 - - - 0x01EAF0 07:EAE0: 1C        .byte con_chr_bank + $1C   ; bg
 - D 3 - - - 0x01EAF1 07:EAE1: 1E        .byte con_chr_bank + $1E   ; bg
 - D 3 - - - 0x01EAF2 07:EAE2: 44        .byte con_chr_bank + $44   ; spr
 - D 3 - - - 0x01EAF3 07:EAE3: 45        .byte con_chr_bank + $45   ; spr
 - D 3 - - - 0x01EAF4 07:EAE4: 46        .byte con_chr_bank + $46   ; spr
 - D 3 - - - 0x01EAF5 07:EAE5: 60        .byte con_chr_bank + $60   ; spr
+; EU
+                                        .byte con_chr_bank + $1C   ; bg
+                                        .byte con_chr_bank + $1E   ; bg
+                                        .byte con_chr_bank + $44   ; spr
+                                        .byte con_chr_bank + $45   ; spr
+                                        .byte con_chr_bank + $46   ; spr
+                                        .byte con_chr_bank + $60   ; spr
 ; 05 area 6
+; US
 - D 3 - - - 0x01EAF6 07:EAE6: 4C        .byte con_chr_bank + $4C   ; bg
 - D 3 - - - 0x01EAF7 07:EAE7: 4E        .byte con_chr_bank + $4E   ; bg
 - D 3 - - - 0x01EAF8 07:EAE8: 49        .byte con_chr_bank + $49   ; spr
 - D 3 - - - 0x01EAF9 07:EAE9: 4A        .byte con_chr_bank + $4A   ; spr
 - D 3 - - - 0x01EAFA 07:EAEA: 61        .byte con_chr_bank + $61   ; spr
 - D 3 - - - 0x01EAFB 07:EAEB: 62        .byte con_chr_bank + $62   ; spr
+; EU
+                                        .byte con_chr_bank + $4C   ; bg
+                                        .byte con_chr_bank + $4E   ; bg
+                                        .byte con_chr_bank + $49   ; spr
+                                        .byte con_chr_bank + $4A   ; spr
+                                        .byte con_chr_bank + $61   ; spr
+                                        .byte con_chr_bank + $62   ; spr
+
 ; 06 area 7
+; US
 - D 3 - - - 0x01EAFC 07:EAEC: 24        .byte con_chr_bank + $24   ; bg
 - D 3 - - - 0x01EAFD 07:EAED: 26        .byte con_chr_bank + $26   ; bg
 - D 3 - - - 0x01EAFE 07:EAEE: 44        .byte con_chr_bank + $44   ; spr
 - D 3 - - - 0x01EAFF 07:EAEF: 45        .byte con_chr_bank + $45   ; spr
 - D 3 - - - 0x01EB00 07:EAF0: 63        .byte con_chr_bank + $63   ; spr
 - D 3 - - - 0x01EB01 07:EAF1: 64        .byte con_chr_bank + $64   ; spr
+; EU
+                                        .byte con_chr_bank + $24   ; bg
+                                        .byte con_chr_bank + $26   ; bg
+                                        .byte con_chr_bank + $44   ; spr
+                                        .byte con_chr_bank + $45   ; spr
+                                        .byte con_chr_bank + $63   ; spr
+                                        .byte con_chr_bank + $64   ; spr
+
 ; 07 area 8
+; US
 - D 3 - - - 0x01EB02 07:EAF2: 34        .byte con_chr_bank + $34   ; bg
 - D 3 - - - 0x01EB03 07:EAF3: 36        .byte con_chr_bank + $36   ; bg
 - D 3 - - - 0x01EB04 07:EAF4: 44        .byte con_chr_bank + $44   ; spr
 - D 3 - - - 0x01EB05 07:EAF5: 45        .byte con_chr_bank + $45   ; spr
 - D 3 - - - 0x01EB06 07:EAF6: 67        .byte con_chr_bank + $67   ; spr
 - D 3 - - - 0x01EB07 07:EAF7: 68        .byte con_chr_bank + $68   ; spr
+; EU
+                                        .byte con_chr_bank + $34   ; bg
+                                        .byte con_chr_bank + $36   ; bg
+                                        .byte con_chr_bank + $44   ; spr
+                                        .byte con_chr_bank + $45   ; spr
+                                        .byte con_chr_bank + $67   ; spr
+                                        .byte con_chr_bank + $68   ; spr
 
 
 
