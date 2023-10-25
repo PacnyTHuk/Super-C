@@ -182,7 +182,6 @@ C - - - - - 0x01FD08 07:FCF8: 8D 01 20  STA $2001
 C - - - - - 0x0018AF 00:989F: A9 00     LDA #$00
 C - - - - - 0x0018B1 00:98A1: 85 FD     STA ram_scroll_X
 C - - - - - 0x0018B3 00:98A3: 85 FC     STA ram_scroll_Y
-                                        LDY #$00
 C D 0 - - - 0x0018B5 00:98A5: AD 02 20  LDA $2002
                                         JSR sub_9900_очистить_все_ppu
                                         CPX #$FF
