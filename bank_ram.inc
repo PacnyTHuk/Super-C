@@ -3773,16 +3773,17 @@ ram_счетчик_анимации_contra              = $7FF3 ;
 ram_счетчик_палитры_орла_lo              = $7FF4 ; 
 ram_счетчик_палитры_орла_hi              = $7FF5 ; 
 
-ram_options_сложность                    = $7FF6 ; Меню options
-     ram_options_колво_объектов              = ram_options_сложность ; 
-     ram_options_регион                      = ram_options_сложность ; 
-     ram_options_конты                       = ram_options_сложность ; 
-     ram_options_уровень                     = ram_options_сложность ; 
-     ram_options_жизни                       = ram_options_сложность ;
+;  Меню options
+ram_options_сложность                    = $7FF6 ;
+ram_options_колво_объектов               = $7FF7 ;
+ram_options_регион                       = $7FF8 ;
+ram_options_конты                        = $7FF9 ;
+ram_options_уровень                      = $7FFA ;
+ram_options_жизни                        = $7FFB ;
      
      
 ; для переключения графики спрайтов и вертолетов
-ram_опция_региона                       = $7FFС ; 00 = US, 01 = EU
+ram_опция_региона                        = $7FFC ; 00 = US, 01 = EU
 
 ; free address
 ; ram_7FFD                                = $7FFD ; 
