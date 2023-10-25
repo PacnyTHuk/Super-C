@@ -662,12 +662,12 @@ loc_0x00A123_options:
 tbl_9900_lo:
                                         .byte < ofs_options_9908_00
                                         .byte < ofs_options_9AFF_01
-                                        .byte < ofs_options_9B11_02
+                                        .byte < ofs_options_9B11_02_мерцание_exit
                                         .byte < ofs_options_9B27_03
 tbl_9904_hi:
                                         .byte > ofs_options_9908_00
                                         .byte > ofs_options_9AFF_01
-                                        .byte > ofs_options_9B11_02
+                                        .byte > ofs_options_9B11_02_мерцание_exit
                                         .byte > ofs_options_9B27_03
 
 
@@ -685,7 +685,8 @@ ofs_options_9908_00:
                                         ADC ram_options_сложность
                                         JSR sub_977C_отрисовка_текста_через_буфер_0300x
                                         LDA ram_cheat_flag
-                                        BEQ bra_9921
+                                        BEQ bra_9921_чит_не_введен
+; заменить атрибуты для отображения скрытых опций
                                         LDX ram_index_ppu_buffer
                                         LDY #$00
 bra_991E_loop:
@@ -701,7 +702,7 @@ bra_991A_закрыть_буфер:
                                         STA ram_nmt_buffer,X
                                         INX
                                         STX ram_index_ppu_buffer
-bra_9921:
+bra_9921_чит_не_введен:
                                         LDA #$0B
                                         CLC
                                         ADC ram_cheat_flag
@@ -748,7 +749,7 @@ bra_E443_RTS:
                                         RTS
 
 
-ofs_options_9B11_02:
+ofs_options_9B11_02_мерцание_exit:
                                         LDA ram_таймер_до_демки
                                         AND #$08
                                         ASL
@@ -798,6 +799,7 @@ ofs_options_9B27_03:
                                         STA ram_for_2001
                                         LDA #$02
                                         STA ram_номер_опции_колво_игроков
+bra_E456_RTS:
                                         RTS
 
 
@@ -824,21 +826,21 @@ sub_E450_обработка_dpad:
 ; cyneprepou4uk
                                         LDA ram_копия_нажатая_кнопка
                                         LSR
-                                        BCC @bra_не_вправо
+                                        BCC bra_E450_не_вправо
                                         JMP loc_E450_right
-@bra_не_вправо:
+bra_E450_не_вправо:
                                         LSR
-                                        BCC @bra_не_влево
+                                        BCC bra_E450_не_влево
                                         JMP loc_E450_left
-@bra_не_влево:
+bra_E450_не_влево:
                                         LSR
-                                        BCC @bra_не_вниз
+                                        BCC bra_E450_не_вниз
                                         JMP loc_E450_down
-@bra_не_вниз:
+bra_E450_не_вниз:
                                         LSR
-                                        BCC @bra_не_вверх
+                                        BCC bra_E450_не_вверх
                                         JMP loc_E450_up
-@bra_не_вверх:
+bra_E450_не_вверх:
                                         RTS
 
 
