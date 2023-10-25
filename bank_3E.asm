@@ -1756,7 +1756,7 @@ ofs_033_E869_01_экран_очков:
 C - - J - - 0x01E879 07:E869: C6 3F     DEC ram_таймер_на_экране_очков
 C - - - - - 0x01E87B 07:E86B: D0 25     BNE bra_E892_RTS
 C - - - - - 0x01E87D 07:E86D: 20 57 E5  JSR sub_FE84_XFF_обнуление_экранов_PPU
-C - - - - - 0x01E880 07:E870: 20 B0 EA  JSR sub_EAB0_prepare_chr_banks_for_area
+C - - - - - 0x01E880 07:E870: 20 B0 EA  JSR sub_EAB0_подготовить_начальные_chr_банки_для_уровня
 C - - - - - 0x01E883 07:E873: 20 68 FE  JSR sub_FE68_bankswitch_загрузка_палитры_для_уровня
 C - - - - - 0x01E886 07:E876: 20 BE F7  JSR sub_F7BE_запись_палитры_из_03E0x_в_0300x
 C - - - - - 0x01E889 07:E879: 4C B2 E8  JMP loc_E8B2
@@ -2149,8 +2149,9 @@ C - - - - - 0x01EABE 07:EAAE: 60        RTS
 
 
 
-sub_EAB0_prepare_chr_banks_for_area:
+sub_EAB0_подготовить_начальные_chr_банки_для_уровня:
 C - - - - - 0x01EAC0 07:EAB0: A5 50     LDA ram_номер_уровня
+; * 06
 C - - - - - 0x01EAC2 07:EAB2: 0A        ASL
 C - - - - - 0x01EAC3 07:EAB3: 85 00     STA ram_0000
 C - - - - - 0x01EAC5 07:EAB5: 0A        ASL
@@ -2159,7 +2160,7 @@ C - - - - - 0x01EAC8 07:EAB8: A8        TAY
 C - - - - - 0x01EAC9 07:EAB9: A2 00     LDX #$00
 bra_EABB_loop:
 C - - - - - 0x01EACB 07:EABB: B9 C8 EA  LDA tbl_EAC8_chr_banks,Y
-C - - - - - 0x01EACE 07:EABE: 9D F0 07  STA ram_bg_bank_1,X
+C - - - - - 0x01EACE 07:EABE: 9D F0 07  STA ram_chr_bank,X
 C - - - - - 0x01EAD1 07:EAC1: C8        INY
 C - - - - - 0x01EAD2 07:EAC2: E8        INX
 C - - - - - 0x01EAD3 07:EAC3: E0 06     CPX #$06
