@@ -5348,7 +5348,7 @@ C - - - - - 0x01FE24 07:FE14: 4C 8B FD  JMP loc_FD8B_restore_prg_bank
 
 
 sub_FE17_спрайтовый_движок:
-C - - - - - 0x01FE27 07:FE17: A9 36     LDA #con_prg_bank + $36
+C - - - - - 0x01FE27 07:FE17: A9 36     LDA #con_prg_bank + $22
 C - - - - - 0x01FE29 07:FE19: 20 6F FD  JSR sub_FD6F_prg_bankswitch___no_return
 C - - - - - 0x01FE2C 07:FE1C: 4C BE 80  JMP loc_0x00C0CE_спрайтовый_движок
 
