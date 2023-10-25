@@ -3768,7 +3768,6 @@ ram_режим_бессмертия                    = $7FF0 ; 00 = выкл, 
 ; ram_7FF1                                = $7FF1 ; 
 
 
-
 ram_счетчик_анимации_super               = $7FF2 ; 
 ram_счетчик_анимации_contra              = $7FF3 ; 
 ram_счетчик_палитры_орла_lo              = $7FF4 ; 
@@ -3781,8 +3780,11 @@ ram_options_сложность                    = $7FF6 ; Меню options
      ram_options_уровень                     = ram_options_сложность ; 
      ram_options_жизни                       = ram_options_сложность ;
      
-; свободные адреса 
-; ram_7FFC                                = $7FFC ; 
+     
+; для переключения графики спрайтов и вертолетов
+ram_опция_региона                       = $7FFС ; 00 = US, 01 = EU
+
+; free address
 ; ram_7FFD                                = $7FFD ; 
 ; ram_7FFE                                = $7FFE ; 
 ; ram_7FFF                                = $7FFF ; 

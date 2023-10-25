@@ -854,7 +854,7 @@ C - - - - - 0x0062BF 01:A2AF: B9 E6 A2  LDA tbl_A2E6_звук_смерти,Y
 C - - - - - 0x0062C2 01:A2B2: F0 0C     BEQ bra_A2C0_нет_звука
 C - - - - - 0x0062C4 01:A2B4: 10 07     BPL bra_A2BD
 C - - - - - 0x0062C6 01:A2B6: 48        PHA
-C - - - - - 0x0062C7 01:A2B7: 20 0E FE  JSR sub_0x01FE1E_спрайтовый_движок
+C - - - - - 0x0062C7 01:A2B7: 20 0E FE  JSR sub_0x01FE1E
 C - - - - - 0x0062CA 01:A2BA: 68        PLA
 C - - - - - 0x0062CB 01:A2BB: 29 7F     AND #$7F
 bra_A2BD:
