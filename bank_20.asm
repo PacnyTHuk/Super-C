@@ -826,21 +826,21 @@ sub_E450_обработка_dpad_в_опциях:
 ; cyneprepou4uk
                                         LDA ram_копия_нажатая_кнопка
                                         LSR
-                                        BCC bra_E450_не_вправо
+                                        BCC bra_E44F_не_вправо
                                         JMP loc_E450_right
-bra_E450_не_вправо:
+bra_E44F_не_вправо:
                                         LSR
-                                        BCC bra_E450_не_влево
+                                        BCC bra_E44F_не_влево
                                         JMP loc_E450_left
-bra_E450_не_влево:
+bra_E44F_не_влево:
                                         LSR
-                                        BCC bra_E450_не_вниз
+                                        BCC bra_E44F_не_вниз
                                         JMP loc_E450_down
-bra_E450_не_вниз:
+bra_E44F_не_вниз:
                                         LSR
-                                        BCC bra_E450_не_вверх
+                                        BCC bra_E44F_не_вверх
                                         JMP loc_E450_up
-bra_E450_не_вверх:
+bra_E44F_не_вверх:
                                         RTS
 
 
