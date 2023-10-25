@@ -190,7 +190,7 @@ C D 0 - - - 0x0018B5 00:98A5: AD 02 20  LDA $2002
 C - - - - - 0x0018A2 00:9892: BD 05 99  LDA tbl_координаты_таблицы_экрана,X
 C - - - - - 0x0018A5 00:9895: 85 00     STA ram_0000
 C - - - - - 0x0018A7 00:9897: BD 06 99  LDA tbl_координаты_таблицы_экрана + $01,X
-C - - - - - 0x0018AA 00:989A: 85 01     STA ram_0001                   
+C - - - - - 0x0018AA 00:989A: 85 01     STA ram_0001
 ; запись координат для ppu
 C - - - - - 0x0018BA 00:98AA: B1 00     LDA tbl_координаты_для_ppu,X
 C - - - - - 0x0018BC 00:98AC: 8D 06 20  STA $2006
@@ -200,8 +200,8 @@ C - - - - - 0x0018C2 00:98B2: 8D 06 20  STA $2006
                                         LDA tbl_колво_копируемых_данных,X
                                         STA ram_0002
                                         LDA tbl_колво_копируемых_данных + $01,X
-                                        STA ram_0003                                        
-bra_цикл_колво_записей:                                       
+                                        STA ram_0003
+bra_цикл_колво_записей:
                                         DEC ram_0002
                                         LDA ram_0002
                                         CMP #$FF
@@ -210,9 +210,9 @@ bra_цикл_колво_записей:
                                         LDA ram_0003
                                         CMP #$FF
                                         BNE bra_запись_в_ppu
-bra_9902_выход:                                    
+bra_9902_выход:
 C - - - - - 0x001912 00:9902: 4C BA FC  JMP loc_0x01FCCA_включить_NMI 
-bra_запись_в_ppu:                                      
+bra_запись_в_ppu:
 C - - - - - 0x0018CE 00:98BE: B1 00     LDA (ram_0000),Y
 C - - - - - 0x0018E3 00:98D3: 8D 07 20  STA $2007
 C - - - - - 0x01E639 07:E629: F6 01     INC ram_0000
@@ -271,7 +271,7 @@ _off010_9935_x00_главный_экран:
 
 _off010_9AB3_x02_заставка:
     .incbin "screens/02.bin"
-    
+
 _off010_9ABA_x04_options:
     .incbin "screens/04.bin"
 
@@ -371,19 +371,20 @@ _off009_9808_02_options:
                                         .dbyt $22CC ; ppu address
                                         .byte $19, $1A, $1E, $13, $19, $18, $1D   ; "OPTIONS"
                                         .byte $FE   ; end token
-                                        
+
+
 _off009_9820_03_press_start:
                                         .dbyt $226A ; ppu address
                                         .byte $1A, $1C, $0F, $1D, $1D, $00, $1D, $1E, $0B, $1C, $1E   ; "PRESS START"
                                         .byte $FE   ; end token
-                   
-                                        
+
+
 _off009_9830_04_normal:
                                         .dbyt $20D3 ; ppu address
                                         .byte $98, $99, $9C, $97, $8B, $96   ; "NORMAL"
                                         .byte $FE   ; end token
-                                        
-                                        
+
+
 _off009_9840_05_hard:
                                         .dbyt $20D3 ; ppu address
                                         .byte $92, $8B, $9C, $8E, $80, $80    ; "HARD  "
@@ -393,8 +394,8 @@ _off009_9840_05_hard:
 _off009_9850_06_expert:
                                         .dbyt $20D3 ; ppu address
                                         .byte $8F, $A2, $9A, $8F, $9C, $9E    ; "EXPERT"
-                                        .byte $FE   ; end token                                        
-                                     
+                                        .byte $FE   ; end token
+
 
 
 _off009_9860_07_super_c:
@@ -408,13 +409,13 @@ _off009_9870_08_probotector_2:
                                         .byte $8F, $A2, $93, $9E   ; "EXIT"
                                         .byte $FE   ; end token
 
-                                        
+
 _off009_9880_09_exit:
 
                                         .dbyt $224E ; ppu address
                                         .byte $8F, $A2, $93, $9E   ; "EXIT"
                                         .byte $FE   ; end token
-                                        
+
 
 
 
@@ -621,7 +622,7 @@ _off021_B9B9_0A:
 - D 1 - I - 0x00F9D5 03:B9C5: 20        .byte $20, $27, $0F   ; 
 - D 1 - I - 0x00F9D8 03:B9C8: 20        .byte $20, $16, $17   ; 
 - D 1 - I - 0x00F9DB 03:B9CB: 20        .byte $20, $26, $16   ; 
-- D 1 - I - 0x00F9DE 03:B9CE: 37        .byte $37, $00, $0F   ;  
+- D 1 - I - 0x00F9DE 03:B9CE: 37        .byte $37, $00, $0F   ; 
 
 
 _off021_B9D1_0B_options:
@@ -635,7 +636,7 @@ _off021_B9D1_0B_options:
                                         .byte $20, $16, $17   ;
                                         .byte $20, $26, $16   ;
                                         .byte $20, $00, $0F   ;
-                                        
+
 _off021_B9C9_0C_options_cheat_on:
  ; background
                                         .byte $16, $27, $30   ;
@@ -647,10 +648,8 @@ _off021_B9C9_0C_options_cheat_on:
                                         .byte $20, $16, $17   ;
                                         .byte $20, $26, $16   ;
                                         .byte $20, $00, $0F   ;
-                                        
-                                        
-                                        
-                                        
+
+
 
 
 loc_0x00A123_options:
@@ -670,8 +669,8 @@ tbl_9904_hi:
                                         .byte > ofs_options_9AFF_01
                                         .byte > ofs_options_9B11_02
                                         .byte > ofs_options_9B27_03
-                                        
-                                       
+
+
 ofs_options_9908_00:
                                         LDA #con_chr_bank + $B4
                                         STA ram_bg_bank_1
@@ -681,7 +680,7 @@ ofs_options_9908_00:
                                         JSR sub_988E_отрисовка_экранов
                                         LDA #con_0x0017EA_exit
                                         JSR sub_977C_отрисовка_текста_через_буфер_0300x
-                                        LDA #con_0x0017EA_normal  
+                                        LDA #con_0x0017EA_normal
                                         CLC
                                         ADC ram_options_сложность
                                         JSR sub_977C_отрисовка_текста_через_буфер_0300x
@@ -719,7 +718,7 @@ bra_9921:
                                         JSR sub_0x01F7CE_запись_палитры_из_03E0x_в_0300x
                                         INC ram_номер_действия_на_заставке
                                         RTS
-                                        
+
 tbl_9945_атрибуты:
                                         .byte $0F, $0F, $0F, $0F   ; 
                                         .byte $00, $00, $00, $00   ; 
@@ -727,11 +726,11 @@ tbl_9945_атрибуты:
                                         .byte $00, $00, $00, $00   ;
 
 
-                                        
+
 ofs_options_9AFF_01:
                                         JSR sub_E455_смена_палитры
                                         JSR sub_E450_обработка_dpad
-                                        LDA #con_0x0017EA_normal  
+                                        LDA #con_0x0017EA_normal
                                         CLC
                                         ADC ram_options_сложность
                                         JSR sub_977C_отрисовка_текста_через_буфер_0300x
@@ -770,8 +769,8 @@ ofs_options_9B11_02:
                                         INC ram_номер_действия_на_заставке
 bra_E455_RTS:
                                         RTS
+
 ofs_options_9B27_03:
-                                        
                                         JSR sub_0x01FAAF_затемнение_экрана
                                         PHP
                                         JSR sub_0x01F7CE_запись_палитры_из_03E0x_в_0300x
@@ -807,7 +806,7 @@ ofs_options_9B27_03:
                                         STA ram_номер_опции_колво_игроков
                                         RTS
 
-                                        
+
 tbl_9925_y_координаты_стрелки:
                                         .byte $2F   ; 00
                                         .byte $3F   ; 01
@@ -816,7 +815,7 @@ tbl_9925_y_координаты_стрелки:
                                         .byte $6F   ; 04
                                         .byte $7F   ; 05
                                         .byte $8F   ; 06
-                                        
+
 tbl_9925_x_координаты_стрелки:
                                         .byte $20   ; 00
                                         .byte $20   ; 01
@@ -825,8 +824,8 @@ tbl_9925_x_координаты_стрелки:
                                         .byte $20   ; 04
                                         .byte $20   ; 05
                                         .byte $60   ; 06
-                                        
-                                        
+
+
 sub_E450_обработка_dpad:
 ; cyneprepou4uk
                                         LDA ram_копия_нажатая_кнопка
@@ -863,7 +862,7 @@ loc_E450_right:
 bra_E446:
                                         LDA #$00
                                         STA ram_options_сложность,X
-bra_E445_RTS:                                        
+bra_E445_RTS:
                                         RTS
 loc_E450_left:
 ; обработчик смены текущей опции
@@ -916,7 +915,7 @@ loc_E453_скип_скрытых_опций:
                                         STY ram_номер_опции_колво_игроков
 bra_E454_RTS:
                                         RTS
-                                        
+
 tbl_E455_предел_опций:
                                         .byte $02   ; X00
                                         .byte $01   ; X01
@@ -945,7 +944,6 @@ bra_E462:
                                         LDA tbl_E46B_байты,y
                                         STA ram_pal_buffer + $05
                                         JSR sub_0x01F7CE_запись_палитры_из_03E0x_в_0300x
-                                        
 bra_E46A_RTS:
                                         RTS
 

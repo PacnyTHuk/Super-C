@@ -563,7 +563,7 @@ C - - - - - 0x00616E 01:A15E: 29 0F     AND #$0F
                                         STA ram_0000
                                         LDA tbl_A165_hi,y
                                         STA ram_0001
-C - - - - - 0x006170 01:A160: A4 11     LDY ram_0011                                       
+C - - - - - 0x006170 01:A160: A4 11     LDY ram_0011
                                         JMP (ram_0000)
 tbl_A165_lo:
 - D 1 - I - 0x006175 01:A165: 88 A1     .byte < ofs_016_A188_00_M

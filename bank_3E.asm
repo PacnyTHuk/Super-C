@@ -858,7 +858,7 @@ C - - - - - 0x01E453 07:E443: 60        RTS
 bra_E443_минус_x:
                                         DEX
                                         BNE bra_E447_минус_x
-                                        
+
 ; X=03 мерцание press start
                                         LDA ram_таймер_до_демки
                                         AND #$04
@@ -879,12 +879,12 @@ bra_E443_минус_x:
                                         JSR sub_E538_надписи_p1_p2
 bra_E446_RTS:
                                         RTS
-                                        
+
 ; =========================================
 bra_E447_минус_x:
                                         DEX
                                         BNE bra_E440_минус_x
-                                        
+
 ; X=04 выбор режима игры
 C - - - - - 0x01E41B 07:E40B: 20 DF FE  JSR sub_FEDF_bankswitch_чит_коды
 C - - - - - 0x01E426 07:E416: A6 22     LDX ram_номер_опции_колво_игроков
@@ -958,9 +958,9 @@ C - - - - - 0x01E468 07:E458: D0 E9     BNE bra_E443_RTS
                                         BNE bra_E45A
                                         INC ram_номер_действия_на_заставке
                                         LDA #$01
-                                        STA ram_0095                                       
+                                        STA ram_0095
                                         RTS
-bra_E45A:                               
+bra_E45A:
 C - - - - - 0x01E46A 07:E45A: A9 02     LDA #$02
 C - - - - - 0x01E46C 07:E45C: 4C EC E4  JMP loc_E4EC_запись_в_демку
 
@@ -1000,7 +1000,7 @@ bra_E4BB:
                                         STA ram_bg_bank_2
 bra_E4BC_RTS:
                                         RTS
-                                        
+
 tbl_E4BD_банки_фона:
                                         .byte con_chr_bank + $84 ; 00
                                         .byte con_chr_bank + $80 ; 01
@@ -1042,7 +1042,7 @@ bra_E4E0:
                                         DEC ram_счетчик_анимации_super
 bra_E4D1_RTS:
                                         RTS
-                                        
+
 tbl_E4D3_банки_фона:
                                         .byte con_chr_bank + $40 ; 00
                                         .byte con_chr_bank + $92 ; 01
@@ -1158,7 +1158,7 @@ C - - - - - 0x01E4F2 07:E4E2: D0 AB     BNE bra_E48F_exit_sound_mode
 C - - - - - 0x01E4F4 07:E4E4: 60        RTS
 
 
-ofs_032_E4E5_06_options:        
+ofs_032_E4E5_06_options:
                                         JSR sub_FEDD_bankswitch_options
                                         RTS
 
@@ -1232,7 +1232,7 @@ C - - - - - 0x01E545 07:E535: 20 BE F7  JSR sub_F7BE_запись_палитры
 C - - - - - 0x01E548 07:E538: A9 00     LDA #con_0x0017EA_press_start 
 C - - - - - 0x01E54A 07:E53A: 20 7A FE  JSR sub_FE7A_bankswitch_отрисовка_текста_через_буфер_0300x
                                         RTS
-sub_E538_надписи_p1_p2:                                        
+sub_E538_надписи_p1_p2:
 C - - - - - 0x01E548 07:E538: A9 00     LDA #con_0x0017EA_1_player
 C - - - - - 0x01E54A 07:E53A: 20 7A FE  JSR sub_FE7A_bankswitch_отрисовка_текста_через_буфер_0300x
 C - - - - - 0x01E54D 07:E53D: A9 01     LDA #con_0x0017EA_2_players
@@ -1240,7 +1240,7 @@ C - - - - - 0x01E54F 07:E53F: 20 7A FE  JSR sub_FE7A_bankswitch_отрисовк
                                         LDA #con_0x0017EA_options
                                         JSR sub_FE7A_bankswitch_отрисовка_текста_через_буфер_0300x
                                         RTS
-                                        
+
 ; 1путин: удалено
 ;sub_0x01E552:
 ; a part of letter C in SUPER C at the title screen

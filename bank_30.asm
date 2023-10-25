@@ -1555,7 +1555,7 @@ bra_88C2_вид_сбоку:
                                         LDA tbl_88C7_hi,y
                                         STA ram_0001
                                         JMP (ram_0000)
-tbl_88C7_lo:                                        
+tbl_88C7_lo:
 - D 0 - I - 0x0008D7 00:88C7: F5 88     .byte < _общий_RTS ; 00
 - D 0 - I - 0x0008D9 00:88C9: F5 88     .byte < _общий_RTS ; 01
 - D 0 - I - 0x0008DB 00:88CB: DD 88     .byte < ofs_001_88DD_02
@@ -1565,7 +1565,7 @@ tbl_88C7_lo:
 - D 0 - I - 0x0008E3 00:88D3: F5 88     .byte < _общий_RTS ; 06
 - D 0 - I - 0x0008E5 00:88D5: D9 88     .byte < ofs_001_88D9_07
 - D 0 - I - 0x0008E7 00:88D7: F5 88     .byte < _общий_RTS ; 08
-tbl_88C7_hi:                                        
+tbl_88C7_hi:
 - D 0 - I - 0x0008D7 00:88C7: F5 88     .byte > _общий_RTS ; 00
 - D 0 - I - 0x0008D9 00:88C9: F5 88     .byte > _общий_RTS ; 01
 - D 0 - I - 0x0008DB 00:88CB: DD 88     .byte > ofs_001_88DD_02
@@ -1799,7 +1799,7 @@ loc_8A24:
                                         LDA tbl_8A29_hi,y
                                         STA ram_0001
                                         JMP (ram_0000)
-tbl_8A29_lo:                                        
+tbl_8A29_lo:
 - D 0 - I - 0x000A39 00:8A29: 3E 85     .byte < ofs_003_853E_00
 - D 0 - I - 0x000A3B 00:8A2B: 3B 8A     .byte < ofs_003_8A3B_01
 - D 0 - I - 0x000A3D 00:8A2D: 4E 8A     .byte < ofs_003_8A4E_02
@@ -1809,7 +1809,7 @@ tbl_8A29_lo:
 - - - - - - 0x000A45 00:8A35: 5D 8A     .byte < _общий_RTS ; 06
 - - - - - - 0x000A47 00:8A37: 5D 8A     .byte < _общий_RTS ; 07
 - D 0 - I - 0x000A49 00:8A39: 4E 85     .byte < ofs_003_854E_08
-tbl_8A29_hi:                                        
+tbl_8A29_hi:
 - D 0 - I - 0x000A39 00:8A29: 3E 85     .byte > ofs_003_853E_00
 - D 0 - I - 0x000A3B 00:8A2B: 3B 8A     .byte > ofs_003_8A3B_01
 - D 0 - I - 0x000A3D 00:8A2D: 4E 8A     .byte > ofs_003_8A4E_02
@@ -2209,7 +2209,7 @@ loc_8C28:
                                         LDA tbl_8C2D_hi,y
                                         STA ram_0001
                                         JMP (ram_0000)
-tbl_8C2D_lo:                                        
+tbl_8C2D_lo:
 - D 0 - I - 0x000C3D 00:8C2D: 52 8C     .byte < _общий_RTS ; 00
 - D 0 - I - 0x000C3F 00:8C2F: 52 8C     .byte < _общий_RTS ; 01
 - D 0 - I - 0x000C41 00:8C31: 53 8C     .byte < ofs_004_8C53_02
@@ -2219,7 +2219,7 @@ tbl_8C2D_lo:
 - - - - - - 0x000C49 00:8C39: 52 8C     .byte < _общий_RTS ; 06
 - - - - - - 0x000C4B 00:8C3B: 52 8C     .byte < _общий_RTS ; 07
 - D 0 - I - 0x000C4D 00:8C3D: 52 8C     .byte < _общий_RTS ; 08
-tbl_8C2D_hi:                                        
+tbl_8C2D_hi:
 - D 0 - I - 0x000C3D 00:8C2D: 52 8C     .byte > _общий_RTS ; 00
 - D 0 - I - 0x000C3F 00:8C2F: 52 8C     .byte > _общий_RTS ; 01
 - D 0 - I - 0x000C41 00:8C31: 53 8C     .byte > ofs_004_8C53_02
@@ -2523,7 +2523,7 @@ tbl_8DF7:
 - D 0 - - - 0x000E0A 00:8DFA: 04        .byte $04   ; 03 con_weapon_L
 - D 0 - - - 0x000E0B 00:8DFB: 00        .byte $00   ; 04 con_weapon_F_normal
 - - - - - - 0x000E0C 00:8DFC: 00        .byte $00   ; 05 con_weapon_F_charged
-   
+
 
 
 tbl_лимит_пуль_оружия:
