@@ -687,25 +687,16 @@ ofs_options_9908_00:
                                         LDA ram_cheat_flag
                                         BEQ bra_9921
                                         LDX ram_index_ppu_buffer
-                                        LDA #con_buf_mode_06 
-                                        STA ram_nmt_buffer,X
-                                        INX
-                                        LDA #> $23D8
-                                        STA ram_nmt_buffer,X
-                                        INX
-                                        LDA #< $23D8
-                                        STA ram_nmt_buffer,X
-                                        INX
-                                        LDA #$10 
-                                        STA ram_nmt_buffer,X
-                                        INX
-                                        LDY #$0F
+                                        LDY #$00
 bra_991E_loop:
                                         LDA tbl_9945_атрибуты,Y
+                                        CMP #$FE    ; end token
+                                        BEQ bra_991A_закрыть_буфер
                                         STA ram_nmt_buffer,X
                                         INX
-                                        DEY
-                                        BPL bra_991E_loop
+                                        INY
+                                        BNE bra_991E_loop    ; jmp
+bra_991A_закрыть_буфер:
                                         LDA #$FF
                                         STA ram_nmt_buffer,X
                                         INX
@@ -720,10 +711,13 @@ bra_9921:
                                         RTS
 
 tbl_9945_атрибуты:
-                                        .byte $0F, $0F, $0F, $0F   ; 
-                                        .byte $00, $00, $00, $00   ; 
-                                        .byte $FF, $FF, $FF, $FF   ; 
-                                        .byte $00, $00, $00, $00   ;
+                                        .byte con_buf_mode_06   ; 
+                                        
+                                        .dbyt $23D8 ; ppu address
+                                        .byte $10   ; counter
+                                        .byte $00, $00, $00, $00, $FF, $FF, $FF, $FF, $00, $00, $00, $00, $0F, $0F, $0F, $0F   ; 
+                                        
+                                        .byte $FE   ; end token
 
 
 
