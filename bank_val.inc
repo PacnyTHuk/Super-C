@@ -96,6 +96,12 @@ con_0x0017EA_1_player                   = $00 ;
 con_0x0017EA_2_players                  = $01 ;
 con_0x0017EA_options                    = $02 ;
 con_0x0017EA_press_start                = $03 ;
+con_0x0017EA_normal                     = $04 ;
+con_0x0017EA_hard                       = $05 ;
+con_0x0017EA_expert                     = $06 ;
+con_0x0017EA_super_c                    = $07 ;
+con_0x0017EA_probotector_2              = $08 ;
+con_0x0017EA_exit                       = $09 ;
 
 
 ; ram_obj_id
