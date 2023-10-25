@@ -770,7 +770,7 @@ ofs_options_9B27_03:
                                         PHP
                                         JSR sub_0x01F7CE_запись_палитры_из_03E0x_в_0300x
                                         PLP
-                                        BCC bra_E455_RTS
+                                        BCC bra_E456_RTS
                                         JSR sub_0x01FE1E
                                         JSR sub_0x01E5E0_очистка_оперативки
                                         JSR sub_0x01E7D0_выбор_банков_графики
