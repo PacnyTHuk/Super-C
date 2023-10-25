@@ -1673,7 +1673,7 @@ bra_E7F2:
 tbl_E7F5_lo:
 - D 3 - I - 0x01E805 07:E7F5: 07 E8     .byte < ofs_033_E807_00_главный_экран
 - D 3 - I - 0x01E807 07:E7F7: 69 E8     .byte < ofs_033_E869_01_экран_очков
-- D 3 - I - 0x01E809 07:E7F9: 7C E8     .byte < ofs_033_E87C_02
+- D 3 - I - 0x01E809 07:E7F9: 7C E8     .byte < ofs_033_E87C_02_подготовка_уровня
 - - - - - - 0x01E80B 07:E7FB: D6 E8     .byte < ofs_033_E8D6_03_игра   ; never used 0x01E7FD
 - D 3 - I - 0x01E80D 07:E7FD: 23 E9     .byte < ofs_033_E923_04_автозавершение_уровня
 - D 3 - I - 0x01E80F 07:E7FF: F7 E9     .byte < ofs_033_E9F7_05_подготовка_gameover
@@ -1683,7 +1683,7 @@ tbl_E7F5_lo:
 tbl_E7F5_hi:
 - D 3 - I - 0x01E805 07:E7F5: 07 E8     .byte > ofs_033_E807_00_главный_экран
 - D 3 - I - 0x01E807 07:E7F7: 69 E8     .byte > ofs_033_E869_01_экран_очков
-- D 3 - I - 0x01E809 07:E7F9: 7C E8     .byte > ofs_033_E87C_02
+- D 3 - I - 0x01E809 07:E7F9: 7C E8     .byte > ofs_033_E87C_02_подготовка_уровня
 - - - - - - 0x01E80B 07:E7FB: D6 E8     .byte > ofs_033_E8D6_03_игра   ; never used 0x01E7FD
 - D 3 - I - 0x01E80D 07:E7FD: 23 E9     .byte > ofs_033_E923_04_автозавершение_уровня
 - D 3 - I - 0x01E80F 07:E7FF: F7 E9     .byte > ofs_033_E9F7_05_подготовка_gameover
@@ -1763,7 +1763,7 @@ C - - - - - 0x01E889 07:E879: 4C B2 E8  JMP loc_E8B2
 
 
 
-ofs_033_E87C_02:
+ofs_033_E87C_02_подготовка_уровня:
 C - - J - - 0x01E88C 07:E87C: A9 02     LDA #$02
 C - - - - - 0x01E88E 07:E87E: 85 1D     STA ram_001D
 C - - - - - 0x01E890 07:E880: A6 3E     LDX ram_003E
@@ -2257,6 +2257,7 @@ tbl_EAC8_chr_banks:
                                         .byte con_chr_bank + $45   ; spr
                                         .byte con_chr_bank + $46   ; spr
                                         .byte con_chr_bank + $60   ; spr
+
 ; 05 area 6
 ; US
 - D 3 - - - 0x01EAF6 07:EAE6: 4C        .byte con_chr_bank + $4C   ; bg

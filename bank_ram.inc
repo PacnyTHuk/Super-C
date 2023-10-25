@@ -3775,12 +3775,12 @@ ram_счетчик_палитры_орла_lo             = $7FF4 ;
 ram_счетчик_палитры_орла_hi             = $7FF5 ; 
 
 ;  Меню options
-ram_options_сложность                   = $7FF6 ;
-ram_options_колво_объектов              = $7FF7 ;
+ram_options_сложность                   = $7FF6 ; 00 = normal, 01 = hard, 02 = expert
+ram_options_колво_объектов              = $7FF7 ; 00 = 0E, 01 = 1F
 ram_options_регион                      = $7FF8 ; для переключения графики спрайтов и вертолетов, 00 = US, 01 = EU
-ram_options_конты                       = $7FF9 ;
-ram_options_уровень                     = $7FFA ;
-ram_options_жизни                       = $7FFB ;
+ram_options_конты                       = $7FF9 ; 
+ram_options_уровень                     = $7FFA ; 
+ram_options_жизни                       = $7FFB ; 
 
 
 
