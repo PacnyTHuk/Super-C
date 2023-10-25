@@ -891,19 +891,33 @@ C - - - - - 0x01E426 07:E416: A6 22     LDX ram_номер_опции_колво
 C - - - - - 0x01E428 07:E418: A9 A7     LDY #$50 ; X координата стрелки
 C - - - - - 0x01E42A 07:E41A: BC 70 E4  LDA tbl_E470_y_координаты_стрелки,X
 C - - - - - 0x01E42D 07:E41D: 20 5F E4  JSR sub_E45F_запись_данных_для_стрелки
+
+
+
+
 C - - - - - 0x01E430 07:E420: A5 F5     LDA ram_копия_нажатая_кнопка
-C - - - - - 0x01E432 07:E422: 29 20     AND #con_btn_Select
-C - - - - - 0x01E434 07:E424: F0 09     BEQ bra_E42F_select_не_нажат
-; нажат select
-C - - - - - 0x01E436 07:E426: A5 22     INC ram_номер_опции_колво_игроков
+                                        TAY
+                                        AND #con_btn_Up
+                                        BNE bra_E430_up
+                                        TYA
+                                        AND #con_btn_Down
+                                        BEQ bra_E42A
+; down
+                                        INC ram_номер_опции_колво_игроков
                                         LDA ram_номер_опции_колво_игроков
                                         CMP #$03
                                         BCC bra_E42A
-                                        LDA #$00
-C - - - - - 0x01E43A 07:E42A: 85 22     STA ram_номер_опции_колво_игроков
+                                        DEC ram_номер_опции_колво_игроков
+                                        BNE bra_E42A
+
+bra_E430_up:
+                                        DEC ram_номер_опции_колво_игроков
+                                        BPL bra_E42A
+                                        INC ram_номер_опции_колво_игроков
+; не нажат select
 bra_E42A:
 C - - - - - 0x01E43C 07:E42C: 20 02 E5  JSR sub_E502_подготовка_счетчиков
-bra_E42F_select_не_нажат:
+bra_E42F:
 C - - - - - 0x01E43F 07:E42F: A5 F5     LDA ram_копия_нажатая_кнопка
 C - - - - - 0x01E441 07:E431: 29 10     AND #con_btn_Start
 C - - - - - 0x01E443 07:E433: F0 0E     BEQ bra_E443_RTS

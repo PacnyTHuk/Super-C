@@ -2042,13 +2042,13 @@ ram_07D0                                = $07D0 ; 001C08 0078DF 01E608 01F090 01
 
 
 
-ram_sound_mode_draw_cooldown             = $07DA ; 01E608 01FB19 
+ram_sound_mode_draw_cooldown             = $07DA ;
 
 
 
 ; free addresses
-ram_07DB                                = $07DB ; 01E608 01FB19 
-ram_07DC                                = $07DC ; 01E608 01FB19 
+; ram_07DB                                = $07DB ; 01E608 01FB19 
+; ram_07DC                                = $07DC ; 01E608 01FB19 
 ; ram_07DD                                = $07DD ; 01E608 01FB19 
 ; ram_07DE                                = $07DE ; 01E608 01FB19 
 ; ram_07DF                                = $07DF ; 01E608 01FB19 
@@ -3769,17 +3769,19 @@ ram_режим_бессмертия                    = $7FF0 ; 00 = выкл, 
 
 
 
-; свободные адреса
-; ram_7FF2                                = $7FF2 ; 
-; ram_7FF3                                = $7FF3 ; 
-; ram_7FF4                                = $7FF4 ; 
-; ram_7FF5                                = $7FF5 ; 
-ram_счетчик_анимации_super                = $7FF6 ; 
-; ram_7FF7                                = $7FF7 ; 
-; ram_7FF8                                = $7FF8 ; 
-ram_счетчик_анимации_contra               = $7FF9 ; 
-; ram_7FFA                                = $7FFA ; 
-; ram_7FFB                                = $7FFB ; 
+ram_счетчик_анимации_super               = $7FF2 ; 
+ram_счетчик_анимации_contra              = $7FF3 ; 
+ram_счетчик_палитры_орла_lo              = $7FF4 ; 
+ram_счетчик_палитры_орла_hi              = $7FF5 ; 
+
+ram_options_сложность                    = $7FF6 ; Меню options
+     ram_options_колво_объектов              = ram_options_сложность ; 
+     ram_options_регион                      = ram_options_сложность ; 
+     ram_options_конты                       = ram_options_сложность ; 
+     ram_options_уровень                     = ram_options_сложность ; 
+     ram_options_жизни                       = ram_options_сложность ;
+     
+; свободные адреса 
 ; ram_7FFC                                = $7FFC ; 
 ; ram_7FFD                                = $7FFD ; 
 ; ram_7FFE                                = $7FFE ; 
