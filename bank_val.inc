@@ -101,7 +101,9 @@ con_0x0017EA_hard                       = $05 ;
 con_0x0017EA_expert                     = $06 ;
 con_0x0017EA_super_c                    = $07 ;
 con_0x0017EA_probotector_2              = $08 ;
-con_0x0017EA_exit                       = $09 ;
+con_0x0017EA_obj_limit_14               = $09 ;
+con_0x0017EA_obj_limit_32               = $0A ;
+con_0x0017EA_exit                       = $0B ;
 
 
 ; ram_obj_id

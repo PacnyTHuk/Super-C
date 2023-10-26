@@ -350,7 +350,9 @@ tbl_97DA:
                                         .word _off009_9850_06_expert
                                         .word _off009_9860_07_super_c
                                         .word _off009_9870_08_probotector_2
-                                        .word _off009_9880_09_exit
+                                        .word _off009_9880_09_obj_limit_14
+                                        .word _off009_9890_0A_obj_limit_32
+                                        .word _off009_98A0_0B_exit
 
 
 _off009_97F4_00_1_player:
@@ -379,37 +381,49 @@ _off009_9820_03_press_start:
 
 
 _off009_9830_04_normal:
-                                        .dbyt $20D3 ; ppu address
+                                        .dbyt $20D5 ; ppu address
                                         .byte $98, $99, $9C, $97, $8B, $96   ; "NORMAL"
                                         .byte $FE   ; end token
 
 
 _off009_9840_05_hard:
-                                        .dbyt $20D3 ; ppu address
+                                        .dbyt $20D5 ; ppu address
                                         .byte $92, $8B, $9C, $8E, $80, $80    ; "HARD  "
                                         .byte $FE   ; end token
 
 
 _off009_9850_06_expert:
-                                        .dbyt $20D3 ; ppu address
+                                        .dbyt $20D5 ; ppu address
                                         .byte $8F, $A2, $9A, $8F, $9C, $9E    ; "EXPERT"
                                         .byte $FE   ; end token
 
 
 
 _off009_9860_07_super_c:
-                                        .dbyt $224E ; ppu address
-                                        .byte $8F, $A2, $93, $9E   ; "EXIT"
+                                        .dbyt $2115 ; ppu address
+                                        .byte $92, $9F, $97, $8B, $98   ; "HUMAN"
                                         .byte $FE   ; end token
                                         
 
 _off009_9870_08_probotector_2:
-                                        .dbyt $224E ; ppu address
-                                        .byte $8F, $A2, $93, $9E   ; "EXIT"
+                                        .dbyt $2115 ; ppu address
+                                        .byte $9C, $99, $8C, $99, $9E   ; "ROBOT"
                                         .byte $FE   ; end token
 
 
-_off009_9880_09_exit:
+_off009_9880_09_obj_limit_14:
+                                        .dbyt $2155 ; ppu address
+                                        .byte $82, $85   ; "14"
+                                        .byte $FE   ; end token
+                                        
+
+_off009_9890_0A_obj_limit_32:
+                                        .dbyt $2155 ; ppu address
+                                        .byte $84, $83  ; "32"
+                                        .byte $FE   ; end token
+
+
+_off009_98A0_0B_exit:
 
                                         .dbyt $224E ; ppu address
                                         .byte $8F, $A2, $93, $9E   ; "EXIT"
@@ -629,7 +643,7 @@ _off021_B9D1_0B_options:
                                         .byte $16, $27, $30   ;
                                         .byte $30, $28, $18   ;
                                         .byte $00, $00, $00   ;
-                                        .byte $30, $21, $12   ;
+                                        .byte $1C, $2C, $30   ;
 ; sprites
                                         .byte $16, $06, $0F   ;
                                         .byte $20, $16, $17   ;
@@ -641,7 +655,7 @@ _off021_B9C9_0C_options_cheat_on:
                                         .byte $16, $27, $30   ;
                                         .byte $30, $28, $18   ;
                                         .byte $16, $27, $30   ;
-                                        .byte $30, $21, $12   ;
+                                        .byte $1C, $2C, $30   ;
 ; sprites
                                         .byte $16, $06, $0F   ;
                                         .byte $20, $16, $17   ;
@@ -679,10 +693,24 @@ ofs_options_9908_00_подготовка_экрана_options:
                                         JSR sub_988E_отрисовка_экранов
                                         LDA #con_0x0017EA_exit
                                         JSR sub_977C_отрисовка_текста_через_буфер_0300x
-                                        LDA #con_0x0017EA_normal
+                                        LDA #$04
                                         CLC
                                         ADC ram_options_сложность
                                         JSR sub_977C_отрисовка_текста_через_буфер_0300x
+                                        LDA #$07
+                                        CLC
+                                        ADC ram_options_сложность
+                                        JSR sub_977C_отрисовка_текста_через_буфер_0300x
+                                        LDA #$09
+                                        CLC
+                                        ADC ram_options_сложность
+                                        JSR sub_977C_отрисовка_текста_через_буфер_0300x
+                                        LDX #$03
+                                        JSR sub_E457
+                                        LDX #$04
+                                        JSR sub_E457
+                                        LDX #$05
+                                        JSR sub_E457
                                         LDA ram_cheat_flag
                                         BEQ bra_9921_чит_не_введен
 ; заменить атрибуты для отображения скрытых опций
@@ -722,12 +750,10 @@ tbl_9945_атрибуты:
 
 
 ofs_options_9AFF_01_выбор_опций:
-                                        JSR sub_E455_смена_палитры_сокола
+                                        JSR sub_E45E_смена_палитры_сокола
+                                        LDX ram_номер_опции_колво_игроков
                                         JSR sub_E450_обработка_dpad_в_опциях
-                                        LDA #con_0x0017EA_normal
-                                        CLC
-                                        ADC ram_options_сложность
-                                        JSR sub_977C_отрисовка_текста_через_буфер_0300x
+                                        JSR sub_E456_смена_надписей_настроек
                                         LDX ram_номер_опции_колво_игроков
                                         LDY tbl_9925_x_координаты_стрелки,X ; X координата стрелки
                                         LDA tbl_9925_y_координаты_стрелки,X ; Y координата стрелки
@@ -740,6 +766,7 @@ ofs_options_9AFF_01_выбор_опций:
                                         LDA ram_номер_опции_колво_игроков
                                         CMP #$06
                                         BNE bra_E443_RTS
+; выход
                                         LDA #$01
                                         STA ram_0095
                                         LDA #$40
@@ -750,6 +777,7 @@ bra_E443_RTS:
 
 
 ofs_options_9B11_02_мерцание_exit:
+                                        JSR sub_E45E_смена_палитры_сокола
                                         LDA ram_таймер_до_демки
                                         AND #$08
                                         ASL
@@ -847,7 +875,6 @@ bra_E44F_не_вверх:
 
 loc_E450_right:
 ; обработчик смены варианта текущей опции
-                                        LDX ram_номер_опции_колво_игроков
                                         CPX #$06
                                         BCS bra_E445_RTS
                                         INC ram_options_сложность,X
@@ -863,7 +890,6 @@ bra_E445_RTS:
 
 loc_E450_left:
 ; обработчик смены варианта текущей опции
-                                        LDX ram_номер_опции_колво_игроков
                                         CPX #$06
                                         BCS bra_E450_RTS
                                         DEC ram_options_сложность,X
@@ -917,16 +943,70 @@ bra_E454_RTS:
 
 tbl_E455_предел_опций:
                                         .byte $02   ; X00 difficulty
-                                        .byte $01   ; X01 obj limit
-                                        .byte $01   ; X02 graphics
+                                        .byte $01   ; X01 graphics
+                                        .byte $01   ; X02 obj.limit
                                         .byte $05   ; X03 continue
-                                        .byte $05   ; X04 level
-                                        .byte $05   ; X05 rest
+                                        .byte $07   ; X04 level
+                                        .byte $09   ; X05 rest
+
+
+
+sub_E456_смена_надписей_настроек:
+                                        CPX #$03
+                                        BCS bra_E457
+                                        LDA tbl_E45A_стартовые_номера_опций,X
+                                        CLC
+                                        ADC ram_options_сложность,X
+                                        JSR sub_977C_отрисовка_текста_через_буфер_0300x
+                                        RTS
+bra_E457:
+sub_E457:
+                                        LDY ram_index_ppu_buffer
+                                        LDA #con_buf_mode_01
+                                        STA ram_nmt_buffer,Y
+                                        INY
+                                        LDA tbl_E45B_ppu_hi - $03,X
+                                        STA ram_nmt_buffer,Y
+                                        INY
+                                        LDA tbl_E45C_ppu_lo - $03,X
+                                        STA ram_nmt_buffer,Y
+                                        INY
+                                        LDA ram_options_сложность,X
+                                        CPX #$04
+                                        BNE bra_E458
+                                        CLC
+                                        ADC #$82
+                                        JMP loc_E459
+bra_E458:
+                                        CLC
+                                        ADC #$81
+loc_E459:
+                                        STA ram_nmt_buffer,Y
+                                        INY
+                                        LDA #$FF
+                                        STA ram_nmt_buffer,Y
+                                        INY
+                                        STY ram_index_ppu_buffer
+                                        RTS
+
+tbl_E45A_стартовые_номера_опций:
+                                        .byte $04   ; X00 difficulty
+                                        .byte $07   ; X01 graphics
+                                        .byte $09   ; X01 obj.limit
+
+tbl_E45B_ppu_hi:
+                                        .byte $21   ; X03 continue
+                                        .byte $21   ; X04 level
+                                        .byte $22   ; X05 rest
+tbl_E45C_ppu_lo:
+                                        .byte $95   ; X03 continue
+                                        .byte $D5   ; X04 level
+                                        .byte $15   ; X05 rest
 
 
 
 
-sub_E455_смена_палитры_сокола:
+sub_E45E_смена_палитры_сокола:
                                         INC ram_счетчик_палитры_орла_lo 
                                         LDA ram_счетчик_палитры_орла_lo 
                                         CMP #$08
@@ -951,6 +1031,7 @@ tbl_E46B_цвет:
                                         .byte $38   ; 01
                                         .byte $28   ; 02
                                         .byte $38   ; 03
+
 
 
 

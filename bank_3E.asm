@@ -876,7 +876,7 @@ bra_E443_минус_x:
                                         JSR sub_E502_подготовка_счетчиков
                                         LDA #con_0x0017EA_press_start + $80 ; удалить надпись
                                         JSR sub_FE7A_bankswitch_отрисовка_текста_через_буфер_0300x
-                                        JSR sub_E538_надписи_p1_p2
+                                        JSR sub_E538_надписи_p1_p2_options
 bra_E446_RTS:
                                         RTS
 
@@ -1232,7 +1232,7 @@ C - - - - - 0x01E545 07:E535: 20 BE F7  JSR sub_F7BE_запись_палитры
 C - - - - - 0x01E548 07:E538: A9 00     LDA #con_0x0017EA_press_start 
 C - - - - - 0x01E54A 07:E53A: 20 7A FE  JSR sub_FE7A_bankswitch_отрисовка_текста_через_буфер_0300x
                                         RTS
-sub_E538_надписи_p1_p2:
+sub_E538_надписи_p1_p2_options:
 C - - - - - 0x01E548 07:E538: A9 00     LDA #con_0x0017EA_1_player
 C - - - - - 0x01E54A 07:E53A: 20 7A FE  JSR sub_FE7A_bankswitch_отрисовка_текста_через_буфер_0300x
 C - - - - - 0x01E54D 07:E53D: A9 01     LDA #con_0x0017EA_2_players
@@ -5008,6 +5008,10 @@ bra_FB2F_loop:
                                         INX
                                         CPX #$20        ; очистить 20 страниц
                                         BNE bra_FB2F_loop
+; 1путин: запись жизней и контов
+                                        LDA #$02
+                                        STA ram_options_конты
+                                        STA ram_options_жизни
 C - - - - - 0x01FB40 07:FB30: A9 53     LDA #$53
 C - - - - - 0x01FB42 07:FB32: 8D EA 07  STA ram_reset_check
 C - - - - - 0x01FB45 07:FB35: A9 B1     LDA #$B1
