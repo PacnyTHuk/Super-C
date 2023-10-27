@@ -2315,7 +2315,7 @@ C - - - - - 0x000CCE 00:8CBE: 95 A2     STA ram_00A2_spd_Y_fr_plr,X
 C - - - - - 0x000CD0 00:8CC0: A9 00     LDA #$00
 C - - - - - 0x000CD2 00:8CC2: 65 14     ADC ram_0014
 C - - - - - 0x000CD4 00:8CC4: 85 72     STA ram_cam_spd_Y
-C - - - - - 0x000CD6 00:8CC6: 4C E4 8C  JMP loc_8CE4_RTS
+C - - - - - 0x000CD6 00:8CC6: 4C E4 8C  RTS
 bra_8CC9:
 C - - - - - 0x000CD9 00:8CC9: C9 D8     CMP #$D8
 C - - - - - 0x000CDB 00:8CCB: B0 17     BCS bra_8CE4_RTS
@@ -2332,7 +2332,6 @@ C - - - - - 0x000CEE 00:8CDE: C0 FF     CPY #$FF
 C - - - - - 0x000CF0 00:8CE0: F0 02     BEQ bra_8CE4_RTS
 C - - - - - 0x000CF2 00:8CE2: 95 CE     STA ram_00CE_игрок,X
 bra_8CE4_RTS:
-loc_8CE4_RTS:
 C D 0 - - - 0x000CF4 00:8CE4: 60        RTS
 
 
