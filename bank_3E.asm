@@ -921,6 +921,11 @@ C - - - - - 0x01E43F 07:E42F: A5 F5     LDA ram_копия_нажатая_кно
 C - - - - - 0x01E441 07:E431: 29 10     AND #con_btn_Start
 C - - - - - 0x01E443 07:E433: F0 0E     BEQ bra_E443_RTS
 ; нажата start
+; проверка чита для sound test
+C - - - - - 0x01E445 07:E435: A5 F7     LDA ram_копия_удержанная_кнопка
+C - - - - - 0x01E447 07:E437: 29 C0     AND #con_btns_AB
+C - - - - - 0x01E449 07:E439: C9 C0     CMP #con_btns_AB
+C - - - - - 0x01E44B 07:E43B: F0 07     BEQ bra_E444
                                         LDA ram_номер_опции_колво_игроков
                                         CMP #$02
                                         BNE bra_E43D
@@ -933,7 +938,10 @@ C - - - - - 0x01E44F 07:E43F: 85 3C     STA ram_таймер_до_демки
 C - - - - - 0x01E451 07:E441: E6 19     INC ram_номер_действия_на_заставке
 bra_E443_RTS:
 C - - - - - 0x01E453 07:E443: 60        RTS
-
+; sound test
+bra_E444:
+C - - - - - 0x01E454 07:E444: A9 05     LDA #$05
+C - - - - - 0x01E456 07:E446: 4C EC E4  JMP loc_E4EC_запись_в_демку
 ; =========================================
 
 bra_E440_минус_x:
@@ -981,9 +989,6 @@ bra_E4BA_RTS:
                                         RTS
 
 
-
-
-
 ; leon
 sub_E4BC_переключение_банков_анимация_contra:
                                         LDA ram_счетчик_кадров_1
@@ -1005,7 +1010,6 @@ tbl_E4BD_банки_фона:
                                         .byte con_chr_bank + $80 ; 01
                                         .byte con_chr_bank + $82 ; 02
                                         .byte con_chr_bank + $86 ; 03
-
 
 
 ; leon
@@ -1150,8 +1154,7 @@ C - - - - - 0x01E4F4 07:E4E4: 60        RTS
 
 
 ofs_032_E4E5_06_options:
-                                        JSR sub_FEDD_bankswitch_options
-                                        RTS
+                                        JMP sub_FEDD_bankswitch_options
 
 
 loc_E4E5_плюс1_демка:
