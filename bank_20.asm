@@ -619,6 +619,8 @@ tbl_EAC8_chr_banks:
 
 loc_0x00F894_загрузка_палитры_для_уровня:
 C D 1 - - - 0x00F894 03:B884: A5 50     LDA ram_номер_уровня
+                                        ASL
+                                        ADC ram_options_регион
 loc_0x00F896_загрузка_палитры:
 sub_B886_загрузка_палитры:
 C D 1 - - - 0x00F896 03:B886: 85 08     STA ram_0008
@@ -655,18 +657,26 @@ C - - - - - 0x00F8C2 03:B8B2: 60        RTS
 
 tbl_B8B3:
 - D 1 - - - 0x00F8C3 03:B8B3: C9 B8     .word _off021_B8C9_00_area_1_US
-- D 1 - - - 0x00F8C5 03:B8B5: E1 B8     .word _off021_B8E1_01_area_2_US
-- D 1 - - - 0x00F8C7 03:B8B7: F9 B8     .word _off021_B8F9_02_area_3_US
-- D 1 - - - 0x00F8C9 03:B8B9: 11 B9     .word _off021_B911_03_area_4_US
-- D 1 - - - 0x00F8CB 03:B8BB: 29 B9     .word _off021_B929_04_area_5_US
-- D 1 - - - 0x00F8CD 03:B8BD: 41 B9     .word _off021_B941_05_area_6_US
-- D 1 - - - 0x00F8CF 03:B8BF: 59 B9     .word _off021_B959_06_area_7_US
-- D 1 - - - 0x00F8D1 03:B8C1: 71 B9     .word _off021_B971_07_area_8_US
-- D 1 - - - 0x00F8D3 03:B8C3: 89 B9     .word _off021_B989_08_логотип_слияние
-- D 1 - - - 0x00F8D5 03:B8C5: A1 B9     .word _off021_B9A1_09_главный_экран
-- D 1 - - - 0x00F8D7 03:B8C7: B9 B9     .word _off021_B9B9_0A_заставка_US
-                                        .word _off021_B9D1_0B_options   ; options screen
-                                        .word _off021_B9C9_0C_options_cheat_on  ; options screen + cheat
+                                        .word _off021_B8C9_01_area_1_EU
+- D 1 - - - 0x00F8C5 03:B8B5: E1 B8     .word _off021_B8E1_02_area_2_US
+                                        .word _off021_B8E1_03_area_2_EU
+- D 1 - - - 0x00F8C7 03:B8B7: F9 B8     .word _off021_B8F9_04_area_3_US
+                                        .word _off021_B8F9_05_area_3_EU
+- D 1 - - - 0x00F8C9 03:B8B9: 11 B9     .word _off021_B911_06_area_4_US
+                                        .word _off021_B911_07_area_4_EU
+- D 1 - - - 0x00F8CB 03:B8BB: 29 B9     .word _off021_B929_08_area_5_US
+                                        .word _off021_B929_09_area_5_EU
+- D 1 - - - 0x00F8CD 03:B8BD: 41 B9     .word _off021_B941_0A_area_6_US
+                                        .word _off021_B941_0B_area_6_EU
+- D 1 - - - 0x00F8CF 03:B8BF: 59 B9     .word _off021_B959_0C_area_7_US
+                                        .word _off021_B959_0D_area_7_EU
+- D 1 - - - 0x00F8D1 03:B8C1: 71 B9     .word _off021_B971_0E_area_8_US
+                                        .word _off021_B971_0F_area_8_EU
+- D 1 - - - 0x00F8D3 03:B8C3: 89 B9     .word _off021_B989_10_логотип_слияние
+- D 1 - - - 0x00F8D5 03:B8C5: A1 B9     .word _off021_B9A1_11_главный_экран
+- D 1 - - - 0x00F8D7 03:B8C7: B9 B9     .word _off021_B9B9_12_заставка_US
+                                        .word _off021_B9D1_13_options   ; options screen
+                                        .word _off021_B9C9_14_options_cheat_on  ; options screen + cheat
 
 
 
@@ -684,7 +694,21 @@ _off021_B8C9_00_area_1_US:
 
 
 
-_off021_B8E1_01_area_2_US:
+_off021_B8C9_01_area_1_EU:
+; background
+                                        .byte $20, $10, $00   ; 
+                                        .byte $20, $10, $00   ; 
+                                        .byte $27, $16, $04   ; 
+                                        .byte $16, $06, $00   ; 
+; sprites
+                                        .byte $37, $1C, $0F   ; 
+                                        .byte $37, $16, $0F   ; 
+                                        .byte $20, $26, $16   ; 
+                                        .byte $34, $1B, $0F   ; 
+
+
+
+_off021_B8E1_02_area_2_US:
 ; background
 - D 1 - I - 0x00F8F1 03:B8E1: 20        .byte $20, $10, $00   ; 
 - D 1 - I - 0x00F8F4 03:B8E4: 00        .byte $00, $10, $0C   ; 
@@ -698,7 +722,21 @@ _off021_B8E1_01_area_2_US:
 
 
 
-_off021_B8F9_02_area_3_US:
+_off021_B8E1_03_area_2_EU:
+; background
+                                        .byte $20, $10, $00   ; 
+                                        .byte $00, $10, $0C   ; 
+                                        .byte $20, $1C, $0C   ; 
+                                        .byte $06, $1C, $0C   ; 
+; sprites
+                                        .byte $37, $11, $0C   ; 
+                                        .byte $37, $16, $07   ; 
+                                        .byte $20, $26, $16   ; 
+                                        .byte $34, $1B, $0F   ; 
+
+
+
+_off021_B8F9_04_area_3_US:
 ; background
 - D 1 - I - 0x00F909 03:B8F9: 2A        .byte $2A, $1A, $0A   ; 
 - D 1 - I - 0x00F90C 03:B8FC: 28        .byte $28, $18, $08   ; 
@@ -712,7 +750,21 @@ _off021_B8F9_02_area_3_US:
 
 
 
-_off021_B911_03_area_4_US:
+_off021_B8F9_05_area_3_EU:
+; background
+                                        .byte $2A, $1A, $0A   ; 
+                                        .byte $28, $18, $08   ; 
+                                        .byte $10, $1A, $0A   ; 
+                                        .byte $20, $10, $00   ; 
+; sprites
+                                        .byte $37, $1C, $0F   ; 
+                                        .byte $37, $16, $0F   ; 
+                                        .byte $20, $26, $16   ; 
+                                        .byte $3B, $14, $0F   ; 
+
+
+
+_off021_B911_06_area_4_US:
 ; background
 - D 1 - I - 0x00F921 03:B911: 20        .byte $20, $1B, $0A   ; 
 - D 1 - I - 0x00F924 03:B914: 01        .byte $01, $00, $0A   ; 
@@ -726,7 +778,21 @@ _off021_B911_03_area_4_US:
 
 
 
-_off021_B929_04_area_5_US:
+_off021_B911_07_area_4_EU:
+; background
+                                        .byte $20, $1B, $0A   ; 
+                                        .byte $01, $00, $0A   ; 
+                                        .byte $01, $1B, $0A   ; 
+                                        .byte $01, $00, $06   ; 
+; sprites
+                                        .byte $37, $1C, $0F   ; 
+                                        .byte $37, $16, $0F   ; 
+                                        .byte $20, $26, $16   ; 
+                                        .byte $20, $1B, $0A   ; 
+
+
+
+_off021_B929_08_area_5_US:
 ; background
 - D 1 - I - 0x00F939 03:B929: 20        .byte $20, $10, $00   ; 
 - D 1 - I - 0x00F93C 03:B92C: 2A        .byte $2A, $1A, $00   ; 
@@ -740,7 +806,21 @@ _off021_B929_04_area_5_US:
 
 
 
-_off021_B941_05_area_6_US:
+_off021_B929_09_area_5_EU:
+; background
+                                        .byte $20, $10, $00   ; 
+                                        .byte $2A, $1A, $00   ; 
+                                        .byte $2C, $1C, $0C   ; 
+                                        .byte $20, $10, $04   ; 
+; sprites
+                                        .byte $37, $1C, $0F   ; 
+                                        .byte $37, $16, $0F   ; 
+                                        .byte $20, $26, $16   ; 
+                                        .byte $3B, $14, $0F   ; 
+
+
+
+_off021_B941_0A_area_6_US:
 ; background
 - D 1 - I - 0x00F951 03:B941: 20        .byte $20, $10, $00   ; 
 - D 1 - I - 0x00F954 03:B944: 29        .byte $29, $19, $09   ; 
@@ -754,7 +834,21 @@ _off021_B941_05_area_6_US:
 
 
 
-_off021_B959_06_area_7_US:
+_off021_B941_0B_area_6_EU:
+; background
+                                        .byte $20, $10, $00   ; 
+                                        .byte $29, $19, $09   ; 
+                                        .byte $20, $10, $06   ; 
+                                        .byte $10, $00, $06   ; 
+; sprites
+                                        .byte $37, $11, $0C   ; 
+                                        .byte $37, $16, $07   ; 
+                                        .byte $20, $26, $16   ; 
+                                        .byte $10, $16, $0F   ; 
+
+
+
+_off021_B959_0C_area_7_US:
 ; background
 - D 1 - I - 0x00F969 03:B959: 2C        .byte $2C, $12, $02   ; 
 - D 1 - I - 0x00F96C 03:B95C: 22        .byte $22, $12, $02   ; 
@@ -768,7 +862,21 @@ _off021_B959_06_area_7_US:
 
 
 
-_off021_B971_07_area_8_US:
+_off021_B959_0D_area_7_EU:
+; background
+                                        .byte $2C, $12, $02   ; 
+                                        .byte $22, $12, $02   ; 
+                                        .byte $27, $16, $06   ; 
+                                        .byte $1C, $1A, $0A   ; 
+; sprites
+                                        .byte $37, $1C, $0F   ; 
+                                        .byte $37, $16, $0F   ; 
+                                        .byte $20, $26, $16   ; 
+                                        .byte $24, $14, $04   ; 
+
+
+
+_off021_B971_0E_area_8_US:
 ; background
 - D 1 - I - 0x00F981 03:B971: 24        .byte $24, $14, $04   ; 
 - D 1 - I - 0x00F984 03:B974: 03        .byte $03, $02, $0C   ; 
@@ -782,7 +890,21 @@ _off021_B971_07_area_8_US:
 
 
 
-_off021_B989_08_логотип_слияние:
+_off021_B971_0F_area_8_EU:
+; background
+                                        .byte $24, $14, $04   ; 
+                                        .byte $03, $02, $0C   ; 
+                                        .byte $20, $10, $00   ; 
+                                        .byte $09, $18, $08   ; 
+; sprites
+                                        .byte $37, $1C, $0F   ; 
+                                        .byte $37, $16, $0F   ; 
+                                        .byte $20, $26, $16   ; 
+                                        .byte $20, $00, $0C   ; 
+
+
+
+_off021_B989_10_логотип_слияние:
 ; background
 - D 1 - I - 0x00F999 03:B989: 10        .byte $16, $27, $30   ; 
 - D 1 - I - 0x00F99C 03:B98C: 20        .byte $30, $27, $16   ; 
@@ -796,7 +918,7 @@ _off021_B989_08_логотип_слияние:
 
 
 
-_off021_B9A1_09_главный_экран:
+_off021_B9A1_11_главный_экран:
 ; background
 - D 1 - I - 0x00F9B1 03:B9A1: 0F        .byte $0F, $0F, $0F   ; 
 - D 1 - I - 0x00F9B4 03:B9A4: 20        .byte $30, $27, $16   ; 
@@ -810,7 +932,7 @@ _off021_B9A1_09_главный_экран:
 
 
 
-_off021_B9B9_0A_заставка_US:
+_off021_B9B9_12_заставка_US:
 ; background
 - D 1 - I - 0x00F9C9 03:B9B9: 20        .byte $20, $27, $16   ; 
 - D 1 - I - 0x00F9CC 03:B9BC: 27        .byte $27, $16, $04   ; 
@@ -823,7 +945,7 @@ _off021_B9B9_0A_заставка_US:
 - D 1 - I - 0x00F9DE 03:B9CE: 37        .byte $37, $00, $0F   ; 
 
 
-_off021_B9D1_0B_options:
+_off021_B9D1_13_options:
 ; background
                                         .byte $16, $27, $30   ; 
                                         .byte $30, $28, $18   ; 
@@ -835,7 +957,7 @@ _off021_B9D1_0B_options:
                                         .byte $20, $26, $16   ; 
                                         .byte $20, $00, $0F   ; 
 
-_off021_B9C9_0C_options_cheat_on:
+_off021_B9C9_14_options_cheat_on:
  ; background
                                         .byte $16, $27, $30   ; 
                                         .byte $30, $28, $18   ; 
@@ -911,8 +1033,8 @@ bra_9921_чит_не_введен:
                                         RTS
 
 tbl_9922_палитра_для_options:
-                                        .byte $0B   ; чит выкл
-                                        .byte $0C   ; чит вкл
+                                        .byte $13   ; чит выкл
+                                        .byte $14   ; чит вкл
 
 tbl_9923_атрибуты:
                                         .byte con_buf_mode_06   ; 
@@ -1171,7 +1293,7 @@ ofs_options_9B27_03_выход_из_экрана_options:
                                         LDA ram_for_2000
                                         AND #$FC
                                         STA ram_for_2000
-                                        LDA #$08
+                                        LDA #$10
                                         JSR sub_B886_загрузка_палитры
                                         JSR sub_0x01F7CE_запись_палитры_из_03E0x_в_0300x
                                         LDA #con_0x0017EA_1_player
