@@ -124,6 +124,27 @@ bra_85A9_RTS:
                                         RTS
 
 
+sub_0001_мерцание_экрана:
+                                        LDA ram_пауза
+                                        BNE bra_0003_RTS
+                                        LDA ram_счетчик_мерцания_экрана
+                                        BEQ bra_0003_RTS
+                                        DEC ram_счетчик_мерцания_экрана
+                                        LDA ram_счетчик_мерцания_экрана
+                                        LSR
+                                        BCS bra_0003_RTS
+                                        AND #$01
+                                        TAY
+                                        LDA tbl_0002_цвета,Y
+                                        STA ram_pal_buffer + $10
+                                        JSR sub_F7BE_запись_палитры_из_03E0x_в_0300x
+bra_0003_RTS:
+                                        RTS
+
+tbl_0002_цвета:
+                                        .byte $0F   ; черный
+                                        .byte $30   ; белый
+
 
 tbl_E000_config_2000:
 ; see con_buf_mode
@@ -751,7 +772,6 @@ C - - - - - 0x01E3C6 07:E3B6: 4C 5D E2  JMP loc_E25D
 
 
 sub_E3B9:
-C - - - - - 0x01E3C9 07:E3B9: E6 1B     INC ram_счетчик_кадров_1
 ; 1путин опт
 C - - - - - 0x01E3CB 07:E3BB: A5 18     LDY ram_демка
 C - - - - - 0x01E3CD 07:E3BD: C9 04     CPY #$04
@@ -1748,7 +1768,7 @@ ofs_033_E869_01_экран_очков:
 C - - J - - 0x01E879 07:E869: C6 3F     DEC ram_таймер_на_экране_очков
 C - - - - - 0x01E87B 07:E86B: D0 25     BNE bra_E892_RTS
 C - - - - - 0x01E87D 07:E86D: 20 57 E5  JSR sub_FE84_XFF_обнуление_экранов_PPU
-C - - - - - 0x01E880 07:E870: 20 B0 EA  JSR sub_EAB0_подготовить_начальные_chr_банки_для_уровня
+C - - - - - 0x01E880 07:E870: 20 B0 EA  JSR sub_EAB0_bankswitch_подготовить_начальные_банки_для_уровня
 C - - - - - 0x01E883 07:E873: 20 68 FE  JSR sub_FE68_bankswitch_загрузка_палитры_для_уровня
 C - - - - - 0x01E886 07:E876: 20 BE F7  JSR sub_F7BE_запись_палитры_из_03E0x_в_0300x
 C - - - - - 0x01E889 07:E879: 4C B2 E8  JMP loc_E8B2
@@ -2096,7 +2116,7 @@ tbl_EA5A:
 ofs_033_EA5C_08_заставка:
 C - - J - - 0x01EA6C 07:EA5C: A5 3E     LDA ram_003E
 C - - - - - 0x01EA6E 07:EA5E: D0 18     BNE bra_EA78
-C - - - - - 0x01EA70 07:EA60: 20 57 E5  JSR sub_FE84_XFF_обнуление_экранов_PPU
+;C - - - - - 0x01EA70 07:EA60: 20 57 E5  JSR sub_FE84_XFF_обнуление_экранов_PPU
 C - - - - - 0x01EA73 07:EA63: A2 04     LDX #$02
 C - - - - - 0x01EA75 07:EA65: 20 84 FE  JSR sub_FE84_bankswitch_отрисовка_экранов
 C - - - - - 0x01EA78 07:EA68: A9 0A     LDA #$0A
@@ -2138,165 +2158,6 @@ C - - - - - 0x01EABA 07:EAAA: A9 00     LDA #$00
 C - - - - - 0x01EABC 07:EAAC: 85 39     STA ram_пауза
 bra_EAAE_RTS:
 C - - - - - 0x01EABE 07:EAAE: 60        RTS
-
-
-
-sub_EAB0_подготовить_начальные_chr_банки_для_уровня:
-; cyneprepou4uk
-; очищать C нигде не нужно, так как не перевалит за FF
-C - - - - - 0x01EAC0 07:EAB0: A5 50     LDA ram_номер_уровня
-; * 0C
-C - - - - - 0x01EAC2 07:EAB2: 0A        ASL
-C - - - - - 0x01EAC3 07:EAB3: 85 00     STA ram_0000
-C - - - - - 0x01EAC5 07:EAB5: 0A        ASL
-C - - - - - 0x01EAC6 07:EAB6: 65 00     ADC ram_0000
-                                        ASL
-                                        LDY ram_options_регион
-                                        BEQ bra_EAB8_американка
-; европейка
-                                        ADC #$06    ; вторые 6 байтов
-bra_EAB8_американка:
-C - - - - - 0x01EAC8 07:EAB8: A8        TAY
-C - - - - - 0x01EAC9 07:EAB9: A2 00     LDX #$00
-bra_EABB_loop:
-C - - - - - 0x01EACB 07:EABB: B9 C8 EA  LDA tbl_EAC8_chr_banks,Y
-C - - - - - 0x01EACE 07:EABE: 9D F0 07  STA ram_chr_bank,X
-C - - - - - 0x01EAD1 07:EAC1: C8        INY
-C - - - - - 0x01EAD2 07:EAC2: E8        INX
-C - - - - - 0x01EAD3 07:EAC3: E0 06     CPX #$06
-C - - - - - 0x01EAD5 07:EAC5: D0 F4     BNE bra_EABB_loop
-C - - - - - 0x01EAD7 07:EAC7: 60        RTS
-
-
-
-tbl_EAC8_chr_banks:
-; 00 area 1
-; US
-- D 3 - - - 0x01EAD8 07:EAC8: 00        .byte con_chr_bank + $00   ; bg
-- D 3 - - - 0x01EAD9 07:EAC9: 02        .byte con_chr_bank + $02   ; bg
-- D 3 - - - 0x01EADA 07:EACA: 44        .byte con_chr_bank + $44   ; spr
-- D 3 - - - 0x01EADB 07:EACB: 45        .byte con_chr_bank + $45   ; spr
-- D 3 - - - 0x01EADC 07:EACC: 46        .byte con_chr_bank + $46   ; spr
-- D 3 - - - 0x01EADD 07:EACD: 47        .byte con_chr_bank + $47   ; spr
-; EU
-                                        .byte con_chr_bank + $B0   ; bg Вертолёт в начале $B0, на боссе $AD
-                                        .byte con_chr_bank + $AB   ; bg на боссе $AF
-                                        .byte con_chr_bank + $94   ; spr
-                                        .byte con_chr_bank + $95   ; spr
-                                        .byte con_chr_bank + $96   ; spr
-                                        .byte con_chr_bank + $97   ; spr
-
-; 01 area 2
-; US
-- D 3 - - - 0x01EADE 07:EACE: 3C        .byte con_chr_bank + $3C   ; bg
-- D 3 - - - 0x01EADF 07:EACF: 3E        .byte con_chr_bank + $3E   ; bg
-- D 3 - - - 0x01EAE0 07:EAD0: 49        .byte con_chr_bank + $49   ; spr
-- D 3 - - - 0x01EAE1 07:EAD1: 4A        .byte con_chr_bank + $4A   ; spr
-- D 3 - - - 0x01EAE2 07:EAD2: 4B        .byte con_chr_bank + $4B   ; spr
-- D 3 - - - 0x01EAE3 07:EAD3: 1A        .byte con_chr_bank + $1A   ; spr
-; EU
-                                        .byte con_chr_bank + $3C   ; bg
-                                        .byte con_chr_bank + $3E   ; bg
-                                        .byte con_chr_bank + $A8   ; spr
-                                        .byte con_chr_bank + $A9   ; spr
-                                        .byte con_chr_bank + $98   ; spr
-                                        .byte con_chr_bank + $99   ; spr
-
-; 02 area 3
-; US
-- D 3 - - - 0x01EAE4 07:EAD4: 0C        .byte con_chr_bank + $0C   ; bg
-- D 3 - - - 0x01EAE5 07:EAD5: 0E        .byte con_chr_bank + $0E   ; bg
-- D 3 - - - 0x01EAE6 07:EAD6: 44        .byte con_chr_bank + $44   ; spr
-- D 3 - - - 0x01EAE7 07:EAD7: 45        .byte con_chr_bank + $45   ; spr
-- D 3 - - - 0x01EAE8 07:EAD8: 46        .byte con_chr_bank + $46   ; spr
-- D 3 - - - 0x01EAE9 07:EAD9: 48        .byte con_chr_bank + $48   ; spr
-; EU
-                                        .byte con_chr_bank + $0C   ; bg
-                                        .byte con_chr_bank + $0E   ; bg
-                                        .byte con_chr_bank + $94   ; spr
-                                        .byte con_chr_bank + $95   ; spr
-                                        .byte con_chr_bank + $9A   ; spr
-                                        .byte con_chr_bank + $9B   ; spr
-
-; 03 area 4
-; US
-- D 3 - - - 0x01EAEA 07:EADA: 08        .byte con_chr_bank + $08   ; bg
-- D 3 - - - 0x01EAEB 07:EADB: 0A        .byte con_chr_bank + $0A   ; bg
-- D 3 - - - 0x01EAEC 07:EADC: 44        .byte con_chr_bank + $44   ; spr
-- D 3 - - - 0x01EAED 07:EADD: 45        .byte con_chr_bank + $45   ; spr
-- D 3 - - - 0x01EAEE 07:EADE: 46        .byte con_chr_bank + $46   ; spr
-- D 3 - - - 0x01EAEF 07:EADF: 47        .byte con_chr_bank + $47   ; spr
-; EU
-                                        .byte con_chr_bank + $08   ; bg
-                                        .byte con_chr_bank + $0A   ; bg
-                                        .byte con_chr_bank + $94   ; spr
-                                        .byte con_chr_bank + $95   ; spr
-                                        .byte con_chr_bank + $96   ; spr
-                                        .byte con_chr_bank + $97   ; spr в начале подъёма наверх, банк переключается - нам требуется $9D
-
-; 04 area 5
-; US
-- D 3 - - - 0x01EAF0 07:EAE0: 1C        .byte con_chr_bank + $1C   ; bg
-- D 3 - - - 0x01EAF1 07:EAE1: 1E        .byte con_chr_bank + $1E   ; bg
-- D 3 - - - 0x01EAF2 07:EAE2: 44        .byte con_chr_bank + $44   ; spr
-- D 3 - - - 0x01EAF3 07:EAE3: 45        .byte con_chr_bank + $45   ; spr
-- D 3 - - - 0x01EAF4 07:EAE4: 46        .byte con_chr_bank + $46   ; spr
-- D 3 - - - 0x01EAF5 07:EAE5: 60        .byte con_chr_bank + $60   ; spr
-; EU
-                                        .byte con_chr_bank + $1C   ; bg
-                                        .byte con_chr_bank + $1E   ; bg
-                                        .byte con_chr_bank + $94   ; spr
-                                        .byte con_chr_bank + $95   ; spr
-                                        .byte con_chr_bank + $96   ; spr
-                                        .byte con_chr_bank + $9E   ; spr
-
-; 05 area 6
-; US
-- D 3 - - - 0x01EAF6 07:EAE6: 4C        .byte con_chr_bank + $4C   ; bg
-- D 3 - - - 0x01EAF7 07:EAE7: 4E        .byte con_chr_bank + $4E   ; bg
-- D 3 - - - 0x01EAF8 07:EAE8: 49        .byte con_chr_bank + $49   ; spr
-- D 3 - - - 0x01EAF9 07:EAE9: 4A        .byte con_chr_bank + $4A   ; spr
-- D 3 - - - 0x01EAFA 07:EAEA: 61        .byte con_chr_bank + $9F   ; spr
-- D 3 - - - 0x01EAFB 07:EAEB: 62        .byte con_chr_bank + $62   ; spr
-; EU
-                                        .byte con_chr_bank + $4C   ; bg
-                                        .byte con_chr_bank + $4E   ; bg
-                                        .byte con_chr_bank + $A8   ; spr
-                                        .byte con_chr_bank + $A9   ; spr
-                                        .byte con_chr_bank + $61   ; spr
-                                        .byte con_chr_bank + $62   ; spr
-
-; 06 area 7
-; US
-- D 3 - - - 0x01EAFC 07:EAEC: 24        .byte con_chr_bank + $24   ; bg
-- D 3 - - - 0x01EAFD 07:EAED: 26        .byte con_chr_bank + $26   ; bg
-- D 3 - - - 0x01EAFE 07:EAEE: 44        .byte con_chr_bank + $44   ; spr
-- D 3 - - - 0x01EAFF 07:EAEF: 45        .byte con_chr_bank + $45   ; spr
-- D 3 - - - 0x01EB00 07:EAF0: 63        .byte con_chr_bank + $63   ; spr
-- D 3 - - - 0x01EB01 07:EAF1: 64        .byte con_chr_bank + $64   ; spr
-; EU
-                                        .byte con_chr_bank + $24   ; bg
-                                        .byte con_chr_bank + $26   ; bg
-                                        .byte con_chr_bank + $94   ; spr
-                                        .byte con_chr_bank + $95   ; spr
-                                        .byte con_chr_bank + $A2   ; spr
-                                        .byte con_chr_bank + $A3   ; spr после спуска вниз банк переключается - нам требуется $A4, на боссе $A0
-
-; 07 area 8
-; US
-- D 3 - - - 0x01EB02 07:EAF2: 34        .byte con_chr_bank + $34   ; bg
-- D 3 - - - 0x01EB03 07:EAF3: 36        .byte con_chr_bank + $36   ; bg
-- D 3 - - - 0x01EB04 07:EAF4: 44        .byte con_chr_bank + $44   ; spr
-- D 3 - - - 0x01EB05 07:EAF5: 45        .byte con_chr_bank + $45   ; spr
-- D 3 - - - 0x01EB06 07:EAF6: 67        .byte con_chr_bank + $67   ; spr
-- D 3 - - - 0x01EB07 07:EAF7: 68        .byte con_chr_bank + $68   ; spr
-; EU
-                                        .byte con_chr_bank + $34   ; bg
-                                        .byte con_chr_bank + $36   ; bg
-                                        .byte con_chr_bank + $94   ; spr
-                                        .byte con_chr_bank + $95   ; spr
-                                        .byte con_chr_bank + $A5   ; spr
-                                        .byte con_chr_bank + $A6   ; spr после победы босса банк переключается - нам требуется
 
 
 
@@ -5081,6 +4942,8 @@ C - - - - - 0x01FBC1 07:FBB1: A9 3C     LDA #con_prg_bank + $3C
 C - - - - - 0x01FBC3 07:FBB3: 20 6F FD  JSR sub_FD6F_prg_bankswitch___no_return
 C - - - - - 0x01FBC6 07:FBB6: 20 3C 81  JSR sub_0x01814C
 C - - - - - 0x01FBC9 07:FBB9: 20 FC FC  JSR sub_FCFC_read_joy_regs
+                                        INC ram_счетчик_кадров_1
+                                        JSR sub_0001_мерцание_экрана
 C - - - - - 0x01FBCC 07:FBBC: 20 B9 E3  JSR sub_E3B9
 C - - - - - 0x01FBCF 07:FBBF: 20 17 FE  JSR sub_FE17_спрайтовый_движок
 C - - - - - 0x01FBD2 07:FBC2: A6 1E     LDX ram_index_ppu_buffer
@@ -5615,11 +5478,16 @@ C - - - - - 0x01FEEC 07:FEDC: 4C D9 9A  JMP loc_0x009AE9_sound_mode_handler
 
 
 
+sub_EAB0_bankswitch_подготовить_начальные_банки_для_уровня:
+                                        LDA #con_prg_bank + $20
+                                        JSR sub_FD6F_prg_bankswitch___no_return
+                                        JMP sub_0x01EAC0_подготовить_начальные_банки_для_уровня
+
+
 sub_FEDD_bankswitch_options:
                                         LDA #con_prg_bank + $20
                                         JSR sub_FD6F_prg_bankswitch___no_return
                                         JMP loc_0x00A123_options
-
 
 
 sub_FEDF_bankswitch_чит_коды:
