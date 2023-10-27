@@ -29,14 +29,6 @@
 .export _off001_0x009002_51_boss_7_mouth
 .export loc_0x009158
 .export loc_0x0092C0
-.export _off013_0x0092D9_00_area_1
-.export _off013_0x0093ED_01_area_2
-.export _off013_0x009493_02_area_3
-.export _off013_0x00956B_03_area_4
-.export _off013_0x00977E_04_area_5
-.export _off013_0x009892_05_area_6
-.export _off013_0x009935_06_area_7
-.export _off013_0x0099C9_07_area_8
 .export loc_0x009AE9_sound_mode_handler
 .export _off004_0x009FC8_00_area_1
 .export _off005_0x00A002_00_area_1
@@ -3038,9 +3030,9 @@ sub_9229_spawn_object_from_area_data:
 C - - - - - 0x009239 02:9229: A5 50     LDA ram_номер_уровня
 C - - - - - 0x00923B 02:922B: 0A        ASL
 C - - - - - 0x00923C 02:922C: A8        TAY
-C - - - - - 0x00923D 02:922D: B9 D4 F2  LDA tbl_0x01F2E4_area_objects_spawner,Y
+C - - - - - 0x00923D 02:922D: B9 D4 F2  LDA tbl_F2D4_area_objects_spawner,Y
 C - - - - - 0x009240 02:9230: 85 08     STA ram_0008
-C - - - - - 0x009242 02:9232: B9 D5 F2  LDA tbl_0x01F2E4_area_objects_spawner + $01,Y
+C - - - - - 0x009242 02:9232: B9 D5 F2  LDA tbl_F2D4_area_objects_spawner + $01,Y
 C - - - - - 0x009245 02:9235: 85 09     STA ram_0009
 C - - - - - 0x009247 02:9237: A9 00     LDA #$00
 C - - - - - 0x009249 02:9239: 85 0A     STA ram_000A
@@ -3133,6 +3125,18 @@ C - - - - - 0x0092D3 02:92C3: A9 1C     LDA #$1C
 C - - - - - 0x0092D5 02:92C5: 9D 22 05  STA ram_позиция_y_спрайта_врага_и_пуль,X
 bra_92C8_RTS:
 C - - - - - 0x0092D8 02:92C8: 60        RTS
+
+
+
+tbl_F2D4_area_objects_spawner:
+- D 3 - - - 0x01F2E4 07:F2D4: C9 92     .word _off013_0x0092D9_00_area_1
+- D 3 - - - 0x01F2E6 07:F2D6: DD 93     .word _off013_0x0093ED_01_area_2
+- D 3 - - - 0x01F2E8 07:F2D8: 83 94     .word _off013_0x009493_02_area_3
+- D 3 - - - 0x01F2EA 07:F2DA: 5B 95     .word _off013_0x00956B_03_area_4
+- D 3 - - - 0x01F2EC 07:F2DC: 6E 97     .word _off013_0x00977E_04_area_5
+- D 3 - - - 0x01F2EE 07:F2DE: 82 98     .word _off013_0x009892_05_area_6
+- D 3 - - - 0x01F2F0 07:F2E0: 25 99     .word _off013_0x009935_06_area_7
+- D 3 - - - 0x01F2F2 07:F2E2: B9 99     .word _off013_0x0099C9_07_area_8
 
 
 

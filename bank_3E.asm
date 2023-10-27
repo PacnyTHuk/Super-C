@@ -21,7 +21,6 @@
 .export sub_0x01F192
 .export sub_0x01F198
 .export sub_0x01F1A0
-.export tbl_0x01F2E4_area_objects_spawner
 .export sub_0x01F2F4
 .export sub_0x01F335
 .export sub_0x01F337
@@ -3412,18 +3411,6 @@ tbl_F2C4_атрибуты_метатайлов:
 - D 3 - - - 0x01F2DE 07:F2CE: 8A B9     .word _off007_0x01399A_05_area_6
 - D 3 - - - 0x01F2E0 07:F2D0: 57 A7     .word _off007_0x016767_06_area_7
 - D 3 - - - 0x01F2E2 07:F2D2: A7 BC     .word _off007_0x017CB7_07_area_8
-
-
-
-tbl_0x01F2E4_area_objects_spawner:
-- D 3 - - - 0x01F2E4 07:F2D4: C9 92     .word _off013_0x0092D9_00_area_1
-- D 3 - - - 0x01F2E6 07:F2D6: DD 93     .word _off013_0x0093ED_01_area_2
-- D 3 - - - 0x01F2E8 07:F2D8: 83 94     .word _off013_0x009493_02_area_3
-- D 3 - - - 0x01F2EA 07:F2DA: 5B 95     .word _off013_0x00956B_03_area_4
-- D 3 - - - 0x01F2EC 07:F2DC: 6E 97     .word _off013_0x00977E_04_area_5
-- D 3 - - - 0x01F2EE 07:F2DE: 82 98     .word _off013_0x009892_05_area_6
-- D 3 - - - 0x01F2F0 07:F2E0: 25 99     .word _off013_0x009935_06_area_7
-- D 3 - - - 0x01F2F2 07:F2E2: B9 99     .word _off013_0x0099C9_07_area_8
 
 
 
