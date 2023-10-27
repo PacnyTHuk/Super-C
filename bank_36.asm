@@ -1347,8 +1347,8 @@ C - - - - - 0x00D997 03:9987: 60        RTS
 tbl_9988:
 - D 0 - - - 0x00D998 03:9988: 58        .byte con_F97C_colors + $16 * $04   ; 
 - D 0 - - - 0x00D999 03:9989: 5C        .byte con_F97C_colors + $17 * $04   ; 
-- D 0 - - - 0x00D99A 03:998A: 60        .byte con_F97C_colors + $06 * $04 * $04   ; 
-- D 0 - - - 0x00D99B 03:998B: 60        .byte con_F97C_colors + $06 * $04 * $04   ; 
+- D 0 - - - 0x00D99A 03:998A: 60        .byte con_F97C_colors + $18 * $04   ; 
+- D 0 - - - 0x00D99B 03:998B: 60        .byte con_F97C_colors + $18 * $04   ; 
 - D 0 - - - 0x00D99C 03:998C: 5C        .byte con_F97C_colors + $17 * $04   ; 
 - D 0 - - - 0x00D99D 03:998D: 58        .byte con_F97C_colors + $16 * $04   ; 
 

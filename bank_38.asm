@@ -3501,7 +3501,7 @@ C - - - - - 0x011452 04:9442: A9 FF     LDA #$FF
 C - - - - - 0x011454 04:9444: 8D CF 03  STA ram_03CF
 C - - - - - 0x011457 04:9447: A0 9C     LDY #con_F97C_colors + $27 * $04
 C - - - - - 0x011459 04:9449: 20 64 F9  JSR sub_0x01F974_write_3_colors_with_condition
-C - - - - - 0x01145C 04:944C: A0 A0     LDY #con_F97C_colors + $0A * $04 * $04
+C - - - - - 0x01145C 04:944C: A0 A0     LDY #con_F97C_colors + $28 * $04
 C - - - - - 0x01145E 04:944E: 20 64 F9  JSR sub_0x01F974_write_3_colors_with_condition
 C - - - - - 0x011461 04:9451: A6 10     LDX ram_0010
 C - - - - - 0x011463 04:9453: A9 70     LDA #$70
