@@ -880,7 +880,7 @@ ofs_99B3_options_graphics:
 ofs_99B3_options_obj_limit:
                                         LDA ram_копия_нажатая_кнопка
                                         AND #con_btns_LR
-                                        BEQ bra_9B05
+                                        BEQ bra_9B06_RTS
                                         AND #con_btn_Left
                                         BNE bra_9B04_left
 ; right
