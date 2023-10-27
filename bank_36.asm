@@ -1495,6 +1495,8 @@ C - - - - - 0x00DA35 03:9A25: D0 12     BNE bra_9A39_RTS
 C - - - - - 0x00DA37 03:9A27: A9 00     LDA #$00
 C - - - - - 0x00DA39 03:9A29: 85 98     STA ram_0098
 C - - - - - 0x00DA3B 03:9A2B: F0 C7     BEQ bra_99F4    ; jmp
+bra_9A39_RTS:
+C - - - - - 0x00DA49 03:9A39: 60        RTS
 
 
 
@@ -1511,12 +1513,6 @@ ofs_026_9A33_0B:
 C - - J - - 0x00DA43 03:9A33: A9 01     LDA #$01
 C - - - - - 0x00DA45 03:9A35: 85 61     STA ram_0061_конфиг_уровня
 C - - - - - 0x00DA47 03:9A37: D0 BB     BNE bra_99F4    ; jmp
-
-
-
-bra_9A39_RTS:
-; bzk optimize
-C - - - - - 0x00DA49 03:9A39: 60        RTS
 
 
 
