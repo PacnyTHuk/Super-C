@@ -4555,12 +4555,11 @@ bra_9BAB:
 C - - - - - 0x011BBB 04:9BAB: BD 56 05  LDA ram_атрибуты_спрайта_врага_и_пуль,X
 C - - - - - 0x011BBE 04:9BAE: 09 20     ORA #$20
 C - - - - - 0x011BC0 04:9BB0: 9D 56 05  STA ram_атрибуты_спрайта_врага_и_пуль,X
-C - - - - - 0x011BC3 04:9BB3: 4C BB 9B  JMP loc_9BBB    ; bzk optimize, BNE
+C - - - - - 0x011BC3 04:9BB3: 4C BB 9B  BNE bra_9BBB
 bra_9BB6:
 C - - - - - 0x011BC6 04:9BB6: A9 00     LDA #$00
 C - - - - - 0x011BC8 04:9BB8: 9D 08 05  STA ram_кадр_врага_и_пуль,X
 bra_9BBB:
-loc_9BBB:
 C D 0 - - - 0x011BCB 04:9BBB: BD 64 07  LDA ram_0764_obj,X
 C - - - - - 0x011BCE 04:9BBE: F0 01     BEQ bra_9BC1
 C - - - - - 0x011BD0 04:9BC0: 60        RTS
