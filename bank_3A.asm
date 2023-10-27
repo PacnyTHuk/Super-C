@@ -3839,9 +3839,7 @@ C - - - - - 0x015666 05:9656: 9D 64 07  STA ram_0764_obj,X
 C - - - - - 0x015669 05:9659: A0 08     LDY #$08
 bra_965B_loop:
 C - - - - - 0x01566B 05:965B: 84 08     STY ram_0008
-C - - - - - 0x01566D 05:965D: A9 43     LDA #con_obj_id_43
-; bzk optimize, load into Y directly
-C - - - - - 0x01566F 05:965F: A8        TAY
+C - - - - - 0x01566D 05:965D: A9 43     LDY #con_obj_id_43
 C - - - - - 0x015670 05:9660: 20 C8 AB  JSR sub_0x006BD8
 C - - - - - 0x015673 05:9663: 90 13     BCC bra_9678
 C - - - - - 0x015675 05:9665: FE 64 07  INC ram_0764_obj,X
