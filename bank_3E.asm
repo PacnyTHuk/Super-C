@@ -61,7 +61,7 @@
 .export sub_0x01FC8F_copy_reg_values
 .export loc_0x01FC8F_copy_reg_values
 .export loc_0x01FCCA_включить_NMI
-.export sub_0x01FDBB
+.export sub_0x01FDBB_выбрать_второй_банк_с_данными_музыки
 .export sub_0x01FDEE_play_sound
 .export loc_0x01FDEE_play_sound
 .export loc_0x01FE06
@@ -821,7 +821,7 @@ C - - - - - 0x01E3F5 07:E3E5: CA        DEX
 C - - - - - 0x01E3F6 07:E3E6: D0 20     BNE bra_E408_минус_x
 ; X=01 слияние логотипа
                                         JSR sub_E4D0_переключение_банков_анимация_super
-C - - - - - 0x01E3FB 07:E3EB: 20 EF FE  JSR loc_0x00231A_bankswitch_обработчик_главного_экрана
+C - - - - - 0x01E3FB 07:E3EB: 20 EF FE  JSR loc_FEEF_bankswitch_обработчик_главного_экрана
 C - - - - - 0x01E3FE 07:E3EE: B0 09     BCS bra_E3F9
 ; заставка еще идет
 C - - - - - 0x01E400 07:E3F0: A5 F5     LDA ram_копия_нажатая_кнопка
@@ -4930,7 +4930,7 @@ C - - - - - 0x01FBB4 07:FBA4: 20 04 FC  JSR sub_FC04
 C - - - - - 0x01FBB7 07:FBA7: 20 0F FF  JSR sub_FF0F
 C - - - - - 0x01FBBA 07:FBAA: A5 2B     LDA ram_002B
 C - - - - - 0x01FBBC 07:FBAC: F0 03     BEQ bra_FBB1
-C - - - - - 0x01FBBE 07:FBAE: 20 8F FC  JSR sub_FC8F
+C - - - - - 0x01FBBE 07:FBAE: 20 8F FC  JSR sub_FC8F_выключить_IRQ
 bra_FBB1:
 C - - - - - 0x01FBC1 07:FBB1: A9 3C     LDA #con_prg_bank + $3C
 C - - - - - 0x01FBC3 07:FBB3: 20 6F FD  JSR sub_FD6F_prg_bankswitch___no_return
@@ -5053,7 +5053,7 @@ C - - - - - 0x01FC9B 07:FC8B: 60        RTS
 
 
 
-sub_FC8F:
+sub_FC8F_выключить_IRQ:
 C - - - - - 0x01FC9F 07:FC8F: A9 FF     LDA #$FF
 C - - - - - 0x01FCA1 07:FC91: 85 45     STA ram_номер_сканлинии
 C - - - - - 0x01FCA3 07:FC93: 85 46     STA ram_0046
@@ -5206,8 +5206,8 @@ C - - - - - 0x01FDBA 07:FDAA: 60        RTS
 
 
 
-sub_FDAB_select_secondary_music_bank:
-sub_0x01FDBB:
+sub_FDAB_выбрать_второй_банк_с_данными_музыки:
+sub_0x01FDBB_выбрать_второй_банк_с_данными_музыки:
 C - - - - - 0x01FDBB 07:FDAB: A0 31     LDY #con_prg_bank + $31
 C - - - - - 0x01FDBD 07:FDAD: C9 32     CMP #con_sound_32
 C - - - - - 0x01FDBF 07:FDAF: F0 06     BEQ bra_FDB7_32_36
@@ -5275,7 +5275,7 @@ C D 3 - - - 0x01FE06 07:FDF6: 8D E9 07  STA ram_07E9_sound
 C - - - - - 0x01FE09 07:FDF9: AD FF BF  LDA $BFFF
 C - - - - - 0x01FE0C 07:FDFC: 48        PHA
 C - - - - - 0x01FE0D 07:FDFD: AD E9 07  LDA ram_07E9_sound
-C - - - - - 0x01FE10 07:FE00: 20 AB FD  JSR sub_FDAB_select_secondary_music_bank
+C - - - - - 0x01FE10 07:FE00: 20 AB FD  JSR sub_FDAB_выбрать_второй_банк_с_данными_музыки
 C - - - - - 0x01FE13 07:FE03: AD E9 07  LDA ram_07E9_sound
 C - - - - - 0x01FE16 07:FE06: 20 39 80  JSR sub_0x018049_play_sound
 C - - - - - 0x01FE19 07:FE09: 68        PLA
@@ -5492,7 +5492,7 @@ C - - - - - 0x01FEF4 07:FEE4: 4C 9C A2  JMP loc_0x0022AC_чит_коды
 
 
 
-loc_0x00231A_bankswitch_обработчик_главного_экрана:
+loc_FEEF_bankswitch_обработчик_главного_экрана:
 C - - - - - 0x01FEFF 07:FEEF: A9 30     LDA #con_prg_bank + $20
 C - - - - - 0x01FF01 07:FEF1: 20 6F FD  JSR sub_FD6F_prg_bankswitch___no_return
 C - - - - - 0x01FF04 07:FEF4: 4C 0A A3  JMP loc_0x00231A_обработчик_главного_экрана
