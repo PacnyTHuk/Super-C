@@ -1055,7 +1055,7 @@ C - - - - - 0x0085F1 02:85E1: 85 6B     STA ram_006B
 bra_85E3_RTS:
 C - - - - - 0x0085F3 02:85E3: 60        RTS
 bra_85E4:
-C - - - - - 0x0085F4 02:85E4: A0 AC     LDY #con_F97C_colors + $AC
+C - - - - - 0x0085F4 02:85E4: A0 AC     LDY #con_F97C_colors + $2B * $04
 C - - - - - 0x0085F6 02:85E6: 20 64 F9  JSR sub_0x01F974_write_3_colors_with_condition
 C - - - - - 0x0085F9 02:85E9: A6 10     LDX ram_0010
 C - - - - - 0x0085FB 02:85EB: A9 30     LDA #con_sound_30
@@ -1179,7 +1179,7 @@ C - - - - - 0x0086F0 02:86E0: 98        TYA
 C - - - - - 0x0086F1 02:86E1: 18        CLC
 C - - - - - 0x0086F2 02:86E2: 69 07     ADC #$07
 C - - - - - 0x0086F4 02:86E4: 85 1E     STA ram_index_ppu_buffer
-C - - - - - 0x0086F6 02:86E6: A0 B0     LDY #con_F97C_colors + $B0
+C - - - - - 0x0086F6 02:86E6: A0 B0     LDY #con_F97C_colors + $2C * $04
 C - - - - - 0x0086F8 02:86E8: 20 64 F9  JSR sub_0x01F974_write_3_colors_with_condition
 C - - - - - 0x0086FB 02:86EB: A6 10     LDX ram_0010
 C - - - - - 0x0086FD 02:86ED: A9 20     LDA #$20

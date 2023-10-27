@@ -903,9 +903,9 @@ C - - - - - 0x0045B7 01:85A7: A9 00     LDA #$00
 C - - - - - 0x0045B9 01:85A9: 9D 56 07  STA ram_0756_obj,X
 C - - - - - 0x0045BC 01:85AC: A9 1E     LDA #$1E
 C - - - - - 0x0045BE 01:85AE: 9D 72 07  STA ram_0772_obj,X
-C - - - - - 0x0045C1 01:85B1: A0 00     LDY #con_F97C_colors + $00
+C - - - - - 0x0045C1 01:85B1: A0 00     LDY #con_F97C_colors + $00 * $04
 C - - - - - 0x0045C3 01:85B3: 20 64 F9  JSR sub_0x01F974_write_3_colors_with_condition
-C - - - - - 0x0045C6 01:85B6: A0 04     LDY #con_F97C_colors + $04
+C - - - - - 0x0045C6 01:85B6: A0 04     LDY #con_F97C_colors + $01 * $04
 C - - - - - 0x0045C8 01:85B8: 20 64 F9  JSR sub_0x01F974_write_3_colors_with_condition
 C - - - - - 0x0045CB 01:85BB: 20 B8 F7  JSR sub_0x01F7C8
 C - - - - - 0x0045CE 01:85BE: A6 10     LDX ram_0010

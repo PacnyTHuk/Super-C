@@ -194,9 +194,9 @@ C - - - - - 0x00D455 03:9445: D0 0A     BNE bra_9451    ; jmp
 
 
 ofs_019_9447_0A:
-C - - J - - 0x00D457 03:9447: A0 80     LDY #con_F97C_colors + $80
+C - - J - - 0x00D457 03:9447: A0 80     LDY #con_F97C_colors + $20 * $04
 C - - - - - 0x00D459 03:9449: 20 68 F9  JSR sub_0x01F978_write_3_colors
-C - - - - - 0x00D45C 03:944C: A0 84     LDY #con_F97C_colors + $84
+C - - - - - 0x00D45C 03:944C: A0 84     LDY #con_F97C_colors + $21 * $04
 C - - - - - 0x00D45E 03:944E: 20 68 F9  JSR sub_0x01F978_write_3_colors
 bra_9451:
 loc_9451:
@@ -254,7 +254,7 @@ tbl_9478_hi:
 
 
 ofs_020_947E_00:
-C - - J - - 0x00D48E 03:947E: A0 64     LDY #con_F97C_colors + $64
+C - - J - - 0x00D48E 03:947E: A0 64     LDY #con_F97C_colors + $19 * $04
 C - - - - - 0x00D490 03:9480: 20 64 F9  JSR sub_0x01F974_write_3_colors_with_condition
 bra_9483:
 C - - - - - 0x00D493 03:9483: E6 8D     INC ram_008D_событие_на_уровне
@@ -360,14 +360,14 @@ tbl_94D2_hi:
 
 
 ofs_021_94EE_00:
-C - - J - - 0x00D4FE 03:94EE: A0 68     LDY #con_F97C_colors + $68
+C - - J - - 0x00D4FE 03:94EE: A0 68     LDY #con_F97C_colors + $1A * $04
 C - - - - - 0x00D500 03:94F0: 20 64 F9  JSR sub_0x01F974_write_3_colors_with_condition
-C - - - - - 0x00D503 03:94F3: A0 6C     LDY #con_F97C_colors + $6C
+C - - - - - 0x00D503 03:94F3: A0 6C     LDY #con_F97C_colors + $1B * $04
 C - - - - - 0x00D505 03:94F5: 20 64 F9  JSR sub_0x01F974_write_3_colors_with_condition
-C - - - - - 0x00D508 03:94F8: A0 70     LDY #con_F97C_colors + $70
+C - - - - - 0x00D508 03:94F8: A0 70     LDY #con_F97C_colors + $1C * $04
 C - - - - - 0x00D50A 03:94FA: D0 02     BNE bra_94FE    ; jmp
 ofs_021_94FC_05:
-C - - J - - 0x00D50C 03:94FC: A0 74     LDY #con_F97C_colors + $74
+C - - J - - 0x00D50C 03:94FC: A0 74     LDY #con_F97C_colors + $1D * $04
 bra_94FE:
 C - - - - - 0x00D50E 03:94FE: 20 64 F9  JSR sub_0x01F974_write_3_colors_with_condition
 bra_9501:
@@ -378,11 +378,11 @@ C - - - - - 0x00D513 03:9503: 60        RTS
 
 
 ofs_021_9504_06:
-C - - J - - 0x00D514 03:9504: A0 78     LDY #con_F97C_colors + $78
+C - - J - - 0x00D514 03:9504: A0 78     LDY #con_F97C_colors + $1E * $04
 C - - - - - 0x00D516 03:9506: 20 64 F9  JSR sub_0x01F974_write_3_colors_with_condition
 C - - - - - 0x00D519 03:9509: A0 20     LDY #$20
 C - - - - - 0x00D51B 03:950B: 20 30 FA  JSR sub_0x01FA40
-C - - - - - 0x00D51E 03:950E: A0 7C     LDY #con_F97C_colors + $7C
+C - - - - - 0x00D51E 03:950E: A0 7C     LDY #con_F97C_colors + $1F * $04
 C - - - - - 0x00D520 03:9510: A9 5C     LDA #con_chr_bank + $5C
 C - - - - - 0x00D522 03:9512: A2 5E     LDX #con_chr_bank + $5E
 C - - - - - 0x00D524 03:9514: 8D F0 07  STA ram_bg_bank_1
@@ -393,15 +393,15 @@ C - - - - - 0x00D52A 03:951A: D0 E2     BNE bra_94FE    ; jmp
 
 
 ofs_021_951C_07:
-C - - J - - 0x00D52C 03:951C: A0 88     LDY #con_F97C_colors + $88
+C - - J - - 0x00D52C 03:951C: A0 88     LDY #con_F97C_colors + $22 * $04
 C - - - - - 0x00D52E 03:951E: D0 DE     BNE bra_94FE    ; jmp
 
 
 
 ofs_021_9520_09:
-C - - J - - 0x00D530 03:9520: A0 8C     LDY #con_F97C_colors + $8C
+C - - J - - 0x00D530 03:9520: A0 8C     LDY #con_F97C_colors + $23 * $04
 C - - - - - 0x00D532 03:9522: 20 64 F9  JSR sub_0x01F974_write_3_colors_with_condition
-C - - - - - 0x00D535 03:9525: A0 90     LDY #con_F97C_colors + $90
+C - - - - - 0x00D535 03:9525: A0 90     LDY #con_F97C_colors + $24 * $04
 C - - - - - 0x00D537 03:9527: A2 32     LDX #con_chr_bank + $32
 C - - - - - 0x00D539 03:9529: D0 EC     BNE bra_9517    ; jmp
 
@@ -513,17 +513,17 @@ C - - - - - 0x00D5AF 03:959F: D0 0E     BNE bra_95AF
 ; 00 
 C - - - - - 0x00D5B1 03:95A1: A9 10     LDA #con_chr_bank + $10
 C - - - - - 0x00D5B3 03:95A3: 8D F1 07  STA ram_bg_bank_2
-C - - - - - 0x00D5B6 03:95A6: A0 08     LDY #con_F97C_colors + $08
+C - - - - - 0x00D5B6 03:95A6: A0 08     LDY #con_F97C_colors + $02 * $04
 C - - - - - 0x00D5B8 03:95A8: 20 64 F9  JSR sub_0x01F974_write_3_colors_with_condition
-C - - - - - 0x00D5BB 03:95AB: A0 0C     LDY #con_F97C_colors + $0C
+C - - - - - 0x00D5BB 03:95AB: A0 0C     LDY #con_F97C_colors + $03 * $04
 C - - - - - 0x00D5BD 03:95AD: D0 0A     BNE bra_95B9    ; jmp
 bra_95AF:
 C - - - - - 0x00D5BF 03:95AF: CA        DEX
 C - - - - - 0x00D5C0 03:95B0: D0 0D     BNE bra_95BF
 ; 01 
-C - - - - - 0x00D5C2 03:95B2: A0 10     LDY #con_F97C_colors + $10
+C - - - - - 0x00D5C2 03:95B2: A0 10     LDY #con_F97C_colors + $04 * $04
 C - - - - - 0x00D5C4 03:95B4: 20 64 F9  JSR sub_0x01F974_write_3_colors_with_condition
-C - - - - - 0x00D5C7 03:95B7: A0 14     LDY #con_F97C_colors + $14
+C - - - - - 0x00D5C7 03:95B7: A0 14     LDY #con_F97C_colors + $05 * $04
 bra_95B9:
 C - - - - - 0x00D5C9 03:95B9: 20 64 F9  JSR sub_0x01F974_write_3_colors_with_condition
 bra_95BC:
@@ -539,9 +539,9 @@ C - - - - - 0x00D5D6 03:95C6: A9 12     LDA #con_chr_bank + $12
 C - - - - - 0x00D5D8 03:95C8: 8D F0 07  STA ram_bg_bank_1
 C - - - - - 0x00D5DB 03:95CB: A9 14     LDA #con_chr_bank + $14
 C - - - - - 0x00D5DD 03:95CD: 8D F1 07  STA ram_bg_bank_2
-C - - - - - 0x00D5E0 03:95D0: A0 18     LDY #con_F97C_colors + $18
+C - - - - - 0x00D5E0 03:95D0: A0 18     LDY #con_F97C_colors + $06 * $04
 C - - - - - 0x00D5E2 03:95D2: 20 64 F9  JSR sub_0x01F974_write_3_colors_with_condition
-C - - - - - 0x00D5E5 03:95D5: A0 1C     LDY #con_F97C_colors + $1C
+C - - - - - 0x00D5E5 03:95D5: A0 1C     LDY #con_F97C_colors + $07 * $04
 C - - - - - 0x00D5E7 03:95D7: D0 E0     BNE bra_95B9    ; jmp
 bra_95D9:
 C - - - - - 0x00D5E9 03:95D9: CA        DEX
@@ -549,17 +549,17 @@ C - - - - - 0x00D5EA 03:95DA: D0 0E     BNE bra_95EA
 ; 03 
 C - - - - - 0x00D5EC 03:95DC: A9 10     LDA #con_chr_bank + $10
 C - - - - - 0x00D5EE 03:95DE: 8D F1 07  STA ram_bg_bank_2
-C - - - - - 0x00D5F1 03:95E1: A0 20     LDY #con_F97C_colors + $20
+C - - - - - 0x00D5F1 03:95E1: A0 20     LDY #con_F97C_colors + $08 * $04
 C - - - - - 0x00D5F3 03:95E3: 20 64 F9  JSR sub_0x01F974_write_3_colors_with_condition
-C - - - - - 0x00D5F6 03:95E6: A0 24     LDY #con_F97C_colors + $24
+C - - - - - 0x00D5F6 03:95E6: A0 24     LDY #con_F97C_colors + $09 * $04
 C - - - - - 0x00D5F8 03:95E8: D0 CF     BNE bra_95B9    ; jmp
 bra_95EA:
 C - - - - - 0x00D5FA 03:95EA: CA        DEX
 C - - - - - 0x00D5FB 03:95EB: D0 09     BNE bra_95F6
 ; 04 
-C - - - - - 0x00D5FD 03:95ED: A0 44     LDY #con_F97C_colors + $44
+C - - - - - 0x00D5FD 03:95ED: A0 44     LDY #con_F97C_colors + $11 * $04
 C - - - - - 0x00D5FF 03:95EF: 20 64 F9  JSR sub_0x01F974_write_3_colors_with_condition
-C - - - - - 0x00D602 03:95F2: A0 48     LDY #con_F97C_colors + $48
+C - - - - - 0x00D602 03:95F2: A0 48     LDY #con_F97C_colors + $12 * $04
 C - - - - - 0x00D604 03:95F4: D0 C3     BNE bra_95B9    ; jmp
 bra_95F6:
 C - - - - - 0x00D606 03:95F6: CA        DEX
@@ -866,12 +866,12 @@ C - - - - - 0x00D75D 03:974D: 60        RTS
 
 
 tbl_974E:
-- D 0 - - - 0x00D75E 03:974E: 38        .byte con_F97C_colors + $38   ; 
-- D 0 - - - 0x00D75F 03:974F: 3C        .byte con_F97C_colors + $3C   ; 
-- D 0 - - - 0x00D760 03:9750: 40        .byte con_F97C_colors + $40   ; 
-- D 0 - - - 0x00D761 03:9751: 40        .byte con_F97C_colors + $40   ; 
-- D 0 - - - 0x00D762 03:9752: 3C        .byte con_F97C_colors + $3C   ; 
-- D 0 - - - 0x00D763 03:9753: 38        .byte con_F97C_colors + $38   ; 
+- D 0 - - - 0x00D75E 03:974E: 38        .byte con_F97C_colors + $0E * $04   ; 
+- D 0 - - - 0x00D75F 03:974F: 3C        .byte con_F97C_colors + $0F * $04   ; 
+- D 0 - - - 0x00D760 03:9750: 40        .byte con_F97C_colors + $10 * $04   ; 
+- D 0 - - - 0x00D761 03:9751: 40        .byte con_F97C_colors + $10 * $04   ; 
+- D 0 - - - 0x00D762 03:9752: 3C        .byte con_F97C_colors + $0F * $04   ; 
+- D 0 - - - 0x00D763 03:9753: 38        .byte con_F97C_colors + $0E * $04   ; 
 
 
 
@@ -956,7 +956,7 @@ C - - - - - 0x00D7B0 03:97A0: A9 20     LDA #con_chr_bank + $20
 C - - - - - 0x00D7B2 03:97A2: 8D F0 07  STA ram_bg_bank_1
 C - - - - - 0x00D7B5 03:97A5: A9 22     LDA #con_chr_bank + $22
 C - - - - - 0x00D7B7 03:97A7: 8D F1 07  STA ram_bg_bank_2
-C - - - - - 0x00D7BA 03:97AA: A0 28     LDY #con_F97C_colors + $28
+C - - - - - 0x00D7BA 03:97AA: A0 28     LDY #con_F97C_colors + $0A * $04
 bra_97AC:
 C - - - - - 0x00D7BC 03:97AC: 20 64 F9  JSR sub_0x01F974_write_3_colors_with_condition
 bra_97AF:
@@ -968,7 +968,7 @@ C - - - - - 0x00D7C1 03:97B1: 60        RTS
 ofs_024_97B2_01:
 C - - J - - 0x00D7C2 03:97B2: A9 FF     LDA #$FF
 C - - - - - 0x00D7C4 03:97B4: 8D CD 03  STA ram_03CD
-C - - - - - 0x00D7C7 03:97B7: A0 2C     LDY #con_F97C_colors + $2C
+C - - - - - 0x00D7C7 03:97B7: A0 2C     LDY #con_F97C_colors + $0B * $04
 C - - - - - 0x00D7C9 03:97B9: D0 F1     BNE bra_97AC    ; jmp
 
 
@@ -985,9 +985,9 @@ C - - - - - 0x00D7D1 03:97C1: D0 EC     BNE bra_97AF    ; jmp
 ofs_024_97C3_03:
 C - - J - - 0x00D7D3 03:97C3: A9 40     LDA #$40
 C - - - - - 0x00D7D5 03:97C5: 8D CF 03  STA ram_03CF
-C - - - - - 0x00D7D8 03:97C8: A0 A4     LDY #con_F97C_colors + $A4
+C - - - - - 0x00D7D8 03:97C8: A0 A4     LDY #con_F97C_colors + $29 * $04
 C - - - - - 0x00D7DA 03:97CA: 20 64 F9  JSR sub_0x01F974_write_3_colors_with_condition
-C - - - - - 0x00D7DD 03:97CD: A0 A8     LDY #con_F97C_colors + $A8
+C - - - - - 0x00D7DD 03:97CD: A0 A8     LDY #con_F97C_colors + $2A * $04
 C - - - - - 0x00D7DF 03:97CF: 20 64 F9  JSR sub_0x01F974_write_3_colors_with_condition
 C - - - - - 0x00D7E2 03:97D2: A9 02     LDA #$02
 C - - - - - 0x00D7E4 03:97D4: 85 61     STA ram_0061_конфиг_уровня
@@ -1175,7 +1175,7 @@ tbl_9899_hi:
 
 
 ofs_025_98A9_00:
-C - - J - - 0x00D8B9 03:98A9: A0 94     LDY #con_F97C_colors + $94
+C - - J - - 0x00D8B9 03:98A9: A0 94     LDY #con_F97C_colors + $25 * $04
 C - - - - - 0x00D8BB 03:98AB: 20 64 F9  JSR sub_0x01F974_write_3_colors_with_condition
 bra_98AE:
 loc_98AE:
@@ -1220,7 +1220,7 @@ C - - - - - 0x00D8DF 03:98CF: D0 DD     BNE bra_98AE    ; jmp
 
 
 ofs_025_98D1_06:
-C - - J - - 0x00D8E1 03:98D1: A0 98     LDY #con_F97C_colors + $98
+C - - J - - 0x00D8E1 03:98D1: A0 98     LDY #con_F97C_colors + $26 * $04
 C - - - - - 0x00D8E3 03:98D3: 20 64 F9  JSR sub_0x01F974_write_3_colors_with_condition
 C - - - - - 0x00D8E6 03:98D6: A9 00     LDA #$00
 C - - - - - 0x00D8E8 03:98D8: 85 98     STA ram_0098
@@ -1282,7 +1282,7 @@ C - - - - - 0x00D92C 03:991C: CA        DEX
 C - - - - - 0x00D92D 03:991D: D0 0D     BNE bra_992C
 C - - - - - 0x00D92F 03:991F: A9 28     LDA #con_chr_bank + $28
 C - - - - - 0x00D931 03:9921: 8D F0 07  STA ram_bg_bank_1
-C - - - - - 0x00D934 03:9924: A0 30     LDY #con_F97C_colors + $30
+C - - - - - 0x00D934 03:9924: A0 30     LDY #con_F97C_colors + $0C * $04
 bra_9926:
 C - - - - - 0x00D936 03:9926: 20 64 F9  JSR sub_0x01F974_write_3_colors_with_condition
 bra_9929:
@@ -1295,7 +1295,7 @@ C - - - - - 0x00D93F 03:992F: A9 2A     LDA #con_chr_bank + $2A
 C - - - - - 0x00D941 03:9931: 8D F1 07  STA ram_bg_bank_2
 C - - - - - 0x00D944 03:9934: A9 65     LDA #con_chr_bank + $65
 C - - - - - 0x00D946 03:9936: 8D F5 07  STA ram_spr_bank_4
-C - - - - - 0x00D949 03:9939: A0 34     LDY #con_F97C_colors + $34
+C - - - - - 0x00D949 03:9939: A0 34     LDY #con_F97C_colors + $0D * $04
 C - - - - - 0x00D94B 03:993B: D0 E9     BNE bra_9926    ; jmp
 bra_993D:
 C - - - - - 0x00D94D 03:993D: CA        DEX
@@ -1308,9 +1308,9 @@ C - - - - - 0x00D95A 03:994A: A9 2E     LDA #con_chr_bank + $2E
 C - - - - - 0x00D95C 03:994C: 8D F1 07  STA ram_bg_bank_2
 C - - - - - 0x00D95F 03:994F: A9 66     LDA #con_chr_bank + $66
 C - - - - - 0x00D961 03:9951: 8D F4 07  STA ram_spr_bank_3
-C - - - - - 0x00D964 03:9954: A0 50     LDY #con_F97C_colors + $50
+C - - - - - 0x00D964 03:9954: A0 50     LDY #con_F97C_colors + $14 * $04
 C - - - - - 0x00D966 03:9956: 20 64 F9  JSR sub_0x01F974_write_3_colors_with_condition
-C - - - - - 0x00D969 03:9959: A0 54     LDY #con_F97C_colors + $54
+C - - - - - 0x00D969 03:9959: A0 54     LDY #con_F97C_colors + $15 * $04
 C - - - - - 0x00D96B 03:995B: D0 C9     BNE bra_9926    ; jmp
 bra_995D:
 C - - - - - 0x00D96D 03:995D: CA        DEX
@@ -1345,12 +1345,12 @@ C - - - - - 0x00D997 03:9987: 60        RTS
 
 
 tbl_9988:
-- D 0 - - - 0x00D998 03:9988: 58        .byte con_F97C_colors + $58   ; 
-- D 0 - - - 0x00D999 03:9989: 5C        .byte con_F97C_colors + $5C   ; 
-- D 0 - - - 0x00D99A 03:998A: 60        .byte con_F97C_colors + $60   ; 
-- D 0 - - - 0x00D99B 03:998B: 60        .byte con_F97C_colors + $60   ; 
-- D 0 - - - 0x00D99C 03:998C: 5C        .byte con_F97C_colors + $5C   ; 
-- D 0 - - - 0x00D99D 03:998D: 58        .byte con_F97C_colors + $58   ; 
+- D 0 - - - 0x00D998 03:9988: 58        .byte con_F97C_colors + $16 * $04   ; 
+- D 0 - - - 0x00D999 03:9989: 5C        .byte con_F97C_colors + $17 * $04   ; 
+- D 0 - - - 0x00D99A 03:998A: 60        .byte con_F97C_colors + $06 * $04 * $04   ; 
+- D 0 - - - 0x00D99B 03:998B: 60        .byte con_F97C_colors + $06 * $04 * $04   ; 
+- D 0 - - - 0x00D99C 03:998C: 5C        .byte con_F97C_colors + $17 * $04   ; 
+- D 0 - - - 0x00D99D 03:998D: 58        .byte con_F97C_colors + $16 * $04   ; 
 
 
 

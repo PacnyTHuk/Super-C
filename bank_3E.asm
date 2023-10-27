@@ -1552,7 +1552,7 @@ C - - - - - 0x01E741 07:E731: A9 05     LDA #$05
 C - - - - - 0x01E743 07:E733: 85 1D     STA ram_001D
 C - - - - - 0x01E745 07:E735: A9 08     LDA #$10
 C - - - - - 0x01E747 07:E737: 20 70 FE  JSR sub_FE70_bankswitch_загрузка_палитры_в_03E0x
-C - - - - - 0x01E74A 07:E73A: A0 4C     LDY #con_F97C_colors + $4C
+C - - - - - 0x01E74A 07:E73A: A0 4C     LDY #con_F97C_colors + $13 * $04
 C - - - - - 0x01E74C 07:E73C: 20 68 F9  JSR sub_F968_write_3_colors
 C - - - - - 0x01E74F 07:E73F: 20 BE F7  JSR sub_F7BE_запись_палитры_из_03E0x_в_0300x
 C - - - - - 0x01E752 07:E742: A9 A8     LDA #$A8
@@ -4580,139 +4580,139 @@ C - - - - - 0x01F98B 07:F97B: 60        RTS
 
 tbl_F97C:
 ; see con_F97C_colors
-; 00 
+; 00 (00) 
 - D 3 - - - 0x01F98C 07:F97C: 09        .byte $09   ; buffer index
 - D 3 - - - 0x01F98D 07:F97D: 20        .byte $20, $18, $08   ; colors
-; 04 
+; 01 (04) 
 - D 3 - - - 0x01F990 07:F980: 0D        .byte $0D   ; buffer index
 - D 3 - - - 0x01F991 07:F981: 0A        .byte $0A, $18, $08   ; colors
-; 08 
+; 02 (08) 
 - D 3 - - - 0x01F994 07:F984: 09        .byte $09   ; buffer index
 - D 3 - - - 0x01F995 07:F985: 02        .byte $02, $12, $22   ; colors
-; 0C 
+; 03 (0C) 
 - D 3 - - - 0x01F998 07:F988: 0D        .byte $0D   ; buffer index
 - D 3 - - - 0x01F999 07:F989: 02        .byte $02, $12, $0A   ; colors
-; 10 
+; 04 (10) 
 - D 3 - - - 0x01F99C 07:F98C: 09        .byte $09   ; buffer index
 - D 3 - - - 0x01F99D 07:F98D: 18        .byte $18, $1A, $0A   ; colors
-; 14 
+; 05 (14) 
 - D 3 - - - 0x01F9A0 07:F990: 0D        .byte $0D   ; buffer index
 - D 3 - - - 0x01F9A1 07:F991: 20        .byte $20, $10, $00   ; colors
-; 18 
+; 06 (18) 
 - D 3 - - - 0x01F9A4 07:F994: 01        .byte $01   ; buffer index
 - D 3 - - - 0x01F9A5 07:F995: 18        .byte $18, $1A, $0A   ; colors
-; 1C 
+; 07 (1C) 
 - D 3 - - - 0x01F9A8 07:F998: 05        .byte $05   ; buffer index
 - D 3 - - - 0x01F9A9 07:F999: 20        .byte $20, $10, $00   ; colors
-; 20 
+; 08 (20) 
 - D 3 - - - 0x01F9AC 07:F99C: 05        .byte $05   ; buffer index
 - D 3 - - - 0x01F9AD 07:F99D: 28        .byte $28, $18, $08   ; colors
-; 24 
+; 09 (24) 
 - D 3 - - - 0x01F9B0 07:F9A0: 09        .byte $09   ; buffer index
 - D 3 - - - 0x01F9B1 07:F9A1: 08        .byte $08, $10, $00   ; colors
-; 28 
+; 0A (28) 
 - D 3 - - - 0x01F9B4 07:F9A4: 0D        .byte $0D   ; buffer index
 - D 3 - - - 0x01F9B5 07:F9A5: 00        .byte $00, $18, $0A   ; colors
-; 2C 
+; 0B (2C) 
 - D 3 - - - 0x01F9B8 07:F9A8: 09        .byte $09   ; buffer index
 - D 3 - - - 0x01F9B9 07:F9A9: 2C        .byte $2C, $1C, $0C   ; colors
-; 30 
+; 0C (30) 
 - D 3 - - - 0x01F9BC 07:F9AC: 05        .byte $05   ; buffer index
 - D 3 - - - 0x01F9BD 07:F9AD: 2A        .byte $2A, $1B, $0B   ; colors
-; 34 
+; 0D (34) 
 - D 3 - - - 0x01F9C0 07:F9B0: 01        .byte $01   ; buffer index
 - D 3 - - - 0x01F9C1 07:F9B1: 24        .byte $24, $14, $04   ; colors
-; 38 
+; 0E (38) 
 - D 3 - - - 0x01F9C4 07:F9B4: 09        .byte $09   ; buffer index
 - D 3 - - - 0x01F9C5 07:F9B5: 23        .byte $23, $13, $03   ; colors
-; 3C 
+; 0F (3C) 
 - D 3 - - - 0x01F9C8 07:F9B8: 09        .byte $09   ; buffer index
 - D 3 - - - 0x01F9C9 07:F9B9: 2C        .byte $2C, $13, $0C   ; colors
-; 40 
+; 10 (40) 
 - D 3 - - - 0x01F9CC 07:F9BC: 09        .byte $09   ; buffer index
 - D 3 - - - 0x01F9CD 07:F9BD: 2C        .byte $2C, $1C, $0C   ; colors
-; 44 
+; 11 (44) 
 - D 3 - - - 0x01F9D0 07:F9C0: 01        .byte $01   ; buffer index
 - D 3 - - - 0x01F9D1 07:F9C1: 20        .byte $20, $10, $0F   ; colors
-; 48 
+; 12 (48) 
 - D 3 - - - 0x01F9D4 07:F9C4: 09        .byte $09   ; buffer index
 - D 3 - - - 0x01F9D5 07:F9C5: 3C        .byte $3C, $1C, $0C   ; colors
-; 4C 
+; 13 (4C) 
 - D 3 - - - 0x01F9D8 07:F9C8: 01        .byte $01   ; buffer index
 - D 3 - - - 0x01F9D9 07:F9C9: 20        .byte $20, $10, $00   ; colors
-; 50 
+; 14 (50) 
 - D 3 - - - 0x01F9DC 07:F9CC: 05        .byte $05   ; buffer index
 - D 3 - - - 0x01F9DD 07:F9CD: 20        .byte $20, $10, $00   ; colors
-; 54 
+; 15 (54) 
 - D 3 - - - 0x01F9E0 07:F9D0: 0D        .byte $0D   ; buffer index
 - D 3 - - - 0x01F9E1 07:F9D1: 0B        .byte $0B, $10, $00   ; colors
-; 58 
+; 16 (58) 
 - D 3 - - - 0x01F9E4 07:F9D4: 05        .byte $05   ; buffer index
 - D 3 - - - 0x01F9E5 07:F9D5: 0F        .byte $0F, $13, $03   ; colors
-; 5C 
+; 17 (5C) 
 - D 3 - - - 0x01F9E8 07:F9D8: 05        .byte $05   ; buffer index
 - D 3 - - - 0x01F9E9 07:F9D9: 0F        .byte $0F, $1A, $0A   ; colors
-; 60 
+; 18 (60) 
 - D 3 - - - 0x01F9EC 07:F9DC: 05        .byte $05   ; buffer index
 - D 3 - - - 0x01F9ED 07:F9DD: 0F        .byte $0F, $1B, $0B   ; colors
-; 64 
+; 19 (64) 
 - D 3 - - - 0x01F9F0 07:F9E0: 05        .byte $05   ; buffer index
 - D 3 - - - 0x01F9F1 07:F9E1: 0C        .byte $0C, $10, $00   ; colors
-; 68 
+; 1A (68) 
 - D 3 - - - 0x01F9F4 07:F9E4: 01        .byte $01   ; buffer index
 - D 3 - - - 0x01F9F5 07:F9E5: 08        .byte $08, $10, $00   ; colors
-; 6C 
+; 1B (6C) 
 - D 3 - - - 0x01F9F8 07:F9E8: 05        .byte $05   ; buffer index
 - D 3 - - - 0x01F9F9 07:F9E9: 08        .byte $08, $10, $18   ; colors
-; 70 
+; 1C (70) 
 - D 3 - - - 0x01F9FC 07:F9EC: 0D        .byte $0D   ; buffer index
 - D 3 - - - 0x01F9FD 07:F9ED: 20        .byte $20, $10, $00   ; colors
-; 74 
+; 1D (74) 
 - D 3 - - - 0x01FA00 07:F9F0: 09        .byte $09   ; buffer index
 - D 3 - - - 0x01FA01 07:F9F1: 20        .byte $20, $10, $00   ; colors
-; 78 
+; 1E (78) 
 - D 3 - - - 0x01FA04 07:F9F4: 01        .byte $01   ; buffer index
 - D 3 - - - 0x01FA05 07:F9F5: 27        .byte $27, $17, $07   ; colors
-; 7C 
+; 1F (7C) 
 - D 3 - - - 0x01FA08 07:F9F8: 0D        .byte $0D   ; buffer index
 - D 3 - - - 0x01FA09 07:F9F9: 20        .byte $20, $10, $00   ; colors
-; 80 
+; 20 (80) 
 - D 3 - - - 0x01FA0C 07:F9FC: 09        .byte $09   ; buffer index
 - D 3 - - - 0x01FA0D 07:F9FD: 27        .byte $27, $16, $04   ; colors
-; 84 
+; 21 (84) 
 - D 3 - - - 0x01FA10 07:FA00: 0D        .byte $0D   ; buffer index
 - D 3 - - - 0x01FA11 07:FA01: 16        .byte $16, $06, $00   ; colors
-; 88 
+; 22 (88) 
 - D 3 - - - 0x01FA14 07:FA04: 05        .byte $05   ; buffer index
 - D 3 - - - 0x01FA15 07:FA05: 08        .byte $08, $00, $18   ; colors
-; 8C 
+; 23 (8C) 
 - D 3 - - - 0x01FA18 07:FA08: 01        .byte $01   ; buffer index
 - D 3 - - - 0x01FA19 07:FA09: 20        .byte $20, $10, $18   ; colors
-; 90 
+; 24 (90) 
 - D 3 - - - 0x01FA1C 07:FA0C: 0D        .byte $0D   ; buffer index
 - D 3 - - - 0x01FA1D 07:FA0D: 20        .byte $20, $10, $08   ; colors
-; 94 
+; 25 (94) 
 - D 3 - - - 0x01FA20 07:FA10: 05        .byte $05   ; buffer index
 - D 3 - - - 0x01FA21 07:FA11: 20        .byte $20, $10, $02   ; colors
-; 98 
+; 26 (98) 
 - D 3 - - - 0x01FA24 07:FA14: 09        .byte $09   ; buffer index
 - D 3 - - - 0x01FA25 07:FA15: 10        .byte $10, $00, $06   ; colors
-; 9C 
+; 27 (9C) 
 - D 3 - - - 0x01FA28 07:FA18: 09        .byte $09   ; buffer index
 - D 3 - - - 0x01FA29 07:FA19: 20        .byte $20, $10, $06   ; colors
-; A0 
+; 28 (A0) 
 - D 3 - - - 0x01FA2C 07:FA1C: 0D        .byte $0D   ; buffer index
 - D 3 - - - 0x01FA2D 07:FA1D: 20        .byte $20, $10, $16   ; colors
-; A4 
+; 29 (A4) 
 - D 3 - - - 0x01FA30 07:FA20: 05        .byte $05   ; buffer index
 - D 3 - - - 0x01FA31 07:FA21: 24        .byte $24, $14, $04   ; colors
-; A8 
+; 2A (A8) 
 - D 3 - - - 0x01FA34 07:FA24: 09        .byte $09   ; buffer index
 - D 3 - - - 0x01FA35 07:FA25: 20        .byte $20, $10, $06   ; colors
-; AC 
+; 2B (AC) 
 - D 3 - - - 0x01FA38 07:FA28: 1D        .byte $1D   ; buffer index
 - D 3 - - - 0x01FA39 07:FA29: 24        .byte $24, $14, $04   ; colors
-; B0 
+; 2C (B0) 
 - D 3 - - - 0x01FA3C 07:FA2C: 1D        .byte $1D   ; buffer index
 - D 3 - - - 0x01FA3D 07:FA2D: 20        .byte $20, $00, $0C   ; colors
 
