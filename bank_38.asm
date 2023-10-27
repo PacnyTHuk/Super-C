@@ -2977,8 +2977,6 @@ C - - - - - 0x011164 04:9154: 4C 83 A2  JMP loc_0x006293_set_obj_state
 sub_9157:
 C - - - - - 0x011167 04:9157: A9 00     LDA #$00
 C - - - - - 0x011169 04:9159: 9D 10 07  STA ram_0710_obj,X
-; bzk optimize, useless branch
-C - - - - - 0x01116C 04:915C: D0 1D     BNE bra_917B
 sub_915E:
 C - - - - - 0x01116E 04:915E: FE 02 07  INC ram_0702_obj,X
 C - - - - - 0x011171 04:9161: BD 02 07  LDA ram_0702_obj,X
@@ -2992,7 +2990,6 @@ C - - - - - 0x011183 04:9173: 29 01     AND #$01
 C - - - - - 0x011185 04:9175: 9D 10 07  STA ram_0710_obj,X
 bra_9178_not_overflow:
 C - - - - - 0x011188 04:9178: BC 56 07  LDY ram_0756_obj,X
-bra_917B:
 C - - - - - 0x01118B 04:917B: B9 8F 91  LDA tbl_918F_spr_attr,Y
 C - - - - - 0x01118E 04:917E: 9D 56 05  STA ram_атрибуты_спрайта_врага_и_пуль,X
 C - - - - - 0x011191 04:9181: 98        TYA
