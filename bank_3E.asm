@@ -2181,12 +2181,12 @@ tbl_EAC8_chr_banks:
 - D 3 - - - 0x01EADC 07:EACC: 46        .byte con_chr_bank + $46   ; spr
 - D 3 - - - 0x01EADD 07:EACD: 47        .byte con_chr_bank + $47   ; spr
 ; EU
-                                        .byte con_chr_bank + $00   ; bg
-                                        .byte con_chr_bank + $02   ; bg
-                                        .byte con_chr_bank + $44   ; spr
-                                        .byte con_chr_bank + $45   ; spr
-                                        .byte con_chr_bank + $46   ; spr
-                                        .byte con_chr_bank + $47   ; spr
+                                        .byte con_chr_bank + $38   ; bg Вертолёт в начале $B0, на боссе $AD
+                                        .byte con_chr_bank + $AB   ; bg на боссе $AF
+                                        .byte con_chr_bank + $94   ; spr
+                                        .byte con_chr_bank + $95   ; spr
+                                        .byte con_chr_bank + $96   ; spr
+                                        .byte con_chr_bank + $97   ; spr
 
 ; 01 area 2
 ; US
@@ -2199,10 +2199,10 @@ tbl_EAC8_chr_banks:
 ; EU
                                         .byte con_chr_bank + $3C   ; bg
                                         .byte con_chr_bank + $3E   ; bg
-                                        .byte con_chr_bank + $49   ; spr
-                                        .byte con_chr_bank + $4A   ; spr
-                                        .byte con_chr_bank + $4B   ; spr
-                                        .byte con_chr_bank + $1A   ; spr
+                                        .byte con_chr_bank + $A8   ; spr
+                                        .byte con_chr_bank + $A9   ; spr
+                                        .byte con_chr_bank + $98   ; spr
+                                        .byte con_chr_bank + $99   ; spr
 
 ; 02 area 3
 ; US
@@ -2215,10 +2215,10 @@ tbl_EAC8_chr_banks:
 ; EU
                                         .byte con_chr_bank + $0C   ; bg
                                         .byte con_chr_bank + $0E   ; bg
-                                        .byte con_chr_bank + $44   ; spr
-                                        .byte con_chr_bank + $45   ; spr
-                                        .byte con_chr_bank + $46   ; spr
-                                        .byte con_chr_bank + $48   ; spr
+                                        .byte con_chr_bank + $94   ; spr
+                                        .byte con_chr_bank + $95   ; spr
+                                        .byte con_chr_bank + $9A   ; spr
+                                        .byte con_chr_bank + $9B   ; spr
 
 ; 03 area 4
 ; US
@@ -2231,10 +2231,10 @@ tbl_EAC8_chr_banks:
 ; EU
                                         .byte con_chr_bank + $08   ; bg
                                         .byte con_chr_bank + $0A   ; bg
-                                        .byte con_chr_bank + $44   ; spr
-                                        .byte con_chr_bank + $45   ; spr
-                                        .byte con_chr_bank + $46   ; spr
-                                        .byte con_chr_bank + $47   ; spr
+                                        .byte con_chr_bank + $94   ; spr
+                                        .byte con_chr_bank + $95   ; spr
+                                        .byte con_chr_bank + $96   ; spr
+                                        .byte con_chr_bank + $97   ; spr в начале подъёма наверх, банк переключается - нам требуется $9D
 
 ; 04 area 5
 ; US
@@ -2247,10 +2247,10 @@ tbl_EAC8_chr_banks:
 ; EU
                                         .byte con_chr_bank + $1C   ; bg
                                         .byte con_chr_bank + $1E   ; bg
-                                        .byte con_chr_bank + $44   ; spr
-                                        .byte con_chr_bank + $45   ; spr
-                                        .byte con_chr_bank + $46   ; spr
-                                        .byte con_chr_bank + $60   ; spr
+                                        .byte con_chr_bank + $94   ; spr
+                                        .byte con_chr_bank + $95   ; spr
+                                        .byte con_chr_bank + $96   ; spr
+                                        .byte con_chr_bank + $9E   ; spr
 
 ; 05 area 6
 ; US
@@ -2258,13 +2258,13 @@ tbl_EAC8_chr_banks:
 - D 3 - - - 0x01EAF7 07:EAE7: 4E        .byte con_chr_bank + $4E   ; bg
 - D 3 - - - 0x01EAF8 07:EAE8: 49        .byte con_chr_bank + $49   ; spr
 - D 3 - - - 0x01EAF9 07:EAE9: 4A        .byte con_chr_bank + $4A   ; spr
-- D 3 - - - 0x01EAFA 07:EAEA: 61        .byte con_chr_bank + $61   ; spr
+- D 3 - - - 0x01EAFA 07:EAEA: 61        .byte con_chr_bank + $9F   ; spr
 - D 3 - - - 0x01EAFB 07:EAEB: 62        .byte con_chr_bank + $62   ; spr
 ; EU
                                         .byte con_chr_bank + $4C   ; bg
                                         .byte con_chr_bank + $4E   ; bg
-                                        .byte con_chr_bank + $49   ; spr
-                                        .byte con_chr_bank + $4A   ; spr
+                                        .byte con_chr_bank + $A8   ; spr
+                                        .byte con_chr_bank + $A9   ; spr
                                         .byte con_chr_bank + $61   ; spr
                                         .byte con_chr_bank + $62   ; spr
 
@@ -2279,10 +2279,10 @@ tbl_EAC8_chr_banks:
 ; EU
                                         .byte con_chr_bank + $24   ; bg
                                         .byte con_chr_bank + $26   ; bg
-                                        .byte con_chr_bank + $44   ; spr
-                                        .byte con_chr_bank + $45   ; spr
-                                        .byte con_chr_bank + $63   ; spr
-                                        .byte con_chr_bank + $64   ; spr
+                                        .byte con_chr_bank + $94   ; spr
+                                        .byte con_chr_bank + $95   ; spr
+                                        .byte con_chr_bank + $A2   ; spr
+                                        .byte con_chr_bank + $A3   ; spr после спуска вниз банк переключается - нам требуется $A4, на боссе $A0
 
 ; 07 area 8
 ; US
@@ -2295,10 +2295,10 @@ tbl_EAC8_chr_banks:
 ; EU
                                         .byte con_chr_bank + $34   ; bg
                                         .byte con_chr_bank + $36   ; bg
-                                        .byte con_chr_bank + $44   ; spr
-                                        .byte con_chr_bank + $45   ; spr
-                                        .byte con_chr_bank + $67   ; spr
-                                        .byte con_chr_bank + $68   ; spr
+                                        .byte con_chr_bank + $94   ; spr
+                                        .byte con_chr_bank + $95   ; spr
+                                        .byte con_chr_bank + $A5   ; spr
+                                        .byte con_chr_bank + $A6   ; spr после победы босса банк переключается - нам требуется
 
 
 
