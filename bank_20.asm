@@ -9,6 +9,7 @@
 .export loc_0x00231A_обработчик_главного_экрана
 .export loc_0x00189E_отрисовка_экранов
 .export loc_0x00178C_отрисовка_текста_через_буфер_0300x
+.export sub_0x01EAC0_подготовить_начальные_банки_для_уровня
 .export loc_0x00F894_загрузка_палитры_для_уровня
 .export loc_0x00F896_загрузка_палитры
 .export loc_0x00A123_options
@@ -456,6 +457,166 @@ _off009_98D0_0E_exit:
 
 
 
+sub_0x01EAC0_подготовить_начальные_банки_для_уровня:
+sub_EAB0_подготовить_начальные_банки_для_уровня:
+; cyneprepou4uk
+; очищать C нигде не нужно, так как не перевалит за FF
+C - - - - - 0x01EAC0 07:EAB0: A5 50     LDA ram_номер_уровня
+; * 0C
+C - - - - - 0x01EAC2 07:EAB2: 0A        ASL
+C - - - - - 0x01EAC3 07:EAB3: 85 00     STA ram_0000
+C - - - - - 0x01EAC5 07:EAB5: 0A        ASL
+C - - - - - 0x01EAC6 07:EAB6: 65 00     ADC ram_0000
+                                        ASL
+                                        LDY ram_options_регион
+                                        BEQ bra_EAB8_американка
+; европейка
+                                        ADC #$06    ; вторые 6 байтов
+bra_EAB8_американка:
+C - - - - - 0x01EAC8 07:EAB8: A8        TAY
+C - - - - - 0x01EAC9 07:EAB9: A2 00     LDX #$00
+bra_EABB_loop:
+C - - - - - 0x01EACB 07:EABB: B9 C8 EA  LDA tbl_EAC8_chr_banks,Y
+C - - - - - 0x01EACE 07:EABE: 9D F0 07  STA ram_chr_bank,X
+C - - - - - 0x01EAD1 07:EAC1: C8        INY
+C - - - - - 0x01EAD2 07:EAC2: E8        INX
+C - - - - - 0x01EAD3 07:EAC3: E0 06     CPX #$06
+C - - - - - 0x01EAD5 07:EAC5: D0 F4     BNE bra_EABB_loop
+C - - - - - 0x01EAD7 07:EAC7: 60        RTS
+
+
+
+tbl_EAC8_chr_banks:
+; 00 area 1
+; US
+- D 3 - - - 0x01EAD8 07:EAC8: 00        .byte con_chr_bank + $00   ; bg
+- D 3 - - - 0x01EAD9 07:EAC9: 02        .byte con_chr_bank + $02   ; bg
+- D 3 - - - 0x01EADA 07:EACA: 44        .byte con_chr_bank + $44   ; spr
+- D 3 - - - 0x01EADB 07:EACB: 45        .byte con_chr_bank + $45   ; spr
+- D 3 - - - 0x01EADC 07:EACC: 46        .byte con_chr_bank + $46   ; spr
+- D 3 - - - 0x01EADD 07:EACD: 47        .byte con_chr_bank + $47   ; spr
+; EU
+                                        .byte con_chr_bank + $B0   ; bg Вертолёт в начале $B0, на боссе $AD
+                                        .byte con_chr_bank + $AB   ; bg на боссе $AF
+                                        .byte con_chr_bank + $94   ; spr
+                                        .byte con_chr_bank + $95   ; spr
+                                        .byte con_chr_bank + $96   ; spr
+                                        .byte con_chr_bank + $97   ; spr
+
+; 01 area 2
+; US
+- D 3 - - - 0x01EADE 07:EACE: 3C        .byte con_chr_bank + $3C   ; bg
+- D 3 - - - 0x01EADF 07:EACF: 3E        .byte con_chr_bank + $3E   ; bg
+- D 3 - - - 0x01EAE0 07:EAD0: 49        .byte con_chr_bank + $49   ; spr
+- D 3 - - - 0x01EAE1 07:EAD1: 4A        .byte con_chr_bank + $4A   ; spr
+- D 3 - - - 0x01EAE2 07:EAD2: 4B        .byte con_chr_bank + $4B   ; spr
+- D 3 - - - 0x01EAE3 07:EAD3: 1A        .byte con_chr_bank + $1A   ; spr
+; EU
+                                        .byte con_chr_bank + $3C   ; bg
+                                        .byte con_chr_bank + $3E   ; bg
+                                        .byte con_chr_bank + $A8   ; spr
+                                        .byte con_chr_bank + $A9   ; spr
+                                        .byte con_chr_bank + $98   ; spr
+                                        .byte con_chr_bank + $99   ; spr
+
+; 02 area 3
+; US
+- D 3 - - - 0x01EAE4 07:EAD4: 0C        .byte con_chr_bank + $0C   ; bg
+- D 3 - - - 0x01EAE5 07:EAD5: 0E        .byte con_chr_bank + $0E   ; bg
+- D 3 - - - 0x01EAE6 07:EAD6: 44        .byte con_chr_bank + $44   ; spr
+- D 3 - - - 0x01EAE7 07:EAD7: 45        .byte con_chr_bank + $45   ; spr
+- D 3 - - - 0x01EAE8 07:EAD8: 46        .byte con_chr_bank + $46   ; spr
+- D 3 - - - 0x01EAE9 07:EAD9: 48        .byte con_chr_bank + $48   ; spr
+; EU
+                                        .byte con_chr_bank + $0C   ; bg
+                                        .byte con_chr_bank + $0E   ; bg
+                                        .byte con_chr_bank + $94   ; spr
+                                        .byte con_chr_bank + $95   ; spr
+                                        .byte con_chr_bank + $9A   ; spr
+                                        .byte con_chr_bank + $9B   ; spr
+
+; 03 area 4
+; US
+- D 3 - - - 0x01EAEA 07:EADA: 08        .byte con_chr_bank + $08   ; bg
+- D 3 - - - 0x01EAEB 07:EADB: 0A        .byte con_chr_bank + $0A   ; bg
+- D 3 - - - 0x01EAEC 07:EADC: 44        .byte con_chr_bank + $44   ; spr
+- D 3 - - - 0x01EAED 07:EADD: 45        .byte con_chr_bank + $45   ; spr
+- D 3 - - - 0x01EAEE 07:EADE: 46        .byte con_chr_bank + $46   ; spr
+- D 3 - - - 0x01EAEF 07:EADF: 47        .byte con_chr_bank + $47   ; spr
+; EU
+                                        .byte con_chr_bank + $08   ; bg
+                                        .byte con_chr_bank + $0A   ; bg
+                                        .byte con_chr_bank + $94   ; spr
+                                        .byte con_chr_bank + $95   ; spr
+                                        .byte con_chr_bank + $96   ; spr
+                                        .byte con_chr_bank + $97   ; spr в начале подъёма наверх, банк переключается - нам требуется $9D
+
+; 04 area 5
+; US
+- D 3 - - - 0x01EAF0 07:EAE0: 1C        .byte con_chr_bank + $1C   ; bg
+- D 3 - - - 0x01EAF1 07:EAE1: 1E        .byte con_chr_bank + $1E   ; bg
+- D 3 - - - 0x01EAF2 07:EAE2: 44        .byte con_chr_bank + $44   ; spr
+- D 3 - - - 0x01EAF3 07:EAE3: 45        .byte con_chr_bank + $45   ; spr
+- D 3 - - - 0x01EAF4 07:EAE4: 46        .byte con_chr_bank + $46   ; spr
+- D 3 - - - 0x01EAF5 07:EAE5: 60        .byte con_chr_bank + $60   ; spr
+; EU
+                                        .byte con_chr_bank + $1C   ; bg
+                                        .byte con_chr_bank + $1E   ; bg
+                                        .byte con_chr_bank + $94   ; spr
+                                        .byte con_chr_bank + $95   ; spr
+                                        .byte con_chr_bank + $96   ; spr
+                                        .byte con_chr_bank + $9E   ; spr
+
+; 05 area 6
+; US
+- D 3 - - - 0x01EAF6 07:EAE6: 4C        .byte con_chr_bank + $4C   ; bg
+- D 3 - - - 0x01EAF7 07:EAE7: 4E        .byte con_chr_bank + $4E   ; bg
+- D 3 - - - 0x01EAF8 07:EAE8: 49        .byte con_chr_bank + $49   ; spr
+- D 3 - - - 0x01EAF9 07:EAE9: 4A        .byte con_chr_bank + $4A   ; spr
+- D 3 - - - 0x01EAFA 07:EAEA: 61        .byte con_chr_bank + $9F   ; spr
+- D 3 - - - 0x01EAFB 07:EAEB: 62        .byte con_chr_bank + $62   ; spr
+; EU
+                                        .byte con_chr_bank + $4C   ; bg
+                                        .byte con_chr_bank + $4E   ; bg
+                                        .byte con_chr_bank + $A8   ; spr
+                                        .byte con_chr_bank + $A9   ; spr
+                                        .byte con_chr_bank + $61   ; spr
+                                        .byte con_chr_bank + $62   ; spr
+
+; 06 area 7
+; US
+- D 3 - - - 0x01EAFC 07:EAEC: 24        .byte con_chr_bank + $24   ; bg
+- D 3 - - - 0x01EAFD 07:EAED: 26        .byte con_chr_bank + $26   ; bg
+- D 3 - - - 0x01EAFE 07:EAEE: 44        .byte con_chr_bank + $44   ; spr
+- D 3 - - - 0x01EAFF 07:EAEF: 45        .byte con_chr_bank + $45   ; spr
+- D 3 - - - 0x01EB00 07:EAF0: 63        .byte con_chr_bank + $63   ; spr
+- D 3 - - - 0x01EB01 07:EAF1: 64        .byte con_chr_bank + $64   ; spr
+; EU
+                                        .byte con_chr_bank + $24   ; bg
+                                        .byte con_chr_bank + $26   ; bg
+                                        .byte con_chr_bank + $94   ; spr
+                                        .byte con_chr_bank + $95   ; spr
+                                        .byte con_chr_bank + $A2   ; spr
+                                        .byte con_chr_bank + $A3   ; spr после спуска вниз банк переключается - нам требуется $A4, на боссе $A0
+
+; 07 area 8
+; US
+- D 3 - - - 0x01EB02 07:EAF2: 34        .byte con_chr_bank + $34   ; bg
+- D 3 - - - 0x01EB03 07:EAF3: 36        .byte con_chr_bank + $36   ; bg
+- D 3 - - - 0x01EB04 07:EAF4: 44        .byte con_chr_bank + $44   ; spr
+- D 3 - - - 0x01EB05 07:EAF5: 45        .byte con_chr_bank + $45   ; spr
+- D 3 - - - 0x01EB06 07:EAF6: 67        .byte con_chr_bank + $67   ; spr
+- D 3 - - - 0x01EB07 07:EAF7: 68        .byte con_chr_bank + $68   ; spr
+; EU
+                                        .byte con_chr_bank + $34   ; bg
+                                        .byte con_chr_bank + $36   ; bg
+                                        .byte con_chr_bank + $94   ; spr
+                                        .byte con_chr_bank + $95   ; spr
+                                        .byte con_chr_bank + $A5   ; spr
+                                        .byte con_chr_bank + $A6   ; spr после победы босса банк переключается - нам требуется
+
+
+
 loc_0x00F894_загрузка_палитры_для_уровня:
 C D 1 - - - 0x00F894 03:B884: A5 50     LDA ram_номер_уровня
 loc_0x00F896_загрузка_палитры:
@@ -493,23 +654,23 @@ C - - - - - 0x00F8C2 03:B8B2: 60        RTS
 
 
 tbl_B8B3:
-- D 1 - - - 0x00F8C3 03:B8B3: C9 B8     .word _off021_B8C9_00_area_1
-- D 1 - - - 0x00F8C5 03:B8B5: E1 B8     .word _off021_B8E1_01_area_2
-- D 1 - - - 0x00F8C7 03:B8B7: F9 B8     .word _off021_B8F9_02_area_3
-- D 1 - - - 0x00F8C9 03:B8B9: 11 B9     .word _off021_B911_03_area_4
-- D 1 - - - 0x00F8CB 03:B8BB: 29 B9     .word _off021_B929_04_area_5
-- D 1 - - - 0x00F8CD 03:B8BD: 41 B9     .word _off021_B941_05_area_6
-- D 1 - - - 0x00F8CF 03:B8BF: 59 B9     .word _off021_B959_06_area_7
-- D 1 - - - 0x00F8D1 03:B8C1: 71 B9     .word _off021_B971_07_area_8
-- D 1 - - - 0x00F8D3 03:B8C3: 89 B9     .word _off021_B989_08
-- D 1 - - - 0x00F8D5 03:B8C5: A1 B9     .word _off021_B9A1_09
-- D 1 - - - 0x00F8D7 03:B8C7: B9 B9     .word _off021_B9B9_0A
+- D 1 - - - 0x00F8C3 03:B8B3: C9 B8     .word _off021_B8C9_00_area_1_US
+- D 1 - - - 0x00F8C5 03:B8B5: E1 B8     .word _off021_B8E1_01_area_2_US
+- D 1 - - - 0x00F8C7 03:B8B7: F9 B8     .word _off021_B8F9_02_area_3_US
+- D 1 - - - 0x00F8C9 03:B8B9: 11 B9     .word _off021_B911_03_area_4_US
+- D 1 - - - 0x00F8CB 03:B8BB: 29 B9     .word _off021_B929_04_area_5_US
+- D 1 - - - 0x00F8CD 03:B8BD: 41 B9     .word _off021_B941_05_area_6_US
+- D 1 - - - 0x00F8CF 03:B8BF: 59 B9     .word _off021_B959_06_area_7_US
+- D 1 - - - 0x00F8D1 03:B8C1: 71 B9     .word _off021_B971_07_area_8_US
+- D 1 - - - 0x00F8D3 03:B8C3: 89 B9     .word _off021_B989_08_логотип_слияние
+- D 1 - - - 0x00F8D5 03:B8C5: A1 B9     .word _off021_B9A1_09_главный_экран
+- D 1 - - - 0x00F8D7 03:B8C7: B9 B9     .word _off021_B9B9_0A_заставка_US
                                         .word _off021_B9D1_0B_options   ; options screen
                                         .word _off021_B9C9_0C_options_cheat_on  ; options screen + cheat
 
 
 
-_off021_B8C9_00_area_1:
+_off021_B8C9_00_area_1_US:
 ; background
 - D 1 - I - 0x00F8D9 03:B8C9: 20        .byte $20, $10, $00   ; 
 - D 1 - I - 0x00F8DC 03:B8CC: 20        .byte $20, $10, $00   ; 
@@ -523,7 +684,7 @@ _off021_B8C9_00_area_1:
 
 
 
-_off021_B8E1_01_area_2:
+_off021_B8E1_01_area_2_US:
 ; background
 - D 1 - I - 0x00F8F1 03:B8E1: 20        .byte $20, $10, $00   ; 
 - D 1 - I - 0x00F8F4 03:B8E4: 00        .byte $00, $10, $0C   ; 
@@ -537,7 +698,7 @@ _off021_B8E1_01_area_2:
 
 
 
-_off021_B8F9_02_area_3:
+_off021_B8F9_02_area_3_US:
 ; background
 - D 1 - I - 0x00F909 03:B8F9: 2A        .byte $2A, $1A, $0A   ; 
 - D 1 - I - 0x00F90C 03:B8FC: 28        .byte $28, $18, $08   ; 
@@ -551,7 +712,7 @@ _off021_B8F9_02_area_3:
 
 
 
-_off021_B911_03_area_4:
+_off021_B911_03_area_4_US:
 ; background
 - D 1 - I - 0x00F921 03:B911: 20        .byte $20, $1B, $0A   ; 
 - D 1 - I - 0x00F924 03:B914: 01        .byte $01, $00, $0A   ; 
@@ -565,7 +726,7 @@ _off021_B911_03_area_4:
 
 
 
-_off021_B929_04_area_5:
+_off021_B929_04_area_5_US:
 ; background
 - D 1 - I - 0x00F939 03:B929: 20        .byte $20, $10, $00   ; 
 - D 1 - I - 0x00F93C 03:B92C: 2A        .byte $2A, $1A, $00   ; 
@@ -579,7 +740,7 @@ _off021_B929_04_area_5:
 
 
 
-_off021_B941_05_area_6:
+_off021_B941_05_area_6_US:
 ; background
 - D 1 - I - 0x00F951 03:B941: 20        .byte $20, $10, $00   ; 
 - D 1 - I - 0x00F954 03:B944: 29        .byte $29, $19, $09   ; 
@@ -593,7 +754,7 @@ _off021_B941_05_area_6:
 
 
 
-_off021_B959_06_area_7:
+_off021_B959_06_area_7_US:
 ; background
 - D 1 - I - 0x00F969 03:B959: 2C        .byte $2C, $12, $02   ; 
 - D 1 - I - 0x00F96C 03:B95C: 22        .byte $22, $12, $02   ; 
@@ -607,7 +768,7 @@ _off021_B959_06_area_7:
 
 
 
-_off021_B971_07_area_8:
+_off021_B971_07_area_8_US:
 ; background
 - D 1 - I - 0x00F981 03:B971: 24        .byte $24, $14, $04   ; 
 - D 1 - I - 0x00F984 03:B974: 03        .byte $03, $02, $0C   ; 
@@ -621,7 +782,7 @@ _off021_B971_07_area_8:
 
 
 
-_off021_B989_08:
+_off021_B989_08_логотип_слияние:
 ; background
 - D 1 - I - 0x00F999 03:B989: 10        .byte $16, $27, $30   ; 
 - D 1 - I - 0x00F99C 03:B98C: 20        .byte $30, $27, $16   ; 
@@ -635,7 +796,7 @@ _off021_B989_08:
 
 
 
-_off021_B9A1_09:
+_off021_B9A1_09_главный_экран:
 ; background
 - D 1 - I - 0x00F9B1 03:B9A1: 0F        .byte $0F, $0F, $0F   ; 
 - D 1 - I - 0x00F9B4 03:B9A4: 20        .byte $30, $27, $16   ; 
@@ -649,7 +810,7 @@ _off021_B9A1_09:
 
 
 
-_off021_B9B9_0A:
+_off021_B9B9_0A_заставка_US:
 ; background
 - D 1 - I - 0x00F9C9 03:B9B9: 20        .byte $20, $27, $16   ; 
 - D 1 - I - 0x00F9CC 03:B9BC: 27        .byte $27, $16, $04   ; 
