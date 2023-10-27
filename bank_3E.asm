@@ -2179,7 +2179,7 @@ tbl_EAC8_chr_banks:
 - D 3 - - - 0x01EADC 07:EACC: 46        .byte con_chr_bank + $46   ; spr
 - D 3 - - - 0x01EADD 07:EACD: 47        .byte con_chr_bank + $47   ; spr
 ; EU
-                                        .byte con_chr_bank + $38   ; bg Вертолёт в начале $B0, на боссе $AD
+                                        .byte con_chr_bank + $B0   ; bg Вертолёт в начале $B0, на боссе $AD
                                         .byte con_chr_bank + $AB   ; bg на боссе $AF
                                         .byte con_chr_bank + $94   ; spr
                                         .byte con_chr_bank + $95   ; spr
