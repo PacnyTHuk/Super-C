@@ -1052,9 +1052,9 @@ sub_9924_отрисовать_difficulty:
                                         RTS
 
 tbl_9925_варианты_difficulty:
-                                        .byte $04   ; normal
-                                        .byte $05   ; hard
-                                        .byte $06   ; expert
+                                        .byte con_0x0017EA_normal   ; 00 
+                                        .byte con_0x0017EA_hard   ; 01 
+                                        .byte con_0x0017EA_expert   ; 02 
 
 sub_9926_отрисовать_graphics:
                                         LDY ram_options_регион
@@ -1063,8 +1063,8 @@ sub_9926_отрисовать_graphics:
                                         RTS
 
 tbl_9927_варианты_graphics:
-                                        .byte $07   ; human
-                                        .byte $08   ; robot
+                                        .byte con_0x0017EA_human   ; 00 
+                                        .byte con_0x0017EA_robot   ; 01 
 
 sub_9928_отрисовать_obj_limit:
                                         LDY ram_options_колво_объектов
@@ -1073,8 +1073,8 @@ sub_9928_отрисовать_obj_limit:
                                         RTS
                                         
 tbl_9929_варианты_obj_limit:
-                                        .byte $09   ; 14
-                                        .byte $0A   ; 32
+                                        .byte con_0x0017EA_obj_limit_14   ; 01 
+                                        .byte con_0x0017EA_obj_limit_32   ; 02 
 
 sub_992A_отрисовать_continue:
                                         LDA #con_0x0017EA_continue
@@ -1186,14 +1186,14 @@ bra_9B06_RTS:
                                         RTS
 
 tbl_9B07_лимит_опций:
-                                        .byte $03   ; difficulty
-                                        .byte $02   ; graphics
-                                        .byte $02   ; obj_limit
+                                        .byte $03   ; 00 difficulty
+                                        .byte $02   ; 01 graphics
+                                        .byte $02   ; 02 obj_limit
                                         
 tbl_9B08_начальная_con:
-                                        .byte $04   ; difficulty
-                                        .byte $07   ; graphics
-                                        .byte $09   ; obj_limit
+                                        .byte con_0x0017EA_normal   ; 00 difficulty
+                                        .byte con_0x0017EA_human   ; 01 graphics
+                                        .byte con_0x0017EA_obj_limit_14   ; 02 obj_limit
 
 ofs_9B09_options_continue:
 ofs_9B09_options_level:
@@ -1229,19 +1229,19 @@ bra_9B0C_RTS:
                                         RTS
 
 tbl_9B0D_лимит_опций:
-                                        .byte $06   ; continue
-                                        .byte $08   ; level
-                                        .byte $0A   ; rest
+                                        .byte $06   ; 03 continue
+                                        .byte $08   ; 04 level
+                                        .byte $0A   ; 05 rest
 
 tbl_9B0E_начальная_con:
-                                        .byte $0B   ; continue
-                                        .byte $0C   ; level
-                                        .byte $0D   ; rest
+                                        .byte con_0x0017EA_continue   ; 03 continue
+                                        .byte con_0x0017EA_level   ; 04 level
+                                        .byte con_0x0017EA_rest   ; 05 rest
 
 tbl_9B0F_номер_тайла:
-                                        .byte $81   ; continue
-                                        .byte $82   ; level
-                                        .byte $81   ; rest
+                                        .byte $81   ; 03 continue
+                                        .byte $82   ; 04 level
+                                        .byte $81   ; 05 rest
 
 
 ofs_9B10_options_exit:
