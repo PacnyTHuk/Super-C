@@ -1165,10 +1165,6 @@ C - - - - - 0x01E4F2 07:E4E2: D0 AB     BNE bra_E48F_exit_sound_mode
 C - - - - - 0x01E4F4 07:E4E4: 60        RTS
 
 
-ofs_032_E4E5_06_options:
-                                        JMP sub_FEDD_bankswitch_options
-
-
 loc_E4E5_плюс1_демка:
 loc_0x01E4F5:
 C D 3 - - - 0x01E4F5 07:E4E5: E6 18     INC ram_демка
@@ -5465,7 +5461,7 @@ sub_EAB0_bankswitch_подготовить_начальные_банки_для_
                                         JMP sub_0x01EAC0_подготовить_начальные_банки_для_уровня
 
 
-sub_FEDD_bankswitch_options:
+ofs_032_E4E5_06_options:
                                         LDA #con_prg_bank + $20
                                         JSR sub_FD6F_prg_bankswitch___no_return
                                         JMP loc_0x00A123_options
