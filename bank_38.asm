@@ -1585,7 +1585,6 @@ C - - - - - 0x01096B 04:895B: 4C B7 A6  JMP loc_0x0066C7_delete_object_03
 sub_895E:
 C - - - - - 0x01096E 04:895E: A5 1E     LDA ram_index_ppu_buffer
 C - - - - - 0x010970 04:8960: C9 20     CMP #$20
-C - - - - - 0x010972 04:8962: A9 01     LDA #$01    ; bzk optimize, useless load
 C - - - - - 0x010974 04:8964: B0 DE     BCS bra_8944_RTS
 C - - - - - 0x010976 04:8966: 20 FF 89  JSR sub_89FF
 C - - - - - 0x010979 04:8969: BD 10 07  LDA ram_0710_obj,X
