@@ -5493,9 +5493,9 @@ C - - - - - 0x009B83 02:9B73: 4C DE FD  JMP loc_0x01FDEE_play_sound
 bra_9B76_26:
 ; play all one by one
 C - - - - - 0x009B86 02:9B76: 20 0E FE  JSR sub_0x01FE1E
-C - - - - - 0x009B89 02:9B79: AD 5E 9F  LDA tbl_9F5E_auto_playlist
+C - - - - - 0x009B89 02:9B79: AD 5E 9F  LDA #< tbl_9F62_auto_playlist
 C - - - - - 0x009B8C 02:9B7C: 85 5C     STA ram_005C_sound_mode_data
-C - - - - - 0x009B8E 02:9B7E: AD 5F 9F  LDA tbl_9F5E_auto_playlist + $01
+C - - - - - 0x009B8E 02:9B7E: AD 5F 9F  LDA #> tbl_9F62_auto_playlist
 C - - - - - 0x009B91 02:9B81: 85 5D     STA ram_005C_sound_mode_data + $01
 ; bzk optimize, doesn't look like data from tbl_9FB7 will be read
 C - - - - - 0x009B93 02:9B83: AD 60 9F  LDA tbl_9F60
@@ -5997,12 +5997,6 @@ C - - - - - 0x009F65 02:9F55: 85 5A     STA ram_005A_sound_mode
 C - - - - - 0x009F67 02:9F57: 85 5B     STA ram_005B_sound_mode
 ; 1путин: del ram 005E-005F
 C - - - - - 0x009F6D 02:9F5D: 60        RTS
-
-
-
-tbl_9F5E_auto_playlist:
-; bzk optimize
-- D 0 - - - 0x009F6E 02:9F5E: 62 9F     .word tbl_9F62_auto_playlist
 
 
 
