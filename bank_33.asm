@@ -3561,11 +3561,11 @@ C - - - - - 0x0070A0 01:B090: 65 08     ADC ram_0008
 C - - - - - 0x0070A2 01:B092: A8        TAY
 C - - - - - 0x0070A3 01:B093: B9 C6 B0  LDA tbl_B0C6_index,Y
 C - - - - - 0x0070A6 01:B096: A8        TAY
-C - - - - - 0x0070A7 01:B097: 4C 9F B0  JMP loc_B09F    ; bzk optimize, BPL
+C - - - - - 0x0070A7 01:B097: 4C 9F B0  BPL bra_B09F    ; jmp
 bra_B09A:
 C - - - - - 0x0070AA 01:B09A: 20 07 A7  JSR sub_A707
 C - - - - - 0x0070AD 01:B09D: A0 00     LDY #$00
-loc_B09F:
+bra_B09F:
 C D 1 - - - 0x0070AF 01:B09F: B9 DE B0  LDA tbl_B0DE_spd_Y,Y
 C - - - - - 0x0070B2 01:B0A2: 9D A0 06  STA ram_скорость_объектов_y_младш,X
 C - - - - - 0x0070B5 01:B0A5: B9 DF B0  LDA tbl_B0DE_spd_Y + $01,Y
