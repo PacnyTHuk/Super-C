@@ -1032,8 +1032,8 @@ bra_9921_чит_не_введен:
                                         RTS
 
 tbl_9922_палитра_для_options:
-                                        .byte $13   ; чит выкл
-                                        .byte $14   ; чит вкл
+                                        .byte $13   ; 00 чит выкл
+                                        .byte $14   ; 01 чит вкл
 
 tbl_9923_атрибуты:
                                         .byte con_buf_mode_06   ; 
@@ -1073,8 +1073,8 @@ sub_9928_отрисовать_obj_limit:
                                         RTS
                                         
 tbl_9929_варианты_obj_limit:
-                                        .byte con_0x0017EA_obj_limit_14   ; 01 
-                                        .byte con_0x0017EA_obj_limit_32   ; 02 
+                                        .byte con_0x0017EA_obj_limit_14   ; 00 
+                                        .byte con_0x0017EA_obj_limit_32   ; 01 
 
 sub_992A_отрисовать_continue:
                                         LDA #con_0x0017EA_continue
