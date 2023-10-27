@@ -914,7 +914,6 @@ bra_E430_up:
                                         DEC ram_номер_опции_колво_игроков
                                         BPL bra_E42A
                                         INC ram_номер_опции_колво_игроков
-; не нажат select
 bra_E42A:
 C - - - - - 0x01E43C 07:E42C: 20 02 E5  JSR sub_E502_подготовка_счетчиков
 bra_E42F:
@@ -1117,17 +1116,9 @@ C - - - - - 0x01E4B9 07:E4A9: D0 03     BNE bra_E4AE
 C - - - - - 0x01E4BB 07:E4AB: E6 19     INC ram_номер_действия_на_заставке
 C - - - - - 0x01E4BD 07:E4AD: 60        RTS
 bra_E4AE:
-C - - - - - 0x01E4BE 07:E4AE: CA        DEX
-C - - - - - 0x01E4BF 07:E4AF: D0 09     BNE bra_E4BA_код_выбор_уровня
 C - - - - - 0x01E4C1 07:E4B1: 20 D0 E5  JSR sub_E5D0_очистка_оперативки
 C - - - - - 0x01E4C4 07:E4B4: 20 82 E5  JSR sub_E582_подготовка_игроков_к_началу
 C - - - - - 0x01E4C7 07:E4B7: 4C E5 E4  JMP loc_E4E5_плюс1_демка
-bra_E4BA_код_выбор_уровня:
-; bzk garbage
-;- - - - - - 0x01E4CA 07:E4BA: A9 0C     LDA #con_0x0017EA__area_1
-;- - - - - - 0x01E4CC 07:E4BC: 20 7A FE  JSR sub_FE7A_bankswitch_отрисовка_текста_через_буфер_0300x
-- - - - - - 0x01E4CF 07:E4BF: 4C E7 FE  JMP loc_FEE7_выбор_уровня_в_японке
-
 
 
 ofs_032_E4C2_03:
@@ -5635,13 +5626,6 @@ C - - - - - 0x01FEEF 07:FEDF: A9 30     LDA #con_prg_bank + $30
 C - - - - - 0x01FEF1 07:FEE1: 20 6F FD  JSR sub_FD6F_prg_bankswitch___no_return
 C - - - - - 0x01FEF4 07:FEE4: 4C 9C A2  JMP loc_0x0022AC_чит_коды
 
-
-
-loc_FEE7_выбор_уровня_в_японке:
-; bzk garbage
-- - - - - - 0x01FEF7 07:FEE7: A9 30     LDA #con_prg_bank + $30
-- - - - - - 0x01FEF9 07:FEE9: 20 6F FD  JSR sub_FD6F_prg_bankswitch___no_return
-- - - - - - 0x01FEFC 07:FEEC: 4C C4 A2  JMP loc_0x0022D4_выбор_уровня_в_японке
 
 
 
