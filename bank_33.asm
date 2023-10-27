@@ -5160,10 +5160,9 @@ C - - - - - 0x007A60 01:BA50: 90 16     BCC bra_BA68
 C - - - - - 0x007A62 01:BA52: A0 03     LDY #con_obj_id_03
 C - - - - - 0x007A64 01:BA54: 20 C8 AB  JSR sub_ABC8
 C - - - - - 0x007A67 01:BA57: 90 0F     BCC bra_BA68
+C - - - - - 0x007A6E 01:BA5E: A4 11     LDY ram_0011
 C - - - - - 0x007A69 01:BA59: BD 1E 07  LDA ram_obj_flags,X
 C - - - - - 0x007A6C 01:BA5C: 29 20     AND #$20
-; bzk optimize, LDY 0011 before LDA for readability
-C - - - - - 0x007A6E 01:BA5E: A4 11     LDY ram_0011
 C - - - - - 0x007A70 01:BA60: 99 56 05  STA ram_атрибуты_спрайта_врага_и_пуль,Y
 C - - - - - 0x007A73 01:BA63: A5 12     LDA ram_0012
 C - - - - - 0x007A75 01:BA65: 99 1E 07  STA ram_obj_flags,Y
