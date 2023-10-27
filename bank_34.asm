@@ -5565,9 +5565,9 @@ C - - - - - 0x009BFA 02:9BEA: 0A        ASL
 C - - - - - 0x009BFB 02:9BEB: 26 09     ROL ram_0009
 C - - - - - 0x009BFD 02:9BED: 0A        ASL
 C - - - - - 0x009BFE 02:9BEE: 26 09     ROL ram_0009
-C - - - - - 0x009C00 02:9BF0: 6D CB 9C  ADC tbl_9CCB_track_names
+C - - - - - 0x009C00 02:9BF0: 6D CB 9C  ADC #< tbl_9CCD_track_names
 C - - - - - 0x009C03 02:9BF3: 85 08     STA ram_0008
-C - - - - - 0x009C05 02:9BF5: AD CC 9C  LDA tbl_9CCB_track_names + $01
+C - - - - - 0x009C05 02:9BF5: AD CC 9C  LDA #> tbl_9CCD_track_names
 C - - - - - 0x009C08 02:9BF8: 65 09     ADC ram_0009
 C - - - - - 0x009C0A 02:9BFA: 85 09     STA ram_0009
 C - - - - - 0x009C0C 02:9BFC: A6 1E     LDX ram_index_ppu_buffer
@@ -5716,12 +5716,6 @@ tbl_9CA4_track_list:
 - D 0 - - - 0x009CD9 02:9CC9: 26        .byte con_sound_26   ; 25 B OUT
 ; bzk garbage
 - - - - - - 0x009CDA 02:9CCA: FF        .byte $FF            ; 26 MELODEY
-
-
-
-tbl_9CCB_track_names:
-; bzk optimize
-- D 0 - - - 0x009CDB 02:9CCB: CD 9C     .word tbl_9CCD_track_names
 
 
 
