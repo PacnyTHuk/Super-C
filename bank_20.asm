@@ -830,12 +830,10 @@ sub_9930_отрисоать_exit:
 ofs_options_9AFF_01_выбор_опций:
                                         JSR sub_9B30_смена_палитры_сокола
                                         LDA ram_копия_нажатая_кнопка
-                                        TAY
+                                        AND #con_btns_UD
+                                        BEQ bra_9B01
                                         AND #con_btn_Up
                                         BNE bra_9B00_up
-                                        TYA
-                                        AND #con_btn_Down
-                                        BEQ bra_9B01
 ; down
                                         INC ram_номер_опции_колво_игроков
                                         LDA ram_номер_опции_колво_игроков
@@ -881,12 +879,10 @@ ofs_99B3_options_difficulty:
 ofs_99B3_options_graphics:
 ofs_99B3_options_obj_limit:
                                         LDA ram_копия_нажатая_кнопка
-                                        TAY
-                                        AND #con_btn_Left         
+                                        AND #con_btns_LR
+                                        BEQ bra_9B05
+                                        AND #con_btn_Left
                                         BNE bra_9B04_left
-                                        TYA
-                                        AND #con_btn_Right
-                                        BEQ bra_9B06_RTS
 ; right
                                         INC ram_options_сложность,X
                                         LDA ram_options_сложность,X
@@ -923,12 +919,10 @@ ofs_9B09_options_rest:
                                         LDA ram_cheat_flag
                                         BEQ bra_9B0C_RTS
                                         LDA ram_копия_нажатая_кнопка
-                                        TAY
-                                        AND #con_btn_Left         
+                                        AND #con_btns_LR
+                                        BEQ bra_9B0B
+                                        AND #con_btn_Left
                                         BNE bra_9B0A_left
-                                        TYA
-                                        AND #con_btn_Right
-                                        BEQ bra_9B0C_RTS
 ; right
                                         INC ram_options_сложность,X
                                         LDA ram_options_сложность,X
