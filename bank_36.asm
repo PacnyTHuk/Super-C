@@ -1042,15 +1042,14 @@ C - - - - - 0x00D817 03:9807: 8D CF 03  STA ram_03CF
 C - - - - - 0x00D81A 03:980A: D0 0A     BNE bra_9816    ; jmp
 bra_980C:
 C - - - - - 0x00D81C 03:980C: CA        DEX
-C - - - - - 0x00D81D 03:980D: D0 0A     BNE bra_9819_RTS
+C - - - - - 0x00D81D 03:980D: D0 0A     BNE bra_9818_RTS
 C - - - - - 0x00D81F 03:980F: 20 90 F1  JSR sub_0x01F1A0
 C - - - - - 0x00D822 03:9812: A9 00     LDA #$00
 C - - - - - 0x00D824 03:9814: 85 61     STA ram_0061_конфиг_уровня
 bra_9816:
 C - - - - - 0x00D826 03:9816: E6 8D     INC ram_008D_событие_на_уровне
+bra_9818_RTS:
 C - - - - - 0x00D828 03:9818: 60        RTS
-bra_9819_RTS:   ; bzk optimize
-C - - - - - 0x00D829 03:9819: 60        RTS
 
 
 
