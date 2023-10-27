@@ -1364,9 +1364,7 @@ C - - - - - 0x00880C 02:87FC: 20 57 A9  JSR sub_0x006967
 C - - - - - 0x00880F 02:87FF: A0 07     LDY #$07
 bra_8801_loop:
 C - - - - - 0x008811 02:8801: 84 08     STY ram_0008
-C - - - - - 0x008813 02:8803: A9 2B     LDA #con_obj_id_2B
-; bzk optimize, load into Y directly
-C - - - - - 0x008815 02:8805: A8        TAY
+C - - - - - 0x008813 02:8803: A9 2B     LDY #con_obj_id_2B
 C - - - - - 0x008816 02:8806: 20 C8 AB  JSR sub_0x006BD8
 C - - - - - 0x008819 02:8809: 90 24     BCC bra_882F
 C - - - - - 0x00881B 02:880B: A4 11     LDY ram_0011
