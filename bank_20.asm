@@ -739,13 +739,13 @@ bra_9921_чит_не_введен:
                                         LDA tbl_9922_палитра_для_options,X
                                         JSR sub_B886_загрузка_палитры
                                         JSR sub_0x01F7CE_запись_палитры_из_03E0x_в_0300x
-                                        JSR sub_9924_отрисоать_difficulty
-                                        JSR sub_9926_отрисоать_graphics
-                                        JSR sub_9928_отрисоать_obj_limit
-                                        JSR sub_992A_отрисоать_continue
-                                        JSR sub_992C_отрисоать_level
-                                        JSR sub_992E_отрисоать_rest
-                                        JSR sub_9930_отрисоать_exit
+                                        JSR sub_9924_отрисовать_difficulty
+                                        JSR sub_9926_отрисовать_graphics
+                                        JSR sub_9928_отрисовать_obj_limit
+                                        JSR sub_992A_отрисовать_continue
+                                        JSR sub_992C_отрисовать_level
+                                        JSR sub_992E_отрисовать_rest
+                                        JSR sub_9930_отрисовать_exit
                                         INC ram_номер_действия_на_заставке
                                         RTS
 
@@ -763,7 +763,7 @@ tbl_9923_атрибуты:
                                         .byte $FE   ; end token
 
 
-sub_9924_отрисоать_difficulty:
+sub_9924_отрисовать_difficulty:
                                         LDY ram_options_сложность
                                         LDA tbl_9925_варианты_difficulty,Y
                                         JSR sub_977C_отрисовка_текста_через_буфер_0300x
@@ -774,7 +774,7 @@ tbl_9925_варианты_difficulty:
                                         .byte $05   ; hard
                                         .byte $06   ; expert
 
-sub_9926_отрисоать_graphics:
+sub_9926_отрисовать_graphics:
                                         LDY ram_options_регион
                                         LDA tbl_9927_варианты_graphics,Y
                                         JSR sub_977C_отрисовка_текста_через_буфер_0300x
@@ -784,7 +784,7 @@ tbl_9927_варианты_graphics:
                                         .byte $07   ; human
                                         .byte $08   ; robot
 
-sub_9928_отрисоать_obj_limit:
+sub_9928_отрисовать_obj_limit:
                                         LDY ram_options_колво_объектов
                                         LDA tbl_9929_варианты_obj_limit,Y
                                         JSR sub_977C_отрисовка_текста_через_буфер_0300x
@@ -794,7 +794,7 @@ tbl_9929_варианты_obj_limit:
                                         .byte $09   ; 14
                                         .byte $0A   ; 32
 
-sub_992A_отрисоать_continue:
+sub_992A_отрисовать_continue:
                                         LDA #con_0x0017EA_continue
                                         JSR sub_977C_отрисовка_текста_через_буфер_0300x
                                         LDA ram_options_конты
@@ -803,7 +803,7 @@ sub_992A_отрисоать_continue:
                                         STA ram_nmt_buffer - $02,X
                                         RTS
 
-sub_992C_отрисоать_level:
+sub_992C_отрисовать_level:
                                         LDA #con_0x0017EA_level
                                         JSR sub_977C_отрисовка_текста_через_буфер_0300x
                                         LDA ram_options_уровень
@@ -812,7 +812,7 @@ sub_992C_отрисоать_level:
                                         STA ram_nmt_buffer - $02,X
                                         RTS
 
-sub_992E_отрисоать_rest:
+sub_992E_отрисовать_rest:
                                         LDA #con_0x0017EA_rest
                                         JSR sub_977C_отрисовка_текста_через_буфер_0300x
                                         LDA ram_options_жизни
@@ -821,7 +821,7 @@ sub_992E_отрисоать_rest:
                                         STA ram_nmt_buffer - $02,X
                                         RTS
 
-sub_9930_отрисоать_exit:
+sub_9930_отрисовать_exit:
                                         LDA #con_0x0017EA_exit
                                         JSR sub_977C_отрисовка_текста_через_буфер_0300x
                                         RTS
