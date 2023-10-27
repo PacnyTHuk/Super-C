@@ -99,11 +99,14 @@ con_0x0017EA_press_start                = $03 ;
 con_0x0017EA_normal                     = $04 ;
 con_0x0017EA_hard                       = $05 ;
 con_0x0017EA_expert                     = $06 ;
-con_0x0017EA_super_c                    = $07 ;
-con_0x0017EA_probotector_2              = $08 ;
+con_0x0017EA_human                      = $07 ;
+con_0x0017EA_robot                      = $08 ;
 con_0x0017EA_obj_limit_14               = $09 ;
 con_0x0017EA_obj_limit_32               = $0A ;
-con_0x0017EA_exit                       = $0B ;
+con_0x0017EA_continue                   = $0B ;
+con_0x0017EA_level                      = $0C ;
+con_0x0017EA_rest                       = $0D ;
+con_0x0017EA_exit                       = $0E ;
 
 
 ; ram_obj_id

@@ -16,7 +16,6 @@
 .export loc_0x001DA4
 .export loc_0x002178_stage_complete_handler
 .export loc_0x0022AC_чит_коды
-.export loc_0x0022D4_выбор_уровня_в_японке
 .export loc_0x0023C7_credits_handler
 .export _off014_32_0x00263F_00
 .export _off014_32_0x002730_01
@@ -5475,55 +5474,6 @@ tbl_A2BD_cheat_code:
 - D 1 - - - 0x0022D3 00:A2C3: 00        .byte $00   ; 06 end token
 
 
-
-loc_0x0022D4_выбор_уровня_в_японке:
-; bzk garbage
-- - - - - - 0x0022D4 00:A2C4: 20 DC A2  JSR sub_A2DC_переключение_и_отображение_номера_уровня
-- - - - - - 0x0022D7 00:A2C7: A5 1B     LDA ram_счетчик_кадров_1
-- - - - - - 0x0022D9 00:A2C9: 4A        LSR
-- - - - - - 0x0022DA 00:A2CA: 4A        LSR
-- - - - - - 0x0022DB 00:A2CB: 4A        LSR
-- - - - - - 0x0022DC 00:A2CC: 4A        LSR
-- - - - - - 0x0022DD 00:A2CD: A9 00     LDA #$00
-- - - - - - 0x0022DF 00:A2CF: 90 05     BCC bra_A2D6
-- - - - - - 0x0022E1 00:A2D1: A5 50     LDA ram_номер_уровня
-- - - - - - 0x0022E3 00:A2D3: 18        CLC
-- - - - - - 0x0022E4 00:A2D4: 69 02     ADC #$02
-bra_A2D6:
-- - - - - - 0x0022E6 00:A2D6: A6 1E     LDX ram_index_ppu_buffer
-- - - - - - 0x0022E8 00:A2D8: 9D FE 02  STA ram_nmt_buffer - $02,X
-- - - - - - 0x0022EB 00:A2DB: 60        RTS
-
-
-
-sub_A2DC_переключение_и_отображение_номера_уровня:
-; bzk garbage
-- - - - - - 0x0022EC 00:A2DC: A5 F5     LDA ram_копия_нажатая_кнопка
-- - - - - - 0x0022EE 00:A2DE: 29 0C     AND #con_btns_UD
-- - - - - - 0x0022F0 00:A2E0: F0 14     BEQ bra_A2F6
-- - - - - - 0x0022F2 00:A2E2: C9 08     CMP #con_btn_Up
-- - - - - - 0x0022F4 00:A2E4: D0 08     BNE bra_A2EE
-- - - - - - 0x0022F6 00:A2E6: A5 50     LDA ram_номер_уровня
-- - - - - - 0x0022F8 00:A2E8: F0 0C     BEQ bra_A2F6
-- - - - - - 0x0022FA 00:A2EA: C6 50     DEC ram_номер_уровня
-- - - - - - 0x0022FC 00:A2EC: 10 08     BPL bra_A2F6
-bra_A2EE:
-- - - - - - 0x0022FE 00:A2EE: A5 50     LDA ram_номер_уровня
-- - - - - - 0x002300 00:A2F0: C9 07     CMP #$07
-- - - - - - 0x002302 00:A2F2: F0 02     BEQ bra_A2F6
-- - - - - - 0x002304 00:A2F4: E6 50     INC ram_номер_уровня
-bra_A2F6:
-- - - - - - 0x002306 00:A2F6: A5 F5     LDA ram_копия_нажатая_кнопка
-- - - - - - 0x002308 00:A2F8: 29 10     AND #con_btn_Start
-- - - - - - 0x00230A 00:A2FA: F0 0D     BEQ bra_A309_RTS
-- - - - - - 0x00230C 00:A2FC: A5 50     LDA ram_номер_уровня
-- - - - - - 0x00230E 00:A2FE: 48        PHA
-- - - - - - 0x00230F 00:A2FF: 20 D0 E5  JSR sub_0x01E5E0_очистка_оперативки
-- - - - - - 0x002312 00:A302: 68        PLA
-- - - - - - 0x002313 00:A303: 20 84 E5  JSR sub_0x01E594
-- - - - - - 0x002316 00:A306: 4C E5 E4  JMP loc_0x01E4F5
-bra_A309_RTS:
-- - - - - - 0x002319 00:A309: 60        RTS
 
 
 loc_0x0023C7_credits_handler:
