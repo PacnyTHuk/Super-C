@@ -2237,14 +2237,6 @@ C - - - - - 0x000C56 00:8C46: B5 CE     LDA ram_00CE_игрок,X
 C - - - - - 0x000C58 00:8C48: C9 FF     CMP #$FF
 C - - - - - 0x000C5A 00:8C4A: D0 06     BNE bra_8C52_RTS
 C - - - - - 0x000C5C 00:8C4C: 4C 0E 86  JMP loc_860E
-
-
-
-ofs_004_8C4F_05:    ; bzk optimize
-C - - J - - 0x000C5F 00:8C4F: 4C 53 8C  JMP loc_8C53
-
-
-
 bra_8C52_RTS:
 C - - - - - 0x000C62 00:8C52: 60        RTS
 
@@ -2253,6 +2245,7 @@ C - - - - - 0x000C62 00:8C52: 60        RTS
 sub_8C53:
 loc_8C53:
 ofs_004_8C53_02:
+ofs_004_8C4F_05:
 C D 0 J - - 0x000C63 00:8C53: A9 0C     LDA #$0C
 C - - - - - 0x000C65 00:8C55: 85 0F     STA ram_000F
 C - - - - - 0x000C67 00:8C57: B5 A8     LDA ram_скорость_игрока_y_старш,X
