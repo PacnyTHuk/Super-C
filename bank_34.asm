@@ -5498,9 +5498,9 @@ C - - - - - 0x009B8C 02:9B7C: 85 5C     STA ram_005C_sound_mode_data
 C - - - - - 0x009B8E 02:9B7E: AD 5F 9F  LDA #> tbl_9F62_auto_playlist
 C - - - - - 0x009B91 02:9B81: 85 5D     STA ram_005C_sound_mode_data + $01
 ; bzk optimize, doesn't look like data from tbl_9FB7 will be read
-C - - - - - 0x009B93 02:9B83: AD 60 9F  LDA tbl_9F60
+C - - - - - 0x009B93 02:9B83: AD 60 9F  LDA #< tbl_9FB7
 C - - - - - 0x009B96 02:9B86: 85 60     STA ram_0060_sound_mode_data
-C - - - - - 0x009B98 02:9B88: AD 61 9F  LDA tbl_9F60 + $01
+C - - - - - 0x009B98 02:9B88: AD 61 9F  LDA #> tbl_9FB7
 C - - - - - 0x009B9B 02:9B8B: 85 61     STA ram_0060_sound_mode_data + $01
 C - - - - - 0x009B9D 02:9B8D: A9 01     LDA #$01
 C - - - - - 0x009B9F 02:9B8F: 85 59     STA ram_play_all
@@ -5997,12 +5997,6 @@ C - - - - - 0x009F65 02:9F55: 85 5A     STA ram_005A_sound_mode
 C - - - - - 0x009F67 02:9F57: 85 5B     STA ram_005B_sound_mode
 ; 1путин: del ram 005E-005F
 C - - - - - 0x009F6D 02:9F5D: 60        RTS
-
-
-
-tbl_9F60:
-; bzk optimize
-- D 0 - - - 0x009F70 02:9F60: B7 9F     .word tbl_9FB7
 
 
 
