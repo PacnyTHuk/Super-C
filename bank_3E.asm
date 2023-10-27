@@ -896,12 +896,10 @@ C - - - - - 0x01E42D 07:E41D: 20 5F E4  JSR sub_E45F_запись_данных_�
 
 
 C - - - - - 0x01E430 07:E420: A5 F5     LDA ram_копия_нажатая_кнопка
-                                        TAY
+                                        AND #con_btns_UD
+                                        BEQ bra_E42A
                                         AND #con_btn_Up
                                         BNE bra_E430_up
-                                        TYA
-                                        AND #con_btn_Down
-                                        BEQ bra_E42A
 ; down
                                         INC ram_номер_опции_колво_игроков
                                         LDA ram_номер_опции_колво_игроков
