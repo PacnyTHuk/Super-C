@@ -36,7 +36,6 @@
 .export tbl_0x01F4E4
 .export sub_0x01F4FC
 .export sub_0x01F500
-.export loc_0x01F6BC_убить_игрока
 .export loc_0x01F6BD_убить_игрока
 .export sub_0x01F70D_try_to_find_free_object
 .export sub_0x01F716_try_to_find_free_object
@@ -4075,9 +4074,6 @@ C - - - - - 0x01F6BB 07:F6AB: 60        RTS
 
 
 
-loc_0x01F6BC_убить_игрока:
-; bzk optimize
-C D 3 - - - 0x01F6BC 07:F6AC: EA        NOP
 loc_0x01F6BD_убить_игрока:
 C D 3 - - - 0x01F6BD 07:F6AD: A5 5C     LDA ram_005C_unk
 C - - - - - 0x01F6BF 07:F6AF: D0 15     BNE bra_F6C6_RTS
