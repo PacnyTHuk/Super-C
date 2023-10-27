@@ -2697,7 +2697,7 @@ tbl_ABB4:
 
 
 sub_ABBD:
-; bzk optimize, Y = 00
+                                        LDY #$00
 C - - - - - 0x006BCD 01:ABBD: 20 C8 AB  JSR sub_ABC8
 C - - - - - 0x006BD0 01:ABC0: B0 3A     BCS bra_ABFC_RTS
 - - - - - - 0x006BD2 01:ABC2: 20 1C F7  JSR sub_0x01F72C_try_to_find_enemy_bullet
@@ -3192,7 +3192,6 @@ C - - - - - 0x006E49 01:AE39: 60        RTS
 
 
 ofs_038_01_AE3A_03:
-C - - J - - 0x006E4A 01:AE3A: A0 00     LDY #$00
 C - - - - - 0x006E4C 01:AE3C: 20 BD AB  JSR sub_ABBD
 C - - - - - 0x006E4F 01:AE3F: 4C 9A A2  JMP loc_A29A
 
@@ -3976,7 +3975,6 @@ ofs_038_04_B303_03:
 C - - J - - 0x007313 01:B303: A9 0D     LDA #$0D
 C - - - - - 0x007315 01:B305: 20 9A A8  JSR sub_A89A
 C - - - - - 0x007318 01:B308: B0 F4     BCS bra_B2FE_RTS
-C - - - - - 0x00731A 01:B30A: A0 00     LDY #$00
 C - - - - - 0x00731C 01:B30C: 20 BD AB  JSR sub_ABBD
 C - - - - - 0x00731F 01:B30F: 4C 9A A2  JMP loc_A29A
 
