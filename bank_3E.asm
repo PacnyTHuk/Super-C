@@ -820,7 +820,7 @@ C - - - - - 0x01E3F5 07:E3E5: CA        DEX
 C - - - - - 0x01E3F6 07:E3E6: D0 20     BNE bra_E408_минус_x
 ; X=01 слияние логотипа
                                         JSR sub_E4D0_переключение_банков_анимация_super
-C - - - - - 0x01E3FB 07:E3EB: 20 EF FE  JSR loc_FEEF_bankswitch_обработчик_главного_экрана
+C - - - - - 0x01E3FB 07:E3EB: 20 EF FE  JSR sub_FEEF_bankswitch_обработчик_главного_экрана
 C - - - - - 0x01E3FE 07:E3EE: B0 09     BCS bra_E3F9
 ; заставка еще идет
 C - - - - - 0x01E400 07:E3F0: A5 F5     LDA ram_копия_нажатая_кнопка
@@ -5479,7 +5479,7 @@ C - - - - - 0x01FEF4 07:FEE4: 4C 9C A2  JMP loc_0x0022AC_чит_коды
 
 
 
-loc_FEEF_bankswitch_обработчик_главного_экрана:
+sub_FEEF_bankswitch_обработчик_главного_экрана:
 C - - - - - 0x01FEFF 07:FEEF: A9 30     LDA #con_prg_bank + $20
 C - - - - - 0x01FF01 07:FEF1: 20 6F FD  JSR sub_FD6F_prg_bankswitch___no_return
 C - - - - - 0x01FF04 07:FEF4: 4C 0A A3  JMP loc_0x00231A_обработчик_главного_экрана
