@@ -4259,6 +4259,12 @@ tbl_F97C:
 ; 2C (B0) 
 - D 3 - - - 0x01FA3C 07:FA2C: 1D        .byte $1D   ; buffer index
 - D 3 - - - 0x01FA3D 07:FA2D: 20        .byte $20, $00, $0C   ; colors
+; 2D (B4) EU
+                                        .byte $09   ; buffer index
+                                        .byte $3C, $12, $1C   ; colors EU
+; 2E (B8) EU
+                                        .byte $0D   ; buffer index
+                                        .byte $0C, $2C, $1C   ; colors EU
 
 
 
