@@ -852,9 +852,11 @@ C - - - - - 0x004550 01:8540: A5 FE     LDA ram_for_2001
 C - - - - - 0x004552 01:8542: 29 FD     AND #$FD
 C - - - - - 0x004554 01:8544: 85 FE     STA ram_for_2001
 C - - - - - 0x004556 01:8546: 20 1B BD  JSR sub_0x007D2B_clear_0480_04FF
-C - - - - - 0x004559 01:8549: A9 04     LDA #con_chr_bank + $04
+; 1путин: 1й босс - выбор банка фона вертолета
+                                        LDY ram_options_регион
+C - - - - - 0x004559 01:8549: A9 04     LDA tbl_85C6_bg_bank,Y
 C - - - - - 0x00455B 01:854B: 8D F0 07  STA ram_bg_bank_1
-C - - - - - 0x00455E 01:854E: A9 06     LDA #con_chr_bank + $06
+C - - - - - 0x00455E 01:854E: A9 06     LDA tbl_85C6_bg_bank + $02,Y
 C - - - - - 0x004560 01:8550: 8D F1 07  STA ram_bg_bank_2
 C - - - - - 0x004563 01:8553: A0 04     LDY #$04
 bra_8555_loop:
@@ -903,9 +905,12 @@ C - - - - - 0x0045B7 01:85A7: A9 00     LDA #$00
 C - - - - - 0x0045B9 01:85A9: 9D 56 07  STA ram_0756_obj,X
 C - - - - - 0x0045BC 01:85AC: A9 1E     LDA #$1E
 C - - - - - 0x0045BE 01:85AE: 9D 72 07  STA ram_0772_obj,X
-C - - - - - 0x0045C1 01:85B1: A0 00     LDY #con_F97C_colors + $00 * $04
+; 1путин: палитра для европейки
+                                        LDX ram_options_регион
+C - - - - - 0x0045C1 01:85B1: A0 00     LDY tbl_85C7_color,X
 C - - - - - 0x0045C3 01:85B3: 20 64 F9  JSR sub_0x01F974_write_3_colors_with_condition
-C - - - - - 0x0045C6 01:85B6: A0 04     LDY #con_F97C_colors + $01 * $04
+                                        LDX ram_options_регион
+C - - - - - 0x0045C6 01:85B6: A0 04     LDY tbl_85C7_color + $02,X
 C - - - - - 0x0045C8 01:85B8: 20 64 F9  JSR sub_0x01F974_write_3_colors_with_condition
 C - - - - - 0x0045CB 01:85BB: 20 B8 F7  JSR sub_0x01F7C8
 C - - - - - 0x0045CE 01:85BE: A6 10     LDX ram_0010
@@ -914,6 +919,17 @@ C - - - - - 0x0045D2 01:85C2: 20 DE FD  JSR sub_0x01FDEE_play_sound
 C - - - - - 0x0045D5 01:85C5: 4C D7 A2  JMP loc_0x0062E7_increase_obj_state
 
 
+tbl_85C6_bg_bank:
+                                        .byte con_chr_bank + $04    ; 00 US
+                                        .byte con_chr_bank + $AD    ; 01 EU
+                                        .byte con_chr_bank + $06    ; 00 US
+                                        .byte con_chr_bank + $AF    ; 01 EU
+
+tbl_85C7_color:
+                                        .byte con_F97C_colors + $00 * $04   ; 00 US
+                                        .byte con_F97C_colors + $2D * $04   ; 01 EU
+                                        .byte con_F97C_colors + $01 * $04   ; 00 US
+                                        .byte con_F97C_colors + $2E * $04   ; 01 EU
 
 tbl_85C8:
 - D 0 - - - 0x0045D8 01:85C8: 22        .byte $22   ; 00 

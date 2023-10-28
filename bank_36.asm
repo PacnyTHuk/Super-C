@@ -754,10 +754,16 @@ tbl_96A2_hi:
 
 
 ofs_023_96B6_00:
-C - - J - - 0x00D6C6 03:96B6: A9 1B     LDA #con_chr_bank + $1B
+; 1путин: 4й лвл - начало подъема, выбор банка
+                                        LDY ram_options_регион
+C - - J - - 0x00D6C6 03:96B6: A9 1B     LDA tbl_96BC_chr_bank,Y
 C - - - - - 0x00D6C8 03:96B8: 8D F5 07  STA ram_spr_bank_4
 C - - - - - 0x00D6CB 03:96BB: D0 32     BNE bra_96EF    ; jmp
 
+
+tbl_96BC_chr_bank:
+                                        .byte con_chr_bank + $1B    ; 00 US 
+                                        .byte con_chr_bank + $9D    ; 01 EU
 
 
 ofs_023_96BD_01:
@@ -1292,7 +1298,9 @@ C - - - - - 0x00D93C 03:992C: CA        DEX
 C - - - - - 0x00D93D 03:992D: D0 0E     BNE bra_993D
 C - - - - - 0x00D93F 03:992F: A9 2A     LDA #con_chr_bank + $2A
 C - - - - - 0x00D941 03:9931: 8D F1 07  STA ram_bg_bank_2
-C - - - - - 0x00D944 03:9934: A9 65     LDA #con_chr_bank + $65
+; 1путин: 7й лвл - спуск после шаров, смена банка
+                                        LDY ram_options_регион
+C - - - - - 0x00D944 03:9934: A9 65     LDA tbl_D976_chr_bank,Y
 C - - - - - 0x00D946 03:9936: 8D F5 07  STA ram_spr_bank_4
 C - - - - - 0x00D949 03:9939: A0 34     LDY #con_F97C_colors + $0D * $04
 C - - - - - 0x00D94B 03:993B: D0 E9     BNE bra_9926    ; jmp
@@ -1305,7 +1313,9 @@ C - - - - - 0x00D955 03:9945: A9 2C     LDA #con_chr_bank + $2C
 C - - - - - 0x00D957 03:9947: 8D F0 07  STA ram_bg_bank_1
 C - - - - - 0x00D95A 03:994A: A9 2E     LDA #con_chr_bank + $2E
 C - - - - - 0x00D95C 03:994C: 8D F1 07  STA ram_bg_bank_2
-C - - - - - 0x00D95F 03:994F: A9 66     LDA #con_chr_bank + $66
+; 1путин: 7й лвл - спуск к боссу, смена банка
+                                        LDY ram_options_регион
+C - - - - - 0x00D95F 03:994F: A9 66     LDA tbl_D977_chr_bank,Y
 C - - - - - 0x00D961 03:9951: 8D F4 07  STA ram_spr_bank_3
 C - - - - - 0x00D964 03:9954: A0 50     LDY #con_F97C_colors + $14 * $04
 C - - - - - 0x00D966 03:9956: 20 64 F9  JSR sub_0x01F974_write_3_colors_with_condition
@@ -1320,6 +1330,14 @@ C - - - - - 0x00D974 03:9964: D0 C3     BNE bra_9929    ; jmp
 bra_9966_RTS:
 - - - - - - 0x00D976 03:9966: 60        RTS
 
+
+tbl_D976_chr_bank:
+                                        .byte con_chr_bank + $65   ; 00 US
+                                        .byte con_chr_bank + $A4   ; 01 EU
+                                        
+tbl_D977_chr_bank:
+                                        .byte con_chr_bank + $66   ; 00 US
+                                        .byte con_chr_bank + $A0   ; 01 EU
 
 
 ofs_044_0x00D977_07_area_8:
