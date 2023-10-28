@@ -91,6 +91,33 @@ con_buf_mode_07                         = $07 ; 1й байт = счетчик, �
 
 
 
+; палитра (0x00F894)
+con_pal_00_area_1_US                    = $00
+con_pal_01_area_1_EU                    = $01
+con_pal_02_area_2_US                    = $02
+con_pal_03_area_2_EU                    = $03
+con_pal_04_area_3_US                    = $04
+con_pal_05_area_3_EU                    = $05
+con_pal_06_area_4_US                    = $06
+con_pal_07_area_4_EU                    = $07
+con_pal_08_area_5_US                    = $08
+con_pal_09_area_5_EU                    = $09
+con_pal_0A_area_6_US                    = $0A
+con_pal_0B_area_6_EU                    = $0B
+con_pal_0C_area_7_US                    = $0C
+con_pal_0D_area_7_EU                    = $0D
+con_pal_0E_area_8_US                    = $0E
+con_pal_0F_area_8_EU                    = $0F
+con_pal_10_логотип_слияние              = $10
+con_pal_11_главный_экран                = $11
+con_pal_12_заставка                     = $12
+con_pal_13_options                      = $13
+
+
+
+
+
+
 ; for 0x0017EA
 con_0x0017EA_1_player                   = $00 ;
 con_0x0017EA_2_players                  = $01 ;
