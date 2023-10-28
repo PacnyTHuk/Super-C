@@ -592,6 +592,8 @@ C - - - - - 0x006188 01:A178: 4C 75 A2  JMP loc_A275_delete_object_02
 
 
 ofs_016_A17B_06_falcon:
+                                        LDA #$20
+                                        STA ram_счетчик_мерцания_экрана
 C - - J - - 0x00618B 01:A17B: 20 96 A5  JSR sub_A596_kill_all_objects
 C - - - - - 0x00618E 01:A17E: 4C 75 A2  JMP loc_A275_delete_object_02
 
