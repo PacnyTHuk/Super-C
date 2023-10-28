@@ -15,7 +15,6 @@
 .export loc_0x001CA6
 .export loc_0x001DA4
 .export loc_0x002178_stage_complete_handler
-.export loc_0x0022AC_чит_коды
 .export loc_0x0023C7_credits_handler
 .export _off014_32_0x00263F_00
 .export _off014_32_0x002730_01
@@ -5427,50 +5426,6 @@ loc_A297:
 C D 1 - - - 0x0022A7 00:A297: A9 08     LDA #$08
 C - - - - - 0x0022A9 00:A299: 95 A0     STA ram_статус_игрока,X
 C - - - - - 0x0022AB 00:A29B: 60        RTS
-
-
-
-loc_0x0022AC_чит_коды:
-; 1путин: опт/замена кода
-C D 1 - - - 0x0022AC 00:A29C: A4 50     LDA ram_cheat_flag
-C - - - - - 0x0022AE 00:A29E: 30 1C     BNE bra_A2BC_RTS
-                                        LDY ram_cheat_input_cnt
-C - - - - - 0x0022B0 00:A2A0: A5 F1     LDA ram_нажатая_кнопка
-C - - - - - 0x0022B2 00:A2A2: 29 CF     AND #con_btns_AB + con_btns_Dpad
-C - - - - - 0x0022B4 00:A2A4: F0 16     BEQ bra_A2BC_RTS
-C - - - - - 0x0022B6 00:A2A6: D9 BD A2  CMP tbl_A2BD_cheat_code,Y
-C - - - - - 0x0022B9 00:A2A9: D0 0D     BNE bra_A2B8_incorrect_input
-C - - - - - 0x0022BB 00:A2AB: C8        INY
-C - - - - - 0x0022BC 00:A2AC: 84 50     STY ram_cheat_input_cnt
-C - - - - - 0x0022BE 00:A2AE: B9 BD A2  LDA tbl_A2BD_cheat_code,Y
-C - - - - - 0x0022C1 00:A2B1: D0 09     BNE bra_A2BC_RTS
-; if cheat was entered successfully
-C - - - - - 0x0022C3 00:A2B3: A9 01     LDA #$01
-C - - - - - 0x0022C5 00:A2B5: 8D EC 07  STA ram_cheat_flag
-                                        LDA #$20
-                                        STA ram_счетчик_мерцания_экрана
-                                        LDA #con_sound_23
-                                        JSR sub_0x01FDEE_play_sound
-bra_A2B8_incorrect_input:
-C - - - - - 0x0022C8 00:A2B8: A9 FF     LDA #$00
-C - - - - - 0x0022CA 00:A2BA: 85 50     STA ram_cheat_input_cnt
-bra_A2BC_RTS:
-C - - - - - 0x0022CC 00:A2BC: 60        RTS
-
-
-
-tbl_A2BD_cheat_code:
-                                        .byte con_btn_A   ; 00
-                                        .byte con_btn_B   ; 01
-                                        .byte con_btn_Right   ; 02
-                                        .byte con_btn_Left   ; 03
-                                        .byte con_btn_Right   ; 04
-                                        .byte con_btn_Left   ; 05
-                                        .byte con_btn_Down   ; 06
-                                        .byte con_btn_Down   ; 07
-                                        .byte con_btn_Up   ; 08
-                                        .byte con_btn_Up   ; 09
-                                        .byte $00   ; 0A end token
 
 
 
