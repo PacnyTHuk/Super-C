@@ -621,7 +621,7 @@ C - - - - - 0x0061A3 01:A193: 4C 75 A2  JMP loc_A275_delete_object_02
 
 
 sub_A196:
-C - - - - - 0x0061A6 01:A196: A2 0F     LDX #con_макс_индекс_пули_игрока
+C - - - - - 0x0061A6 01:A196: A2 0F     LDX ram_макс_индекс_пули_общие
 C - - - - - 0x0061A8 01:A198: 38        SEC
 bra_A199_loop:
 C - - - - - 0x0061A9 01:A199: BD 38 06  LDA ram_пули_игрока_хитбокс,X
@@ -713,7 +713,7 @@ C - - - - - 0x006237 01:A227: 10 01     BPL bra_A22A
 C - - - - - 0x006239 01:A229: 88        DEY ; FF
 bra_A22A:
 C - - - - - 0x00623A 01:A22A: 84 8E     STY ram_008E
-C - - - - - 0x00623C 01:A22C: A2 0D     LDX #con_макс_индекс_враги
+C - - - - - 0x00623C 01:A22C: A2 0D     LDX ram_макс_индекс_враги
 bra_A22E_loop:
 C - - - - - 0x00623E 01:A22E: 86 10     STX ram_0010
 C - - - - - 0x006240 01:A230: BD 08 05  LDA ram_кадр_врага_и_пуль,X
@@ -1610,7 +1610,7 @@ tbl_A556_next_obj_state:
 
 sub_A596_kill_all_objects:
 C - - - - - 0x0065A6 01:A596: 86 08     STX ram_0008
-C - - - - - 0x0065A8 01:A598: A2 0D     LDX #con_макс_индекс_враги
+C - - - - - 0x0065A8 01:A598: A2 0D     LDX ram_макс_индекс_враги
 bra_A59A_loop:
 C - - - - - 0x0065AA 01:A59A: BD 68 06  LDA ram_состояние_объектов,X
 C - - - - - 0x0065AD 01:A59D: F0 0A     BEQ bra_A5A9_skip

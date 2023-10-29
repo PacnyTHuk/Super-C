@@ -59,6 +59,7 @@
 .export sub_0x01F978_write_3_colors
 .export sub_0x01FA40
 .export sub_0x01FAAF_затемнение_экрана
+.export tbl_0x01FB75_индексы
 .export sub_0x01FC8F_copy_reg_values
 .export loc_0x01FC8F_copy_reg_values
 .export loc_0x01FCCA_включить_NMI
@@ -881,12 +882,13 @@ C - - - - - 0x01E5DE 07:E5CE: F0 0F     BEQ bra_E5DF    ; jmp
 sub_E5D0_очистка_оперативки:
 sub_0x01E5E0_очистка_оперативки:
 C - - - - - 0x01E5E0 07:E5D0: A2 38     LDX #$38
-; clear 0038-00DF
+; 1путин: отмена очистки 00DA-00DF
+; clear 0038-00D9
 C - - - - - 0x01E5E6 07:E5D6: A9 00     LDA #$00
 bra_E5D8_loop:
 C - - - - - 0x01E5E8 07:E5D8: 95 00     STA $00,X
 C - - - - - 0x01E5EA 07:E5DA: E8        INX
-C - - - - - 0x01E5EB 07:E5DB: E0 E0     CPX #$E0
+C - - - - - 0x01E5EB 07:E5DB: E0 E0     CPX #$DA
 C - - - - - 0x01E5ED 07:E5DD: D0 F9     BNE bra_E5D8_loop
 bra_E5DF:
 ; A = 00
@@ -1609,7 +1611,7 @@ ofs_033_EA16_06_gameover_музыка:
 C - - J - - 0x01EA26 07:EA16: C6 3F     DEC ram_таймер_на_экране_очков
 C - - - - - 0x01EA28 07:EA18: D0 3F     BNE bra_EA59_RTS
 C - - - - - 0x01EA2A 07:EA1A: C6 59     DEC ram_конты
-C - - - - - 0x01EA2C 07:EA1C: 30 34     BMI bra_EA52
+C - - - - - 0x01EA2C 07:EA1C: 30 34     BMI bra_EA52_игра_окончена
 ;C - - - - - 0x01EA2E 07:EA1E: A9 0A     LDA #con_0x0017EA_continue_end
 ;C - - - - - 0x01EA30 07:EA20: 20 7A FE  JSR sub_FE7A_bankswitch_отрисовка_текста_через_буфер_0300x
 C - - - - - 0x01EA33 07:EA23: A9 00     LDA #$00
@@ -1621,12 +1623,12 @@ C - - - - - 0x01EA37 07:EA27: 4C B2 E8  JMP loc_E8B2
 ofs_033_EA2A_07_gameover_выбор_опций:
 C - - J - - 0x01EA3A 07:EA2A: A5 F1     LDA ram_нажатая_кнопка
 C - - - - - 0x01EA3C 07:EA2C: 29 2C     AND #con_btn_Select + con_btns_UD
-C - - - - - 0x01EA3E 07:EA2E: F0 06     BEQ bra_EA36
+C - - - - - 0x01EA3E 07:EA2E: F0 06     BEQ bra_EA36_нет_нажатий
 ; поменять опцию continue/end
 C - - - - - 0x01EA40 07:EA30: A5 2C     LDA ram_002C
 C - - - - - 0x01EA42 07:EA32: 49 01     EOR #$01
 C - - - - - 0x01EA44 07:EA34: 85 2C     STA ram_002C
-bra_EA36:
+bra_EA36_нет_нажатий:
 C - - - - - 0x01EA46 07:EA36: A4 2C     LDY ram_002C
 C - - - - - 0x01EA48 07:EA38: B9 5A EA  LDA tbl_EA5A,Y
 C - - - - - 0x01EA4B 07:EA3B: A0 50     LDY #$50
@@ -1635,11 +1637,11 @@ C - - - - - 0x01EA50 07:EA40: A5 F1     LDA ram_нажатая_кнопка
 C - - - - - 0x01EA52 07:EA42: 29 10     AND #con_btn_Start
 C - - - - - 0x01EA54 07:EA44: F0 13     BEQ bra_EA59_RTS
 C - - - - - 0x01EA56 07:EA46: A5 2C     LDA ram_002C
-C - - - - - 0x01EA58 07:EA48: D0 08     BNE bra_EA52
+C - - - - - 0x01EA58 07:EA48: D0 08     BNE bra_EA52_игра_окончена
 C - - - - - 0x01EA5A 07:EA4A: 20 94 E5  JSR sub_E594
 C - - - - - 0x01EA5D 07:EA4D: A9 00     LDA #$00
 C - - - - - 0x01EA5F 07:EA4F: 4C 01 E9  JMP loc_E901
-bra_EA52:
+bra_EA52_игра_окончена:
 C - - - - - 0x01EA62 07:EA52: A9 00     LDA #$00
 C - - - - - 0x01EA64 07:EA54: 85 F0     STA ram_00F0
 C D 3 - - - 0x01EA66 07:EA56: 4C 92 E4  JMP loc_E492
@@ -3684,7 +3686,7 @@ C - - - - - 0x01F720 07:F710: 60        RTS
         ; X = free object index
     ; Z = 1 if failed to find free object
 sub_F711_find_free_object:
-C - - - - - 0x01F721 07:F711: A2 0D     LDX #con_макс_индекс_враги
+C - - - - - 0x01F721 07:F711: A2 0D     LDX ram_макс_индекс_враги
 sub_F713_find_free_object_custom_X:
 bra_F713_loop:
 C - - - - - 0x01F723 07:F713: BD 68 06  LDA ram_состояние_объектов,X
@@ -3711,7 +3713,7 @@ C - - - - - 0x01F734 07:F724: 60        RTS
         ; X = object index
     ; Z = 1 if not found
 sub_F725_find_bullet_in_obj_list:
-C - - - - - 0x01F735 07:F725: A2 0D     LDX #con_макс_индекс_враги
+C - - - - - 0x01F735 07:F725: A2 0D     LDX ram_макс_индекс_враги
 bra_F727_loop:
 C - - - - - 0x01F737 07:F727: BD D8 06  LDA ram_тип_объектов,X
 C - - - - - 0x01F73A 07:F72A: C9 02     CMP #con_obj_id_02
@@ -3725,7 +3727,7 @@ C - - - - - 0x01F741 07:F731: 60        RTS
 
 
 sub_F732_delete_all_objects_and_clear_their_data:
-C - - - - - 0x01F742 07:F732: A2 0D     LDX #con_макс_индекс_враги
+C - - - - - 0x01F742 07:F732: A2 0D     LDX ram_макс_индекс_враги
 bra_F734_loop:
 C - - - - - 0x01F744 07:F734: 20 4E F7  JSR sub_F74E_delete_object_and_clear_its_data
 C - - - - - 0x01F747 07:F737: CA        DEX
@@ -4401,9 +4403,16 @@ bra_FB2F_loop:
                                         INX
                                         CPX #$20        ; очистить 20 страниц
                                         BNE bra_FB2F_loop
-; 1путин: запись контов
+; 1путин: запись контов и дефолт индексы
                                         LDA #$02
                                         STA ram_options_конты
+                                        LDX ram_options_колво_объектов
+                                        LDA tbl_FB75_индексы,X
+                                        STA ram_макс_индекс_пули_игрока
+                                        LDA tbl_FB75_индексы + $02,X
+                                        STA ram_макс_индекс_враги
+                                        LDA tbl_FB75_индексы + $04,X
+                                        STA ram_макс_индекс_пули_общие
 C - - - - - 0x01FB40 07:FB30: A9 53     LDA #$53
 C - - - - - 0x01FB42 07:FB32: 8D EA 07  STA ram_reset_check
 C - - - - - 0x01FB45 07:FB35: A9 B1     LDA #$B1
@@ -4440,7 +4449,16 @@ C - - - - - 0x01FB74 07:FB64: 4C 5C FB  JMP loc_FB5C_infinite_loop
 
 
 
+tbl_0x01FB75_индексы:
+tbl_FB75_индексы:
+;                                              ----------- Оригинал
+;                                              |    ------ Разгон
+;                                              |    |
+                                        .byte $07, $0F  ; макс_индекс_пули_игрока
+                                        .byte $0D, $1F  ; макс_индекс_враги
+                                        .byte $0F, $1F  ; макс_индекс_пули_общие
 vec_FB67_NMI:
+
 C - - - - - 0x01FB77 07:FB67: 48        PHA
 C - - - - - 0x01FB78 07:FB68: 8A        TXA
 C - - - - - 0x01FB79 07:FB69: 48        PHA

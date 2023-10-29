@@ -506,6 +506,16 @@ bra_9B05:
                                         CLC
                                         ADC ram_options_сложность,X
                                         JSR sub_0x01FE8A_bankswitch_отрисовка_текста_через_буфер_0300x
+                                        LDA ram_номер_опции_колво_игроков
+                                        CMP #con_options_obj_limit
+                                        BNE bra_9B06_RTS
+                                        LDX ram_options_колво_объектов
+                                        LDA tbl_0x01FB75_индексы,X
+                                        STA ram_макс_индекс_пули_игрока
+                                        LDA tbl_0x01FB75_индексы + $02,X
+                                        STA ram_макс_индекс_враги
+                                        LDA tbl_0x01FB75_индексы + $04,X
+                                        STA ram_макс_индекс_пули_общие                              
 bra_9B06_RTS:
                                         RTS
 

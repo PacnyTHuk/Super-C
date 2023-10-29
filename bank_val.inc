@@ -16,14 +16,17 @@ con_mirroring_V                         = $00 ; vertical
 con_mirroring_H                         = $01 ; horisontal
 con__hp_F0                              = $F0 ; unkillable object
 con__hp_F1                              = $F1 ; unkillable object
-con_макс_индекс_пули_игрока             = $0F ; для пуль игрока
-    ;con_расширенный_макс_индекс_пули_игрока             = $1F ; для пуль игрока
-con_макс_индекс_враги                   = $0D ; для врагов и их пуль
-    ;con_расширенный_макс_индекс_враги                   = $1F ; для врагов и их пуль
-con_макс_индекс_общий                   = $2D ; для пуль игрока + враги и их пули
-    ;con_расширенный_макс_индекс_общий                   = $2F ; для пуль игрока + враги и их пули
-con_макс_индекс_кадр_пули_игрока        = $07 ; для кадров пуль игрока
-    ;con_расширенный_макс_индекс_кадр_пули_игрока        = $0F ; для кадров пуль игрока
+
+
+
+; options
+con_options_difficulty                   = $00
+con_options_graphics                     = $01
+con_options_obj_limit                    = $02
+con_options_continue                     = $03
+con_options_level                        = $04
+con_options_rest                         = $05
+con_options_exit                         = $06
 
 
 
@@ -108,8 +111,8 @@ con_pal_0C_area_7_US                    = $0C
 con_pal_0D_area_7_EU                    = $0D
 con_pal_0E_area_8_US                    = $0E
 con_pal_0F_area_8_EU                    = $0F
-con_pal_10_логотип_слияние              = $10
-con_pal_11_главный_экран                = $11
+con_pal_10_главный_экран                = $10
+con_pal_11_логотип_слияние              = $11
 con_pal_12_заставка                     = $12
 con_pal_13_options                      = $13
 
