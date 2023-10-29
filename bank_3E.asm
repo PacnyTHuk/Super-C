@@ -828,12 +828,12 @@ C - - - - - 0x01E4FE 07:E4EE: 4C E7 E4  JMP loc_E4E7
 
 
 sub_0x01E592_подготовка_игроков_к_началу:
-C - - - - - 0x01E592 07:E582: A9 00     LDA #$00
+C - - - - - 0x01E592 07:E582: A9 00     LDA ram_options_уровень
 C - - - - - 0x01E594 07:E584: 85 50     STA ram_номер_уровня
 C - - - - - 0x01E596 07:E586: A9 00     LDA #$00
 C - - - - - 0x01E598 07:E588: 85 A0     STA ram_статус_игрока
 C - - - - - 0x01E59A 07:E58A: 85 A1     STA ram_статус_игрока + $01
-C - - - - - 0x01E59C 07:E58C: A9 02     LDA #$02
+C - - - - - 0x01E59C 07:E58C: A9 02     LDA ram_options_конты
 C - - - - - 0x01E59E 07:E58E: 85 59     STA ram_конты
 C - - - - - 0x01E5A0 07:E590: A5 22     LDA ram_номер_опции_колво_игроков
 C - - - - - 0x01E5A2 07:E592: 85 20     STA ram_колво_игроков
@@ -846,11 +846,7 @@ C - - - - - 0x01E5AA 07:E59A: A9 00     LDA #$00    ; con_weapon_default
 C - - - - - 0x01E5AC 07:E59C: 95 CA     STA ram_plr_game_over,X
 C - - - - - 0x01E5AE 07:E59E: 95 C4     STA ram_инвиз_игрока,X
 C - - - - - 0x01E5B0 07:E5A0: 95 B8     STA ram_оружие_игрока,X
-C - - - - - 0x01E5B2 07:E5A2: A9 02     LDA #$02
-C - - - - - 0x01E5B4 07:E5A4: AC EC 07  LDY ram_cheat_flag
-C - - - - - 0x01E5B7 07:E5A7: F0 02     BEQ bra_E5AB_not_cheat
-C - - - - - 0x01E5B9 07:E5A9: A9 09     LDA #$09
-bra_E5AB_not_cheat:
+C - - - - - 0x01E5B9 07:E5A9: A9 09     LDA ram_options_жизни
 C - - - - - 0x01E5BB 07:E5AB: 95 53     STA ram_жизни,X
 C - - - - - 0x01E5BD 07:E5AD: A9 30     LDA #$30
 C - - - - - 0x01E5BF 07:E5AF: 95 55     STA ram_очки_до_жизни_младш,X

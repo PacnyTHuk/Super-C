@@ -435,14 +435,14 @@ tbl_EAC8_chr_banks:
 - D 3 - - - 0x01EAF7 07:EAE7: 4E        .byte con_chr_bank + $4E   ; bg
 - D 3 - - - 0x01EAF8 07:EAE8: 49        .byte con_chr_bank + $49   ; spr
 - D 3 - - - 0x01EAF9 07:EAE9: 4A        .byte con_chr_bank + $4A   ; spr
-- D 3 - - - 0x01EAFA 07:EAEA: 61        .byte con_chr_bank + $9F   ; spr
+- D 3 - - - 0x01EAFA 07:EAEA: 61        .byte con_chr_bank + $61   ; spr
 - D 3 - - - 0x01EAFB 07:EAEB: 62        .byte con_chr_bank + $62   ; spr
 ; EU
                                         .byte con_chr_bank + $4C   ; bg
                                         .byte con_chr_bank + $4E   ; bg
                                         .byte con_chr_bank + $A8   ; spr
                                         .byte con_chr_bank + $A9   ; spr
-                                        .byte con_chr_bank + $61   ; spr
+                                        .byte con_chr_bank + $9F   ; spr
                                         .byte con_chr_bank + $62   ; spr
 
 ; 06 area 7
