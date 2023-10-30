@@ -47,11 +47,11 @@ _off001_0x014011_2E_tankman:
 - D 0 - I - 0x014013 05:8003: 4B 80     .word ofs_038_2E_804B_02 ; 
 - D 0 - I - 0x014015 05:8005: 60 80     .word ofs_038_2E_8060_03 ; 
 - D 0 - I - 0x014017 05:8007: C7 80     .word ofs_038_2E_80C7_04 ; 
-- D 0 - I - 0x014019 05:8009: 54 A3     .word ofs_038_2E_0x006364_05_delete_object_06 ; 
-- D 0 - I - 0x01401B 05:800B: 6B A3     .word ofs_038_2E_0x00637B_06_delete_object_07 ; 
+- D 0 - I - 0x014019 05:8009: 54 A3     .word ofs_038_2E_0x006364_05_удалить_объект_06 ; 
+- D 0 - I - 0x01401B 05:800B: 6B A3     .word ofs_038_2E_0x00637B_06_удалить_объект_07 ; 
 - D 0 - I - 0x01401D 05:800D: 4F 81     .word ofs_038_2E_814F_07 ; 
 - D 0 - I - 0x01401F 05:800F: FD A2     .word ofs_038_2E_0x00630D_08 ; 
-- D 0 - I - 0x014021 05:8011: 3D A3     .word ofs_038_2E_0x00634D_09_delete_object_04 ; 
+- D 0 - I - 0x014021 05:8011: 3D A3     .word ofs_038_2E_0x00634D_09_удалить_объект_04 ; 
 
 
 
@@ -77,13 +77,13 @@ C - - - - - 0x01404B 05:803B: 9D 48 07  STA ram_0748_obj,X
 C - - - - - 0x01404E 05:803E: A9 03     LDA #$03
 C - - - - - 0x014050 05:8040: 9D 56 07  STA ram_0756_obj,X
 C - - - - - 0x014053 05:8043: E6 9F     INC ram_009F
-C - - - - - 0x014055 05:8045: 20 B7 A6  JSR sub_0x0066C7_delete_object_03
+C - - - - - 0x014055 05:8045: 20 B7 A6  JSR sub_0x0066C7_удалить_объект_03
 C - - - - - 0x014058 05:8048: 4C D7 A2  JMP loc_0x0062E7_increase_obj_state
 
 
 
 ofs_038_2E_804B_02:
-C - - J - - 0x01405B 05:804B: 20 B7 A6  JSR sub_0x0066C7_delete_object_03
+C - - J - - 0x01405B 05:804B: 20 B7 A6  JSR sub_0x0066C7_удалить_объект_03
 C - - - - - 0x01405E 05:804E: BD 22 05  LDA ram_позиция_y_спрайта_врага_и_пуль,X
 C - - - - - 0x014061 05:8051: C9 20     CMP #$20
 C - - - - - 0x014063 05:8053: 90 0A     BCC bra_805F_RTS
@@ -102,7 +102,7 @@ C - - - - - 0x014073 05:8063: B9 B7 80  LDA tbl_80B7_animation,Y
 C - - - - - 0x014076 05:8066: 9D 08 05  STA ram_кадр_врага_и_пуль,X
 C - - - - - 0x014079 05:8069: B9 BF 80  LDA tbl_80BF_spr_attr,Y
 C - - - - - 0x01407C 05:806C: 20 19 87  JSR sub_8719
-C - - - - - 0x01407F 05:806F: 20 B7 A6  JSR sub_0x0066C7_delete_object_03
+C - - - - - 0x01407F 05:806F: 20 B7 A6  JSR sub_0x0066C7_удалить_объект_03
 C - - - - - 0x014082 05:8072: DE F4 06  DEC ram_06F4_obj,X
 C - - - - - 0x014085 05:8075: D0 1C     BNE bra_8093
 C - - - - - 0x014087 05:8077: BD 56 07  LDA ram_0756_obj,X
@@ -165,9 +165,9 @@ ofs_038_2E_80C7_04:
 C - - J - - 0x0140D7 05:80C7: BD 22 05  LDA ram_позиция_y_спрайта_врага_и_пуль,X
 C - - - - - 0x0140DA 05:80CA: C9 C0     CMP #$C0
 C - - - - - 0x0140DC 05:80CC: 90 03     BCC bra_80D1
-- - - - - - 0x0140DE 05:80CE: 4C 75 A2  JMP loc_0x006285_delete_object_02
+- - - - - - 0x0140DE 05:80CE: 4C 75 A2  JMP loc_0x006285_удалить_объект_02
 bra_80D1:
-C - - - - - 0x0140E1 05:80D1: 20 B7 A6  JSR sub_0x0066C7_delete_object_03
+C - - - - - 0x0140E1 05:80D1: 20 B7 A6  JSR sub_0x0066C7_удалить_объект_03
 C - - - - - 0x0140E4 05:80D4: DE E6 06  DEC ram_счетчкики_для_объектов,X
 C - - - - - 0x0140E7 05:80D7: D0 64     BNE bra_813D_RTS
 C - - - - - 0x0140E9 05:80D9: BD 10 07  LDA ram_0710_obj,X
@@ -255,7 +255,7 @@ C - - - - - 0x01416B 05:815B: 20 46 A8  JSR sub_0x006856
 C - - - - - 0x01416E 05:815E: B0 03     BCS bra_8163
 C - - - - - 0x014170 05:8160: 4C 9A A2  JMP loc_0x0062AA
 bra_8163:
-- - - - - - 0x014173 05:8163: 4C B7 A6  JMP loc_0x0066C7_delete_object_03
+- - - - - - 0x014173 05:8163: 4C B7 A6  JMP loc_0x0066C7_удалить_объект_03
 
 
 
@@ -365,11 +365,11 @@ _off001_0x0141FE_5B_cannon_tank:
 - D 0 - I - 0x014200 05:81F0: 27 82     .word ofs_038_5B_8227_02 ; 
 - D 0 - I - 0x014202 05:81F2: 44 82     .word ofs_038_5B_8244_03 ; 
 - D 0 - I - 0x014204 05:81F4: C2 82     .word ofs_038_5B_82C2_04 ; 
-- D 0 - I - 0x014206 05:81F6: 54 A3     .word ofs_038_5B_0x006364_05_delete_object_06 ; 
-- D 0 - I - 0x014208 05:81F8: 6B A3     .word ofs_038_5B_0x00637B_06_delete_object_07 ; 
+- D 0 - I - 0x014206 05:81F6: 54 A3     .word ofs_038_5B_0x006364_05_удалить_объект_06 ; 
+- D 0 - I - 0x014208 05:81F8: 6B A3     .word ofs_038_5B_0x00637B_06_удалить_объект_07 ; 
 - D 0 - I - 0x01420A 05:81FA: DA 82     .word ofs_038_5B_82DA_07 ; 
 - D 0 - I - 0x01420C 05:81FC: FD A2     .word ofs_038_5B_0x00630D_08 ; 
-- D 0 - I - 0x01420E 05:81FE: 3D A3     .word ofs_038_5B_0x00634D_09_delete_object_04 ; 
+- D 0 - I - 0x01420E 05:81FE: 3D A3     .word ofs_038_5B_0x00634D_09_удалить_объект_04 ; 
 
 
 
@@ -387,13 +387,13 @@ C - - - - - 0x014227 05:8217: A9 06     LDA #$06
 C - - - - - 0x014229 05:8219: 9D 48 07  STA ram_0748_obj,X
 C - - - - - 0x01422C 05:821C: A9 02     LDA #$02
 C - - - - - 0x01422E 05:821E: 9D 56 07  STA ram_0756_obj,X
-C - - - - - 0x014231 05:8221: 20 B7 A6  JSR sub_0x0066C7_delete_object_03
+C - - - - - 0x014231 05:8221: 20 B7 A6  JSR sub_0x0066C7_удалить_объект_03
 C - - - - - 0x014234 05:8224: 4C D7 A2  JMP loc_0x0062E7_increase_obj_state
 
 
 
 ofs_038_5B_8227_02:
-C - - J - - 0x014237 05:8227: 20 B7 A6  JSR sub_0x0066C7_delete_object_03
+C - - J - - 0x014237 05:8227: 20 B7 A6  JSR sub_0x0066C7_удалить_объект_03
 C - - - - - 0x01423A 05:822A: BD 22 05  LDA ram_позиция_y_спрайта_врага_и_пуль,X
 C - - - - - 0x01423D 05:822D: C9 20     CMP #$20
 C - - - - - 0x01423F 05:822F: 90 12     BCC bra_8243_RTS
@@ -413,9 +413,9 @@ ofs_038_5B_8244_03:
 C - - J - - 0x014254 05:8244: BD 22 05  LDA ram_позиция_y_спрайта_врага_и_пуль,X
 C - - - - - 0x014257 05:8247: C9 C0     CMP #$C0
 C - - - - - 0x014259 05:8249: 90 03     BCC bra_824E
-C - - - - - 0x01425B 05:824B: 4C 75 A2  JMP loc_0x006285_delete_object_02
+C - - - - - 0x01425B 05:824B: 4C 75 A2  JMP loc_0x006285_удалить_объект_02
 bra_824E:
-C - - - - - 0x01425E 05:824E: 20 B7 A6  JSR sub_0x0066C7_delete_object_03
+C - - - - - 0x01425E 05:824E: 20 B7 A6  JSR sub_0x0066C7_удалить_объект_03
 C - - - - - 0x014261 05:8251: DE F4 06  DEC ram_06F4_obj,X
 C - - - - - 0x014264 05:8254: D0 21     BNE bra_8277
 C - - - - - 0x014266 05:8256: BD 64 07  LDA ram_0764_obj,X
@@ -483,7 +483,7 @@ tbl_82B5:
 
 
 ofs_038_5B_82C2_04:
-C - - J - - 0x0142D2 05:82C2: 20 B7 A6  JSR sub_0x0066C7_delete_object_03
+C - - J - - 0x0142D2 05:82C2: 20 B7 A6  JSR sub_0x0066C7_удалить_объект_03
 C - - - - - 0x0142D5 05:82C5: BC 56 07  LDY ram_0756_obj,X
 C - - - - - 0x0142D8 05:82C8: B9 D5 82  LDA tbl_82D5,Y
 C - - - - - 0x0142DB 05:82CB: 20 E7 82  JSR sub_82E7
@@ -508,7 +508,7 @@ C - - - - - 0x0142EC 05:82DC: 20 E7 82  JSR sub_82E7
 C - - - - - 0x0142EF 05:82DF: B0 03     BCS bra_82E4
 C - - - - - 0x0142F1 05:82E1: 4C 9A A2  JMP loc_0x0062AA
 bra_82E4:
-C - - - - - 0x0142F4 05:82E4: 4C B7 A6  JMP loc_0x0066C7_delete_object_03
+C - - - - - 0x0142F4 05:82E4: 4C B7 A6  JMP loc_0x0066C7_удалить_объект_03
 
 
 
@@ -566,7 +566,7 @@ _off001_0x014332_5C_rifleman_standing_2:
 - D 0 - I - 0x014334 05:8324: 4D 83     .word ofs_038_5C_834D_02 ; 
 - D 0 - I - 0x014336 05:8326: 9A A2     .word ofs_038_5C_0x0062AA_03 ; 
 - D 0 - I - 0x014338 05:8328: FD A2     .word ofs_038_5C_0x00630D_04 ; 
-- D 0 - I - 0x01433A 05:832A: 3D A3     .word ofs_038_5C_0x00634D_05_delete_object_04 ; 
+- D 0 - I - 0x01433A 05:832A: 3D A3     .word ofs_038_5C_0x00634D_05_удалить_объект_04 ; 
 
 
 
@@ -575,7 +575,7 @@ C - - J - - 0x01433C 05:832C: A9 02     LDA #$02
 C - - - - - 0x01433E 05:832E: 9D 2C 07  STA ram_072C_obj,X
 C - - - - - 0x014341 05:8331: A9 01     LDA #$01
 C - - - - - 0x014343 05:8333: 9D 72 07  STA ram_0772_obj,X
-C - - - - - 0x014346 05:8336: 20 B7 A6  JSR sub_0x0066C7_delete_object_03
+C - - - - - 0x014346 05:8336: 20 B7 A6  JSR sub_0x0066C7_удалить_объект_03
 C - - - - - 0x014349 05:8339: A9 06     LDA #$06
 C - - - - - 0x01434B 05:833B: 9D 48 07  STA ram_0748_obj,X
 C - - - - - 0x01434E 05:833E: A9 03     LDA #$03
@@ -593,7 +593,7 @@ C - - - - - 0x014360 05:8350: B9 A3 83  LDA tbl_83A3_animation,Y
 C - - - - - 0x014363 05:8353: 9D 08 05  STA ram_кадр_врага_и_пуль,X
 C - - - - - 0x014366 05:8356: B9 AB 83  LDA tbl_83AB_spr_attr,Y
 C - - - - - 0x014369 05:8359: 20 19 87  JSR sub_8719
-C - - - - - 0x01436C 05:835C: 20 B7 A6  JSR sub_0x0066C7_delete_object_03
+C - - - - - 0x01436C 05:835C: 20 B7 A6  JSR sub_0x0066C7_удалить_объект_03
 C - - - - - 0x01436F 05:835F: DE F4 06  DEC ram_06F4_obj,X
 C - - - - - 0x014372 05:8362: D0 2A     BNE bra_838E
 C - - - - - 0x014374 05:8364: BD 64 07  LDA ram_0764_obj,X
@@ -676,7 +676,7 @@ _off001_0x0143D2_63_mob_normal_2:
 - D 0 - I - 0x0143D6 05:83C6: 8F 86     .word ofs_038_63_868F_03 ; 
 - D 0 - I - 0x0143D8 05:83C8: 9A A2     .word ofs_038_63_0x0062AA_04 ; 
 - D 0 - I - 0x0143DA 05:83CA: FD A2     .word ofs_038_63_0x00630D_05 ; 
-- D 0 - I - 0x0143DC 05:83CC: 3D A3     .word ofs_038_63_0x00634D_06_delete_object_04 ; 
+- D 0 - I - 0x0143DC 05:83CC: 3D A3     .word ofs_038_63_0x00634D_06_удалить_объект_04 ; 
 
 
 
@@ -922,7 +922,7 @@ C - - - - - 0x01458D 05:857D: A8        TAY
 C - - - - - 0x01458E 05:857E: B9 B4 85  LDA tbl_85B4,Y
 C - - - - - 0x014591 05:8581: 9D E6 06  STA ram_счетчкики_для_объектов,X
 C - - - - - 0x014594 05:8584: 20 08 84  JSR sub_8408
-C - - - - - 0x014597 05:8587: 4C B7 A6  JMP loc_0x0066C7_delete_object_03
+C - - - - - 0x014597 05:8587: 4C B7 A6  JMP loc_0x0066C7_удалить_объект_03
 
 
 
@@ -935,7 +935,7 @@ C - - - - - 0x0145A4 05:8594: 9D 56 07  STA ram_0756_obj,X
 C - - - - - 0x0145A7 05:8597: A5 13     LDA ram_0013
 C - - - - - 0x0145A9 05:8599: 9D 64 07  STA ram_0764_obj,X
 C - - - - - 0x0145AC 05:859C: 20 0E 84  JSR sub_840E
-C - - - - - 0x0145AF 05:859F: 4C B7 A6  JMP loc_0x0066C7_delete_object_03
+C - - - - - 0x0145AF 05:859F: 4C B7 A6  JMP loc_0x0066C7_удалить_объект_03
 
 
 
@@ -1150,7 +1150,7 @@ C - - - - - 0x0146B7 05:86A7: 85 17     STA ram_0017
 C - - - - - 0x0146B9 05:86A9: 20 BC 85  JSR sub_85BC
 C - - - - - 0x0146BC 05:86AC: 68        PLA
 C - - - - - 0x0146BD 05:86AD: 85 0A     STA ram_000A
-C - - - - - 0x0146BF 05:86AF: 20 B7 A6  JSR sub_0x0066C7_delete_object_03
+C - - - - - 0x0146BF 05:86AF: 20 B7 A6  JSR sub_0x0066C7_удалить_объект_03
 C - - - - - 0x0146C2 05:86B2: DE F4 06  DEC ram_06F4_obj,X
 C - - - - - 0x0146C5 05:86B5: F0 18     BEQ bra_86CF
 C - - - - - 0x0146C7 05:86B7: BD F4 06  LDA ram_06F4_obj,X
@@ -1537,7 +1537,7 @@ C - - - - - 0x014901 05:88F1: 4C A2 A2  JMP loc_0x0062B2
 ofs_038_69_88F4_0A:
 C - - J - - 0x014904 05:88F4: A9 00     LDA #con_mirroring_V
 C - - - - - 0x014906 05:88F6: 85 26     STA ram_for_A000
-C - - - - - 0x014908 05:88F8: 4C 37 A3  JMP loc_0x006347_delete_object_08
+C - - - - - 0x014908 05:88F8: 4C 37 A3  JMP loc_0x006347_удалить_объект_08
 
 
 
@@ -1825,7 +1825,7 @@ tbl_8A6C_spr_attr:
 
 ofs_038_6A_8A74_03:
 C - - J - - 0x014A84 05:8A74: 20 95 8A  JSR sub_8A95
-C - - - - - 0x014A87 05:8A77: 4C 54 A3  JMP loc_0x006364_delete_object_06
+C - - - - - 0x014A87 05:8A77: 4C 54 A3  JMP loc_0x006364_удалить_объект_06
 
 
 
@@ -1850,7 +1850,7 @@ C - - - - - 0x014A9C 05:8A8C: 4C FD A2  JMP loc_0x00630D
 
 ofs_038_6A_8A8F_07:
 C - - J - - 0x014A9F 05:8A8F: 20 95 8A  JSR sub_8A95
-C - - - - - 0x014AA2 05:8A92: 4C 3D A3  JMP loc_0x00634D_delete_object_04
+C - - - - - 0x014AA2 05:8A92: 4C 3D A3  JMP loc_0x00634D_удалить_объект_04
 
 
 
@@ -1987,7 +1987,7 @@ off_8B1F:
 _off001_0x014B4D_36_tank_electricity:
 - D 0 - I - 0x014B4D 05:8B3D: 43 8B     .word ofs_038_36_8B43_01_initialize_object ; 
 - D 0 - I - 0x014B4F 05:8B3F: 4B 8B     .word ofs_038_36_8B4B_02 ; 
-- D 0 - I - 0x014B51 05:8B41: 75 A2     .word ofs_038_36_0x006285_03_delete_object_02 ; 
+- D 0 - I - 0x014B51 05:8B41: 75 A2     .word ofs_038_36_0x006285_03_удалить_объект_02 ; 
 
 
 
@@ -2040,7 +2040,7 @@ _off001_0x014B91_25_moving_gun:
 - D 0 - I - 0x014B93 05:8B83: AF 8B     .word ofs_038_25_8BAF_02 ; 
 - D 0 - I - 0x014B95 05:8B85: 9A A2     .word ofs_038_25_0x0062AA_03 ; 
 - D 0 - I - 0x014B97 05:8B87: FD A2     .word ofs_038_25_0x00630D_04 ; 
-- D 0 - I - 0x014B99 05:8B89: 3D A3     .word ofs_038_25_0x00634D_05_delete_object_04 ; 
+- D 0 - I - 0x014B99 05:8B89: 3D A3     .word ofs_038_25_0x00634D_05_удалить_объект_04 ; 
 
 
 
@@ -2196,13 +2196,13 @@ C - - - - - 0x014C75 05:8C65: 9D 2C 07  STA ram_072C_obj,X
 C - - - - - 0x014C78 05:8C68: BD 22 05  LDA ram_позиция_y_спрайта_врага_и_пуль,X
 C - - - - - 0x014C7B 05:8C6B: 69 04     ADC #$04
 C - - - - - 0x014C7D 05:8C6D: 9D 22 05  STA ram_позиция_y_спрайта_врага_и_пуль,X
-C - - - - - 0x014C80 05:8C70: 20 B7 A6  JSR sub_0x0066C7_delete_object_03
+C - - - - - 0x014C80 05:8C70: 20 B7 A6  JSR sub_0x0066C7_удалить_объект_03
 C - - - - - 0x014C83 05:8C73: 4C D7 A2  JMP loc_0x0062E7_increase_obj_state
 
 
 
 ofs_038_2C_8C76_02:
-C - - J - - 0x014C86 05:8C76: 20 B7 A6  JSR sub_0x0066C7_delete_object_03
+C - - J - - 0x014C86 05:8C76: 20 B7 A6  JSR sub_0x0066C7_удалить_объект_03
 C - - - - - 0x014C89 05:8C79: A5 61     LDA ram_0061_конфиг_уровня
 C - - - - - 0x014C8B 05:8C7B: F0 07     BEQ bra_8C84_RTS
 C - - - - - 0x014C8D 05:8C7D: A5 71     LDA ram_0071_тип_скролла
@@ -2243,7 +2243,7 @@ C - - - - - 0x014CC6 05:8CB6: 30 03     BMI bra_8CBB
 C - - - - - 0x014CC8 05:8CB8: B9 88 05  LDA ram_пули_игрока_позиция_x_старш,Y
 bra_8CBB:
 C - - - - - 0x014CCB 05:8CBB: 9D 3C 05  STA ram_позиция_x_спрайта_врага_и_пуль,X
-C - - - - - 0x014CCE 05:8CBE: 4C B7 A6  JMP loc_0x0066C7_delete_object_03
+C - - - - - 0x014CCE 05:8CBE: 4C B7 A6  JMP loc_0x0066C7_удалить_объект_03
 
 
 
@@ -2276,13 +2276,13 @@ C - - - - - 0x014D08 05:8CF8: A9 01     LDA #$01
 C - - - - - 0x014D0A 05:8CFA: 9D 64 07  STA ram_0764_obj,X
 C - - - - - 0x014D0D 05:8CFD: A9 10     LDA #$10
 C - - - - - 0x014D0F 05:8CFF: 9D 72 07  STA ram_0772_obj,X
-C - - - - - 0x014D12 05:8D02: 20 B7 A6  JSR sub_0x0066C7_delete_object_03
+C - - - - - 0x014D12 05:8D02: 20 B7 A6  JSR sub_0x0066C7_удалить_объект_03
 C - - - - - 0x014D15 05:8D05: 4C D7 A2  JMP loc_0x0062E7_increase_obj_state
 
 
 
 ofs_038_2C_8D08_05:
-C - - J - - 0x014D18 05:8D08: 20 B7 A6  JSR sub_0x0066C7_delete_object_03
+C - - J - - 0x014D18 05:8D08: 20 B7 A6  JSR sub_0x0066C7_удалить_объект_03
 C - - - - - 0x014D1B 05:8D0B: BD 48 07  LDA ram_0748_obj,X
 C - - - - - 0x014D1E 05:8D0E: F0 40     BEQ bra_8D50
 C - - - - - 0x014D20 05:8D10: DE 64 07  DEC ram_0764_obj,X
@@ -2366,7 +2366,7 @@ ofs_038_2C_8DA1_06:
 C - - J - - 0x014DB1 05:8DA1: A9 40     LDA #$40
 C - - - - - 0x014DB3 05:8DA3: 85 71     STA ram_0071_тип_скролла
 C - - - - - 0x014DB5 05:8DA5: 85 7D     STA ram_007D_тип_скролла
-C - - - - - 0x014DB7 05:8DA7: 4C 75 A2  JMP loc_0x006285_delete_object_02
+C - - - - - 0x014DB7 05:8DA7: 4C 75 A2  JMP loc_0x006285_удалить_объект_02
 
 
 
@@ -2375,7 +2375,7 @@ _off001_0x014DBA_2D_spawner_falling_platforms:
 - D 0 - I - 0x014DBC 05:8DAC: C4 8D     .word ofs_038_2D_8DC4_02 ; 
 - D 0 - I - 0x014DBE 05:8DAE: 9A A2     .word ofs_038_2D_0x0062AA_03 ; 
 - D 0 - I - 0x014DC0 05:8DB0: FD A2     .word ofs_038_2D_0x00630D_04 ; 
-- D 0 - I - 0x014DC2 05:8DB2: 3D A3     .word ofs_038_2D_0x00634D_05_delete_object_04 ; 
+- D 0 - I - 0x014DC2 05:8DB2: 3D A3     .word ofs_038_2D_0x00634D_05_удалить_объект_04 ; 
 
 
 
@@ -2384,7 +2384,7 @@ C - - J - - 0x014DC4 05:8DB4: A9 62     LDA #$62
 C - - - - - 0x014DC6 05:8DB6: 9D 08 05  STA ram_кадр_врага_и_пуль,X
 C - - - - - 0x014DC9 05:8DB9: A9 04     LDA #$04
 C - - - - - 0x014DCB 05:8DBB: 9D 76 06  STA ram_жизни_объектов,X
-C - - - - - 0x014DCE 05:8DBE: 20 B7 A6  JSR sub_0x0066C7_delete_object_03
+C - - - - - 0x014DCE 05:8DBE: 20 B7 A6  JSR sub_0x0066C7_удалить_объект_03
 bra_8DC1:
 C - - - - - 0x014DD1 05:8DC1: 4C D7 A2  JMP loc_0x0062E7_increase_obj_state
 
@@ -2412,14 +2412,14 @@ _off001_0x014DF0_31_redblue_bubble:
 - D 0 - I - 0x014DF4 05:8DE4: 19 8E     .word ofs_038_31_8E19_03 ; 
 - D 0 - I - 0x014DF6 05:8DE6: 9A A2     .word ofs_038_31_0x0062AA_04 ; 
 - D 0 - I - 0x014DF8 05:8DE8: FD A2     .word ofs_038_31_0x00630D_05 ; 
-- D 0 - I - 0x014DFA 05:8DEA: 3D A3     .word ofs_038_31_0x00634D_06_delete_object_04 ; 
+- D 0 - I - 0x014DFA 05:8DEA: 3D A3     .word ofs_038_31_0x00634D_06_удалить_объект_04 ; 
 
 
 
 ofs_038_31_8DEC_01_initialize_object:
 C - - J - - 0x014DFC 05:8DEC: A9 06     LDA #$06
 C - - - - - 0x014DFE 05:8DEE: 9D 08 05  STA ram_кадр_врага_и_пуль,X
-C - - - - - 0x014E01 05:8DF1: 20 B7 A6  JSR sub_0x0066C7_delete_object_03
+C - - - - - 0x014E01 05:8DF1: 20 B7 A6  JSR sub_0x0066C7_удалить_объект_03
 C - - - - - 0x014E04 05:8DF4: A9 40     LDA #$40
 C - - - - - 0x014E06 05:8DF6: 4C E0 A2  JMP loc_0x0062F0
 
@@ -2428,7 +2428,7 @@ C - - - - - 0x014E06 05:8DF6: 4C E0 A2  JMP loc_0x0062F0
 ofs_038_31_8DF9_02:
 C - - J - - 0x014E09 05:8DF9: A0 05     LDY #$05
 C - - - - - 0x014E0B 05:8DFB: 20 FD AB  JSR sub_0x006C0D
-C - - - - - 0x014E0E 05:8DFE: 20 B7 A6  JSR sub_0x0066C7_delete_object_03
+C - - - - - 0x014E0E 05:8DFE: 20 B7 A6  JSR sub_0x0066C7_удалить_объект_03
 C - - - - - 0x014E11 05:8E01: DE E6 06  DEC ram_счетчкики_для_объектов,X
 C - - - - - 0x014E14 05:8E04: D0 12     BNE bra_8E18_RTS
 C - - - - - 0x014E16 05:8E06: 20 0B AB  JSR sub_0x006B1B_выбрать_ближайшего_игрока_по_оси_x
@@ -2575,7 +2575,7 @@ C - - - - - 0x014EFB 05:8EEB: A9 40     LDA #$40
 C - - - - - 0x014EFD 05:8EED: 85 71     STA ram_0071_тип_скролла
 C - - - - - 0x014EFF 05:8EEF: A9 00     LDA #$00
 C - - - - - 0x014F01 05:8EF1: 85 80     STA ram_номер_анимации_логотипа
-C - - - - - 0x014F03 05:8EF3: 4C 75 A2  JMP loc_0x006285_delete_object_02
+C - - - - - 0x014F03 05:8EF3: 4C 75 A2  JMP loc_0x006285_удалить_объект_02
 bra_8EF6_RTS:
 C - - - - - 0x014F06 05:8EF6: 60        RTS
 
@@ -2971,12 +2971,12 @@ _off001_0x01510E_40_mob_winged:
 - D 0 - I - 0x01511A 05:910A: 75 92     .word ofs_038_40_9275_07 ; 
 - D 0 - I - 0x01511C 05:910C: 9A A2     .word ofs_038_40_0x0062AA_08 ; 
 - D 0 - I - 0x01511E 05:910E: FD A2     .word ofs_038_40_0x00630D_09 ; 
-- D 0 - I - 0x015120 05:9110: 3D A3     .word ofs_038_40_0x00634D_0A_delete_object_04 ; 
+- D 0 - I - 0x015120 05:9110: 3D A3     .word ofs_038_40_0x00634D_0A_удалить_объект_04 ; 
 
 
 
 ofs_038_40_9112_01_initialize_object:
-C - - J - - 0x015122 05:9112: 20 B7 A6  JSR sub_0x0066C7_delete_object_03
+C - - J - - 0x015122 05:9112: 20 B7 A6  JSR sub_0x0066C7_удалить_объект_03
 C - - - - - 0x015125 05:9115: BD 1E 07  LDA ram_obj_flags,X
 C - - - - - 0x015128 05:9118: 29 01     AND #$01
 C - - - - - 0x01512A 05:911A: 9D 1E 07  STA ram_obj_flags,X
@@ -3213,7 +3213,7 @@ _off001_0x01529D_41_spawner_winged_mobs:
 
 
 ofs_038_41_9291_01_initialize_object:
-C - - J - - 0x0152A1 05:9291: 20 B7 A6  JSR sub_0x0066C7_delete_object_03
+C - - J - - 0x0152A1 05:9291: 20 B7 A6  JSR sub_0x0066C7_удалить_объект_03
 C - - - - - 0x0152A4 05:9294: A9 03     LDA #$03
 C - - - - - 0x0152A6 05:9296: 9D 48 07  STA ram_0748_obj,X
 C - - - - - 0x0152A9 05:9299: A9 01     LDA #$01
@@ -3222,7 +3222,7 @@ C - - - - - 0x0152AB 05:929B: 4C E0 A2  JMP loc_0x0062F0
 
 
 ofs_038_41_929E_02:
-C - - J - - 0x0152AE 05:929E: 20 B7 A6  JSR sub_0x0066C7_delete_object_03
+C - - J - - 0x0152AE 05:929E: 20 B7 A6  JSR sub_0x0066C7_удалить_объект_03
 C - - - - - 0x0152B1 05:92A1: BD 22 05  LDA ram_позиция_y_спрайта_врага_и_пуль,X
 C - - - - - 0x0152B4 05:92A4: C9 10     CMP #$10
 C - - - - - 0x0152B6 05:92A6: 90 1F     BCC bra_92C7_RTS
@@ -3243,7 +3243,7 @@ C - - - - - 0x0152D4 05:92C4: 20 C8 AB  JSR sub_0x006BD8
 bra_92C7_RTS:
 C - - - - - 0x0152D7 05:92C7: 60        RTS
 bra_92C8:
-C - - - - - 0x0152D8 05:92C8: 4C 75 A2  JMP loc_0x006285_delete_object_02
+C - - - - - 0x0152D8 05:92C8: 4C 75 A2  JMP loc_0x006285_удалить_объект_02
 
 
 
@@ -3373,7 +3373,7 @@ C - - - - - 0x01539B 05:938B: 4C FD A2  JMP loc_0x00630D
 
 ofs_038_43_938E_08:
 C - - J - - 0x01539E 05:938E: 20 99 93  JSR sub_9399
-C - - - - - 0x0153A1 05:9391: 4C 3D A3  JMP loc_0x00634D_delete_object_04
+C - - - - - 0x0153A1 05:9391: 4C 3D A3  JMP loc_0x00634D_удалить_объект_04
 
 
 
@@ -3514,7 +3514,7 @@ C - - - - - 0x01546D 05:945D: 20 7C 94  JSR sub_947C
 C - - - - - 0x015470 05:9460: A9 00     LDA #$00
 C - - - - - 0x015472 05:9462: 20 0A A8  JSR sub_0x00681A
 C - - - - - 0x015475 05:9465: F0 F0     BEQ bra_9457_RTS
-C - - - - - 0x015477 05:9467: 4C 75 A2  JMP loc_0x006285_delete_object_02
+C - - - - - 0x015477 05:9467: 4C 75 A2  JMP loc_0x006285_удалить_объект_02
 
 
 
@@ -3599,7 +3599,7 @@ _off001_0x0154F3_6B_blue_bubble:
 - D 0 - I - 0x0154F7 05:94E7: 71 95     .word ofs_038_6B_9571_03 ; 
 - D 0 - I - 0x0154F9 05:94E9: 9A A2     .word ofs_038_6B_0x0062AA_04 ; 
 - D 0 - I - 0x0154FB 05:94EB: FD A2     .word ofs_038_6B_0x00630D_05 ; 
-- D 0 - I - 0x0154FD 05:94ED: 3D A3     .word ofs_038_6B_0x00634D_06_delete_object_04 ; 
+- D 0 - I - 0x0154FD 05:94ED: 3D A3     .word ofs_038_6B_0x00634D_06_удалить_объект_04 ; 
 
 
 
@@ -3739,7 +3739,7 @@ _off001_0x0155C1_6C_spawner_blue_bubbles:
 - D 0 - I - 0x0155C3 05:95B3: D5 95     .word ofs_038_6C_95D5_02 ; 
 - - - - - - 0x0155C5 05:95B5: 9A A2     .word ofs_038_6C_0x0062AA_03 ; 
 - - - - - - 0x0155C7 05:95B7: FD A2     .word ofs_038_6C_0x00630D_04 ; 
-- - - - - - 0x0155C9 05:95B9: 3D A3     .word ofs_038_6C_0x00634D_05_delete_object_04 ; 
+- - - - - - 0x0155C9 05:95B9: 3D A3     .word ofs_038_6C_0x00634D_05_удалить_объект_04 ; 
 
 
 
@@ -3759,7 +3759,7 @@ C - - - - - 0x0155E2 05:95D2: 4C E0 A2  JMP loc_0x0062F0
 
 
 ofs_038_6C_95D5_02:
-C - - J - - 0x0155E5 05:95D5: 20 B7 A6  JSR sub_0x0066C7_delete_object_03
+C - - J - - 0x0155E5 05:95D5: 20 B7 A6  JSR sub_0x0066C7_удалить_объект_03
 C - - - - - 0x0155E8 05:95D8: DE E6 06  DEC ram_счетчкики_для_объектов,X
 C - - - - - 0x0155EB 05:95DB: D0 14     BNE bra_95F1_RTS
 C - - - - - 0x0155ED 05:95DD: A9 14     LDA #$14
@@ -3769,7 +3769,7 @@ C - - - - - 0x0155F4 05:95E4: 20 C8 AB  JSR sub_0x006BD8
 C - - - - - 0x0155F7 05:95E7: 90 08     BCC bra_95F1_RTS
 C - - - - - 0x0155F9 05:95E9: DE 48 07  DEC ram_0748_obj,X
 C - - - - - 0x0155FC 05:95EC: D0 03     BNE bra_95F1_RTS
-C - - - - - 0x0155FE 05:95EE: 4C 75 A2  JMP loc_0x006285_delete_object_02
+C - - - - - 0x0155FE 05:95EE: 4C 75 A2  JMP loc_0x006285_удалить_объект_02
 bra_95F1_RTS:
 C - - - - - 0x015601 05:95F1: 60        RTS
 
@@ -3908,7 +3908,7 @@ C - - - - - 0x0156E4 05:96D4: A9 08     LDA #con_chr_bank + $08
 C - - - - - 0x0156E6 05:96D6: 8D F0 07  STA ram_bg_bank_1
 C - - - - - 0x0156E9 05:96D9: A9 0A     LDA #con_chr_bank + $0A
 C - - - - - 0x0156EB 05:96DB: 8D F1 07  STA ram_bg_bank_2
-C - - - - - 0x0156EE 05:96DE: 4C 37 A3  JMP loc_0x006347_delete_object_08
+C - - - - - 0x0156EE 05:96DE: 4C 37 A3  JMP loc_0x006347_удалить_объект_08
 
 
 

@@ -40,13 +40,13 @@
 .export sub_0x01F4FC
 .export sub_0x01F500
 .export loc_0x01F6BD_убить_игрока
-.export sub_0x01F70D_try_to_find_free_object
-.export sub_0x01F716_try_to_find_free_object
-.export sub_0x01F718_try_to_find_free_object
-.export sub_0x01F72C_try_to_find_enemy_bullet
-.export sub_0x01F74F_start_preparing_new_object
-.export sub_0x01F7AC_delete_object_01
-.export sub_0x01F7AE_prepare_object
+.export sub_0x01F70D_попытка_создать_объект
+.export sub_0x01F716_попытка_найти_свободный_слот_для_объекта___первые_4_слота
+.export sub_0x01F718_попытка_найти_свободный_слот_для_объекта___X_слотов
+.export sub_0x01F72C_поиск_вражеской_пули_в_слотах_объектов
+.export sub_0x01F74F_начать_создание_нового_объекта
+.export sub_0x01F7AC_удалить_объект_01
+.export sub_0x01F7AE_подготовить_объект
 .export sub_0x01F7B9
 .export sub_0x01F7C8
 .export sub_0x01F7CE_запись_палитры_из_03E0x_в_0300x
@@ -783,7 +783,7 @@ C - - - - - 0x01E3CF 07:E3BF: D0 03     BNE bra_E3C4
 ; 04
 C - - - - - 0x01E3D1 07:E3C1: 4C E9 E7  JMP loc_E7E9_игра    ; 04 игра
 bra_E3C4:
-C - - - - - 0x01FBCC 07:FBBC: 20 B9 E3  JMP loc_bankswitch_E3B9    ; 00-03
+C - - - - - 0x01FBCC 07:FBBC: 20 B9 E3  JMP loc_E3B9_bankswitch    ; 00-03
 
 
 loc_0x01E4A2:
@@ -1255,7 +1255,7 @@ C - - - - - 0x01E81D 07:E80D: 20 C3 E5  JSR sub_E5C3_clear_memory
 C - - - - - 0x01E820 07:E810: 20 57 E5  JSR sub_FE84_XFF_обнуление_экранов_PPU
 C - - - - - 0x01E823 07:E813: A9 1E     LDA #$1E
 C - - - - - 0x01E825 07:E815: 85 FE     STA ram_for_2001
-C - - - - - 0x01E827 07:E817: 20 32 F7  JSR sub_F732_delete_all_objects_and_clear_their_data
+C - - - - - 0x01E827 07:E817: 20 32 F7  JSR sub_F732_удалить_все_объекты_и_очистить_их_данные
 C - - - - - 0x01E82A 07:E81A: A2 01     LDX #$01
 bra_E81C_loop:
 C - - - - - 0x01E82C 07:E81C: A9 00     LDA #$00
@@ -1346,8 +1346,8 @@ C - - - - - 0x01E8B4 07:E8A4: 90 0E     BCC bra_E8B4
 C - - - - - 0x01E8B6 07:E8A6: A9 00     LDA #$00
 C - - - - - 0x01E8B8 07:E8A8: 85 6B     STA ram_006B
 C - - - - - 0x01E8BA 07:E8AA: 85 6C     STA ram_006C
-C - - - - - 0x01E8BC 07:E8AC: 20 35 FE  JSR sub_FE35
-C - - - - - 0x01E8BF 07:E8AF: 20 B9 E8  JSR sub_E8B9
+C - - - - - 0x01E8BC 07:E8AC: 20 35 FE  JSR sub_FE35_подготовить_лопасти_вертолета_на_1м_уровне
+C - - - - - 0x01E8BF 07:E8AF: 20 B9 E8  JSR sub_E8B9_выбрать_саундтрек_уровня
 loc_E8B2:
 C D 3 - - - 0x01E8C2 07:E8B2: E6 38     INC ram_номер_экрана
 bra_E8B4:
@@ -1359,7 +1359,7 @@ C - - - - - 0x01E8C8 07:E8B8: 60        RTS
 
 
 
-sub_E8B9:
+sub_E8B9_выбрать_саундтрек_уровня:
 C - - - - - 0x01E8C9 07:E8B9: A5 1F     LDA ram_001F_flag
 C - - - - - 0x01E8CB 07:E8BB: D0 08     BNE bra_E8C5
 C - - - - - 0x01E8CD 07:E8BD: A4 50     LDY ram_номер_уровня
@@ -3055,7 +3055,7 @@ C - - - - - 0x01F373 07:F363: F0 02     BEQ bra_F367_вид_сбоку
 ; вид сверху
 C - - - - - 0x01F375 07:F365: A0 0E     LDY #$0E
 bra_F367_вид_сбоку:
-C - - - - - 0x01F377 07:F367: 20 FD F6  JSR sub_F6FD_try_to_find_free_object
+C - - - - - 0x01F377 07:F367: 20 FD F6  JSR sub_F6FD_попытка_создать_объект
 C - - - - - 0x01F37A 07:F36A: D0 25     BNE bra_F391
 C - - - - - 0x01F37C 07:F36C: A5 06     LDA ram_0006
 C - - - - - 0x01F37E 07:F36E: C9 07     CMP #$07
@@ -3655,39 +3655,39 @@ C - - - - - 0x01F6D6 07:F6C6: 60        RTS
 
 
 
-sub_F6FD_try_to_find_free_object:
-sub_0x01F70D_try_to_find_free_object:
-; result
-    ; Z = 0 if object was created successfully
-    ; Z = 1 if failed to create object
-C - - - - - 0x01F70D 07:F6FD: 20 11 F7  JSR sub_F711_find_free_object
+sub_F6FD_попытка_создать_объект:
+sub_0x01F70D_попытка_создать_объект:
+; результат
+    ; Z = 0 если объект был успешно создан
+    ; Z = 1 если не получилось сохдать объект
+C - - - - - 0x01F70D 07:F6FD: 20 11 F7  JSR sub_F711_поиск_свободного_слота
 C - - - - - 0x01F710 07:F700: D0 03     BNE bra_F705_RTS    ; if not found
-C - - - - - 0x01F712 07:F702: 4C 3F F7  JMP loc_F73F_start_preparing_new_object
+C - - - - - 0x01F712 07:F702: 4C 3F F7  JMP loc_F73F_начать_создание_нового_объекта
 bra_F705_RTS:
 C - - - - - 0x01F715 07:F705: 60        RTS
 
 
 
-sub_0x01F716_try_to_find_free_object:
+sub_0x01F716_попытка_найти_свободный_слот_для_объекта___первые_4_слота:
 C - - - - - 0x01F716 07:F706: A2 03     LDX #$03
-sub_0x01F718_try_to_find_free_object:
-C - - - - - 0x01F718 07:F708: 20 13 F7  JSR sub_F713_find_free_object_custom_X
+sub_0x01F718_попытка_найти_свободный_слот_для_объекта___X_слотов:
+C - - - - - 0x01F718 07:F708: 20 13 F7  JSR sub_F713_поиск_свободного_слота___кастомный_X
 C - - - - - 0x01F71B 07:F70B: D0 03     BNE bra_F710_RTS
-C - - - - - 0x01F71D 07:F70D: 4C 3F F7  JMP loc_F73F_start_preparing_new_object
+C - - - - - 0x01F71D 07:F70D: 4C 3F F7  JMP loc_F73F_начать_создание_нового_объекта
 bra_F710_RTS:
 C - - - - - 0x01F720 07:F710: 60        RTS
 
 
 
-; trying to find a free object by looking at its state
-; if state = 00 then object is free
-; result
-    ; Z = 0 if free object was found
-        ; X = free object index
-    ; Z = 1 if failed to find free object
-sub_F711_find_free_object:
+; попытка найти свободный слот через проверку состояния
+; если состояние = 00 значит слот свободен
+; результат
+    ; Z = 0 если был найден свободный слот
+        ; X = индекс слота объекта
+    ; Z = 1 не получилось найти свободный слот
+sub_F711_поиск_свободного_слота:
 C - - - - - 0x01F721 07:F711: A2 0D     LDX ram_макс_индекс_враги
-sub_F713_find_free_object_custom_X:
+sub_F713_поиск_свободного_слота___кастомный_X:
 bra_F713_loop:
 C - - - - - 0x01F723 07:F713: BD 68 06  LDA ram_состояние_объектов,X
 C - - - - - 0x01F726 07:F716: F0 03     BEQ bra_F71B_RTS
@@ -3699,25 +3699,25 @@ C - - - - - 0x01F72B 07:F71B: 60        RTS
 
 
 
-sub_0x01F72C_try_to_find_enemy_bullet:
-C - - - - - 0x01F72C 07:F71C: 20 25 F7  JSR sub_F725_find_bullet_in_obj_list
+sub_0x01F72C_поиск_вражеской_пули_в_слотах_объектов:
+C - - - - - 0x01F72C 07:F71C: 20 25 F7  JSR sub_F725_найти_пулю_в_списке
 C - - - - - 0x01F72F 07:F71F: D0 03     BNE bra_F724_RTS
-C - - - - - 0x01F731 07:F721: 4C 3F F7  JMP loc_F73F_start_preparing_new_object
+C - - - - - 0x01F731 07:F721: 4C 3F F7  JMP loc_F73F_начать_создание_нового_объекта
 bra_F724_RTS:
 C - - - - - 0x01F734 07:F724: 60        RTS
 
 
 
-; result
-    ; Z = 0 if found
-        ; X = object index
-    ; Z = 1 if not found
-sub_F725_find_bullet_in_obj_list:
+; результат
+    ; Z = 0 если найдено
+        ; X = индекс слота объекта
+    ; Z = 1 если не найдено
+sub_F725_найти_пулю_в_списке:
 C - - - - - 0x01F735 07:F725: A2 0D     LDX ram_макс_индекс_враги
 bra_F727_loop:
 C - - - - - 0x01F737 07:F727: BD D8 06  LDA ram_тип_объектов,X
 C - - - - - 0x01F73A 07:F72A: C9 02     CMP #con_obj_id_02
-C - - - - - 0x01F73C 07:F72C: F0 03     BEQ bra_F731_RTS    ; if found
+C - - - - - 0x01F73C 07:F72C: F0 03     BEQ bra_F731_RTS    ; если найдено
 C - - - - - 0x01F73E 07:F72E: CA        DEX
 C - - - - - 0x01F73F 07:F72F: 10 F6     BPL bra_F727_loop
 ; Z = 1
@@ -3726,29 +3726,29 @@ C - - - - - 0x01F741 07:F731: 60        RTS
 
 
 
-sub_F732_delete_all_objects_and_clear_their_data:
+sub_F732_удалить_все_объекты_и_очистить_их_данные:
 C - - - - - 0x01F742 07:F732: A2 0D     LDX ram_макс_индекс_враги
 bra_F734_loop:
-C - - - - - 0x01F744 07:F734: 20 4E F7  JSR sub_F74E_delete_object_and_clear_its_data
+C - - - - - 0x01F744 07:F734: 20 4E F7  JSR sub_F74E_удалить_объект_и_очистить_его_данные
 C - - - - - 0x01F747 07:F737: CA        DEX
 C - - - - - 0x01F748 07:F738: 10 FA     BPL bra_F734_loop
 C - - - - - 0x01F74A 07:F73A: 60        RTS
 
 
 
-loc_F73F_start_preparing_new_object:
-sub_0x01F74F_start_preparing_new_object:
-C D 3 - - - 0x01F74F 07:F73F: 20 9E F7  JSR sub_F79E_prepare_object
+loc_F73F_начать_создание_нового_объекта:
+sub_0x01F74F_начать_создание_нового_объекта:
+C D 3 - - - 0x01F74F 07:F73F: 20 9E F7  JSR sub_F79E_подготовить_объект
 C - - - - - 0x01F752 07:F742: A9 01     LDA #$01
 C - - - - - 0x01F754 07:F744: 9D 68 06  STA ram_состояние_объектов,X
 C - - - - - 0x01F757 07:F747: 9D 76 06  STA ram_жизни_объектов,X
-C - - - - - 0x01F75A 07:F74A: A9 00     LDA #$00    ; success flag
+C - - - - - 0x01F75A 07:F74A: A9 00     LDA #$00    ; флаг успеха
 C - - - - - 0x01F75C 07:F74C: F0 0B     BEQ bra_F759    ; jmp
 
 
 
-sub_F74E_delete_object_and_clear_its_data:
-C - - - - - 0x01F75E 07:F74E: 20 9C F7  JSR sub_F79C_delete_object_01
+sub_F74E_удалить_объект_и_очистить_его_данные:
+C - - - - - 0x01F75E 07:F74E: 20 9C F7  JSR sub_F79C_удалить_объект_01
 C - - - - - 0x01F761 07:F751: A9 00     LDA #$00
 C - - - - - 0x01F763 07:F753: 9D 68 06  STA ram_состояние_объектов,X
 C - - - - - 0x01F766 07:F756: 9D 76 06  STA ram_жизни_объектов,X
@@ -3780,11 +3780,11 @@ C - - - - - 0x01F7AB 07:F79B: 60        RTS
 
 
 
-sub_F79C_delete_object_01:
-sub_0x01F7AC_delete_object_01:
+sub_F79C_удалить_объект_01:
+sub_0x01F7AC_удалить_объект_01:
 C - - - - - 0x01F7AC 07:F79C: A0 7F     LDY #$7F
-sub_F79E_prepare_object:
-sub_0x01F7AE_prepare_object:
+sub_F79E_подготовить_объект:
+sub_0x01F7AE_подготовить_объект:
 C - - - - - 0x01F7AE 07:F79E: B9 E4 F8  LDA tbl_F8E4,Y
 C - - - - - 0x01F7B1 07:F7A1: 9D 3A 07  STA ram_хитбоксы_объектов,X
 C - - - - - 0x01F7B4 07:F7A4: 98        TYA
@@ -3792,9 +3792,10 @@ C - - - - - 0x01F7B5 07:F7A5: 9D D8 06  STA ram_тип_объектов,X
 C - - - - - 0x01F7B8 07:F7A8: 60        RTS
 
 
-sub_0x01F7B9:
+
 loc_F7A9:
 sub_F7A9:
+sub_0x01F7B9:
 C D 3 - - - 0x01F7B9 07:F7A9: A5 86     LDA ram_0085 + $01
 C - - - - - 0x01F7BB 07:F7AB: D0 06     BNE bra_F7B3_RTS
 C - - - - - 0x01F7BD 07:F7AD: A5 1E     LDA ram_index_ppu_buffer
@@ -4884,10 +4885,10 @@ C - - - - - 0x01FE42 07:FE32: 4C 01 94  JMP loc_0x001411
 
 
 
-sub_FE35:
+sub_FE35_подготовить_лопасти_вертолета_на_1м_уровне:
 C - - - - - 0x01FE45 07:FE35: A9 34     LDA #con_prg_bank + $34
 C - - - - - 0x01FE47 07:FE37: 20 6F FD  JSR sub_FD6F_prg_bankswitch___no_return
-C - - - - - 0x01FE4A 07:FE3A: 4C B0 92  JMP loc_0x0092C0
+C - - - - - 0x01FE4A 07:FE3A: 4C B0 92  JMP loc_0x0092C0_подготовить_лопасти_вертолета_на_1м_уровне
 
 
 
@@ -5042,7 +5043,7 @@ C - - - - - 0x01FEE9 07:FED9: 20 6F FD  JSR sub_FD63_prg_bankswitch___with_retur
 C - - - - - 0x01FEEC 07:FEDC: 4C D9 9A  JSR loc_0x009AE9_sound_mode_handler
                                         JMP loc_FD8B_restore_prg_bank
 
-loc_bankswitch_E3B9:
+loc_E3B9_bankswitch:
                                         LDA #con_prg_bank + $24
                                         JSR sub_FD6F_prg_bankswitch___no_return
                                         JMP sub_0x010050_работа_с_экранами
