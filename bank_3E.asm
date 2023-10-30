@@ -4403,8 +4403,9 @@ bra_FB2F_loop:
                                         INX
                                         CPX #$20        ; очистить 20 страниц
                                         BNE bra_FB2F_loop
-; 1путин: запись контов и дефолт индексы
+; 1путин: запись контов, жизней и дефолт индексы
                                         LDA #$02
+                                        STA ram_options_жизни
                                         STA ram_options_конты
                                         LDX ram_options_колво_объектов
                                         LDA tbl_FB75_индексы,X
