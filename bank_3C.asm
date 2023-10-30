@@ -1175,6 +1175,9 @@ C - - - - - 0x0187F2 06:87E2: A8        TAY
 bra_87E3:
 C - - - - - 0x0187F3 06:87E3: 20 E9 87  JSR sub_87E9
 C - - - - - 0x0187F6 06:87E6: 4C A7 8C  JMP loc_8CA7
+
+
+
 sub_87E9:
 C - - - - - 0x0187F9 06:87E9: E0 05     CPX #$05
 C - - - - - 0x0187FB 06:87EB: F0 2D     BEQ bra_881A
@@ -1223,6 +1226,9 @@ C - - - - - 0x018850 06:8840: 20 28 8D  JSR sub_8D28_10_NOPs
 bra_8843:
 C - - - - - 0x018853 06:8843: AE 5B 01  LDX ram_0158 + $03
 C - - - - - 0x018856 06:8846: 60        RTS
+
+
+
 sub_8847:
 C - - - - - 0x018857 06:8847: 84 E2     STY ram_00E2
 C - - - - - 0x018859 06:8849: BD C0 01  LDA ram_01C0,X
@@ -1258,6 +1264,9 @@ C - - - - - 0x018894 06:8884: BD C0 01  LDA ram_01C0,X
 C - - - - - 0x018897 06:8887: 29 03     AND #$03
 C - - - - - 0x018899 06:8889: 9D C0 01  STA ram_01C0,X
 C - - - - - 0x01889C 06:888C: 60        RTS
+
+
+
 sub_888D:
 C - - - - - 0x01889D 06:888D: BD 89 01  LDA ram_0189,X
 C - - - - - 0x0188A0 06:8890: 85 E2     STA ram_00E2
@@ -1286,6 +1295,9 @@ bra_88B2:
 C - - - - - 0x0188C2 06:88B2: 20 A7 8C  JSR sub_8CA7
 C - - - - - 0x0188C5 06:88B5: 88        DEY
 C - - - - - 0x0188C6 06:88B6: 4C 15 85  JMP loc_8515
+
+
+
 loc_88B9_F0_FA:
 loc_88B9:
 sub_88B9:
@@ -1329,6 +1341,9 @@ C - - - - - 0x018914 06:8904: A9 01     LDA #$01
 C - - - - - 0x018916 06:8906: 9D AA 01  STA ram_01AA,X
 bra_8909_RTS:
 C - - - - - 0x018919 06:8909: 60        RTS
+
+
+
 sub_890A:
 C - - - - - 0x01891A 06:890A: 29 0F     AND #$0F
 C - - - - - 0x01891C 06:890C: 85 E2     STA ram_00E2
@@ -1356,6 +1371,9 @@ C - - - - - 0x01893F 06:892F: 0A        ASL
 C - - - - - 0x018940 06:8930: 26 E5     ROL ram_00E5
 C - - - - - 0x018942 06:8932: A5 E5     LDA ram_00E5
 C - - - - - 0x018944 06:8934: 60        RTS
+
+
+
 sub_8935:
 C - - - - - 0x018945 06:8935: 48        PHA
 C - - - - - 0x018946 06:8936: E0 00     CPX #$00
@@ -1372,6 +1390,9 @@ C - - - - - 0x018951 06:8941: AD 0E 01  LDA ram_010A + $04
 C - - - - - 0x018954 06:8944: F0 F4     BEQ bra_893A
 C - - - - - 0x018956 06:8946: 38        SEC
 C - - - - - 0x018957 06:8947: D0 F2     BNE bra_893B    ; jmp
+
+
+
 ofs_042_8949_C0:
 C - - J - - 0x018959 06:8949: 20 BD 88  JSR sub_88BD
 C - - - - - 0x01895C 06:894C: A9 00     LDA #$00
@@ -1392,6 +1413,9 @@ C - - - - - 0x018978 06:8968: BD 16 01  LDA ram_0116,X
 C - - - - - 0x01897B 06:896B: 09 40     ORA #$40
 C - - - - - 0x01897D 06:896D: 9D 16 01  STA ram_0116,X
 C - - - - - 0x018980 06:8970: 4C A7 8C  JMP loc_8CA7
+
+
+
 ofs_042_8973_D0:
 C - - J - - 0x018983 06:8973: 9D 10 01  STA ram_0110,X
 C - - - - - 0x018986 06:8976: C8        INY
@@ -1447,6 +1471,9 @@ bra_89D2:
 C - - - - - 0x0189E2 06:89D2: 8D 66 01  STA ram_0164 + $02
 C - - - - - 0x0189E5 06:89D5: C8        INY
 C - - - - - 0x0189E6 06:89D6: 4C B5 84  JMP loc_84B5
+
+
+
 loc_89D9:
 ofs_042_89D9_E0:
 C - - J - - 0x0189E9 06:89D9: 85 E2     STA ram_00E2
@@ -1507,6 +1534,9 @@ C - - - - - 0x018A3C 06:8A2C: 10 08     BPL bra_8A36
 bra_8A36:
 C - - - - - 0x018A46 06:8A36: C8        INY
 C - - - - - 0x018A47 06:8A37: 4C B5 84  JMP loc_84B5
+
+
+
 ofs_039_8A3A_07:
 C - - J - - 0x018A4A 06:8A3A: C8        INY
 C - - - - - 0x018A4B 06:8A3B: B1 E0     LDA (ram_00E0),Y
@@ -1516,9 +1546,15 @@ C - - - - - 0x018A53 06:8A43: 29 7F     AND #$7F
 C - - - - - 0x018A55 06:8A45: 9D 75 01  STA ram_0175,X
 C - - - - - 0x018A58 06:8A48: C8        INY
 C - - - - - 0x018A59 06:8A49: 4C B5 84  JMP loc_84B5
+
+
+
 ofs_039_8A4C_08:
 C - - J - - 0x018A5C 06:8A4C: C8        INY
 C - - - - - 0x018A5D 06:8A4D: 4C B1 89  JMP loc_89B1
+
+
+
 ofs_039_8A50_09:
 C - - J - - 0x018A60 06:8A50: C8        INY
 C - - - - - 0x018A61 06:8A51: B1 E0     LDA (ram_00E0),Y
@@ -1544,6 +1580,9 @@ bra_8A7A:
 C - - - - - 0x018A8A 06:8A7A: B1 E0     LDA (ram_00E0),Y
 C - - - - - 0x018A8C 06:8A7C: 9D 6A 01  STA ram_016A,X
 C - - - - - 0x018A8F 06:8A7F: 4C 66 8A  JMP loc_8A66
+
+
+
 ofs_039_8A82_0A:
 C - - J - - 0x018A92 06:8A82: C8        INY
 C - - - - - 0x018A93 06:8A83: B1 E0     LDA (ram_00E0),Y
@@ -1557,6 +1596,9 @@ bra_8A8F:
 C - - - - - 0x018A9F 06:8A8F: 0A        ASL
 C - - - - - 0x018AA0 06:8A90: 09 80     ORA #$80
 C - - - - - 0x018AA2 06:8A92: 4C 88 8A  JMP loc_8A88
+
+
+
 ofs_039_8A95_0B:
 C - - J - - 0x018AA5 06:8A95: C8        INY
 C - - - - - 0x018AA6 06:8A96: B1 E0     LDA (ram_00E0),Y
@@ -1600,6 +1642,9 @@ C - - - - - 0x018AE8 06:8AD8: BD 75 01  LDA ram_0175,X
 C - - - - - 0x018AEB 06:8ADB: 29 EF     AND #$EF
 C - - - - - 0x018AED 06:8ADD: 9D 75 01  STA ram_0175,X
 C - - - - - 0x018AF0 06:8AE0: 4C 66 8A  JMP loc_8A66
+
+
+
 ofs_039_8AE3_0C:
 C - - J - - 0x018AF3 06:8AE3: C8        INY
 C - - - - - 0x018AF4 06:8AE4: BD 75 01  LDA ram_0175,X
@@ -1629,6 +1674,9 @@ bra_8B0C:
 C - - - - - 0x018B1C 06:8B0C: A9 80     LDA #$80
 C - - - - - 0x018B1E 06:8B0E: 9D BE 01  STA ram_01BE,X
 C - - - - - 0x018B21 06:8B11: D0 F5     BNE bra_8B08    ; jmp
+
+
+
 ofs_039_8B13_0D:
 ofs_039_8B13_0F:
 C - - J - - 0x018B23 06:8B13: C8        INY
@@ -1637,6 +1685,9 @@ C - - - - - 0x018B26 06:8B16: 9D 89 01  STA ram_0189,X
 C - - - - - 0x018B29 06:8B19: BD 16 01  LDA ram_0116,X
 C - - - - - 0x018B2C 06:8B1C: C8        INY
 C - - - - - 0x018B2D 06:8B1D: 4C AF 84  JMP loc_84AF
+
+
+
 ofs_039_8B20_0E:
 C - - J - - 0x018B30 06:8B20: C8        INY
 C - - - - - 0x018B31 06:8B21: B1 E0     LDA (ram_00E0),Y
@@ -1711,6 +1762,9 @@ C - - - - - 0x018BB3 06:8BA3: BD 16 01  LDA ram_0116,X
 C - - - - - 0x018BB6 06:8BA6: 29 FB     AND #$FB
 C - - - - - 0x018BB8 06:8BA8: 9D 16 01  STA ram_0116,X
 C - - - - - 0x018BBB 06:8BAB: 4C AF 85  JMP loc_85AF
+
+
+
 loc_8BAE_FB_FF:     ; A = 0B-0F
 ofs_042_8BAE_F0:    ; A = 00-0F
 C D 0 - - - 0x018BBE 06:8BAE: C9 0E     CMP #$0E
@@ -1768,6 +1822,9 @@ C - - - - - 0x018C21 06:8C11: BD 16 01  LDA ram_0116,X
 C - - - - - 0x018C24 06:8C14: 09 20     ORA #$20
 C - - - - - 0x018C26 06:8C16: 9D 16 01  STA ram_0116,X
 C - - - - - 0x018C29 06:8C19: 4C 71 8B  JMP loc_8B71
+
+
+
 loc_8C1C:
 C D 0 - - - 0x018C2C 06:8C1C: BD 4C 01  LDA ram_014C,X
 C - - - - - 0x018C2F 06:8C1F: 85 E0     STA ram_00E0
@@ -1778,6 +1835,9 @@ C - - - - - 0x018C39 06:8C29: 29 DF     AND #$DF
 C - - - - - 0x018C3B 06:8C2B: 9D 16 01  STA ram_0116,X
 C - - - - - 0x018C3E 06:8C2E: A0 00     LDY #$00
 C - - - - - 0x018C40 06:8C30: 4C AF 84  JMP loc_84AF
+
+
+
 loc_8C33_FF:
 C D 0 - - - 0x018C43 06:8C33: BD 0A 01  LDA ram_010A,X
 C - - - - - 0x018C46 06:8C36: 85 E4     STA ram_00E4
@@ -1806,6 +1866,9 @@ C - - - - - 0x018C6A 06:8C5A: 20 28 8D  JSR sub_8D28_10_NOPs
 bra_8C5D:
 C - - - - - 0x018C6D 06:8C5D: AE 5B 01  LDX ram_0158 + $03
 C - - - - - 0x018C70 06:8C60: 60        RTS
+
+
+
 sub_8C61:
 ofs_043_8C61_02:
 C - - - - - 0x018C71 06:8C61: A9 0B     LDA #$0B
@@ -1815,6 +1878,9 @@ C - - - - - 0x018C78 06:8C68: 8D 08 40  STA $4008
 C - - - - - 0x018C7B 06:8C6B: A9 0F     LDA #$0F
 C - - - - - 0x018C7D 06:8C6D: 8D 15 40  STA $4015
 C - - - - - 0x018C80 06:8C70: 60        RTS
+
+
+
 ofs_043_8C71_04:
 C - - J - - 0x018C81 06:8C71: AE 60 01  LDX ram_0160
 C - - - - - 0x018C84 06:8C74: A9 30     LDA #$30
@@ -1834,11 +1900,17 @@ C - - - - - 0x018CA7 06:8C97: 20 16 81  JSR sub_8116
 bra_8C9A:
 C - - - - - 0x018CAA 06:8C9A: AE 5B 01  LDX ram_0158 + $03
 C - - - - - 0x018CAD 06:8C9D: 60        RTS
+
+
+
 ofs_043_8C9E_03:
 C - - J - - 0x018CAE 06:8C9E: A9 30     LDA #$30
 C - - - - - 0x018CB0 06:8CA0: 8D 0C 40  STA $400C
 C - - - - - 0x018CB3 06:8CA3: 20 28 8D  JSR sub_8D28_10_NOPs
 C - - - - - 0x018CB6 06:8CA6: 60        RTS
+
+
+
 loc_8CA7:
 sub_8CA7:
 C D 0 - - - 0x018CB7 06:8CA7: C8        INY
@@ -1850,6 +1922,9 @@ C - - - - - 0x018CBF 06:8CAF: A9 00     LDA #$00
 C - - - - - 0x018CC1 06:8CB1: 65 E1     ADC ram_00E1
 C - - - - - 0x018CC3 06:8CB3: 9D 2E 01  STA ram_012E,X
 C - - - - - 0x018CC6 06:8CB6: 60        RTS
+
+
+
 sub_8CB7:
 C - - - - - 0x018CC7 06:8CB7: C8        INY
 C - - - - - 0x018CC8 06:8CB8: B1 E0     LDA (ram_00E0),Y

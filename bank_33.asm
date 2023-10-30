@@ -216,8 +216,8 @@
 .export sub_0x006AB1_restore_reg_values
 .export sub_0x006ABE
 .export sub_0x006ADB
-.export sub_0x006B1B
-.export sub_0x006B34
+.export sub_0x006B1B_выбрать_ближайшего_игрока_по_оси_x
+.export sub_0x006B34_выбрать_ближайшего_игрока_по_оси_y
 .export sub_0x006B74
 .export sub_0x006B7B
 .export loc_0x006B7B
@@ -2521,7 +2521,7 @@ C - - - - - 0x006AEA 01:AADA: 60        RTS
 
 
 sub_AADB:
-C - - - - - 0x006AEB 01:AADB: 20 0B AB  JSR sub_AB0B
+C - - - - - 0x006AEB 01:AADB: 20 0B AB  JSR sub_AB0B_выбрать_ближайшего_игрока_по_оси_x
 C - - - - - 0x006AEE 01:AADE: 98        TYA
 C - - - - - 0x006AEF 01:AADF: 49 01     EOR #$01
 C - - - - - 0x006AF1 01:AAE1: 85 0C     STA ram_000C
@@ -2529,7 +2529,7 @@ C - - - - - 0x006AF3 01:AAE3: A5 08     LDA ram_0008
 C - - - - - 0x006AF5 01:AAE5: 85 0A     STA ram_000A
 C - - - - - 0x006AF7 01:AAE7: A5 09     LDA ram_0009
 C - - - - - 0x006AF9 01:AAE9: 85 0B     STA ram_000B
-C - - - - - 0x006AFB 01:AAEB: 20 24 AB  JSR sub_AB24
+C - - - - - 0x006AFB 01:AAEB: 20 24 AB  JSR sub_AB24_выбрать_ближайшего_игрока_по_оси_y
 C - - - - - 0x006AFE 01:AAEE: 98        TYA
 C - - - - - 0x006AFF 01:AAEF: 49 01     EOR #$01
 C - - - - - 0x006B01 01:AAF1: C5 0C     CMP ram_000C
@@ -2552,8 +2552,9 @@ C - - - - - 0x006B1A 01:AB0A: 60        RTS
 
 
 
-sub_AB0B:
-sub_0x006B1B:
+sub_AB0B_выбрать_ближайшего_игрока_по_оси_x:
+sub_0x006B1B_выбрать_ближайшего_игрока_по_оси_x:
+; по итогу Y = индекс игрока
 C - - - - - 0x006B1B 01:AB0B: AD 4C 05  LDA ram_позиция_x_спрайта_игрока
 C - - - - - 0x006B1E 01:AB0E: 38        SEC
 C - - - - - 0x006B1F 01:AB0F: FD 3C 05  SBC ram_позиция_x_спрайта_врага_и_пуль,X
@@ -2569,8 +2570,9 @@ C - - - - - 0x006B31 01:AB21: 4C 3A AB  JMP loc_AB3A
 
 
 
-sub_AB24:
-sub_0x006B34:
+sub_AB24_выбрать_ближайшего_игрока_по_оси_y:
+sub_0x006B34_выбрать_ближайшего_игрока_по_оси_y:
+; по итогу Y = индекс игрока
 C - - - - - 0x006B34 01:AB24: AD 32 05  LDA ram_позиция_y_спрайта_игрока
 C - - - - - 0x006B37 01:AB27: 38        SEC
 C - - - - - 0x006B38 01:AB28: FD 22 05  SBC ram_позиция_y_спрайта_врага_и_пуль,X
@@ -2604,7 +2606,7 @@ C - - - - - 0x006B66 01:AB56: A5 09     LDA ram_0009
 C - - - - - 0x006B68 01:AB58: A0 01     LDY #$01
 C - - - - - 0x006B6A 01:AB5A: C5 08     CMP ram_0008
 C - - - - - 0x006B6C 01:AB5C: 90 03     BCC bra_AB61
-C - - - - - 0x006B6E 01:AB5E: 88        DEY
+C - - - - - 0x006B6E 01:AB5E: 88        DEY ; 00
 C - - - - - 0x006B6F 01:AB5F: A5 08     LDA ram_0008
 bra_AB61:
 C - - - - - 0x006B71 01:AB61: 84 0A     STY ram_000A
@@ -2648,7 +2650,7 @@ C - - - - - 0x006B99 01:AB89: 4A        LSR
 C - - - - - 0x006B9A 01:AB8A: 4A        LSR
 C - - - - - 0x006B9B 01:AB8B: A0 00     LDY #$00
 C - - - - - 0x006B9D 01:AB8D: 90 01     BCC bra_AB90
-C - - - - - 0x006B9F 01:AB8F: C8        INY
+C - - - - - 0x006B9F 01:AB8F: C8        INY ; 01
 bra_AB90:
 C - - - - - 0x006BA0 01:AB90: 84 FD     STY ram_scroll_X
 C - - - - - 0x006BA2 01:AB92: 84 FA     STY ram_00FA
@@ -3500,7 +3502,7 @@ C - - - - - 0x007025 01:B015: 9D 02 07  STA ram_0702_obj,X
 C - - - - - 0x007028 01:B018: BD 1E 07  LDA ram_obj_flags,X
 C - - - - - 0x00702B 01:B01B: 29 02     AND #$02
 C - - - - - 0x00702D 01:B01D: F0 18     BEQ bra_B037
-C - - - - - 0x00702F 01:B01F: 20 0B AB  JSR sub_AB0B
+C - - - - - 0x00702F 01:B01F: 20 0B AB  JSR sub_AB0B_выбрать_ближайшего_игрока_по_оси_x
 C - - - - - 0x007032 01:B022: BD 3C 05  LDA ram_позиция_x_спрайта_врага_и_пуль,X
 C - - - - - 0x007035 01:B025: D9 4C 05  CMP ram_позиция_x_спрайта_игрока,Y
 C - - - - - 0x007038 01:B028: BD 1E 07  LDA ram_obj_flags,X
@@ -3540,7 +3542,7 @@ C - - - - - 0x00707B 01:B06B: 4C FD AB  JMP loc_ABFD
 bra_B06E_RTS:
 C - - - - - 0x00707E 01:B06E: 60        RTS
 bra_B06F:
-C - - - - - 0x00707F 01:B06F: 20 0B AB  JSR sub_AB0B
+C - - - - - 0x00707F 01:B06F: 20 0B AB  JSR sub_AB0B_выбрать_ближайшего_игрока_по_оси_x
 C - - - - - 0x007082 01:B072: BD 22 05  LDA ram_позиция_y_спрайта_врага_и_пуль,X
 C - - - - - 0x007085 01:B075: 38        SEC
 C - - - - - 0x007086 01:B076: F9 32 05  SBC ram_позиция_y_спрайта_игрока,Y
@@ -3624,7 +3626,7 @@ tbl_B0DE_spd_Y:
 
 
 ofs_038_03_B0E4_03:
-C - - J - - 0x0070F4 01:B0E4: 20 0B AB  JSR sub_AB0B
+C - - J - - 0x0070F4 01:B0E4: 20 0B AB  JSR sub_AB0B_выбрать_ближайшего_игрока_по_оси_x
 C - - - - - 0x0070F7 01:B0E7: B9 4C 05  LDA ram_позиция_x_спрайта_игрока,Y
 C - - - - - 0x0070FA 01:B0EA: DD 3C 05  CMP ram_позиция_x_спрайта_врага_и_пуль,X
 C - - - - - 0x0070FD 01:B0ED: 20 EC B1  JSR sub_B1EC
@@ -4008,7 +4010,7 @@ C - - - - - 0x007345 01:B335: 4C D7 A2  JMP loc_A2D7_increase_obj_state
 
 
 ofs_038_05_B338_02:
-C - - J - - 0x007348 01:B338: 20 0B AB  JSR sub_AB0B
+C - - J - - 0x007348 01:B338: 20 0B AB  JSR sub_AB0B_выбрать_ближайшего_игрока_по_оси_x
 C - - - - - 0x00734B 01:B33B: BD 3C 05  LDA ram_позиция_x_спрайта_врага_и_пуль,X
 C - - - - - 0x00734E 01:B33E: D9 4C 05  CMP ram_позиция_x_спрайта_игрока,Y
 C - - - - - 0x007351 01:B341: A9 01     LDA #$01
@@ -4264,7 +4266,7 @@ C - - - - - 0x0074EF 01:B4DF: 4C E0 A2  JMP loc_A2E0
 
 
 ofs_038_09_B4E2_02:
-C - - J - - 0x0074F2 01:B4E2: 20 0B AB  JSR sub_AB0B
+C - - J - - 0x0074F2 01:B4E2: 20 0B AB  JSR sub_AB0B_выбрать_ближайшего_игрока_по_оси_x
 C - - - - - 0x0074F5 01:B4E5: B9 4C 05  LDA ram_позиция_x_спрайта_игрока,Y
 C - - - - - 0x0074F8 01:B4E8: DD 3C 05  CMP ram_позиция_x_спрайта_врага_и_пуль,X
 C - - - - - 0x0074FB 01:B4EB: BD 1E 07  LDA ram_obj_flags,X
@@ -4459,7 +4461,7 @@ C - - - - - 0x00762A 01:B61A: F0 04     BEQ bra_B620
 C - - - - - 0x00762C 01:B61C: C0 A0     CPY #$A0
 C - - - - - 0x00762E 01:B61E: B0 17     BCS bra_B637
 bra_B620:
-C - - - - - 0x007630 01:B620: 20 0B AB  JSR sub_AB0B
+C - - - - - 0x007630 01:B620: 20 0B AB  JSR sub_AB0B_выбрать_ближайшего_игрока_по_оси_x
 C - - - - - 0x007633 01:B623: 84 12     STY ram_0012
 C - - - - - 0x007635 01:B625: DE E6 06  DEC ram_счетчкики_для_объектов,X
 C - - - - - 0x007638 01:B628: D0 35     BNE bra_B65F
@@ -4715,7 +4717,7 @@ C - - - - - 0x0077AC 01:B79C: 90 03     BCC bra_B7A1
 C - - - - - 0x0077AE 01:B79E: 4C 75 A2  JMP loc_A275_delete_object_02
 bra_B7A1:
 C - - - - - 0x0077B1 01:B7A1: 20 B7 A6  JSR sub_A6B7_delete_object_03
-C - - - - - 0x0077B4 01:B7A4: 20 24 AB  JSR sub_AB24
+C - - - - - 0x0077B4 01:B7A4: 20 24 AB  JSR sub_AB24_выбрать_ближайшего_игрока_по_оси_y
 C - - - - - 0x0077B7 01:B7A7: 84 12     STY ram_0012
 C - - - - - 0x0077B9 01:B7A9: DE E6 06  DEC ram_счетчкики_для_объектов,X
 C - - - - - 0x0077BC 01:B7AC: D0 7D     BNE bra_B82B
@@ -5140,7 +5142,7 @@ ofs_038_10_BA2B_03:
 C - - J - - 0x007A3B 01:BA2B: 20 B7 A6  JSR sub_A6B7_delete_object_03
 C - - - - - 0x007A3E 01:BA2E: DE E6 06  DEC ram_счетчкики_для_объектов,X
 C - - - - - 0x007A41 01:BA31: D0 46     BNE bra_BA79_RTS
-C - - - - - 0x007A43 01:BA33: 20 0B AB  JSR sub_AB0B
+C - - - - - 0x007A43 01:BA33: 20 0B AB  JSR sub_AB0B_выбрать_ближайшего_игрока_по_оси_x
 C - - - - - 0x007A46 01:BA36: A4 0A     LDY ram_000A
 C - - - - - 0x007A48 01:BA38: BD 3C 05  LDA ram_позиция_x_спрайта_врага_и_пуль,X
 C - - - - - 0x007A4B 01:BA3B: 38        SEC
