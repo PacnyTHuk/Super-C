@@ -1323,6 +1323,7 @@ C - - J - - 0x01E88C 07:E87C: A9 02     LDA #$02
 C - - - - - 0x01E88E 07:E87E: 85 1D     STA ram_001D
 C - - - - - 0x01E890 07:E880: A6 3E     LDX ram_003E
 C - - - - - 0x01E892 07:E882: D0 0F     BNE bra_E893
+; 00
 C - - - - - 0x01E894 07:E884: 20 8C FE  JSR sub_FE8C
 bra_E887_loop:
 C - - - - - 0x01E897 07:E887: 20 92 FE  JSR sub_FE92
@@ -1333,10 +1334,13 @@ C - - - - - 0x01E8A0 07:E890: E6 3E     INC ram_003E
 bra_E892_RTS:
 C - - - - - 0x01E8A2 07:E892: 60        RTS
 bra_E893:
-bra_E893_loop:
+                                        DEX
+                                        BNE bra_E8AB_02
+; 01
+bra_E894_loop:
 C - - - - - 0x01E8A3 07:E893: 20 92 FE  JSR sub_FE92
 C - - - - - 0x01E8A6 07:E896: A5 60     LDA ram_0060_unk
-C - - - - - 0x01E8A8 07:E898: D0 F9     BNE bra_E893_loop
+C - - - - - 0x01E8A8 07:E898: D0 F9     BNE bra_E894_loop
 C - - - - - 0x01E8AA 07:E89A: A5 65     LDA ram_0065
 C - - - - - 0x01E8AC 07:E89C: C9 01     CMP #$01
 C - - - - - 0x01E8AE 07:E89E: D0 14     BNE bra_E8B4
@@ -1346,6 +1350,17 @@ C - - - - - 0x01E8B4 07:E8A4: 90 0E     BCC bra_E8B4
 C - - - - - 0x01E8B6 07:E8A6: A9 00     LDA #$00
 C - - - - - 0x01E8B8 07:E8A8: 85 6B     STA ram_006B
 C - - - - - 0x01E8BA 07:E8AA: 85 6C     STA ram_006C
+; дает возможность отложить перерисовку вертолета
+; на следующий кадр, дождавшись освобождения буфера
+                                        INC ram_003E    ; 01 -> 02
+                                        RTS
+bra_E8AB_02:
+                                        LDA ram_номер_уровня
+                                        BNE bra_E8AC_пропуск_перерисовки
+                                        LDA ram_options_регион
+                                        BEQ bra_E8AC_пропуск_перерисовки
+                                        JSR sub_FE36_перерисовать_вертолет_для_европейки
+bra_E8AC_пропуск_перерисовки:
 C - - - - - 0x01E8BC 07:E8AC: 20 35 FE  JSR sub_FE35_подготовить_лопасти_вертолета_на_1м_уровне
 C - - - - - 0x01E8BF 07:E8AF: 20 B9 E8  JSR sub_E8B9_выбрать_саундтрек_уровня
 loc_E8B2:
@@ -4890,6 +4905,12 @@ C - - - - - 0x01FE45 07:FE35: A9 34     LDA #con_prg_bank + $34
 C - - - - - 0x01FE47 07:FE37: 20 6F FD  JSR sub_FD6F_prg_bankswitch___no_return
 C - - - - - 0x01FE4A 07:FE3A: 4C B0 92  JMP loc_0x0092C0_подготовить_лопасти_вертолета_на_1м_уровне
 
+
+
+sub_FE36_перерисовать_вертолет_для_европейки:
+                                        LDA #con_prg_bank + $22
+                                        JSR sub_FD6F_prg_bankswitch___no_return
+                                        JMP loc_0x000001_перерисовать_вертолет_для_европейки
 
 
 sub_FE3D_обработчик_уровня:

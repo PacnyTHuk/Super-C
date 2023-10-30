@@ -6,6 +6,7 @@
 
 
 .export loc_0x00C0CE_спрайтовый_движок
+.export loc_0x000001_перерисовать_вертолет_для_европейки
 
 
 
@@ -8460,9 +8461,79 @@ _off031_93EE_7F:
 
 
 
+loc_0x000001_перерисовать_вертолет_для_европейки:
+; cyneprepou4uk
+                                        LDX ram_index_ppu_buffer
+                                        LDY #$00
+bra_9401_loop:
+                                        LDA tbl_9400_тайлы_вертолета_EU,Y
+                                        CMP #$FE    ; end token
+                                        BEQ bra_9402_закрыть_буфер
+                                        STA ram_nmt_buffer,X
+                                        INX
+                                        INY
+                                        BNE bra_9401_loop    ; jmp
+bra_9402_закрыть_буфер:
+                                        LDA #$FF
+                                        STA ram_nmt_buffer,X
+                                        INX
+                                        STX ram_index_ppu_buffer
+                                        RTS
 
 
 
+tbl_9400_тайлы_вертолета_EU:
+                                        .byte con_buf_mode_06   ; 
+                                        
+                                        .dbyt $20AB ; ppu address
+                                        .byte $02   ; counter
+                                        .byte $39, $3A   ; 
+                                        
+                                        .dbyt $20CA ; ppu address
+                                        .byte $06   ; counter
+                                        .byte $00, $3B, $01, $3C, $00, $3D   ; 
+                                        
+                                        .dbyt $20E4 ; ppu address
+                                        .byte $0C   ; counter
+                                        .byte $1C, $1D, $1E, $7D, $00, $3E, $3F, $40, $41, $42, $43, $44   ; 
+                                        
+                                        .dbyt $2107 ; ppu address
+                                        .byte $09   ; counter
+                                        .byte $00, $02, $45, $03, $46, $04, $47, $05, $48   ; 
+                                        
+                                        .dbyt $2125 ; ppu address
+                                        .byte $0B   ; counter
+                                        .byte $00, $00, $06, $49, $4A, $4B, $4C, $4D, $4E, $4F, $50   ; 
+                                        
+                                        .dbyt $2144 ; ppu address
+                                        .byte $0D   ; counter
+                                        .byte $19, $1A, $06, $51, $07, $52, $08, $53, $09, $54, $0A, $55, $0B   ; 
+                                        
+                                        .dbyt $2164 ; ppu address
+                                        .byte $0D   ; counter
+                                        .byte $1E, $7D, $56, $57, $58, $59, $5A, $5B, $5C, $5D, $5E, $5F, $60   ; 
+                                        
+                                        .dbyt $2185 ; ppu address
+                                        .byte $0D   ; counter
+                                        .byte $1B, $0C, $60, $0D, $61, $0E, $62, $00, $63, $0F, $64, $10, $65   ; 
+                                        
+                                        .dbyt $21A4 ; ppu address
+                                        .byte $0E   ; counter
+                                        .byte $1E, $7D, $00, $66, $67, $68, $69, $6A, $6A, $6B, $6C, $6D, $6E, $6F   ; 
+                                        
+                                        .dbyt $21C5 ; ppu address
+                                        .byte $0B   ; counter
+                                        .byte $00, $20, $70, $21, $71, $00, $00, $00, $72, $38, $73   ; 
+                                        
+                                        .dbyt $21E8 ; ppu address
+                                        .byte $0A   ; counter
+                                        .byte $00, $00, $1C, $7E, $00, $00, $15, $00, $1F, $1C   ; 
+; корректировка атрибутов внизу вертолета
+                                        .dbyt $23D9 ; ppu address
+                                        .byte $03   ; counter
+                                        .byte $56, $85, $45   ; оригинал 55 A5 65
+
+                                        .byte $FE   ; end token
 
 
 
