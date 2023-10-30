@@ -67,8 +67,8 @@
 .export sub_0x01FDEE_play_sound
 .export loc_0x01FDEE_play_sound
 .export loc_0x01FE06
-.export sub_0x01FE1E
-.export loc_0x01FE1E
+.export sub_0x01FE1E_остановить_звуковой_движок
+.export loc_0x01FE1E_остановить_звуковой_движок
 .export loc_0x01FE6D
 .export sub_0x01FE80_bankswitch_загрузка_палитры_в_03E0x
 .export sub_0x01FE8A_bankswitch_отрисовка_текста_через_буфер_0300x
@@ -1249,7 +1249,7 @@ tbl_E7F5_hi:
 
 
 ofs_033_E807_00_главный_экран:
-C - - J - - 0x01E817 07:E807: 20 0E FE  JSR sub_FE0E
+C - - J - - 0x01E817 07:E807: 20 0E FE  JSR sub_FE0E_остановить_звуковой_движок
 C - - - - - 0x01E81A 07:E80A: 20 FE E5  JSR sub_E5FE_clear_0500_0567
 C - - - - - 0x01E81D 07:E80D: 20 C3 E5  JSR sub_E5C3_clear_memory
 C - - - - - 0x01E820 07:E810: 20 57 E5  JSR sub_FE84_XFF_обнуление_экранов_PPU
@@ -1391,10 +1391,10 @@ ofs_033_E8D6_03_игра:
 C D 3 - - - 0x01E8E6 07:E8D6: A9 01     LDA #$01
 C - - - - - 0x01E8E8 07:E8D8: 85 87     STA ram_game_over_flag
 C - - - - - 0x01E8EA 07:E8DA: 20 8A EA  JSR sub_EA8A
-C - - - - - 0x01E8ED 07:E8DD: 20 3D FE  JSR sub_FE3D_area_handler
+C - - - - - 0x01E8ED 07:E8DD: 20 3D FE  JSR sub_FE3D_обработчик_уровня
 C - - - - - 0x01E8F0 07:E8E0: A5 39     LDA ram_пауза
 C - - - - - 0x01E8F2 07:E8E2: F0 06     BEQ bra_E8EA
-C - - - - - 0x01E8F4 07:E8E4: 20 55 FE  JSR sub_FE55
+C - - - - - 0x01E8F4 07:E8E4: 20 55 FE  JSR sub_FE55_выбрать_объекты_на_текущий_кадр
 C - - - - - 0x01E8F7 07:E8E7: 4C A9 F7  JMP loc_F7A9
 bra_E8EA:
 C - - - - - 0x01E8FA 07:E8EA: 20 06 E9  JSR sub_E906
@@ -1427,9 +1427,9 @@ C - - - - - 0x01E91B 07:E90B: 20 45 FE  JSR sub_FE45
 C - - - - - 0x01E91E 07:E90E: 20 BF FE  JSR sub_FEBF
 C - - - - - 0x01E921 07:E911: 20 98 FE  JSR sub_FE98
 C - - - - - 0x01E924 07:E914: 20 4D FE  JSR sub_FE4D
-C - - - - - 0x01E927 07:E917: 20 25 FE  JSR sub_FE25
-C - - - - - 0x01E92A 07:E91A: 20 2D FE  JSR sub_FE2D
-C - - - - - 0x01E92D 07:E91D: 20 1F FE  JSR sub_FE1F_object_handler
+C - - - - - 0x01E927 07:E917: 20 25 FE  JSR sub_FE25_спавн_объектов_из_данных_уровня
+C - - - - - 0x01E92A 07:E91A: 20 2D FE  JSR sub_FE2D_спавн_обычных_мобов
+C - - - - - 0x01E92D 07:E91D: 20 1F FE  JSR sub_FE1F_обработчик_объектов
 C - - - - - 0x01E930 07:E920: 4C A9 F7  JMP loc_F7A9
 
 
@@ -1469,7 +1469,7 @@ tbl_E636_hi:
 
 
 ofs_034_E942_00:
-C - - J - - 0x01E952 07:E942: 20 3D FE  JSR sub_FE3D_area_handler
+C - - J - - 0x01E952 07:E942: 20 3D FE  JSR sub_FE3D_обработчик_уровня
 C - - - - - 0x01E955 07:E945: 20 06 E9  JSR sub_E906
 C - - - - - 0x01E958 07:E948: A9 5E     LDA #$5E
 C - - - - - 0x01E95A 07:E94A: D0 28     BNE bra_E974    ; jmp
@@ -1477,7 +1477,7 @@ C - - - - - 0x01E95A 07:E94A: D0 28     BNE bra_E974    ; jmp
 
 
 ofs_034_E94C_01:
-C - - J - - 0x01E95C 07:E94C: 20 3D FE  JSR sub_FE3D_area_handler
+C - - J - - 0x01E95C 07:E94C: 20 3D FE  JSR sub_FE3D_обработчик_уровня
 C - - - - - 0x01E95F 07:E94F: 20 06 E9  JSR sub_E906
 C - - - - - 0x01E962 07:E952: A5 1B     LDA ram_счетчик_кадров_1
 C - - - - - 0x01E964 07:E954: 4A        LSR
@@ -1509,7 +1509,7 @@ C - - - - - 0x01E988 07:E978: 60        RTS
 
 ofs_034_E979_02:
 C - - J - - 0x01E989 07:E979: 20 CF FE  JSR sub_FECF_stage_complete_handler
-C - - - - - 0x01E98C 07:E97C: 20 3D FE  JSR sub_FE3D_area_handler
+C - - - - - 0x01E98C 07:E97C: 20 3D FE  JSR sub_FE3D_обработчик_уровня
 C - - - - - 0x01E98F 07:E97F: 20 06 E9  JSR sub_E906
 C - - - - - 0x01E992 07:E982: A5 1B     LDA ram_счетчик_кадров_1
 C - - - - - 0x01E994 07:E984: 29 03     AND #$03
@@ -2896,7 +2896,7 @@ tbl_F1F3:
 
 
 
-loc_F273_area_handler:
+loc_F273_обработчик_уровня:
 C D 3 - - - 0x01F283 07:F273: A5 50     LDA ram_номер_уровня
 C - - - - - 0x01F285 07:F275: 0A        ASL
 C - - - - - 0x01F286 07:F276: A8        TAY
@@ -3809,7 +3809,6 @@ C - - - - - 0x01F7C3 07:F7B3: 60        RTS
 
 sub_0x01F7C8:
 C - - - - - 0x01F7C8 07:F7B8: A0 02     LDY #$02
-bra_F7BA:
 C - - - - - 0x01F7CA 07:F7BA: A9 10     LDA #$10
 C - - - - - 0x01F7CC 07:F7BC: D0 04     BNE bra_F7C2    ; jmp
 
@@ -4418,7 +4417,7 @@ C - - - - - 0x01FB40 07:FB30: A9 53     LDA #$53
 C - - - - - 0x01FB42 07:FB32: 8D EA 07  STA ram_reset_check
 C - - - - - 0x01FB45 07:FB35: A9 B1     LDA #$B1
 C - - - - - 0x01FB47 07:FB37: 8D EB 07  STA ram_reset_check + $01
-C - - - - - 0x01FB4A 07:FB3A: 20 0E FE  JSR sub_FE0E
+C - - - - - 0x01FB4A 07:FB3A: 20 0E FE  JSR sub_FE0E_остановить_звуковой_движок
 ; 1путин опт
 C - - - - - 0x01FCE9 07:FCD9: A9 A8     LDA #$A8
 C - - - - - 0x01FCEB 07:FCDB: 85 FF     STA ram_for_2000
@@ -4849,11 +4848,11 @@ C - - - - - 0x01FE1B 07:FE0B: 4C B7 FD  JMP loc_FDB7
 
 
 
-sub_FE0E:
-sub_0x01FE1E:
-loc_0x01FE1E:
+sub_FE0E_остановить_звуковой_движок:
+sub_0x01FE1E_остановить_звуковой_движок:
+loc_0x01FE1E_остановить_звуковой_движок:
 C D 3 - - - 0x01FE1E 07:FE0E: 20 61 FD  JSR sub_FD61_prg_bankswitch_3C_with_return
-C - - - - - 0x01FE21 07:FE11: 20 01 80  JSR sub_0x018011
+C - - - - - 0x01FE21 07:FE11: 20 01 80  JSR sub_0x018011_остановить_звуковой_движок
 C - - - - - 0x01FE24 07:FE14: 4C 8B FD  JMP loc_FD8B_restore_prg_bank
 
 
@@ -4865,20 +4864,20 @@ C - - - - - 0x01FE2C 07:FE1C: 4C BE 80  JMP loc_0x00C0CE_спрайтовый_д
 
 
 
-sub_FE1F_object_handler:
+sub_FE1F_обработчик_объектов:
 C - - - - - 0x01FE2F 07:FE1F: 20 58 FD  JSR sub_FD58_prg_bankswitch___select_secondary_bank
-C - - - - - 0x01FE32 07:FE22: 4C 23 A2  JMP loc_0x006233_object_handler
+C - - - - - 0x01FE32 07:FE22: 4C 23 A2  JMP loc_0x006233_обработчик_объектов
 
 
 
-sub_FE25:
+sub_FE25_спавн_объектов_из_данных_уровня:
 C - - - - - 0x01FE35 07:FE25: A9 34     LDA #con_prg_bank + $34
 C - - - - - 0x01FE37 07:FE27: 20 6F FD  JSR sub_FD6F_prg_bankswitch___no_return
-C - - - - - 0x01FE3A 07:FE2A: 4C 48 91  JMP loc_0x009158
+C - - - - - 0x01FE3A 07:FE2A: 4C 48 91  JMP loc_0x009158_спавн_объектов_из_данных_уровня
 
 
 
-sub_FE2D:
+sub_FE2D_спавн_обычных_мобов:
 C - - - - - 0x01FE3D 07:FE2D: A9 30     LDA #con_prg_bank + $30
 C - - - - - 0x01FE3F 07:FE2F: 20 5D FD  JSR sub_FD5D_prg_bankswitch_30_33
 C - - - - - 0x01FE42 07:FE32: 4C 01 94  JMP loc_0x001411
@@ -4892,10 +4891,10 @@ C - - - - - 0x01FE4A 07:FE3A: 4C B0 92  JMP loc_0x0092C0
 
 
 
-sub_FE3D_area_handler:
+sub_FE3D_обработчик_уровня:
 C - - - - - 0x01FE4D 07:FE3D: A9 36     LDA #con_prg_bank + $36
 C - - - - - 0x01FE4F 07:FE3F: 20 6F FD  JSR sub_FD6F_prg_bankswitch___no_return
-C - - - - - 0x01FE52 07:FE42: 4C 73 F2  JMP loc_F273_area_handler
+C - - - - - 0x01FE52 07:FE42: 4C 73 F2  JMP loc_F273_обработчик_уровня
 
 
 
@@ -4913,10 +4912,10 @@ C - - - - - 0x01FE62 07:FE52: 4C 81 91  JMP loc_0x001191
 
 
 
-sub_FE55:
+sub_FE55_выбрать_объекты_на_текущий_кадр:
 C - - - - - 0x01FE65 07:FE55: A9 30     LDA #con_prg_bank + $30
 C - - - - - 0x01FE67 07:FE57: 20 6F FD  JSR sub_FD6F_prg_bankswitch___no_return
-C - - - - - 0x01FE6A 07:FE5A: 4C 89 91  JMP loc_0x001199
+C - - - - - 0x01FE6A 07:FE5A: 4C 89 91  JMP loc_0x001199_выбрать_объекты_на_текущий_кадр
 
 
 

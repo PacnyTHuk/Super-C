@@ -6,7 +6,7 @@
 
 
 
-.export loc_0x006233_object_handler
+.export loc_0x006233_обработчик_объектов
 .export sub_0x006285_delete_object_02
 .export loc_0x006285_delete_object_02
 .export ofs_038_36_0x006285_03_delete_object_02
@@ -706,7 +706,7 @@ C - - - - - 0x006231 01:A221: D0 F6     BNE bra_A219    ; jmp
 
 
 
-loc_0x006233_object_handler:
+loc_0x006233_обработчик_объектов:
 C D 1 - - - 0x006233 01:A223: A0 00     LDY #$00
 C - - - - - 0x006235 01:A225: A5 72     LDA ram_cam_spd_Y
 C - - - - - 0x006237 01:A227: 10 01     BPL bra_A22A
@@ -856,7 +856,7 @@ C - - - - - 0x0062BF 01:A2AF: B9 E6 A2  LDA tbl_A2E6_звук_смерти,Y
 C - - - - - 0x0062C2 01:A2B2: F0 0C     BEQ bra_A2C0_нет_звука
 C - - - - - 0x0062C4 01:A2B4: 10 07     BPL bra_A2BD
 C - - - - - 0x0062C6 01:A2B6: 48        PHA
-C - - - - - 0x0062C7 01:A2B7: 20 0E FE  JSR sub_0x01FE1E
+C - - - - - 0x0062C7 01:A2B7: 20 0E FE  JSR sub_0x01FE1E_остановить_звуковой_движок
 C - - - - - 0x0062CA 01:A2BA: 68        PLA
 C - - - - - 0x0062CB 01:A2BB: 29 7F     AND #$7F
 bra_A2BD:

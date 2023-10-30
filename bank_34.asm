@@ -27,7 +27,7 @@
 .export _off001_0x008E51_55_boss_7_red_spikeball
 .export _off001_0x008EB4_56_boss_7_slime
 .export _off001_0x009002_51_boss_7_mouth
-.export loc_0x009158
+.export loc_0x009158_спавн_объектов_из_данных_уровня
 .export loc_0x0092C0
 .export loc_0x009AE9_sound_mode_handler
 .export _off004_0x009FC8_00_area_1
@@ -2879,7 +2879,7 @@ C - - - - - 0x009157 02:9147: 60        RTS
 
 
 
-loc_0x009158:
+loc_0x009158_спавн_объектов_из_данных_уровня:
 C D 0 - - - 0x009158 02:9148: A5 5C     LDA ram_005C_unk
 C - - - - - 0x00915A 02:914A: D0 FB     BNE bra_9147_RTS
 C - - - - - 0x00915C 02:914C: A5 61     LDA ram_0061_конфиг_уровня
@@ -2929,7 +2929,7 @@ bra_9198:
 C - - - - - 0x0091A8 02:9198: 85 01     STA ram_0001
 bra_919A:
 loc_919A_loop:
-C D 0 - - - 0x0091AA 02:919A: 20 29 92  JSR sub_9229_spawn_object_from_area_data
+C D 0 - - - 0x0091AA 02:919A: 20 29 92  JSR sub_9229_спавн_объектов
 C - - - - - 0x0091AD 02:919D: A0 00     LDY #$00
 bra_919F_loop:
 C - - - - - 0x0091AF 02:919F: B1 0A     LDA (ram_000A),Y
@@ -2984,7 +2984,7 @@ C - - - - - 0x0091F8 02:91E8: 29 08     AND #$08
 C - - - - - 0x0091FA 02:91EA: F0 DD     BEQ bra_91C9_RTS
 C - - - - - 0x0091FC 02:91EC: E6 03     INC ram_0003
 loc_91EE_loop:
-C D 0 - - - 0x0091FE 02:91EE: 20 29 92  JSR sub_9229_spawn_object_from_area_data
+C D 0 - - - 0x0091FE 02:91EE: 20 29 92  JSR sub_9229_спавн_объектов
 C - - - - - 0x009201 02:91F1: A0 00     LDY #$00
 loc_91F3_loop:
 bra_91F3_loop:
@@ -3024,7 +3024,7 @@ C - - - - - 0x009236 02:9226: 4C EE 91  JMP loc_91EE_loop
 
 
 
-sub_9229_spawn_object_from_area_data:
+sub_9229_спавн_объектов:
 C - - - - - 0x009239 02:9229: A5 50     LDA ram_номер_уровня
 C - - - - - 0x00923B 02:922B: 0A        ASL
 C - - - - - 0x00923C 02:922C: A8        TAY
@@ -5471,7 +5471,7 @@ sub_9B50:
 C - - - - - 0x009B60 02:9B50: A5 F5     LDA ram_копия_нажатая_кнопка
 C - - - - - 0x009B62 02:9B52: 10 06     BPL bra_9B5A    ; if not con_btn_A
 C - - - - - 0x009B64 02:9B54: 20 51 9F  JSR sub_9F51
-C - - - - - 0x009B67 02:9B57: 4C 0E FE  JMP loc_0x01FE1E
+C - - - - - 0x009B67 02:9B57: 4C 0E FE  JMP loc_0x01FE1E_остановить_звуковой_движок
 bra_9B5A:
 C - - - - - 0x009B6A 02:9B5A: 0A        ASL
 C - - - - - 0x009B6B 02:9B5B: 30 01     BMI bra_9B5E
@@ -5483,14 +5483,14 @@ C - - - - - 0x009B73 02:9B63: C9 26     CMP #$26
 C - - - - - 0x009B75 02:9B65: F0 0F     BEQ bra_9B76_26
 C - - - - - 0x009B77 02:9B67: C9 0E     CMP #$0E
 C - - - - - 0x009B79 02:9B69: B0 03     BCS bra_9B6E
-C - - - - - 0x009B7B 02:9B6B: 20 0E FE  JSR sub_0x01FE1E
+C - - - - - 0x009B7B 02:9B6B: 20 0E FE  JSR sub_0x01FE1E_остановить_звуковой_движок
 bra_9B6E:
 C - - - - - 0x009B7E 02:9B6E: A4 53     LDY ram_sound_mode_track_cur
 C - - - - - 0x009B80 02:9B70: B9 A4 9C  LDA tbl_9CA4_track_list,Y
 C - - - - - 0x009B83 02:9B73: 4C DE FD  JMP loc_0x01FDEE_play_sound
 bra_9B76_26:
 ; play all one by one
-C - - - - - 0x009B86 02:9B76: 20 0E FE  JSR sub_0x01FE1E
+C - - - - - 0x009B86 02:9B76: 20 0E FE  JSR sub_0x01FE1E_остановить_звуковой_движок
 C - - - - - 0x009B89 02:9B79: AD 5E 9F  LDA #< tbl_9F62_auto_playlist
 C - - - - - 0x009B8C 02:9B7C: 85 5C     STA ram_005C_sound_mode_data
 C - - - - - 0x009B8E 02:9B7E: AD 5F 9F  LDA #> tbl_9F62_auto_playlist
@@ -5968,7 +5968,7 @@ C - - - - - 0x009F40 02:9F30: C8        INY
 C - - - - - 0x009F41 02:9F31: B1 5C     LDA (ram_005C_sound_mode_data),Y
 C - - - - - 0x009F43 02:9F33: 85 08     STA ram_0008
 ; 1путин опт
-C - - - - - 0x009F4A 02:9F3A: 20 0E FE  JSR sub_0x01FE1E
+C - - - - - 0x009F4A 02:9F3A: 20 0E FE  JSR sub_0x01FE1E_остановить_звуковой_движок
 C - - - - - 0x009F4D 02:9F3D: A5 08     LDA ram_0008
 C - - - - - 0x009F4F 02:9F3F: 20 DE FD  JSR sub_0x01FDEE_play_sound
 C D 0 - - - 0x009F55 02:9F45: A5 5C     LDA ram_005C_sound_mode_data
