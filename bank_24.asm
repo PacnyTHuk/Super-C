@@ -784,15 +784,13 @@ bra_9B61:
                                         LDA ram_счетчик_кадров_1
                                         LSR
                                         BCC bra_9B62_RTS
-                                        TXA
-                                        TAY ; Y00 ИЛИ 02
-                                        LDA tbl_9B95_Y_спрайта_lo,Y
+                                        LDA tbl_9B95_Y_спрайта_lo,X
                                         STA ram_0000
-                                        LDA tbl_9B95_Y_спрайта_hi,Y
+                                        LDA tbl_9B95_Y_спрайта_hi,X
                                         STA ram_0001
-                                        LDA tbl_9B96_X_спрайта_lo,Y
+                                        LDA tbl_9B96_X_спрайта_lo,X
                                         STA ram_0002
-                                        LDA tbl_9B96_X_спрайта_hi,Y
+                                        LDA tbl_9B96_X_спрайта_hi,X
                                         STA ram_0003
                                         LDY ram_options_счетчик_анимации_орла,X
                                         LDA (ram_0000),Y
