@@ -876,26 +876,26 @@ tbl_9B91_x_позиция:
 
 
 tbl_9B95_Y_спрайта_lo:
-                                        .byte < ofs_9BA0_00_Y_спрайта_left
-                                        .byte < ofs_9BC0_01_Y_спрайта_right
+                                        .byte < off_9BA0_00_Y_спрайта_left
+                                        .byte < off_9BC0_01_Y_спрайта_right
 
 
 tbl_9B95_Y_спрайта_hi:
-                                        .byte > ofs_9BA0_00_Y_спрайта_left
-                                        .byte > ofs_9BC0_01_Y_спрайта_right
+                                        .byte > off_9BA0_00_Y_спрайта_left
+                                        .byte > off_9BC0_01_Y_спрайта_right
 
 
 tbl_9B96_X_спрайта_lo:
-                                        .byte < ofs_9BA0_00_X_спрайта_left
-                                        .byte < ofs_9BC0_01_X_спрайта_right
+                                        .byte < off_9BA0_00_X_спрайта_left
+                                        .byte < off_9BC0_01_X_спрайта_right
 
 
 tbl_9B96_X_спрайта_hi:
-                                        .byte > ofs_9BA0_00_X_спрайта_left
-                                        .byte > ofs_9BC0_01_X_спрайта_right
+                                        .byte > off_9BA0_00_X_спрайта_left
+                                        .byte > off_9BC0_01_X_спрайта_right
 
 
-ofs_9BA0_00_Y_спрайта_left:
+off_9BA0_00_Y_спрайта_left:
 ;                                              00   01   02   03   04   05   06   07   08   09   0A   0B   0C   0D   0E   0F
                                         .byte $02, $01, $01, $01, $01, $00, $00, $FF, $00, $FF, $FF, $FF, $FF, $FF, $FF, $FF ; 00
                                         .byte $FF, $FF, $FF, $FE, $FE, $00, $FE, $FE, $FF, $FF, $FF, $FF, $FF, $FE, $FF, $FF ; 10
@@ -905,7 +905,7 @@ ofs_9BA0_00_Y_спрайта_left:
                                         .byte $80  ;   end token
 
 
-ofs_9BA0_00_X_спрайта_left:
+off_9BA0_00_X_спрайта_left:
 ;                                              00   01   02   03   04   05   06   07   08   09   0A   0B   0C   0D   0E   0F
                                         .byte $FE, $FE, $FE, $FF, $FE, $FE, $FE, $FE, $FE, $FE, $FE, $FE, $FE, $FE, $FE, $FE ; 00
                                         .byte $FE, $FE, $FF, $FF, $FF, $FE, $FE, $FF, $00, $02, $02, $02, $02, $02, $02, $02 ; 10
@@ -914,7 +914,7 @@ ofs_9BA0_00_X_спрайта_left:
                                         .byte $02, $02, $02, $01, $00, $01 ; 40
 
 
-ofs_9BC0_01_Y_спрайта_right:
+off_9BC0_01_Y_спрайта_right:
 ;                                              00   01   02   03   04   05   06   07   08   09   0A   0B   0C   0D   0E   0F
                                         .byte $02, $01, $01, $01, $01, $00, $00, $FF, $00, $FF, $FF, $FF, $FF, $FF, $FF, $FF ; 00
                                         .byte $FF, $FF, $FF, $FE, $FE, $00, $FF, $FE, $FF, $FF, $FF, $FF, $FF, $FE, $FF, $FF ; 10
@@ -922,7 +922,7 @@ ofs_9BC0_01_Y_спрайта_right:
                                         .byte $FF, $FE, $FE, $FE, $FE, $00, $FF, $00, $01, $00, $00 ; 30
                                         .byte $80  ;   end token
 
-ofs_9BC0_01_X_спрайта_right:
+off_9BC0_01_X_спрайта_right:
 ;                                              00   01   02   03   04   05   06   07   08   09   0A   0B   0C   0D   0E   0F
                                         .byte $02, $02, $02, $01, $02, $02, $02, $02, $02, $02, $02, $02, $02, $02, $02, $02 ; 00
                                         .byte $02, $02, $01, $01, $01, $02, $02, $01, $00, $FE, $FE, $FE, $FE, $FE, $FE, $FE ; 10
