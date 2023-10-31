@@ -465,26 +465,26 @@ bra_9B01:
                                         STA ram_0001
                                         JMP (ram_0000)
 tbl_99B2_опции_lo:
-                                        .byte < ofs_99B3_options_difficulty
-                                        .byte < ofs_99B3_options_graphics
-                                        .byte < ofs_99B3_options_obj_limit
-                                        .byte < ofs_9B09_options_continue
-                                        .byte < ofs_9B09_options_level
-                                        .byte < ofs_9B09_options_rest
-                                        .byte < ofs_9B10_options_exit
+                                        .byte < ofs_046_99B3_options_difficulty
+                                        .byte < ofs_046_99B3_options_graphics
+                                        .byte < ofs_046_99B3_options_obj_limit
+                                        .byte < ofs_046_9B09_options_continue
+                                        .byte < ofs_046_9B09_options_level
+                                        .byte < ofs_046_9B09_options_rest
+                                        .byte < ofs_046_9B10_options_exit
 tbl_99B2_опции_hi:
-                                        .byte > ofs_99B3_options_difficulty
-                                        .byte > ofs_99B3_options_graphics
-                                        .byte > ofs_99B3_options_obj_limit
-                                        .byte > ofs_9B09_options_continue
-                                        .byte > ofs_9B09_options_level
-                                        .byte > ofs_9B09_options_rest
-                                        .byte > ofs_9B10_options_exit
+                                        .byte > ofs_046_99B3_options_difficulty
+                                        .byte > ofs_046_99B3_options_graphics
+                                        .byte > ofs_046_99B3_options_obj_limit
+                                        .byte > ofs_046_9B09_options_continue
+                                        .byte > ofs_046_9B09_options_level
+                                        .byte > ofs_046_9B09_options_rest
+                                        .byte > ofs_046_9B10_options_exit
 
 
-ofs_99B3_options_difficulty:
-ofs_99B3_options_graphics:
-ofs_99B3_options_obj_limit:
+ofs_046_99B3_options_difficulty:
+ofs_046_99B3_options_graphics:
+ofs_046_99B3_options_obj_limit:
                                         LDA ram_копия_нажатая_кнопка
                                         AND #con_btns_LR
                                         BEQ bra_9B06_RTS
@@ -530,9 +530,9 @@ tbl_9B08_начальная_con:
                                         .byte con_0x0017EA_human   ; 01 graphics
                                         .byte con_0x0017EA_obj_limit_14   ; 02 obj_limit
 
-ofs_9B09_options_continue:
-ofs_9B09_options_level:
-ofs_9B09_options_rest:
+ofs_046_9B09_options_continue:
+ofs_046_9B09_options_level:
+ofs_046_9B09_options_rest:
                                         LDA ram_cheat_flag
                                         BEQ bra_9B0C_RTS
                                         LDA ram_копия_нажатая_кнопка
@@ -579,7 +579,7 @@ tbl_9B0F_номер_тайла:
                                         .byte $81   ; 05 rest
 
 
-ofs_9B10_options_exit:
+ofs_046_9B10_options_exit:
                                         LDA ram_копия_нажатая_кнопка
                                         AND #con_btn_Start      
                                         BEQ bra_9B11_RTS
@@ -717,28 +717,28 @@ sub_9B36_обработка_орла:
                                         STA ram_0001
                                         JMP (ram_0000)
 tbl_9B37_lo:
-                                        .byte < ofs_9B40_00
-                                        .byte < ofs_9B50_01
-                                        .byte < ofs_9B60_02
-                                        .byte < ofs_9B70_03
-                                        .byte < ofs_9B80_04
+                                        .byte < ofs_045_9B40_00
+                                        .byte < ofs_045_9B50_01
+                                        .byte < ofs_045_9B60_02
+                                        .byte < ofs_045_9B70_03
+                                        .byte < ofs_045_9B80_04
 
 tbl_9B37_hi:
-                                        .byte > ofs_9B40_00
-                                        .byte > ofs_9B50_01
-                                        .byte > ofs_9B60_02
-                                        .byte > ofs_9B70_03
-                                        .byte > ofs_9B80_04
+                                        .byte > ofs_045_9B40_00
+                                        .byte > ofs_045_9B50_01
+                                        .byte > ofs_045_9B60_02
+                                        .byte > ofs_045_9B70_03
+                                        .byte > ofs_045_9B80_04
 
 
-ofs_9B40_00:
+ofs_045_9B40_00:
                                         JSR sub_9B90_подготовка
 bra_9B41:
                                         INC ram_options_номер_анимации_орла,X
                                         RTS
 
 
-ofs_9B50_01:
+ofs_045_9B50_01:
                                         DEC ram_options_таймер_анимации_орла,X
                                         BNE bra_9B51_RTS
                                         LDA #$08
@@ -758,7 +758,7 @@ tbl_9B52_кадры:
                                         .byte $C3   ; 01
 
 
-ofs_9B60_02:
+ofs_045_9B60_02:
                                         STX ram_0000
                                         LDA ram_счетчик_кадров_1
                                         LSR
@@ -774,15 +774,13 @@ bra_9B61:
                                         LDA ram_счетчик_кадров_1
                                         LSR
                                         BCC bra_9B62_RTS
-                                        TXA
-                                        TAY ; Y00 ИЛИ 02
-                                        LDA tbl_9B95_Y_спрайта_lo,Y
+                                        LDA tbl_9B95_Y_спрайта_lo,X
                                         STA ram_0000
-                                        LDA tbl_9B95_Y_спрайта_hi,Y
+                                        LDA tbl_9B95_Y_спрайта_hi,X
                                         STA ram_0001
-                                        LDA tbl_9B96_X_спрайта_lo,Y
+                                        LDA tbl_9B96_X_спрайта_lo,X
                                         STA ram_0002
-                                        LDA tbl_9B96_X_спрайта_hi,Y
+                                        LDA tbl_9B96_X_спрайта_hi,X
                                         STA ram_0003
                                         LDY ram_options_счетчик_анимации_орла,X
                                         LDA (ram_0000),Y
@@ -809,7 +807,7 @@ bra_9B64:
                                         RTS
 
 
-ofs_9B70_03:
+ofs_045_9B70_03:
                                         DEC ram_options_таймер_анимации_орла,X
                                         BNE bra_9B71_RTS
                                         LDA #$08
@@ -834,7 +832,7 @@ bra_9B72:
                                         LDA tbl_9B81_таймеры_анимации,X
                                         STA ram_options_таймер_анимации_орла,X
                                         BNE bra_9B64
-ofs_9B80_04:
+ofs_045_9B80_04:
                                         DEC ram_options_таймер_анимации_орла,X
                                         BNE bra_9B71_RTS
                                         JSR sub_9B90_подготовка
@@ -868,58 +866,59 @@ tbl_9B91_x_позиция:
 
 
 tbl_9B95_Y_спрайта_lo:
-                                        .byte < ofs_9BA0_00_Y_спрайта_left
-                                        .byte < ofs_9BC0_01_Y_спрайта_right
+                                        .byte < off_9BA0_00_Y_спрайта_left
+                                        .byte < off_9BC0_01_Y_спрайта_right
 
 
 tbl_9B95_Y_спрайта_hi:
-                                        .byte > ofs_9BA0_00_Y_спрайта_left
-                                        .byte > ofs_9BC0_01_Y_спрайта_right
+                                        .byte > off_9BA0_00_Y_спрайта_left
+                                        .byte > off_9BC0_01_Y_спрайта_right
 
 
 tbl_9B96_X_спрайта_lo:
-                                        .byte < ofs_9BA0_00_X_спрайта_left
-                                        .byte < ofs_9BC0_01_X_спрайта_right
+                                        .byte < off_9BA0_00_X_спрайта_left
+                                        .byte < off_9BC0_01_X_спрайта_right
 
 
 tbl_9B96_X_спрайта_hi:
-                                        .byte > ofs_9BA0_00_X_спрайта_left
-                                        .byte > ofs_9BC0_01_X_спрайта_right
+                                        .byte > off_9BA0_00_X_спрайта_left
+                                        .byte > off_9BC0_01_X_спрайта_right
 
 
-ofs_9BA0_00_Y_спрайта_left:
+off_9BA0_00_Y_спрайта_left:
 ;                                              00   01   02   03   04   05   06   07   08   09   0A   0B   0C   0D   0E   0F
                                         .byte $02, $01, $01, $01, $01, $00, $00, $FF, $00, $FF, $FF, $FF, $FF, $FF, $FF, $FF ; 00
                                         .byte $FF, $FF, $FF, $FE, $FE, $00, $FE, $FE, $FF, $FF, $FF, $FF, $FF, $FE, $FF, $FF ; 10
                                         .byte $FE, $FF, $FF, $FF, $FE, $FE, $FE, $FF, $FF, $01, $02, $02, $01, $02, $02, $FF ; 20
                                         .byte $FF, $FE, $FE, $FE, $FE, $FE, $FE, $FF, $FE, $FF, $00, $00, $00, $00, $01, $01 ; 30
-                                        .byte $01, $01, $01, $01, $02, $00 ; 40
+                                        .byte $01, $01, $01, $01, $02, $00                                                   ; 40
                                         .byte $80  ;   end token
 
 
-ofs_9BA0_00_X_спрайта_left:
+off_9BA0_00_X_спрайта_left:
 ;                                              00   01   02   03   04   05   06   07   08   09   0A   0B   0C   0D   0E   0F
                                         .byte $FE, $FE, $FE, $FF, $FE, $FE, $FE, $FE, $FE, $FE, $FE, $FE, $FE, $FE, $FE, $FE ; 00
                                         .byte $FE, $FE, $FF, $FF, $FF, $FE, $FE, $FF, $00, $02, $02, $02, $02, $02, $02, $02 ; 10
                                         .byte $02, $02, $02, $02, $02, $02, $02, $02, $02, $02, $02, $02, $02, $02, $02, $02 ; 20
                                         .byte $02, $01, $00, $01, $00, $01, $00, $FF, $00, $FF, $02, $02, $02, $02, $02, $02 ; 30
-                                        .byte $02, $02, $02, $01, $00, $FF ; 40
+                                        .byte $02, $02, $02, $01, $00, $FF                                                   ; 40
 
 
-ofs_9BC0_01_Y_спрайта_right:
+off_9BC0_01_Y_спрайта_right:
 ;                                              00   01   02   03   04   05   06   07   08   09   0A   0B   0C   0D   0E   0F
                                         .byte $02, $01, $01, $01, $01, $00, $00, $FF, $00, $FF, $FF, $FF, $FF, $FF, $FF, $FF ; 00
                                         .byte $FF, $FF, $FF, $FE, $FE, $00, $FF, $FE, $FF, $FF, $FF, $FF, $FF, $FE, $FF, $FF ; 10
                                         .byte $FE, $FF, $FF, $FF, $FE, $FE, $FE, $FF, $FF, $01, $02, $02, $01, $02, $02, $FF ; 20
-                                        .byte $FF, $FE, $FE, $FE, $FE, $00, $FF, $00, $00, $00, $00 ; 30
+                                        .byte $FF, $FE, $FE, $FE, $FE, $00, $FF, $00, $00, $00, $00                          ; 30
                                         .byte $80  ;   end token
 
-ofs_9BC0_01_X_спрайта_right:
+
+off_9BC0_01_X_спрайта_right:
 ;                                              00   01   02   03   04   05   06   07   08   09   0A   0B   0C   0D   0E   0F
                                         .byte $02, $02, $02, $01, $02, $02, $02, $02, $02, $02, $02, $02, $02, $02, $02, $02 ; 00
                                         .byte $02, $02, $01, $01, $01, $02, $02, $01, $00, $00, $FE, $FE, $FE, $FE, $FE, $FE ; 10
                                         .byte $FE, $FE, $FE, $FE, $FE, $FE, $FE, $FE, $FE, $FE, $FE, $FE, $FE, $FE, $FE, $FE ; 20
-                                        .byte $FE, $FE, $FF, $FF, $00, $02, $02, $02, $01, $00, $00 ; 30
+                                        .byte $FE, $FE, $FF, $FF, $00, $02, $02, $02, $01, $00, $00                          ; 30
 
 
 
