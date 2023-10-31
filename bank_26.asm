@@ -915,59 +915,6 @@ _off016_EU_8BD6_05:
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-tbl_BC9E_EU:
-; US 0x007C93
-; 00 
-- - - - - - 0x007CAE 01:BC9E: 00        .byte $00, $00   ; 
-- - - - - - 0x007CB0 01:BCA0: 00        .byte $00, $00   ; 
-; 01 
-- - - - - - 0x007CB2 01:BCA2: 32        .byte $32, $33   ; 
-- - - - - - 0x007CB4 01:BCA4: 38        .byte $38, $39   ; 
-; 02 
-- - - - - - 0x007CB6 01:BCA6: 30        .byte $30, $31   ; 
-- - - - - - 0x007CB8 01:BCA8: 36        .byte $36, $37   ; 
-; 03 
-- - - - - - 0x007CBA 01:BCAA: 20        .byte $20, $21   ; 
-- - - - - - 0x007CBC 01:BCAC: 29        .byte $29, $2A   ; 
-; 04 
-- - - - - - 0x007CBE 01:BCAE: 34        .byte $34, $35   ; 
-- - - - - - 0x007CC0 01:BCB0: 3A        .byte $3A, $3B   ; 
-
-
-
-
-
-
-
-
-
-
 .out .sprintf("Free bytes in bank 26: %Xh [%d]", ($BFFF - *), ($BFFF - *))
 
 .segment "BANK_26b"
