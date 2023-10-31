@@ -3264,16 +3264,65 @@ _off028_8F0D_BB:
 
 
 
+_off028_8F2E_C2:
+_off030_8F8A_C2:
+                                        .byte @end - * - $01   ; total data size
+;                                              --------------------- spr_Y
+;                                              |    ---------------- spr_T
+;                                              |    |    ----------- spr_A
+;                                              |    |    |    ------ spr_X
+;                                              |    |    |    |
+                                        .byte $00, $CD, $00, $00   ; 
+@end:
+
+
+
+_off028_8F2E_C3:
+_off030_8F8A_C3:
+                                        .byte @end - * - $01   ; total data size
+;                                              --------------------- spr_Y
+;                                              |    ---------------- spr_T
+;                                              |    |    ----------- spr_A
+;                                              |    |    |    ------ spr_X
+;                                              |    |    |    |
+                                        .byte $00, $CF, $00, $00   ; 
+@end:
+
+
+
+_off028_8F2E_C4:
+_off030_8F8A_C4:
+                                        .byte @end - * - $01   ; total data size
+;                                              --------------------- spr_Y
+;                                              |    ---------------- spr_T
+;                                              |    |    ----------- spr_A
+;                                              |    |    |    ------ spr_X
+;                                              |    |    |    |
+                                        .byte $00, $D3, $00, $FC   ; 
+                                        .byte $00, $D3, $40, $03   ; 
+@end:
+
+
+
+_off028_8F2E_C5:
+_off030_8F8A_C5:
+                                        .byte @end - * - $01   ; total data size
+;                                              --------------------- spr_Y
+;                                              |    ---------------- spr_T
+;                                              |    |    ----------- spr_A
+;                                              |    |    |    ------ spr_X
+;                                              |    |    |    |
+                                        .byte $00, $D1, $00, $00   ; 
+@end:
+
+
+
 _off028_8F2E_BC:
 _off028_8F2E_BD:
 _off028_8F2E_BE:
 _off028_8F2E_BF:
 _off028_8F2E_C0:
 _off028_8F2E_C1:
-_off028_8F2E_C2:
-_off028_8F2E_C3:
-_off028_8F2E_C4:
-_off028_8F2E_C5:
 _off028_8F2E_C6:
 _off028_8F2E_C7:
 _off028_8F2E_C8:
@@ -7335,10 +7384,7 @@ _off030_8F79_C1:
 
 
 
-_off030_8F8A_C2:
-_off030_8F8A_C3:
-_off030_8F8A_C4:
-_off030_8F8A_C5:
+
 _off030_8F8A_C6:
 _off030_8F8A_C7:
 _off030_8F8A_C8:

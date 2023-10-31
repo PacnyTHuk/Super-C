@@ -435,6 +435,7 @@ sub_9930_отрисовать_exit:
 
 ofs_options_9AFF_01_выбор_опций:
                                         JSR sub_9B30_смена_палитры_сокола
+                                        JSR sub_9B34_анимации_орла
                                         LDA ram_копия_нажатая_кнопка
                                         AND #con_btns_UD
                                         BEQ bra_9B01
@@ -595,6 +596,7 @@ bra_9B11_RTS:
 
 ofs_options_9B12_02_мерцание_exit:
                                         JSR sub_9B30_смена_палитры_сокола
+                                        JSR sub_9B34_анимации_орла
                                         LDA ram_таймер_до_демки
                                         AND #$08
                                         ASL
@@ -694,6 +696,252 @@ tbl_9B33_цвет:
                                         .byte $38   ; 01
                                         .byte $28   ; 02
                                         .byte $38   ; 03
+
+
+
+
+
+
+
+
+
+
+
+
+
+sub_9B34_анимации_орла:
+
+                                        LDX #$01
+bra_9B35_loop:
+                                        JSR sub_9B36_обработка_орла
+                                        DEX
+                                        BPL bra_9B35_loop
+                                        RTS
+
+
+sub_9B36_обработка_орла:
+                                        LDY ram_options_номер_анимации_орла,X
+                                        LDA tbl_9B37_lo,Y
+                                        STA ram_0000
+                                        LDA tbl_9B37_hi,Y
+                                        STA ram_0001
+                                        JMP (ram_0000)
+tbl_9B37_lo:
+                                        .byte < ofs_9B40_00
+                                        .byte < ofs_9B50_01
+                                        .byte < ofs_9B60_02
+                                        .byte < ofs_9B70_03
+                                        .byte < ofs_9B80_04
+
+tbl_9B37_hi:
+                                        .byte > ofs_9B40_00
+                                        .byte > ofs_9B50_01
+                                        .byte > ofs_9B60_02
+                                        .byte > ofs_9B70_03
+                                        .byte > ofs_9B80_04
+
+
+ofs_9B40_00:
+                                        JSR sub_9B90_подготовка
+bra_9B41:
+                                        INC ram_options_номер_анимации_орла,X
+                                        RTS
+
+
+ofs_9B50_01:
+                                        DEC ram_options_таймер_анимации_орла,X
+                                        BNE bra_9B51_RTS
+                                        LDA #$08
+                                        STA ram_options_таймер_анимации_орла,X
+                                        INC ram_options_номер_для_кадра_орла,X
+                                        LDY ram_options_номер_для_кадра_орла,X
+                                        CPY #$02
+                                        BCS bra_9B41
+                                        LDA tbl_9B52_кадры,Y
+                                        STA ram_кадр_анимации + $01,X
+bra_9B51_RTS:
+                                        RTS
+
+
+tbl_9B52_кадры:                 
+                                        .byte $C2   ; 00
+                                        .byte $C3   ; 01
+
+
+ofs_9B60_02:
+                                        STX ram_0000
+                                        LDA ram_счетчик_кадров_1
+                                        LSR
+                                        LSR
+                                        AND #$01
+                                        EOR ram_0000
+                                        LSR
+                                        LDA #$C3
+                                        BCC bra_9B61
+                                        LDA #$C5
+bra_9B61:
+                                        STA ram_кадр_анимации + $01,X
+                                        LDA ram_счетчик_кадров_1
+                                        LSR
+                                        BCC bra_9B62_RTS
+                                        TXA
+                                        TAY ; Y00 ИЛИ 02
+                                        LDA tbl_9B95_Y_спрайта_lo,Y
+                                        STA ram_0000
+                                        LDA tbl_9B95_Y_спрайта_hi,Y
+                                        STA ram_0001
+                                        LDA tbl_9B96_X_спрайта_lo,Y
+                                        STA ram_0002
+                                        LDA tbl_9B96_X_спрайта_hi,Y
+                                        STA ram_0003
+                                        LDY ram_options_счетчик_анимации_орла,X
+                                        LDA (ram_0000),Y
+                                        CMP #$80
+                                        BEQ bra_9B63
+                                        CLC
+                                        ADC ram_позиция_y_спрайта + $01,X
+                                        STA ram_позиция_y_спрайта + $01,X
+                                        LDA (ram_0002),Y
+                                        CLC
+                                        ADC ram_позиция_x_спрайта + $01,X
+                                        STA ram_позиция_x_спрайта + $01,X
+                                        INC ram_options_счетчик_анимации_орла,X
+bra_9B62_RTS:
+                                        RTS
+                                       
+bra_9B63:
+                                        LDA #$01
+                                        STA ram_options_таймер_анимации_орла,X
+                                        LDA #$FF
+                                        STA ram_options_номер_для_кадра_орла,X
+bra_9B64:
+                                        INC ram_options_номер_анимации_орла,X
+                                        RTS
+
+
+ofs_9B70_03:
+                                        DEC ram_options_таймер_анимации_орла,X
+                                        BNE bra_9B71_RTS
+                                        LDA #$08
+                                        STA ram_options_таймер_анимации_орла,X
+                                        INC ram_options_номер_для_кадра_орла,X
+                                        LDY ram_options_номер_для_кадра_орла,X
+                                        CPY #$05
+                                        BCS bra_9B72
+                                        LDA tbl_9B53_кадры_2,Y
+                                        STA ram_кадр_анимации + $01,X
+bra_9B71_RTS:
+                                        RTS
+                                        
+tbl_9B53_кадры_2:
+                                        .byte $C3   ; 00
+                                        .byte $C4   ; 01
+                                        .byte $C3   ; 02
+                                        .byte $C2   ; 03
+                                        .byte $00   ; 04
+
+bra_9B72:
+                                        LDA tbl_9B81_таймеры_анимации,X
+                                        STA ram_options_таймер_анимации_орла,X
+                                        BNE bra_9B64
+ofs_9B80_04:
+                                        DEC ram_options_таймер_анимации_орла,X
+                                        BNE bra_9B71_RTS
+                                        JSR sub_9B90_подготовка
+                                        LDA #$01
+                                        STA ram_options_номер_анимации_орла,X
+                                        RTS
+                                        
+tbl_9B81_таймеры_анимации:
+                                        .byte $90   ; 00
+                                        .byte $A6   ; 01
+
+
+sub_9B90_подготовка:
+                                        LDA #$00                                        
+                                        STA ram_кадр_анимации + $01,X
+                                        STA ram_атрибуты_спрайта + $01,X
+                                        STA ram_options_счетчик_анимации_орла,X
+                                        LDA #$C2 ; первичная Y спрайтов
+                                        STA ram_позиция_y_спрайта + $01,X
+                                        LDA tbl_9B91_x_позиция,X ; первичная X спрайтов
+                                        STA ram_позиция_x_спрайта + $01,X
+                                        LDA #$40
+                                        STA ram_options_таймер_анимации_орла,X
+                                        LDA #$FF
+                                        STA ram_options_номер_для_кадра_орла,X
+                                        RTS
+
+tbl_9B91_x_позиция:
+                                        .byte $70   ; 00 x спрайта
+                                        .byte $88   ; 01 x спрайта
+
+
+tbl_9B95_Y_спрайта_lo:
+                                        .byte < ofs_9BA0_00_Y_спрайта_left
+                                        .byte < ofs_9BC0_01_Y_спрайта_right
+
+
+tbl_9B95_Y_спрайта_hi:
+                                        .byte > ofs_9BA0_00_Y_спрайта_left
+                                        .byte > ofs_9BC0_01_Y_спрайта_right
+
+
+tbl_9B96_X_спрайта_lo:
+                                        .byte < ofs_9BA0_00_X_спрайта_left
+                                        .byte < ofs_9BC0_01_X_спрайта_right
+
+
+tbl_9B96_X_спрайта_hi:
+                                        .byte > ofs_9BA0_00_X_спрайта_left
+                                        .byte > ofs_9BC0_01_X_спрайта_right
+
+
+ofs_9BA0_00_Y_спрайта_left:
+;                                              00   01   02   03   04   05   06   07   08   09   0A   0B   0C   0D   0E   0F
+                                        .byte $02, $01, $01, $01, $01, $00, $00, $FF, $00, $FF, $FF, $FF, $FF, $FF, $FF, $FF ; 00
+                                        .byte $FF, $FF, $FF, $FE, $FE, $00, $FE, $FE, $FF, $FF, $FF, $FF, $FF, $FE, $FF, $FF ; 10
+                                        .byte $FE, $FF, $FF, $FF, $FE, $FE, $FE, $FF, $FF, $01, $02, $02, $01, $02, $02, $FF ; 20
+                                        .byte $FF, $FE, $FE, $FE, $FE, $FE, $FE, $FE, $FE, $FF, $00, $00, $00, $00, $01, $01 ; 30
+                                        .byte $01, $01, $01, $01, $02, $01 ; 40
+                                        .byte $80  ;   end token
+
+
+ofs_9BA0_00_X_спрайта_left:
+;                                              00   01   02   03   04   05   06   07   08   09   0A   0B   0C   0D   0E   0F
+                                        .byte $FE, $FE, $FE, $FF, $FE, $FE, $FE, $FE, $FE, $FE, $FE, $FE, $FE, $FE, $FE, $FE ; 00
+                                        .byte $FE, $FE, $FF, $FF, $FF, $FE, $FE, $FF, $00, $02, $02, $02, $02, $02, $02, $02 ; 10
+                                        .byte $02, $02, $02, $02, $02, $02, $02, $02, $02, $02, $02, $02, $02, $02, $02, $02 ; 20
+                                        .byte $02, $01, $00, $01, $00, $01, $00, $FF, $00, $FF, $02, $02, $02, $02, $02, $02 ; 30
+                                        .byte $02, $02, $02, $01, $00, $01 ; 40
+
+
+ofs_9BC0_01_Y_спрайта_right:
+;                                              00   01   02   03   04   05   06   07   08   09   0A   0B   0C   0D   0E   0F
+                                        .byte $02, $01, $01, $01, $01, $00, $00, $FF, $00, $FF, $FF, $FF, $FF, $FF, $FF, $FF ; 00
+                                        .byte $FF, $FF, $FF, $FE, $FE, $00, $FF, $FE, $FF, $FF, $FF, $FF, $FF, $FE, $FF, $FF ; 10
+                                        .byte $FE, $FF, $FF, $FF, $FE, $FE, $FE, $FF, $FF, $01, $02, $02, $01, $02, $02, $FF ; 20
+                                        .byte $FF, $FE, $FE, $FE, $FE, $00, $FF, $00, $01, $00, $00 ; 30
+                                        .byte $80  ;   end token
+
+ofs_9BC0_01_X_спрайта_right:
+;                                              00   01   02   03   04   05   06   07   08   09   0A   0B   0C   0D   0E   0F
+                                        .byte $02, $02, $02, $01, $02, $02, $02, $02, $02, $02, $02, $02, $02, $02, $02, $02 ; 00
+                                        .byte $02, $02, $01, $01, $01, $02, $02, $01, $00, $FE, $FE, $FE, $FE, $FE, $FE, $FE ; 10
+                                        .byte $FE, $FE, $FE, $FE, $FE, $FE, $FE, $FE, $FE, $FE, $FE, $FE, $FE, $FE, $FE, $FE ; 20
+                                        .byte $FE, $FE, $FF, $FF, $00, $02, $02, $02, $01, $01, $02 ; 30
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 sub_E4BC_переключение_банков_анимация_contra:

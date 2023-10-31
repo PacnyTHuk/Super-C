@@ -812,7 +812,7 @@ _off021_B9D1_13_options:
                                         .byte $00, $00, $00   ; 
                                         .byte $30, $2C, $1C   ; 
 ; sprites
-                                        .byte $16, $06, $0F   ; 
+                                        .byte $30, $37, $0F   ; 
                                         .byte $20, $16, $17   ; 
                                         .byte $20, $26, $16   ; 
                                         .byte $20, $00, $0F   ; 
