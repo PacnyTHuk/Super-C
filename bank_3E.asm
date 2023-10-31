@@ -3325,7 +3325,7 @@ loc_F498:
 C - - - - - 0x01F4A8 07:F498: BC 48 07  LDY ram_0748_obj,X
 sub_0x01F4AB:
 C - - - - - 0x01F4AB 07:F49B: B9 D4 F4  LDA tbl_F4D4,Y
-C - - - - - 0x01F4AE 07:F49E: 9D 56 07  STA ram_0756_obj,X
+C - - - - - 0x01F4AE 07:F49E: 9D 56 07  STA ram_scroll_X_obj,X
 C - - - - - 0x01F4B1 07:F4A1: 60        RTS
 
 
@@ -3787,7 +3787,7 @@ C - - - - - 0x01F796 07:F786: 9D 02 07  STA ram_0702_obj,X
 C - - - - - 0x01F799 07:F789: 9D 2C 07  STA ram_072C_obj,X
 bra_F78C:
 C - - - - - 0x01F79C 07:F78C: 9D 48 07  STA ram_0748_obj,X
-C - - - - - 0x01F79F 07:F78F: 9D 56 07  STA ram_0756_obj,X
+C - - - - - 0x01F79F 07:F78F: 9D 56 07  STA ram_scroll_X_obj,X
 C - - - - - 0x01F7A2 07:F792: 9D 64 07  STA ram_0764_obj,X
 C - - - - - 0x01F7A5 07:F795: 9D 72 07  STA ram_0772_obj,X
 C - - - - - 0x01F7A8 07:F798: 9D 80 07  STA ram_0780_obj,X
@@ -4418,7 +4418,7 @@ bra_FB2F_loop:
                                         INX
                                         CPX #$20        ; очистить 20 страниц
                                         BNE bra_FB2F_loop
-; 1путин: запись контов, жизней и дефолт индексы
+; 1путин: запись контов, жизней, дефолт индексы и регион
                                         LDA #$02
                                         STA ram_options_жизни
                                         STA ram_options_конты
@@ -4804,7 +4804,7 @@ C - - - - - 0x01FDCF 07:FDBF: 60        RTS
 
 
 tbl_FDC0_prg_bank:
-- D 3 - - - 0x01FDD0 07:FDC0: 32        .byte con_prg_bank + $32   ; 00
+- D 3 - - - 0x01FDD0 07:FDC0: 32        .byte con_prg_bank + $26   ; 00
 - D 3 - - - 0x01FDD1 07:FDC1: 3A        .byte con_prg_bank + $3A   ; 01
 - D 3 - - - 0x01FDD2 07:FDC2: 32        .byte con_prg_bank + $32   ; 02
 - D 3 - - - 0x01FDD3 07:FDC3: 3A        .byte con_prg_bank + $3A   ; 03

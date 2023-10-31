@@ -362,7 +362,7 @@ C - - - - - 0x0101FF 04:81EF: B0 0D     BCS bra_81FE_RTS
 C - - - - - 0x010201 04:81F1: A0 02     LDY #$02
 C - - - - - 0x010203 04:81F3: 20 D0 81  JSR sub_81D0
 C - - - - - 0x010206 04:81F6: A9 90     LDA #$90
-C - - - - - 0x010208 04:81F8: 9D 56 07  STA ram_0756_obj,X
+C - - - - - 0x010208 04:81F8: 9D 56 07  STA ram_scroll_X_obj,X
 C - - - - - 0x01020B 04:81FB: 4C D7 A2  JMP loc_0x0062E7_increase_obj_state
 bra_81FE_RTS:
 C - - - - - 0x01020E 04:81FE: 60        RTS
@@ -790,7 +790,7 @@ C - - - - - 0x01049F 04:848F: A9 01     LDA #con_mirroring_H
 C - - - - - 0x0104A1 04:8491: 85 26     STA ram_for_A000
 C - - - - - 0x0104A3 04:8493: A9 80     LDA #$80
 C - - - - - 0x0104A5 04:8495: 9D 3C 05  STA ram_позиция_x_спрайта_врага_и_пуль,X
-C - - - - - 0x0104A8 04:8498: 9D 56 07  STA ram_0756_obj,X
+C - - - - - 0x0104A8 04:8498: 9D 56 07  STA ram_scroll_X_obj,X
 C - - - - - 0x0104AB 04:849B: A9 C4     LDA #$C4
 C - - - - - 0x0104AD 04:849D: 9D 22 05  STA ram_позиция_y_спрайта_врага_и_пуль,X
 C - - - - - 0x0104B0 04:84A0: A9 FF     LDA #$FF
@@ -1474,7 +1474,7 @@ C - - - - - 0x0108B1 04:88A1: 69 08     ADC #$08
 C - - - - - 0x0108B3 04:88A3: 9D 22 05  STA ram_позиция_y_спрайта_врага_и_пуль,X
 C - - - - - 0x0108B6 04:88A6: A9 FF     LDA #$FF
 bra_88A8:
-C - - - - - 0x0108B8 04:88A8: 9D 56 07  STA ram_0756_obj,X
+C - - - - - 0x0108B8 04:88A8: 9D 56 07  STA ram_scroll_X_obj,X
 C - - - - - 0x0108BB 04:88AB: A9 01     LDA #$01
 C - - - - - 0x0108BD 04:88AD: 9D 10 07  STA ram_0710_obj,X
 C - - - - - 0x0108C0 04:88B0: 20 B7 A6  JSR sub_0x0066C7_удалить_объект_03
@@ -1531,7 +1531,7 @@ C - - - - - 0x01091B 04:890B: A9 FF     LDA #$FF
 C - - - - - 0x01091D 04:890D: BC 22 05  LDY ram_позиция_y_спрайта_врага_и_пуль,X
 C - - - - - 0x010920 04:8910: C0 C0     CPY #$C0
 C - - - - - 0x010922 04:8912: B0 07     BCS bra_891B
-C - - - - - 0x010924 04:8914: BC 56 07  LDY ram_0756_obj,X
+C - - - - - 0x010924 04:8914: BC 56 07  LDY ram_scroll_X_obj,X
 C - - - - - 0x010927 04:8917: F0 02     BEQ bra_891B
 C - - - - - 0x010929 04:8919: A9 01     LDA #$01
 bra_891B:
@@ -1541,9 +1541,9 @@ C - - - - - 0x010930 04:8920: A8        TAY
 C - - - - - 0x010931 04:8921: 30 22     BMI bra_8945
 C - - - - - 0x010933 04:8923: FE 10 07  INC ram_0710_obj,X
 C - - - - - 0x010936 04:8926: FE 10 07  INC ram_0710_obj,X
-C - - - - - 0x010939 04:8929: BD 56 07  LDA ram_0756_obj,X
+C - - - - - 0x010939 04:8929: BD 56 07  LDA ram_scroll_X_obj,X
 C - - - - - 0x01093C 04:892C: 30 03     BMI bra_8931
-C - - - - - 0x01093E 04:892E: DE 56 07  DEC ram_0756_obj,X
+C - - - - - 0x01093E 04:892E: DE 56 07  DEC ram_scroll_X_obj,X
 bra_8931:
 C - - - - - 0x010941 04:8931: A9 00     LDA #$00
 C - - - - - 0x010943 04:8933: 9D 48 07  STA ram_0748_obj,X
@@ -1895,10 +1895,10 @@ C - - J - - 0x010B32 04:8B22: 20 B7 A6  JSR sub_0x0066C7_удалить_объе
 C - - - - - 0x010B35 04:8B25: BD 22 05  LDA ram_позиция_y_спрайта_врага_и_пуль,X
 C - - - - - 0x010B38 04:8B28: C9 E0     CMP #$E0
 C - - - - - 0x010B3A 04:8B2A: 90 11     BCC bra_8B3D
-C - - - - - 0x010B3C 04:8B2C: BC 56 07  LDY ram_0756_obj,X
+C - - - - - 0x010B3C 04:8B2C: BC 56 07  LDY ram_scroll_X_obj,X
 C - - - - - 0x010B3F 04:8B2F: 30 31     BMI bra_8B62
 C - - - - - 0x010B41 04:8B31: B9 65 8B  LDA tbl_8B65,Y
-C - - - - - 0x010B44 04:8B34: 9D 56 07  STA ram_0756_obj,X
+C - - - - - 0x010B44 04:8B34: 9D 56 07  STA ram_scroll_X_obj,X
 C - - - - - 0x010B47 04:8B37: B9 68 8B  LDA tbl_8B68,Y
 C - - - - - 0x010B4A 04:8B3A: 9D 22 05  STA ram_позиция_y_спрайта_врага_и_пуль,X
 bra_8B3D:
@@ -2019,13 +2019,13 @@ bra_8BEB:
 C - - - - - 0x010BFB 04:8BEB: 85 08     STA ram_0008
 C - - - - - 0x010BFD 04:8BED: C9 18     CMP #$18
 C - - - - - 0x010BFF 04:8BEF: 90 13     BCC bra_8C04
-C - - - - - 0x010C01 04:8BF1: BC 56 07  LDY ram_0756_obj,X
+C - - - - - 0x010C01 04:8BF1: BC 56 07  LDY ram_scroll_X_obj,X
 C - - - - - 0x010C04 04:8BF4: 30 02     BMI bra_8BF8
 C - - - - - 0x010C06 04:8BF6: D0 09     BNE bra_8C01
 bra_8BF8:
 C - - - - - 0x010C08 04:8BF8: DD 22 05  CMP ram_позиция_y_спрайта_врага_и_пуль,X
 C - - - - - 0x010C0B 04:8BFB: 6A        ROR
-C - - - - - 0x010C0C 04:8BFC: 5D 56 07  EOR ram_0756_obj,X
+C - - - - - 0x010C0C 04:8BFC: 5D 56 07  EOR ram_scroll_X_obj,X
 C - - - - - 0x010C0F 04:8BFF: 30 03     BMI bra_8C04
 bra_8C01:
 C - - - - - 0x010C11 04:8C01: 4C 06 8C  JMP loc_8C06
@@ -2172,7 +2172,7 @@ C - - - - - 0x010CE3 04:8CD3: BC AE 06  LDY ram_скорость_объекто�
 C - - - - - 0x010CE6 04:8CD6: 10 02     BPL bra_8CDA
 C - - - - - 0x010CE8 04:8CD8: A9 20     LDA #$20
 bra_8CDA:
-C - - - - - 0x010CEA 04:8CDA: 9D 56 07  STA ram_0756_obj,X
+C - - - - - 0x010CEA 04:8CDA: 9D 56 07  STA ram_scroll_X_obj,X
 C - - - - - 0x010CED 04:8CDD: A9 16     LDA #con_sound_16
 C - - - - - 0x010CEF 04:8CDF: 20 DE FD  JSR sub_0x01FDEE_play_sound
 C - - - - - 0x010CF2 04:8CE2: 4C D7 A2  JMP loc_0x0062E7_increase_obj_state
@@ -2196,12 +2196,12 @@ tbl_8CEA_spd_X:
 
 ofs_038_5F_8CF0_03:
 C - - J - - 0x010D00 04:8CF0: 20 71 8E  JSR sub_8E71
-C - - - - - 0x010D03 04:8CF3: BD 56 07  LDA ram_0756_obj,X
+C - - - - - 0x010D03 04:8CF3: BD 56 07  LDA ram_scroll_X_obj,X
 C - - - - - 0x010D06 04:8CF6: 18        CLC
 C - - - - - 0x010D07 04:8CF7: 69 01     ADC #$01
 C - - - - - 0x010D09 04:8CF9: 29 7F     AND #$7F
-C - - - - - 0x010D0B 04:8CFB: 9D 56 07  STA ram_0756_obj,X
-C - - - - - 0x010D0E 04:8CFE: BC 56 07  LDY ram_0756_obj,X
+C - - - - - 0x010D0B 04:8CFB: 9D 56 07  STA ram_scroll_X_obj,X
+C - - - - - 0x010D0E 04:8CFE: BC 56 07  LDY ram_scroll_X_obj,X
 C - - - - - 0x010D11 04:8D01: B9 87 8D  LDA tbl_8D87,Y
 C - - - - - 0x010D14 04:8D04: 18        CLC
 C - - - - - 0x010D15 04:8D05: 7D 64 07  ADC ram_0764_obj,X
@@ -2233,7 +2233,7 @@ C - - - - - 0x010D47 04:8D37: BD 08 05  LDA ram_кадр_врага_и_пуль,
 C - - - - - 0x010D4A 04:8D3A: D0 03     BNE bra_8D3F
 - - - - - - 0x010D4C 04:8D3C: 4C 75 A2  JMP loc_0x006285_удалить_объект_02
 bra_8D3F:
-C - - - - - 0x010D4F 04:8D3F: BD 56 07  LDA ram_0756_obj,X
+C - - - - - 0x010D4F 04:8D3F: BD 56 07  LDA ram_scroll_X_obj,X
 C - - - - - 0x010D52 04:8D42: 18        CLC
 C - - - - - 0x010D53 04:8D43: 69 08     ADC #$08
 C - - - - - 0x010D55 04:8D45: 29 7F     AND #$7F
@@ -2453,7 +2453,7 @@ C - - - - - 0x010E3A 04:8E2A: 4C D3 A6  JMP loc_0x0066E3
 
 
 sub_8E2D:
-C - - - - - 0x010E3D 04:8E2D: BD 56 07  LDA ram_0756_obj,X
+C - - - - - 0x010E3D 04:8E2D: BD 56 07  LDA ram_scroll_X_obj,X
 C - - - - - 0x010E40 04:8E30: 18        CLC
 C - - - - - 0x010E41 04:8E31: 69 08     ADC #$08
 C - - - - - 0x010E43 04:8E33: 29 7F     AND #$7F
@@ -2609,7 +2609,7 @@ C - - - - - 0x010F1D 04:8F0D: 20 DB 90  JSR sub_90DB
 C - - - - - 0x010F20 04:8F10: 20 95 F4  JSR sub_0x01F4A5
 loc_8F13:
 sub_8F13:
-C D 0 - - - 0x010F23 04:8F13: BD 56 07  LDA ram_0756_obj,X
+C D 0 - - - 0x010F23 04:8F13: BD 56 07  LDA ram_scroll_X_obj,X
 C - - - - - 0x010F26 04:8F16: 0A        ASL
 C - - - - - 0x010F27 04:8F17: 0A        ASL
 C - - - - - 0x010F28 04:8F18: A8        TAY
@@ -2813,7 +2813,7 @@ C D 0 - - - 0x011098 04:9088: A8        TAY
 C - - - - - 0x011099 04:9089: B9 A8 90  LDA tbl_90A8,Y
 C - - - - - 0x01109C 04:908C: 9D 48 07  STA ram_0748_obj,X
 C - - - - - 0x01109F 04:908F: B9 AC 90  LDA tbl_90AC,Y
-C - - - - - 0x0110A2 04:9092: 9D 56 07  STA ram_0756_obj,X
+C - - - - - 0x0110A2 04:9092: 9D 56 07  STA ram_scroll_X_obj,X
 C - - - - - 0x0110A5 04:9095: A5 13     LDA ram_0013
 C - - - - - 0x0110A7 04:9097: 9D 64 07  STA ram_0764_obj,X
 C - - - - - 0x0110AA 04:909A: 20 13 8F  JSR sub_8F13
@@ -2880,14 +2880,14 @@ C - - - - - 0x0110D2 04:90C2: 90 02     BCC bra_90C6
 C - - - - - 0x0110D4 04:90C4: E9 18     SBC #$18
 bra_90C6:
 C - - - - - 0x0110D6 04:90C6: 9D 48 07  STA ram_0748_obj,X
-C - - - - - 0x0110D9 04:90C9: BD 56 07  LDA ram_0756_obj,X
+C - - - - - 0x0110D9 04:90C9: BD 56 07  LDA ram_scroll_X_obj,X
 C - - - - - 0x0110DC 04:90CC: 18        CLC
 C - - - - - 0x0110DD 04:90CD: 69 04     ADC #$04
 C - - - - - 0x0110DF 04:90CF: C9 08     CMP #$08
 C - - - - - 0x0110E1 04:90D1: 90 02     BCC bra_90D5
 C - - - - - 0x0110E3 04:90D3: E9 08     SBC #$08
 bra_90D5:
-C - - - - - 0x0110E5 04:90D5: 9D 56 07  STA ram_0756_obj,X
+C - - - - - 0x0110E5 04:90D5: 9D 56 07  STA ram_scroll_X_obj,X
 C - - - - - 0x0110E8 04:90D8: 4C 13 8F  JMP loc_8F13
 
 
@@ -2988,7 +2988,7 @@ C - - - - - 0x011180 04:9170: BD 10 07  LDA ram_0710_obj,X
 C - - - - - 0x011183 04:9173: 29 01     AND #$01
 C - - - - - 0x011185 04:9175: 9D 10 07  STA ram_0710_obj,X
 bra_9178_not_overflow:
-C - - - - - 0x011188 04:9178: BC 56 07  LDY ram_0756_obj,X
+C - - - - - 0x011188 04:9178: BC 56 07  LDY ram_scroll_X_obj,X
 C - - - - - 0x01118B 04:917B: B9 8F 91  LDA tbl_918F_spr_attr,Y
 C - - - - - 0x01118E 04:917E: 9D 56 05  STA ram_атрибуты_спрайта_врага_и_пуль,X
 C - - - - - 0x011191 04:9181: 98        TYA
@@ -3590,12 +3590,12 @@ C - - - - - 0x0114F1 04:94E1: A9 00     LDA #$00
 C - - - - - 0x0114F3 04:94E3: 9D 72 07  STA ram_0772_obj,X
 C - - - - - 0x0114F6 04:94E6: A9 06     LDA #$06
 C - - - - - 0x0114F8 04:94E8: 9D E6 06  STA ram_счетчкики_для_объектов,X
-C - - - - - 0x0114FB 04:94EB: BD 56 07  LDA ram_0756_obj,X
+C - - - - - 0x0114FB 04:94EB: BD 56 07  LDA ram_scroll_X_obj,X
 C - - - - - 0x0114FE 04:94EE: 49 01     EOR #$01
-C - - - - - 0x011500 04:94F0: 9D 56 07  STA ram_0756_obj,X
+C - - - - - 0x011500 04:94F0: 9D 56 07  STA ram_scroll_X_obj,X
 C - - - - - 0x011503 04:94F3: A5 FF     LDA ram_for_2000
 C - - - - - 0x011505 04:94F5: 29 FE     AND #$FE
-C - - - - - 0x011507 04:94F7: 1D 56 07  ORA ram_0756_obj,X
+C - - - - - 0x011507 04:94F7: 1D 56 07  ORA ram_scroll_X_obj,X
 C - - - - - 0x01150A 04:94FA: 85 FF     STA ram_for_2000
 C - - - - - 0x01150C 04:94FC: FE 64 07  INC ram_0764_obj,X
 C - - - - - 0x01150F 04:94FF: BD 64 07  LDA ram_0764_obj,X
@@ -3609,7 +3609,7 @@ C - - - - - 0x011520 04:9510: 85 64     STA ram_0064
 C - - - - - 0x011522 04:9512: A9 01     LDA #$01
 C - - - - - 0x011524 04:9514: 85 65     STA ram_0065
 C - - - - - 0x011526 04:9516: A9 08     LDA #$08
-C - - - - - 0x011528 04:9518: 9D 56 07  STA ram_0756_obj,X
+C - - - - - 0x011528 04:9518: 9D 56 07  STA ram_scroll_X_obj,X
 C - - - - - 0x01152B 04:951B: 4C D7 A2  JMP loc_0x0062E7_increase_obj_state
 
 
@@ -3620,7 +3620,7 @@ C - - - - - 0x011531 04:9521: 20 CA 94  JSR sub_94CA
 C - - - - - 0x011534 04:9524: A5 60     LDA ram_0060_unk
 C - - - - - 0x011536 04:9526: 05 70     ORA ram_0070
 C - - - - - 0x011538 04:9528: D0 09     BNE bra_9533_RTS
-C - - - - - 0x01153A 04:952A: DE 56 07  DEC ram_0756_obj,X
+C - - - - - 0x01153A 04:952A: DE 56 07  DEC ram_scroll_X_obj,X
 C - - - - - 0x01153D 04:952D: F0 05     BEQ bra_9534
 C - - - - - 0x01153F 04:952F: A9 00     LDA #$00
 C - - - - - 0x011541 04:9531: 85 6B     STA ram_006B
@@ -3639,7 +3639,7 @@ C - - - - - 0x011555 04:9545: 84 F9     STY ram_00F9
 C - - - - - 0x011557 04:9547: 20 CA 94  JSR sub_94CA
 C - - - - - 0x01155A 04:954A: A9 00     LDA #$00
 C - - - - - 0x01155C 04:954C: 9D 48 07  STA ram_0748_obj,X
-C - - - - - 0x01155F 04:954F: 9D 56 07  STA ram_0756_obj,X
+C - - - - - 0x01155F 04:954F: 9D 56 07  STA ram_scroll_X_obj,X
 C - - - - - 0x011562 04:9552: A9 01     LDA #$01
 C - - - - - 0x011564 04:9554: 9D 64 07  STA ram_0764_obj,X
 C - - - - - 0x011567 04:9557: 9D 72 07  STA ram_0772_obj,X
@@ -3663,22 +3663,22 @@ C - - - - - 0x011580 04:9570: 4C E0 A2  JMP loc_0x0062F0
 ofs_038_65_9573_08:
 C - - J - - 0x011583 04:9573: DE E6 06  DEC ram_счетчкики_для_объектов,X
 C - - - - - 0x011586 04:9576: D0 1B     BNE bra_9593
-C - - - - - 0x011588 04:9578: BD 56 07  LDA ram_0756_obj,X
+C - - - - - 0x011588 04:9578: BD 56 07  LDA ram_scroll_X_obj,X
 C - - - - - 0x01158B 04:957B: 49 01     EOR #$01
-C - - - - - 0x01158D 04:957D: 9D 56 07  STA ram_0756_obj,X
+C - - - - - 0x01158D 04:957D: 9D 56 07  STA ram_scroll_X_obj,X
 C - - - - - 0x011590 04:9580: 4A        LSR
 C - - - - - 0x011591 04:9581: A9 30     LDA #$30
 C - - - - - 0x011593 04:9583: B0 02     BCS bra_9587
 C - - - - - 0x011595 04:9585: A9 20     LDA #$20
 bra_9587:
 C - - - - - 0x011597 04:9587: 9D E6 06  STA ram_счетчкики_для_объектов,X
-C - - - - - 0x01159A 04:958A: BD 56 07  LDA ram_0756_obj,X
+C - - - - - 0x01159A 04:958A: BD 56 07  LDA ram_scroll_X_obj,X
 C - - - - - 0x01159D 04:958D: 18        CLC
 C - - - - - 0x01159E 04:958E: 69 06     ADC #$06
 C - - - - - 0x0115A0 04:9590: 20 FE 98  JSR sub_98FE
 bra_9593:
 C - - - - - 0x0115A3 04:9593: 20 E2 95  JSR sub_95E2
-C - - - - - 0x0115A6 04:9596: BD 56 07  LDA ram_0756_obj,X
+C - - - - - 0x0115A6 04:9596: BD 56 07  LDA ram_scroll_X_obj,X
 C - - - - - 0x0115A9 04:9599: F0 29     BEQ bra_95C4_RTS
 C - - - - - 0x0115AB 04:959B: DE F4 06  DEC ram_06F4_obj,X
 C - - - - - 0x0115AE 04:959E: D0 24     BNE bra_95C4_RTS
@@ -3876,7 +3876,7 @@ C - - - - - 0x01169B 04:968B: 60        RTS
 sub_968C:
 C - - - - - 0x01169C 04:968C: BD 72 07  LDA ram_0772_obj,X
 C - - - - - 0x01169F 04:968F: 30 FA     BMI bra_968B_RTS
-C - - - - - 0x0116A1 04:9691: BD 56 07  LDA ram_0756_obj,X
+C - - - - - 0x0116A1 04:9691: BD 56 07  LDA ram_scroll_X_obj,X
 C - - - - - 0x0116A4 04:9694: 4A        LSR
 C - - - - - 0x0116A5 04:9695: A9 08     LDA #$08
 C - - - - - 0x0116A7 04:9697: B0 02     BCS bra_969B
@@ -4151,7 +4151,7 @@ C - - - - - 0x011898 04:9888: 9D F4 06  STA ram_06F4_obj,X
 C - - - - - 0x01189B 04:988B: BC 10 07  LDY ram_0710_obj,X
 C - - - - - 0x01189E 04:988E: B9 CE 98  LDA tbl_98CE,Y
 C - - - - - 0x0118A1 04:9891: 9D E6 06  STA ram_счетчкики_для_объектов,X
-C - - - - - 0x0118A4 04:9894: BD 56 07  LDA ram_0756_obj,X
+C - - - - - 0x0118A4 04:9894: BD 56 07  LDA ram_scroll_X_obj,X
 C - - - - - 0x0118A7 04:9897: 4A        LSR
 C - - - - - 0x0118A8 04:9898: B0 05     BCS bra_989F
 C - - - - - 0x0118AA 04:989A: FE 10 07  INC ram_0710_obj,X
@@ -4164,11 +4164,11 @@ C - - - - - 0x0118B5 04:98A5: C9 03     CMP #$03
 C - - - - - 0x0118B7 04:98A7: 90 08     BCC bra_98B1_RTS
 C - - - - - 0x0118B9 04:98A9: A9 01     LDA #$01
 C - - - - - 0x0118BB 04:98AB: 9D 10 07  STA ram_0710_obj,X
-C - - - - - 0x0118BE 04:98AE: FE 56 07  INC ram_0756_obj,X
+C - - - - - 0x0118BE 04:98AE: FE 56 07  INC ram_scroll_X_obj,X
 bra_98B1_RTS:
 C - - - - - 0x0118C1 04:98B1: 60        RTS
 bra_98B2:
-C - - - - - 0x0118C2 04:98B2: BD 56 07  LDA ram_0756_obj,X
+C - - - - - 0x0118C2 04:98B2: BD 56 07  LDA ram_scroll_X_obj,X
 C - - - - - 0x0118C5 04:98B5: 4A        LSR
 C - - - - - 0x0118C6 04:98B6: 90 B6     BCC bra_986E_RTS
 C - - - - - 0x0118C8 04:98B8: DE F4 06  DEC ram_06F4_obj,X
@@ -4667,7 +4667,7 @@ tbl_9C46_spr_attr:
 
 sub_9C4F:
 ; 1путин опт
-                                        LDY ram_0756_obj,X
+                                        LDY ram_scroll_X_obj,X
                                         LDA tbl_9C55_lo,y
                                         STA ram_0000
                                         LDA tbl_9C55_hi,y
@@ -4716,7 +4716,7 @@ C - - - - - 0x011CA2 04:9C92: 9D 72 07  STA ram_0772_obj,X
 C - - - - - 0x011CA5 04:9C95: A9 80     LDA #$80
 C - - - - - 0x011CA7 04:9C97: 9D E6 06  STA ram_счетчкики_для_объектов,X
 loc_9C9A:
-C D 0 - - - 0x011CAA 04:9C9A: FE 56 07  INC ram_0756_obj,X
+C D 0 - - - 0x011CAA 04:9C9A: FE 56 07  INC ram_scroll_X_obj,X
 bra_9C9D_RTS:
 C - - - - - 0x011CAD 04:9C9D: 60        RTS
 
@@ -4726,7 +4726,7 @@ ofs_029_9C9E_02:
 C - - J - - 0x011CAE 04:9C9E: DE E6 06  DEC ram_счетчкики_для_объектов,X
 C - - - - - 0x011CB1 04:9CA1: D0 FA     BNE bra_9C9D_RTS
 C - - - - - 0x011CB3 04:9CA3: A9 00     LDA #$00
-C - - - - - 0x011CB5 04:9CA5: 9D 56 07  STA ram_0756_obj,X
+C - - - - - 0x011CB5 04:9CA5: 9D 56 07  STA ram_scroll_X_obj,X
 C - - - - - 0x011CB8 04:9CA8: 60        RTS
 
 

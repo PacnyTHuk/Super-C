@@ -489,34 +489,45 @@ ofs_046_99B3_options_obj_limit:
                                         AND #con_btns_LR
                                         BEQ bra_9B06_RTS
                                         AND #con_btn_Left
-                                        BNE bra_9B04_left
+                                        BNE bra_9B03_left
 ; right
                                         INC ram_options_сложность,X
                                         LDA ram_options_сложность,X
                                         CMP tbl_9B07_лимит_опций,X
-                                        BCC bra_9B05
+                                        BCC bra_9B04
                                         DEC ram_options_сложность,X
-                                        BNE bra_9B05
+                                        BNE bra_9B04
 
-bra_9B04_left:
+bra_9B03_left:
                                         DEC ram_options_сложность,X
-                                        BPL bra_9B05
+                                        BPL bra_9B04
                                         INC ram_options_сложность,X
-bra_9B05:
+bra_9B04:
                                         LDA tbl_9B08_начальная_con,X
                                         CLC
                                         ADC ram_options_сложность,X
                                         JSR sub_0x01FE8A_bankswitch_отрисовка_текста_через_буфер_0300x
                                         LDA ram_номер_опции_колво_игроков
                                         CMP #con_options_obj_limit
-                                        BNE bra_9B06_RTS
+                                        BNE bra_9B05
                                         LDX ram_options_колво_объектов
                                         LDA tbl_0x01FB75_индексы,X
                                         STA ram_макс_индекс_пули_игрока
                                         LDA tbl_0x01FB75_индексы + $02,X
                                         STA ram_макс_индекс_враги
                                         LDA tbl_0x01FB75_индексы + $04,X
-                                        STA ram_макс_индекс_пули_общие                              
+                                        STA ram_макс_индекс_пули_общие
+bra_9B05:
+                                        CMP #con_options_graphics
+                                        BNE bra_9B06_RTS
+                                        LDA ram_options_регион
+                                        ASL
+                                        ASL
+                                        ASL
+                                        ASL
+                                        ASL
+                                        ASL
+                                        STA ram_регион
 bra_9B06_RTS:
                                         RTS
 
