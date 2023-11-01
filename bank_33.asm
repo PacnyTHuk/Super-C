@@ -2798,7 +2798,7 @@ tbl_AC22:
 - D 1 - - - 0x006C49 01:AC39: 01        .byte $01   ; 17 
 - D 1 - - - 0x006C4A 01:AC3A: 05        .byte $05   ; 18 
 ; bzk garbage?
-- - - - - - 0x006C4B 01:AC3B: 00        .byte $00   ; 19 
+- - - - - - 0x006C4B 01:AC3B: 00        .byte $06   ; 19 
 - - - - - - 0x006C4C 01:AC3C: 00        .byte $00   ; 1A 
 - - - - - - 0x006C4D 01:AC3D: 00        .byte $00   ; 1B 
 - - - - - - 0x006C4E 01:AC3E: 00        .byte $00   ; 1C 
@@ -2835,7 +2835,7 @@ tbl_AC42:
 - D 1 - - - 0x006C69 01:AC59: 07        .byte $07   ; 17 
 - D 1 - - - 0x006C6A 01:AC5A: 01        .byte $01   ; 18 
 ; bzk garbage?
-- - - - - - 0x006C6B 01:AC5B: 00        .byte $00   ; 19 
+- - - - - - 0x006C6B 01:AC5B: 00        .byte $05   ; 19 
 - - - - - - 0x006C6C 01:AC5C: 00        .byte $00   ; 1A 
 - - - - - - 0x006C6D 01:AC5D: 00        .byte $00   ; 1B 
 - - - - - - 0x006C6E 01:AC5E: 00        .byte $00   ; 1C 
@@ -2847,104 +2847,110 @@ tbl_AC42:
 
 tbl_AC62:
 ; ???
-- D 1 - - - 0x006C72 01:AC62: 1F        .byte $1F   ; 
-- D 1 - - - 0x006C73 01:AC63: 1C        .byte $1C   ; 
-- D 1 - - - 0x006C74 01:AC64: 1E        .byte $1E   ; 
-- D 1 - - - 0x006C75 01:AC65: 1D        .byte $1D   ; 
-- D 1 - - - 0x006C76 01:AC66: 1C        .byte $1C   ; 
-- D 1 - - - 0x006C77 01:AC67: 1B        .byte $1B   ; 
-- D 1 - - - 0x006C78 01:AC68: 38        .byte $38   ; 
-- D 1 - - - 0x006C79 01:AC69: 39        .byte $39   ; 
-- D 1 - - - 0x006C7A 01:AC6A: 39        .byte $39   ; 
-- D 1 - - - 0x006C7B 01:AC6B: 38        .byte $38   ; 
-- D 1 - - - 0x006C7C 01:AC6C: 37        .byte $37   ; 
-- D 1 - - - 0x006C7D 01:AC6D: 37        .byte $37   ; 
-- - - - - - 0x006C7E 01:AC6E: 05        .byte $05   ; 
-- - - - - - 0x006C7F 01:AC6F: 02        .byte $02   ; 
-- - - - - - 0x006C80 01:AC70: 04        .byte $04   ; 
-- - - - - - 0x006C81 01:AC71: 03        .byte $03   ; 
-- D 1 - - - 0x006C82 01:AC72: 30        .byte $30   ; 
-- D 1 - - - 0x006C83 01:AC73: 2F        .byte $2F   ; 
-- D 1 - - - 0x006C84 01:AC74: 2E        .byte $2E   ; 
-- D 1 - - - 0x006C85 01:AC75: 2D        .byte $2D   ; 
-- D 1 - - - 0x006C86 01:AC76: 2C        .byte $2C   ; 
-- D 1 - - - 0x006C87 01:AC77: 2B        .byte $2B   ; 
-- D 1 - - - 0x006C88 01:AC78: 2A        .byte $2A   ; 
-- D 1 - - - 0x006C89 01:AC79: 29        .byte $29   ; 
-- D 1 - - - 0x006C8A 01:AC7A: 35        .byte $35   ; 
-- D 1 - - - 0x006C8B 01:AC7B: 32        .byte $32   ; 
-- D 1 - - - 0x006C8C 01:AC7C: 34        .byte $34   ; 
-- D 1 - - - 0x006C8D 01:AC7D: 33        .byte $33   ; 
-- D 1 - - - 0x006C8E 01:AC7E: 32        .byte $32   ; 
-- D 1 - - - 0x006C8F 01:AC7F: 31        .byte $31   ; 
-- D 1 - - - 0x006C90 01:AC80: 61        .byte $61   ; 
-- D 1 - - - 0x006C91 01:AC81: 60        .byte $60   ; 
-- D 1 - - - 0x006C92 01:AC82: 5F        .byte $5F   ; 
-- D 1 - - - 0x006C93 01:AC83: 5E        .byte $5E   ; 
-- D 1 - - - 0x006C94 01:AC84: 5D        .byte $5D   ; 
-- D 1 - - - 0x006C95 01:AC85: 5C        .byte $5C   ; 
-- D 1 - - - 0x006C96 01:AC86: 61        .byte $61   ; 
-- D 1 - - - 0x006C97 01:AC87: 60        .byte $60   ; 
-- D 1 - - - 0x006C98 01:AC88: 5F        .byte $5F   ; 
-- D 1 - - - 0x006C99 01:AC89: 5E        .byte $5E   ; 
-- D 1 - - - 0x006C9A 01:AC8A: 5D        .byte $5D   ; 
-- D 1 - - - 0x006C9B 01:AC8B: 5C        .byte $5C   ; 
-- D 1 - - - 0x006C9C 01:AC8C: 6A        .byte $6A   ; 
-- D 1 - - - 0x006C9D 01:AC8D: 67        .byte $67   ; 
-- D 1 - - - 0x006C9E 01:AC8E: 69        .byte $69   ; 
-- D 1 - - - 0x006C9F 01:AC8F: 68        .byte $68   ; 
-- D 1 - - - 0x006CA0 01:AC90: 67        .byte $67   ; 
-- D 1 - - - 0x006CA1 01:AC91: 66        .byte $66   ; 
-- D 1 - - - 0x006CA2 01:AC92: 72        .byte $72   ; 
-- D 1 - - - 0x006CA3 01:AC93: 71        .byte $71   ; 
-- D 1 - - - 0x006CA4 01:AC94: 70        .byte $70   ; 
-- D 1 - - - 0x006CA5 01:AC95: 6F        .byte $6F   ; 
-- D 1 - - - 0x006CA6 01:AC96: 6F        .byte $6F   ; 
-- D 1 - - - 0x006CA7 01:AC97: 70        .byte $70   ; 
-- D 1 - - - 0x006CA8 01:AC98: 71        .byte $71   ; 
-- D 1 - - - 0x006CA9 01:AC99: 72        .byte $72   ; 
-- D 1 - - - 0x006CAA 01:AC9A: 74        .byte $74   ; 
-- D 1 - - - 0x006CAB 01:AC9B: 73        .byte $73   ; 
-- D 1 - - - 0x006CAC 01:AC9C: 76        .byte $76   ; 
-- D 1 - - - 0x006CAD 01:AC9D: 77        .byte $77   ; 
-- D 1 - - - 0x006CAE 01:AC9E: 76        .byte $76   ; 
-- D 1 - - - 0x006CAF 01:AC9F: 75        .byte $75   ; 
-- D 1 - - - 0x006CB0 01:ACA0: 6E        .byte $6E   ; 
-- D 1 - - - 0x006CB1 01:ACA1: 6D        .byte $6D   ; 
-- D 1 - - - 0x006CB2 01:ACA2: 83        .byte $83   ; 
-- D 1 - - - 0x006CB3 01:ACA3: 82        .byte $82   ; 
-- D 1 - - - 0x006CB4 01:ACA4: 91        .byte $91   ; 
-- D 1 - - - 0x006CB5 01:ACA5: 90        .byte $90   ; 
-- D 1 - - - 0x006CB6 01:ACA6: 93        .byte $93   ; 
-- D 1 - - - 0x006CB7 01:ACA7: 92        .byte $92   ; 
-- D 1 - - - 0x006CB8 01:ACA8: A0        .byte $A0   ; 
-- D 1 - - - 0x006CB9 01:ACA9: 9F        .byte $9F   ; 
-- D 1 - - - 0x006CBA 01:ACAA: 9E        .byte $9E   ; 
-- D 1 - - - 0x006CBB 01:ACAB: A4        .byte $A4   ; 
-- D 1 - - - 0x006CBC 01:ACAC: A3        .byte $A3   ; 
-- D 1 - - - 0x006CBD 01:ACAD: A2        .byte $A2   ; 
-- D 1 - - - 0x006CBE 01:ACAE: A1        .byte $A1   ; 
-- D 1 - - - 0x006CBF 01:ACAF: A6        .byte $A6   ; 
-- D 1 - - - 0x006CC0 01:ACB0: A5        .byte $A5   ; 
-- D 1 - - - 0x006CC1 01:ACB1: 99        .byte $99   ; 
-- D 1 - - - 0x006CC2 01:ACB2: 98        .byte $98   ; 
-- D 1 - - - 0x006CC3 01:ACB3: 98        .byte $98   ; 
-- D 1 - - - 0x006CC4 01:ACB4: 9D        .byte $9D   ; 
-- D 1 - - - 0x006CC5 01:ACB5: A9        .byte $A9   ; 
-- D 1 - - - 0x006CC6 01:ACB6: A8        .byte $A8   ; 
-- D 1 - - - 0x006CC7 01:ACB7: AB        .byte $AB   ; 
-- D 1 - - - 0x006CC8 01:ACB8: AA        .byte $AA   ; 
-- D 1 - - - 0x006CC9 01:ACB9: B3        .byte $B3   ; 
-- D 1 - - - 0x006CCA 01:ACBA: B2        .byte $B2   ; 
-- D 1 - - - 0x006CCB 01:ACBB: B1        .byte $B1   ; 
-- D 1 - - - 0x006CCC 01:ACBC: B0        .byte $B0   ; 
-- D 1 - - - 0x006CCD 01:ACBD: AF        .byte $AF   ; 
-- D 1 - - - 0x006CCE 01:ACBE: AE        .byte $AE   ; 
-- D 1 - - - 0x006CCF 01:ACBF: AD        .byte $AD   ; 
-- D 1 - - - 0x006CD0 01:ACC0: AC        .byte $AC   ; 
-- D 1 - - - 0x006CD1 01:ACC1: B5        .byte $B5   ; 
-- D 1 - - - 0x006CD2 01:ACC2: B4        .byte $B4   ; 
-
+- D 1 - - - 0x006C72 01:AC62: 1F        .byte $1F   ; 00
+- D 1 - - - 0x006C73 01:AC63: 1C        .byte $1C   ; 01
+- D 1 - - - 0x006C74 01:AC64: 1E        .byte $1E   ; 02
+- D 1 - - - 0x006C75 01:AC65: 1D        .byte $1D   ; 03
+- D 1 - - - 0x006C76 01:AC66: 1C        .byte $1C   ; 04
+- D 1 - - - 0x006C77 01:AC67: 1B        .byte $1B   ; 05
+- D 1 - - - 0x006C78 01:AC68: 38        .byte $38   ; 06
+- D 1 - - - 0x006C79 01:AC69: 39        .byte $39   ; 07
+- D 1 - - - 0x006C7A 01:AC6A: 39        .byte $39   ; 08
+- D 1 - - - 0x006C7B 01:AC6B: 38        .byte $38   ; 09
+- D 1 - - - 0x006C7C 01:AC6C: 37        .byte $37   ; 0A
+- D 1 - - - 0x006C7D 01:AC6D: 37        .byte $37   ; 0B
+- - - - - - 0x006C7E 01:AC6E: 05        .byte $05   ; 0C
+- - - - - - 0x006C7F 01:AC6F: 02        .byte $02   ; 0D
+- - - - - - 0x006C80 01:AC70: 04        .byte $04   ; 0E
+- - - - - - 0x006C81 01:AC71: 03        .byte $03   ; 0F
+- D 1 - - - 0x006C82 01:AC72: 30        .byte $30   ; 10
+- D 1 - - - 0x006C83 01:AC73: 2F        .byte $2F   ; 11
+- D 1 - - - 0x006C84 01:AC74: 2E        .byte $2E   ; 12
+- D 1 - - - 0x006C85 01:AC75: 2D        .byte $2D   ; 13
+- D 1 - - - 0x006C86 01:AC76: 2C        .byte $2C   ; 14
+- D 1 - - - 0x006C87 01:AC77: 2B        .byte $2B   ; 15
+- D 1 - - - 0x006C88 01:AC78: 2A        .byte $2A   ; 16
+- D 1 - - - 0x006C89 01:AC79: 29        .byte $29   ; 17
+- D 1 - - - 0x006C8A 01:AC7A: 35        .byte $35   ; 18
+- D 1 - - - 0x006C8B 01:AC7B: 32        .byte $32   ; 19
+- D 1 - - - 0x006C8C 01:AC7C: 34        .byte $34   ; 1A
+- D 1 - - - 0x006C8D 01:AC7D: 33        .byte $33   ; 1B
+- D 1 - - - 0x006C8E 01:AC7E: 32        .byte $32   ; 1C
+- D 1 - - - 0x006C8F 01:AC7F: 31        .byte $31   ; 1D
+- D 1 - - - 0x006C90 01:AC80: 61        .byte $61   ; 1E
+- D 1 - - - 0x006C91 01:AC81: 60        .byte $60   ; 1F
+- D 1 - - - 0x006C92 01:AC82: 5F        .byte $5F   ; 20
+- D 1 - - - 0x006C93 01:AC83: 5E        .byte $5E   ; 21
+- D 1 - - - 0x006C94 01:AC84: 5D        .byte $5D   ; 22
+- D 1 - - - 0x006C95 01:AC85: 5C        .byte $5C   ; 23
+- D 1 - - - 0x006C96 01:AC86: 61        .byte $61   ; 24
+- D 1 - - - 0x006C97 01:AC87: 60        .byte $60   ; 25
+- D 1 - - - 0x006C98 01:AC88: 5F        .byte $5F   ; 26
+- D 1 - - - 0x006C99 01:AC89: 5E        .byte $5E   ; 27
+- D 1 - - - 0x006C9A 01:AC8A: 5D        .byte $5D   ; 28
+- D 1 - - - 0x006C9B 01:AC8B: 5C        .byte $5C   ; 29
+- D 1 - - - 0x006C9C 01:AC8C: 6A        .byte $6A   ; 2A
+- D 1 - - - 0x006C9D 01:AC8D: 67        .byte $67   ; 2B
+- D 1 - - - 0x006C9E 01:AC8E: 69        .byte $69   ; 2C
+- D 1 - - - 0x006C9F 01:AC8F: 68        .byte $68   ; 2D
+- D 1 - - - 0x006CA0 01:AC90: 67        .byte $67   ; 2E
+- D 1 - - - 0x006CA1 01:AC91: 66        .byte $66   ; 2F
+- D 1 - - - 0x006CA2 01:AC92: 72        .byte $72   ; 30
+- D 1 - - - 0x006CA3 01:AC93: 71        .byte $71   ; 31
+- D 1 - - - 0x006CA4 01:AC94: 70        .byte $70   ; 32
+- D 1 - - - 0x006CA5 01:AC95: 6F        .byte $6F   ; 33
+- D 1 - - - 0x006CA6 01:AC96: 6F        .byte $6F   ; 34
+- D 1 - - - 0x006CA7 01:AC97: 70        .byte $70   ; 35
+- D 1 - - - 0x006CA8 01:AC98: 71        .byte $71   ; 36
+- D 1 - - - 0x006CA9 01:AC99: 72        .byte $72   ; 37
+- D 1 - - - 0x006CAA 01:AC9A: 74        .byte $74   ; 38
+- D 1 - - - 0x006CAB 01:AC9B: 73        .byte $73   ; 39
+- D 1 - - - 0x006CAC 01:AC9C: 76        .byte $76   ; 3A
+- D 1 - - - 0x006CAD 01:AC9D: 77        .byte $77   ; 3B
+- D 1 - - - 0x006CAE 01:AC9E: 76        .byte $76   ; 3C
+- D 1 - - - 0x006CAF 01:AC9F: 75        .byte $75   ; 3D
+- D 1 - - - 0x006CB0 01:ACA0: 6E        .byte $6E   ; 3E
+- D 1 - - - 0x006CB1 01:ACA1: 6D        .byte $6D   ; 3F
+- D 1 - - - 0x006CB2 01:ACA2: 83        .byte $83   ; 40
+- D 1 - - - 0x006CB3 01:ACA3: 82        .byte $82   ; 41
+- D 1 - - - 0x006CB4 01:ACA4: 91        .byte $91   ; 42
+- D 1 - - - 0x006CB5 01:ACA5: 90        .byte $90   ; 43
+- D 1 - - - 0x006CB6 01:ACA6: 93        .byte $93   ; 44
+- D 1 - - - 0x006CB7 01:ACA7: 92        .byte $92   ; 45
+- D 1 - - - 0x006CB8 01:ACA8: A0        .byte $A0   ; 46
+- D 1 - - - 0x006CB9 01:ACA9: 9F        .byte $9F   ; 47
+- D 1 - - - 0x006CBA 01:ACAA: 9E        .byte $9E   ; 48
+- D 1 - - - 0x006CBB 01:ACAB: A4        .byte $A4   ; 49
+- D 1 - - - 0x006CBC 01:ACAC: A3        .byte $A3   ; 4A
+- D 1 - - - 0x006CBD 01:ACAD: A2        .byte $A2   ; 4B
+- D 1 - - - 0x006CBE 01:ACAE: A1        .byte $A1   ; 4C
+- D 1 - - - 0x006CBF 01:ACAF: A6        .byte $A6   ; 4D
+- D 1 - - - 0x006CC0 01:ACB0: A5        .byte $A5   ; 4E
+- D 1 - - - 0x006CC1 01:ACB1: 99        .byte $99   ; 4F
+- D 1 - - - 0x006CC2 01:ACB2: 98        .byte $98   ; 50
+- D 1 - - - 0x006CC3 01:ACB3: 98        .byte $98   ; 51
+- D 1 - - - 0x006CC4 01:ACB4: 9D        .byte $9D   ; 52
+- D 1 - - - 0x006CC5 01:ACB5: A9        .byte $A9   ; 53
+- D 1 - - - 0x006CC6 01:ACB6: A8        .byte $A8   ; 54
+- D 1 - - - 0x006CC7 01:ACB7: AB        .byte $AB   ; 55
+- D 1 - - - 0x006CC8 01:ACB8: AA        .byte $AA   ; 56
+- D 1 - - - 0x006CC9 01:ACB9: B3        .byte $B3   ; 57
+- D 1 - - - 0x006CCA 01:ACBA: B2        .byte $B2   ; 58
+- D 1 - - - 0x006CCB 01:ACBB: B1        .byte $B1   ; 59
+- D 1 - - - 0x006CCC 01:ACBC: B0        .byte $B0   ; 5A
+- D 1 - - - 0x006CCD 01:ACBD: AF        .byte $AF   ; 5B
+- D 1 - - - 0x006CCE 01:ACBE: AE        .byte $AE   ; 5C
+- D 1 - - - 0x006CCF 01:ACBF: AD        .byte $AD   ; 5D
+- D 1 - - - 0x006CD0 01:ACC0: AC        .byte $AC   ; 5E
+- D 1 - - - 0x006CD1 01:ACC1: B5        .byte $B5   ; 5F
+- D 1 - - - 0x006CD2 01:ACC2: B4        .byte $B4   ; 60
+                                        .byte $C0   ; 61
+                                        .byte $BD   ; 62
+                                        .byte $BF   ; 63
+                                        .byte $BE   ; 64
+                                        .byte $BD   ; 65
+                                        .byte $BC   ; 66
+                                        .byte $FF   ; 67
 
 
 tbl_ACC3:
@@ -2973,6 +2979,7 @@ tbl_ACC3:
 - D 1 - - - 0x006CE9 01:ACD9: 54        .byte $54   ; 16 
 - D 1 - - - 0x006CEA 01:ACDA: 56        .byte $56   ; 17 
 - D 1 - - - 0x006CEB 01:ACDB: 5E        .byte $5E   ; 18 
+                                        .byte $60   ; 19 
 
 
 
@@ -3367,6 +3374,7 @@ C - - - - - 0x006F34 01:AF24: 29 7F     AND #$7F
 C - - - - - 0x006F36 01:AF26: A4 50     LDY ram_номер_уровня
 C - - - - - 0x006F38 01:AF28: C0 07     CPY #$07
 C - - - - - 0x006F3A 01:AF2A: D0 02     BNE bra_AF2E
+; 8й лвл
 C - - - - - 0x006F3C 01:AF2C: 09 80     ORA #$80
 bra_AF2E:
 C - - - - - 0x006F3E 01:AF2E: 9D 1E 07  STA ram_obj_flags,X
@@ -3376,6 +3384,18 @@ C - - - - - 0x006F44 01:AF34: 90 02     BCC bra_AF38
 C - - - - - 0x006F46 01:AF36: A9 04     LDA #$04
 bra_AF38:
 C - - - - - 0x006F48 01:AF38: 9D 64 07  STA ram_0764_obj,X
+; 1путин
+                                        BIT ram_регион
+                                        BVC bra_AF3B
+                                        CPY #$06
+                                        BNE bra_AF3B
+; 7й лвл
+                                        LDA #$19
+                                        STA ram_0764_obj,X
+                                        LDA ram_obj_flags,X
+                                        ORA #$40
+                                        STA ram_obj_flags,X
+bra_AF3B:
 C - - - - - 0x006F4B 01:AF3B: A9 08     LDA #$08
 C - - - - - 0x006F4D 01:AF3D: 9D 3A 07  STA ram_хитбоксы_объектов,X
 C - - - - - 0x006F50 01:AF40: 20 6C AF  JSR sub_AF6C
@@ -3459,12 +3479,22 @@ tbl_AFA4_spd_X:
 
 ofs_038_03_AFBE_02:
 C - - J - - 0x006FCE 01:AFBE: BD 48 07  LDA ram_0748_obj,X
-C - - - - - 0x006FD1 01:AFC1: 10 7C     BPL bra_B03F
-C - - - - - 0x006FD3 01:AFC3: A9 20     LDA #$20
-C - - - - - 0x006FD5 01:AFC5: BC 1E 07  LDY ram_obj_flags,X
-C - - - - - 0x006FD8 01:AFC8: 10 02     BPL bra_AFCC
-C - - - - - 0x006FDA 01:AFCA: A9 36     LDA #$36
+C - - - - - 0x006FD1 01:AFC1: 10 7C     BMI bra_AFC0
+                                        JMP loc_B03F
+; 1путин
+; в прыжке?
+bra_AFC0:
+C - - - - - 0x006FD5 01:AFC5: BC 1E 07  LDA ram_obj_flags,X
+                                        ASL
+                                        LDY #$20
+                                        BCC bra_AFC8
+                                        LDY #$36
+bra_AFC8:
+                                        ASL
+                                        BCC bra_AFCC
+                                        LDY #$C1
 bra_AFCC:
+                                        TYA
 C - - - - - 0x006FDC 01:AFCC: 9D 08 05  STA ram_кадр_врага_и_пуль,X
 C - - - - - 0x006FDF 01:AFCF: A9 14     LDA #$14
 C - - - - - 0x006FE1 01:AFD1: 85 0F     STA ram_000F
@@ -3519,7 +3549,7 @@ C - - - - - 0x007047 01:B037: 20 6C AF  JSR sub_AF6C
 bra_B03A:
 C - - - - - 0x00704A 01:B03A: A9 1C     LDA #$1C
 C - - - - - 0x00704C 01:B03C: 4C CB AA  JMP loc_AACB
-bra_B03F:
+loc_B03F:
 C - - - - - 0x00704F 01:B03F: BD 72 07  LDA ram_0772_obj,X
 C - - - - - 0x007052 01:B042: F0 05     BEQ bra_B049
 C - - - - - 0x007054 01:B044: DE E6 06  DEC ram_счетчкики_для_объектов,X
@@ -3724,10 +3754,18 @@ C - - - - - 0x0071A0 01:B190: 4C D7 A2  JMP loc_A2D7_increase_obj_state
 
 
 sub_B193:
-C - - - - - 0x0071A3 01:B193: A9 1C     LDA #$1C
-C - - - - - 0x0071A5 01:B195: BC 1E 07  LDY ram_obj_flags,X
-C - - - - - 0x0071A8 01:B198: 10 02     BPL bra_B19C_RTS
-C - - - - - 0x0071AA 01:B19A: A9 32     LDA #$32
+; 1путин
+                                        LDA ram_obj_flags,X
+                                        ASL
+                                        LDY #$1C
+                                        BCC bra_B198
+                                        LDY #$32
+bra_B198:
+                                        ASL
+                                        BCC bra_B19B
+                                        LDY #$BD
+bra_B19B:
+                                        TYA
 bra_B19C_RTS:
 C - - - - - 0x0071AC 01:B19C: 60        RTS
 
