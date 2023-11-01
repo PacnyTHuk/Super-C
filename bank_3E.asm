@@ -4448,6 +4448,8 @@ bra_FB2F_loop:
                                         STA ram_макс_индекс_враги
                                         LDA tbl_FB75_индексы + $04,X
                                         STA ram_макс_индекс_пули_общие
+                                        LDA #$01    ; вкл. чит
+                                        STA ram_cheat_flag
 C - - - - - 0x01FB40 07:FB30: A9 53     LDA #$53
 C - - - - - 0x01FB42 07:FB32: 8D EA 07  STA ram_reset_check
 C - - - - - 0x01FB45 07:FB35: A9 B1     LDA #$B1
