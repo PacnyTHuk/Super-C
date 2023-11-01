@@ -247,7 +247,7 @@
 .export sub_0x007B44
 .export sub_0x007B8F
 .export sub_0x007C05
-.export sub_0x007C4B
+.export sub_0x007C4B_пушки_вертолета
 .export sub_0x007D20_clear_0400_047F
 .export sub_0x007D22_clear_0400_Y
 .export sub_0x007D2B_clear_0480_04FF
@@ -5534,7 +5534,7 @@ C - - - - - 0x007C44 01:BC34: 0A        ASL
 C - - - - - 0x007C45 01:BC35: 26 01     ROL ram_0001
 C - - - - - 0x007C47 01:BC37: 05 00     ORA ram_0000
 C - - - - - 0x007C49 01:BC39: 85 00     STA ram_0000
-sub_0x007C4B:
+sub_0x007C4B_пушки_вертолета:
 C - - - - - 0x007C4B 01:BC3B: A9 06     LDA #con_buf_mode_06
 C - - - - - 0x007C4D 01:BC3D: 9D 00 03  STA ram_nmt_buffer,X
 C - - - - - 0x007C50 01:BC40: E8        INX
@@ -5543,6 +5543,11 @@ C - - - - - 0x007C53 01:BC43: 85 04     STA ram_0004
 C - - - - - 0x007C55 01:BC45: A5 08     LDA ram_0008
 C - - - - - 0x007C57 01:BC47: 0A        ASL
 C - - - - - 0x007C58 01:BC48: 0A        ASL
+; 1путин: пушки вертолета
+                                        LDY ram_options_регион
+                                        BEQ bra_BC49_US
+                                        ADC #$14
+bra_BC49_US:
 C - - - - - 0x007C59 01:BC49: A8        TAY
 bra_BC4A_loop:
 C - - - - - 0x007C5A 01:BC4A: A5 01     LDA ram_0001    ; ppu hi
@@ -5556,7 +5561,7 @@ C - - - - - 0x007C68 01:BC58: 85 05     STA ram_0005
 C - - - - - 0x007C6A 01:BC5A: 9D 00 03  STA ram_nmt_buffer,X
 C - - - - - 0x007C6D 01:BC5D: E8        INX
 bra_BC5E_loop:
-C - - - - - 0x007C6E 01:BC5E: B9 83 BC  LDA tbl_BC83,Y
+C - - - - - 0x007C6E 01:BC5E: B9 83 BC  LDA tbl_BC83_тайлы_пушек,Y
 C - - - - - 0x007C71 01:BC61: 9D 00 03  STA ram_nmt_buffer,X
 C - - - - - 0x007C74 01:BC64: C8        INY
 C - - - - - 0x007C75 01:BC65: E8        INX
@@ -5580,22 +5585,38 @@ C - - - - - 0x007C92 01:BC82: 60        RTS
 
 
 
-tbl_BC83:
+tbl_BC83_тайлы_пушек:
 ; 00
-- D 1 - - - 0x007C93 01:BC83: 00        .byte $00, $00   ; 
-- D 1 - - - 0x007C95 01:BC85: 00        .byte $00, $00   ; 
+- D 1 - - - 0x007C93 01:BC83: 00        .byte $00, $00   ; 00 US
+- D 1 - - - 0x007C95 01:BC85: 00        .byte $00, $00   ; 02 US
 ; 01
-- D 1 - - - 0x007C97 01:BC87: BE        .byte $BE, $BF   ; 
-- D 1 - - - 0x007C99 01:BC89: C0        .byte $C0, $C1   ; 
+- D 1 - - - 0x007C97 01:BC87: BE        .byte $BE, $BF   ; 04 US
+- D 1 - - - 0x007C99 01:BC89: C0        .byte $C0, $C1   ; 06 US
 ; 02
-- D 1 - - - 0x007C9B 01:BC8B: 52        .byte $52, $53   ; 
-- D 1 - - - 0x007C9D 01:BC8D: 5E        .byte $5E, $5F   ; 
+- D 1 - - - 0x007C9B 01:BC8B: 52        .byte $52, $53   ; 08 US
+- D 1 - - - 0x007C9D 01:BC8D: 5E        .byte $5E, $5F   ; 0A US
 ; 03
-- D 1 - - - 0x007C9F 01:BC8F: BA        .byte $BA, $BB   ; 
-- D 1 - - - 0x007CA1 01:BC91: BC        .byte $BC, $BD   ; 
+- D 1 - - - 0x007C9F 01:BC8F: BA        .byte $BA, $BB   ; 0C US
+- D 1 - - - 0x007CA1 01:BC91: BC        .byte $BC, $BD   ; 0E US
 ; 04
-- D 1 - - - 0x007CA3 01:BC93: C2        .byte $C2, $C3   ; 
-- D 1 - - - 0x007CA5 01:BC95: C4        .byte $C4, $C5   ; 
+- D 1 - - - 0x007CA3 01:BC93: C2        .byte $C2, $C3   ; 10 US
+- D 1 - - - 0x007CA5 01:BC95: C4        .byte $C4, $C5   ; 12 US
+
+; 00
+                                        .byte $00, $00   ; 14 EU
+                                        .byte $00, $00   ; 16 EU
+; 01
+                                        .byte $32, $33   ; 18 EU
+                                        .byte $38, $39   ; 1A EU
+; 02
+                                        .byte $30, $31   ; 1C EU
+                                        .byte $36, $37   ; 1E EU
+; 03
+                                        .byte $20, $21   ; 20 EU
+                                        .byte $29, $2A   ; 22 EU
+; 04
+                                        .byte $34, $35   ; 24 EU
+                                        .byte $3A, $3B   ; 26 EU
 
 
 
