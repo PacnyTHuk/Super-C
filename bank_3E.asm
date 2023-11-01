@@ -1710,6 +1710,7 @@ C - - - - - 0x01EA9C 07:EA8C: 05 3A     ORA ram_003A
 C - - - - - 0x01EA9E 07:EA8E: 05 1D     ORA ram_001D
 C - - - - - 0x01EAA0 07:EA90: D0 1C     BNE bra_EAAE_RTS
 C - - - - - 0x01EAA2 07:EA92: A5 F5     LDA ram_копия_нажатая_кнопка
+                                        ORA ram_копия_нажатая_кнопка + $01
 C - - - - - 0x01EAA4 07:EA94: A4 39     LDY ram_пауза
 C - - - - - 0x01EAA6 07:EA96: D0 0E     BNE bra_EAA6_игра_на_паузе
 C - - - - - 0x01EAA8 07:EA98: 29 10     AND #con_btn_Start
@@ -1717,12 +1718,29 @@ C - - - - - 0x01EAAA 07:EA9A: F0 12     BEQ bra_EAAE_RTS
 C - - - - - 0x01EAAC 07:EA9C: A9 01     LDA #$01
 C - - - - - 0x01EAAE 07:EA9E: 85 39     STA ram_пауза
 C - - - - - 0x01EAB0 07:EAA0: A9 27     LDA #con_sound_27
-C - - - - - 0x01EAB2 07:EAA2: 4C DE FD  JMP loc_FDDE_play_sound
+C - - - - - 0x01EAB2 07:EAA2: 4C DE FD  JSR sub_FDDE_play_sound
+; 1путин: сохраняем копию палитру в ram
+                                        LDY #$1F
+bra_EAA4_loop:
+                                        LDA ram_pal_buffer,Y
+                                        STA ram_копия_pal_buffer,Y
+                                        DEY
+                                        BPL bra_EAA4_loop
+                                        JSR sub_FAAB_затемнение_палитры
+                                        RTS
 bra_EAA6_игра_на_паузе:
 C - - - - - 0x01EAB6 07:EAA6: 29 10     AND #con_btn_Start
 C - - - - - 0x01EAB8 07:EAA8: F0 05     BEQ bra_EAAE_RTS
 C - - - - - 0x01EABA 07:EAAA: A9 00     LDA #$00
 C - - - - - 0x01EABC 07:EAAC: 85 39     STA ram_пауза
+; 1путин: восстанавливаем палитру
+                                        LDY #$1F
+bra_EAAD_loop:
+                                        LDA ram_копия_pal_buffer,Y
+                                        STA ram_pal_buffer,Y
+                                        DEY 
+                                        BPL bra_EAAD_loop
+                                        JSR sub_F7BE_запись_палитры_из_03E0x_в_0300x
 bra_EAAE_RTS:
 C - - - - - 0x01EABE 07:EAAE: 60        RTS
 
@@ -4311,6 +4329,7 @@ C - - - - - 0x01FAB3 07:FAA3: A9 08     LDA #$08
 C - - - - - 0x01FAB5 07:FAA5: 85 95     STA ram_0095
 C - - - - - 0x01FAB7 07:FAA7: A9 00     LDA #$00
 C - - - - - 0x01FAB9 07:FAA9: 85 00     STA ram_0000
+sub_FAAB_затемнение_палитры:
 C - - - - - 0x01FABB 07:FAAB: A0 1F     LDY #$1F
 bra_FAAD_loop:
 C - - - - - 0x01FABD 07:FAAD: B9 E0 03  LDA ram_pal_buffer,Y

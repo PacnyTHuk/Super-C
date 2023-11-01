@@ -2028,7 +2028,11 @@ ram_04FE                                = $04FE ; 007D2F 00D924 0115E0 01E5F1 01
 ram_04FF                                = $04FF ; 007D2F 00D924 0115E0 011BD4 011BE0 011BFD 01E5F1 01FB0B 
 
 
-; free addresses 0500-07CF
+; 0500-051F (20) pal buffer 
+ram_копия_pal_buffer                    = $0500 ; Копия палитры для затемнения паузы
+
+
+; free addresses 0520-07CF
 
 
 ram_07D0                                = $07D0 ; 001C08 0078DF 01E608 01F090 01FB19 
