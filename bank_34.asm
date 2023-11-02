@@ -521,7 +521,7 @@ C - - - - - 0x0082E4 02:82D4: 85 70     STA ram_0070
 C - - - - - 0x0082E6 02:82D6: 20 7F FC  JSR sub_0x01FC8F_copy_reg_values
 C - - - - - 0x0082E9 02:82D9: 20 94 AA  JSR sub_0x006AA4_save_reg_values
 C - - - - - 0x0082EC 02:82DC: A9 80     LDA #$80
-C - - - - - 0x0082EE 02:82DE: 85 85     STA ram_0085
+C - - - - - 0x0082EE 02:82DE: 85 85     STA ram_0085_for_2006
 C - - - - - 0x0082F0 02:82E0: A9 01     LDA #con_mirroring_H
 C - - - - - 0x0082F2 02:82E2: 85 26     STA ram_for_A000
 C - - - - - 0x0082F4 02:82E4: A9 06     LDA #con_irq_area_8_ceiling
@@ -567,7 +567,7 @@ C - - - - - 0x00833A 02:832A: 85 6B     STA ram_006B
 C - - - - - 0x00833C 02:832C: 60        RTS
 bra_832D:
 C - - - - - 0x00833D 02:832D: A9 01     LDA #$01
-C - - - - - 0x00833F 02:832F: 85 85     STA ram_0085
+C - - - - - 0x00833F 02:832F: 85 85     STA ram_0085_for_2006
 C - - - - - 0x008341 02:8331: A9 00     LDA #$00
 C - - - - - 0x008343 02:8333: 9D 48 07  STA ram_0748_obj,X
 C - - - - - 0x008346 02:8336: 4C D7 A2  JMP loc_0x0062E7_increase_obj_state
@@ -600,7 +600,7 @@ C - - - - - 0x00836E 02:835E: 20 A1 AA  JSR sub_0x006AB1_restore_reg_values
 C - - - - - 0x008371 02:8361: A5 FD     LDA ram_scroll_X
 C - - - - - 0x008373 02:8363: 85 FA     STA ram_00FA
 C - - - - - 0x008375 02:8365: A9 00     LDA #$00
-C - - - - - 0x008377 02:8367: 85 85     STA ram_0085
+C - - - - - 0x008377 02:8367: 85 85     STA ram_0085_for_2006
 C - - - - - 0x008379 02:8369: 20 82 F1  JSR sub_0x01F192
 C - - - - - 0x00837C 02:836C: E6 74     INC ram_0074_конфиг_уровня
 C - - - - - 0x00837E 02:836E: C6 65     DEC ram_0065
@@ -1007,7 +1007,7 @@ _off001_0x0085A4_6D_boss_8_eye:
 - D 0 - I - 0x0085B4 02:85A4: 18 87     .word ofs_038_6D_8718_09 ; 
 - D 0 - I - 0x0085B6 02:85A6: 1E 87     .word ofs_038_6D_871E_0A ; 
 - D 0 - I - 0x0085B8 02:85A8: F6 A2     .word ofs_038_6D_0x006306_0B ; 
-- D 0 - I - 0x0085BA 02:85AA: 37 A3     .word ofs_038_6D_0x006347_0C_удалить_объект_08 ; 
+- D 0 - I - 0x0085BA 02:85AA: 37 A3     .word ofs_038_6D_0x006347_0C_удалить_объект_босс ; 
 
 
 
@@ -1048,7 +1048,7 @@ bra_85E3_RTS:
 C - - - - - 0x0085F3 02:85E3: 60        RTS
 bra_85E4:
 C - - - - - 0x0085F4 02:85E4: A0 AC     LDY #con_F97C_colors + $2B * $04
-C - - - - - 0x0085F6 02:85E6: 20 64 F9  JSR sub_0x01F974_write_3_colors_with_condition
+C - - - - - 0x0085F6 02:85E6: 20 64 F9  JSR sub_0x01F974_запись_3х_цветов_с_условием
 C - - - - - 0x0085F9 02:85E9: A6 10     LDX ram_0010
 C - - - - - 0x0085FB 02:85EB: A9 30     LDA #con_sound_30
 C - - - - - 0x0085FD 02:85ED: 20 DE FD  JSR sub_0x01FDEE_play_sound
@@ -1172,7 +1172,7 @@ C - - - - - 0x0086F1 02:86E1: 18        CLC
 C - - - - - 0x0086F2 02:86E2: 69 07     ADC #$07
 C - - - - - 0x0086F4 02:86E4: 85 1E     STA ram_index_ppu_buffer
 C - - - - - 0x0086F6 02:86E6: A0 B0     LDY #con_F97C_colors + $2C * $04
-C - - - - - 0x0086F8 02:86E8: 20 64 F9  JSR sub_0x01F974_write_3_colors_with_condition
+C - - - - - 0x0086F8 02:86E8: 20 64 F9  JSR sub_0x01F974_запись_3х_цветов_с_условием
 C - - - - - 0x0086FB 02:86EB: A6 10     LDX ram_0010
 C - - - - - 0x0086FD 02:86ED: A9 20     LDA #$20
 C - - - - - 0x0086FF 02:86EF: 9D 02 07  STA ram_0702_obj,X
@@ -2832,7 +2832,7 @@ C - - - - - 0x00911D 02:910D: 4C A2 A2  JMP loc_0x0062B2
 
 
 ofs_038_51_9110_0B: ; bzk optimize
-C - - J - - 0x009120 02:9110: 4C 37 A3  JMP loc_0x006347_удалить_объект_08
+C - - J - - 0x009120 02:9110: 4C 37 A3  JMP loc_0x006347_удалить_объект_босс
 
 
 
@@ -2971,7 +2971,7 @@ C - - - - - 0x0091E2 02:91D2: 4C 9A 91  JMP loc_919A_loop
 
 
 sub_91D5:
-C - - - - - 0x0091E5 02:91D5: A5 85     LDA ram_0085
+C - - - - - 0x0091E5 02:91D5: A5 85     LDA ram_0085_for_2006
 C - - - - - 0x0091E7 02:91D7: D0 F0     BNE bra_91C9_RTS
 C - - - - - 0x0091E9 02:91D9: A0 02     LDY #$02
 C - - - - - 0x0091EB 02:91DB: 20 1E 91  JSR sub_911E

@@ -904,7 +904,7 @@ C - - - - - 0x010569 04:8559: A9 20     LDA #con_chr_bank + $20
 C - - - - - 0x01056B 04:855B: 8D F0 07  STA ram_bg_bank_1
 C - - - - - 0x01056E 04:855E: A9 22     LDA #con_chr_bank + $22
 C - - - - - 0x010570 04:8560: 8D F1 07  STA ram_bg_bank_2
-C - - - - - 0x010573 04:8563: 4C 37 A3  JMP loc_0x006347_удалить_объект_08
+C - - - - - 0x010573 04:8563: 4C 37 A3  JMP loc_0x006347_удалить_объект_босс
 
 
 
@@ -3496,9 +3496,9 @@ C - - - - - 0x01144F 04:943F: 8D F5 07  STA ram_spr_bank_4
 C - - - - - 0x011452 04:9442: A9 FF     LDA #$FF
 C - - - - - 0x011454 04:9444: 8D CF 03  STA ram_03CF
 C - - - - - 0x011457 04:9447: A0 9C     LDY #con_F97C_colors + $27 * $04
-C - - - - - 0x011459 04:9449: 20 64 F9  JSR sub_0x01F974_write_3_colors_with_condition
+C - - - - - 0x011459 04:9449: 20 64 F9  JSR sub_0x01F974_запись_3х_цветов_с_условием
 C - - - - - 0x01145C 04:944C: A0 A0     LDY #con_F97C_colors + $28 * $04
-C - - - - - 0x01145E 04:944E: 20 64 F9  JSR sub_0x01F974_write_3_colors_with_condition
+C - - - - - 0x01145E 04:944E: 20 64 F9  JSR sub_0x01F974_запись_3х_цветов_с_условием
 C - - - - - 0x011461 04:9451: A6 10     LDX ram_0010
 C - - - - - 0x011463 04:9453: A9 70     LDA #$70
 C - - - - - 0x011465 04:9455: 4C E0 A2  JMP loc_0x0062F0
@@ -3729,7 +3729,7 @@ C - - - - - 0x0115EC 04:95DC: 4C A2 A2  JMP loc_0x0062B2
 
 
 ofs_038_65_95DF_0D: ; bzk optimize
-C - - J - - 0x0115EF 04:95DF: 4C 37 A3  JMP loc_0x006347_удалить_объект_08
+C - - J - - 0x0115EF 04:95DF: 4C 37 A3  JMP loc_0x006347_удалить_объект_босс
 
 
 

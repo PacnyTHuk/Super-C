@@ -253,10 +253,10 @@ C - - - - - 0x0045BE 01:85AE: 9D 72 07  STA ram_0772_obj,X
 ; 1путин: палитра для европейки
                                         LDX ram_options_регион
 C - - - - - 0x0045C1 01:85B1: A0 00     LDY tbl_85C7_color,X
-C - - - - - 0x0045C3 01:85B3: 20 64 F9  JSR sub_0x01F974_write_3_colors_with_condition
+C - - - - - 0x0045C3 01:85B3: 20 64 F9  JSR sub_0x01F974_запись_3х_цветов_с_условием
                                         LDX ram_options_регион
 C - - - - - 0x0045C6 01:85B6: A0 04     LDY tbl_85C7_color + $02,X
-C - - - - - 0x0045C8 01:85B8: 20 64 F9  JSR sub_0x01F974_write_3_colors_with_condition
+C - - - - - 0x0045C8 01:85B8: 20 64 F9  JSR sub_0x01F974_запись_3х_цветов_с_условием
 C - - - - - 0x0045CB 01:85BB: 20 B8 F7  JSR sub_0x01F7C8
 C - - - - - 0x0045CE 01:85BE: A6 10     LDX ram_0010
 C - - - - - 0x0045D0 01:85C0: A9 30     LDA #con_sound_30
@@ -377,7 +377,7 @@ C - - - - - 0x00465F 01:864F: A9 38     LDA #con_chr_bank + $38
 C - - - - - 0x004661 01:8651: 8D F0 07  STA ram_bg_bank_1
 C - - - - - 0x004664 01:8654: A9 3A     LDA #con_chr_bank + $3A
 C - - - - - 0x004666 01:8656: 8D F1 07  STA ram_bg_bank_2
-C - - - - - 0x004669 01:8659: 4C 37 A3  JMP loc_0x006347_удалить_объект_08
+C - - - - - 0x004669 01:8659: 4C 37 A3  JMP loc_0x006347_удалить_объект_босс
 
 
 sub_8789_EU:

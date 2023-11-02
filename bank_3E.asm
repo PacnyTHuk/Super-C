@@ -47,7 +47,7 @@
 .export sub_0x01F74F_начать_создание_нового_объекта
 .export sub_0x01F7AC_удалить_объект_01
 .export sub_0x01F7AE_подготовить_объект
-.export sub_0x01F7B9
+.export sub_0x01F7B9_запись_палитры_из_03E0x_в_0300x_с_условием
 .export sub_0x01F7C8
 .export sub_0x01F7CE_запись_палитры_из_03E0x_в_0300x
 .export loc_0x01F811
@@ -55,8 +55,8 @@
 .export sub_0x01F860
 .export tbl_0x01F8DC
 .export tbl_0x01F8E8
-.export sub_0x01F974_write_3_colors_with_condition
-.export sub_0x01F978_write_3_colors
+.export sub_0x01F974_запись_3х_цветов_с_условием
+.export sub_0x01F978_запись_3х_цветов
 .export sub_0x01FA40
 .export sub_0x01FAAF_затемнение_экрана
 .export tbl_0x01FB75_индексы
@@ -1102,7 +1102,7 @@ C - - - - - 0x01E743 07:E733: 85 1D     STA ram_001D
 C - - - - - 0x01E745 07:E735: A9 08     LDA #$10
 C - - - - - 0x01E747 07:E737: 20 70 FE  JSR sub_FE70_bankswitch_загрузка_палитры_в_03E0x
 C - - - - - 0x01E74A 07:E73A: A0 4C     LDY #con_F97C_colors + $13 * $04
-C - - - - - 0x01E74C 07:E73C: 20 68 F9  JSR sub_F968_write_3_colors
+C - - - - - 0x01E74C 07:E73C: 20 68 F9  JSR sub_F968_запись_3х_цветов
 C - - - - - 0x01E74F 07:E73F: 20 BE F7  JSR sub_F7BE_запись_палитры_из_03E0x_в_0300x
 C - - - - - 0x01E752 07:E742: A9 A8     LDA #$A8
 C - - - - - 0x01E754 07:E744: 85 FF     STA ram_for_2000
@@ -1308,7 +1308,7 @@ tbl_E867:
 
 
 ofs_033_E869_01_экран_очков:
-C - - J - - 0x01E879 07:E869: C6 3F     DEC ram_таймер_на_экране_очков
+C - - J - - 0x01E879 07:E869: C6 3F     DEC ram_таймер_экрана
 C - - - - - 0x01E87B 07:E86B: D0 25     BNE bra_E892_RTS
 C - - - - - 0x01E87D 07:E86D: 20 57 E5  JSR sub_FE84_XFF_обнуление_экранов_PPU
 C - - - - - 0x01E880 07:E870: 20 B0 EA  JSR sub_EAB0_bankswitch_подготовить_начальные_банки_для_уровня
@@ -1410,9 +1410,9 @@ C - - - - - 0x01E8ED 07:E8DD: 20 3D FE  JSR sub_FE3D_обработчик_уро
 C - - - - - 0x01E8F0 07:E8E0: A5 39     LDA ram_пауза
 C - - - - - 0x01E8F2 07:E8E2: F0 06     BEQ bra_E8EA
 C - - - - - 0x01E8F4 07:E8E4: 20 55 FE  JSR sub_FE55_выбрать_объекты_на_текущий_кадр
-C - - - - - 0x01E8F7 07:E8E7: 4C A9 F7  JMP loc_F7A9
+C - - - - - 0x01E8F7 07:E8E7: 4C A9 F7  JMP loc_F7A9_запись_палитры_из_03E0x_в_0300x_с_условием
 bra_E8EA:
-C - - - - - 0x01E8FA 07:E8EA: 20 06 E9  JSR sub_E906
+C - - - - - 0x01E8FA 07:E8EA: 20 06 E9  JSR sub_E906_обработчик_геймплея
 C - - - - - 0x01E8FD 07:E8ED: A5 5C     LDA ram_статус_завершения_уровня
 C - - - - - 0x01E8FF 07:E8EF: 30 01     BMI bra_E8F2
 C - - - - - 0x01E901 07:E8F1: 60        RTS
@@ -1427,7 +1427,7 @@ C D 3 - - - 0x01E906 07:E8F6: A9 35     LDA #con_sound_35
 C - - - - - 0x01E908 07:E8F8: 20 DE FD  JSR sub_FDDE_play_sound
 C - - - - - 0x01E90B 07:E8FB: A0 01     LDY #$01
 C - - - - - 0x01E90D 07:E8FD: A9 05     LDA #$05
-C - - - - - 0x01E90F 07:E8FF: 84 3F     STY ram_таймер_на_экране_очков
+C - - - - - 0x01E90F 07:E8FF: 84 3F     STY ram_таймер_экрана
 bra_E901:
 loc_E901:
 C D 3 - - - 0x01E911 07:E901: 85 38     STA ram_номер_экрана
@@ -1435,7 +1435,7 @@ C - - - - - 0x01E913 07:E903: 4C B4 E8  JMP loc_E8B4
 
 
 
-sub_E906:
+sub_E906_обработчик_геймплея:
 C - - - - - 0x01E916 07:E906: E6 5B     INC ram_счетчик_кадров_2
 C - - - - - 0x01E918 07:E908: 20 3A F8  JSR sub_F83A
 C - - - - - 0x01E91B 07:E90B: 20 45 FE  JSR sub_FE45
@@ -1445,7 +1445,7 @@ C - - - - - 0x01E924 07:E914: 20 4D FE  JSR sub_FE4D
 C - - - - - 0x01E927 07:E917: 20 25 FE  JSR sub_FE25_спавн_объектов_из_данных_уровня
 C - - - - - 0x01E92A 07:E91A: 20 2D FE  JSR sub_FE2D_спавн_обычных_мобов
 C - - - - - 0x01E92D 07:E91D: 20 1F FE  JSR sub_FE1F_обработчик_объектов
-C - - - - - 0x01E930 07:E920: 4C A9 F7  JMP loc_F7A9
+C - - - - - 0x01E930 07:E920: 4C A9 F7  JMP loc_F7A9_запись_палитры_из_03E0x_в_0300x_с_условием
 
 
 
@@ -1467,53 +1467,54 @@ bra_E933:
                                         STA ram_0001
                                         JMP (ram_0000)
 tbl_E636_lo:
-- D 3 - I - 0x01E946 07:E936: 42 E9     .byte < ofs_034_E942_00
-- D 3 - I - 0x01E948 07:E938: 4C E9     .byte < ofs_034_E94C_01
-- D 3 - I - 0x01E94A 07:E93A: 79 E9     .byte < ofs_034_E979_02
+- D 3 - I - 0x01E946 07:E936: 42 E9     .byte < ofs_034_E942_00_босс_закончил_взрываться
+- D 3 - I - 0x01E948 07:E938: 4C E9     .byte < ofs_034_E94C_01_ожидание_после_взрыва_босса
+- D 3 - I - 0x01E94A 07:E93A: 79 E9     .byte < ofs_034_E979_02_игрок_автоматом_бежит_к_выходу
 - D 3 - I - 0x01E94C 07:E93C: B2 E9     .byte < ofs_034_E9B2_03
-- D 3 - I - 0x01E94E 07:E93E: BC E9     .byte < ofs_034_E9BC_04
+- D 3 - I - 0x01E94E 07:E93E: BC E9     .byte < ofs_034_E9BC_04_затемнение_экрана
 - D 3 - I - 0x01E950 07:E940: CC E9     .byte < ofs_034_E9CC_05
 tbl_E636_hi:
-- D 3 - I - 0x01E946 07:E936: 42 E9     .byte > ofs_034_E942_00
-- D 3 - I - 0x01E948 07:E938: 4C E9     .byte > ofs_034_E94C_01
-- D 3 - I - 0x01E94A 07:E93A: 79 E9     .byte > ofs_034_E979_02
+- D 3 - I - 0x01E946 07:E936: 42 E9     .byte > ofs_034_E942_00_босс_закончил_взрываться
+- D 3 - I - 0x01E948 07:E938: 4C E9     .byte > ofs_034_E94C_01_ожидание_после_взрыва_босса
+- D 3 - I - 0x01E94A 07:E93A: 79 E9     .byte > ofs_034_E979_02_игрок_автоматом_бежит_к_выходу
 - D 3 - I - 0x01E94C 07:E93C: B2 E9     .byte > ofs_034_E9B2_03
-- D 3 - I - 0x01E94E 07:E93E: BC E9     .byte > ofs_034_E9BC_04
+- D 3 - I - 0x01E94E 07:E93E: BC E9     .byte > ofs_034_E9BC_04_затемнение_экрана
 - D 3 - I - 0x01E950 07:E940: CC E9     .byte > ofs_034_E9CC_05
 
 
 
-ofs_034_E942_00:
+ofs_034_E942_00_босс_закончил_взрываться:
 C - - J - - 0x01E952 07:E942: 20 3D FE  JSR sub_FE3D_обработчик_уровня
-C - - - - - 0x01E955 07:E945: 20 06 E9  JSR sub_E906
+C - - - - - 0x01E955 07:E945: 20 06 E9  JSR sub_E906_обработчик_геймплея
 C - - - - - 0x01E958 07:E948: A9 5E     LDA #$5E
-C - - - - - 0x01E95A 07:E94A: D0 28     BNE bra_E974    ; jmp
+C - - - - - 0x01E95A 07:E94A: D0 28     BNE bra_E974_запись_таймера_экрана    ; jmp
 
 
 
-ofs_034_E94C_01:
+ofs_034_E94C_01_ожидание_после_взрыва_босса:
 C - - J - - 0x01E95C 07:E94C: 20 3D FE  JSR sub_FE3D_обработчик_уровня
-C - - - - - 0x01E95F 07:E94F: 20 06 E9  JSR sub_E906
+C - - - - - 0x01E95F 07:E94F: 20 06 E9  JSR sub_E906_обработчик_геймплея
 C - - - - - 0x01E962 07:E952: A5 1B     LDA ram_счетчик_кадров_1
 C - - - - - 0x01E964 07:E954: 4A        LSR
 C - - - - - 0x01E965 07:E955: B0 21     BCS bra_E978_RTS
-C - - - - - 0x01E967 07:E957: C6 3F     DEC ram_таймер_на_экране_очков
+C - - - - - 0x01E967 07:E957: C6 3F     DEC ram_таймер_экрана
 C - - - - - 0x01E969 07:E959: D0 1D     BNE bra_E978_RTS
 C - - - - - 0x01E96B 07:E95B: A9 33     LDA #con_sound_33
 C - - - - - 0x01E96D 07:E95D: A4 50     LDY ram_номер_уровня
 C - - - - - 0x01E96F 07:E95F: C0 07     CPY #$07
-C - - - - - 0x01E971 07:E961: D0 02     BNE bra_E965
+C - - - - - 0x01E971 07:E961: D0 02     BNE bra_E965_не_последний_уровень
+; последний уровень
 C - - - - - 0x01E973 07:E963: A9 34     LDA #con_sound_34
-bra_E965:
+bra_E965_не_последний_уровень:
 C - - - - - 0x01E975 07:E965: 20 DE FD  JSR sub_FDDE_play_sound
 C - - - - - 0x01E978 07:E968: A9 00     LDA #$00
 C - - - - - 0x01E97A 07:E96A: 85 40     STA ram_0040
 C - - - - - 0x01E97C 07:E96C: A5 5C     LDA ram_статус_завершения_уровня
-C - - - - - 0x01E97E 07:E96E: 09 40     ORA #$40
+C - - - - - 0x01E97E 07:E96E: 09 40     ORA #$40    ; флаг автобега игрока
 C - - - - - 0x01E980 07:E970: 85 5C     STA ram_статус_завершения_уровня
 C - - - - - 0x01E982 07:E972: A9 90     LDA #$90
-bra_E974:
-C - - - - - 0x01E984 07:E974: 85 3F     STA ram_таймер_на_экране_очков
+bra_E974_запись_таймера_экрана:
+C - - - - - 0x01E984 07:E974: 85 3F     STA ram_таймер_экрана
 bra_E976:
 loc_E976:
 C D 3 - - - 0x01E986 07:E976: E6 3E     INC ram_003E
@@ -1522,46 +1523,46 @@ C - - - - - 0x01E988 07:E978: 60        RTS
 
 
 
-ofs_034_E979_02:
+ofs_034_E979_02_игрок_автоматом_бежит_к_выходу:
 C - - J - - 0x01E989 07:E979: 20 CF FE  JSR sub_FECF_stage_complete_handler
 C - - - - - 0x01E98C 07:E97C: 20 3D FE  JSR sub_FE3D_обработчик_уровня
-C - - - - - 0x01E98F 07:E97F: 20 06 E9  JSR sub_E906
+C - - - - - 0x01E98F 07:E97F: 20 06 E9  JSR sub_E906_обработчик_геймплея
 C - - - - - 0x01E992 07:E982: A5 1B     LDA ram_счетчик_кадров_1
 C - - - - - 0x01E994 07:E984: 29 03     AND #$03
 C - - - - - 0x01E996 07:E986: D0 02     BNE bra_E98A
-C - - - - - 0x01E998 07:E988: C6 3F     DEC ram_таймер_на_экране_очков
+C - - - - - 0x01E998 07:E988: C6 3F     DEC ram_таймер_экрана
 bra_E98A:
 C - - - - - 0x01E99A 07:E98A: F0 21     BEQ bra_E9AD
-C - - - - - 0x01E99C 07:E98C: A5 3F     LDA ram_таймер_на_экране_очков
+C - - - - - 0x01E99C 07:E98C: A5 3F     LDA ram_таймер_экрана
 C - - - - - 0x01E99E 07:E98E: C9 30     CMP #$30
 C - - - - - 0x01E9A0 07:E990: B0 1F     BCS bra_E9B1_RTS
-C - - - - - 0x01E9A2 07:E992: A0 00     LDY #$00
+C - - - - - 0x01E9A2 07:E992: A0 00     LDY #$00    ; счетчик выполненных условий в коде
 C - - - - - 0x01E9A4 07:E994: A5 CA     LDA ram_plr_game_over
 C - - - - - 0x01E9A6 07:E996: D0 07     BNE bra_E99F
 C - - - - - 0x01E9A8 07:E998: A5 A0     LDA ram_статус_игрока
 C - - - - - 0x01E9AA 07:E99A: C9 08     CMP #$08
 C - - - - - 0x01E9AC 07:E99C: F0 01     BEQ bra_E99F
-C - - - - - 0x01E9AE 07:E99E: C8        INY
+C - - - - - 0x01E9AE 07:E99E: C8        INY ; 01
 bra_E99F:
 C - - - - - 0x01E9AF 07:E99F: A5 CB     LDA ram_plr_game_over + $01
 C - - - - - 0x01E9B1 07:E9A1: D0 07     BNE bra_E9AA
 C - - - - - 0x01E9B3 07:E9A3: A5 A1     LDA ram_статус_игрока + $01
 C - - - - - 0x01E9B5 07:E9A5: C9 08     CMP #$08
 C - - - - - 0x01E9B7 07:E9A7: F0 01     BEQ bra_E9AA
-C - - - - - 0x01E9B9 07:E9A9: C8        INY
+C - - - - - 0x01E9B9 07:E9A9: C8        INY ; 01/02
 bra_E9AA:
 C - - - - - 0x01E9BA 07:E9AA: 98        TYA
 C - - - - - 0x01E9BB 07:E9AB: D0 04     BNE bra_E9B1_RTS
 bra_E9AD:
 C - - - - - 0x01E9BD 07:E9AD: A9 08     LDA #$08
-C - - - - - 0x01E9BF 07:E9AF: D0 C3     BNE bra_E974    ; jmp
+C - - - - - 0x01E9BF 07:E9AF: D0 C3     BNE bra_E974_запись_таймера_экрана    ; jmp
 bra_E9B1_RTS:
 C - - - - - 0x01E9C1 07:E9B1: 60        RTS
 
 
 
 ofs_034_E9B2_03:
-C - - J - - 0x01E9C2 07:E9B2: C6 3F     DEC ram_таймер_на_экране_очков
+C - - J - - 0x01E9C2 07:E9B2: C6 3F     DEC ram_таймер_экрана
 C - - - - - 0x01E9C4 07:E9B4: D0 FB     BNE bra_E9B1_RTS
 C - - - - - 0x01E9C6 07:E9B6: A9 01     LDA #$01
 C - - - - - 0x01E9C8 07:E9B8: 85 95     STA ram_0095
@@ -1569,20 +1570,21 @@ C - - - - - 0x01E9CA 07:E9BA: D0 BA     BNE bra_E976    ; jmp
 
 
 
-ofs_034_E9BC_04:
+ofs_034_E9BC_04_затемнение_экрана:
 C - - J - - 0x01E9CC 07:E9BC: 20 9F FA  JSR sub_FA9F_затемнение_экрана
 C - - - - - 0x01E9CF 07:E9BF: 08        PHP
-C - - - - - 0x01E9D0 07:E9C0: 20 A9 F7  JSR sub_F7A9
+C - - - - - 0x01E9D0 07:E9C0: 20 A9 F7  JSR sub_F7A9_запись_палитры_из_03E0x_в_0300x_с_условием
 C - - - - - 0x01E9D3 07:E9C3: 28        PLP
 C - - - - - 0x01E9D4 07:E9C4: 90 EB     BCC bra_E9B1_RTS
+; если вся палитра уже полностью черная
 C - - - - - 0x01E9D6 07:E9C6: A9 30     LDA #$30
-C - - - - - 0x01E9D8 07:E9C8: 85 3F     STA ram_таймер_на_экране_очков
+C - - - - - 0x01E9D8 07:E9C8: 85 3F     STA ram_таймер_экрана
 C - - - - - 0x01E9DA 07:E9CA: D0 AA     BNE bra_E976    ; jmp
 
 
 
 ofs_034_E9CC_05:
-C - - J - - 0x01E9DC 07:E9CC: C6 3F     DEC ram_таймер_на_экране_очков
+C - - J - - 0x01E9DC 07:E9CC: C6 3F     DEC ram_таймер_экрана
 C - - - - - 0x01E9DE 07:E9CE: D0 E1     BNE bra_E9B1_RTS
 C - - - - - 0x01E9E0 07:E9D0: 20 57 E5  JSR sub_FE84_XFF_обнуление_экранов_PPU
 C - - - - - 0x01E9E3 07:E9D3: E6 50     INC ram_номер_уровня
@@ -1617,13 +1619,13 @@ C - - - - - 0x01EA19 07:EA09: 20 31 E7  JSR sub_E731
 C - - - - - 0x01EA1C 07:EA0C: 20 C0 E7  JSR sub_E7C0_выбор_банков_chr
 C - - - - - 0x01EA1F 07:EA0F: A9 C0     LDA #$C0
 loc_EA11:
-C D 3 - - - 0x01EA21 07:EA11: 85 3F     STA ram_таймер_на_экране_очков
+C D 3 - - - 0x01EA21 07:EA11: 85 3F     STA ram_таймер_экрана
 C - - - - - 0x01EA23 07:EA13: 4C B2 E8  JMP loc_E8B2
 
 
 
 ofs_033_EA16_06_gameover_музыка:
-C - - J - - 0x01EA26 07:EA16: C6 3F     DEC ram_таймер_на_экране_очков
+C - - J - - 0x01EA26 07:EA16: C6 3F     DEC ram_таймер_экрана
 C - - - - - 0x01EA28 07:EA18: D0 3F     BNE bra_EA59_RTS
 C - - - - - 0x01EA2A 07:EA1A: C6 59     DEC ram_конты
 C - - - - - 0x01EA2C 07:EA1C: 30 34     BMI bra_EA52_игра_окончена
@@ -2855,7 +2857,7 @@ sub_0x01F198:
 C - - - - - 0x01F198 07:F188: A9 00     LDA #$00
 C - - - - - 0x01F19A 07:F18A: 85 FD     STA ram_scroll_X
 C - - - - - 0x01F19C 07:F18C: 85 26     STA ram_for_A000    ; con_mirroring_V
-C - - - - - 0x01F19E 07:F18E: 85 86     STA ram_0085 + $01
+C - - - - - 0x01F19E 07:F18E: 85 86     STA ram_0085_for_2006 + $01
 sub_0x01F1A0:
 C - - - - - 0x01F1A0 07:F190: A9 00     LDA #$00
 C - - - - - 0x01F1A2 07:F192: 85 64     STA ram_0064
@@ -3679,8 +3681,8 @@ C - - - - - 0x01F6C6 07:F6B6: A9 00     LDA #$00
 C - - - - - 0x01F6C8 07:F6B8: 95 C4     STA ram_инвиз_игрока,X
 C - - - - - 0x01F6CA 07:F6BA: A9 01     LDA #$01
 C - - - - - 0x01F6CC 07:F6BC: 95 C0     STA ram_таймер_респавна_игрока,X
-C - - - - - 0x01F6CE 07:F6BE: A9 01     LDA #$01
-C - - - - - 0x01F6D0 07:F6C0: 95 C2     STA ram_флаг_статус_игрока,X
+C - - - - - 0x01F6CE 07:F6BE: A9 01     LDA #$01    ; флаг смерти
+C - - - - - 0x01F6D0 07:F6C0: 95 C2     STA ram_флаг_мертвого_игрока,X
 C - - - - - 0x01F6D2 07:F6C2: A9 03     LDA #$03
 C - - - - - 0x01F6D4 07:F6C4: 95 A0     STA ram_статус_игрока,X
 bra_F6C6_RTS:
@@ -3826,10 +3828,10 @@ C - - - - - 0x01F7B8 07:F7A8: 60        RTS
 
 
 
-loc_F7A9:
-sub_F7A9:
-sub_0x01F7B9:
-C D 3 - - - 0x01F7B9 07:F7A9: A5 86     LDA ram_0085 + $01
+loc_F7A9_запись_палитры_из_03E0x_в_0300x_с_условием:
+sub_F7A9_запись_палитры_из_03E0x_в_0300x_с_условием:
+sub_0x01F7B9_запись_палитры_из_03E0x_в_0300x_с_условием:
+C D 3 - - - 0x01F7B9 07:F7A9: A5 86     LDA ram_0085_for_2006 + $01
 C - - - - - 0x01F7BB 07:F7AB: D0 06     BNE bra_F7B3_RTS
 C - - - - - 0x01F7BD 07:F7AD: A5 1E     LDA ram_index_ppu_buffer
 C - - - - - 0x01F7BF 07:F7AF: C9 20     CMP #$20
@@ -3886,7 +3888,6 @@ C - - - - - 0x01F801 07:F7F1: 60        RTS
 
 
 tbl_F7F2:
-; 02
 - D 3 - - - 0x01F802 07:F7F2: 00 3F     .word $3F00 ; ppu address
 - D 3 - - - 0x01F804 07:F7F4: 01        .byte con_buf_mode_01   ; 
 
@@ -4132,11 +4133,11 @@ tbl_F8E4:
 
 
 
-sub_0x01F974_write_3_colors_with_condition:
+sub_0x01F974_запись_3х_цветов_с_условием:
 C - - - - - 0x01F974 07:F964: A5 5C     LDA ram_статус_завершения_уровня
 C - - - - - 0x01F976 07:F966: D0 13     BNE bra_F97B_RTS
-sub_F968_write_3_colors:
-sub_0x01F978_write_3_colors:
+sub_F968_запись_3х_цветов:
+sub_0x01F978_запись_3х_цветов:
 ; see con_F97C_colors
 C - - - - - 0x01F978 07:F968: BE 7C F9  LDX tbl_F97C,Y
 C - - - - - 0x01F97B 07:F96B: A9 03     LDA #$03
@@ -4321,13 +4322,13 @@ tbl_FA3F:
 - D 3 - - - 0x01FA9F 07:FA8F: 01        .byte $01, $01, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 50 
 
 
-sub_0x01FAAF_затемнение_экрана:
 sub_FA9F_затемнение_экрана:
+sub_0x01FAAF_затемнение_экрана:
 C - - - - - 0x01FAAF 07:FA9F: C6 95     DEC ram_0095
-C - - - - - 0x01FAB1 07:FAA1: D0 25     BNE bra_FAC8
-C - - - - - 0x01FAB3 07:FAA3: A9 08     LDA #$08
+C - - - - - 0x01FAB1 07:FAA1: D0 25     BNE bra_FAC8_пропуск_затемнения
+C - - - - - 0x01FAB3 07:FAA3: A9 08     LDA #$08    ; кадры перед следующей степенью затемнения
 C - - - - - 0x01FAB5 07:FAA5: 85 95     STA ram_0095
-C - - - - - 0x01FAB7 07:FAA7: A9 00     LDA #$00
+C - - - - - 0x01FAB7 07:FAA7: A9 00     LDA #$00    ; счетчик измененных цветов
 C - - - - - 0x01FAB9 07:FAA9: 85 00     STA ram_0000
 sub_FAAB_затемнение_палитры:
 C - - - - - 0x01FABB 07:FAAB: A0 1F     LDY #$1F
@@ -4348,7 +4349,7 @@ C - - - - - 0x01FAD1 07:FAC1: 10 EA     BPL bra_FAAD_loop
 C - - - - - 0x01FAD3 07:FAC3: 38        SEC
 C - - - - - 0x01FAD4 07:FAC4: A5 00     LDA ram_0000
 C - - - - - 0x01FAD6 07:FAC6: F0 01     BEQ bra_FAC9_RTS
-bra_FAC8:
+bra_FAC8_пропуск_затемнения:
 C - - - - - 0x01FAD8 07:FAC8: 18        CLC
 bra_FAC9_RTS:
 C - - - - - 0x01FAD9 07:FAC9: 60        RTS

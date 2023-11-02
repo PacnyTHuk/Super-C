@@ -1046,8 +1046,8 @@ C - - - - - 0x002331 00:A321: A9 00     LDA #con_mirroring_V
 C - - - - - 0x002333 00:A323: 85 26     STA ram_for_A000
 C - - - - - 0x002335 00:A325: A9 A9     LDA #$A9
 C - - - - - 0x002337 00:A327: 85 FF     STA ram_for_2000
-C - - - - - 0x002339 00:A329: 85 85     STA ram_0085
-C - - - - - 0x00233B 00:A32B: 85 86     STA ram_0085 + $01
+C - - - - - 0x002339 00:A329: 85 85     STA ram_0085_for_2006
+C - - - - - 0x00233B 00:A32B: 85 86     STA ram_0085_for_2006 + $01
 C - - - - - 0x00233D 00:A32D: A9 00     LDA #$00
 C - - - - - 0x00233F 00:A32F: 85 FD     STA ram_scroll_X
 C - - - - - 0x002341 00:A331: 85 FC     STA ram_scroll_Y
@@ -1072,11 +1072,11 @@ C - - - - - 0x002359 00:A349: 6A        ROR
 C - - - - - 0x00235A 00:A34A: 5D 6B A3  EOR tbl_A36B_x_скорость_смещения,X
 C - - - - - 0x00235D 00:A34D: 10 06     BPL bra_A355
 ; N+
-C - - - - - 0x00235F 00:A34F: B5 85     LDA ram_0085,X
+C - - - - - 0x00235F 00:A34F: B5 85     LDA ram_0085_for_2006,X
 C - - - - - 0x002361 00:A351: 49 01     EOR #$01
-C - - - - - 0x002363 00:A353: 95 85     STA ram_0085,X
+C - - - - - 0x002363 00:A353: 95 85     STA ram_0085_for_2006,X
 bra_A355:
-C - - - - - 0x002365 00:A355: B5 85     LDA ram_0085,X
+C - - - - - 0x002365 00:A355: B5 85     LDA ram_0085_for_2006,X
 C - - - - - 0x002367 00:A357: 85 FF     STA ram_for_2000
 C - - - - - 0x002369 00:A359: B5 83     LDA ram_0083,X
 C - - - - - 0x00236B 00:A35B: 85 FD     STA ram_scroll_X

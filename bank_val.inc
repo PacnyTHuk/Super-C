@@ -325,8 +325,8 @@ con_sound_2F                            = $2F ; BGM7
 con_sound_30                            = $30 ; GREAT
 con_sound_31                            = $31 ; BOSS BGM
 con_sound_32                            = $32 ; BOSS2BGM
-con_sound_33                            = $33 ; P CLEAR
-con_sound_34                            = $34 ; A CLEAR
+con_sound_33                            = $33 ; P CLEAR (завершен уровень 1-7)
+con_sound_34                            = $34 ; A CLEAR (завершен уровень 8 (финальный))
 con_sound_35                            = $35 ; OVER
 con_sound_36                            = $36 ; ENDING
 ; special sounds

@@ -1406,7 +1406,7 @@ tbl_94E1:
 
 sub_94F3:
 C - - - - - 0x005503 01:94F3: A9 00     LDA #$00
-C - - - - - 0x005505 01:94F5: 85 86     STA ram_0085 + $01
+C - - - - - 0x005505 01:94F5: 85 86     STA ram_0085_for_2006 + $01
 C - - - - - 0x005507 01:94F7: BD 64 07  LDA ram_0764_obj,X
 C - - - - - 0x00550A 01:94FA: C9 01     CMP #$01
 C - - - - - 0x00550C 01:94FC: D0 03     BNE bra_9501
@@ -1621,7 +1621,7 @@ C - - - - - 0x005672 01:9662: 9D 00 03  STA ram_nmt_buffer,X    ; fill tile
 C - - - - - 0x005675 01:9665: E8        INX
 bra_9666:
 C - - - - - 0x005676 01:9666: 86 1E     STX ram_index_ppu_buffer
-C - - - - - 0x005678 01:9668: E6 86     INC ram_0085 + $01
+C - - - - - 0x005678 01:9668: E6 86     INC ram_0085_for_2006 + $01
 C - - - - - 0x00567A 01:966A: A6 10     LDX ram_0010
 C - - - - - 0x00567C 01:966C: DE 64 07  DEC ram_0764_obj,X
 C - - - - - 0x00567F 01:966F: 18        CLC
@@ -2392,7 +2392,7 @@ C - - - - - 0x005ADC 01:9ACC: 85 FC     STA ram_scroll_Y
 C - - - - - 0x005ADE 01:9ACE: 85 FD     STA ram_scroll_X
 C - - - - - 0x005AE0 01:9AD0: A9 AA     LDA #$AA
 C - - - - - 0x005AE2 01:9AD2: 85 FF     STA ram_for_2000
-C - - - - - 0x005AE4 01:9AD4: 4C 37 A3  JMP loc_0x006347_удалить_объект_08
+C - - - - - 0x005AE4 01:9AD4: 4C 37 A3  JMP loc_0x006347_удалить_объект_босс
 
 
 
