@@ -1413,7 +1413,7 @@ C - - - - - 0x01E8F4 07:E8E4: 20 55 FE  JSR sub_FE55_выбрать_объект
 C - - - - - 0x01E8F7 07:E8E7: 4C A9 F7  JMP loc_F7A9
 bra_E8EA:
 C - - - - - 0x01E8FA 07:E8EA: 20 06 E9  JSR sub_E906
-C - - - - - 0x01E8FD 07:E8ED: A5 5C     LDA ram_005C_unk
+C - - - - - 0x01E8FD 07:E8ED: A5 5C     LDA ram_статус_завершения_уровня
 C - - - - - 0x01E8FF 07:E8EF: 30 01     BMI bra_E8F2
 C - - - - - 0x01E901 07:E8F1: 60        RTS
 bra_E8F2:
@@ -1508,9 +1508,9 @@ bra_E965:
 C - - - - - 0x01E975 07:E965: 20 DE FD  JSR sub_FDDE_play_sound
 C - - - - - 0x01E978 07:E968: A9 00     LDA #$00
 C - - - - - 0x01E97A 07:E96A: 85 40     STA ram_0040
-C - - - - - 0x01E97C 07:E96C: A5 5C     LDA ram_005C_unk
+C - - - - - 0x01E97C 07:E96C: A5 5C     LDA ram_статус_завершения_уровня
 C - - - - - 0x01E97E 07:E96E: 09 40     ORA #$40
-C - - - - - 0x01E980 07:E970: 85 5C     STA ram_005C_unk
+C - - - - - 0x01E980 07:E970: 85 5C     STA ram_статус_завершения_уровня
 C - - - - - 0x01E982 07:E972: A9 90     LDA #$90
 bra_E974:
 C - - - - - 0x01E984 07:E974: 85 3F     STA ram_таймер_на_экране_очков
@@ -3671,7 +3671,7 @@ C - - - - - 0x01F6BB 07:F6AB: 60        RTS
 
 
 loc_0x01F6BD_убить_игрока:
-C D 3 - - - 0x01F6BD 07:F6AD: A5 5C     LDA ram_005C_unk
+C D 3 - - - 0x01F6BD 07:F6AD: A5 5C     LDA ram_статус_завершения_уровня
 C - - - - - 0x01F6BF 07:F6AF: D0 15     BNE bra_F6C6_RTS
 C - - - - - 0x01F6C1 07:F6B1: A9 25     LDA #con_sound_25
 C - - - - - 0x01F6C3 07:F6B3: 20 DE FD  JSR sub_FDDE_play_sound
@@ -4133,7 +4133,7 @@ tbl_F8E4:
 
 
 sub_0x01F974_write_3_colors_with_condition:
-C - - - - - 0x01F974 07:F964: A5 5C     LDA ram_005C_unk
+C - - - - - 0x01F974 07:F964: A5 5C     LDA ram_статус_завершения_уровня
 C - - - - - 0x01F976 07:F966: D0 13     BNE bra_F97B_RTS
 sub_F968_write_3_colors:
 sub_0x01F978_write_3_colors:
