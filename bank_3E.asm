@@ -75,7 +75,6 @@
 .export sub_0x01FE94_bankswitch_отрисовка_экранов
 .export sub_0x01FEB4
 .export sub_0x01FEE7_bankswitch_sound_mode_handler
-.export _set_V_flag
 .export _общий_RTS
 
 
