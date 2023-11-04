@@ -4415,6 +4415,10 @@ C - - - - - 0x01FB2A 07:FB1A: C0 B1     CPY #$B1
 C - - - - - 0x01FB2C 07:FB1C: F0 0C     BEQ bra_FB2A_passed
 bra_FB1E_failed:
 ; if check failed
+; 1путин: запись контов, жизней, дефолт индексы и регион
+                                        LDA #$02
+                                        STA ram_option_жизни
+                                        STA ram_option_конты
                                         BIT _set_V_flag
 C - - - - - 0x01FB2E 07:FB1E: A0 00     LDY #$00
 C - - - - - 0x01FB30 07:FB20: 8C E0 07  STY ram_hi_очки
@@ -4422,6 +4426,7 @@ C - - - - - 0x01FB33 07:FB23: A0 20     LDY #$20    ; 20000 points
 C - - - - - 0x01FB35 07:FB25: 8C E1 07  STY ram_hi_очки + $01
 C - - - - - 0x01FB38 07:FB28: A2 E2     LDX #$E2    ; clear 07E2-07FF
 bra_FB2A_passed:
+                                        LDA #$00
 bra_FB2A_loop:
 C - - - - - 0x01FB3A 07:FB2A: 9D 00 07  STA $0700,X
 C - - - - - 0x01FB3D 07:FB2D: E8        INX
@@ -4446,10 +4451,6 @@ bra_FB2F_loop:
                                         INC ram_0001    ; увеличить старший байт адреса
                                         DEX
                                         BNE bra_FB2F_loop
-; 1путин: запись контов, жизней, дефолт индексы и регион
-                                        LDA #$02
-                                        STA ram_option_жизни
-                                        STA ram_option_конты
                                         LDX ram_option_колво_объектов
                                         LDA tbl_FB75_индексы,X
                                         STA ram_макс_индекс_пули_игрока
