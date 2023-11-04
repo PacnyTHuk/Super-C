@@ -75,6 +75,7 @@
 .export sub_0x01FE94_bankswitch_отрисовка_экранов
 .export sub_0x01FEB4
 .export sub_0x01FEE7_bankswitch_sound_mode_handler
+.export _set_V_flag
 .export _общий_RTS
 
 
@@ -4404,6 +4405,7 @@ bra_FB08_loop:
 C - - - - - 0x01FB18 07:FB08: CA        DEX
 C - - - - - 0x01FB19 07:FB09: 9D 00 07  STA $0700,X
 C - - - - - 0x01FB1C 07:FB0C: D0 FA     BNE bra_FB08_loop
+                                        CLV
 C - - - - - 0x01FB1E 07:FB0E: A2 E3     LDX #$E3    ; clear 07E3-07FF
 C - - - - - 0x01FB20 07:FB10: AC EA 07  LDY ram_reset_check
 C - - - - - 0x01FB23 07:FB13: C0 53     CPY #$53
@@ -4413,6 +4415,7 @@ C - - - - - 0x01FB2A 07:FB1A: C0 B1     CPY #$B1
 C - - - - - 0x01FB2C 07:FB1C: F0 0C     BEQ bra_FB2A_passed
 bra_FB1E_failed:
 ; if check failed
+                                        BIT _set_V_flag
 C - - - - - 0x01FB2E 07:FB1E: A0 00     LDY #$00
 C - - - - - 0x01FB30 07:FB20: 8C E0 07  STY ram_hi_очки
 C - - - - - 0x01FB33 07:FB23: A0 20     LDY #$20    ; 20000 points
@@ -4429,14 +4432,19 @@ C - - - - - 0x01FB3E 07:FB2E: D0 FA     BNE bra_FB2A_loop
                                         STY ram_0001
                                         LDY #< $6000
                                         STY ram_0000
-; A, X, Y = 00
+                                        LDX #$20
+                                        BVS bra_FB2E_первый_ресет
+; если игра уже была запущена
+                                        DEX ; 1F
+bra_FB2E_первый_ресет:
+; A = 00, Y = 00
 bra_FB2F_loop:
+; очистить 1F или 20 страниц
                                         STA (ram_0000),Y
                                         INY
                                         BNE bra_FB2F_loop
                                         INC ram_0001    ; увеличить старший байт адреса
-                                        INX
-                                        CPX #$20        ; очистить 20 страниц
+                                        DEX
                                         BNE bra_FB2F_loop
 ; 1путин: запись контов, жизней, дефолт индексы и регион
                                         LDA #$02
@@ -5153,6 +5161,12 @@ C - - - - - 0x01FF58 07:FF48: 8C 00 80  STY $8000
 C - - - - - 0x01FF5B 07:FF4B: AD F5 07  LDA ram_spr_bank_4
 C - - - - - 0x01FF5E 07:FF4E: 8D 01 80  STA $8001
 C - - - - - 0x01FF61 07:FF51: 60        RTS
+
+
+
+_set_V_flag:
+; cyneprepou4uk
+                                        .byte $40
 
 
 
