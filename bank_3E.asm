@@ -4451,6 +4451,12 @@ bra_FB2F_loop:
                                         INC ram_0001    ; увеличить старший байт адреса
                                         DEX
                                         BNE bra_FB2F_loop
+                                        LDA ram_option_регион
+                                        BEQ bra_FB30_US
+; EU
+                                        LDA #$40
+bra_FB30_US:
+                                        STA ram_регион
                                         LDX ram_option_колво_объектов
                                         LDA tbl_FB75_индексы,X
                                         STA ram_макс_индекс_пули_игрока
