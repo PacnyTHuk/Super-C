@@ -4446,11 +4446,11 @@ bra_FB2F_loop:
                                         DEX
                                         BNE bra_FB2F_loop
 ; 1путин: запись контов, жизней, дефолт индексы и регион
-                                        BVC bra_FB2C_ship
+                                        BVC bra_FB2C_skip
                                         LDA #$02
                                         STA ram_option_жизни
                                         STA ram_option_конты
-bra_FB2C_ship:
+bra_FB2C_skip:
                                         LDA ram_option_регион
                                         BEQ bra_FB30_US
 ; EU
