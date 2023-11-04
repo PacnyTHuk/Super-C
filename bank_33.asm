@@ -2594,13 +2594,13 @@ bra_AB40:
 C - - - - - 0x006B50 01:AB40: 85 09     STA ram_0009
 C - - - - - 0x006B52 01:AB42: A0 FE     LDY #$FE
 C - - - - - 0x006B54 01:AB44: A5 A0     LDA ram_статус_игрока
-C - - - - - 0x006B56 01:AB46: C9 02     CMP #$02
+C - - - - - 0x006B56 01:AB46: C9 02     CMP #con_plr_status_живой
 C - - - - - 0x006B58 01:AB48: F0 02     BEQ bra_AB4C
 C - - - - - 0x006B5A 01:AB4A: 84 08     STY ram_0008
 bra_AB4C:
 C - - - - - 0x006B5C 01:AB4C: A0 FF     LDY #$FF
 C - - - - - 0x006B5E 01:AB4E: A5 A1     LDA ram_статус_игрока + $01
-C - - - - - 0x006B60 01:AB50: C9 02     CMP #$02
+C - - - - - 0x006B60 01:AB50: C9 02     CMP #con_plr_status_живой
 C - - - - - 0x006B62 01:AB52: F0 02     BEQ bra_AB56
 C - - - - - 0x006B64 01:AB54: 84 09     STY ram_0009
 bra_AB56:

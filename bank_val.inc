@@ -84,21 +84,35 @@ con_buf_mode_07                         = $07 ; 1й байт = счетчик, �
 
 
 ; for 0x0017EA
-con_0x0017EA_1_player                   = $00 ;
-con_0x0017EA_2_players                  = $01 ;
-con_0x0017EA_options                    = $02 ;
-con_0x0017EA_press_start                = $03 ;
-con_0x0017EA_normal                     = $04 ;
-con_0x0017EA_hard                       = $05 ;
-con_0x0017EA_expert                     = $06 ;
-con_0x0017EA_human                      = $07 ;
-con_0x0017EA_robot                      = $08 ;
-con_0x0017EA_obj_limit_14               = $09 ;
-con_0x0017EA_obj_limit_32               = $0A ;
-con_0x0017EA_continue                   = $0B ;
-con_0x0017EA_level                      = $0C ;
-con_0x0017EA_rest                       = $0D ;
-con_0x0017EA_exit                       = $0E ;
+con_0x0017EA_1_player                   = $00 ; 
+con_0x0017EA_2_players                  = $01 ; 
+con_0x0017EA_options                    = $02 ; 
+con_0x0017EA_press_start                = $03 ; 
+con_0x0017EA_normal                     = $04 ; 
+con_0x0017EA_hard                       = $05 ; 
+con_0x0017EA_expert                     = $06 ; 
+con_0x0017EA_human                      = $07 ; 
+con_0x0017EA_robot                      = $08 ; 
+con_0x0017EA_obj_limit_14               = $09 ; 
+con_0x0017EA_obj_limit_32               = $0A ; 
+con_0x0017EA_continue                   = $0B ; 
+con_0x0017EA_level                      = $0C ; 
+con_0x0017EA_rest                       = $0D ; 
+con_0x0017EA_exit                       = $0E ; 
+
+
+
+; ram_статус_игрока
+; need comments 0x0004C2
+con_plr_status_мертвый                  = $00 ; вечная смерть
+con_plr_status_респавн                  = $01 ; распавнится
+con_plr_status_живой                    = $02 ; живой и играбельный
+con_plr_status_death_init               = $03 ; зафиксирована смерть
+con_plr_status_death_anim               = $04 ; анимация смерти
+con_plr_status_лежит_мертвый            = $05 ; лежит мертвый на земле после 04
+con_plr_status_внутри_вертолета         = $06 ; внутри вертолета на 1м уровне
+con_plr_status_спускается_по_веревке    = $07 ; спускается по веревке на 1м урове (запись в 0x000596)
+con_plr_status_добежал_до_выхода        = $08 ; добежал внутрь перехода на следующий уровень
 
 
 
