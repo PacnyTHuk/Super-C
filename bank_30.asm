@@ -13,7 +13,7 @@
 .export loc_0x001411
 .export loc_0x001C02_prepare_area_config
 .export loc_0x001CA6
-.export loc_0x001DA4
+.export sub_0x001DA4
 .export loc_0x002178_stage_complete_handler
 .export loc_0x0023C7_credits_handler
 .export _off014_32_0x00263F_00
@@ -4637,7 +4637,7 @@ C - - - - - 0x001DA3 00:9D93: 60        RTS
 
 
 
-loc_0x001DA4:
+sub_0x001DA4:
 C D 0 - - - 0x001DA4 00:9D94: E6 4E     INC ram_004E
 C - - - - - 0x001DA6 00:9D96: D0 02     BNE bra_9D9A
 C - - - - - 0x001DA8 00:9D98: C6 4E     DEC ram_004E

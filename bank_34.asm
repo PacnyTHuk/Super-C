@@ -29,7 +29,7 @@
 .export _off001_0x009002_51_boss_7_mouth
 .export loc_0x009158_спавн_объектов_из_данных_уровня
 .export loc_0x0092C0_подготовить_лопасти_вертолета_на_1м_уровне
-.export loc_0x009AE9_sound_mode_handler
+.export sub_0x009AE9_sound_mode_handler
 .export _off004_0x009FC8_00_area_1
 .export _off005_0x00A002_00_area_1
 .export _off006_0x00A4E8_00_area_1
@@ -5380,7 +5380,7 @@ _off019_07_9AC4_34:
 
 
 
-loc_0x009AE9_sound_mode_handler:
+sub_0x009AE9_sound_mode_handler:
 ; leon опт
                                         LDY ram_sound_mode_handler
                                         LDA tbl_9ADE_lo,y

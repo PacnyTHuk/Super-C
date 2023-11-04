@@ -4998,7 +4998,7 @@ C - - - - - 0x01FE80 07:FE70: 48        PHA
 C - - - - - 0x01FE81 07:FE71: A9 36     LDA #con_prg_bank + $20
 C - - - - - 0x01FE83 07:FE73: 20 6F FD  JSR sub_FD63_prg_bankswitch___with_return
 C - - - - - 0x01FE86 07:FE76: 68        PLA
-C - - - - - 0x01FE87 07:FE77: 4C 86 B8  JSR loc_0x00F896_загрузка_палитры
+C - - - - - 0x01FE87 07:FE77: 4C 86 B8  JSR sub_0x00F896_загрузка_палитры
                                         JMP loc_FD8B_restore_prg_bank
 
 
@@ -5009,7 +5009,7 @@ C - - - - - 0x01FE8A 07:FE7A: 48        PHA
 C - - - - - 0x01FE8B 07:FE7B: A9 30     LDA #con_prg_bank + $20
 C - - - - - 0x01FE8D 07:FE7D: 20 6F FD  JSR sub_FD63_prg_bankswitch___with_return
 C - - - - - 0x01FE90 07:FE80: 68        PLA
-C - - - - - 0x01FE91 07:FE81: 4C 7C 97  JSR loc_0x00178C_отрисовка_текста_через_буфер_0300x
+C - - - - - 0x01FE91 07:FE81: 4C 7C 97  JSR sub_0x00178C_отрисовка_текста_через_буфер_0300x
                                         JMP loc_FD8B_restore_prg_bank
 
 
@@ -5019,7 +5019,7 @@ sub_0x01FE94_bankswitch_отрисовка_экранов:
 sub_FE84_bankswitch_отрисовка_экранов:
 C D 3 - - - 0x01FE94 07:FE84: A9 30     LDA #con_prg_bank + $20
 C - - - - - 0x01FE96 07:FE86: 20 6F FD  JSR sub_FD63_prg_bankswitch___with_return
-C - - - - - 0x01FE99 07:FE89: 4C 8E 98  JSR loc_0x00189E_отрисовка_экранов
+C - - - - - 0x01FE99 07:FE89: 4C 8E 98  JSR sub_0x00189E_отрисовка_экранов
                                         JMP loc_FD8B_restore_prg_bank
 
 
@@ -5068,7 +5068,7 @@ C - - - - - 0x01FEC4 07:FEB4: 4C 58 FD  JMP loc_FD58_prg_bankswitch___select_sec
 sub_FEB7_bankswitch:
 C - - - - - 0x01FEC7 07:FEB7: A9 30     LDA #con_prg_bank + $30
 C - - - - - 0x01FEC9 07:FEB9: 20 6F FD  JSR sub_FD63_prg_bankswitch___with_return
-C - - - - - 0x01FECC 07:FEBC: 4C 94 9D  JSR loc_0x001DA4
+C - - - - - 0x01FECC 07:FEBC: 4C 94 9D  JSR sub_0x001DA4
                                         JMP loc_FD8B_restore_prg_bank
 
 
@@ -5097,20 +5097,20 @@ C - - - - - 0x01FEE4 07:FED4: 4C 68 A1  JMP loc_0x002178_stage_complete_handler
 sub_0x01FEE7_bankswitch_sound_mode_handler:
 C - - - - - 0x01FEE7 07:FED7: A9 34     LDA #con_prg_bank + $34
 C - - - - - 0x01FEE9 07:FED9: 20 6F FD  JSR sub_FD63_prg_bankswitch___with_return
-C - - - - - 0x01FEEC 07:FEDC: 4C D9 9A  JSR loc_0x009AE9_sound_mode_handler
+C - - - - - 0x01FEEC 07:FEDC: 4C D9 9A  JSR sub_0x009AE9_sound_mode_handler
                                         JMP loc_FD8B_restore_prg_bank
 
 loc_E3B9_bankswitch:
                                         LDA #con_prg_bank + $24
                                         JSR sub_FD6F_prg_bankswitch___no_return
-                                        JMP sub_0x010050_работа_с_экранами
+                                        JMP loc_0x010050_работа_с_экранами
 
 
 
 sub_EAB0_bankswitch_подготовить_начальные_банки_для_уровня:
                                         LDA #con_prg_bank + $20
                                         JSR sub_FD6F_prg_bankswitch___no_return
-                                        JMP sub_0x01EAC0_подготовить_начальные_банки_для_уровня
+                                        JMP loc_0x01EAC0_подготовить_начальные_банки_для_уровня
 
 
 sub_FEF7_credits_handler:
