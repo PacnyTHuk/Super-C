@@ -521,12 +521,10 @@ bra_9B05:
                                         CMP #$01    ; graphics
                                         BNE bra_9B06_RTS
                                         LDA ram_option_регион
-                                        ASL
-                                        ASL
-                                        ASL
-                                        ASL
-                                        ASL
-                                        ASL
+                                        BEQ bra_9B07_US
+; EU
+                                        LDA #$40
+bra_9B07_US:
                                         STA ram_регион
 bra_9B06_RTS:
                                         RTS
