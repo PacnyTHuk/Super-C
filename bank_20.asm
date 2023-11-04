@@ -330,7 +330,7 @@ C - - - - - 0x01EAC3 07:EAB3: 85 00     STA ram_0000
 C - - - - - 0x01EAC5 07:EAB5: 0A        ASL
 C - - - - - 0x01EAC6 07:EAB6: 65 00     ADC ram_0000
                                         ASL
-                                        LDY ram_options_регион
+                                        LDY ram_option_регион
                                         BEQ bra_EAB8_американка
 ; европейка
                                         ADC #$06    ; вторые 6 байтов
@@ -481,7 +481,7 @@ tbl_EAC8_chr_banks:
 loc_0x00F894_загрузка_палитры_для_уровня:
 C D 1 - - - 0x00F894 03:B884: A5 50     LDA ram_номер_уровня
                                         ASL
-                                        ADC ram_options_регион
+                                        ADC ram_option_регион
 loc_0x00F896_загрузка_палитры:
 sub_B886_загрузка_палитры:
 C D 1 - - - 0x00F896 03:B886: 85 08     STA ram_0008

@@ -370,7 +370,7 @@ tbl_9923_атрибуты:
 
 
 sub_9924_отрисовать_difficulty:
-                                        LDY ram_options_сложность
+                                        LDY ram_option_сложность
                                         LDA tbl_9925_варианты_difficulty,Y
                                         JSR sub_0x01FE8A_bankswitch_отрисовка_текста_через_буфер_0300x
                                         RTS
@@ -381,7 +381,7 @@ tbl_9925_варианты_difficulty:
                                         .byte con_0x0017EA_expert   ; 02 
 
 sub_9926_отрисовать_graphics:
-                                        LDY ram_options_регион
+                                        LDY ram_option_регион
                                         LDA tbl_9927_варианты_graphics,Y
                                         JSR sub_0x01FE8A_bankswitch_отрисовка_текста_через_буфер_0300x
                                         RTS
@@ -391,7 +391,7 @@ tbl_9927_варианты_graphics:
                                         .byte con_0x0017EA_robot   ; 01 
 
 sub_9928_отрисовать_obj_limit:
-                                        LDY ram_options_колво_объектов
+                                        LDY ram_option_колво_объектов
                                         LDA tbl_9929_варианты_obj_limit,Y
                                         JSR sub_0x01FE8A_bankswitch_отрисовка_текста_через_буфер_0300x
                                         RTS
@@ -403,7 +403,7 @@ tbl_9929_варианты_obj_limit:
 sub_992A_отрисовать_continue:
                                         LDA #con_0x0017EA_continue
                                         JSR sub_0x01FE8A_bankswitch_отрисовка_текста_через_буфер_0300x
-                                        LDA ram_options_конты
+                                        LDA ram_option_конты
                                         CLC
                                         ADC #$81
                                         STA ram_nmt_buffer - $02,X
@@ -412,7 +412,7 @@ sub_992A_отрисовать_continue:
 sub_992C_отрисовать_level:
                                         LDA #con_0x0017EA_level
                                         JSR sub_0x01FE8A_bankswitch_отрисовка_текста_через_буфер_0300x
-                                        LDA ram_options_уровень
+                                        LDA ram_option_уровень
                                         CLC
                                         ADC #$82
                                         STA ram_nmt_buffer - $02,X
@@ -421,7 +421,7 @@ sub_992C_отрисовать_level:
 sub_992E_отрисовать_rest:
                                         LDA #con_0x0017EA_rest
                                         JSR sub_0x01FE8A_bankswitch_отрисовка_текста_через_буфер_0300x
-                                        LDA ram_options_жизни
+                                        LDA ram_option_жизни
                                         CLC
                                         ADC #$81
                                         STA ram_nmt_buffer - $02,X
@@ -491,26 +491,26 @@ ofs_046_99B3_options_obj_limit:
                                         AND #con_btn_Left
                                         BNE bra_9B03_left
 ; right
-                                        INC ram_options_сложность,X
-                                        LDA ram_options_сложность,X
+                                        INC ram_options,X
+                                        LDA ram_options,X
                                         CMP tbl_9B07_лимит_опций,X
                                         BCC bra_9B04
-                                        DEC ram_options_сложность,X
+                                        DEC ram_options,X
                                         BNE bra_9B04
 
 bra_9B03_left:
-                                        DEC ram_options_сложность,X
+                                        DEC ram_options,X
                                         BPL bra_9B04
-                                        INC ram_options_сложность,X
+                                        INC ram_options,X
 bra_9B04:
                                         LDA tbl_9B08_начальная_con,X
                                         CLC
-                                        ADC ram_options_сложность,X
+                                        ADC ram_options,X
                                         JSR sub_0x01FE8A_bankswitch_отрисовка_текста_через_буфер_0300x
                                         LDA ram_номер_опции_колво_игроков
                                         CMP #$02    ; obj limit
                                         BNE bra_9B05
-                                        LDX ram_options_колво_объектов
+                                        LDX ram_option_колво_объектов
                                         LDA tbl_0x01FB75_индексы,X
                                         STA ram_макс_индекс_пули_игрока
                                         LDA tbl_0x01FB75_индексы + $02,X
@@ -520,7 +520,7 @@ bra_9B04:
 bra_9B05:
                                         CMP #$01    ; graphics
                                         BNE bra_9B06_RTS
-                                        LDA ram_options_регион
+                                        LDA ram_option_регион
                                         ASL
                                         ASL
                                         ASL
@@ -552,22 +552,22 @@ ofs_046_9B09_options_rest:
                                         AND #con_btn_Left
                                         BNE bra_9B0A_left
 ; right
-                                        INC ram_options_сложность,X
-                                        LDA ram_options_сложность,X
+                                        INC ram_options,X
+                                        LDA ram_options,X
                                         CMP tbl_9B0D_лимит_опций - $03,X
                                         BCC bra_9B0B
-                                        DEC ram_options_сложность,X
+                                        DEC ram_options,X
                                         BNE bra_9B0B
 
 bra_9B0A_left:
-                                        DEC ram_options_сложность,X
+                                        DEC ram_options,X
                                         BPL bra_9B0B
-                                        INC ram_options_сложность,X
+                                        INC ram_options,X
 bra_9B0B:
                                         LDA tbl_9B0E_начальная_con - $03,X
                                         JSR sub_0x01FE8A_bankswitch_отрисовка_текста_через_буфер_0300x
                                         LDY ram_номер_опции_колво_игроков
-                                        LDA ram_options_сложность,Y
+                                        LDA ram_options,Y
                                         CLC
                                         ADC tbl_9B0F_номер_тайла - $03,Y
                                         STA ram_nmt_buffer - $02,X
@@ -721,7 +721,7 @@ bra_9B35_loop:
 
 
 sub_9B36_обработка_орла:
-                                        LDY ram_options_номер_анимации_орла,X
+                                        LDY ram_номер_анимации_орла_в_options,X
                                         LDA tbl_9B37_lo,Y
                                         STA ram_0000
                                         LDA tbl_9B37_hi,Y
@@ -745,17 +745,17 @@ tbl_9B37_hi:
 ofs_045_9B40_00:
                                         JSR sub_9B90_подготовка
 bra_9B41:
-                                        INC ram_options_номер_анимации_орла,X
+                                        INC ram_номер_анимации_орла_в_options,X
                                         RTS
 
 
 ofs_045_9B50_01:
-                                        DEC ram_options_таймер_анимации_орла,X
+                                        DEC ram_таймер_анимации_орла_в_options,X
                                         BNE bra_9B51_RTS
                                         LDA #$08
-                                        STA ram_options_таймер_анимации_орла,X
-                                        INC ram_options_номер_для_кадра_орла,X
-                                        LDY ram_options_номер_для_кадра_орла,X
+                                        STA ram_таймер_анимации_орла_в_options,X
+                                        INC ram_номер_для_кадра_орла_в_options,X
+                                        LDY ram_номер_для_кадра_орла_в_options,X
                                         CPY #$02
                                         BCS bra_9B41
                                         LDA tbl_9B52_кадры,Y
@@ -793,7 +793,7 @@ bra_9B61:
                                         STA ram_0002
                                         LDA tbl_9B96_X_спрайта_hi,X
                                         STA ram_0003
-                                        LDY ram_options_счетчик_анимации_орла,X
+                                        LDY ram_счетчик_анимации_орла_в_options,X
                                         LDA (ram_0000),Y
                                         CMP #$80
                                         BEQ bra_9B63
@@ -804,27 +804,27 @@ bra_9B61:
                                         CLC
                                         ADC ram_позиция_x_спрайта + $01,X
                                         STA ram_позиция_x_спрайта + $01,X
-                                        INC ram_options_счетчик_анимации_орла,X
+                                        INC ram_счетчик_анимации_орла_в_options,X
 bra_9B62_RTS:
                                         RTS
                                        
 bra_9B63:
                                         LDA #$01
-                                        STA ram_options_таймер_анимации_орла,X
+                                        STA ram_таймер_анимации_орла_в_options,X
                                         LDA #$FF
-                                        STA ram_options_номер_для_кадра_орла,X
+                                        STA ram_номер_для_кадра_орла_в_options,X
 bra_9B64:
-                                        INC ram_options_номер_анимации_орла,X
+                                        INC ram_номер_анимации_орла_в_options,X
                                         RTS
 
 
 ofs_045_9B70_03:
-                                        DEC ram_options_таймер_анимации_орла,X
+                                        DEC ram_таймер_анимации_орла_в_options,X
                                         BNE bra_9B71_RTS
                                         LDA #$08
-                                        STA ram_options_таймер_анимации_орла,X
-                                        INC ram_options_номер_для_кадра_орла,X
-                                        LDY ram_options_номер_для_кадра_орла,X
+                                        STA ram_таймер_анимации_орла_в_options,X
+                                        INC ram_номер_для_кадра_орла_в_options,X
+                                        LDY ram_номер_для_кадра_орла_в_options,X
                                         CPY #$05
                                         BCS bra_9B72
                                         LDA tbl_9B53_кадры_2,Y
@@ -841,14 +841,14 @@ tbl_9B53_кадры_2:
 
 bra_9B72:
                                         LDA tbl_9B81_таймеры_анимации,X
-                                        STA ram_options_таймер_анимации_орла,X
+                                        STA ram_таймер_анимации_орла_в_options,X
                                         BNE bra_9B64
 ofs_045_9B80_04:
-                                        DEC ram_options_таймер_анимации_орла,X
+                                        DEC ram_таймер_анимации_орла_в_options,X
                                         BNE bra_9B71_RTS
                                         JSR sub_9B90_подготовка
                                         LDA #$01
-                                        STA ram_options_номер_анимации_орла,X
+                                        STA ram_номер_анимации_орла_в_options,X
                                         RTS
                                         
 tbl_9B81_таймеры_анимации:
@@ -860,15 +860,15 @@ sub_9B90_подготовка:
                                         LDA #$00                                        
                                         STA ram_кадр_анимации + $01,X
                                         STA ram_атрибуты_спрайта + $01,X
-                                        STA ram_options_счетчик_анимации_орла,X
+                                        STA ram_счетчик_анимации_орла_в_options,X
                                         LDA #$C2 ; первичная Y спрайтов
                                         STA ram_позиция_y_спрайта + $01,X
                                         LDA tbl_9B91_x_позиция,X ; первичная X спрайтов
                                         STA ram_позиция_x_спрайта + $01,X
                                         LDA #$40
-                                        STA ram_options_таймер_анимации_орла,X
+                                        STA ram_таймер_анимации_орла_в_options,X
                                         LDA #$FF
-                                        STA ram_options_номер_для_кадра_орла,X
+                                        STA ram_номер_для_кадра_орла_в_options,X
                                         RTS
 
 tbl_9B91_x_позиция:

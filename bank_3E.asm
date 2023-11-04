@@ -829,12 +829,12 @@ C - - - - - 0x01E4FE 07:E4EE: 4C E7 E4  JMP loc_E4E7
 
 
 sub_0x01E592_подготовка_игроков_к_началу:
-C - - - - - 0x01E592 07:E582: A9 00     LDA ram_options_уровень
+C - - - - - 0x01E592 07:E582: A9 00     LDA ram_option_уровень
 C - - - - - 0x01E594 07:E584: 85 50     STA ram_номер_уровня
 C - - - - - 0x01E596 07:E586: A9 00     LDA #$00
 C - - - - - 0x01E598 07:E588: 85 A0     STA ram_статус_игрока
 C - - - - - 0x01E59A 07:E58A: 85 A1     STA ram_статус_игрока + $01
-C - - - - - 0x01E59C 07:E58C: A9 02     LDA ram_options_конты
+C - - - - - 0x01E59C 07:E58C: A9 02     LDA ram_option_конты
 C - - - - - 0x01E59E 07:E58E: 85 59     STA ram_конты
 C - - - - - 0x01E5A0 07:E590: A5 22     LDA ram_номер_опции_колво_игроков
 C - - - - - 0x01E5A2 07:E592: 85 20     STA ram_колво_игроков
@@ -847,7 +847,7 @@ C - - - - - 0x01E5AA 07:E59A: A9 00     LDA #$00    ; con_weapon_default
 C - - - - - 0x01E5AC 07:E59C: 95 CA     STA ram_plr_game_over,X
 C - - - - - 0x01E5AE 07:E59E: 95 C4     STA ram_инвиз_игрока,X
 C - - - - - 0x01E5B0 07:E5A0: 95 B8     STA ram_оружие_игрока,X
-C - - - - - 0x01E5B9 07:E5A9: A9 09     LDA ram_options_жизни
+C - - - - - 0x01E5B9 07:E5A9: A9 09     LDA ram_option_жизни
 C - - - - - 0x01E5BB 07:E5AB: 95 53     STA ram_жизни,X
 C - - - - - 0x01E5BD 07:E5AD: A9 30     LDA #$30
 C - - - - - 0x01E5BF 07:E5AF: 95 55     STA ram_очки_до_жизни_младш,X
@@ -1003,7 +1003,7 @@ C - - - - - 0x01E692 07:E682: B1 04     LDA (ram_0004),Y
 C - - - - - 0x01E694 07:E684: D5 57     CMP ram_очки_до_жизни_старш,X
 C - - - - - 0x01E696 07:E686: 90 3E     BCC bra_E6C6
 C - - - - - 0x01E698 07:E688: D0 07     BNE bra_E691
-C - - - - - 0x01E69A 07:E68A: 88        DEY
+C - - - - - 0x01E69A 07:E68A: 88        DEY ; 01
 C - - - - - 0x01E69B 07:E68B: B1 04     LDA (ram_0004),Y
 C - - - - - 0x01E69D 07:E68D: D5 55     CMP ram_очки_до_жизни_младш,X
 C - - - - - 0x01E69F 07:E68F: 90 35     BCC bra_E6C6
@@ -1357,7 +1357,7 @@ C - - - - - 0x01E8BA 07:E8AA: 85 6C     STA ram_006C
 bra_E8AB_02:
                                         LDA ram_номер_уровня
                                         BNE bra_E8AC_пропуск_перерисовки
-                                        LDA ram_options_регион
+                                        LDA ram_option_регион
                                         BEQ bra_E8AC_пропуск_перерисовки
                                         JSR sub_FE36_перерисовать_вертолет_для_европейки
 bra_E8AC_пропуск_перерисовки:
@@ -4440,9 +4440,9 @@ bra_FB2F_loop:
                                         BNE bra_FB2F_loop
 ; 1путин: запись контов, жизней, дефолт индексы и регион
                                         LDA #$02
-                                        STA ram_options_жизни
-                                        STA ram_options_конты
-                                        LDX ram_options_колво_объектов
+                                        STA ram_option_жизни
+                                        STA ram_option_конты
+                                        LDX ram_option_колво_объектов
                                         LDA tbl_FB75_индексы,X
                                         STA ram_макс_индекс_пули_игрока
                                         LDA tbl_FB75_индексы + $02,X

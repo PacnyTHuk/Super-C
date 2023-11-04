@@ -198,7 +198,7 @@ C - - - - - 0x004552 01:8542: 29 FD     AND #$FD
 C - - - - - 0x004554 01:8544: 85 FE     STA ram_for_2001
 C - - - - - 0x004556 01:8546: 20 1B BD  JSR sub_0x007D2B_clear_0480_04FF
 ; 1путин: 1й босс - выбор банка фона вертолета
-                                        LDY ram_options_регион
+                                        LDY ram_option_регион
 C - - - - - 0x004559 01:8549: A9 04     LDA tbl_85C6_bg_bank,Y
 C - - - - - 0x00455B 01:854B: 8D F0 07  STA ram_bg_bank_1
 C - - - - - 0x00455E 01:854E: A9 06     LDA tbl_85C6_bg_bank + $02,Y
@@ -251,10 +251,10 @@ C - - - - - 0x0045B9 01:85A9: 9D 56 07  STA ram_scroll_X_obj,X
 C - - - - - 0x0045BC 01:85AC: A9 1E     LDA #$1E
 C - - - - - 0x0045BE 01:85AE: 9D 72 07  STA ram_0772_obj,X
 ; 1путин: палитра для европейки
-                                        LDX ram_options_регион
+                                        LDX ram_option_регион
 C - - - - - 0x0045C1 01:85B1: A0 00     LDY tbl_85C7_color,X
 C - - - - - 0x0045C3 01:85B3: 20 64 F9  JSR sub_0x01F974_запись_3х_цветов_с_условием
-                                        LDX ram_options_регион
+                                        LDX ram_option_регион
 C - - - - - 0x0045C6 01:85B6: A0 04     LDY tbl_85C7_color + $02,X
 C - - - - - 0x0045C8 01:85B8: 20 64 F9  JSR sub_0x01F974_запись_3х_цветов_с_условием
 C - - - - - 0x0045CB 01:85BB: 20 B8 F7  JSR sub_0x01F7C8
@@ -296,10 +296,11 @@ C - - - - - 0x0045E8 01:85D8: 60        RTS
 ofs_038_21_85D9_04:
 ; 1путин
                                         BIT ram_регион
-                                        BVC bra_85D9
+                                        BVC bra_85D9_US
+; EU
                                         JSR sub_8789_EU
                                         JMP loc_85DC
-bra_85D9:
+bra_85D9_US:
 C - - J - - 0x0045E9 01:85D9: 20 99 87  JSR sub_8799_US
 loc_85DC:
 C - - - - - 0x0045EC 01:85DC: B0 3B     BCS bra_8619_RTS
@@ -507,6 +508,7 @@ C - - - - - 0x00466F 01:865F: 20 0A AA  JSR sub_0x006A1A
 ; 1путин: вертолет EU/US
                                         BIT ram_регион
                                         BVC bra_8660_US
+; EU
                                         JSR sub_87C9_отрисовка_босса_вертолета_EU
                                         JMP loc_8999_анимация_винтов_вертолет_US_EU
 bra_8660_US:
@@ -1337,7 +1339,7 @@ loc_8999_анимация_винтов_вертолет_US_EU:
 ; путин опт
 C - - - - - 0x0049A9 01:8999: BD 10 07  LDA ram_0710_obj,X
 C - - - - - 0x0049AC 01:899C: 0A        ASL
-                                        LDY ram_options_регион
+                                        LDY ram_option_регион
                                         BEQ bra_899D_US
 ; европейка
                                         ADC #$0C
@@ -2012,7 +2014,7 @@ C - - - - - 0x00471C 01:870C: C9 01     CMP #$01
 C - - - - - 0x00471E 01:870E: D0 1C     BNE bra_872C_RTS
 C - - - - - 0x004720 01:8710: BD 3C 05  LDA ram_позиция_x_спрайта_врага_и_пуль,X
 ; 1путин
-                                        LDY ram_options_регион
+                                        LDY ram_option_регион
                                         CMP tbl_8718_предел_полета_x,Y
 C - - - - - 0x004725 01:8715: B0 C8     BCS bra_86DF
 C - - - - - 0x004727 01:8717: 60        RTS
@@ -2280,7 +2282,7 @@ C - - - - - 0x0041D2 01:81C2: E0 50     CPX #$50
 C - - - - - 0x0041D4 01:81C4: B0 11     BCS bra_81D7
 C - - - - - 0x0041D6 01:81C6: 29 07     AND #$07
 C - - - - - 0x0041D8 01:81C8: 0A        ASL
-                                        LDY ram_options_регион
+                                        LDY ram_option_регион
                                         BEQ bra_81C9_US
                                         ADC #$08
 bra_81C9_US:
@@ -2315,7 +2317,7 @@ sub_81E6:
 C - - - - - 0x0041F6 01:81E6: BD 1E 07  LDA ram_obj_flags,X
 C - - - - - 0x0041F9 01:81E9: 29 07     AND #$07
 C - - - - - 0x0041FB 01:81EB: 0A        ASL
-                                        LDY ram_options_регион
+                                        LDY ram_option_регион
                                         BEQ bra_81EC_US
                                         ADC #$0A
 bra_81EC_US:
@@ -2518,7 +2520,7 @@ sub_8316_отрисовка_двери_вертолета_US_EU:
                                         CPX #$40
                                         BCS bra_8375_skip
 C - - - - - 0x004329 01:8319: 0A        ASL
-                                        LDY ram_options_регион
+                                        LDY ram_option_регион
                                         BEQ bra_831A_US
                                         ADC #$08
 bra_831A_US:
@@ -2528,7 +2530,7 @@ C - - - - - 0x004331 01:8321: B9 78 83  LDA tbl_8378_helicopter_door,Y
 C - - - - - 0x004334 01:8324: 85 08     STA ram_0008
 C - - - - - 0x004336 01:8326: B9 79 83  LDA tbl_8378_helicopter_door + $01,Y
 C - - - - - 0x004339 01:8329: 85 09     STA ram_0009
-                                        LDA ram_options_регион
+                                        LDA ram_option_регион
                                         ASL
                                         TAY
 C - - - - - 0x00433B 01:832B: A9 A8     LDA tbl_8376,Y
@@ -2550,7 +2552,7 @@ C - - - - - 0x004357 01:8347: 9D 00 03  STA ram_nmt_buffer,X
 C - - - - - 0x00435A 01:834A: E8        INX
 C - - - - - 0x00435B 01:834B: A9 05     LDA #$05
                                         SEC
-                                        SBC ram_options_регион
+                                        SBC ram_option_регион
 C - - - - - 0x00435D 01:834D: 9D 00 03  STA ram_nmt_buffer,X
 C - - - - - 0x004360 01:8350: 85 0B     STA ram_000B    ; tiles counter
 C - - - - - 0x004362 01:8352: E8        INX

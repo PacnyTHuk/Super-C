@@ -90,7 +90,7 @@ tbl_8056_spr_X:
 
 sub_805E_обработчик_анимации_спрайтов_игроков:
 ; cyneprepou4uk
-                                        LDY ram_options_регион
+                                        LDY ram_option_регион
                                         BNE bra_8066_европейка
 ; американка
 C - - - - - 0x00C06E 03:805E: 0A        ASL
@@ -274,7 +274,7 @@ C - - - - - 0x00C17A 03:816A: 60        RTS
 
 sub_816B_обработчик_анимации_спрайтов_врагов:
 ; cyneprepou4uk
-                                        LDY ram_options_регион
+                                        LDY ram_option_регион
                                         BNE bra_817F_европейка
 ; американка
 C - - - - - 0x00C17B 03:816B: 0A        ASL

@@ -3386,7 +3386,8 @@ bra_AF38:
 C - - - - - 0x006F48 01:AF38: 9D 64 07  STA ram_0764_obj,X
 ; 1путин
                                         BIT ram_регион
-                                        BVC bra_AF3B
+                                        BVC bra_AF3B    ; if US
+; EU
                                         CPY #$06
                                         BNE bra_AF3B
 ; 7й лвл
@@ -5582,7 +5583,7 @@ C - - - - - 0x007C55 01:BC45: A5 08     LDA ram_0008
 C - - - - - 0x007C57 01:BC47: 0A        ASL
 C - - - - - 0x007C58 01:BC48: 0A        ASL
 ; 1путин: пушки вертолета
-                                        LDY ram_options_регион
+                                        LDY ram_option_регион
                                         BEQ bra_BC49_US
                                         ADC #$14
 bra_BC49_US:
