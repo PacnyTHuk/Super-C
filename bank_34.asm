@@ -5389,18 +5389,18 @@ loc_0x009AE9_sound_mode_handler:
                                         STA ram_0001
                                         JMP (ram_0000)
 tbl_9ADE_lo:
-- D 0 - I - 0x009AEE 02:9ADE: E6 9A     .byte < ofs_sound_mode_9AE6_00_init
-- D 0 - I - 0x009AF0 02:9AE0: FF 9A     .byte < ofs_sound_mode_9AFF_01_clear_title_screen
-- D 0 - I - 0x009AF2 02:9AE2: 11 9B     .byte < ofs_sound_mode_9B11_02_draw_window
-- D 0 - I - 0x009AF4 02:9AE4: 2A 9B     .byte < ofs_sound_mode_9B2A_03_menu_handler
+- D 0 - I - 0x009AEE 02:9ADE: E6 9A     .byte < ofs_соунд_тест_9AE6_00_инициализация
+- D 0 - I - 0x009AF0 02:9AE0: FF 9A     .byte < ofs_соунд_тест_9AFF_01_очистить_экран_лого
+- D 0 - I - 0x009AF2 02:9AE2: 11 9B     .byte < ofs_соунд_тест_9B11_02_отрисовка_окна
+- D 0 - I - 0x009AF4 02:9AE4: 2A 9B     .byte < ofs_соунд_тест_9B2A_03_обработчик_меню
 tbl_9ADE_hi:
-- D 0 - I - 0x009AEE 02:9ADE: E6 9A     .byte > ofs_sound_mode_9AE6_00_init
-- D 0 - I - 0x009AF0 02:9AE0: FF 9A     .byte > ofs_sound_mode_9AFF_01_clear_title_screen
-- D 0 - I - 0x009AF2 02:9AE2: 11 9B     .byte > ofs_sound_mode_9B11_02_draw_window
-- D 0 - I - 0x009AF4 02:9AE4: 2A 9B     .byte > ofs_sound_mode_9B2A_03_menu_handler
+- D 0 - I - 0x009AEE 02:9ADE: E6 9A     .byte > ofs_соунд_тест_9AE6_00_инициализация
+- D 0 - I - 0x009AF0 02:9AE0: FF 9A     .byte > ofs_соунд_тест_9AFF_01_очистить_экран_лого
+- D 0 - I - 0x009AF2 02:9AE2: 11 9B     .byte > ofs_соунд_тест_9B11_02_отрисовка_окна
+- D 0 - I - 0x009AF4 02:9AE4: 2A 9B     .byte > ofs_соунд_тест_9B2A_03_обработчик_меню
 
 
-ofs_sound_mode_9AE6_00_init:
+ofs_соунд_тест_9AE6_00_инициализация:
 C - - J - - 0x009AF6 02:9AE6: A0 18     LDY #$18
 ; clear 0050-0068
 C - - - - - 0x009AF8 02:9AE8: A9 00     LDA #$00
@@ -5409,16 +5409,16 @@ C - - - - - 0x009AFA 02:9AEA: 99 50 00  STA $00 + $50,Y
 C - - - - - 0x009AFD 02:9AED: 88        DEY
 C - - - - - 0x009AFE 02:9AEE: 10 FA     BPL bra_9AEA_loop
 C - - - - - 0x009B00 02:9AF0: A9 23     LDA #> $23A0
-C - - - - - 0x009B02 02:9AF2: 85 57     STA ram_очки_до_жизни_старш
+C - - - - - 0x009B02 02:9AF2: 85 57     STA ram_0056_sound_mode_ppu + $01
 C - - - - - 0x009B04 02:9AF4: A9 A0     LDA #< $23A0
-C - - - - - 0x009B06 02:9AF6: 85 56     STA ram_очки_до_жизни_младш + $01
+C - - - - - 0x009B06 02:9AF6: 85 56     STA ram_0056_sound_mode_ppu
 C - - - - - 0x009B08 02:9AF8: A9 0D     LDA #$0D    ; clear lines counter
 C - - - - - 0x009B0A 02:9AFA: 85 55     STA ram_очки_до_жизни_младш
 C - - - - - 0x009B0C 02:9AFC: 4C 0E 9B  JMP loc_9B0E
 
 
 
-ofs_sound_mode_9AFF_01_clear_title_screen:
+ofs_соунд_тест_9AFF_01_очистить_экран_лого:
 C - - J - - 0x009B0F 02:9AFF: 20 48 9C  JSR sub_9C48
 C - - - - - 0x009B12 02:9B02: C6 55     DEC ram_очки_до_жизни_младш
 C - - - - - 0x009B14 02:9B04: 10 0A     BPL bra_9B10_RTS
@@ -5434,13 +5434,13 @@ C - - - - - 0x009B20 02:9B10: 60        RTS
 
 
 
-ofs_sound_mode_9B11_02_draw_window:
+ofs_соунд_тест_9B11_02_отрисовка_окна:
 C - - J - - 0x009B21 02:9B11: C6 52     DEC ram_sound_mode_draw_cooldown
 C - - - - - 0x009B23 02:9B13: D0 FB     BNE bra_9B10_RTS
 ; if it's time to draw a window
 C - - - - - 0x009B25 02:9B15: A9 01     LDA #$01
 C - - - - - 0x009B27 02:9B17: 85 52     STA ram_sound_mode_draw_cooldown
-C - - - - - 0x009B29 02:9B19: 20 78 9C  JSR sub_9C78_draw_sound_mode_window
+C - - - - - 0x009B29 02:9B19: 20 78 9C  JSR sub_9C78_отрисовка_окна_соунд_тест
 C - - - - - 0x009B2C 02:9B1C: E6 55     INC ram_очки_до_жизни_младш
 C - - - - - 0x009B2E 02:9B1E: A5 55     LDA ram_очки_до_жизни_младш
 C - - - - - 0x009B30 02:9B20: C9 0E     CMP #$0E    ; window lines counter
@@ -5450,10 +5450,10 @@ C - - - - - 0x009B37 02:9B27: 4C 0E 9B  JMP loc_9B0E
 
 
 
-ofs_sound_mode_9B2A_03_menu_handler:
-C - - J - - 0x009B3A 02:9B2A: 20 08 9F  JSR sub_9F08
-C - - - - - 0x009B3D 02:9B2D: 20 92 9B  JSR sub_9B92
-C - - - - - 0x009B40 02:9B30: 20 50 9B  JSR sub_9B50
+ofs_соунд_тест_9B2A_03_обработчик_меню:
+C - - J - - 0x009B3A 02:9B2A: 20 08 9F  JSR sub_9F08_sound_mode
+C - - - - - 0x009B3D 02:9B2D: 20 92 9B  JSR sub_9B92_sound_mode
+C - - - - - 0x009B40 02:9B30: 20 50 9B  JSR sub_9B50_sound_mode
 C - - - - - 0x009B43 02:9B33: A9 21     LDA #$21
 C - - - - - 0x009B45 02:9B35: 8D 4E 05  STA ram_атрибуты_спрайта
 C - - - - - 0x009B48 02:9B38: A9 B9     LDA #$B9
@@ -5472,7 +5472,7 @@ C - - - - - 0x009B5F 02:9B4F: 60        RTS
 
 
 
-sub_9B50:
+sub_9B50_sound_mode:
 C - - - - - 0x009B60 02:9B50: A5 F5     LDA ram_копия_нажатая_кнопка
 C - - - - - 0x009B62 02:9B52: 10 06     BPL bra_9B5A    ; if not con_btn_A
 C - - - - - 0x009B64 02:9B54: 20 51 9F  JSR sub_9F51
@@ -5491,16 +5491,16 @@ C - - - - - 0x009B79 02:9B69: B0 03     BCS bra_9B6E
 C - - - - - 0x009B7B 02:9B6B: 20 0E FE  JSR sub_0x01FE1E_остановить_звуковой_движок
 bra_9B6E:
 C - - - - - 0x009B7E 02:9B6E: A4 53     LDY ram_sound_mode_track_cur
-C - - - - - 0x009B80 02:9B70: B9 A4 9C  LDA tbl_9CA4_track_list,Y
+C - - - - - 0x009B80 02:9B70: B9 A4 9C  LDA tbl_9CA4_список_треков,Y
 C - - - - - 0x009B83 02:9B73: 4C DE FD  JMP loc_0x01FDEE_play_sound
 bra_9B76_26:
-; play all one by one
+; проиграть один за другим
 C - - - - - 0x009B86 02:9B76: 20 0E FE  JSR sub_0x01FE1E_остановить_звуковой_движок
-C - - - - - 0x009B89 02:9B79: AD 5E 9F  LDA #< tbl_9F62_auto_playlist
+C - - - - - 0x009B89 02:9B79: AD 5E 9F  LDA #< tbl_9F62_автовоспроизведение
 C - - - - - 0x009B8C 02:9B7C: 85 5C     STA ram_005C_sound_mode_data
-C - - - - - 0x009B8E 02:9B7E: AD 5F 9F  LDA #> tbl_9F62_auto_playlist
+C - - - - - 0x009B8E 02:9B7E: AD 5F 9F  LDA #> tbl_9F62_автовоспроизведение
 C - - - - - 0x009B91 02:9B81: 85 5D     STA ram_005C_sound_mode_data + $01
-; bzk optimize, doesn't look like data from tbl_9FB7 will be read
+; bzk optimize, не похоже что данные из tbl_9FB7 будут считаны
 C - - - - - 0x009B93 02:9B83: AD 60 9F  LDA #< tbl_9FB7
 C - - - - - 0x009B96 02:9B86: 85 60     STA ram_0060_sound_mode_data
 C - - - - - 0x009B98 02:9B88: AD 61 9F  LDA #> tbl_9FB7
@@ -5511,21 +5511,21 @@ C - - - - - 0x009BA1 02:9B91: 60        RTS
 
 
 
-sub_9B92:
+sub_9B92_sound_mode:
 C - - - - - 0x009BA2 02:9B92: A5 59     LDA ram_play_all
 C - - - - - 0x009BA4 02:9B94: D0 31     BNE bra_9BC7_RTS
 C - - - - - 0x009BA6 02:9B96: A5 F7     LDA ram_копия_удержанная_кнопка
 C - - - - - 0x009BA8 02:9B98: 29 0C     AND #con_btns_UD
 C - - - - - 0x009BAA 02:9B9A: F0 2B     BEQ bra_9BC7_RTS
 C - - - - - 0x009BAC 02:9B9C: A0 04     LDY #$04
-C - - - - - 0x009BAE 02:9B9E: C6 58     DEC ram_очки_до_жизни_старш + $01
+C - - - - - 0x009BAE 02:9B9E: C6 58     DEC ram_0058_sound_mode
 C - - - - - 0x009BB0 02:9BA0: F0 08     BEQ bra_9BAA
 C - - - - - 0x009BB2 02:9BA2: A5 F5     LDA ram_копия_нажатая_кнопка
 C - - - - - 0x009BB4 02:9BA4: 29 0C     AND #con_btns_UD
 C - - - - - 0x009BB6 02:9BA6: F0 1F     BEQ bra_9BC7_RTS
 C - - - - - 0x009BB8 02:9BA8: A0 20     LDY #$20
 bra_9BAA:
-C - - - - - 0x009BBA 02:9BAA: 84 58     STY ram_очки_до_жизни_старш + $01
+C - - - - - 0x009BBA 02:9BAA: 84 58     STY ram_0058_sound_mode
 C - - - - - 0x009BBC 02:9BAC: 4A        LSR
 C - - - - - 0x009BBD 02:9BAD: 4A        LSR
 C - - - - - 0x009BBE 02:9BAE: 4A        LSR
@@ -5624,10 +5624,10 @@ C - - - - - 0x009C58 02:9C48: A6 1E     LDX ram_index_ppu_buffer
 C - - - - - 0x009C5A 02:9C4A: A9 03     LDA #con_buf_mode_03
 C - - - - - 0x009C5C 02:9C4C: 9D 00 03  STA ram_nmt_buffer,X
 C - - - - - 0x009C5F 02:9C4F: E8        INX
-C - - - - - 0x009C60 02:9C50: A5 57     LDA ram_очки_до_жизни_старш    ; ppu hi
+C - - - - - 0x009C60 02:9C50: A5 57     LDA ram_0056_sound_mode_ppu + $01    ; ppu hi
 C - - - - - 0x009C62 02:9C52: 9D 00 03  STA ram_nmt_buffer,X
 C - - - - - 0x009C65 02:9C55: E8        INX
-C - - - - - 0x009C66 02:9C56: A5 56     LDA ram_очки_до_жизни_младш + $01    ; ppu lo
+C - - - - - 0x009C66 02:9C56: A5 56     LDA ram_0056_sound_mode_ppu    ; ppu lo
 C - - - - - 0x009C68 02:9C58: 9D 00 03  STA ram_nmt_buffer,X
 C - - - - - 0x009C6B 02:9C5B: E8        INX
 C - - - - - 0x009C6C 02:9C5C: A9 20     LDA #$20    ; counter
@@ -5637,18 +5637,18 @@ C - - - - - 0x009C72 02:9C62: A9 00     LDA #$00    ; tile
 C - - - - - 0x009C74 02:9C64: 9D 00 03  STA ram_nmt_buffer,X
 C - - - - - 0x009C77 02:9C67: E8        INX
 C - - - - - 0x009C78 02:9C68: 86 1E     STX ram_index_ppu_buffer
-C - - - - - 0x009C7A 02:9C6A: A5 56     LDA ram_очки_до_жизни_младш + $01
+C - - - - - 0x009C7A 02:9C6A: A5 56     LDA ram_0056_sound_mode_ppu
 C - - - - - 0x009C7C 02:9C6C: 38        SEC
 C - - - - - 0x009C7D 02:9C6D: E9 20     SBC #< $0020
-C - - - - - 0x009C7F 02:9C6F: 85 56     STA ram_очки_до_жизни_младш + $01
-C - - - - - 0x009C81 02:9C71: A5 57     LDA ram_очки_до_жизни_старш
+C - - - - - 0x009C7F 02:9C6F: 85 56     STA ram_0056_sound_mode_ppu
+C - - - - - 0x009C81 02:9C71: A5 57     LDA ram_0056_sound_mode_ppu + $01
 C - - - - - 0x009C83 02:9C73: E9 00     SBC #> $0020
-C - - - - - 0x009C85 02:9C75: 85 57     STA ram_очки_до_жизни_старш
+C - - - - - 0x009C85 02:9C75: 85 57     STA ram_0056_sound_mode_ppu + $01
 C - - - - - 0x009C87 02:9C77: 60        RTS
 
 
 
-sub_9C78_draw_sound_mode_window:
+sub_9C78_отрисовка_окна_соунд_тест:
 C - - - - - 0x009C88 02:9C78: A5 55     LDA ram_очки_до_жизни_младш    ; window line counter
 C - - - - - 0x009C8A 02:9C7A: 0A        ASL
 C - - - - - 0x009C8B 02:9C7B: A8        TAY
@@ -5678,7 +5678,7 @@ C - - - - - 0x009CB3 02:9CA3: 60        RTS
 
 
 
-tbl_9CA4_track_list:
+tbl_9CA4_список_треков:
 - D 0 - - - 0x009CB4 02:9CA4: 28        .byte con_sound_28   ; 00 BGM1
 - D 0 - - - 0x009CB5 02:9CA5: 2B        .byte con_sound_2B   ; 01 BGM2
 - D 0 - - - 0x009CB6 02:9CA6: 2A        .byte con_sound_2A   ; 02 BGM3
@@ -5940,7 +5940,7 @@ _off011_9EEE_0D:
 
 
 
-sub_9F08:
+sub_9F08_sound_mode:
 C - - - - - 0x009F18 02:9F08: A5 59     LDA ram_play_all
 C - - - - - 0x009F1A 02:9F0A: F0 03     BEQ bra_9F0F_RTS
 C - - - - - 0x009F1C 02:9F0C: 20 10 9F  JSR sub_9F10
@@ -5995,7 +5995,7 @@ C - - - - - 0x009F6D 02:9F5D: 60        RTS
 
 
 
-tbl_9F62_auto_playlist:
+tbl_9F62_автовоспроизведение:
 ; ???
 - D 0 - I - 0x009F72 02:9F62: 0E        .byte $0E   ; 
 - D 0 - I - 0x009F73 02:9F63: 5C        .byte $5C   ; 

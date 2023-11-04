@@ -50,7 +50,7 @@ C - - J - - 0x01E3E3 07:E3D3: A6 19     LDX ram_номер_действия_на
 C - - - - - 0x01E3E5 07:E3D5: D0 0E     BNE bra_E3E5_минус_x
 ; X=00 подготовка
 C - - - - - 0x01E3E7 07:E3D7: 20 0B E5  JSR sub_E50B_подготовка_главного_экрана
-C - - - - - 0x01E3EA 07:E3DA: A9 09     LDA #$11
+C - - - - - 0x01E3EA 07:E3DA: A9 09     LDA #$11    ; палитра логотипа слияние
 C - - - - - 0x01E3EC 07:E3DC: 20 70 FE  JSR sub_0x01FE80_bankswitch_загрузка_палитры_в_03E0x
 C - - - - - 0x01E3EF 07:E3DF: 20 BE F7  JSR sub_0x01F7CE_запись_палитры_из_03E0x_в_0300x
 C - - - - - 0x01E3F2 07:E3E2: E6 19     INC ram_номер_действия_на_заставке
@@ -346,7 +346,7 @@ bra_991A_закрыть_буфер:
                                         INX
                                         STX ram_index_ppu_buffer
 bra_9921_чит_не_введен:
-                                        LDA #con_pal_13_options
+                                        LDA #$13    ; палитра экрана с опциями
                                         JSR sub_0x01FE80_bankswitch_загрузка_палитры_в_03E0x
                                         JSR sub_0x01F7CE_запись_палитры_из_03E0x_в_0300x
                                         JSR sub_9924_отрисовать_difficulty
@@ -508,7 +508,7 @@ bra_9B04:
                                         ADC ram_options_сложность,X
                                         JSR sub_0x01FE8A_bankswitch_отрисовка_текста_через_буфер_0300x
                                         LDA ram_номер_опции_колво_игроков
-                                        CMP #con_options_obj_limit
+                                        CMP #$02    ; obj limit
                                         BNE bra_9B05
                                         LDX ram_options_колво_объектов
                                         LDA tbl_0x01FB75_индексы,X
@@ -518,7 +518,7 @@ bra_9B04:
                                         LDA tbl_0x01FB75_индексы + $04,X
                                         STA ram_макс_индекс_пули_общие
 bra_9B05:
-                                        CMP #con_options_graphics
+                                        CMP #$01    ; graphics
                                         BNE bra_9B06_RTS
                                         LDA ram_options_регион
                                         ASL
@@ -639,7 +639,7 @@ ofs_options_9B27_03_выход_из_экрана_options:
                                         LDA ram_for_2000
                                         AND #$FC
                                         STA ram_for_2000
-                                        LDA #$10
+                                        LDA #$10    ; палитра главного экрана
                                         JSR sub_0x01FE80_bankswitch_загрузка_палитры_в_03E0x
                                         JSR sub_0x01F7CE_запись_палитры_из_03E0x_в_0300x
                                         LDA #con_0x0017EA_1_player
@@ -1219,7 +1219,7 @@ sub_E52A_палитра_и_надпись_press_start:
 C - - - - - 0x01E53A 07:E52A: A5 FF     LDA ram_for_2000
 C - - - - - 0x01E53C 07:E52C: 29 FC     AND #$FC
 C - - - - - 0x01E53E 07:E52E: 85 FF     STA ram_for_2000
-C - - - - - 0x01E540 07:E530: A9 08     LDA #$10
+C - - - - - 0x01E540 07:E530: A9 08     LDA #$10    ; палитра главного экрана
 C - - - - - 0x01E542 07:E532: 20 70 FE  JSR sub_0x01FE80_bankswitch_загрузка_палитры_в_03E0x
 C - - - - - 0x01E545 07:E535: 20 BE F7  JSR sub_0x01F7CE_запись_палитры_из_03E0x_в_0300x
 C - - - - - 0x01E548 07:E538: A9 00     LDA #con_0x0017EA_press_start 

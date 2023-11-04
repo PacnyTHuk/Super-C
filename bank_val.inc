@@ -19,17 +19,6 @@ con__hp_F1                              = $F1 ; unkillable object
 
 
 
-; options
-con_options_difficulty                   = $00
-con_options_graphics                     = $01
-con_options_obj_limit                    = $02
-con_options_continue                     = $03
-con_options_level                        = $04
-con_options_rest                         = $05
-con_options_exit                         = $06
-
-
-
 ; ram_btn_press
 ; ram_btn_hold
 ; ram_copy_btn_press
@@ -51,7 +40,6 @@ con_btns_AB                             = con_btn_A + con_btn_B                 
 
 
 
-
 ; ram_irq_handler_hi
 con_irq_disable                         = $00 ; 
 con_irq_area_1_boss                     = $01 ; 
@@ -69,6 +57,7 @@ con_irq_area_2_boss                     = $0C ;
 con_irq_area_8_boss                     = $0D ; 
 con_irq_area_6_change_floor_color       = $0E ; when you're attacked by small red spiked balls and floor changes color
 con_irq_area_6_boss                     = $0F ;
+
 
 
 ; ram_weapon
@@ -94,33 +83,6 @@ con_buf_mode_07                         = $07 ; 1й байт = счетчик, �
 
 
 
-; палитра (0x00F894)
-con_pal_00_area_1_US                    = $00
-con_pal_01_area_1_EU                    = $01
-con_pal_02_area_2_US                    = $02
-con_pal_03_area_2_EU                    = $03
-con_pal_04_area_3_US                    = $04
-con_pal_05_area_3_EU                    = $05
-con_pal_06_area_4_US                    = $06
-con_pal_07_area_4_EU                    = $07
-con_pal_08_area_5_US                    = $08
-con_pal_09_area_5_EU                    = $09
-con_pal_0A_area_6_US                    = $0A
-con_pal_0B_area_6_EU                    = $0B
-con_pal_0C_area_7_US                    = $0C
-con_pal_0D_area_7_EU                    = $0D
-con_pal_0E_area_8_US                    = $0E
-con_pal_0F_area_8_EU                    = $0F
-con_pal_10_главный_экран                = $10
-con_pal_11_логотип_слияние              = $11
-con_pal_12_заставка                     = $12
-con_pal_13_options                      = $13
-
-
-
-
-
-
 ; for 0x0017EA
 con_0x0017EA_1_player                   = $00 ;
 con_0x0017EA_2_players                  = $01 ;
@@ -137,6 +99,7 @@ con_0x0017EA_continue                   = $0B ;
 con_0x0017EA_level                      = $0C ;
 con_0x0017EA_rest                       = $0D ;
 con_0x0017EA_exit                       = $0E ;
+
 
 
 ; ram_obj_id
@@ -175,7 +138,7 @@ con_obj_id_10                           = $10 ; точка спавна мобо
 ; con_obj_id_1E                         = $1E ; 
 ; con_obj_id_1F                         = $1F ; 
 con_obj_id_20                           = $20 ; пушка на 1м уровне которая вырастает из под земли
-con_obj_id_21                           = $21 ; большой шар на боссе вертолет 1 уровень
+con_obj_id_21                           = $21 ; босс вертолет 1 уровень (также большой шар на вертолете после уничтожения пушек)
 con_obj_id_22                           = $22 ; пушка на боссе вертолет 1 уровень
 con_obj_id_23                           = $23 ; дверь босса вертолет 1 уровень
 con_obj_id_24                           = $24 ; паук на 6м уровне

@@ -1099,7 +1099,7 @@ C - - - - - 0x01E740 07:E730: 60        RTS
 sub_E731:
 C - - - - - 0x01E741 07:E731: A9 05     LDA #$05
 C - - - - - 0x01E743 07:E733: 85 1D     STA ram_001D
-C - - - - - 0x01E745 07:E735: A9 08     LDA #$10
+C - - - - - 0x01E745 07:E735: A9 08     LDA #$10    ; палитра главного экрана
 C - - - - - 0x01E747 07:E737: 20 70 FE  JSR sub_FE70_bankswitch_загрузка_палитры_в_03E0x
 C - - - - - 0x01E74A 07:E73A: A0 4C     LDY #con_F97C_colors + $13 * $04
 C - - - - - 0x01E74C 07:E73C: 20 68 F9  JSR sub_F968_запись_3х_цветов
@@ -1688,7 +1688,7 @@ C - - - - - 0x01EA6E 07:EA5E: D0 18     BNE bra_EA78
 ;C - - - - - 0x01EA70 07:EA60: 20 57 E5  JSR sub_FE84_XFF_обнуление_экранов_PPU
 C - - - - - 0x01EA73 07:EA63: A2 04     LDX #$02
 C - - - - - 0x01EA75 07:EA65: 20 84 FE  JSR sub_FE84_bankswitch_отрисовка_экранов
-C - - - - - 0x01EA78 07:EA68: A9 0A     LDA #$12
+C - - - - - 0x01EA78 07:EA68: A9 0A     LDA #$12    ; палитра заставки
 C - - - - - 0x01EA7A 07:EA6A: 20 70 FE  JSR sub_FE70_bankswitch_загрузка_палитры_в_03E0x
 C - - - - - 0x01EA7D 07:EA6D: 20 BE F7  JSR sub_F7BE_запись_палитры_из_03E0x_в_0300x
 C - - - - - 0x01EA80 07:EA70: A9 36     LDA #con_sound_36

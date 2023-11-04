@@ -7,7 +7,7 @@
 
 
 .export _off001_0x004011_20_cannon_hidden_1
-.export _off001_0x004506_21_boss_area_1_sphere
+.export _off001_0x004506_21_boss_area_1_helicopter
 .export _off001_0x0040E9_22_boss_area_1_gun
 .export _off001_0x004250_23_boss_area_1_door
 .export _off001_0x0043E0_62_helicopter_rotor_blade
@@ -150,7 +150,7 @@ tbl_80D6:
 
 
 
-_off001_0x004506_21_boss_area_1_sphere:
+_off001_0x004506_21_boss_area_1_helicopter:
 - D 0 - I - 0x004506 01:84F6: 0A 85     .word ofs_038_21_850A_01_initialize_object ; 
 - D 0 - I - 0x004508 01:84F8: 18 85     .word ofs_038_21_8518_02 ; 
 - D 0 - I - 0x00450A 01:84FA: CD 85     .word ofs_038_21_85CD_03 ; 

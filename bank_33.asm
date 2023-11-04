@@ -1704,7 +1704,7 @@ tbl_A5B4:
 - - - - - - 0x006600 01:A5F0: AF A5     .word _off001_A5AF_1E - $02
 - - - - - - 0x006602 01:A5F2: AF A5     .word _off001_A5AF_1F - $02
 - D 1 - - - 0x006604 01:A5F4: 01 80     .word _off001_0x004011_20_cannon_hidden_1 - $02
-- D 1 - - - 0x006606 01:A5F6: F6 84     .word _off001_0x004506_21_boss_area_1_sphere - $02
+- D 1 - - - 0x006606 01:A5F6: F6 84     .word _off001_0x004506_21_boss_area_1_helicopter - $02
 - D 1 - - - 0x006608 01:A5F8: D9 80     .word _off001_0x0040E9_22_boss_area_1_gun - $02
 - D 1 - - - 0x00660A 01:A5FA: 40 82     .word _off001_0x004250_23_boss_area_1_door - $02
 - D 1 - - - 0x00660C 01:A5FC: C2 8E     .word _off001_0x010ED2_24_blue_spider - $02
