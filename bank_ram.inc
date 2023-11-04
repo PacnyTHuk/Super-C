@@ -1074,7 +1074,7 @@ ram_014C                                = $014C ; 018C16 018C2C 01FB0B
 
 
 
-; free addresses (probably reserved as ram_014C array)
+; свободные адреса (возможно были зарезервированы как часть массива ram_014C)
 ; ram_0150                                = $0150 ; 01FB0B 
 ; ram_0151                                = $0151 ; 01FB0B 
 
@@ -1088,7 +1088,7 @@ ram_0152                                = $0152 ; 018C1E 018C31 01FB0B
 
 
 
-; free addresses (probably reserved as ram_0152 array)
+; свободные адреса (возможно были зарезервированы как часть массива ram_0152)
 ; ram_0156                                = $0156 ; 01FB0B 
 ; ram_0157                                = $0157 ; 01FB0B 
 
@@ -1160,7 +1160,7 @@ ram_0175                                = $0175 ; 0180B7 0181ED 0182A7 018715 01
 ; ram_0177                                = $0177 ; 0180B7 0186E9 0189EB 0189F0 018A39 01FB0B 
 ; ram_0178                                = $0178 ; 01FB0B 
 ; ram_0179                                = $0179 ; 0180B7 018804 01FB0B 
-; ; free address?
+; ; свободный адрес?
 ; ram_017A                                = $017A ; 01FB0B 
 
 
@@ -1383,7 +1383,7 @@ ram_01CC                                = $01CC ; 01839B 018865 01FB0B
 
 
 
-; free addresses (reserved for the actual stack)
+; свободные адреса (зарезервированы для обычного стека)
 ; ram_01D4                                = $01D4 ; 01FB0B 
 ; ram_01D5                                = $01D5 ; 01FB0B 
 ; ram_01D6                                = $01D6 ; 01FB0B 
@@ -1697,7 +1697,7 @@ ram_spr_X                               = $0203 ; 00C04E 00C0C0 00C1B7 00C20C 01
 ram_nmt_buffer                            = $0300 ; PPU
 
 
-; free addresses
+; свободные адреса
 ; ram_03B0                                = $03B0 ; 01E5FF 01FB0B 
 ; ram_03B1                                = $03B1 ; 01E5FF 01FB0B 
 ; ram_03B2                                = $03B2 ; 01E5FF 01FB0B 
@@ -1734,7 +1734,7 @@ ram_03C8                                = $03C8 ; 01E5FF 01EC7A 01EC9C 01FB0B
 
 
 
-; free address
+; свободный адрес
 ; ram_03C9                                = $03C9 ; 01E5FF 01FB0B 
 
 
@@ -2038,7 +2038,7 @@ ram_04FF                                = $04FF ; 007D2F 00D924 0115E0 011BD4 01
 ram_копия_pal_buffer                    = $0500 ; Копия палитры для затемнения паузы
 
 
-; free addresses 0520-07CF
+; свободные адреса 0520-07CF
 
 
 ram_07D0                                = $07D0 ; 001C08 0078DF 01E608 01F090 01FB19 
@@ -2058,7 +2058,7 @@ ram_sound_mode_draw_cooldown            = $07DA ;
 
 
 
-; free addresses
+; свободные адреса
 ; ram_07DB                                = $07DB ; 01E608 01FB19 
 ; ram_07DC                                = $07DC ; 01E608 01FB19 
 ; ram_07DD                                = $07DD ; 01E608 01FB19 
@@ -3787,10 +3787,28 @@ ram_позиция_объектов_x_старш            = $6580 ;
 
 ; 7E00-7EFF (100) новые адреса
 
+; 7E00-7EEF свободные
+
 ram_счетчик_анимации_super              = $7EF0 ; 
 ram_счетчик_анимации_contra             = $7EF1 ; 
 ram_счетчик_палитры_орла_lo             = $7EF2 ; 
 ram_счетчик_палитры_орла_hi             = $7EF3 ; 
+
+
+
+; свободные адреса
+; ram_7EF4                                = $7EF4 ; 
+; ram_7EF5                                = $7EF5 ; 
+; ram_7EF6                                = $7EF6 ; 
+; ram_7EF7                                = $7EF7 ; 
+; ram_7EF8                                = $7EF8 ; 
+; ram_7EF9                                = $7EF9 ; 
+; ram_7EFA                                = $7EFA ; 
+; ram_7EFB                                = $7EFB ; 
+; ram_7EFC                                = $7EFC ; 
+; ram_7EFD                                = $7EFD ; 
+; ram_7EFE                                = $7EFE ; 
+; ram_7EFF                                = $7EFF ; 
 
 
 
@@ -3805,7 +3823,26 @@ ram_счетчик_палитры_орла_hi             = $7EF3 ;
 
 ; вечное бессмертие на селект + вниз
 ram_режим_бессмертия                    = $7FE0 ; 00 = выкл, 01 = вкл
-; ram_7FF1                                = $7FE1 ; 
+; ram_7FF1                              = $7FE1 ; 
+
+
+
+; свободные адреса
+; ram_7FF2                                = $7FF2 ; 
+; ram_7FF3                                = $7FF3 ; 
+; ram_7FF4                                = $7FF4 ; 
+; ram_7FF5                                = $7FF5 ; 
+; ram_7FF6                                = $7FF6 ; 
+; ram_7FF7                                = $7FF7 ; 
+; ram_7FF8                                = $7FF8 ; 
+; ram_7FF9                                = $7FF9 ; 
+; ram_7FFA                                = $7FFA ; 
+; ram_7FFB                                = $7FFB ; 
+; ram_7FFC                                = $7FFC ; 
+; ram_7FFD                                = $7FFD ; 
+; ram_7FFE                                = $7FFE ; 
+; ram_7FFF                                = $7FFF ; 
+
 
 
 ;  Меню options
@@ -3819,7 +3856,13 @@ ram_options                             = $7FF0 ; для общих ссылок
 
 
 
-; free address
+; свободные адреса
+; ram_7FF6                                = $7FF6 ; 
+; ram_7FF7                                = $7FF7 ; 
+; ram_7FF8                                = $7FF8 ; 
+; ram_7FF9                                = $7FF9 ; 
+; ram_7FFA                                = $7FFA ; 
+; ram_7FFB                                = $7FFB ; 
 ; ram_7FFC                                = $7FFC ; 
 ; ram_7FFD                                = $7FFD ; 
 ; ram_7FFE                                = $7FFE ; 
