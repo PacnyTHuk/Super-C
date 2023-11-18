@@ -145,7 +145,7 @@ bra_E447_минус_x:
 ; X=04 выбор режима игры
 C - - - - - 0x01E41B 07:E40B: 20 DF FE  JSR sub_A29C_чит_коды
 C - - - - - 0x01E426 07:E416: A6 22     LDX ram_номер_опции_колво_игроков
-C - - - - - 0x01E428 07:E418: A9 A7     LDY #$50 ; X координата стрелки
+C - - - - - 0x01E428 07:E418: A9 A7     LDY #$4A ; X координата стрелки
 C - - - - - 0x01E42A 07:E41A: BC 70 E4  LDA tbl_E470_y_координаты_стрелки,X
 C - - - - - 0x01E42D 07:E41D: 20 5F E4  JSR sub_E45F_запись_данных_для_стрелки
 C - - - - - 0x01E430 07:E420: A5 F5     LDA ram_копия_нажатая_кнопка
@@ -515,8 +515,6 @@ bra_9B04:
                                         STA ram_макс_индекс_пули_игрока
                                         LDA tbl_0x01FB75_индексы + $02,X
                                         STA ram_макс_индекс_враги
-                                        LDA tbl_0x01FB75_индексы + $04,X
-                                        STA ram_макс_индекс_пули_общие
 bra_9B05:
                                         CMP #$01    ; graphics
                                         BNE bra_9B06_RTS
@@ -662,22 +660,22 @@ bra_9B28_RTS:
 
 
 tbl_9B29_y_координаты_стрелки:
-                                        .byte $2F   ; 00
-                                        .byte $3F   ; 01
-                                        .byte $4F   ; 02
-                                        .byte $5F   ; 03
-                                        .byte $6F   ; 04
-                                        .byte $7F   ; 05
-                                        .byte $8F   ; 06
+                                        .byte $2A   ; 00
+                                        .byte $3A   ; 01
+                                        .byte $4A   ; 02
+                                        .byte $5A   ; 03
+                                        .byte $6A   ; 04
+                                        .byte $7A   ; 05
+                                        .byte $8A   ; 06
 
 tbl_9B2A_x_координаты_стрелки:
-                                        .byte $20   ; 00
-                                        .byte $20   ; 01
-                                        .byte $20   ; 02
-                                        .byte $20   ; 03
-                                        .byte $20   ; 04
-                                        .byte $20   ; 05
-                                        .byte $60   ; 06
+                                        .byte $1A   ; 00
+                                        .byte $1A   ; 01
+                                        .byte $1A   ; 02
+                                        .byte $1A   ; 03
+                                        .byte $1A   ; 04
+                                        .byte $1A   ; 05
+                                        .byte $5A   ; 06
 
 
 sub_9B30_смена_палитры_сокола:
@@ -1008,9 +1006,9 @@ C - - - - - 0x01E47F 07:E46F: 60        RTS
 
 
 tbl_E470_y_координаты_стрелки:
-- D 3 - - - 0x01E480 07:E470: 20        .byte $8F   ; 00 1 Player
-- D 3 - - - 0x01E481 07:E471: 80        .byte $9F   ; 01 2 Players
-                                        .byte $AF   ; 02 Options
+- D 3 - - - 0x01E480 07:E470: 20        .byte $8A   ; 00 1 Player
+- D 3 - - - 0x01E481 07:E471: 80        .byte $9A   ; 01 2 Players
+                                        .byte $AA   ; 02 Options
 
 sub_A30F_обработчик_главного_экрана:
 ; leon опт

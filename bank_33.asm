@@ -621,7 +621,7 @@ C - - - - - 0x0061A3 01:A193: 4C 75 A2  JMP loc_A275_удалить_объект
 
 
 sub_A196:
-C - - - - - 0x0061A6 01:A196: A2 0F     LDX ram_макс_индекс_пули_общие
+C - - - - - 0x0061A6 01:A196: A2 0F     LDX ram_макс_индекс_пули_игрока
 C - - - - - 0x0061A8 01:A198: 38        SEC
 bra_A199_loop:
 C - - - - - 0x0061A9 01:A199: BD 38 06  LDA ram_пули_игрока_хитбокс,X
@@ -629,12 +629,12 @@ C - - - - - 0x0061A9 01:A199: BD 38 06  LDA ram_пули_игрока_хитбо
 C - - - - - 0x0061AC 01:A19C: F0 1D     BEQ bra_A1BB    ; if not active
 C - - - - - 0x0061AE 01:A19E: 65 07     ADC ram_0007    ; value from ram_хитбоксы_объектов
 C - - - - - 0x0061B0 01:A1A0: A8        TAY
-C - - - - - 0x0061B1 01:A1A1: BD 88 05  LDA ram_пули_игрока_позиция_x_старш,X
+C - - - - - 0x0061B1 01:A1A1: BD 88 05  LDA ram_позиция_x_спрайта,X
 C - - - - - 0x0061B4 01:A1A4: F9 01 A0  SBC tbl_A001,Y
 C - - - - - 0x0061B7 01:A1A7: E5 05     SBC ram_0005
 C - - - - - 0x0061B9 01:A1A9: D9 03 A0  CMP tbl_A003,Y
 C - - - - - 0x0061BC 01:A1AC: B0 0D     BCS bra_A1BB
-C - - - - - 0x0061BE 01:A1AE: BD 78 05  LDA ram_пули_игрока_позиция_y_старш,X
+C - - - - - 0x0061BE 01:A1AE: BD 78 05  LDA ram_позиция_y_спрайта,X
 C - - - - - 0x0061C1 01:A1B1: F9 00 A0  SBC tbl_A000,Y
 C - - - - - 0x0061C4 01:A1B4: E5 06     SBC ram_0006
 C - - - - - 0x0061C6 01:A1B6: D9 02 A0  CMP tbl_A002,Y
@@ -648,7 +648,7 @@ bra_A1BF:
 C - - - - - 0x0061CF 01:A1BF: A4 10     LDY ram_0010
 C - - - - - 0x0061D1 01:A1C1: B9 2C 07  LDA ram_072C_obj,Y
 C - - - - - 0x0061D4 01:A1C4: 30 F8     BMI bra_A1BE_RTS
-C - - - - - 0x0061D6 01:A1C6: BD 88 05  LDA ram_пули_игрока_позиция_x_старш,X
+C - - - - - 0x0061D6 01:A1C6: BD 88 05  LDA ram_позиция_x_спрайта,X
 C - - - - - 0x0061D9 01:A1C9: 38        SEC
 C - - - - - 0x0061DA 01:A1CA: E5 05     SBC ram_0005
 C - - - - - 0x0061DC 01:A1CC: B0 04     BCS bra_A1D2
@@ -663,7 +663,7 @@ C - - - - - 0x0061E9 01:A1D9: 2A        ROL
 C - - - - - 0x0061EA 01:A1DA: 29 01     AND #$01
 C - - - - - 0x0061EC 01:A1DC: 85 21     STA ram_0021
 C - - - - - 0x0061EE 01:A1DE: BD F8 05  LDA ram_пули_игрока_урон,X
-C - - - - - 0x0061F1 01:A1E1: BC 88 05  LDY ram_пули_игрока_позиция_x_старш,X
+C - - - - - 0x0061F1 01:A1E1: BC 88 05  LDY ram_позиция_x_спрайта,X
 C - - - - - 0x0061F4 01:A1E4: 20 F1 A1  JSR sub_A1F1
 C - - - - - 0x0061F7 01:A1E7: D0 D5     BNE bra_A1BE_RTS
 C - - - - - 0x0061F9 01:A1E9: A9 00     LDA #$00

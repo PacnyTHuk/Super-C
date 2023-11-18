@@ -1408,7 +1408,6 @@ C - - - - - 0x01E8EA 07:E8DA: 20 8A EA  JSR sub_EA8A
 C - - - - - 0x01E8ED 07:E8DD: 20 3D FE  JSR sub_FE3D_обработчик_уровня
 C - - - - - 0x01E8F0 07:E8E0: A5 39     LDA ram_пауза
 C - - - - - 0x01E8F2 07:E8E2: F0 06     BEQ bra_E8EA
-C - - - - - 0x01E8F4 07:E8E4: 20 55 FE  JSR sub_FE55_выбрать_объекты_на_текущий_кадр
 C - - - - - 0x01E8F7 07:E8E7: 4C A9 F7  JMP loc_F7A9_запись_палитры_из_03E0x_в_0300x_с_условием
 bra_E8EA:
 C - - - - - 0x01E8FA 07:E8EA: 20 06 E9  JSR sub_E906_обработчик_геймплея
@@ -1440,7 +1439,7 @@ C - - - - - 0x01E918 07:E908: 20 3A F8  JSR sub_F83A
 C - - - - - 0x01E91B 07:E90B: 20 45 FE  JSR sub_FE45
 C - - - - - 0x01E91E 07:E90E: 20 BF FE  JSR sub_FEBF
 C - - - - - 0x01E921 07:E911: 20 98 FE  JSR sub_FE98
-C - - - - - 0x01E924 07:E914: 20 4D FE  JSR sub_FE4D
+C - - - - - 0x01E924 07:E914: 20 4D FE  JSR sub_FE4D_обработчик_пуль_игроков
 C - - - - - 0x01E927 07:E917: 20 25 FE  JSR sub_FE25_спавн_объектов_из_данных_уровня
 C - - - - - 0x01E92A 07:E91A: 20 2D FE  JSR sub_FE2D_спавн_обычных_мобов
 C - - - - - 0x01E92D 07:E91D: 20 1F FE  JSR sub_FE1F_обработчик_объектов
@@ -4451,8 +4450,6 @@ bra_FB30_US:
                                         STA ram_макс_индекс_пули_игрока
                                         LDA tbl_FB75_индексы + $02,X
                                         STA ram_макс_индекс_враги
-                                        LDA tbl_FB75_индексы + $04,X
-                                        STA ram_макс_индекс_пули_общие
                                         LDA #$01    ; вкл. чит
                                         STA ram_cheat_flag
 C - - - - - 0x01FB40 07:FB30: A9 53     LDA #$53
@@ -4496,9 +4493,9 @@ tbl_FB75_индексы:
 ;                                              ----------- Оригинал
 ;                                              |    ------ Разгон
 ;                                              |    |
-                                        .byte $09, $0F  ; макс_индекс_пули_игрока
+                                        .byte $0F, $1F  ; макс_индекс_пули_общие
                                         .byte $0D, $1F  ; макс_индекс_враги
-                                        .byte $13, $1F  ; макс_индекс_пули_общие
+
 vec_FB67_NMI:
 
 C - - - - - 0x01FB77 07:FB67: 48        PHA
@@ -4953,17 +4950,10 @@ C - - - - - 0x01FE5A 07:FE4A: 4C 01 80  JMP loc_0x000011
 
 
 
-sub_FE4D:
+sub_FE4D_обработчик_пуль_игроков:
 C - - - - - 0x01FE5D 07:FE4D: A9 30     LDA #con_prg_bank + $30
 C - - - - - 0x01FE5F 07:FE4F: 20 5D FD  JSR sub_FD5D_prg_bankswitch_30_33
-C - - - - - 0x01FE62 07:FE52: 4C 81 91  JMP loc_0x001191
-
-
-
-sub_FE55_выбрать_объекты_на_текущий_кадр:
-C - - - - - 0x01FE65 07:FE55: A9 30     LDA #con_prg_bank + $30
-C - - - - - 0x01FE67 07:FE57: 20 6F FD  JSR sub_FD6F_prg_bankswitch___no_return
-C - - - - - 0x01FE6A 07:FE5A: 4C 89 91  JMP loc_0x001199_выбрать_объекты_на_текущий_кадр
+C - - - - - 0x01FE62 07:FE52: 4C 81 91  JMP loc_0x001191_обработка_пуль_игроков
 
 
 

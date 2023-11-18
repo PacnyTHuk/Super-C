@@ -2224,12 +2224,12 @@ bra_8C92_loop:
 C - - - - - 0x014CA2 05:8C92: B9 A8 05  LDA ram_пули_игрока_аттрибуты,Y
 C - - - - - 0x014CA5 05:8C95: C9 01     CMP #$01
 C - - - - - 0x014CA7 05:8C97: D0 16     BNE bra_8CAF
-C - - - - - 0x014CA9 05:8C99: B9 88 05  LDA ram_пули_игрока_позиция_x_старш,Y
+C - - - - - 0x014CA9 05:8C99: B9 88 05  LDA ram_позиция_x_спрайта,Y
 C - - - - - 0x014CAC 05:8C9C: C9 38     CMP #$38
 C - - - - - 0x014CAE 05:8C9E: 90 0F     BCC bra_8CAF
 C - - - - - 0x014CB0 05:8CA0: C9 C8     CMP #$C8
 C - - - - - 0x014CB2 05:8CA2: B0 0B     BCS bra_8CAF
-C - - - - - 0x014CB4 05:8CA4: B9 78 05  LDA ram_пули_игрока_позиция_y_старш,Y
+C - - - - - 0x014CB4 05:8CA4: B9 78 05  LDA ram_позиция_y_спрайта,Y
 C - - - - - 0x014CB7 05:8CA7: C5 08     CMP ram_0008
 C - - - - - 0x014CB9 05:8CA9: B0 04     BCS bra_8CAF
 C - - - - - 0x014CBB 05:8CAB: 85 08     STA ram_0008
@@ -2240,7 +2240,7 @@ C - - - - - 0x014CC0 05:8CB0: 10 E0     BPL bra_8C92_loop
 C - - - - - 0x014CC2 05:8CB2: A9 80     LDA #$80
 C - - - - - 0x014CC4 05:8CB4: A4 09     LDY ram_0009
 C - - - - - 0x014CC6 05:8CB6: 30 03     BMI bra_8CBB
-C - - - - - 0x014CC8 05:8CB8: B9 88 05  LDA ram_пули_игрока_позиция_x_старш,Y
+C - - - - - 0x014CC8 05:8CB8: B9 88 05  LDA ram_позиция_x_спрайта,Y
 bra_8CBB:
 C - - - - - 0x014CCB 05:8CBB: 9D 3C 05  STA ram_позиция_x_спрайта_врага_и_пуль,X
 C - - - - - 0x014CCE 05:8CBE: 4C B7 A6  JMP loc_0x0066C7_удалить_объект_03
