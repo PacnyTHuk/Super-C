@@ -2740,10 +2740,10 @@ bra_8DC0:
 ; сохранить текущий банк
                                         LDY $BFFF
                                         STY ram_prg_bank + $01
-                                        LDY #con_prg_bank  + $2A
+                                        LDY #con_prg_bank + $2A
                                         CMP #$08
                                         BCC bra_8DC1
-                                        INY
+                                        INY ; con_prg_bank + $2B
                                         AND #$07
 bra_8DC1:
                                         STY $8001
