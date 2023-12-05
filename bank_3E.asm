@@ -73,7 +73,6 @@
 .export sub_0x01FE8A_bankswitch_отрисовка_текста_через_буфер_0300x
 .export sub_0x01FE94_bankswitch_отрисовка_экранов
 .export sub_0x01FEB4
-.export sub_0x01FEE7_bankswitch_sound_mode_handler
 .export _общий_RTS
 
 
@@ -4917,9 +4916,9 @@ C - - - - - 0x01FE3A 07:FE2A: 4C 48 91  JMP loc_0x009158_спавн_объект
 
 
 sub_FE2D_спавн_обычных_мобов:
-C - - - - - 0x01FE3D 07:FE2D: A9 30     LDA #con_prg_bank + $30
+C - - - - - 0x01FE3D 07:FE2D: A9 30     LDA #con_prg_bank + $28
 C - - - - - 0x01FE3F 07:FE2F: 20 5D FD  JSR sub_FD5D_prg_bankswitch_30_33
-C - - - - - 0x01FE42 07:FE32: 4C 01 94  JMP loc_0x001411
+C - - - - - 0x01FE42 07:FE32: 4C 01 94  JMP loc_0x001411_спавн_рядовых_мобов
 
 
 
@@ -4934,6 +4933,13 @@ sub_FE36_перерисовать_вертолет_для_европейки:
                                         LDA #con_prg_bank + $22
                                         JSR sub_FD6F_prg_bankswitch___no_return
                                         JMP loc_0x000001_перерисовать_вертолет_для_европейки
+
+
+sub_FE3A_bankswitch_обработка_оружия:
+                                        LDA #con_prg_bank + $28
+                                        JSR sub_FD6F_prg_bankswitch___no_return
+                                        JMP loc_0x000001_перерисовать_вертолет_для_европейки
+
 
 
 sub_FE3D_обработчик_уровня:
@@ -5046,7 +5052,7 @@ C - - - - - 0x01FEC4 07:FEB4: 4C 58 FD  JMP loc_FD58_prg_bankswitch___select_sec
 
 
 sub_FEB7_bankswitch:
-C - - - - - 0x01FEC7 07:FEB7: A9 30     LDA #con_prg_bank + $30
+C - - - - - 0x01FEC7 07:FEB7: A9 30     LDA #con_prg_bank + $28
 C - - - - - 0x01FEC9 07:FEB9: 20 6F FD  JSR sub_FD63_prg_bankswitch___with_return
 C - - - - - 0x01FECC 07:FEBC: 4C 94 9D  JSR sub_0x001DA4
                                         JMP loc_FD8B_restore_prg_bank
@@ -5054,31 +5060,25 @@ C - - - - - 0x01FECC 07:FEBC: 4C 94 9D  JSR sub_0x001DA4
 
 
 sub_FEBF:
-C - - - - - 0x01FECF 07:FEBF: A9 30     LDA #con_prg_bank + $30
+C - - - - - 0x01FECF 07:FEBF: A9 30     LDA #con_prg_bank + $28
 C - - - - - 0x01FED1 07:FEC1: 20 6F FD  JSR sub_FD6F_prg_bankswitch___no_return
 C - - - - - 0x01FED4 07:FEC4: 4C 96 9C  JMP loc_0x001CA6
 
 
 
 sub_FEC7_prepare_area_config:
-C - - - - - 0x01FED7 07:FEC7: A9 30     LDA #con_prg_bank + $30
+C - - - - - 0x01FED7 07:FEC7: A9 30     LDA #con_prg_bank + $28
 C - - - - - 0x01FED9 07:FEC9: 20 6F FD  JSR sub_FD6F_prg_bankswitch___no_return
 C - - - - - 0x01FEDC 07:FECC: 4C F2 9B  JMP loc_0x001C02_prepare_area_config
 
 
 
 sub_FECF_stage_complete_handler:
-C - - - - - 0x01FEDF 07:FECF: A9 30     LDA #con_prg_bank + $30
+C - - - - - 0x01FEDF 07:FECF: A9 30     LDA #con_prg_bank + $28
 C - - - - - 0x01FEE1 07:FED1: 20 6F FD  JSR sub_FD6F_prg_bankswitch___no_return
 C - - - - - 0x01FEE4 07:FED4: 4C 68 A1  JMP loc_0x002178_stage_complete_handler
 
 
-
-sub_0x01FEE7_bankswitch_sound_mode_handler:
-C - - - - - 0x01FEE7 07:FED7: A9 34     LDA #con_prg_bank + $34
-C - - - - - 0x01FEE9 07:FED9: 20 6F FD  JSR sub_FD63_prg_bankswitch___with_return
-C - - - - - 0x01FEEC 07:FEDC: 4C D9 9A  JSR sub_0x009AE9_sound_mode_handler
-                                        JMP loc_FD8B_restore_prg_bank
 
 loc_E3B9_bankswitch:
                                         LDA #con_prg_bank + $24
@@ -5094,7 +5094,7 @@ sub_EAB0_bankswitch_подготовить_начальные_банки_для_
 
 
 sub_FEF7_credits_handler:
-C - - - - - 0x01FF07 07:FEF7: A9 30     LDA #con_prg_bank + $30
+C - - - - - 0x01FF07 07:FEF7: A9 30     LDA #con_prg_bank + $28
 C - - - - - 0x01FF09 07:FEF9: 20 6F FD  JSR sub_FD6F_prg_bankswitch___no_return
 C - - - - - 0x01FF0C 07:FEFC: 4C B7 A3  JMP loc_0x0023C7_credits_handler
 
