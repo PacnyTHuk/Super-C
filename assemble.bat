@@ -19,6 +19,7 @@ ca65 -U -l copy_bank_24.lst -g copy_bank_24.asm
 ca65 -U -l copy_bank_26.lst -g copy_bank_26.asm
 ca65 -U -l copy_bank_28.lst -g copy_bank_28.asm
 ca65 -U -l copy_bank_2A.lst -g copy_bank_2A.asm
+ca65 -U -l copy_bank_2A.lst -g copy_bank_2B.asm
 ca65 -U -l copy_bank_2C.lst -g copy_bank_2C.asm
 ca65 -U -l copy_bank_2E.lst -g copy_bank_2E.asm
 ca65 -U -l copy_bank_30.lst -g copy_bank_30.asm
@@ -39,6 +40,7 @@ ld65 -C ld65.cfg -o PRG_ROM.bin --dbgfile _debug.txt ^
     copy_bank_26.o ^
     copy_bank_28.o ^
     copy_bank_2A.o ^
+    copy_bank_2B.o ^
     copy_bank_2C.o ^
     copy_bank_2E.o ^
     copy_bank_30.o ^
