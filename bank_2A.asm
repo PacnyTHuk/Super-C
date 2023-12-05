@@ -1,7 +1,7 @@
 .segment "BANK_2A"
 .include "copy_bank_ram.inc"
 .include "copy_bank_val.inc"
-.org $8000 ; for listing file
+.org $A000 ; for listing file
 ; 0x028010-0x02C00F
 
 ;0400-0780 (дефолт 00+07 прокачек)
@@ -630,4 +630,4 @@
 
 
 
-.out .sprintf("Free bytes in bank 2A: %Xh [%d]", ($A000 - *), ($A000 - *))
+.out .sprintf("Free bytes in bank 2A: %Xh [%d]", ($C000 - *), ($C000 - *))

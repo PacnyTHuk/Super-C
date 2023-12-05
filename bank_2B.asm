@@ -396,5 +396,5 @@
 
 
 
-.out .sprintf("Free bytes in bank 2B: %Xh [%d]", ($BFFF - *), ($BFFF - *))
+.out .sprintf("Free bytes in bank 2B: %Xh [%d]", ($C000 - *), ($C000 - *))
 
