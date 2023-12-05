@@ -2,9 +2,9 @@
 .include "copy_bank_ram.inc"
 .include "copy_bank_val.inc"
 .org $A000 ; for listing file
-; 0x02C010-0x03000F
+; 0x016010-0x01800F
 
-;0800-0A00 (07 прокачек)
+;0800-0A00 (5 прокачек 08-0C)
 
 ;tbl_0800_x_lo:
 ;                                              00   01   02   03   04   05   06   07   08   09   0A   0B   0C   0D   0E   0F

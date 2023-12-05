@@ -2,7 +2,7 @@
 .include "copy_bank_ram.inc"
 .include "copy_bank_val.inc"
 .org $8000 ; for listing file
-; 0x018010-0x02000F
+; 0x00C010-0x01000F
 
 
 

@@ -2,7 +2,7 @@
 .include "copy_bank_ram.inc"
 .include "copy_bank_val.inc"
 .org $8000 ; for listing file
-; 0x00C010-0x01000F
+; 0x02C010-0x03000F
 
 
 
@@ -1334,7 +1334,7 @@ bra_9966_RTS:
 tbl_D976_chr_bank:
                                         .byte con_chr_bank + $65   ; 00 US
                                         .byte con_chr_bank + $A4   ; 01 EU
-                                        
+
 tbl_D977_chr_bank:
                                         .byte con_chr_bank + $66   ; 00 US
                                         .byte con_chr_bank + $A0   ; 01 EU
