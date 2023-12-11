@@ -2950,7 +2950,7 @@ tbl_AC62:
                                         .byte $BE   ; 64
                                         .byte $BD   ; 65
                                         .byte $BC   ; 66
-                                        .byte $FF   ; 67
+;                                        .byte $FF   ; 67
 
 
 tbl_ACC3:

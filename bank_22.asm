@@ -410,16 +410,16 @@ tbl_8205_враги_US:
 - D 0 - - - 0x00C219 03:8209: 06 84     .word _off028_8406_02
 - D 0 - - - 0x00C21B 03:820B: 0F 84     .word _off028_840F_03
 - D 0 - - - 0x00C21D 03:820D: 18 84     .word _off028_8418_04
-- D 0 - - - 0x00C21F 03:820F: 19 84     .word _off028_8419_05
-- D 0 - - - 0x00C221 03:8211: 1A 84     .word _off028_841A_06
-- D 0 - - - 0x00C223 03:8213: 1B 84     .word _off028_841B_07
-- D 0 - - - 0x00C225 03:8215: 28 84     .word _off028_8428_08
-- D 0 - - - 0x00C227 03:8217: 35 84     .word _off028_8435_09
-- D 0 - - - 0x00C229 03:8219: 42 84     .word _off028_8442_0A
-- D 0 - - - 0x00C22B 03:821B: 4F 84     .word _off028_844F_0B
-- D 0 - - - 0x00C22D 03:821D: 5C 84     .word _off028_845C_0C
-- D 0 - - - 0x00C22F 03:821F: 69 84     .word _off028_8469_0D
-- D 0 - - - 0x00C231 03:8221: 76 84     .word _off028_8476_0E
+- D 0 - - - 0x00C21F 03:820F: 19 84     .word _off028_8419_05_shootgun
+- D 0 - - - 0x00C221 03:8211: 1A 84     .word _off028_841A_06_spread
+- D 0 - - - 0x00C223 03:8213: 1B 84     .word _off028_841B_07_bonus_capsule_BOX
+- D 0 - - - 0x00C225 03:8215: 28 84     .word _off028_8428_08_bonus_capsule_M
+- D 0 - - - 0x00C227 03:8217: 35 84     .word _off028_8435_09_bonus_capsule_S
+- D 0 - - - 0x00C229 03:8219: 42 84     .word _off028_8442_0A_bonus_capsule_L
+- D 0 - - - 0x00C22B 03:821B: 4F 84     .word _off028_844F_0B_bonus_capsule_F
+- D 0 - - - 0x00C22D 03:821D: 5C 84     .word _off028_845C_0C_bonus_capsule_R
+- D 0 - - - 0x00C22F 03:821F: 69 84     .word _off028_8469_0D_bonus_capsule_B
+- D 0 - - - 0x00C231 03:8221: 76 84     .word _off028_8476_0E_bonus_capsule_FALCON
 - D 0 - - - 0x00C233 03:8223: 83 84     .word _off028_8483_0F
 - D 0 - - - 0x00C235 03:8225: 9C 84     .word _off028_849C_10
 - D 0 - - - 0x00C237 03:8227: BD 84     .word _off028_84BD_11
@@ -430,7 +430,7 @@ tbl_8205_враги_US:
 - D 0 - - - 0x00C241 03:8231: 32 85     .word _off028_8532_16
 - D 0 - - - 0x00C243 03:8233: 33 85     .word _off028_8533_17
 - D 0 - - - 0x00C245 03:8235: 38 85     .word _off028_8538_18
-- D 0 - - - 0x00C247 03:8237: 3D 85     .word _off028_853D_19
+- D 0 - - - 0x00C247 03:8237: 3D 85     .word _off028_853D_19_machine_gun
 - D 0 - - - 0x00C249 03:8239: 3E 85     .word _off028_853E_1A
 - D 0 - - - 0x00C24B 03:823B: 57 85     .word _off028_8557_1B
 - D 0 - - - 0x00C24D 03:823D: 68 85     .word _off028_8568_1C
@@ -701,17 +701,17 @@ _off028_8418_04:
 
 
 
-_off028_8419_05:
+_off028_8419_05_shootgun:
 - D 0 - I - 0x00C429 03:8419: 80        .byte $80   ; 
 
 
 
-_off028_841A_06:
+_off028_841A_06_spread:
 - D 0 - I - 0x00C42A 03:841A: D1        .byte $D1   ; 
 
 
 
-_off028_841B_07:
+_off028_841B_07_bonus_capsule_BOX:
 - D 0 - I - 0x00C42B 03:841B: 0C        .byte @end - * - $01   ; total data size
 ;                                              --------------------- spr_Y
 ;                                              |    ---------------- spr_T
@@ -725,21 +725,12 @@ _off028_841B_07:
 
 
 
-_off028_8428_08:
-- D 0 - I - 0x00C438 03:8428: 0C        .byte @end - * - $01   ; total data size
-;                                              --------------------- spr_Y
-;                                              |    ---------------- spr_T
-;                                              |    |    ----------- spr_A
-;                                              |    |    |    ------ spr_X
-;                                              |    |    |    |
-- D 0 - I - 0x00C439 03:8429: F8        .byte $F8, $93, $00, $FC   ; 
-- D 0 - I - 0x00C43D 03:842D: F8        .byte $F8, $91, $00, $F4   ; 
-- D 0 - I - 0x00C441 03:8431: F8        .byte $F8, $91, $40, $04   ; 
-@end:
+_off028_8428_08_bonus_capsule_M:
+                                        .byte $C9   ; спрайт для fire_ball
 
 
 
-_off028_8435_09:
+_off028_8435_09_bonus_capsule_S:
 - D 0 - I - 0x00C445 03:8435: 0C        .byte @end - * - $01   ; total data size
 ;                                              --------------------- spr_Y
 ;                                              |    ---------------- spr_T
@@ -753,7 +744,7 @@ _off028_8435_09:
 
 
 
-_off028_8442_0A:
+_off028_8442_0A_bonus_capsule_L:
 - D 0 - I - 0x00C452 03:8442: 0C        .byte @end - * - $01   ; total data size
 ;                                              --------------------- spr_Y
 ;                                              |    ---------------- spr_T
@@ -767,7 +758,7 @@ _off028_8442_0A:
 
 
 
-_off028_844F_0B:
+_off028_844F_0B_bonus_capsule_F:
 - D 0 - I - 0x00C45F 03:844F: 0C        .byte @end - * - $01   ; total data size
 ;                                              --------------------- spr_Y
 ;                                              |    ---------------- spr_T
@@ -781,7 +772,7 @@ _off028_844F_0B:
 
 
 
-_off028_845C_0C:
+_off028_845C_0C_bonus_capsule_R:
 - D 0 - I - 0x00C46C 03:845C: 0C        .byte @end - * - $01   ; total data size
 ;                                              --------------------- spr_Y
 ;                                              |    ---------------- spr_T
@@ -795,7 +786,7 @@ _off028_845C_0C:
 
 
 
-_off028_8469_0D:
+_off028_8469_0D_bonus_capsule_B:
 - D 0 - I - 0x00C479 03:8469: 0C        .byte @end - * - $01   ; total data size
 ;                                              --------------------- spr_Y
 ;                                              |    ---------------- spr_T
@@ -809,7 +800,7 @@ _off028_8469_0D:
 
 
 
-_off028_8476_0E:
+_off028_8476_0E_bonus_capsule_FALCON:
 - D 0 - I - 0x00C486 03:8476: 0C        .byte @end - * - $01   ; total data size
 ;                                              --------------------- spr_Y
 ;                                              |    ---------------- spr_T
@@ -965,7 +956,7 @@ _off028_8538_18:
 
 
 
-_off028_853D_19:
+_off028_853D_19_machine_gun:
 - D 0 - I - 0x00C54D 03:853D: D0        .byte $D0   ; 
 
 
@@ -3324,13 +3315,16 @@ _off030_8F8A_C5:
 @end:
 
 
-
+; пусто для US:
 _off028_8F2E_BC:
 _off028_8F2E_BD:
 _off028_8F2E_BE:
 _off028_8F2E_BF:
 _off028_8F2E_C0:
 _off028_8F2E_C1:
+
+
+; пусто для общих спрайтов US/EU:
 _off028_8F2E_C6:
 _off028_8F2E_C7:
 _off028_8F2E_C8:
@@ -7380,7 +7374,7 @@ _off030_8F79_C1:
 
 
 
-
+; пусто для общих спрайтов US/EU:
 _off030_8F8A_C6:
 _off030_8F8A_C7:
 _off030_8F8A_C8:
