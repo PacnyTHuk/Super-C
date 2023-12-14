@@ -312,6 +312,7 @@ C - - - - - 0x00C191 03:8181: 85 09     STA ram_0009
 C - - - - - 0x00C193 03:8183: A0 00     LDY #$00
 C - - - - - 0x00C195 03:8185: B1 08     LDA (ram_0008),Y
 C - - - - - 0x00C197 03:8187: 30 5A     BMI bra_81E3_80_FF
+; 00-7F
 C - - - - - 0x00C199 03:8189: A8        TAY
 C - - - - - 0x00C19A 03:818A: D0 09     BNE bra_8195    ; jmp
 
@@ -389,6 +390,7 @@ C - - - - - 0x00C1F7 03:81E7: 38        SEC
 C - - - - - 0x00C1F8 03:81E8: 2A        ROL
 C - - - - - 0x00C1F9 03:81E9: 9D 01 02  STA ram_spr_T,X
 C - - - - - 0x00C1FC 03:81EC: A5 00     LDA ram_0000
+                                        ORA ram_000A
 C - - - - - 0x00C1FE 03:81EE: 9D 02 02  STA ram_spr_A,X
 C - - - - - 0x00C201 03:81F1: A5 01     LDA ram_0001
 C - - - - - 0x00C203 03:81F3: E9 08     SBC #$08
