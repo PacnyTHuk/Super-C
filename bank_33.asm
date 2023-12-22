@@ -656,7 +656,7 @@ C - - - - - 0x0061DE 01:A1CE: 49 FF     EOR #$FF
 C - - - - - 0x0061E0 01:A1D0: 69 01     ADC #$01
 bra_A1D2:
 C - - - - - 0x0061E2 01:A1D2: 30 EA     BMI bra_A1BE_RTS
-C - - - - - 0x0061E4 01:A1D4: BD B8 05  LDA ram_пули_игрока_тип_анимации,X
+C - - - - - 0x0061E4 01:A1D4: BD B8 05  LDA ram_пули_игрока_параметры,X
 C - - - - - 0x0061E7 01:A1D7: 2A        ROL
 C - - - - - 0x0061E8 01:A1D8: 2A        ROL
 C - - - - - 0x0061E9 01:A1D9: 2A        ROL

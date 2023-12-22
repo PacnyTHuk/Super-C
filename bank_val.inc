@@ -71,6 +71,18 @@ con_weapon_R                            = $80 ;
 
 
 
+;con_weapon_shotgun                      = $00 ;
+;con_weapon_machine_gun                  = $01 ;
+;con_weapon_spread                       = $02 ;
+;con_weapon_laser                        = $03 ;
+;con_weapon_flame                        = $04 ;
+;con_weapon_fire_ball                    = $05 ;
+;con_weapon_grenade_launcher             = $06 ;
+;con_weapon_secret_weapon                = $07 ;
+
+
+
+
 ; ram_nmt_buffer
 con_buf_mode_00                         = $00 ; буфер закрыт и дальнейшие байты не читаются
 con_buf_mode_01                         = $01 ; запись байтов по порядку (увеличение 2006 на 01) пока не встретится FF (на практике используется только для смены 2006)
