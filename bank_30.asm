@@ -283,7 +283,7 @@ loc_81CC:
 C D 0 - - - 0x0001DC 00:81CC: A8        TAY
 C - - - - - 0x0001DD 00:81CD: B5 C4     LDA ram_инвиз_игрока,X
 C - - - - - 0x0001DF 00:81CF: F0 07     BEQ bra_81D8
-C - - - - - 0x0001E1 00:81D1: A5 1B     LDA ram_счетчик_кадров_1
+C - - - - - 0x0001E1 00:81D1: A5 1B     LDA ram_счетчик_кадров
 C - - - - - 0x0001E3 00:81D3: 4A        LSR
 C - - - - - 0x0001E4 00:81D4: 90 02     BCC bra_81D8
 C - - - - - 0x0001E6 00:81D6: A0 00     LDY #$00
@@ -294,7 +294,7 @@ C - - - - - 0x0001EC 00:81DC: BD F7 81  LDA tbl_81F7,X
 C - - - - - 0x0001EF 00:81DF: 1D 66 05  ORA ram_атрибуты_спрайта_игрока,X
 C - - - - - 0x0001F2 00:81E2: B4 D4     LDY ram_бессмертие_игрока,X
 C - - - - - 0x0001F4 00:81E4: F0 0D     BEQ bra_81F3
-C - - - - - 0x0001F6 00:81E6: A5 1B     LDA ram_счетчик_кадров_1
+C - - - - - 0x0001F6 00:81E6: A5 1B     LDA ram_счетчик_кадров
 C - - - - - 0x0001F8 00:81E8: 4A        LSR
 C - - - - - 0x0001F9 00:81E9: 4A        LSR
 C - - - - - 0x0001FA 00:81EA: BD 66 05  LDA ram_атрибуты_спрайта_игрока,X
@@ -575,7 +575,7 @@ C - - - - - 0x000322 00:8312: 60        RTS
 
 
 ;loc_8313_убить_игрока_если_застрял_в_стене:
-;C D 0 - - - 0x000323 00:8313: A5 1B     LDA ram_счетчик_кадров_1
+;C D 0 - - - 0x000323 00:8313: A5 1B     LDA ram_счетчик_кадров
 ;C - - - - - 0x000325 00:8315: 29 0F     AND #$0F
 ;C - - - - - 0x000327 00:8317: D0 1B     BNE bra_8334_RTS
 ;C - - - - - 0x000329 00:8319: A5 5C     LDA ram_статус_завершения_уровня
@@ -868,7 +868,7 @@ bra_84BE_не_бессмертный:
                                     .endif
 C - - - - - 0x0004CD 00:84BD: B5 D4     LDA ram_бессмертие_игрока,X
 C - - - - - 0x0004CF 00:84BF: F0 08     BEQ bra_84C9_RTS
-C - - - - - 0x0004D1 00:84C1: A5 5B     LDA ram_счетчик_кадров_2
+C - - - - - 0x0004D1 00:84C1: A5 5B     LDA ram_счетчик_кадров
 C - - - - - 0x0004D3 00:84C3: 29 03     AND #$03
 C - - - - - 0x0004D5 00:84C5: D0 02     BNE bra_84C9_RTS
 C - - - - - 0x0004D7 00:84C7: D6 D4     DEC ram_бессмертие_игрока,X
@@ -1838,7 +1838,7 @@ C - - - - - 0x000A1D 00:8A0D: 95 A8     STA ram_скорость_игрока_y_
 C - - - - - 0x000A1F 00:8A0F: B5 B2     LDA ram_поверхность_под_игроком,X
 C - - - - - 0x000A21 00:8A11: C9 04     CMP #$04
 C - - - - - 0x000A23 00:8A13: D0 08     BNE bra_8A1D
-C - - - - - 0x000A25 00:8A15: A5 5B     LDA ram_счетчик_кадров_2
+C - - - - - 0x000A25 00:8A15: A5 5B     LDA ram_счетчик_кадров
 C - - - - - 0x000A27 00:8A17: 29 10     AND #$10
 C - - - - - 0x000A29 00:8A19: F0 02     BEQ bra_8A1D
 C - - - - - 0x000A2B 00:8A1B: C6 07     DEC ram_0007
@@ -2185,7 +2185,7 @@ loc_8BE0:
 C D 0 - - - 0x000BF0 00:8BE0: A8        TAY
 C - - - - - 0x000BF1 00:8BE1: B5 C4     LDA ram_инвиз_игрока,X
 C - - - - - 0x000BF3 00:8BE3: F0 07     BEQ bra_8BEC
-C - - - - - 0x000BF5 00:8BE5: A5 1B     LDA ram_счетчик_кадров_1
+C - - - - - 0x000BF5 00:8BE5: A5 1B     LDA ram_счетчик_кадров
 C - - - - - 0x000BF7 00:8BE7: 4A        LSR
 C - - - - - 0x000BF8 00:8BE8: 90 02     BCC bra_8BEC
 C - - - - - 0x000BFA 00:8BEA: A0 00     LDY #$00
@@ -2758,8 +2758,8 @@ C - - - - - 0x000DA3 00:8D93: 95 BC     STA ram_счетчик_тряска_пр
                                         LDA #$00
                                         STA ram_0000    ; номер пули для обработчика
                                         STA ram_0008    ; младший байт
-;                                        LDA #$03
-;                                        STA ram_000C
+                                        LDA #$05
+                                        STA ram_000C
 
 ; смена 2й половины банка
                                         LDA #$07
@@ -2835,12 +2835,31 @@ sub_8E0B_регистрация_выстрела:
                                         JMP (ram_000E)
 
 
-ofs_036_8E00_00_shotgun:
-                                        LDA tbl_8F10_байты_смещения_shotgun,Y
-                                        CLC
-                                        ADC ram_000A    ; байт смещения
+
+
+ofs_036_8E10_01_machine_gun:
+                                        LDY ram_0010   ; индекс текущего игрока
+                                        LDA ram_нажатая_кнопка,X
+                                        ASL
+                                        ASL
+                                        BCC bra_8E0C
+                                        LDA ram_рандом_байт
+                                        CMP #$20
+                                        BCC bra_8E0C
+                                        AND #$07
                                         TAY
-                                        JMP loc_8E6C
+                                        INY
+                                        BNE bra_8E0C    ; jmp
+ofs_036_8E00_00_shotgun:
+                                        TYA
+                                        STA ram_пули_игрока_параметры_прокачки,X
+                                        LDY #$00
+bra_8E0C:
+;                                        LDA tbl_8F10_байты_смещения_shotgun,Y
+;                                        CLC
+;                                        ADC ram_000A    ; байт смещения
+;                                        TAY
+                                        JMP loc_8E7A
 
 
 
@@ -2848,7 +2867,7 @@ ofs_036_8E00_00_shotgun:
 ofs_036_8E60_06_grenade_launcher:
 ofs_036_8E70_07_secret_weapon:
                                         RTS
-ofs_036_8E10_01_machine_gun:
+
 ofs_036_8E20_02_spread:
                                         LDA tbl_8F0A_байты_смещения_S,Y
                                         CLC
@@ -2874,32 +2893,27 @@ ofs_036_8E50_05_fire_ball:
 bra_8E6A:
                                         JMP loc_F801_обнуление_пуль_игрока
 
-
 ;     08 ->
-;  <- 07
-;   06  09
-; 05      00
-;   04  01
-;     02 ->
-;  <- 03
+;  <- 09
+;   07  06
+; 01      00
+;   03  02
+;     04 ->
+;  <- 05
 
 tbl_8E6B_fire_ball:
 ;                                              ------- counter
 ;                                              |
-;                                              |
-;                                              |
-;                                              |
                                         .byte $05 ; 00 RIGHT
-                                        .byte $07 ; 01 RIGHT+DOWN
-                                        .byte $08 ; 02 DOWN (RIGHT)
-                                        .byte $00 ; 03 DOWN (LEFT)
-                                        .byte $01 ; 04 DOWN+LEFT
-                                        .byte $03 ; 05 LEFT
-                                        .byte $05 ; 06 LEFT+UP
-                                        .byte $07 ; 07 UP (LEFT)
+                                        .byte $03 ; 01 LEFT
+                                        .byte $07 ; 02 RIGHT+DOWN
+                                        .byte $01 ; 03 LEFT+DOWN
+                                        .byte $08 ; 04 DOWN (RIGHT)
+                                        .byte $00 ; 05 DOWN (LEFT)
+                                        .byte $03 ; 06 RIGHT+UP
+                                        .byte $05 ; 07 LEFT+UP
                                         .byte $01 ; 08 UP (RIGHT)
-                                        .byte $03 ; 09 UP+RIGHT
-                                        
+                                        .byte $07 ; 09 UP (LEFT)
 
 
 loc_8E6C:
@@ -2922,12 +2936,9 @@ loc_8E7A:
                                         LDA #$02
                                         STA ram_пули_игрока_счетчик_жизни,X
 loc_8E90:
-                                        LDA ram_0004    ; атрибут пули (куда повернута)
-                                        AND #$40
-                                        CLC
-                                        ADC ram_0006    ; индекс оружия текущего игрока
+                                        LDA ram_0006    ; индекс оружия текущего игрока
 C - - - - - 0x000EAC 00:8E9C: 9D B8 05  STA ram_пули_игрока_параметры,X  ; для подсчета очков кто убил врага
-                                        LDY ram_0006    ; индекс оружия текущего игрока
+                                        TAY
                                         LDA ram_урон_пуль_оружия,Y
                                         STA ram_пули_игрока_урон,X
                                         LDY ram_0007    ; тип оружия
@@ -2935,6 +2946,15 @@ C - - - - - 0x000EAC 00:8E9C: 9D B8 05  STA ram_пули_игрока_парам
 C - - - - - 0x000EC8 00:8EB8: 9D A8 05  STA ram_пули_игрока_аттрибуты,X
 C - - - - - 0x000ED1 00:8EC1: B9 F5 8E  LDA tbl_8EF5_кадр_пуль,Y
 C - - - - - 0x000ED4 00:8EC4: 9D 68 05  STA ram_кадр_анимации,X
+                                        CPY #$00
+                                        BNE bra_8EC5_RTS
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+bra_8EC5_RTS:
                                         RTS
 
 
@@ -2960,67 +2980,67 @@ tbl_8EDE_laser:
                                         .byte $0F   ; 07 
                                         .byte $11   ; 08  
                                         .byte $13   ; 09 
-                                        .byte $15   ; 0A  
+                                        .byte $15   ; 0A 
 
 ;     08 ->
-;  <- 07
-;   06  09
-; 05      00
-;   04  01
-;     02 ->
-;  <- 03
+;  <- 09
+;   07  06
+; 01      00
+;   03  02
+;     04 ->
+;  <- 05
 
 tbl_8EE8_направление_пули:
 ; на земле
 ; ровная поверхность
-; смотрит вправо
+; смотрит вправо ->
                                         .byte $08   ; 00 UP
-                                        .byte $09   ; 01 UP+RIGHT
+                                        .byte $06   ; 01 UP+RIGHT
                                         .byte $00   ; 02 RIGHT
-                                        .byte $01   ; 03 DOWN+RIGHT
+                                        .byte $02   ; 03 DOWN+RIGHT
                                         .byte $00   ; 04 DOWN лежа
 ; на земле
 ; ровная поверхность
-; смотрит лево
-                                        .byte $05   ; 05 DOWN лежа
-                                        .byte $04   ; 06 DOWN+LEFT 
-                                        .byte $05   ; 07 LEFT
-                                        .byte $06   ; 08 UP+LEFT
-                                        .byte $07   ; 09 UP
+; <- смотрит лево
+                                        .byte $01   ; 05 DOWN лежа
+                                        .byte $03   ; 06 DOWN+LEFT 
+                                        .byte $01   ; 07 LEFT
+                                        .byte $07   ; 08 UP+LEFT
+                                        .byte $09   ; 09 UP
 ; на земле
 ; диагональная поверхность
-; смотрит вправо
+; смотрит вправо ->
                                         .byte $08   ; 0A UP
-                                        .byte $09   ; 0B UP+RIGHT
+                                        .byte $06   ; 0B UP+RIGHT
                                         .byte $00   ; 0C RIGHT
-                                        .byte $01   ; 0D DOWN+RIGHT
+                                        .byte $02   ; 0D DOWN+RIGHT
                                         .byte $00   ; 0E DOWN сидя
 ; на земле
 ; диагональная поверхность
-; смотрит лево
-                                        .byte $05   ; 0F DOWN сидя
-                                        .byte $04   ; 10 DOWN+LEFT 
-                                        .byte $05   ; 11 LEFT
-                                        .byte $06   ; 12 UP+LEFT
-                                        .byte $07   ; 13 UP
+; <- смотрит лево
+                                        .byte $01   ; 0F DOWN сидя
+                                        .byte $03   ; 10 DOWN+LEFT 
+                                        .byte $01   ; 11 LEFT
+                                        .byte $07  ; 12 UP+LEFT
+                                        .byte $09   ; 13 UP
 ; в прыжке
-; смотрит вправо
+; смотрит вправо ->
                                         .byte $08   ; 14 UP
-                                        .byte $09   ; 15 UP+RIGHT
+                                        .byte $06   ; 15 UP+RIGHT
                                         .byte $00   ; 16 RIGHT
-                                        .byte $01   ; 17 DOWN+RIGHT
-                                        .byte $02   ; 18 DOWN
-; смотрит влево
-                                        .byte $03   ; 19 DOWN
-                                        .byte $04   ; 1A DOWN+LEFT 
-                                        .byte $05   ; 1B LEFT
-                                        .byte $06   ; 1C UP+LEFT
-                                        .byte $07   ; 1D UP
+                                        .byte $02   ; 17 DOWN+RIGHT
+                                        .byte $04   ; 18 DOWN
+; <- смотрит влево
+                                        .byte $05   ; 19 DOWN
+                                        .byte $03   ; 1A DOWN+LEFT 
+                                        .byte $01   ; 1B LEFT
+                                        .byte $07   ; 1C UP+LEFT
+                                        .byte $09   ; 1D UP
 
 
 
 tbl_8EF5_кадр_пуль:
-- D 0 - - - 0x000F05 00:8EF5: 05        .byte $05   ; 00 shootgun
+- D 0 - - - 0x000F05 00:8EF5: 05        .byte $C6   ; 00 shootgun
 - D 0 - - - 0x000F06 00:8EF6: 19        .byte $19   ; 01 machine_gun
 - D 0 - - - 0x000F07 00:8EF7: 06        .byte $06   ; 02 spread
 - D 0 - - - 0x000F08 00:8EF8: 00        .byte $00   ; 03 laser
@@ -3118,40 +3138,6 @@ tbl_9119_данные_пули:
                                         .byte $F0, $00, $C0, $42   ; 1D UP 
 
 
-sub_F800_проверка_границ_экрана:
-; проверка на границу экрана по X
-                                        LDA ram_0000    ; временная позиция_x_спрайта
-                                        CMP #$08    ; первые 8 пикселей
-                                        BCC bra_91FE_обнуление
-                                        SEC
-                                        SBC ram_позиция_x_спрайта,X
-                                        BMI bra_91FA
-                                        BCC bra_91FE_обнуление
-                                        BCS bra_91FB
-bra_91FA:
-                                        BCS bra_91FE_обнуление
-bra_91FB:
-; проверка на границу экрана по Y
-                                        LDA ram_0001    ; позиция_y_спрайта
-                                        SEC
-                                        SBC ram_позиция_y_спрайта,X
-                                        BMI bra_91FC
-                                        BCC bra_91FE_обнуление
-                                        BCS bra_91FD_нет_обнуления
-bra_91FC:
-                                        BCS bra_91FE_обнуление
-bra_91FD_нет_обнуления:
-                                        LDA ram_0000    ; позиция_x_спрайта
-                                        STA ram_позиция_x_спрайта,X
-                                        LDA ram_0001    ; позиция_y_спрайта
-                                        STA ram_позиция_y_спрайта,X
-                                        CLC
-                                        RTS
-bra_91FE_обнуление:
-                                        SEC
-                                        RTS
-
-
 loc_F801_обнуление_пуль_игрока:
 C D 3 - - - 0x01F811 07:F801: A9 00     LDA #$00
 C - - - - - 0x01F816 07:F806: 9D 68 05  STA ram_кадр_анимации,X
@@ -3245,7 +3231,6 @@ bra_91F6_вид_сбоку:
                                         STA ram_0001    ; позиция_y_спрайта
 
                                         LDA ram_пули_игрока_параметры,X
-                                        AND #$0F
                                         STA ram_0013    ; индекс пули оружия
                                         LSR
                                         STA ram_0012    ; номер пули оружия
@@ -3273,6 +3258,41 @@ tbl_91F7_weapon_hi:
                                         .byte > ofs_005_9250_05_fire_ball
                                         .byte > ofs_005_9260_06_grenade_launcher
                                         .byte > ofs_005_9270_07_secret_weapon
+
+ofs_005_9200_00_shotgun:
+                                        LDA ram_пули_игрока_счетчик_жизни,X
+                                        BNE bra_91F8
+                                        LDA ram_пули_игрока_параметры_прокачки,X
+                                        ASL
+                                        TAY
+                                        LDA tbl_0001,Y
+                                        CLC
+                                        ADC ram_0000    ; позиция_x_спрайта
+                                        STA ram_0000    ; позиция_x_спрайта
+                                        LDA tbl_0001 + $01,Y
+                                        CLC
+                                        ADC ram_0001    ; позиция_y_спрайта
+                                        STA ram_0001    ; позиция_y_спрайта
+                                        LDA ram_рандом_байт
+                                        BMI bra_91F7
+                                        LDA ram_пули_игрока_скорость_y_младш,X
+                                        CLC
+                                        ADC #$20
+                                        STA ram_пули_игрока_скорость_y_младш,X
+                                        LDA ram_пули_игрока_скорость_y_старш,X
+                                        ADC #$00
+                                        STA ram_пули_игрока_скорость_y_старш,X
+                                        JMP loc_91FB
+bra_91F7:
+                                        LDA ram_пули_игрока_скорость_y_младш,X
+                                        SEC
+                                        SBC #$20
+                                        STA ram_пули_игрока_скорость_y_младш,X
+                                        LDA ram_пули_игрока_скорость_y_старш,X
+                                        SBC #$00
+                                        STA ram_пули_игрока_скорость_y_старш,X
+bra_91F8:
+                                        JMP loc_91FB
 
 ofs_005_9230_03_laser:
                                         LDY ram_пули_игрока_направление,X
@@ -3339,23 +3359,48 @@ bra_E110_loop:
                                         DEC ram_0002    ; параметры_прокачки
                                         BPL bra_E110_loop
 
-                                        LDA ram_пули_игрока_параметры,X
-                                        ASL
-                                        BPL bra_E111
+                                        LDA ram_пули_игрока_направление,X
+                                        AND #$01
+                                        BEQ bra_E111
 ; пуля летит влево
                                         DEC ram_пули_игрока_счетчик_анимации,X
                                         JMP loc_91FB
 bra_E111:
 ; пуля летит вправо
                                         INC ram_пули_игрока_счетчик_анимации,X
-ofs_005_9200_00_shotgun:
+
 ofs_005_9210_01_machine_gun:
 ofs_005_9220_02_spread:
 ofs_005_9260_06_grenade_launcher:
 ofs_005_9270_07_secret_weapon:
 loc_91FB:
-                                        JSR sub_F800_проверка_границ_экрана
+; проверка на границу экрана по X
+                                        LDA ram_0000    ; временная позиция_x_спрайта
+                                        CMP #$08    ; первые 8 пикселей
+                                        BCC bra_91E2_обнуление
+                                        SEC
+                                        SBC ram_позиция_x_спрайта,X
+                                        BMI bra_91FA
+                                        BCC bra_91E2_обнуление
+                                        BCS bra_91FB
+bra_91FA:
                                         BCS bra_91E2_обнуление
+bra_91FB:
+; проверка на границу экрана по Y
+                                        LDA ram_0001    ; позиция_y_спрайта
+                                        SEC
+                                        SBC ram_позиция_y_спрайта,X
+                                        BMI bra_91FC
+                                        BCC bra_91E2_обнуление
+                                        BCS bra_91FD_нет_обнуления
+bra_91FC:
+                                        BCS bra_91E2_обнуление
+bra_91FD_нет_обнуления:
+                                        LDA ram_0000    ; позиция_x_спрайта
+                                        STA ram_позиция_x_спрайта,X
+                                        LDA ram_0001    ; позиция_y_спрайта
+                                        STA ram_позиция_y_спрайта,X
+
 C - - - - - 0x00123E 00:922E: BC 28 06  LDY ram_пули_игрока_счетчик_жизни,X
 C - - - - - 0x001241 00:9231: 88        DEY
 C - - - - - 0x001242 00:9232: F0 4D     BEQ bra_9281_RTS
@@ -3476,11 +3521,6 @@ tbl_92E7:
 
 
 tbl_9311_laser:
-;     06
-;   05  07
-; 04      00
-;   03  01
-;     02
 - D 0 - - - 0x001321 00:9311: 16        .byte $16   ; 00 
 - D 0 - - - 0x001322 00:9312: 18        .byte $18   ; 01 
 - D 0 - - - 0x001323 00:9313: 15        .byte $15   ; 02 
@@ -3491,11 +3531,31 @@ tbl_9311_laser:
 - D 0 - - - 0x001328 00:9318: 17        .byte $17   ; 07 
 
 
+tbl_0001:
+;                                              --------------------- +позиция спрайта x
+;                                              |    ---------------- +позиция спрайта y
+;                                              |    |
+                                       .byte  $00, $00    ; 00
+                                       .byte  $01, $FE    ; 01
+                                       .byte  $01, $02    ; 02
+                                       .byte  $02, $00    ; 03
+                                       
+                                       .byte  $03, $FE    ; 04
+                                       .byte  $03, $02    ; 05
+                                       
+                                       .byte  $04, $00    ; 06
+                                       .byte  $05, $FE    ; 07
+                                       .byte  $05, $02    ; 08
+                                       
+                                       .byte  $06, $00    ; 09
+                                       .byte  $07, $FE    ; 10
+                                       .byte  $07, $02    ; 11
+                                       .byte  $08, $00    ; 12
+                                       
+
 tbl_91FC_f_ball_круговое_вращение:
 ;                                              --------------------- +позиция спрайта lo
 ;                                              |    ---------------- +позиция спрайта hi
-;                                              |    |
-;                                              |    |
 ;                                              |    |
                                        .byte  $00, $00    ;       00 Y
                                        .byte  $A0, $FF    ;       01 Y FA

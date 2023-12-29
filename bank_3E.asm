@@ -1433,7 +1433,7 @@ C - - - - - 0x01E913 07:E903: 4C B4 E8  JMP loc_E8B4
 
 
 sub_E906_обработчик_геймплея:
-C - - - - - 0x01E916 07:E906: E6 5B     INC ram_счетчик_кадров_2
+;C - - - - - 0x01E916 07:E906: E6 5B     INC ram_счетчик_кадров_2
 C - - - - - 0x01E918 07:E908: 20 3A F8  JSR sub_F83A
 C - - - - - 0x01E91B 07:E90B: 20 45 FE  JSR sub_FE45
 C - - - - - 0x01E91E 07:E90E: 20 BF FE  JSR sub_FEBF
@@ -1491,7 +1491,7 @@ C - - - - - 0x01E95A 07:E94A: D0 28     BNE bra_E974_запись_таймера
 ofs_034_E94C_01_ожидание_после_взрыва_босса:
 C - - J - - 0x01E95C 07:E94C: 20 3D FE  JSR sub_FE3D_обработчик_уровня
 C - - - - - 0x01E95F 07:E94F: 20 06 E9  JSR sub_E906_обработчик_геймплея
-C - - - - - 0x01E962 07:E952: A5 1B     LDA ram_счетчик_кадров_1
+C - - - - - 0x01E962 07:E952: A5 1B     LDA ram_счетчик_кадров
 C - - - - - 0x01E964 07:E954: 4A        LSR
 C - - - - - 0x01E965 07:E955: B0 21     BCS bra_E978_RTS
 C - - - - - 0x01E967 07:E957: C6 3F     DEC ram_таймер_экрана
@@ -1524,7 +1524,7 @@ ofs_034_E979_02_игрок_автоматом_бежит_к_выходу:
 C - - J - - 0x01E989 07:E979: 20 CF FE  JSR sub_FECF_stage_complete_handler
 C - - - - - 0x01E98C 07:E97C: 20 3D FE  JSR sub_FE3D_обработчик_уровня
 C - - - - - 0x01E98F 07:E97F: 20 06 E9  JSR sub_E906_обработчик_геймплея
-C - - - - - 0x01E992 07:E982: A5 1B     LDA ram_счетчик_кадров_1
+C - - - - - 0x01E992 07:E982: A5 1B     LDA ram_счетчик_кадров
 C - - - - - 0x01E994 07:E984: 29 03     AND #$03
 C - - - - - 0x01E996 07:E986: D0 02     BNE bra_E98A
 C - - - - - 0x01E998 07:E988: C6 3F     DEC ram_таймер_экрана
@@ -4481,8 +4481,11 @@ C - - - - - 0x01FB6B 07:FB5B: 58        CLI
 loc_FB5C_infinite_loop:
 C D 3 - - - 0x01FB6C 07:FB5C: E6 23     INC ram_рандом_байт
 C - - - - - 0x01FB6E 07:FB5E: A5 23     LDA ram_рандом_байт
-C - - - - - 0x01FB70 07:FB60: 65 1B     ADC ram_счетчик_кадров_1
+C - - - - - 0x01FB70 07:FB60: 65 1B     ADC ram_счетчик_кадров
 C - - - - - 0x01FB72 07:FB62: 85 23     STA ram_рандом_байт
+                                        DEC ram_рандом_байт_2
+                                        ADC ram_рандом_байт_2
+                                        STA ram_рандом_байт_2
 C - - - - - 0x01FB74 07:FB64: 4C 5C FB  JMP loc_FB5C_infinite_loop
 
 
@@ -4538,7 +4541,7 @@ C - - - - - 0x01FBC1 07:FBB1: A9 3C     LDA #con_prg_bank + $3C
 C - - - - - 0x01FBC3 07:FBB3: 20 6F FD  JSR sub_FD6F_prg_bankswitch___no_return
 C - - - - - 0x01FBC6 07:FBB6: 20 3C 81  JSR sub_0x01814C
 C - - - - - 0x01FBC9 07:FBB9: 20 FC FC  JSR sub_FCFC_read_joy_regs
-                                        INC ram_счетчик_кадров_1
+                                        INC ram_счетчик_кадров
                                         JSR sub_0001_мерцание_экрана
 C - - - - - 0x01FBCC 07:FBBC: 20 B9 E3  JSR sub_E3B9
 C - - - - - 0x01FBCF 07:FBBF: 20 17 FE  JSR sub_FE17_спрайтовый_движок

@@ -766,7 +766,7 @@ tbl_9B52_кадры:
 
 ofs_045_9B60_02:
                                         STX ram_0000
-                                        LDA ram_счетчик_кадров_1
+                                        LDA ram_счетчик_кадров
                                         LSR
                                         LSR
                                         AND #$01
@@ -777,7 +777,7 @@ ofs_045_9B60_02:
                                         LDA #$C5
 bra_9B61:
                                         STA ram_кадр_анимации,X
-                                        LDA ram_счетчик_кадров_1
+                                        LDA ram_счетчик_кадров
                                         LSR
                                         BCC bra_9B62_RTS
                                         LDA tbl_9B95_Y_спрайта_lo,X
@@ -929,7 +929,7 @@ off_9BC0_01_X_спрайта_right:
 
 
 sub_E4BC_переключение_банков_анимация_contra:
-                                        LDA ram_счетчик_кадров_1
+                                        LDA ram_счетчик_кадров
                                         AND #$07
                                         BNE bra_E4BC_RTS
                                         DEC ram_счетчик_анимации_contra
@@ -960,7 +960,7 @@ bra_E4D5:
                                         CMP #$01
                                         BEQ bra_E4D7
 bra_E4D6:
-                                        LDA ram_счетчик_кадров_1
+                                        LDA ram_счетчик_кадров
                                         BEQ bra_E4D8_запись
                                         RTS
 bra_E4D7:
@@ -974,7 +974,7 @@ bra_E4D8_запись:
                                         LDY #$06
                                         STY ram_счетчик_анимации_super
 bra_E4E0:
-                                        LDA ram_счетчик_кадров_1
+                                        LDA ram_счетчик_кадров
                                         LSR
                                         BCS bra_E4D1_RTS
                                         LDA tbl_E4D3_банки_фона,Y
@@ -1056,7 +1056,7 @@ C - - - - - 0x00234B 00:A33B: 60        RTS
 
 
 ofs_010_A33C_01_слияние:
-C - - J - - 0x00234C 00:A33C: A5 1B     LDA ram_счетчик_кадров_1
+C - - J - - 0x00234C 00:A33C: A5 1B     LDA ram_счетчик_кадров
 C - - - - - 0x00234E 00:A33E: 29 01     AND #$01
 C - - - - - 0x002350 00:A340: AA        TAX
 C - - - - - 0x002351 00:A341: BD 6B A3  LDA tbl_A36B_x_скорость_смещения,X
@@ -1154,8 +1154,8 @@ C - - - - - 0x01E579 07:E569: 85 A1     STA ram_статус_игрока + $01
 C - - - - - 0x01E57B 07:E56B: A9 00     LDA #$00
 C - - - - - 0x01E57D 07:E56D: 85 CA     STA ram_plr_game_over
 C - - - - - 0x01E57F 07:E56F: 85 CB     STA ram_plr_game_over + $01
-C - - - - - 0x01E581 07:E571: 85 1B     STA ram_счетчик_кадров_1
-C - - - - - 0x01E583 07:E573: 85 5B     STA ram_счетчик_кадров_2
+C - - - - - 0x01E581 07:E571: 85 1B     STA ram_счетчик_кадров
+;C - - - - - 0x01E583 07:E573: 85 5B     STA ram_счетчик_кадров_2
 C - - - - - 0x01E585 07:E575: 85 23     STA ram_рандом_байт
 C - - - - - 0x01E587 07:E577: A9 10     LDA #$10
 C - - - - - 0x01E589 07:E579: 85 53     STA ram_жизни

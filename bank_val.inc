@@ -71,14 +71,14 @@ con_weapon_R                            = $80 ;
 
 
 
-;con_weapon_shotgun                      = $00 ;
-;con_weapon_machine_gun                  = $01 ;
-;con_weapon_spread                       = $02 ;
-;con_weapon_laser                        = $03 ;
-;con_weapon_flame                        = $04 ;
-;con_weapon_fire_ball                    = $05 ;
-;con_weapon_grenade_launcher             = $06 ;
-;con_weapon_secret_weapon                = $07 ;
+;con_weapon_shotgun                      = $00 ; 00-01
+;con_weapon_machine_gun                  = $01 ; 02-03
+;con_weapon_spread                       = $02 ; 04-05
+;con_weapon_laser                        = $03 ; 06-07
+;con_weapon_flame                        = $04 ; 08-09
+;con_weapon_fire_ball                    = $05 ; 0A-0B
+;con_weapon_grenade_launcher             = $06 ; 0C-0D
+;con_weapon_secret_weapon                = $07 ; 0E-0F
 
 
 

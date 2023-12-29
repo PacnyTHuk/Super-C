@@ -412,7 +412,7 @@ tbl_8205_враги_US:
 - D 0 - - - 0x00C219 03:8209: 06 84     .word _off028_8406_02
 - D 0 - - - 0x00C21B 03:820B: 0F 84     .word _off028_840F_03
 - D 0 - - - 0x00C21D 03:820D: 18 84     .word _off028_8418_04
-- D 0 - - - 0x00C21F 03:820F: 19 84     .word _off028_8419_05_shootgun
+- D 0 - - - 0x00C21F 03:820F: 19 84     .word _off028_8419_05
 - D 0 - - - 0x00C221 03:8211: 1A 84     .word _off028_841A_06_spread
 - D 0 - - - 0x00C223 03:8213: 1B 84     .word _off028_841B_07_bonus_capsule_BOX
 - D 0 - - - 0x00C225 03:8215: 28 84     .word _off028_8428_08_bonus_capsule_M
@@ -605,7 +605,7 @@ tbl_8205_враги_US:
 - - - - - - 0x00C39B 03:838B: 2E 8F     .word _off028_8F2E_C3
 - - - - - - 0x00C39D 03:838D: 2E 8F     .word _off028_8F2E_C4
 - - - - - - 0x00C39F 03:838F: 2E 8F     .word _off028_8F2E_C5
-- - - - - - 0x00C3A1 03:8391: 2E 8F     .word _off028_8F2E_C6
+- - - - - - 0x00C3A1 03:8391: 2E 8F     .word _off028_8F2E_C6_shootgun
 - - - - - - 0x00C3A3 03:8393: 2E 8F     .word _off028_8F2E_C7
 - - - - - - 0x00C3A5 03:8395: 2E 8F     .word _off028_8F2E_C8
 - - - - - - 0x00C3A7 03:8397: 2E 8F     .word _off028_8F2E_C9
@@ -703,7 +703,7 @@ _off028_8418_04:
 
 
 
-_off028_8419_05_shootgun:
+_off028_8419_05:
 - D 0 - I - 0x00C429 03:8419: 80        .byte $80   ; 
 
 
@@ -3326,8 +3326,11 @@ _off028_8F2E_C0:
 _off028_8F2E_C1:
 
 
+_off028_8F2E_C6_shootgun:
+_off030_8F8A_C6_shootgun:
+                                        .byte $CA   ; 
+
 ; пусто для общих спрайтов US/EU:
-_off028_8F2E_C6:
 _off028_8F2E_C7:
 _off028_8F2E_C8:
 _off028_8F2E_C9:
@@ -4655,7 +4658,7 @@ tbl_8205_враги_EU:
 - - - - - - 0x00C39B 03:838B: 8A 8F     .word _off030_8F8A_C3
 - - - - - - 0x00C39D 03:838D: 8A 8F     .word _off030_8F8A_C4
 - - - - - - 0x00C39F 03:838F: 8A 8F     .word _off030_8F8A_C5
-- - - - - - 0x00C3A1 03:8391: 8A 8F     .word _off030_8F8A_C6
+- - - - - - 0x00C3A1 03:8391: 8A 8F     .word _off030_8F8A_C6_shootgun
 - - - - - - 0x00C3A3 03:8393: 8A 8F     .word _off030_8F8A_C7
 - - - - - - 0x00C3A5 03:8395: 8A 8F     .word _off030_8F8A_C8
 - - - - - - 0x00C3A7 03:8397: 8A 8F     .word _off030_8F8A_C9
@@ -7377,7 +7380,6 @@ _off030_8F79_C1:
 
 
 ; пусто для общих спрайтов US/EU:
-_off030_8F8A_C6:
 _off030_8F8A_C7:
 _off030_8F8A_C8:
 _off030_8F8A_C9:
