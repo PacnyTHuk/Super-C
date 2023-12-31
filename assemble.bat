@@ -21,7 +21,7 @@ ca65 -U -l copy_bank_28.lst -g copy_bank_28.asm
 ca65 -U -l copy_bank_2A.lst -g copy_bank_2A.asm
 ca65 -U -l copy_bank_2B.lst -g copy_bank_2B.asm
 ca65 -U -l copy_bank_2C.lst -g copy_bank_2C.asm
-ca65 -U -l copy_bank_2C.lst -g copy_bank_2D.asm
+ca65 -U -l copy_bank_2D.lst -g copy_bank_2D.asm
 ca65 -U -l copy_bank_2E.lst -g copy_bank_2E.asm
 ca65 -U -l copy_bank_30.lst -g copy_bank_30.asm
 ca65 -U -l copy_bank_32.lst -g copy_bank_32.asm
