@@ -71,8 +71,8 @@ con_weapon_R                            = $80 ;
 
 
 
-;con_weapon_shotgun                      = $00 ; 00-01
-;con_weapon_machine_gun                  = $01 ; 02-03
+;con_weapon_default                      = $00 ; 00-01
+;con_weapon_new_weapon                   = $01 ; 02-03
 ;con_weapon_spread                       = $02 ; 04-05
 ;con_weapon_laser                        = $03 ; 06-07
 ;con_weapon_flame                        = $04 ; 08-09

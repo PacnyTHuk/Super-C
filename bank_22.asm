@@ -432,7 +432,7 @@ tbl_8205_враги_US:
 - D 0 - - - 0x00C241 03:8231: 32 85     .word _off028_8532_16
 - D 0 - - - 0x00C243 03:8233: 33 85     .word _off028_8533_17
 - D 0 - - - 0x00C245 03:8235: 38 85     .word _off028_8538_18
-- D 0 - - - 0x00C247 03:8237: 3D 85     .word _off028_853D_19_machine_gun
+- D 0 - - - 0x00C247 03:8237: 3D 85     .word _off028_853D_19
 - D 0 - - - 0x00C249 03:8239: 3E 85     .word _off028_853E_1A
 - D 0 - - - 0x00C24B 03:823B: 57 85     .word _off028_8557_1B
 - D 0 - - - 0x00C24D 03:823D: 68 85     .word _off028_8568_1C
@@ -605,7 +605,7 @@ tbl_8205_враги_US:
 - - - - - - 0x00C39B 03:838B: 2E 8F     .word _off028_8F2E_C3
 - - - - - - 0x00C39D 03:838D: 2E 8F     .word _off028_8F2E_C4
 - - - - - - 0x00C39F 03:838F: 2E 8F     .word _off028_8F2E_C5
-- - - - - - 0x00C3A1 03:8391: 2E 8F     .word _off028_8F2E_C6_shootgun
+- - - - - - 0x00C3A1 03:8391: 2E 8F     .word _off028_8F2E_C6_default
 - - - - - - 0x00C3A3 03:8393: 2E 8F     .word _off028_8F2E_C7
 - - - - - - 0x00C3A5 03:8395: 2E 8F     .word _off028_8F2E_C8
 - - - - - - 0x00C3A7 03:8397: 2E 8F     .word _off028_8F2E_C9
@@ -958,7 +958,7 @@ _off028_8538_18:
 
 
 
-_off028_853D_19_machine_gun:
+_off028_853D_19:
 - D 0 - I - 0x00C54D 03:853D: D0        .byte $D0   ; 
 
 
@@ -3326,8 +3326,8 @@ _off028_8F2E_C0:
 _off028_8F2E_C1:
 
 
-_off028_8F2E_C6_shootgun:
-_off030_8F8A_C6_shootgun:
+_off028_8F2E_C6_default:
+_off030_8F8A_C6_default:
                                         .byte $CA   ; 
 
 ; пусто для общих спрайтов US/EU:
@@ -4658,7 +4658,7 @@ tbl_8205_враги_EU:
 - - - - - - 0x00C39B 03:838B: 8A 8F     .word _off030_8F8A_C3
 - - - - - - 0x00C39D 03:838D: 8A 8F     .word _off030_8F8A_C4
 - - - - - - 0x00C39F 03:838F: 8A 8F     .word _off030_8F8A_C5
-- - - - - - 0x00C3A1 03:8391: 8A 8F     .word _off030_8F8A_C6_shootgun
+- - - - - - 0x00C3A1 03:8391: 8A 8F     .word _off030_8F8A_C6_default
 - - - - - - 0x00C3A3 03:8393: 8A 8F     .word _off030_8F8A_C7
 - - - - - - 0x00C3A5 03:8395: 8A 8F     .word _off030_8F8A_C8
 - - - - - - 0x00C3A7 03:8397: 8A 8F     .word _off030_8F8A_C9
