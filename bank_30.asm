@@ -2854,14 +2854,13 @@ bra_8E02_machine_gun:
                                         BCS bra_8E01    ; кнопка нажата
 ; кнопка удержана
                                         LDA ram_рандом_байт
-                                        CMP #$20
-                                        BCC bra_8E01    ; выстрел по прямой
                                         AND #$07
-                                        TAY
-                                        INY
-bra_8E0C:
-                                        LDA tbl_8F10_байты_смещения_machine_gun,Y
                                         CLC
+                                        BIT ram_рандом_байт
+                                        BMI bra_8E03
+                                        EOR #$FF
+                                        ADC #$01
+bra_8E03:
                                         ADC ram_000A    ; байт смещения
                                         TAY
                                         JMP loc_8E7A
