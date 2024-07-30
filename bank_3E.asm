@@ -4819,7 +4819,7 @@ C - - - - - 0x01FDBA 07:FDAA: 60        RTS
 
 sub_FDAB_выбрать_второй_банк_с_данными_музыки:
 sub_0x01FDBB_выбрать_второй_банк_с_данными_музыки:
-C - - - - - 0x01FDBB 07:FDAB: A0 31     LDY #con_prg_bank + $31
+C - - - - - 0x01FDBB 07:FDAB: A0 31     LDY #con_prg_bank + $2F ; банк с мцзыкой был перенесес с 31 в 2F
 C - - - - - 0x01FDBD 07:FDAD: C9 32     CMP #con_sound_32
 C - - - - - 0x01FDBF 07:FDAF: F0 06     BEQ bra_FDB7_32_36
 C - - - - - 0x01FDC1 07:FDB1: C9 36     CMP #con_sound_36

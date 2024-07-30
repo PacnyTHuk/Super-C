@@ -13,6 +13,7 @@ local files_list = {
     "bank_2C.asm",
     "bank_2D.asm",
     "bank_2E.asm",
+    "bank_2F.asm",
     "bank_30.asm",
     "bank_32.asm",
     "bank_33.asm",

@@ -164,13 +164,10 @@ C - - - - - 0x00C0CD 03:80BD: 60        RTS
 
 loc_0x00C0CE_спрайтовый_движок:
 ; перемещено из банка 36
-                                        LDA ram_номер_экрана
-                                        BEQ bra_80C9_00_главный_экран
 C D 0 - - - 0x00C0CE 03:80BE: A5 24     LDA ram_начальный_индекс_спрайтов
 C - - - - - 0x00C0D0 03:80C0: 18        CLC
 C - - - - - 0x00C0D1 03:80C1: 69 4C     ADC #$4C
 C - - - - - 0x00C0D3 03:80C3: 85 24     STA ram_начальный_индекс_спрайтов
-bra_80C9_00_главный_экран:
 C - - - - - 0x00C0D5 03:80C5: AA        TAX
 C - - - - - 0x00C0D6 03:80C6: 38        SEC
 C - - - - - 0x00C0D7 03:80C7: E9 C4     SBC #$C4
@@ -606,8 +603,8 @@ tbl_8205_враги_US:
 - - - - - - 0x00C39D 03:838D: 2E 8F     .word _off028_8F2E_C4
 - - - - - - 0x00C39F 03:838F: 2E 8F     .word _off028_8F2E_C5
 - - - - - - 0x00C3A1 03:8391: 2E 8F     .word _off028_8F2E_C6_default
-- - - - - - 0x00C3A3 03:8393: 2E 8F     .word _off028_8F2E_C7
-- - - - - - 0x00C3A5 03:8395: 2E 8F     .word _off028_8F2E_C8
+- - - - - - 0x00C3A3 03:8393: 2E 8F     .word _off028_8F2E_C7_flame_thrower_1
+- - - - - - 0x00C3A5 03:8395: 2E 8F     .word _off028_8F2E_C8_flame_thrower_2
 - - - - - - 0x00C3A7 03:8397: 2E 8F     .word _off028_8F2E_C9
 - - - - - - 0x00C3A9 03:8399: 2E 8F     .word _off028_8F2E_CA
 - - - - - - 0x00C3AB 03:839B: 2E 8F     .word _off028_8F2E_CB
@@ -3218,10 +3215,10 @@ _off030_8EE5_B9_стрелка_в_меню:
 ;                                              |    |    ----------- spr_A
 ;                                              |    |    |    ------ spr_X
 ;                                              |    |    |    |
-- D 0 - I - 0x00CEF4 03:8EE4: 00        .byte $00, $D9, $02, $00   ; 
+- D 0 - I - 0x00CEF4 03:8EE4: 00        .byte $00, $D5, $01, $00   ; ЗАМЕНЕН НА АНИМАЦИЮ СТРЕЛКИ (FC-FF)
                                         .byte $00, $D7, $01, $08   ; 
-                                        .byte $00, $D5, $01, $00   ; 
-                                        .byte $00, $DB, $02, $08   ; 
+                                        .byte $00, $E5, $03, $00   ; 
+                                        .byte $00, $E7, $03, $08   ; 
 @end:
 
 
@@ -3273,7 +3270,7 @@ _off030_8F8A_C2:
 ;                                              |    |    ----------- spr_A
 ;                                              |    |    |    ------ spr_X
 ;                                              |    |    |    |
-                                        .byte $00, $CD, $00, $00   ; 
+                                        .byte $00, $CD, $03, $00   ; 
 @end:
 
 
@@ -3286,7 +3283,7 @@ _off030_8F8A_C3:
 ;                                              |    |    ----------- spr_A
 ;                                              |    |    |    ------ spr_X
 ;                                              |    |    |    |
-                                        .byte $00, $CF, $00, $00   ; 
+                                        .byte $00, $CF, $03, $00   ; 
 @end:
 
 
@@ -3299,8 +3296,8 @@ _off030_8F8A_C4:
 ;                                              |    |    ----------- spr_A
 ;                                              |    |    |    ------ spr_X
 ;                                              |    |    |    |
-                                        .byte $00, $D3, $00, $FC   ; 
-                                        .byte $00, $D3, $40, $03   ; 
+                                        .byte $00, $D3, $03, $FC   ; 
+                                        .byte $00, $D3, $43, $03   ; 
 @end:
 
 
@@ -3313,7 +3310,7 @@ _off030_8F8A_C5:
 ;                                              |    |    ----------- spr_A
 ;                                              |    |    |    ------ spr_X
 ;                                              |    |    |    |
-                                        .byte $00, $D1, $00, $00   ; 
+                                        .byte $00, $D1, $03, $00   ; 
 @end:
 
 
@@ -3330,9 +3327,28 @@ _off028_8F2E_C6_default:
 _off030_8F8A_C6_default:
                                         .byte $CA   ; 
 
+
+_off028_8F2E_C7_flame_thrower_1:
+_off030_8F8A_C7_flame_thrower_1:
+                                        .byte $CB   ; 
+
+
+_off028_8F2E_C8_flame_thrower_2:
+_off030_8F8A_C8_flame_thrower_2:
+                                        .byte @end - * - $01   ; total data size
+;                                              --------------------- spr_Y
+;                                              |    ---------------- spr_T
+;                                              |    |    ----------- spr_A
+;                                              |    |    |    ------ spr_X
+;                                              |    |    |    |
+                                        .byte $F8, $99, $00, $F8   ; 
+                                        .byte $F8, $9B, $00, $00   ; 
+@end:
+
+
+
+
 ; пусто для общих спрайтов US/EU:
-_off028_8F2E_C7:
-_off028_8F2E_C8:
 _off028_8F2E_C9:
 _off028_8F2E_CA:
 _off028_8F2E_CB:
@@ -3384,11 +3400,66 @@ _off028_8F2E_F8:
 _off028_8F2E_F9:
 _off028_8F2E_FA:
 _off028_8F2E_FB:
+
+
+
+;   4 спрайта для анимации стрелки в меню
+
 _off028_8F2E_FC:
+- D 0 - I - 0x00CEF3 03:8EE3: 04        .byte @end - * - $01   ; total data size
+;                                              --------------------- spr_Y
+;                                              |    ---------------- spr_T
+;                                              |    |    ----------- spr_A
+;                                              |    |    |    ------ spr_X
+;                                              |    |    |    |
+- D 0 - I - 0x00CEF4 03:8EE4: 00        .byte $00, $D5, $01, $F8   ; 
+                                        .byte $00, $D7, $01, $00   ; 
+                                        .byte $00, $E5, $03, $F8   ; 
+                                        .byte $00, $E7, $03, $00   ; 
+@end:
+
+
 _off028_8F2E_FD:
+- D 0 - I - 0x00CEF3 03:8EE3: 04        .byte @end - * - $01   ; total data size
+;                                              --------------------- spr_Y
+;                                              |    ---------------- spr_T
+;                                              |    |    ----------- spr_A
+;                                              |    |    |    ------ spr_X
+;                                              |    |    |    |
+- D 0 - I - 0x00CEF4 03:8EE4: 00        .byte $00, $D9, $01, $F8   ; 
+                                        .byte $00, $DB, $01, $00   ; 
+                                        .byte $00, $E9, $03, $F8   ; 
+                                        .byte $00, $EB, $03, $00   ; 
+@end:
+
+
 _off028_8F2E_FE:
+- D 0 - I - 0x00CEF3 03:8EE3: 04        .byte @end - * - $01   ; total data size
+;                                              --------------------- spr_Y
+;                                              |    ---------------- spr_T
+;                                              |    |    ----------- spr_A
+;                                              |    |    |    ------ spr_X
+;                                              |    |    |    |
+- D 0 - I - 0x00CEF4 03:8EE4: 00        .byte $00, $DD, $01, $F8   ; 
+                                        .byte $00, $DF, $01, $00   ; 
+                                        .byte $00, $ED, $03, $F8   ; 
+                                        .byte $00, $EF, $03, $00   ; 
+@end:
+
+
 _off028_8F2E_FF:
-- - - - - - 0x00CF3E 03:8F2E: FF        .byte $FF   ; end token
+- D 0 - I - 0x00CEF3 03:8EE3: 04        .byte @end - * - $01   ; total data size
+;                                              --------------------- spr_Y
+;                                              |    ---------------- spr_T
+;                                              |    |    ----------- spr_A
+;                                              |    |    |    ------ spr_X
+;                                              |    |    |    |
+- D 0 - I - 0x00CEF4 03:8EE4: 00        .byte $00, $E1, $01, $FC   ; 
+                                        .byte $00, $E3, $03, $FC   ; 
+
+ 
+@end:
+; - - - - - - 0x00CF3E 03:8F2E: FF        .byte $FF   ; end token
 
  
 
@@ -4659,8 +4730,8 @@ tbl_8205_враги_EU:
 - - - - - - 0x00C39D 03:838D: 8A 8F     .word _off030_8F8A_C4
 - - - - - - 0x00C39F 03:838F: 8A 8F     .word _off030_8F8A_C5
 - - - - - - 0x00C3A1 03:8391: 8A 8F     .word _off030_8F8A_C6_default
-- - - - - - 0x00C3A3 03:8393: 8A 8F     .word _off030_8F8A_C7
-- - - - - - 0x00C3A5 03:8395: 8A 8F     .word _off030_8F8A_C8
+- - - - - - 0x00C3A3 03:8393: 8A 8F     .word _off030_8F8A_C7_flame_thrower_1
+- - - - - - 0x00C3A5 03:8395: 8A 8F     .word _off030_8F8A_C8_flame_thrower_2
 - - - - - - 0x00C3A7 03:8397: 8A 8F     .word _off030_8F8A_C9
 - - - - - - 0x00C3A9 03:8399: 8A 8F     .word _off030_8F8A_CA
 - - - - - - 0x00C3AB 03:839B: 8A 8F     .word _off030_8F8A_CB
@@ -7380,8 +7451,6 @@ _off030_8F79_C1:
 
 
 ; пусто для общих спрайтов US/EU:
-_off030_8F8A_C7:
-_off030_8F8A_C8:
 _off030_8F8A_C9:
 _off030_8F8A_CA:
 _off030_8F8A_CB:

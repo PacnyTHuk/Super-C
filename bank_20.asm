@@ -514,26 +514,26 @@ C - - - - - 0x00F8C2 03:B8B2: 60        RTS
 
 
 tbl_B8B3:
-- D 1 - - - 0x00F8C3 03:B8B3: C9 B8     .word _off021_B8C9_00_area_1_US
-                                        .word _off021_B8C9_01_area_1_EU
-- D 1 - - - 0x00F8C5 03:B8B5: E1 B8     .word _off021_B8E1_02_area_2_US
-                                        .word _off021_B8E1_03_area_2_EU
-- D 1 - - - 0x00F8C7 03:B8B7: F9 B8     .word _off021_B8F9_04_area_3_US
-                                        .word _off021_B8F9_05_area_3_EU
-- D 1 - - - 0x00F8C9 03:B8B9: 11 B9     .word _off021_B911_06_area_4_US
-                                        .word _off021_B911_07_area_4_EU
-- D 1 - - - 0x00F8CB 03:B8BB: 29 B9     .word _off021_B929_08_area_5_US
-                                        .word _off021_B929_09_area_5_EU
-- D 1 - - - 0x00F8CD 03:B8BD: 41 B9     .word _off021_B941_0A_area_6_US
-                                        .word _off021_B941_0B_area_6_EU
-- D 1 - - - 0x00F8CF 03:B8BF: 59 B9     .word _off021_B959_0C_area_7_US
-                                        .word _off021_B959_0D_area_7_EU
-- D 1 - - - 0x00F8D1 03:B8C1: 71 B9     .word _off021_B971_0E_area_8_US
-                                        .word _off021_B971_0F_area_8_EU
-- D 1 - - - 0x00F8D3 03:B8C3: 89 B9     .word _off021_B989_10_главный_экран
-- D 1 - - - 0x00F8D5 03:B8C5: A1 B9     .word _off021_B9A1_11_логотип_слияние
-- D 1 - - - 0x00F8D7 03:B8C7: B9 B9     .word _off021_B9B9_12_заставка
-                                        .word _off021_B9D1_13_options   ; options screen
+- D 1 - - - 0x00F8C3 03:B8B3: C9 B8     .word _off021_B8C9_00_area_1_US ; 00
+                                        .word _off021_B8C9_01_area_1_EU ; 01
+- D 1 - - - 0x00F8C5 03:B8B5: E1 B8     .word _off021_B8E1_02_area_2_US ; 02
+                                        .word _off021_B8E1_03_area_2_EU ; 03
+- D 1 - - - 0x00F8C7 03:B8B7: F9 B8     .word _off021_B8F9_04_area_3_US ; 04
+                                        .word _off021_B8F9_05_area_3_EU ; 05
+- D 1 - - - 0x00F8C9 03:B8B9: 11 B9     .word _off021_B911_06_area_4_US ; 06
+                                        .word _off021_B911_07_area_4_EU ; 07
+- D 1 - - - 0x00F8CB 03:B8BB: 29 B9     .word _off021_B929_08_area_5_US ; 08
+                                        .word _off021_B929_09_area_5_EU ; 09
+- D 1 - - - 0x00F8CD 03:B8BD: 41 B9     .word _off021_B941_0A_area_6_US ; 0A
+                                        .word _off021_B941_0B_area_6_EU ; 0B
+- D 1 - - - 0x00F8CF 03:B8BF: 59 B9     .word _off021_B959_0C_area_7_US ; 0C
+                                        .word _off021_B959_0D_area_7_EU ; 0D
+- D 1 - - - 0x00F8D1 03:B8C1: 71 B9     .word _off021_B971_0E_area_8_US ; 0E
+                                        .word _off021_B971_0F_area_8_EU ; 0F
+- D 1 - - - 0x00F8D3 03:B8C3: 89 B9     .word _off021_B989_10_главный_экран ; 10
+- D 1 - - - 0x00F8D5 03:B8C5: A1 B9     .word _off021_B9A1_11_логотип_слияние   ; 11
+- D 1 - - - 0x00F8D7 03:B8C7: B9 B9     .word _off021_B9B9_12_заставка  ; 12
+                                        .word _off021_B9D1_13_options   ; 13
 
 
 
@@ -769,9 +769,9 @@ _off021_B989_10_главный_экран:
 - D 1 - I - 0x00F9A2 03:B992: 27        .byte $30, $21, $12   ; 
 ; sprites
 - D 1 - I - 0x00F9A5 03:B995: 16        .byte $16, $06, $0F   ; 
-- D 1 - I - 0x00F9A8 03:B998: 20        .byte $30, $38, $28   ; 
+- D 1 - I - 0x00F9A8 03:B998: 20        .byte $28, $27, $08   ; 
 - D 1 - I - 0x00F9AB 03:B99B: 20        .byte $20, $26, $16   ; 
-- D 1 - I - 0x00F9AE 03:B99E: 20        .byte $20, $00, $0F   ; 
+- D 1 - I - 0x00F9AE 03:B99E: 20        .byte $20, $00, $17   ; 
 
 
 
@@ -810,9 +810,9 @@ _off021_B9D1_13_options:
                                         .byte $30, $2C, $1C   ; 
 ; sprites
                                         .byte $30, $37, $0F   ; 
-                                        .byte $30, $38, $28   ;  
-                                        .byte $20, $26, $16   ; 
-                                        .byte $20, $00, $0F   ; 
+                                        .byte $28, $27, $08   ;  
+                                        .byte $30, $38, $28   ; 
+                                        .byte $20, $00, $17   ; 
 
 
 

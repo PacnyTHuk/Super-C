@@ -134,6 +134,10 @@ bra_E443_минус_x:
                                         LDA #con_0x0017EA_press_start + $80 ; удалить надпись
                                         JSR sub_0x01FE8A_bankswitch_отрисовка_текста_через_буфер_0300x
                                         JSR sub_E538_надписи_p1_p2_options
+                                        LDY #$52 ; X координата стрелки
+                                        LDX ram_номер_опции_колво_игроков
+                                        LDA tbl_E470_y_координаты_стрелки,X
+                                        JSR sub_E45F_запись_данных_для_стрелки
 bra_E446_RTS:
                                         RTS
 
@@ -144,7 +148,7 @@ bra_E447_минус_x:
 ; X=04 выбор режима игры
 C - - - - - 0x01E41B 07:E40B: 20 DF FE  JSR sub_A29C_чит_коды
 C - - - - - 0x01E426 07:E416: A6 22     LDX ram_номер_опции_колво_игроков
-C - - - - - 0x01E428 07:E418: A9 A7     LDY #$4A ; X координата стрелки
+C - - - - - 0x01E428 07:E418: A9 A7     LDY #$52 ; X координата стрелки
 C - - - - - 0x01E42A 07:E41A: BC 70 E4  LDA tbl_E470_y_координаты_стрелки,X
 C - - - - - 0x01E42D 07:E41D: 20 5F E4  JSR sub_E45F_запись_данных_для_стрелки
 C - - - - - 0x01E430 07:E420: A5 F5     LDA ram_копия_нажатая_кнопка
@@ -179,7 +183,7 @@ C - - - - - 0x01E44B 07:E43B: F0 07     BEQ bra_E444
                                         CMP #$02
                                         BNE bra_E43D
                                         LDA #$40
-                                        BNE bra_E43F
+                                        BNE bra_E43F    ; jmp
 bra_E43D:
 C - - - - - 0x01E44D 07:E43D: A9 80     LDA #$80
 bra_E43F:
@@ -281,7 +285,7 @@ ofs_032_E4C9_05_соунд_тест:
 C - - J - - 0x01E4D9 07:E4C9: A6 19     LDX ram_номер_действия_на_заставке
 C - - - - - 0x01E4DB 07:E4CB: D0 0E     BNE bra_E4DB_соунд_тест
 C - - - - - 0x01E4DD 07:E4CD: A9 00     LDA #$00
-C - - - - - 0x01E4DF 07:E4CF: 8D 00 05  STA ram_кадр_анимации
+C - - - - - 0x01E4DF 07:E4CF: 8D 00 05  STA ram_кадр_анимации + $02
 C - - - - - 0x01E4E2 07:E4D2: E6 19     INC ram_номер_действия_на_заставке
 C - - - - - 0x01E4E6 07:E4D6: 85 50     STA ram_номер_уровня
 ; 1путин опт
@@ -659,22 +663,22 @@ bra_9B28_RTS:
 
 
 tbl_9B29_y_координаты_стрелки:
-                                        .byte $2A   ; 00
-                                        .byte $3A   ; 01
-                                        .byte $4A   ; 02
-                                        .byte $5A   ; 03
-                                        .byte $6A   ; 04
-                                        .byte $7A   ; 05
-                                        .byte $8A   ; 06
+                                        .byte $2B   ; 00
+                                        .byte $3B   ; 01
+                                        .byte $4B   ; 02
+                                        .byte $5B   ; 03
+                                        .byte $6B   ; 04
+                                        .byte $7B   ; 05
+                                        .byte $8B   ; 06
 
 tbl_9B2A_x_координаты_стрелки:
-                                        .byte $1A   ; 00
-                                        .byte $1A   ; 01
-                                        .byte $1A   ; 02
-                                        .byte $1A   ; 03
-                                        .byte $1A   ; 04
-                                        .byte $1A   ; 05
-                                        .byte $5A   ; 06
+                                        .byte $22   ; 00
+                                        .byte $22   ; 01
+                                        .byte $22   ; 02
+                                        .byte $22   ; 03
+                                        .byte $22   ; 04
+                                        .byte $22   ; 05
+                                        .byte $62   ; 06
 
 
 sub_9B30_смена_палитры_сокола:
@@ -996,18 +1000,45 @@ tbl_E4D3_банки_фона:
 sub_E45F_запись_данных_для_стрелки:
 C - - - - - 0x01E46F 07:E45F: 8D 1A 05  STA ram_позиция_y_спрайта + $02
 C - - - - - 0x01E472 07:E462: 8C 34 05  STY ram_позиция_x_спрайта + $02
-C - - - - - 0x01E475 07:E465: A9 B9     LDA #$B9
-C - - - - - 0x01E477 07:E467: 8D 00 05  STA ram_кадр_анимации + $02
-C - - - - - 0x01E47A 07:E46A: A9 01     LDA #$00
-C - - - - - 0x01E47C 07:E46C: 8D 4E 05  STA ram_атрибуты_спрайта + $02
+                                        LDA ram_номер_анимации_логотипа
+                                        AND #$03
+                                        BNE bra_E463
+                                        DEC ram_0081
+                                        BPL bra_E463
+                                        LDA #$0B
+                                        STA ram_0081
+bra_E463:
+                                        LDA ram_0081
+                                        ASL
+                                        TAY
+                                        LDA tbl_E46F_спрайты_стрелки,Y
+                                        STA ram_кадр_анимации + $02
+                                        LDA tbl_E46F_спрайты_стрелки + $01,Y
+                                        STA ram_атрибуты_спрайта + $02
+                                        INC ram_номер_анимации_логотипа
 C - - - - - 0x01E47F 07:E46F: 60        RTS
+
+
+tbl_E46F_спрайты_стрелки:
+                                        .byte $FD, $00   ; 00
+                                        .byte $FE, $00   ; 01
+                                        .byte $FF, $40   ; 02
+                                        .byte $FE, $40   ; 03
+                                        .byte $FD, $40   ; 04
+                                        .byte $FC, $40   ; 05
+                                        .byte $FD, $40   ; 06
+                                        .byte $FE, $40   ; 07
+                                        .byte $FF, $00   ; 08
+                                        .byte $FE, $00   ; 09
+                                        .byte $FD, $00   ; 0A
+                                        .byte $FC, $00   ; 0B
 
 
 
 tbl_E470_y_координаты_стрелки:
-- D 3 - - - 0x01E480 07:E470: 20        .byte $8A   ; 00 1 Player
-- D 3 - - - 0x01E481 07:E471: 80        .byte $9A   ; 01 2 Players
-                                        .byte $AA   ; 02 Options
+- D 3 - - - 0x01E480 07:E470: 20        .byte $8B   ; 00 1 Player
+- D 3 - - - 0x01E481 07:E471: 80        .byte $9B   ; 01 2 Players
+                                        .byte $AB   ; 02 Options
 
 sub_A30F_обработчик_главного_экрана:
 ; leon опт
@@ -1344,20 +1375,21 @@ ofs_соунд_тест_9B2A_03_обработчик_меню:
 C - - J - - 0x009B3A 02:9B2A: 20 08 9F  JSR sub_9F08_sound_mode
 C - - - - - 0x009B3D 02:9B2D: 20 92 9B  JSR sub_9B92_sound_mode
 C - - - - - 0x009B40 02:9B30: 20 50 9B  JSR sub_9B50_sound_mode
-C - - - - - 0x009B43 02:9B33: A9 21     LDA #$21
-C - - - - - 0x009B45 02:9B35: 8D 4E 05  STA ram_атрибуты_спрайта
-C - - - - - 0x009B48 02:9B38: A9 B9     LDA #$B9
-C - - - - - 0x009B4A 02:9B3A: 8D 00 05  STA ram_кадр_анимации
-C - - - - - 0x009B4D 02:9B3D: A9 34     LDA #$34
-C - - - - - 0x009B4F 02:9B3F: 8D 34 05  STA ram_позиция_x_спрайта
+;C - - - - - 0x009B43 02:9B33: A9 21     LDA #$21
+;C - - - - - 0x009B45 02:9B35: 8D 4E 05  STA ram_атрибуты_спрайта + $02
+;C - - - - - 0x009B48 02:9B38: A9 B9     LDA #$B9
+;C - - - - - 0x009B4A 02:9B3A: 8D 00 05  STA ram_кадр_анимации + $02
+C - - - - - 0x009B4D 02:9B3D: A9 34     LDY #$37
+;C - - - - - 0x009B4F 02:9B3F: 8D 34 05  STA ram_позиция_x_спрайта + $02
 C - - - - - 0x009B52 02:9B42: A5 53     LDA ram_sound_mode_track_cur
 C - - - - - 0x009B54 02:9B44: 38        SEC
 C - - - - - 0x009B55 02:9B45: E5 54     SBC ram_sound_mode_track_min
 C - - - - - 0x009B57 02:9B47: 0A        ASL
 C - - - - - 0x009B58 02:9B48: 0A        ASL
 C - - - - - 0x009B59 02:9B49: 0A        ASL
-C - - - - - 0x009B5A 02:9B4A: 69 A7     ADC #$A7
-C - - - - - 0x009B5C 02:9B4C: 8D 1A 05  STA ram_позиция_y_спрайта
+C - - - - - 0x009B5A 02:9B4A: 69 A7     ADC #$A3
+;C - - - - - 0x009B5C 02:9B4C: 8D 1A 05  STA ram_позиция_y_спрайта + $02
+                                        JSR sub_E45F_запись_данных_для_стрелки
 C - - - - - 0x009B5F 02:9B4F: 60        RTS
 
 
@@ -1695,7 +1727,7 @@ _off011_9E45_01:
 _off011_9E55_02:
 - D 0 - I - 0x009E65 02:9E55: 22 2A     .dbyt $222A ; ppu address
 - D 0 - I - 0x009E67 02:9E57: 0C        .byte $0C   ; counter
-- D 0 - I - 0x009E68 02:9E58: 2D        .byte $2D, $1D, $19, $1F, $18, $0E, $00, $17, $19, $0E, $0F, $2D   ; 
+- D 0 - I - 0x009E68 02:9E58: 2D        .byte $50, $1D, $19, $1F, $18, $0E, $00, $17, $19, $0E, $0F, $2D   ; 
 
 - D 0 - I - 0x009E74 02:9E64: FF        .byte $FF   ; end token
 
@@ -1704,7 +1736,7 @@ _off011_9E55_02:
 _off011_9E65_03:
 - D 0 - I - 0x009E75 02:9E65: 22 4A     .dbyt $224A ; ppu address
 - D 0 - I - 0x009E77 02:9E67: 0C        .byte $0C   ; counter
-- D 0 - I - 0x009E78 02:9E68: 2A        .byte $2A, $2C, $2C, $2C, $2C, $2C, $2C, $2C, $2C, $2C, $2C, $2B   ; 
+- D 0 - I - 0x009E78 02:9E68: 2A        .byte $2A, $4E, $4E, $4E, $4E, $4E, $4E, $4E, $4E, $4E, $4E, $2B   ; 
 
 - D 0 - I - 0x009E84 02:9E74: FF        .byte $FF   ; end token
 
@@ -1732,7 +1764,7 @@ _off011_9E7A_05:
 _off011_9E94_06:
 - D 0 - I - 0x009EA4 02:9E94: 22 A5     .dbyt $22A5 ; ppu address
 - D 0 - I - 0x009EA6 02:9E96: 01        .byte $01   ; counter
-- D 0 - I - 0x009EA7 02:9E97: 2D        .byte $2D   ; 
+- D 0 - I - 0x009EA7 02:9E97: 2D        .byte $50   ; 
 
 - D 0 - I - 0x009EA8 02:9E98: 22 BA     .dbyt $22BA ; ppu address
 - D 0 - I - 0x009EAA 02:9E9A: 01        .byte $01   ; counter
@@ -1745,7 +1777,7 @@ _off011_9E94_06:
 _off011_9E9D_07:
 - D 0 - I - 0x009EAD 02:9E9D: 22 C5     .dbyt $22C5 ; ppu address
 - D 0 - I - 0x009EAF 02:9E9F: 01        .byte $01   ; counter
-- D 0 - I - 0x009EB0 02:9EA0: 2D        .byte $2D   ; 
+- D 0 - I - 0x009EB0 02:9EA0: 2D        .byte $50   ; 
 
 - D 0 - I - 0x009EB1 02:9EA1: 22 D1     .dbyt $22D1 ; ppu address
 - D 0 - I - 0x009EB3 02:9EA3: 0A        .byte $0A   ; counter
@@ -1758,7 +1790,7 @@ _off011_9E9D_07:
 _off011_9EAF_08:
 - D 0 - I - 0x009EBF 02:9EAF: 22 E5     .dbyt $22E5 ; ppu address
 - D 0 - I - 0x009EC1 02:9EB1: 01        .byte $01   ; counter
-- D 0 - I - 0x009EC2 02:9EB2: 2D        .byte $2D   ; 
+- D 0 - I - 0x009EC2 02:9EB2: 2D        .byte $50   ; 
 
 - D 0 - I - 0x009EC3 02:9EB3: 22 F5     .dbyt $22F5 ; ppu address
 - D 0 - I - 0x009EC5 02:9EB5: 06        .byte $06   ; counter
@@ -1771,7 +1803,7 @@ _off011_9EAF_08:
 _off011_9EBD_09:
 - D 0 - I - 0x009ECD 02:9EBD: 23 05     .dbyt $2305 ; ppu address
 - D 0 - I - 0x009ECF 02:9EBF: 01        .byte $01   ; counter
-- D 0 - I - 0x009ED0 02:9EC0: 2D        .byte $2D   ; 
+- D 0 - I - 0x009ED0 02:9EC0: 2D        .byte $50   ; 
 
 - D 0 - I - 0x009ED1 02:9EC1: 23 1A     .dbyt $231A ; ppu address
 - D 0 - I - 0x009ED3 02:9EC3: 01        .byte $01   ; counter
@@ -1784,7 +1816,7 @@ _off011_9EBD_09:
 _off011_9EC6_0A:
 - D 0 - I - 0x009ED6 02:9EC6: 23 25     .dbyt $2325 ; ppu address
 - D 0 - I - 0x009ED8 02:9EC8: 01        .byte $01   ; counter
-- D 0 - I - 0x009ED9 02:9EC9: 2D        .byte $2D   ; 
+- D 0 - I - 0x009ED9 02:9EC9: 2D        .byte $50   ; 
 
 - D 0 - I - 0x009EDA 02:9ECA: 23 31     .dbyt $2331 ; ppu address
 - D 0 - I - 0x009EDC 02:9ECC: 0A        .byte $0A   ; counter
@@ -1797,7 +1829,7 @@ _off011_9EC6_0A:
 _off011_9ED8_0B:
 - D 0 - I - 0x009EE8 02:9ED8: 23 45     .dbyt $2345 ; ppu address
 - D 0 - I - 0x009EEA 02:9EDA: 01        .byte $01   ; counter
-- D 0 - I - 0x009EEB 02:9EDB: 2D        .byte $2D   ; 
+- D 0 - I - 0x009EEB 02:9EDB: 2D        .byte $50   ; 
 
 - D 0 - I - 0x009EEC 02:9EDC: 23 56     .dbyt $2356 ; ppu address
 - D 0 - I - 0x009EEE 02:9EDE: 05        .byte $05   ; counter
@@ -1810,7 +1842,7 @@ _off011_9ED8_0B:
 _off011_9EE5_0C:
 - D 0 - I - 0x009EF5 02:9EE5: 23 65     .dbyt $2365 ; ppu address
 - D 0 - I - 0x009EF7 02:9EE7: 01        .byte $01   ; counter
-- D 0 - I - 0x009EF8 02:9EE8: 2D        .byte $2D   ; 
+- D 0 - I - 0x009EF8 02:9EE8: 2D        .byte $50   ; 
 
 - D 0 - I - 0x009EF9 02:9EE9: 23 7A     .dbyt $237A ; ppu address
 - D 0 - I - 0x009EFB 02:9EEB: 01        .byte $01   ; counter
@@ -1823,8 +1855,8 @@ _off011_9EE5_0C:
 _off011_9EEE_0D:
 - D 0 - I - 0x009EFE 02:9EEE: 23 85     .dbyt $2385 ; ppu address
 - D 0 - I - 0x009F00 02:9EF0: 16        .byte $16   ; counter
-- D 0 - I - 0x009F01 02:9EF1: 2A        .byte $2A, $2C, $2C, $2C, $2C, $2C, $2C, $2C, $2C, $2C, $2C, $2C, $2C, $2C, $2C, $2C   ; 
-- D 0 - I - 0x009F11 02:9F01: 2C        .byte $2C, $2C, $2C, $2C, $2C, $2B   ; 
+- D 0 - I - 0x009F01 02:9EF1: 2A        .byte $2A, $4E, $4E, $4E, $4E, $4E, $4E, $4E, $4E, $4E, $4E, $4E, $4E, $4E, $4E, $4E   ; 
+- D 0 - I - 0x009F11 02:9F01: 2C        .byte $4E, $4E, $4E, $4E, $4E, $2B   ; 
 
 - D 0 - I - 0x009F17 02:9F07: FF        .byte $FF   ; end token
 

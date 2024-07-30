@@ -656,18 +656,29 @@ C - - - - - 0x0061DE 01:A1CE: 49 FF     EOR #$FF
 C - - - - - 0x0061E0 01:A1D0: 69 01     ADC #$01
 bra_A1D2:
 C - - - - - 0x0061E2 01:A1D2: 30 EA     BMI bra_A1BE_RTS
-C - - - - - 0x0061E4 01:A1D4: BD B8 05  LDA ram_пули_игрока_параметры,X
+C - - - - - 0x0061E4 01:A1D4: BD B8 05  LDA ram_пули_игрока_индексы,X
 C - - - - - 0x0061E7 01:A1D7: 2A        ROL
 C - - - - - 0x0061E8 01:A1D8: 2A        ROL
 C - - - - - 0x0061E9 01:A1D9: 2A        ROL
 C - - - - - 0x0061EA 01:A1DA: 29 01     AND #$01
-C - - - - - 0x0061EC 01:A1DC: 85 21     STA ram_0021
+C - - - - - 0x0061EC 01:A1DC: 85 21     STA ram_0021    ;
 C - - - - - 0x0061EE 01:A1DE: BD F8 05  LDA ram_пули_игрока_урон,X
 C - - - - - 0x0061F1 01:A1E1: BC 88 05  LDY ram_позиция_x_спрайта,X
 C - - - - - 0x0061F4 01:A1E4: 20 F1 A1  JSR sub_A1F1
 C - - - - - 0x0061F7 01:A1E7: D0 D5     BNE bra_A1BE_RTS
 C - - - - - 0x0061F9 01:A1E9: A9 00     LDA #$00
 C - - - - - 0x0061FB 01:A1EB: 9D 38 06  STA ram_пули_игрока_хитбокс,X
+; разрыв пуль?
+                                        LDA ram_пули_игрока_индексы,X
+                                        LSR
+                                        CMP #con_weapon_F_charged
+                                        BEQ bra_A1EE
+                                        LDA #$06
+                                        STA ram_пули_игрока_счетчик_жизни,X
+                                        LDA #$02
+                                        STA ram_пули_игрока_аттрибуты,X
+                                        RTS
+bra_A1EE:
 C - - - - - 0x0061FE 01:A1EE: 4C 5D FE  JMP loc_0x01FE6D
 
 
@@ -725,7 +736,7 @@ C - - - - - 0x00624D 01:A23D: 85 05     STA ram_0005
 C - - - - - 0x00624F 01:A23F: BD 3A 07  LDA ram_хитбоксы_объектов,X
 C - - - - - 0x006252 01:A242: 85 07     STA ram_0007
 C - - - - - 0x006254 01:A244: 20 E0 A0  JSR sub_A0E0
-C - - - - - 0x006257 01:A247: A6 10     LDX ram_0010
+;C - - - - - 0x006257 01:A247: A6 10     LDX ram_0010
 C - - - - - 0x006259 01:A249: 20 96 A1  JSR sub_A196
 C - - - - - 0x00625C 01:A24C: A6 10     LDX ram_0010
 bra_A24E_00:
