@@ -108,7 +108,7 @@ C - - - - - 0x01E44D 07:E43D: A9 80     LDA #$51
 C - - - - - 0x01E44F 07:E43F: 85 3C     STA ram_таймер_до_демки
 C - - - - - 0x01E451 07:E441: E6 19     INC ram_номер_действия_на_заставке
                                         LDA #con_sound_1A
-                                        JMP loc_0x01FDEE_play_sound
+                                        JMP loc_0x01FDEE_play_sound_напрямую
 bra_E442_RTS:
 C - - - - - 0x01E453 07:E443: 60        RTS
 
@@ -1011,27 +1011,30 @@ bra_E463:
                                         LDA ram_0081
                                         ASL
                                         TAY
-                                        LDA tbl_E46F_спрайты_стрелки,Y
+                                        LDA tbl_E46F_данные_стрелки,Y
                                         STA ram_кадр_анимации + $02
-                                        LDA tbl_E46F_спрайты_стрелки + $01,Y
+                                        LDA tbl_E46F_данные_стрелки + $01,Y
                                         STA ram_атрибуты_спрайта + $02
                                         INC ram_номер_анимации_логотипа
 C - - - - - 0x01E47F 07:E46F: 60        RTS
 
 
-tbl_E46F_спрайты_стрелки:
-                                        .byte $FD, $00   ; 00
-                                        .byte $FE, $00   ; 01
-                                        .byte $FF, $40   ; 02
-                                        .byte $FE, $40   ; 03
-                                        .byte $FD, $40   ; 04
-                                        .byte $FC, $40   ; 05
-                                        .byte $FD, $40   ; 06
-                                        .byte $FE, $40   ; 07
-                                        .byte $FF, $00   ; 08
-                                        .byte $FE, $00   ; 09
-                                        .byte $FD, $00   ; 0A
-                                        .byte $FC, $00   ; 0B
+tbl_E46F_данные_стрелки:
+;                                              ----------- spr_T
+;                                              |    ------ spr_A
+;                                              |    |
+                                        .byte $FC, $40   ; 00
+                                        .byte $FD, $40   ; 01
+                                        .byte $FF, $00   ; 02
+                                        .byte $FD, $00   ; 03
+                                        .byte $FC, $00   ; 04
+                                        .byte $F9, $40   ; 05
+                                        .byte $FA, $40   ; 06
+                                        .byte $FB, $40   ; 07
+                                        .byte $FE, $00   ; 08
+                                        .byte $FB, $00   ; 09
+                                        .byte $FA, $00   ; 0A
+                                        .byte $F9, $00   ; 0B
 
 
 
@@ -1414,7 +1417,7 @@ C - - - - - 0x009B7B 02:9B6B: 20 0E FE  JSR sub_0x01FE1E_остановить_з
 bra_9B6E:
 C - - - - - 0x009B7E 02:9B6E: A4 53     LDY ram_sound_mode_track_cur
 C - - - - - 0x009B80 02:9B70: B9 A4 9C  LDA tbl_9CA4_список_треков,Y
-C - - - - - 0x009B83 02:9B73: 4C DE FD  JMP loc_0x01FDEE_play_sound
+C - - - - - 0x009B83 02:9B73: 4C DE FD  JMP loc_0x01FDEE_play_sound_напрямую
 bra_9B76_26:
 ; проиграть один за другим
 C - - - - - 0x009B86 02:9B76: 20 0E FE  JSR sub_0x01FE1E_остановить_звуковой_движок

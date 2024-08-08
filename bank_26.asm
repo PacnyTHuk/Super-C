@@ -259,8 +259,8 @@ C - - - - - 0x0045C6 01:85B6: A0 04     LDY tbl_85C7_color + $02,X
 C - - - - - 0x0045C8 01:85B8: 20 64 F9  JSR sub_0x01F974_запись_3х_цветов_с_условием
 C - - - - - 0x0045CB 01:85BB: 20 B8 F7  JSR sub_0x01F7C8
 C - - - - - 0x0045CE 01:85BE: A6 10     LDX ram_0010
-C - - - - - 0x0045D0 01:85C0: A9 30     LDA #con_sound_30
-C - - - - - 0x0045D2 01:85C2: 20 DE FD  JSR sub_0x01FDEE_play_sound
+C - - - - - 0x0045D0 01:85C0: A9 30     LDA #con_sound_30   ; музыка 1го босса вертолета
+C - - - - - 0x0045D2 01:85C2: 20 DE FD  JSR sub_0x01FDEE_play_music
 C - - - - - 0x0045D5 01:85C5: 4C D7 A2  JMP loc_0x0062E7_increase_obj_state
 
 

@@ -755,8 +755,8 @@ C - - - - - 0x010468 04:8458: 09 40     ORA #$40
 C - - - - - 0x01046A 04:845A: 85 94     STA ram_0094_конфиг_уровня
 C - - - - - 0x01046C 04:845C: A9 B8     LDA #$B8
 C - - - - - 0x01046E 04:845E: 85 98     STA ram_0098
-C - - - - - 0x010470 04:8460: A9 31     LDA #con_sound_31
-C - - - - - 0x010472 04:8462: 20 DE FD  JSR sub_0x01FDEE_play_sound
+C - - - - - 0x010470 04:8460: A9 31     LDA #con_sound_31   ; музыка 5й босс
+C - - - - - 0x010472 04:8462: 20 DE FD  JSR sub_0x01FDEE_play_music
 C - - - - - 0x010475 04:8465: 4C D7 A2  JMP loc_0x0062E7_increase_obj_state
 bra_8468_RTS:
 C - - - - - 0x010478 04:8468: 60        RTS
@@ -3550,8 +3550,8 @@ C - - - - - 0x0114AA 04:949A: 90 2D     BCC bra_94C9_RTS
 C - - - - - 0x0114AC 04:949C: BD E6 06  LDA ram_счетчкики_для_объектов,X
 C - - - - - 0x0114AF 04:949F: C9 60     CMP #$60
 C - - - - - 0x0114B1 04:94A1: D0 05     BNE bra_94A8
-C - - - - - 0x0114B3 04:94A3: A9 30     LDA #con_sound_30
-C - - - - - 0x0114B5 04:94A5: 20 DE FD  JSR sub_0x01FDEE_play_sound
+C - - - - - 0x0114B3 04:94A3: A9 30     LDA #con_sound_30   ; музыка 6й босс, 2я фаза
+C - - - - - 0x0114B5 04:94A5: 20 DE FD  JSR sub_0x01FDEE_play_music
 bra_94A8:
 C - - - - - 0x0114B8 04:94A8: DE E6 06  DEC ram_счетчкики_для_объектов,X
 C - - - - - 0x0114BB 04:94AB: D0 1C     BNE bra_94C9_RTS
@@ -4119,8 +4119,8 @@ C - - - - - 0x011860 04:9850: A9 30     LDA #$30
 C - - - - - 0x011862 04:9852: 9D 22 05  STA ram_позиция_y_спрайта_врага_и_пуль,X
 C - - - - - 0x011865 04:9855: A9 80     LDA #$80
 C - - - - - 0x011867 04:9857: 9D 3C 05  STA ram_позиция_x_спрайта_врага_и_пуль,X
-C - - - - - 0x01186A 04:985A: A9 32     LDA #con_sound_32
-C - - - - - 0x01186C 04:985C: 20 DE FD  JSR sub_0x01FDEE_play_sound
+C - - - - - 0x01186A 04:985A: A9 32     LDA #con_sound_32   ; музыка 6й босс
+C - - - - - 0x01186C 04:985C: 20 DE FD  JSR sub_0x01FDEE_play_music
 C - - - - - 0x01186F 04:985F: A9 10     LDA #$10
 C - - - - - 0x011871 04:9861: 9D 2C 07  STA ram_072C_obj,X
 C - - - - - 0x011874 04:9864: A9 01     LDA #$01

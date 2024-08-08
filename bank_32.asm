@@ -986,8 +986,8 @@ C - - - - - 0x005295 01:9285: DE 72 07  DEC ram_0772_obj,X
 C - - - - - 0x005298 01:9288: 10 DA     BPL bra_9264_RTS
 C - - - - - 0x00529A 01:928A: A0 57     LDY #$57
 C - - - - - 0x00529C 01:928C: 20 1D BD  JSR sub_0x007D2D_clear_0480_Y
-C - - - - - 0x00529F 01:928F: A9 32     LDA #con_sound_32
-C - - - - - 0x0052A1 01:9291: 20 DE FD  JSR sub_0x01FDEE_play_sound
+C - - - - - 0x00529F 01:928F: A9 32     LDA #con_sound_32   ;   музыка 3й под босс Паук
+C - - - - - 0x0052A1 01:9291: 20 DE FD  JSR sub_0x01FDEE_play_music
 C - - - - - 0x0052A4 01:9294: A9 00     LDA #$00
 C - - - - - 0x0052A6 01:9296: 9D 56 07  STA ram_scroll_X_obj,X
 C - - - - - 0x0052A9 01:9299: 9D 64 07  STA ram_0764_obj,X
@@ -2252,8 +2252,8 @@ C - - - - - 0x0059F9 01:99E9: F0 22     BEQ bra_9A0D_RTS
 C - - - - - 0x0059FB 01:99EB: A5 60     LDA ram_0060_unk
 C - - - - - 0x0059FD 01:99ED: 05 70     ORA ram_0070
 C - - - - - 0x0059FF 01:99EF: D0 1C     BNE bra_9A0D_RTS
-C - - - - - 0x005A01 01:99F1: A9 31     LDA #con_sound_31
-C - - - - - 0x005A03 01:99F3: 20 DE FD  JSR sub_0x01FDEE_play_sound
+C - - - - - 0x005A01 01:99F1: A9 31     LDA #con_sound_31   ; музыка 3й босс главный
+C - - - - - 0x005A03 01:99F3: 20 DE FD  JSR sub_0x01FDEE_play_music
 C - - - - - 0x005A06 01:99F6: A9 07     LDA #$07
 C - - - - - 0x005A08 01:99F8: 9D 48 07  STA ram_0748_obj,X
 C - - - - - 0x005A0B 01:99FB: 4C D7 A2  JMP loc_0x0062E7_increase_obj_state

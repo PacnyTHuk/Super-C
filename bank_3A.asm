@@ -1308,8 +1308,8 @@ C - - - - - 0x0147A5 05:8795: 9D 22 05  STA ram_позиция_y_спрайта_
 C - - - - - 0x0147A8 05:8798: A9 10     LDA #$10
 C - - - - - 0x0147AA 05:879A: 9D 2C 07  STA ram_072C_obj,X
 C - - - - - 0x0147AD 05:879D: 20 2C 89  JSR sub_892C
-C - - - - - 0x0147B0 05:87A0: A9 31     LDA #con_sound_31
-C - - - - - 0x0147B2 05:87A2: 20 DE FD  JSR sub_0x01FDEE_play_sound
+C - - - - - 0x0147B0 05:87A0: A9 31     LDA #con_sound_31   ; музыка 2й босс
+C - - - - - 0x0147B2 05:87A2: 20 DE FD  JSR sub_0x01FDEE_play_music
 C - - - - - 0x0147B5 05:87A5: A9 05     LDA #$05
 C - - - - - 0x0147B7 05:87A7: 9D 48 07  STA ram_0748_obj,X
 C - - - - - 0x0147BA 05:87AA: 4C D7 A2  JMP loc_0x0062E7_increase_obj_state
@@ -3806,8 +3806,8 @@ C - - - - - 0x015625 05:9615: 05 80     ORA ram_номер_анимации_ло
 C - - - - - 0x015627 05:9617: D0 F5     BNE bra_960E_RTS
 C - - - - - 0x015629 05:9619: A9 C8     LDA #$C8
 C - - - - - 0x01562B 05:961B: 85 98     STA ram_0098
-C - - - - - 0x01562D 05:961D: A9 31     LDA #con_sound_31
-C - - - - - 0x01562F 05:961F: 20 DE FD  JSR sub_0x01FDEE_play_sound
+C - - - - - 0x01562D 05:961D: A9 31     LDA #con_sound_31   ; музыка 4й босс
+C - - - - - 0x01562F 05:961F: 20 DE FD  JSR sub_0x01FDEE_play_music
 C - - - - - 0x015632 05:9622: 4C D7 A2  JMP loc_0x0062E7_increase_obj_state
 
 

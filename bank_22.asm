@@ -589,7 +589,7 @@ tbl_8205_враги_US:
 - D 0 - - - 0x00C381 03:8371: A4 8E     .word _off028_8EA4_B6
 - D 0 - - - 0x00C383 03:8373: AD 8E     .word _off028_8EAD_B7
 - D 0 - - - 0x00C385 03:8375: B6 8E     .word _off028_8EB6_B8
-- D 0 - - - 0x00C387 03:8377: E3 8E     .word _off028_8EE3_B9_стрелка_в_меню
+- D 0 - - - 0x00C387 03:8377: E3 8E     .word _off028_8EE3_B9
 - D 0 - - - 0x00C389 03:8379: E8 8E     .word _off028_8EE8_BA
 - D 0 - - - 0x00C38B 03:837B: 0D 8F     .word _off028_8F0D_BB
 - - - - - - 0x00C38D 03:837D: 2E 8F     .word _off028_8F2E_BC
@@ -3185,44 +3185,6 @@ _off028_8EAD_B7:
 
 
 
-_off028_8EB6_B8:
-- D 0 - I - 0x00CEC6 03:8EB6: 2C        .byte @end - * - $01   ; total data size
-;                                              --------------------- spr_Y
-;                                              |    ---------------- spr_T
-;                                              |    |    ----------- spr_A
-;                                              |    |    |    ------ spr_X
-;                                              |    |    |    |
-- D 0 - I - 0x00CEC7 03:8EB7: 00        .byte $00, $CB, $00, $00   ; 
-- D 0 - I - 0x00CECB 03:8EBB: 10        .byte $10, $CD, $00, $00   ; 
-- D 0 - I - 0x00CECF 03:8EBF: 20        .byte $20, $CF, $00, $00   ; 
-- D 0 - I - 0x00CED3 03:8EC3: 2E        .byte $2E, $D1, $00, $08   ; 
-- D 0 - I - 0x00CED7 03:8EC7: 2E        .byte $2E, $D3, $00, $10   ; 
-- D 0 - I - 0x00CEDB 03:8ECB: 2E        .byte $2E, $D5, $00, $18   ; 
-- D 0 - I - 0x00CEDF 03:8ECF: 2E        .byte $2E, $D7, $00, $20   ; 
-- D 0 - I - 0x00CEE3 03:8ED3: 30        .byte $30, $DB, $00, $28   ; 
-- D 0 - I - 0x00CEE7 03:8ED7: 30        .byte $30, $DD, $00, $30   ; 
-- D 0 - I - 0x00CEEB 03:8EDB: 30        .byte $30, $DF, $00, $38   ; 
-- D 0 - I - 0x00CEEF 03:8EDF: 2E        .byte $2E, $E1, $00, $40   ; 
-@end:
-
-
-
-_off028_8EE3_B9_стрелка_в_меню:
-_off030_8EE5_B9_стрелка_в_меню:
-- D 0 - I - 0x00CEF3 03:8EE3: 04        .byte @end - * - $01   ; total data size
-;                                              --------------------- spr_Y
-;                                              |    ---------------- spr_T
-;                                              |    |    ----------- spr_A
-;                                              |    |    |    ------ spr_X
-;                                              |    |    |    |
-- D 0 - I - 0x00CEF4 03:8EE4: 00        .byte $00, $D5, $01, $00   ; ЗАМЕНЕН НА АНИМАЦИЮ СТРЕЛКИ (FC-FF)
-                                        .byte $00, $D7, $01, $08   ; 
-                                        .byte $00, $E5, $03, $00   ; 
-                                        .byte $00, $E7, $03, $08   ; 
-@end:
-
-
-
 _off028_8EE8_BA:
 - D 0 - I - 0x00CEF8 03:8EE8: 24        .byte @end - * - $01   ; total data size
 ;                                              --------------------- spr_Y
@@ -3270,7 +3232,7 @@ _off030_8F8A_C2:
 ;                                              |    |    ----------- spr_A
 ;                                              |    |    |    ------ spr_X
 ;                                              |    |    |    |
-                                        .byte $00, $CD, $03, $00   ; 
+                                        .byte $00, $C1, $03, $00   ; 
 @end:
 
 
@@ -3283,7 +3245,7 @@ _off030_8F8A_C3:
 ;                                              |    |    ----------- spr_A
 ;                                              |    |    |    ------ spr_X
 ;                                              |    |    |    |
-                                        .byte $00, $CF, $03, $00   ; 
+                                        .byte $00, $C3, $03, $00   ; 
 @end:
 
 
@@ -3296,8 +3258,8 @@ _off030_8F8A_C4:
 ;                                              |    |    ----------- spr_A
 ;                                              |    |    |    ------ spr_X
 ;                                              |    |    |    |
-                                        .byte $00, $D3, $03, $FC   ; 
-                                        .byte $00, $D3, $43, $03   ; 
+                                        .byte $00, $C7, $03, $FC   ; 
+                                        .byte $00, $C7, $43, $03   ; 
 @end:
 
 
@@ -3310,7 +3272,7 @@ _off030_8F8A_C5:
 ;                                              |    |    ----------- spr_A
 ;                                              |    |    |    ------ spr_X
 ;                                              |    |    |    |
-                                        .byte $00, $D1, $03, $00   ; 
+                                        .byte $00, $C5, $03, $00   ; 
 @end:
 
 
@@ -3349,6 +3311,8 @@ _off030_8F8A_C8_flame_thrower_2:
 
 
 ; пусто для общих спрайтов US/EU:
+_off028_8EB6_B8:
+_off028_8EE3_B9:
 _off028_8F2E_C9:
 _off028_8F2E_CA:
 _off028_8F2E_CB:
@@ -3397,71 +3361,111 @@ _off028_8F2E_F5:
 _off028_8F2E_F6:
 _off028_8F2E_F7:
 _off028_8F2E_F8:
+
+
+
+; 7 спрайта для анимации стрелки в меню (F9-FF)
 _off028_8F2E_F9:
-_off028_8F2E_FA:
-_off028_8F2E_FB:
-
-
-
-;   4 спрайта для анимации стрелки в меню
-
-_off028_8F2E_FC:
+_off030_8F8A_F9:
 - D 0 - I - 0x00CEF3 03:8EE3: 04        .byte @end - * - $01   ; total data size
 ;                                              --------------------- spr_Y
 ;                                              |    ---------------- spr_T
 ;                                              |    |    ----------- spr_A
 ;                                              |    |    |    ------ spr_X
 ;                                              |    |    |    |
-- D 0 - I - 0x00CEF4 03:8EE4: 00        .byte $00, $D5, $01, $F8   ; 
-                                        .byte $00, $D7, $01, $00   ; 
+- D 0 - I - 0x00CEF4 03:8EE4: 00        .byte $00, $C9, $01, $F8   ; 
+                                        .byte $00, $CB, $01, $00   ; 
+                                        .byte $00, $E1, $03, $F8   ; 
+                                        .byte $00, $E3, $03, $00   ; 
+@end:
+
+
+_off028_8F2E_FA:
+_off030_8F8A_FA:
+- D 0 - I - 0x00CEF3 03:8EE3: 04        .byte @end - * - $01   ; total data size
+;                                              --------------------- spr_Y
+;                                              |    ---------------- spr_T
+;                                              |    |    ----------- spr_A
+;                                              |    |    |    ------ spr_X
+;                                              |    |    |    |
+- D 0 - I - 0x00CEF4 03:8EE4: 00        .byte $00, $CD, $01, $F8   ; 
+                                        .byte $00, $CF, $01, $00   ; 
                                         .byte $00, $E5, $03, $F8   ; 
                                         .byte $00, $E7, $03, $00   ; 
 @end:
 
 
-_off028_8F2E_FD:
+_off028_8F2E_FB:
+_off030_8F8A_FB:
 - D 0 - I - 0x00CEF3 03:8EE3: 04        .byte @end - * - $01   ; total data size
 ;                                              --------------------- spr_Y
 ;                                              |    ---------------- spr_T
 ;                                              |    |    ----------- spr_A
 ;                                              |    |    |    ------ spr_X
 ;                                              |    |    |    |
-- D 0 - I - 0x00CEF4 03:8EE4: 00        .byte $00, $D9, $01, $F8   ; 
-                                        .byte $00, $DB, $01, $00   ; 
+- D 0 - I - 0x00CEF4 03:8EE4: 00        .byte $00, $D1, $01, $F8   ; 
+                                        .byte $00, $D3, $01, $00   ; 
                                         .byte $00, $E9, $03, $F8   ; 
                                         .byte $00, $EB, $03, $00   ; 
 @end:
 
 
-_off028_8F2E_FE:
+_off028_8F2E_FC:
+_off030_8F8A_FC:
 - D 0 - I - 0x00CEF3 03:8EE3: 04        .byte @end - * - $01   ; total data size
 ;                                              --------------------- spr_Y
 ;                                              |    ---------------- spr_T
 ;                                              |    |    ----------- spr_A
 ;                                              |    |    |    ------ spr_X
 ;                                              |    |    |    |
-- D 0 - I - 0x00CEF4 03:8EE4: 00        .byte $00, $DD, $01, $F8   ; 
-                                        .byte $00, $DF, $01, $00   ; 
-                                        .byte $00, $ED, $03, $F8   ; 
-                                        .byte $00, $EF, $03, $00   ; 
+- D 0 - I - 0x00CEF4 03:8EE4: 00        .byte $00, $D7, $01, $F8   ; 
+                                        .byte $00, $D9, $01, $00   ; 
+                                        .byte $00, $EF, $03, $F8   ; 
+                                        .byte $00, $F1, $03, $00   ; 
+@end:
+
+
+_off028_8F2E_FD:
+_off030_8F8A_FD:
+- D 0 - I - 0x00CEF3 03:8EE3: 04        .byte @end - * - $01   ; total data size
+;                                              --------------------- spr_Y
+;                                              |    ---------------- spr_T
+;                                              |    |    ----------- spr_A
+;                                              |    |    |    ------ spr_X
+;                                              |    |    |    |
+- D 0 - I - 0x00CEF4 03:8EE4: 00        .byte $00, $DB, $01, $F8   ; 
+                                        .byte $00, $DD, $01, $00   ; 
+                                        .byte $00, $F3, $03, $F8   ; 
+                                        .byte $00, $F5, $03, $00   ; 
+@end:
+
+
+_off028_8F2E_FE:
+_off030_8F8A_FE:
+- D 0 - I - 0x00CEF3 03:8EE3: 04        .byte @end - * - $01   ; total data size
+;                                              --------------------- spr_Y
+;                                              |    ---------------- spr_T
+;                                              |    |    ----------- spr_A
+;                                              |    |    |    ------ spr_X
+;                                              |    |    |    |
+- D 0 - I - 0x00CEF4 03:8EE4: 00        .byte $00, $D5, $01, $FC   ; 
+                                        .byte $00, $ED, $03, $FC   ; 
 @end:
 
 
 _off028_8F2E_FF:
+_off030_8F8A_FF:
 - D 0 - I - 0x00CEF3 03:8EE3: 04        .byte @end - * - $01   ; total data size
 ;                                              --------------------- spr_Y
 ;                                              |    ---------------- spr_T
 ;                                              |    |    ----------- spr_A
 ;                                              |    |    |    ------ spr_X
 ;                                              |    |    |    |
-- D 0 - I - 0x00CEF4 03:8EE4: 00        .byte $00, $E1, $01, $FC   ; 
-                                        .byte $00, $E3, $03, $FC   ; 
-
- 
+- D 0 - I - 0x00CEF4 03:8EE4: 00        .byte $00, $DF, $01, $FC   ; 
+                                        .byte $00, $F7, $03, $FC   ; 
 @end:
-; - - - - - - 0x00CF3E 03:8F2E: FF        .byte $FF   ; end token
 
- 
+
 
 
 
@@ -4716,7 +4720,7 @@ tbl_8205_враги_EU:
 - - - - - - 0x00C381 03:8371: B2 8E     .word _off030_8EB2_B6
 - - - - - - 0x00C383 03:8373: BB 8E     .word _off030_8EBB_B7
 - - - - - - 0x00C385 03:8375: C4 8E     .word _off030_8EC4_B8
-- - - - - - 0x00C387 03:8377: E5 8E     .word _off030_8EE5_B9_стрелка_в_меню
+- - - - - - 0x00C387 03:8377: E5 8E     .word _off030_8EE5_B9
 - - - - - - 0x00C389 03:8379: EA 8E     .word _off030_8EEA_BA
 - - - - - - 0x00C38B 03:837B: 0F 8F     .word _off030_8F0F_BB
 - - - - - - 0x00C38D 03:837D: 30 8F     .word _off030_8F30_BC
@@ -7305,25 +7309,6 @@ _off030_8EBB_B7:
 
 
 
-_off030_8EC4_B8:
-- - - - - - 0x00CED4 03:8EC4: 20        .byte @end - * - $01   ; total data size
-;                                              --------------------- spr_Y
-;                                              |    ---------------- spr_T
-;                                              |    |    ----------- spr_A
-;                                              |    |    |    ------ spr_X
-;                                              |    |    |    |
-- - - - - - 0x00CED5 03:8EC5: 08        .byte $08, $CB, $03, $E8   ; 
-- - - - - - 0x00CED9 03:8EC9: 00        .byte $00, $CD, $03, $F8   ; 
-- - - - - - 0x00CEDD 03:8ECD: 08        .byte $08, $CF, $03, $00   ; 
-- - - - - - 0x00CEE1 03:8ED1: 00        .byte $00, $D1, $03, $08   ; 
-- - - - - - 0x00CEE5 03:8ED5: 08        .byte $08, $D3, $03, $10   ; 
-- - - - - - 0x00CEE9 03:8ED9: 00        .byte $00, $D5, $03, $18   ; 
-- - - - - - 0x00CEED 03:8EDD: 08        .byte $08, $D7, $03, $24   ; 
-- - - - - - 0x00CEF1 03:8EE1: 00        .byte $00, $DB, $03, $38   ; 
-@end:
-
-
-
 _off030_8EEA_BA:
 - - - - - - 0x00CEFA 03:8EEA: 24        .byte @end - * - $01   ; total data size
 ;                                              --------------------- spr_Y
@@ -7451,6 +7436,8 @@ _off030_8F79_C1:
 
 
 ; пусто для общих спрайтов US/EU:
+_off030_8EC4_B8:
+_off030_8EE5_B9:
 _off030_8F8A_C9:
 _off030_8F8A_CA:
 _off030_8F8A_CB:
@@ -7499,14 +7486,6 @@ _off030_8F8A_F5:
 _off030_8F8A_F6:
 _off030_8F8A_F7:
 _off030_8F8A_F8:
-_off030_8F8A_F9:
-_off030_8F8A_FA:
-_off030_8F8A_FB:
-_off030_8F8A_FC:
-_off030_8F8A_FD:
-_off030_8F8A_FE:
-_off030_8F8A_FF:
-- - - - - - 0x00CF9A 03:8F8A: FF        .byte $FF   ; 
 
 
 

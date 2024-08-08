@@ -64,7 +64,9 @@
 .export loc_0x01FCCA_включить_NMI
 .export sub_0x01FDBB_выбрать_второй_банк_с_данными_музыки
 .export sub_0x01FDEE_play_sound
+.export sub_0x01FDEE_play_music
 .export loc_0x01FDEE_play_sound
+.export loc_0x01FDEE_play_sound_напрямую
 .export loc_0x01FE06
 .export sub_0x01FE1E_остановить_звуковой_движок
 .export loc_0x01FE1E_остановить_звуковой_движок
@@ -1377,11 +1379,11 @@ C - - - - - 0x01E8C9 07:E8B9: A5 1F     LDA ram_001F_flag
 C - - - - - 0x01E8CB 07:E8BB: D0 08     BNE bra_E8C5
 C - - - - - 0x01E8CD 07:E8BD: A4 50     LDY ram_номер_уровня
 C - - - - - 0x01E8CF 07:E8BF: B9 CE E8  LDA tbl_E8CE,Y
-C - - - - - 0x01E8D2 07:E8C2: 20 DE FD  JSR sub_FDDE_play_sound
+C - - - - - 0x01E8D2 07:E8C2: 20 DE FD  JSR sub_FDDE_play_music
 bra_E8C5:
 C - - - - - 0x01E8D5 07:E8C5: A5 50     LDA ram_номер_уровня
 C - - - - - 0x01E8D7 07:E8C7: D0 EF     BNE bra_E8B8_RTS
-C - - - - - 0x01E8D9 07:E8C9: A9 0A     LDA #con_sound_0A
+C - - - - - 0x01E8D9 07:E8C9: A9 0A     LDA #con_sound_0A   ;   звук вертолета (начало игры)
 C - - - - - 0x01E8DB 07:E8CB: 4C DE FD  JMP loc_FDDE_play_sound
 
 
@@ -1420,8 +1422,8 @@ C - - - - - 0x01E904 07:E8F4: D0 0B     BNE bra_E901    ; jmp
 
 
 loc_0x01E906:
-C D 3 - - - 0x01E906 07:E8F6: A9 35     LDA #con_sound_35
-C - - - - - 0x01E908 07:E8F8: 20 DE FD  JSR sub_FDDE_play_sound
+C D 3 - - - 0x01E906 07:E8F6: A9 35     LDA #con_sound_35   ; музыка GAME OVER
+C - - - - - 0x01E908 07:E8F8: 20 DE FD  JSR sub_FDDE_play_music
 C - - - - - 0x01E90B 07:E8FB: A0 01     LDY #$01
 C - - - - - 0x01E90D 07:E8FD: A9 05     LDA #$05
 C - - - - - 0x01E90F 07:E8FF: 84 3F     STY ram_таймер_экрана
@@ -1496,14 +1498,14 @@ C - - - - - 0x01E964 07:E954: 4A        LSR
 C - - - - - 0x01E965 07:E955: B0 21     BCS bra_E978_RTS
 C - - - - - 0x01E967 07:E957: C6 3F     DEC ram_таймер_экрана
 C - - - - - 0x01E969 07:E959: D0 1D     BNE bra_E978_RTS
-C - - - - - 0x01E96B 07:E95B: A9 33     LDA #con_sound_33
+C - - - - - 0x01E96B 07:E95B: A9 33     LDA #con_sound_33   ; завершение уровня
 C - - - - - 0x01E96D 07:E95D: A4 50     LDY ram_номер_уровня
 C - - - - - 0x01E96F 07:E95F: C0 07     CPY #$07
 C - - - - - 0x01E971 07:E961: D0 02     BNE bra_E965_не_последний_уровень
 ; последний уровень
-C - - - - - 0x01E973 07:E963: A9 34     LDA #con_sound_34
+C - - - - - 0x01E973 07:E963: A9 34     LDA #con_sound_34    ; завершение последнего уровня
 bra_E965_не_последний_уровень:
-C - - - - - 0x01E975 07:E965: 20 DE FD  JSR sub_FDDE_play_sound
+C - - - - - 0x01E975 07:E965: 20 DE FD  JSR sub_FDDE_play_music
 C - - - - - 0x01E978 07:E968: A9 00     LDA #$00
 C - - - - - 0x01E97A 07:E96A: 85 40     STA ram_0040
 C - - - - - 0x01E97C 07:E96C: A5 5C     LDA ram_статус_завершения_уровня
@@ -1688,8 +1690,8 @@ C - - - - - 0x01EA75 07:EA65: 20 84 FE  JSR sub_FE84_bankswitch_отрисовк
 C - - - - - 0x01EA78 07:EA68: A9 0A     LDA #$12    ; палитра заставки
 C - - - - - 0x01EA7A 07:EA6A: 20 70 FE  JSR sub_FE70_bankswitch_загрузка_палитры_в_03E0x
 C - - - - - 0x01EA7D 07:EA6D: 20 BE F7  JSR sub_F7BE_запись_палитры_из_03E0x_в_0300x
-C - - - - - 0x01EA80 07:EA70: A9 36     LDA #con_sound_36
-C - - - - - 0x01EA82 07:EA72: 20 DE FD  JSR sub_FDDE_play_sound
+C - - - - - 0x01EA80 07:EA70: A9 36     LDA #con_sound_36   ; музыка на титрах
+C - - - - - 0x01EA82 07:EA72: 20 DE FD  JSR sub_FDDE_play_music
 C - - - - - 0x01EA85 07:EA75: 4C 76 E9  JMP loc_E976
 bra_EA78:
 C - - - - - 0x01EA88 07:EA78: 20 F7 FE  JSR sub_FEF7_credits_handler
@@ -4860,11 +4862,19 @@ C - - - - - 0x01FDEA 07:FDDA: 68        PLA
 C - - - - - 0x01FDEB 07:FDDB: 4C 96 FD  JMP loc_FD96
 
 
-
+sub_FDDE_play_music:
+sub_0x01FDEE_play_music:
+                                        BIT ram_флаг_музыки_звука
+                                        BMI bra_FDF5_RTS
+                                        JMP loc_FDEE_play_sound_напрямую
 sub_FDDE_play_sound:
 loc_FDDE_play_sound:
 sub_0x01FDEE_play_sound:
 loc_0x01FDEE_play_sound:
+                                        BIT ram_флаг_музыки_звука
+                                        BVS bra_FDF5_RTS
+loc_FDEE_play_sound_напрямую:
+loc_0x01FDEE_play_sound_напрямую:
 C D 3 - - - 0x01FDEE 07:FDDE: 48        PHA
 C - - - - - 0x01FDEF 07:FDDF: A5 1C     LDA ram_001C
 C - - - - - 0x01FDF1 07:FDE1: 09 80     ORA #$80
@@ -4876,6 +4886,7 @@ C - - - - - 0x01FDFC 07:FDEC: 20 8B FD  JSR sub_FD8B_restore_prg_bank
 C - - - - - 0x01FDFF 07:FDEF: A5 1C     LDA ram_001C
 C - - - - - 0x01FE01 07:FDF1: 29 7F     AND #$7F
 C - - - - - 0x01FE03 07:FDF3: 85 1C     STA ram_001C
+bra_FDF5_RTS:
 C - - - - - 0x01FE05 07:FDF5: 60        RTS
 
 
