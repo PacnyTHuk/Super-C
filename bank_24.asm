@@ -329,47 +329,34 @@ ofs_options_9908_00_подготовка_экрана_options:
                                         LDA #con_chr_bank + $40
                                         STA ram_bg_bank_2
                                         LDX #$04    ; options
-                                        JSR sub_0x01FE94_bankswitch_отрисовка_экранов
                                         LDA ram_cheat_flag
-                                        BEQ bra_9921_чит_не_введен
-; заменить атрибуты для отображения скрытых опций
-                                        LDX ram_index_ppu_buffer
-                                        LDY #$00
-bra_991E_loop:
-                                        LDA tbl_9923_атрибуты,Y
-                                        CMP #$FE    ; end token
-                                        BEQ bra_991A_закрыть_буфер
-                                        STA ram_nmt_buffer,X
+                                        BPL bra_9910
                                         INX
-                                        INY
-                                        BNE bra_991E_loop    ; jmp
-bra_991A_закрыть_буфер:
-                                        LDA #$FF
-                                        STA ram_nmt_buffer,X
                                         INX
-                                        STX ram_index_ppu_buffer
-bra_9921_чит_не_введен:
+bra_9910:
+                                        JSR sub_0x01FE94_bankswitch_отрисовка_экранов
+
                                         LDA #$13    ; палитра экрана с опциями
                                         JSR sub_0x01FE80_bankswitch_загрузка_палитры_в_03E0x
                                         JSR sub_0x01F7CE_запись_палитры_из_03E0x_в_0300x
+                                        
+                                        LDA ram_cheat_flag
+                                        BMI bra_9912
                                         JSR sub_9924_отрисовать_difficulty
                                         JSR sub_9926_отрисовать_graphics
                                         JSR sub_9928_отрисовать_obj_limit
-                                        JSR sub_992A_отрисовать_continue
-                                        JSR sub_992C_отрисовать_level
-                                        JSR sub_992E_отрисовать_rest
-                                        JSR sub_9930_отрисовать_exit
+                                        JSR sub_992A_отрисовать_music
+                                        JSR sub_992C_отрисовать_sound
+                                        JMP loc_9914
+bra_9912:
+                                        JSR sub_992E_отрисовать_continue
+                                        JSR sub_9930_отрисовать_level
+                                        JSR sub_9932_отрисовать_rest
+loc_9914:
+                                        JSR sub_9934_отрисовать_exit
                                         INC ram_номер_действия_на_заставке
                                         RTS
 
-tbl_9923_атрибуты:
-                                        .byte con_buf_mode_06   ; 
-                                        
-                                        .dbyt $23D8 ; ppu address
-                                        .byte $10   ; counter
-                                        .byte $00, $00, $00, $00, $FF, $FF, $FF, $FF, $00, $00, $00, $00, $0F, $0F, $0F, $0F   ; 
-                                        
-                                        .byte $FE   ; end token
 
 
 sub_9924_отрисовать_difficulty:
@@ -380,7 +367,7 @@ sub_9924_отрисовать_difficulty:
 
 tbl_9925_варианты_difficulty:
                                         .byte con_0x0017EA_normal   ; 00 
-                                        .byte con_0x0017EA_hard   ; 01 
+                                        .byte con_0x0017EA_hard     ; 01 
                                         .byte con_0x0017EA_expert   ; 02 
 
 sub_9926_отрисовать_graphics:
@@ -402,8 +389,39 @@ sub_9928_отрисовать_obj_limit:
 tbl_9929_варианты_obj_limit:
                                         .byte con_0x0017EA_obj_limit_14   ; 00 
                                         .byte con_0x0017EA_obj_limit_32   ; 01 
+                                        
+                                        
+sub_992A_отрисовать_music:
+                                        LDX #$00
+                                        BIT ram_флаг_музыки_звука
+                                        BVC bra_992A
+                                        INX
+bra_992A:
+                                        LDA tbl_992B_варианты_music,X
+                                        JSR sub_0x01FE8A_bankswitch_отрисовка_текста_через_буфер_0300x
+                                        RTS
 
-sub_992A_отрисовать_continue:
+tbl_992B_варианты_music:
+                                        .byte con_0x0017EA_music_on    ; 00 
+                                        .byte con_0x0017EA_music_off   ; 01 
+
+
+sub_992C_отрисовать_sound:
+                                        LDX #$00
+                                        BIT ram_флаг_музыки_звука
+                                        BPL bra_992С
+                                        INX
+bra_992С:
+                                        LDA tbl_992D_варианты_sound,X
+                                        JSR sub_0x01FE8A_bankswitch_отрисовка_текста_через_буфер_0300x
+                                        RTS
+
+tbl_992D_варианты_sound:
+                                        .byte con_0x0017EA_sound_on    ; 00 
+                                        .byte con_0x0017EA_sound_off   ; 01 
+
+
+sub_992E_отрисовать_continue:
                                         LDA #con_0x0017EA_continue
                                         JSR sub_0x01FE8A_bankswitch_отрисовка_текста_через_буфер_0300x
                                         LDA ram_option_конты
@@ -412,7 +430,7 @@ sub_992A_отрисовать_continue:
                                         STA ram_nmt_buffer - $02,X
                                         RTS
 
-sub_992C_отрисовать_level:
+sub_9930_отрисовать_level:
                                         LDA #con_0x0017EA_level
                                         JSR sub_0x01FE8A_bankswitch_отрисовка_текста_через_буфер_0300x
                                         LDA ram_option_уровень
@@ -421,7 +439,7 @@ sub_992C_отрисовать_level:
                                         STA ram_nmt_buffer - $02,X
                                         RTS
 
-sub_992E_отрисовать_rest:
+sub_9932_отрисовать_rest:
                                         LDA #con_0x0017EA_rest
                                         JSR sub_0x01FE8A_bankswitch_отрисовка_текста_через_буфер_0300x
                                         LDA ram_option_жизни
@@ -430,7 +448,7 @@ sub_992E_отрисовать_rest:
                                         STA ram_nmt_buffer - $02,X
                                         RTS
 
-sub_9930_отрисовать_exit:
+sub_9934_отрисовать_exit:
                                         LDA #con_0x0017EA_exit
                                         JSR sub_0x01FE8A_bankswitch_отрисовка_текста_через_буфер_0300x
                                         RTS
@@ -439,6 +457,7 @@ sub_9930_отрисовать_exit:
 ofs_options_9AFF_01_выбор_опций:
                                         JSR sub_9B30_смена_палитры_сокола
                                         JSR sub_9B34_анимации_орла
+
                                         LDA ram_копия_нажатая_кнопка
                                         AND #con_btns_UD
                                         BEQ bra_9B01
@@ -446,9 +465,14 @@ ofs_options_9AFF_01_выбор_опций:
                                         BNE bra_9B00_up
 ; down
                                         INC ram_номер_опции_колво_игроков
-                                        LDA ram_номер_опции_колво_игроков
-                                        CMP #$07
-                                        BCC bra_9B01
+                                        LDX #$03
+                                        LDA ram_cheat_flag
+                                        BMI bra_9AFF
+                                        INX
+                                        INX
+bra_9AFF:
+                                        CPX ram_номер_опции_колво_игроков
+                                        BCS bra_9B01
                                         DEC ram_номер_опции_колво_игроков
                                         BNE bra_9B01
 
@@ -459,35 +483,64 @@ bra_9B00_up:
 
 bra_9B01:
                                         LDX ram_номер_опции_колво_игроков
+                                        LDA ram_cheat_flag
+                                        BMI bra_9BBA
+                                        
                                         LDY tbl_9B2A_x_координаты_стрелки,X ; X координата стрелки
                                         LDA tbl_9B29_y_координаты_стрелки,X ; Y координата стрелки
+                                        BNE bra_9BBB ; jmp
+bra_9BBA:
+                                        LDY tbl_9B2C_x_координаты_стрелки,X ; X координата стрелки
+                                        LDA tbl_9B2B_y_координаты_стрелки,X ; Y координата стрелки
+bra_9BBB:
                                         JSR sub_E45F_запись_данных_для_стрелки
+                                        LDA ram_cheat_flag
+                                        BMI bra_9BBC
                                         LDA tbl_99B2_опции_lo,X
                                         STA ram_0000
                                         LDA tbl_99B2_опции_hi,X
                                         STA ram_0001
                                         JMP (ram_0000)
+bra_9BBC:
+                                        LDA tbl_99B3_опции_lo,X
+                                        STA ram_0000
+                                        LDA tbl_99B3_опции_hi,X
+                                        STA ram_0001
+                                        JMP (ram_0000)
+
 tbl_99B2_опции_lo:
                                         .byte < ofs_046_99B3_options_difficulty
                                         .byte < ofs_046_99B3_options_graphics
                                         .byte < ofs_046_99B3_options_obj_limit
-                                        .byte < ofs_046_9B09_options_continue
-                                        .byte < ofs_046_9B09_options_level
-                                        .byte < ofs_046_9B09_options_rest
+                                        .byte < ofs_046_99B3_options_music
+                                        .byte < ofs_046_99B3_options_sound
                                         .byte < ofs_046_9B10_options_exit
 tbl_99B2_опции_hi:
                                         .byte > ofs_046_99B3_options_difficulty
                                         .byte > ofs_046_99B3_options_graphics
                                         .byte > ofs_046_99B3_options_obj_limit
-                                        .byte > ofs_046_9B09_options_continue
-                                        .byte > ofs_046_9B09_options_level
-                                        .byte > ofs_046_9B09_options_rest
+                                        .byte > ofs_046_99B3_options_music
+                                        .byte > ofs_046_99B3_options_sound
+                                        .byte > ofs_046_9B10_options_exit
+
+tbl_99B3_опции_lo:
+                                        .byte < ofs_046_9B09_secret_options_continue
+                                        .byte < ofs_046_9B09_secret_options_level
+                                        .byte < ofs_046_9B09_secret_options_rest
+                                        .byte < ofs_046_9B10_options_exit
+tbl_99B3_опции_hi:
+                                        .byte > ofs_046_9B09_secret_options_continue
+                                        .byte > ofs_046_9B09_secret_options_level
+                                        .byte > ofs_046_9B09_secret_options_rest
                                         .byte > ofs_046_9B10_options_exit
 
 
+; X00-02
 ofs_046_99B3_options_difficulty:
 ofs_046_99B3_options_graphics:
 ofs_046_99B3_options_obj_limit:
+ofs_046_99B3_options_music:
+ofs_046_99B3_options_sound:
                                         LDA ram_копия_нажатая_кнопка
                                         AND #con_btns_LR
                                         BEQ bra_9B06_RTS
@@ -500,7 +553,6 @@ ofs_046_99B3_options_obj_limit:
                                         BCC bra_9B04
                                         DEC ram_options,X
                                         BNE bra_9B04
-
 bra_9B03_left:
                                         DEC ram_options,X
                                         BPL bra_9B04
@@ -511,22 +563,44 @@ bra_9B04:
                                         ADC ram_options,X
                                         JSR sub_0x01FE8A_bankswitch_отрисовка_текста_через_буфер_0300x
                                         LDA ram_номер_опции_колво_игроков
-                                        CMP #$02    ; obj limit
+                                        CMP #$02
+; obj limit
                                         BNE bra_9B05
                                         LDX ram_option_колво_объектов
                                         LDA tbl_0x01FB75_индексы,X
                                         STA ram_макс_индекс_пули_игрока
                                         LDA tbl_0x01FB75_индексы + $02,X
                                         STA ram_макс_индекс_враги
+                                        RTS
 bra_9B05:
-                                        CMP #$01    ; graphics
-                                        BNE bra_9B06_RTS
+                                        CMP #$01
+                                        BNE bra_9B08
+; graphics
                                         LDA ram_option_регион
                                         BEQ bra_9B07_US
-; EU
-                                        LDA #$40
+                                        LDA #$40    ; EU
 bra_9B07_US:
                                         STA ram_регион
+                                        RTS
+bra_9B08:                                
+                                        CMP #$03
+                                        BNE bra_9B09
+; music
+                                        LDX ram_option_music
+                                        LDA ram_флаг_музыки_звука
+                                        AND #$80
+                                        ORA tbl_9B09_music,X
+                                        STA ram_флаг_музыки_звука
+                                        RTS
+bra_9B09:  
+                                        CMP #$04
+                                        BNE bra_9B06_RTS
+; sound
+                                        LDX ram_option_sound
+                                        LDA ram_флаг_музыки_звука
+                                        AND #$40
+                                        ORA tbl_9B0A_sound,X
+                                        STA ram_флаг_музыки_звука
 bra_9B06_RTS:
                                         RTS
 
@@ -534,41 +608,53 @@ tbl_9B07_лимит_опций:
                                         .byte $03   ; 00 difficulty
                                         .byte $02   ; 01 graphics
                                         .byte $02   ; 02 obj_limit
+                                        .byte $02   ; 03 music
+                                        .byte $02   ; 04 sound
                                         
 tbl_9B08_начальная_con:
-                                        .byte con_0x0017EA_normal   ; 00 difficulty
-                                        .byte con_0x0017EA_human   ; 01 graphics
+                                        .byte con_0x0017EA_normal         ; 00 difficulty
+                                        .byte con_0x0017EA_human          ; 01 graphics
                                         .byte con_0x0017EA_obj_limit_14   ; 02 obj_limit
+                                        .byte con_0x0017EA_music_on       ; 03 music
+                                        .byte con_0x0017EA_sound_on       ; 04 sound
 
-ofs_046_9B09_options_continue:
-ofs_046_9B09_options_level:
-ofs_046_9B09_options_rest:
-                                        LDA ram_cheat_flag
-                                        BEQ bra_9B0C_RTS
+
+tbl_9B09_music:
+                                        .byte $00   ; 00 music
+                                        .byte $40   ; 01 music
+tbl_9B0A_sound:
+                                        .byte $00   ; 00 sound
+                                        .byte $80   ; 01 sound
+
+
+
+ofs_046_9B09_secret_options_continue:
+ofs_046_9B09_secret_options_level:
+ofs_046_9B09_secret_options_rest:
                                         LDA ram_копия_нажатая_кнопка
                                         AND #con_btns_LR
                                         BEQ bra_9B0B
                                         AND #con_btn_Left
                                         BNE bra_9B0A_left
 ; right
-                                        INC ram_options,X
-                                        LDA ram_options,X
-                                        CMP tbl_9B0D_лимит_опций - $03,X
+                                        INC ram_options + $05,X
+                                        LDA ram_options + $05,X
+                                        CMP tbl_9B0D_лимит_опций,X
                                         BCC bra_9B0B
-                                        DEC ram_options,X
+                                        DEC ram_options + $05,X
                                         BNE bra_9B0B
 
 bra_9B0A_left:
-                                        DEC ram_options,X
+                                        DEC ram_options + $05,X
                                         BPL bra_9B0B
-                                        INC ram_options,X
+                                        INC ram_options + $05,X
 bra_9B0B:
-                                        LDA tbl_9B0E_начальная_con - $03,X
+                                        LDA tbl_9B0E_начальная_con,X
                                         JSR sub_0x01FE8A_bankswitch_отрисовка_текста_через_буфер_0300x
-                                        LDY ram_номер_опции_колво_игроков
-                                        LDA ram_options,Y
+                                        LDY ram_номер_опции_колво_игроков   ; номер строки
+                                        LDA ram_options + $05,Y
                                         CLC
-                                        ADC tbl_9B0F_номер_тайла - $03,Y
+                                        ADC tbl_9B0F_номер_тайла,Y
                                         STA ram_nmt_buffer - $02,X
 bra_9B0C_RTS:
                                         RTS
@@ -580,8 +666,8 @@ tbl_9B0D_лимит_опций:
 
 tbl_9B0E_начальная_con:
                                         .byte con_0x0017EA_continue   ; 03 continue
-                                        .byte con_0x0017EA_level   ; 04 level
-                                        .byte con_0x0017EA_rest   ; 05 rest
+                                        .byte con_0x0017EA_level      ; 04 level
+                                        .byte con_0x0017EA_rest       ; 05 rest
 
 tbl_9B0F_номер_тайла:
                                         .byte $81   ; 03 continue
@@ -651,6 +737,9 @@ ofs_options_9B27_03_выход_из_экрана_options:
                                         STA ram_демка
                                         STA ram_001F_flag
                                         STA ram_номер_уровня
+                                        LDA ram_cheat_flag
+                                        AND #$7F
+                                        STA ram_cheat_flag
                                         LDA #$04
                                         STA ram_номер_действия_на_заставке
                                         INC ram_002B
@@ -668,8 +757,7 @@ tbl_9B29_y_координаты_стрелки:
                                         .byte $4B   ; 02
                                         .byte $5B   ; 03
                                         .byte $6B   ; 04
-                                        .byte $7B   ; 05
-                                        .byte $8B   ; 06
+                                        .byte $8B   ; 05
 
 tbl_9B2A_x_координаты_стрелки:
                                         .byte $22   ; 00
@@ -677,8 +765,19 @@ tbl_9B2A_x_координаты_стрелки:
                                         .byte $22   ; 02
                                         .byte $22   ; 03
                                         .byte $22   ; 04
-                                        .byte $22   ; 05
-                                        .byte $62   ; 06
+                                        .byte $62   ; 05
+
+tbl_9B2B_y_координаты_стрелки:
+                                        .byte $2B   ; 00
+                                        .byte $3B   ; 01
+                                        .byte $4B   ; 02
+                                        .byte $8B   ; 03
+
+tbl_9B2C_x_координаты_стрелки:
+                                        .byte $22   ; 00
+                                        .byte $22   ; 01
+                                        .byte $22   ; 02
+                                        .byte $62   ; 03
 
 
 sub_9B30_смена_палитры_сокола:
@@ -1203,7 +1302,7 @@ C - - - - - 0x01E591 07:E581: 60        RTS
 sub_A29C_чит_коды:
 ; 1путин: опт/замена кода
 C D 1 - - - 0x0022AC 00:A29C: A4 50     LDA ram_cheat_flag
-C - - - - - 0x0022AE 00:A29E: 30 1C     BNE bra_A2BC_RTS
+C - - - - - 0x0022AE 00:A29E: 30 1C     BMI bra_A2BC_RTS
                                         LDY ram_cheat_input_cnt
 C - - - - - 0x0022B0 00:A2A0: A5 F1     LDA ram_нажатая_кнопка
 C - - - - - 0x0022B2 00:A2A2: 29 CF     AND #con_btns_AB + con_btns_Dpad
@@ -1215,12 +1314,12 @@ C - - - - - 0x0022BC 00:A2AC: 84 50     STY ram_cheat_input_cnt
 C - - - - - 0x0022BE 00:A2AE: B9 BD A2  LDA tbl_A2BD_cheat_code,Y
 C - - - - - 0x0022C1 00:A2B1: D0 09     BNE bra_A2BC_RTS
 ; if cheat was entered successfully
-C - - - - - 0x0022C3 00:A2B3: A9 01     LDA #$01
+C - - - - - 0x0022C3 00:A2B3: A9 01     LDA #$81
 C - - - - - 0x0022C5 00:A2B5: 8D EC 07  STA ram_cheat_flag
                                         LDA #$20
                                         STA ram_счетчик_мерцания_экрана
                                         LDA #con_sound_23
-                                        JSR sub_0x01FDEE_play_sound
+                                        JSR sub_0x01FDEE_play_sound_напрямую
 bra_A2B8_incorrect_input:
 C - - - - - 0x0022C8 00:A2B8: A9 FF     LDA #$00
 C - - - - - 0x0022CA 00:A2BA: 85 50     STA ram_cheat_input_cnt

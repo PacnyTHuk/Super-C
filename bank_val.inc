@@ -106,11 +106,15 @@ con_0x0017EA_expert                     = $06 ;
 con_0x0017EA_human                      = $07 ; 
 con_0x0017EA_robot                      = $08 ; 
 con_0x0017EA_obj_limit_14               = $09 ; 
-con_0x0017EA_obj_limit_32               = $0A ; 
-con_0x0017EA_continue                   = $0B ; 
-con_0x0017EA_level                      = $0C ; 
-con_0x0017EA_rest                       = $0D ; 
-con_0x0017EA_exit                       = $0E ; 
+con_0x0017EA_obj_limit_32               = $0A ;
+con_0x0017EA_music_on                   = $0B ;
+con_0x0017EA_music_off                  = $0C ;
+con_0x0017EA_sound_on                   = $0D ;
+con_0x0017EA_sound_off                  = $0E ;
+con_0x0017EA_continue                   = $0F ; 
+con_0x0017EA_level                      = $10 ; 
+con_0x0017EA_rest                       = $11 ; 
+con_0x0017EA_exit                       = $12 ; 
 
 
 

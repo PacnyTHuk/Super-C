@@ -4142,15 +4142,15 @@ ram_options                             = $7FF0 ; для общих ссылок
     ram_option_сложность                    = $7FF0 ; 00 = normal, 01 = hard, 02 = expert
     ram_option_регион                       = $7FF1 ; для переключения графики спрайтов и вертолетов, 00 = US, 01 = EU
     ram_option_колво_объектов               = $7FF2 ; 00 = 0D, 01 = 1F
-    ram_option_конты                        = $7FF3 ; 
-    ram_option_уровень                      = $7FF4 ; 
-    ram_option_жизни                        = $7FF5 ; 
+    ram_option_music                        = $7FF3 ;
+    ram_option_sound                        = $7FF4 ;
+    ram_option_конты                        = $7FF5 ; 
+    ram_option_уровень                      = $7FF6 ; 
+    ram_option_жизни                        = $7FF7 ; 
 
 
 
 ; свободные адреса
-; ram_7FF6                                = $7FF6 ; 
-; ram_7FF7                                = $7FF7 ; 
 ; ram_7FF8                                = $7FF8 ; 
 ; ram_7FF9                                = $7FF9 ; 
 ; ram_7FFA                                = $7FFA ; 

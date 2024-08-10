@@ -66,6 +66,7 @@
 .export sub_0x01FDEE_play_sound
 .export sub_0x01FDEE_play_music
 .export loc_0x01FDEE_play_sound
+.export sub_0x01FDEE_play_sound_напрямую
 .export loc_0x01FDEE_play_sound_напрямую
 .export loc_0x01FE06
 .export sub_0x01FE1E_остановить_звуковой_движок
@@ -4434,7 +4435,7 @@ bra_FB2F_loop:
                                         INC ram_0001    ; увеличить старший байт адреса
                                         DEX
                                         BNE bra_FB2F_loop
-; 1путин: запись контов, жизней, дефолт индексы и регион
+; 1путин: запись контов, жизней, дефолт индексы, регион
                                         BVC bra_FB2C_skip
                                         LDA #$02
                                         STA ram_option_жизни
@@ -4451,7 +4452,7 @@ bra_FB30_US:
                                         STA ram_макс_индекс_пули_игрока
                                         LDA tbl_FB75_индексы + $02,X
                                         STA ram_макс_индекс_враги
-                                        LDA #$01    ; вкл. чит
+                                        LDA #$81    ; вкл. чит
                                         STA ram_cheat_flag
 C - - - - - 0x01FB40 07:FB30: A9 53     LDA #$53
 C - - - - - 0x01FB42 07:FB32: 8D EA 07  STA ram_reset_check
@@ -4873,6 +4874,7 @@ sub_0x01FDEE_play_sound:
 loc_0x01FDEE_play_sound:
                                         BIT ram_флаг_музыки_звука
                                         BVS bra_FDF5_RTS
+sub_0x01FDEE_play_sound_напрямую:                          
 loc_FDEE_play_sound_напрямую:
 loc_0x01FDEE_play_sound_напрямую:
 C D 3 - - - 0x01FDEE 07:FDDE: 48        PHA

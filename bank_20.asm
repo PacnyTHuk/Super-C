@@ -115,16 +115,19 @@ tbl_колво_копируемых_данных:
                                         .word $0400 ; X00 главный экран
                                         .word $0400 ; X02 заставка
                                         .word $0400 ; X04 options
+                                        .word $0400 ; X06 options
 
 tbl_координаты_для_ppu:
                                         .dbyt $2000 ; X00 главный экран
                                         .dbyt $2000 ; X02 заставка
                                         .dbyt $2000 ; X04 options
+                                        .dbyt $2000 ; X06 options
 
 tbl_координаты_таблицы_экрана:
 - D 0 - - - 0x001917 00:9907: 35 99     .word _off010_9935_x00_главный_экран
 - D 0 - - - 0x001919 00:9909: B3 9A     .word _off010_9AB3_x02_заставка
 - D 0 - - - 0x00191B 00:990B: BA 9A     .word _off010_9ABA_x04_options
+- D 0 - - - 0x00191B 00:99C2: BA 9C     .word _off010_9AC2_x06_secret_options
 
 
 _off010_9935_x00_главный_экран:
@@ -136,6 +139,8 @@ _off010_9AB3_x02_заставка:
 _off010_9ABA_x04_options:
     .incbin "screens/04.bin"
 
+_off010_9AC2_x06_secret_options:
+    .incbin "screens/06.bin"
 
 
 sub_0x00178C_отрисовка_текста_через_буфер_0300x:
@@ -213,17 +218,21 @@ tbl_97DA:
                                         .word _off009_9870_08_robot
                                         .word _off009_9880_09_obj_limit_14
                                         .word _off009_9890_0A_obj_limit_32
-                                        .word _off009_98A0_0B_continue
-                                        .word _off009_98B0_0C_level
-                                        .word _off009_98C0_0D_rest                                        
-                                        .word _off009_98D0_0E_exit
+                                        .word _off009_98A0_0B_music_on
+                                        .word _off009_98B0_0C_music_off
+                                        .word _off009_98C0_0D_sound_on
+                                        .word _off009_98D0_0E_sound_off
+                                        .word _off009_98E0_0F_continue
+                                        .word _off009_98F0_10_level
+                                        .word _off009_9900_11_rest                                        
+                                        .word _off009_9910_12_exit
+
 
 
 _off009_97F4_00_1_player:
 - D 0 - I - 0x001804 00:97F4: 22 A6     .dbyt $224C ; ppu address
 - D 0 - I - 0x001806 00:97F6: 02        .byte $02, $00, $1A, $16, $0B, $23, $0F, $1C   ; "1 PLAYER"
 - D 0 - I - 0x00180E 00:97FE: FE        .byte $FE   ; end token
-
 
 
 _off009_97FF_01_2_players:
@@ -262,12 +271,11 @@ _off009_9850_06_expert:
                                         .byte $FE   ; end token
 
 
-
 _off009_9860_07_human:
                                         .dbyt $2115 ; ppu address
                                         .byte $92, $9F, $97, $8B, $98   ; "HUMAN"
                                         .byte $FE   ; end token
-                                        
+
 
 _off009_9870_08_robot:
                                         .dbyt $2115 ; ppu address
@@ -285,30 +293,50 @@ _off009_9890_0A_obj_limit_32:
                                         .dbyt $2155 ; ppu address
                                         .byte $84, $83  ; "32"
                                         .byte $FE   ; end token
-
-
-_off009_98A0_0B_continue:
+                                        
+                                        
+_off009_98A0_0B_music_on:
                                         .dbyt $2195 ; ppu address
+                                        .byte $99, $98, $80  ; "ON "
+                                        .byte $FE   ; end token
+
+
+_off009_98B0_0C_music_off:
+                                        .dbyt $2195 ; ppu address
+                                        .byte $99, $90, $90  ; "OFF"
+                                        .byte $FE   ; end token
+
+_off009_98C0_0D_sound_on:
+                                        .dbyt $21D5 ; ppu address
+                                        .byte $99, $98, $80  ; "ON "
+                                        .byte $FE   ; end token
+
+
+_off009_98D0_0E_sound_off:
+                                        .dbyt $21D5 ; ppu address
+                                        .byte $99, $90, $90  ; "OFF"
+                                        .byte $FE   ; end token
+
+
+_off009_98E0_0F_continue:
+                                        .dbyt $20D5 ; ppu address
                                         .byte $80  ; "empty"
                                         .byte $FE   ; end token
 
 
-
-_off009_98B0_0C_level:
-                                        .dbyt $21D5 ; ppu address
+_off009_98F0_10_level:
+                                        .dbyt $2115 ; ppu address
                                         .byte $00  ; "empty"
                                         .byte $FE   ; end token
 
 
-
-_off009_98C0_0D_rest:
-                                        .dbyt $2215 ; ppu address
+_off009_9900_11_rest:
+                                        .dbyt $2155 ; ppu address
                                         .byte $00  ; "empty"
                                         .byte $FE   ; end token
 
 
-
-_off009_98D0_0E_exit:
+_off009_9910_12_exit:
 
                                         .dbyt $224E ; ppu address
                                         .byte $8F, $A2, $93, $9E   ; "EXIT"
