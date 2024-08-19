@@ -1200,7 +1200,7 @@ C - - - - - 0x01E7DF 07:E7CF: A9 45     LDA #con_chr_bank + $45
 C - - - - - 0x01E7E1 07:E7D1: 8D F3 07  STA ram_spr_bank_2
 C - - - - - 0x01E7E4 07:E7D4: A9 46     LDA #con_chr_bank + $46
 C - - - - - 0x01E7E6 07:E7D6: 8D F4 07  STA ram_spr_bank_3
-C - - - - - 0x01E7E9 07:E7D9: A9 07     LDA #con_chr_bank + $07
+C - - - - - 0x01E7E9 07:E7D9: A9 07     LDA #con_chr_bank + $19
 C - - - - - 0x01E7EB 07:E7DB: 8D F5 07  STA ram_spr_bank_4
 C - - - - - 0x01E7EE 07:E7DE: 60        RTS
 

@@ -778,7 +778,7 @@ ram_00C6_хитбоксы_игрока                = $00C6 ; 0000C7 0000DB 00
 
 
 
-ram_чарж_f_игрока                       = $00C8 ; Зарядка оружия F для мощного выстрела
+ram_чарж_оружия_игрока                  = $00C8 ; Зарядка оружия F для мощного выстрела
 ; ram_00C9                              = $00C9 ;
 
 
@@ -2052,164 +2052,110 @@ ram_04FE                                = $04FE ; 007D2F 00D924 0115E0 01E5F1 01
 ram_04FF                                = $04FF ; 007D2F 00D924 0115E0 011BD4 011BE0 011BFD 01E5F1 01FB0B 
 
 
-; 0500-051F pal buffer 
-ram_копия_pal_buffer                    = $0500 ; Копия палитры для затемнения паузы
+
+; кол-во пуль на экране
+ram_лимит_пуль_оружия                   = $0500     ; 00 = default
+; ram_2p_лимит_пуль_default                 = $0501 ; 
+; ram_1p_лимит_пуль_flame_thrower           = $0502 ; 
+; ram_2p_лимит_пуль_flame_thrower           = $0503 ; 
+; ram_1p_лимит_пуль_spread                  = $0504 ; 
+; ram_2p_лимит_пуль_spread                  = $0505 ; 
+; ram_1P_лимит_пуль_laser                   = $0506 ; 
+; ram_2P_лимит_пуль_laser                   = $0507 ; 
+; ram_1p_лимит_пуль_flame                   = $0508 ; 
+; ram_2p_лимит_пуль_flame                   = $0509 ; 
+; ram_1p_лимит_пуль_fire_ball               = $050A ; 
+; ram_2p_лимит_пуль_fire_ball               = $050B ;
+; ram_1p_лимит_пуль_grenade_launcher        = $050C ; 
+; ram_2p_лимит_пуль_grenade_launcher        = $050D ;
+; ram_1p_лимит_пуль_flame_thrower           = $050E ; 
+; ram_2p_лимит_пуль_flame_thrower           = $050F ; 
 
 
-; лимит кол-во выстрелов на экране
-ram_лимит_пуль_оружия                   = $0520     ; 00 = default
-; ram_2p_лимит_пуль_default                 = $0521 ; 
-; ram_1p_лимит_пуль_flame_thrower              = $0522 ; 
-; ram_2p_лимит_пуль_flame_thrower              = $0523 ; 
-; ram_1p_лимит_пуль_spread                  = $0524 ; 
-; ram_2p_лимит_пуль_spread                  = $0525 ; 
-; ram_1P_лимит_пуль_laser                   = $0526 ; 
-; ram_2P_лимит_пуль_laser                   = $0527 ; 
-; ram_1p_лимит_пуль_flame                   = $0528 ; 
-; ram_2p_лимит_пуль_flame                   = $0529 ; 
-; ram_1p_лимит_пуль_fire_ball               = $052A ; 
-; ram_2p_лимит_пуль_fire_ball               = $052B ;
-; ram_1p_лимит_пуль_grenade_launcher        = $052C ; 
-; ram_2p_лимит_пуль_grenade_launcher        = $052D ;
-; ram_1p_лимит_пуль_flame_thrower           = $052E ; 
-; ram_2p_лимит_пуль_flame_thrower           = $052F ; 
-
-
-; кол-во патронов младший байт
-ram_колво_патронов_оружия_lo            = $0530     ; 00 = default
-; ram_2p_колво_патронов_default_lo          = $0531 ; 
-; ram_1p_колво_патронов_flame_thrower_lo       = $0532 ; 
-; ram_2p_колво_патронов_flame_thrower_lo       = $0533 ; 
-; ram_1p_колво_патронов_spread_lo           = $0534 ; 
-; ram_2p_колво_патронов_spread_lo           = $0535 ;
-; ram_1P_колво_патронов_laser_lo            = $0536 ; 
-; ram_2P_колво_патронов_laser_lo            = $0537 ; 
-; ram_1p_колво_патронов_flame_lo            = $0538 ; 
-; ram_2p_колво_патронов_flame_lo            = $0539 ; 
-; ram_1p_колво_патронов_fire_ball_lo        = $053A ; 
-; ram_2p_колво_патронов_fire_ball_lo        = $053B ; 
-; ram_1p_колво_патронов_grenade_launcher_lo = $053C ; 
-; ram_2p_колво_патронов_grenade_launcher_lо = $053D ; 
-; ram_1p_колво_патронов_flame_thrower_lo    = $053E ; 
-; ram_2p_колво_патронов_flame_thrower_lo    = $053F ; 
-
-
-; кол-во патронов старший байт
-ram_колво_патронов_оружия_hi            = $0540     ; 00 = default 
-; ram_2p_колво_патронов_default_hi          = $0541 ; 
-; ram_1p_колво_патронов_flame_thrower_hi       = $0542 ; 
-; ram_2p_колво_патронов_flame_thrower_hi       = $0543 ;
-; ram_1p_колво_патронов_spread_hi           = $0544 ; 
-; ram_2p_колво_патронов_spread_hi           = $0545 ; 
-; ram_1P_колво_патронов_laser_hi            = $0546 ; 
-; ram_2P_колво_патронов_laser_hi            = $0547 ; 
-; ram_1p_колво_патронов_flame_hi            = $0548 ; 
-; ram_2p_колво_патронов_flame_hi            = $0549 ; 
-; ram_1p_колво_патронов_fire_ball_hi        = $054A ; 
-; ram_2p_колво_патронов_fire_ball_hi        = $054B ;
-; ram_1p_колво_патронов_grenade_launcher_hi = $054C ; 
-; ram_2p_колво_патронов_grenade_launcher_hi = $054D ;
-; ram_1p_колво_патронов_flame_thrower_hi    = $054E ; 
-; ram_2p_колво_патронов_flame_thrower_hi    = $054F ;  
-
-
-; сила пробития пуль
-ram_урон_пуль_оружия                    = $0550     ; 00 = default
-; ram_2p_урон_пуль_default                  = $0551 ; 
-; ram_1p_урон_пуль_flame_thrower               = $0552 ; 
-; ram_2p_урон_пуль_flame_thrower               = $0553 ; 
-; ram_1p_урон_пуль_spread                   = $0554 ; 
-; ram_2p_урон_пуль_spread                   = $0555 ; 
-; ram_1P_урон_пуль_laser                    = $0556 ; 
-; ram_2P_урон_пуль_laser                    = $0557 ; 
-; ram_1p_урон_пуль_flame                    = $0558 ; 
-; ram_2p_урон_пуль_flame                    = $0559 ; 
-; ram_1p_урон_пуль_fire_ball                = $055A ; 
-; ram_2p_урон_пуль_fire_ball                = $055B ; 
-; ram_1p_урон_пуль_grenade_launcher         = $055C ; 
-; ram_2p_урон_пуль_grenade_launcher         = $055D ; 
-; ram_1p_урон_пуль_flame_thrower            = $055E ; 
-; ram_2p_урон_пуль_flame_thrower            = $055F ; 
+; урон пуль
+ram_урон_пуль_оружия                    = $0510     ; 00 = default
+; ram_2p_урон_пуль_default                  = $0511 ; 
+; ram_1p_урон_пуль_flame_thrower            = $0512 ; 
+; ram_2p_урон_пуль_flame_thrower            = $0513 ; 
+; ram_1p_урон_пуль_spread                   = $0514 ; 
+; ram_2p_урон_пуль_spread                   = $0515 ; 
+; ram_1P_урон_пуль_laser                    = $0516 ; 
+; ram_2P_урон_пуль_laser                    = $0517 ; 
+; ram_1p_урон_пуль_flame                    = $0518 ; 
+; ram_2p_урон_пуль_flame                    = $0519 ; 
+; ram_1p_урон_пуль_fire_ball                = $051A ; 
+; ram_2p_урон_пуль_fire_ball                = $051B ; 
+; ram_1p_урон_пуль_grenade_launcher         = $051C ; 
+; ram_2p_урон_пуль_grenade_launcher         = $051D ; 
+; ram_1p_урон_пуль_flame_thrower            = $051E ; 
+; ram_2p_урон_пуль_flame_thrower            = $051F ; 
 
 
 ; скорость полета пуль (прокачка R)
-ram_скорость_пуль_оружия                = $0560     ; 00 = default
-; ram_2p_скорость_пуль_default              = $0561 ; 
-; ram_1p_скорость_пуль_flame_thrower           = $0562 ; 
-; ram_2p_скорость_пуль_flame_thrower           = $0563 ; 
-; ram_1p_скорость_пуль_spread               = $0564 ; 
-; ram_2p_скорость_пуль_spread               = $0565 ; 
-; ram_1P_скорость_пуль_laser                = $0566 ; 
-; ram_2P_скорость_пуль_laser                = $0567 ; 
-; ram_1p_скорость_пуль_flame                = $0568 ; 
-; ram_2p_скорость_пуль_flame                = $0569 ; 
-; ram_1p_скорость_пуль_fire_ball            = $056A ; 
-; ram_2p_скорость_пуль_fire_ball            = $056B ; 
-; ram_1p_скорость_пуль_grenade_launcher     = $056C ; 
-; ram_2p_скорость_пуль_grenade_launcher     = $056D ; 
-; ram_1p_скорость_пуль_flame_thrower        = $056E ; 
-; ram_2p_скорость_пуль_flame_thrower        = $056F ; 
+ram_скорость_пуль_оружия                = $0520     ; 00 = default
+; ram_2p_скорость_пуль_default              = $0521 ; 
+; ram_1p_скорость_пуль_flame_thrower        = $0522 ; 
+; ram_2p_скорость_пуль_flame_thrower        = $0523 ; 
+; ram_1p_скорость_пуль_spread               = $0524 ; 
+; ram_2p_скорость_пуль_spread               = $0525 ; 
+; ram_1P_скорость_пуль_laser                = $0526 ; 
+; ram_2P_скорость_пуль_laser                = $0527 ; 
+; ram_1p_скорость_пуль_flame                = $0528 ; 
+; ram_2p_скорость_пуль_flame                = $0529 ; 
+; ram_1p_скорость_пуль_fire_ball            = $052A ; 
+; ram_2p_скорость_пуль_fire_ball            = $052B ; 
+; ram_1p_скорость_пуль_grenade_launcher     = $052C ; 
+; ram_2p_скорость_пуль_grenade_launcher     = $052D ; 
+; ram_1p_скорость_пуль_flame_thrower        = $052E ; 
+; ram_2p_скорость_пуль_flame_thrower        = $052F ; 
 
 
-; пробитие врагов от пуль
-ram_пробитие_пуль_оружия                = $0570     ; 00 = default
-; ram_2p_пробитие_пуль_default              = $0571 ;
-; ram_1p_пробитие_пуль_flame_thrower           = $0572 ; 
-; ram_2p_пробитие_пуль_flame_thrower           = $0573 ; 
-; ram_1p_пробитие_пуль_spread               = $0574 ; 
-; ram_2p_пробитие_пуль_spread               = $0575 ; 
-; ram_1P_пробитие_пуль_laser                = $0576 ; 
-; ram_2P_пробитие_пуль_laser                = $0577 ; 
-; ram_1p_пробитие_пуль_flame                = $0578 ; 
-; ram_2p_пробитие_пуль_flame                = $0579 ; 
-; ram_1p_пробитие_пуль_fire_ball            = $057A ; 
-; ram_2p_пробитие_пуль_fire_ball            = $057B ; 
-; ram_1p_пробитие_пуль_grenade_launcher     = $057C ; 
-; ram_2p_пробитие_пуль_grenade_launcher     = $057D ; 
-; ram_1p_пробитие_пуль_flame_thrower        = $057E ; 
-; ram_2p_пробитие_пуль_flame_thrower        = $057F ; 
+; Кулдаун оружия до следующего выстрела
+ram_кд_пуль_оружия                      = $0530     ; 00 = default
+; ram_2p_кд_пуль_default                    = $0531 ;
+; ram_1p_кд_пуль_flame_thrower              = $0532 ; 
+; ram_2p_кд_пуль_flame_thrower              = $0533 ; 
+; ram_1p_кд_пуль_spread                     = $0534 ; 
+; ram_2p_кд_пуль_spread                     = $0535 ; 
+; ram_1P_кд_пуль_laser                      = $0536 ; 
+; ram_2P_кд_пуль_laser                      = $0537 ; 
+; ram_1p_кд_пуль_flame                      = $0538 ; 
+; ram_2p_кд_пуль_flame                      = $0539 ; 
+; ram_1p_кд_пуль_fire_ball                  = $053A ; 
+; ram_2p_кд_пуль_fire_ball                  = $053B ; 
+; ram_1p_кд_пуль_grenade_launcher           = $053C ; 
+; ram_2p_кд_пуль_grenade_launcher           = $053D ; 
+; ram_1p_кд_пуль_flame_thrower              = $053E ; 
+; ram_2p_кд_пуль_flame_thrower              = $053F ; 
 
 
-; Кулдаун оружия до следующего выстрела (антиспам)
-ram_кд_пуль_оружия                      = $0580     ; 00 = default
-; ram_2p_кд_пуль_default                    = $0581 ;
-; ram_1p_кд_пуль_flame_thrower                 = $0582 ; 
-; ram_2p_кд_пуль_flame_thrower                 = $0583 ; 
-; ram_1p_кд_пуль_spread                     = $0584 ; 
-; ram_2p_кд_пуль_spread                     = $0585 ; 
-; ram_1P_кд_пуль_laser                      = $0586 ; 
-; ram_2P_кд_пуль_laser                      = $0587 ; 
-; ram_1p_кд_пуль_flame                      = $0588 ; 
-; ram_2p_кд_пуль_flame                      = $0589 ; 
-; ram_1p_кд_пуль_fire_ball                  = $058A ; 
-; ram_2p_кд_пуль_fire_ball                  = $058B ; 
-; ram_1p_кд_пуль_grenade_launcher           = $058C ; 
-; ram_2p_кд_пуль_grenade_launcher           = $058D ; 
-; ram_1p_кд_пуль_flame_thrower              = $058E ; 
-; ram_2p_кд_пуль_flame_thrower              = $058F ; 
-
-
-; Прокачка оружия, повышение разных характеристик
-ram_прокачка_оружия                     = $0590     ; 00 = default
-; ram_прокачка_default                      = $0591 ;
-; ram_прокачкаma_flame_thrower                 = $0592 ; 
-; ram_прокачкаma_flame_thrower                 = $0593 ; 
-; ram_прокачка_spread                       = $0594 ; 00 = 3/0 пули, 01 = 4/0 пули, 02 = 5/0 пуль
-; ram_прокачка_spread                       = $0595 ; 03 = 5/1 пуля, 04 = 5/2 пули, 05 = 5/3 пули, 06 = 5/4 пули, 07 = 5/5 пуль
-; ram_прокачка_laser                        = $0596 ; 
-; ram_прокачка_laser                        = $0597 ; 
-; ram_прокачка_flame                        = $0598 ; 
-; ram_прокачка_flame                        = $0599 ; 
-; ram_прокачка_fire_ball                    = $059A ; 
-; ram_прокачка_fire_ball                    = $059B ; 
-; ram_прокачка_grenade_launcher             = $059C ; 
-; ram_прокачка_grenade_launcher             = $059D ; 
-; ram_прокачка_flame_thrower                = $059E ; 
-; ram_прокачка_flame_thrower                = $059F ; 
+; Прокачка характеристик оружия
+; пробитие врагов от пуль, сжигание пуль врагов, пролетание пуль насквозь стен
+ram_прокачка_характеристик_оружия       = $0540     ; 00 = default 
+; ram_прокачка_default                      = $0541 ; 
+; ram_прокачкаma_flame_thrower              = $0542 ; 
+; ram_прокачкаma_flame_thrower              = $0543 ; 
+; ram_прокачка_spread                       = $0544 ; 
+; ram_прокачка_spread                       = $0545 ; 
+; ram_прокачка_laser                        = $0546 ; 
+; ram_прокачка_laser                        = $0547 ; 
+; ram_прокачка_flame                        = $0548 ; 
+; ram_прокачка_flame                        = $0549 ; 
+; ram_прокачка_fire_ball                    = $054A ; 
+; ram_прокачка_fire_ball                    = $054B ; 
+; ram_прокачка_grenade_launcher             = $054C ; 
+; ram_прокачка_grenade_launcher             = $054D ; 
+; ram_прокачка_flame_thrower                = $054E ; 
+; ram_прокачка_flame_thrower                = $054F ; 
 
 
 
-; свободные адреса 05A0-07BF
+; 0550-056F pal buffer 
+ram_копия_pal_buffer                    = $0550 ; Копия палитры для затемнения паузы
+
+
+
+; свободные адреса 0570-07BF
 
 
 ; адреса рандома 07C0-07CF
@@ -2243,17 +2189,16 @@ ram_07D0                                = $07D0 ; 001C08 0078DF 01E608 01F090 01
 ; ram_07D9                              = $07D9 ; 001C08 0147C1 01E608 01F090 01FB19 
 
 
-; таймер между построчным затиранием/отрисовкой окна соунд тест
-ram_sound_mode_draw_cooldown            = $07DA ;
 
 
+ram_прокачка_колво_патронов_игрока      = $07DA ; 
+; ram_07DB                              = $07DB ; 
 
-; свободные адреса
-; ram_07DB                              = $07DB ; 01E608 01FB19 
-; ram_07DC                              = $07DC ; 01E608 01FB19 
-; ram_07DD                              = $07DD ; 01E608 01FB19 
-; ram_07DE                              = $07DE ; 01E608 01FB19 
-; ram_07DF                              = $07DF ; 01E608 01FB19 
+ram_колво_патронов_игрока_lo            = $07DC ; 
+; ram_07DD                              = $07DD ; 
+
+ram_колво_патронов_игрока_hi            = $07DE ; 
+; ram_07DF                              = $07DF ; 
 
 
 
@@ -2325,7 +2270,8 @@ ram_07F7                                = $07F7 ; 01E230 01FB3A 01FC77
 
 
 
-; ram_07F8                              = $07F8 ; Пусто
+; таймер между построчным затиранием/отрисовкой окна соунд тест
+ram_sound_mode_draw_cooldown            = $07F8 ; 
 
 
 
@@ -2858,7 +2804,7 @@ ram_пули_игрока_сумма_скорости_y_младш  = $61A0 ;
 
 
 
-; 00, 01, 02, 03+
+; 00, 01, 02, 03, 04 для обработки пуль оружия
 ram_пули_игрока_аттрибуты               = $61C0 ;
 ; ram_61C1                                = $61C1 ;
 ; ram_61C2                                = $61C2 ;
@@ -3081,7 +3027,7 @@ ram_пули_игрока_урон                    = $6260 ;
 
 
 
-ram_пули_игрока_счетчик_анимации        = $6280 ;
+ram_пули_игрока_счетчики_анимации       = $6280 ;
 ; ram_6281                                = $6281 ;
 ; ram_6282                                = $6282 ;
 ; ram_6283                                = $6283 ;
@@ -3116,7 +3062,7 @@ ram_пули_игрока_счетчик_анимации        = $6280 ;
 
 
 
-ram_пули_игрока_позиция_x_пустой_пули   = $62A0 ;
+ram_пули_игрока_счетчики_направления      = $62A0 ;
 ; ram_62A1                                = $62A1 ;
 ; ram_62A2                                = $62A2 ;
 ; ram_62A3                                = $62A3 ;
@@ -3151,42 +3097,7 @@ ram_пули_игрока_позиция_x_пустой_пули   = $62A0 ;
 
 
 
-ram_пули_игрока_позиция_y_пустой_пули   = $62C0 ;
-; ram_62C1                                = $62C1 ;
-; ram_62C2                                = $62C2 ;
-; ram_62C3                                = $62C3 ;
-; ram_62C4                                = $62C4 ;
-; ram_62C5                                = $62C5 ;
-; ram_62C6                                = $62C6 ;
-; ram_62C7                                = $62C7 ;
-; ram_62C8                                = $62C8 ;
-; ram_62C9                                = $62C9 ;
-; ram_62CA                                = $62CA ;
-; ram_62CB                                = $62CB ;
-; ram_62CC                                = $62CC ;
-; ram_62CD                                = $62CD ;
-; ram_62CE                                = $62CE ;
-; ram_62CF                                = $62CF ;
-; ram_62D0                                = $62D0 ;
-; ram_62D1                                = $62D1 ;
-; ram_62D2                                = $62D2 ;
-; ram_62D3                                = $62D3 ;
-; ram_62D4                                = $62D4 ;
-; ram_62D5                                = $62D5 ;
-; ram_62D6                                = $62D6 ;
-; ram_62D7                                = $62D7 ;
-; ram_62D8                                = $62D8 ;
-; ram_62D9                                = $62D9 ;
-; ram_62DA                                = $62DA ;
-; ram_62DB                                = $62DB ;
-; ram_62DC                                = $62DC ;
-; ram_62DD                                = $62DD ;
-; ram_62DE                                = $62DE ;
-; ram_62DF                                = $62DF ;
-
-
-
-ram_пули_игрока_параметры_прокачки      = $62E0 ;
+ram_пули_игрока_счетчики_прокачки      = $62E0 ;
 ; ram_62E1                                = $62E1 ;
 ; ram_62E2                                = $62E2 ;
 ; ram_62E3                                = $62E3 ;
@@ -3218,6 +3129,13 @@ ram_пули_игрока_параметры_прокачки      = $62E0 ;
 ; ram_62FD                                = $62FD ;
 ; ram_62FE                                = $62FE ;
 ; ram_62FF                                = $62FF ;
+
+
+
+
+
+
+
 
 
 
@@ -4147,11 +4065,11 @@ ram_options                             = $7FF0 ; для общих ссылок
     ram_option_конты                        = $7FF5 ; 
     ram_option_уровень                      = $7FF6 ; 
     ram_option_жизни                        = $7FF7 ; 
+    ram_option_бесконечные_патроны          = $7FF8 ; 
 
 
 
-; свободные адреса
-; ram_7FF8                                = $7FF8 ; 
+; свободные адреса                     
 ; ram_7FF9                                = $7FF9 ; 
 ; ram_7FFA                                = $7FFA ; 
 ; ram_7FFB                                = $7FFB ; 

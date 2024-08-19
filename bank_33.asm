@@ -654,12 +654,13 @@ C - - - - - 0x0061DA 01:A1CA: E5 05     SBC ram_0005
 C - - - - - 0x0061DC 01:A1CC: B0 04     BCS bra_A1D2
 C - - - - - 0x0061DE 01:A1CE: 49 FF     EOR #$FF
 C - - - - - 0x0061E0 01:A1D0: 69 01     ADC #$01
+; 1путин: далее будет подсчет очков
 bra_A1D2:
 C - - - - - 0x0061E2 01:A1D2: 30 EA     BMI bra_A1BE_RTS
 C - - - - - 0x0061E4 01:A1D4: BD B8 05  LDA ram_пули_игрока_индексы,X
-C - - - - - 0x0061E7 01:A1D7: 2A        ROL
-C - - - - - 0x0061E8 01:A1D8: 2A        ROL
-C - - - - - 0x0061E9 01:A1D9: 2A        ROL
+;C - - - - - 0x0061E7 01:A1D7: 2A        ROL
+;C - - - - - 0x0061E8 01:A1D8: 2A        ROL
+;C - - - - - 0x0061E9 01:A1D9: 2A        ROL
 C - - - - - 0x0061EA 01:A1DA: 29 01     AND #$01
 C - - - - - 0x0061EC 01:A1DC: 85 21     STA ram_0021    ;
 C - - - - - 0x0061EE 01:A1DE: BD F8 05  LDA ram_пули_игрока_урон,X
@@ -671,14 +672,15 @@ C - - - - - 0x0061FB 01:A1EB: 9D 38 06  STA ram_пули_игрока_хитбо
 ; разрыв пуль?
                                         LDA ram_пули_игрока_индексы,X
                                         LSR
-                                        CMP #con_weapon_F_charged
-                                        BEQ bra_A1EE
+; 1путин: разрыв F пока что не работает
+;                                        CMP #con_weapon_F_charged
+;                                        BEQ bra_A1EE
                                         LDA #$06
                                         STA ram_пули_игрока_счетчик_жизни,X
                                         LDA #$02
                                         STA ram_пули_игрока_аттрибуты,X
                                         RTS
-bra_A1EE:
+;bra_A1EE:
 C - - - - - 0x0061FE 01:A1EE: 4C 5D FE  JMP loc_0x01FE6D
 
 

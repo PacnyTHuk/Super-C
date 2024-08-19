@@ -104,7 +104,7 @@ C - - - - - 0x01E43F 07:E42F: A5 F5     LDA ram_копия_нажатая_кно
 C - - - - - 0x01E441 07:E431: 29 10     AND #con_btn_Start
 C - - - - - 0x01E443 07:E433: F0 0E     BEQ bra_E442_RTS
 ; нажата start
-C - - - - - 0x01E44D 07:E43D: A9 80     LDA #$51
+C - - - - - 0x01E44D 07:E43D: A9 80     LDA #$47
 C - - - - - 0x01E44F 07:E43F: 85 3C     STA ram_таймер_до_демки
 C - - - - - 0x01E451 07:E441: E6 19     INC ram_номер_действия_на_заставке
                                         LDA #con_sound_1A
@@ -1078,6 +1078,7 @@ bra_E4D8_запись:
                                         STY ram_счетчик_анимации_super
 bra_E4E0:
                                         LDA ram_счетчик_кадров
+                                        AND #$03
                                         LSR
                                         BCS bra_E4D1_RTS
                                         LDA tbl_E4D3_банки_фона,Y
