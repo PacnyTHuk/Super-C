@@ -2469,7 +2469,7 @@ tbl_8CFC_hi:
 
 ofs_035_8D50_05_fire_ball:
                                         LDA ram_кд_оружия_m,X
-                                        BNE bra_8CE4_RTS
+                                        BNE bra_8D23_RTS
                                         LDA ram_0005    ; удержанная кнопка
                                         AND #con_btn_B
                                         BEQ bra_8D23_RTS
@@ -2500,24 +2500,28 @@ bra_8D23_RTS:
 
 
 
-
-
-
-
-
-
-
-
-
-
 ofs_035_8D40_04_flame:
+                                        LDA ram_0005    ; удержанная кнопка
+                                        AND #con_btn_B
+                                        BEQ bra_8D41
+                                        LDA ram_чарж_оружия_игрока,X
+                                        BMI bra_8D43
+                                        CLC
+                                        ADC #$03
+bra_8D41:
+                                        STA ram_чарж_оружия_игрока,X
+bra_8D43:
+
+
+
+
 ofs_035_8D60_06_grenade_launcher:
 ofs_035_8D70_07_secret_weapon:
                                         LDA ram_кд_оружия_m,X
-                                        BNE bra_8CE4_RTS
+                                        BNE bra_8D33_RTS
                                         LDA ram_0004    ; нажатая кнопка
                                         AND #con_btn_B
-                                        BEQ bra_8D23_RTS
+                                        BEQ bra_8D33_RTS
                                         BNE bra_8D03    ; jmp
 
 
@@ -2528,16 +2532,16 @@ ofs_035_8D70_07_secret_weapon:
 
 ofs_035_8D30_03_laser:
                                         LDA ram_кд_оружия_m,X
-                                        BNE bra_8CE4_RTS
+                                        BNE bra_8D33_RTS
                                         LDA ram_0004    ; нажатая кнопка
                                         AND #con_btn_B
-                                        BEQ bra_8D23_RTS
+                                        BEQ bra_8D33_RTS
                                         BNE bra_8D03    ; jmp
-
-
+bra_8D33_RTS:
+                                        RTS
 ofs_035_8D00_00_default:
                                         LDA ram_кд_оружия_m,X
-                                        BNE bra_8D12_RTS
+                                        BNE bra_8D33_RTS
                                         LDA ram_прокачка_характеристик_оружия,Y
                                         AND #$0F
                                         CMP #$02
@@ -2548,7 +2552,7 @@ bra_8D01:
                                         LDA ram_0005    ; удержанная кнопка
 loc_8D02:
                                         AND #con_btn_B
-                                        BEQ bra_8D12_RTS
+                                        BEQ bra_8D33_RTS
 bra_8D03:
 loc_8D01:
                                         LDA ram_лимит_пуль_оружия,Y
@@ -2705,8 +2709,8 @@ bra_8D25_подготовить_следующий_выстрел:
 loc_8D81_обработка_колво_патронов:
                                         LDY ram_0007    ; оружие игрока
                                         LDX ram_0010   ; индекс текущего игрока
-                                        BIT ram_option_бесконечные_патроны
-                                        BVS bra_8D82
+                                        LDA ram_option_бесконечные_патроны
+                                        BEQ bra_8D82    ; 00 выкл
                                         LDA ram_000A    ; кол-во потенциальных выстрелов
                                         STA ram_000C    ; кол-во разрешенных выстрелов
                                         BNE bra_8D88_выстрел
@@ -2720,7 +2724,7 @@ bra_8D83_loop:
                                         STA ram_колво_патронов_игрока_lo,X
                                         BCS bra_8D86_патронов_хватает
 ; переполнение lo патронов вниз
-                                        LDA ram_колво_патронов_игрока_lo,X
+                                        LDA ram_колво_патронов_игрока_hi,X
                                         SBC #$00
                                         BCS bra_8D85
 ; нет патронов
@@ -3052,8 +3056,13 @@ tbl_9312_offset_лазер:
 
 
 
-
-
+ofs_036_8E40_04_flame:
+                                        LDA #$06
+                                        STA ram_кадр_анимации,X
+                                        LDY ram_0010    ; индекс игрока
+                                        LDA ram_чарж_оружия_игрока,Y
+                                        STA ram_пули_игрока_счетчики_прокачки,X
+                                        JMP loc_8E6C
 
 
 
@@ -3107,7 +3116,6 @@ tbl_8E6B_fire_ball:
 
 
 ; общие данные
-ofs_036_8E40_04_flame:
 loc_8E6C:
                                         LDY ram_0001    ; угол выстрела игрока
                                         LDA tbl_911C_spr_attr_пули,Y
@@ -3184,47 +3192,6 @@ tbl_8D8A_цена_за_выстрел:
                                         .byte $01  ; 07 secret_weapon
 
 
-tbl_0022:
-;                                              --------------------- pos_Y_hi
-;                                              |    ---------------- pos_X_hi
-;                                              |    |    ----------- offset for a different table
-;                                              |    |    |    ------ spr_attr
-;                                              |    |    |    |
-                                        .byte $E7, $02, $C0, $02   ; 00 RIGHT
-                                        .byte $F2, $09, $E0, $02   ; 01 
-                                        .byte $FD, $0D, $00, $02   ; 02 
-                                        .byte $04, $0A, $20, $02   ; 03 
-                                        .byte $0B, $0F, $00, $02   ; 04 RIGHT+UP
-                                        .byte $0B, $F2, $80, $42   ; 05 
-                                        .byte $04, $F7, $60, $42   ; 06 
-                                        .byte $FD, $F4, $80, $42   ; 07 
-                                        .byte $F2, $F8, $A0, $42   ; 08 UP
-                                        .byte $E7, $FF, $C0, $42   ; 09  
-                                        .byte $E7, $02, $C0, $02   ; 0A 
-                                        .byte $F2, $09, $EC, $02   ; 0B 
-                                        .byte $FD, $0D, $00, $02   ; 0C LEFT+UP
-                                        .byte $04, $0A, $14, $02   ; 0D 
-                                        .byte $0B, $0F, $00, $02   ; 0E 
-                                        .byte $0B, $F2, $80, $42   ; 0F 
-                                        .byte $04, $F7, $6C, $42   ; 10 LEFT
-                                        .byte $FD, $F4, $80, $42   ; 11 
-                                        .byte $F2, $F8, $94, $42   ; 12 
-                                        .byte $E7, $FF, $C0, $42   ; 13 
-                                        .byte $F0, $00, $C0, $02   ; 14 DOWN+LEFT
-                                        .byte $F1, $0F, $E0, $02   ; 15 
-                                        .byte $00, $10, $00, $02   ; 16 
-                                        .byte $0F, $0F, $20, $02   ; 17 
-                                        .byte $10, $00, $40, $02   ; 18 DOWN
-                                        .byte $10, $00, $40, $42   ; 19 
-                                        .byte $0F, $F1, $60, $42   ; 1A 
-                                        .byte $00, $F0, $80, $42   ; 1B 
-                                        .byte $F1, $F1, $A0, $42   ; 1C RIGHT+DOWN
-                                        .byte $F0, $00, $C0, $42   ; 1D 
-                                        .byte $00, $F0, $80, $42   ; 1E 
-                                        .byte $F1, $F1, $A0, $42   ; 1F 
-
-
-
 tbl_8ED0_атрибуты_пуль:
                                         .byte $04   ; default
                                         .byte $04   ; flame_thrower
@@ -3234,7 +3201,6 @@ tbl_8ED0_атрибуты_пуль:
                                         .byte $01   ; fire_ball
                                         .byte $04   ; grenade_launcher
                                         .byte $04   ; secret_weapon
-
 
 
 tbl_8EE8_направление_пули:
@@ -3653,9 +3619,13 @@ bra_91E0_спрятать_спрайт:
 bra_91E6:
                                         STA ram_кадр_анимации,X
 
+                                        LDA ram_статус_игрока,Y
+                                        CMP #$02    ; живой
+                                        BNE bra_9257
                                         LDA ram_удержанная_кнопка,Y
                                         AND #con_btn_B
                                         BNE bra_9255
+bra_9257:
                                         LDA #$80
                                         BNE bra_9253    ; jmp
 bra_9255:
@@ -3857,8 +3827,8 @@ C - - - - - 0x00126E 00:925E: 20 3B 93  JSR sub_933B
 loc_9261:
 bra_9261:
                                         LDA ram_0012    ; номер пули оружия
-C - - - - - 0x001278 00:9268: C9 04     CMP #con_weapon_F_normal
-C - - - - - 0x00127A 00:926A: F0 2A     BEQ bra_9296
+;C - - - - - 0x001278 00:9268: C9 04     CMP #con_weapon_F_normal
+;C - - - - - 0x00127A 00:926A: F0 2A     BEQ bra_9296
                                         CMP #$01    ; огнемет
                                         BNE bra_9272
                                         LDA #03

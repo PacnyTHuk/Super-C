@@ -111,10 +111,12 @@ con_0x0017EA_music_on                   = $0B ;
 con_0x0017EA_music_off                  = $0C ;
 con_0x0017EA_sound_on                   = $0D ;
 con_0x0017EA_sound_off                  = $0E ;
-con_0x0017EA_continue                   = $0F ; 
-con_0x0017EA_level                      = $10 ; 
-con_0x0017EA_rest                       = $11 ; 
-con_0x0017EA_exit                       = $12 ; 
+con_0x0017EA_infinite_ammo_off          = $0F ; 
+con_0x0017EA_infinite_ammo_on           = $10 ; 
+con_0x0017EA_continue                   = $11 ; 
+con_0x0017EA_level                      = $12 ; 
+con_0x0017EA_rest                       = $13 ; 
+con_0x0017EA_exit                       = $14 ; 
 
 
 

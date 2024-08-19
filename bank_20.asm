@@ -222,10 +222,12 @@ tbl_97DA:
                                         .word _off009_98B0_0C_music_off
                                         .word _off009_98C0_0D_sound_on
                                         .word _off009_98D0_0E_sound_off
-                                        .word _off009_98E0_0F_continue
-                                        .word _off009_98F0_10_level
-                                        .word _off009_9900_11_rest                                        
-                                        .word _off009_9910_12_exit
+                                        .word _off009_98E0_0F_infinite_ammo_off
+                                        .word _off009_98F0_10_infinite_ammo_on   
+                                        .word _off009_9900_11_continue
+                                        .word _off009_9910_12_level
+                                        .word _off009_9920_13_rest
+                                        .word _off009_9930_14_exit
 
 
 
@@ -318,25 +320,37 @@ _off009_98D0_0E_sound_off:
                                         .byte $FE   ; end token
 
 
-_off009_98E0_0F_continue:
+_off009_98E0_0F_infinite_ammo_off:
                                         .dbyt $20D5 ; ppu address
+                                        .byte $99, $90, $90  ; "OFF"
+                                        .byte $FE   ; end token
+
+
+_off009_98F0_10_infinite_ammo_on:
+                                        .dbyt $20D5 ; ppu address
+                                        .byte $99, $98, $80  ; "ON "
+                                        .byte $FE   ; end token                          
+
+
+_off009_9900_11_continue:
+                                        .dbyt $2115 ; ppu address
                                         .byte $80  ; "empty"
                                         .byte $FE   ; end token
 
 
-_off009_98F0_10_level:
-                                        .dbyt $2115 ; ppu address
-                                        .byte $00  ; "empty"
-                                        .byte $FE   ; end token
-
-
-_off009_9900_11_rest:
+_off009_9910_12_level:
                                         .dbyt $2155 ; ppu address
-                                        .byte $00  ; "empty"
+                                        .byte $80  ; "empty"
                                         .byte $FE   ; end token
 
 
-_off009_9910_12_exit:
+_off009_9920_13_rest:
+                                        .dbyt $2195 ; ppu address
+                                        .byte $80  ; "empty"
+                                        .byte $FE   ; end token
+
+
+_off009_9930_14_exit:
 
                                         .dbyt $224E ; ppu address
                                         .byte $8F, $A2, $93, $9E   ; "EXIT"

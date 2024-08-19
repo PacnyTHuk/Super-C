@@ -3062,7 +3062,7 @@ ram_пули_игрока_счетчики_анимации       = $6280 ;
 
 
 
-ram_пули_игрока_счетчики_направления      = $62A0 ;
+ram_пули_игрока_счетчики_направления    = $62A0 ;
 ; ram_62A1                                = $62A1 ;
 ; ram_62A2                                = $62A2 ;
 ; ram_62A3                                = $62A3 ;
@@ -3097,38 +3097,38 @@ ram_пули_игрока_счетчики_направления      = $62A0 ;
 
 
 
-ram_пули_игрока_счетчики_прокачки      = $62E0 ;
-; ram_62E1                                = $62E1 ;
-; ram_62E2                                = $62E2 ;
-; ram_62E3                                = $62E3 ;
-; ram_62E4                                = $62E4 ;
-; ram_62E5                                = $62E5 ;
-; ram_62E6                                = $62E6 ;
-; ram_62E7                                = $62E7 ;
-; ram_62E8                                = $62E8 ;
-; ram_62E9                                = $62E9 ;
-; ram_62EA                                = $62EA ;
-; ram_62EB                                = $62EB ;
-; ram_62EC                                = $62EC ;
-; ram_62ED                                = $62ED ;
-; ram_62EE                                = $62EE ;
-; ram_62EF                                = $62EF ;
-; ram_62F0                                = $62F0 ;
-; ram_62F1                                = $62F1 ;
-; ram_62F2                                = $62F2 ;
-; ram_62F3                                = $62F3 ;
-; ram_62F4                                = $62F4 ;
-; ram_62F5                                = $62F5 ;
-; ram_62F6                                = $62F6 ;
-; ram_62F7                                = $62F7 ;
-; ram_62F8                                = $62F8 ;
-; ram_62F9                                = $62F9 ;
-; ram_62FA                                = $62FA ;
-; ram_62FB                                = $62FB ;
-; ram_62FC                                = $62FC ;
-; ram_62FD                                = $62FD ;
-; ram_62FE                                = $62FE ;
-; ram_62FF                                = $62FF ;
+ram_пули_игрока_счетчики_прокачки       = $62C0 ;
+; ram_62C1                                = $62C1 ;
+; ram_62C2                                = $62C2 ;
+; ram_62C3                                = $62C3 ;
+; ram_62C4                                = $62C4 ;
+; ram_62C5                                = $62C5 ;
+; ram_62C6                                = $62C6 ;
+; ram_62C7                                = $62C7 ;
+; ram_62C8                                = $62C8 ;
+; ram_62C9                                = $62C9 ;
+; ram_62CA                                = $62CA ;
+; ram_62CB                                = $62CB ;
+; ram_62CC                                = $62CC ;
+; ram_62CD                                = $62CD ;
+; ram_62CE                                = $62CE ;
+; ram_62CF                                = $62CF ;
+; ram_62D0                                = $62D0 ;
+; ram_62D1                                = $62D1 ;
+; ram_62D2                                = $62D2 ;
+; ram_62D3                                = $62D3 ;
+; ram_62D4                                = $62D4 ;
+; ram_62D5                                = $62D5 ;
+; ram_62D6                                = $62D6 ;
+; ram_62D7                                = $62D7 ;
+; ram_62D8                                = $62D8 ;
+; ram_62D9                                = $62D9 ;
+; ram_62DA                                = $62DA ;
+; ram_62DB                                = $62DB ;
+; ram_62DC                                = $62DC ;
+; ram_62DD                                = $62DD ;
+; ram_62DE                                = $62DE ;
+; ram_62DF                                = $62DF ;
 
 
 
@@ -4062,10 +4062,10 @@ ram_options                             = $7FF0 ; для общих ссылок
     ram_option_колво_объектов               = $7FF2 ; 00 = 0D, 01 = 1F
     ram_option_music                        = $7FF3 ;
     ram_option_sound                        = $7FF4 ;
-    ram_option_конты                        = $7FF5 ; 
-    ram_option_уровень                      = $7FF6 ; 
-    ram_option_жизни                        = $7FF7 ; 
-    ram_option_бесконечные_патроны          = $7FF8 ; 
+    ram_option_бесконечные_патроны          = $7FF5 ;
+    ram_option_конты                        = $7FF6 ; 
+    ram_option_уровень                      = $7FF7 ; 
+    ram_option_жизни                        = $7FF8 ;  
 
 
 

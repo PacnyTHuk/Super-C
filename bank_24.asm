@@ -349,11 +349,12 @@ bra_9910:
                                         JSR sub_992C_отрисовать_sound
                                         JMP loc_9914
 bra_9912:
-                                        JSR sub_992E_отрисовать_continue
-                                        JSR sub_9930_отрисовать_level
-                                        JSR sub_9932_отрисовать_rest
+                                        JSR sub_992E_отрисовать_infinite_ammo
+                                        JSR sub_9930_отрисовать_continue
+                                        JSR sub_9932_отрисовать_level
+                                        JSR sub_9934_отрисовать_rest
 loc_9914:
-                                        JSR sub_9934_отрисовать_exit
+                                        JSR sub_9936_отрисовать_exit
                                         INC ram_номер_действия_на_заставке
                                         RTS
 
@@ -392,11 +393,7 @@ tbl_9929_варианты_obj_limit:
                                         
                                         
 sub_992A_отрисовать_music:
-                                        LDX #$00
-                                        BIT ram_флаг_музыки_звука
-                                        BVC bra_992A
-                                        INX
-bra_992A:
+                                        LDX ram_option_music
                                         LDA tbl_992B_варианты_music,X
                                         JSR sub_0x01FE8A_bankswitch_отрисовка_текста_через_буфер_0300x
                                         RTS
@@ -407,11 +404,7 @@ tbl_992B_варианты_music:
 
 
 sub_992C_отрисовать_sound:
-                                        LDX #$00
-                                        BIT ram_флаг_музыки_звука
-                                        BPL bra_992С
-                                        INX
-bra_992С:
+                                        LDX ram_option_sound
                                         LDA tbl_992D_варианты_sound,X
                                         JSR sub_0x01FE8A_bankswitch_отрисовка_текста_через_буфер_0300x
                                         RTS
@@ -421,7 +414,18 @@ tbl_992D_варианты_sound:
                                         .byte con_0x0017EA_sound_off   ; 01 
 
 
-sub_992E_отрисовать_continue:
+sub_992E_отрисовать_infinite_ammo:
+                                        LDX ram_option_бесконечные_патроны
+                                        LDA tbl_992F_варианты_infinite_ammo,X
+                                        JSR sub_0x01FE8A_bankswitch_отрисовка_текста_через_буфер_0300x
+                                        RTS
+
+tbl_992F_варианты_infinite_ammo:
+                                       .byte con_0x0017EA_infinite_ammo_off  ; 00
+                                       .byte con_0x0017EA_infinite_ammo_on   ; 01
+
+
+sub_9930_отрисовать_continue:
                                         LDA #con_0x0017EA_continue
                                         JSR sub_0x01FE8A_bankswitch_отрисовка_текста_через_буфер_0300x
                                         LDA ram_option_конты
@@ -430,7 +434,7 @@ sub_992E_отрисовать_continue:
                                         STA ram_nmt_buffer - $02,X
                                         RTS
 
-sub_9930_отрисовать_level:
+sub_9932_отрисовать_level:
                                         LDA #con_0x0017EA_level
                                         JSR sub_0x01FE8A_bankswitch_отрисовка_текста_через_буфер_0300x
                                         LDA ram_option_уровень
@@ -439,7 +443,7 @@ sub_9930_отрисовать_level:
                                         STA ram_nmt_buffer - $02,X
                                         RTS
 
-sub_9932_отрисовать_rest:
+sub_9934_отрисовать_rest:
                                         LDA #con_0x0017EA_rest
                                         JSR sub_0x01FE8A_bankswitch_отрисовка_текста_через_буфер_0300x
                                         LDA ram_option_жизни
@@ -448,7 +452,7 @@ sub_9932_отрисовать_rest:
                                         STA ram_nmt_buffer - $02,X
                                         RTS
 
-sub_9934_отрисовать_exit:
+sub_9936_отрисовать_exit:
                                         LDA #con_0x0017EA_exit
                                         JSR sub_0x01FE8A_bankswitch_отрисовка_текста_через_буфер_0300x
                                         RTS
@@ -465,10 +469,9 @@ ofs_options_9AFF_01_выбор_опций:
                                         BNE bra_9B00_up
 ; down
                                         INC ram_номер_опции_колво_игроков
-                                        LDX #$03
+                                        LDX #$04
                                         LDA ram_cheat_flag
                                         BMI bra_9AFF
-                                        INX
                                         INX
 bra_9AFF:
                                         CPX ram_номер_опции_колво_игроков
@@ -502,9 +505,9 @@ bra_9BBB:
                                         STA ram_0001
                                         JMP (ram_0000)
 bra_9BBC:
-                                        LDA tbl_99B3_опции_lo,X
+                                        LDA tbl_99B3_секретные_опции_lo,X
                                         STA ram_0000
-                                        LDA tbl_99B3_опции_hi,X
+                                        LDA tbl_99B3_секретные_опции_hi,X
                                         STA ram_0001
                                         JMP (ram_0000)
 
@@ -523,12 +526,14 @@ tbl_99B2_опции_hi:
                                         .byte > ofs_046_99B3_options_sound
                                         .byte > ofs_046_9B10_options_exit
 
-tbl_99B3_опции_lo:
+tbl_99B3_секретные_опции_lo:
+                                        .byte < ofs_046_9B09_secret_options_ammo
                                         .byte < ofs_046_9B09_secret_options_continue
                                         .byte < ofs_046_9B09_secret_options_level
                                         .byte < ofs_046_9B09_secret_options_rest
                                         .byte < ofs_046_9B10_options_exit
-tbl_99B3_опции_hi:
+tbl_99B3_секретные_опции_hi:
+                                        .byte > ofs_046_9B09_secret_options_ammo
                                         .byte > ofs_046_9B09_secret_options_continue
                                         .byte > ofs_046_9B09_secret_options_level
                                         .byte > ofs_046_9B09_secret_options_rest
@@ -627,7 +632,7 @@ tbl_9B0A_sound:
                                         .byte $80   ; 01 sound
 
 
-
+ofs_046_9B09_secret_options_ammo:
 ofs_046_9B09_secret_options_continue:
 ofs_046_9B09_secret_options_level:
 ofs_046_9B09_secret_options_rest:
@@ -649,30 +654,51 @@ bra_9B0A_left:
                                         BPL bra_9B0B
                                         INC ram_options + $05,X
 bra_9B0B:
-                                        LDA tbl_9B0E_начальная_con,X
+                                        LDA ram_номер_опции_колво_игроков
+                                        BNE bra_9B0D
+                                        LDA #con_0x0017EA_infinite_ammo_off
+                                        CLC
+                                        ADC ram_option_бесконечные_патроны
+                                        JSR sub_0x01FE8A_bankswitch_отрисовка_текста_через_буфер_0300x
+                                        RTS
+                                        
+bra_9B0D:
+                                        LDA tbl_9B0E_начальная_con - $01,X
                                         JSR sub_0x01FE8A_bankswitch_отрисовка_текста_через_буфер_0300x
                                         LDY ram_номер_опции_колво_игроков   ; номер строки
                                         LDA ram_options + $05,Y
                                         CLC
-                                        ADC tbl_9B0F_номер_тайла,Y
+                                        ADC tbl_9B0F_номер_тайла - $01,Y
                                         STA ram_nmt_buffer - $02,X
 bra_9B0C_RTS:
                                         RTS
 
 tbl_9B0D_лимит_опций:
-                                        .byte $06   ; 03 continue
-                                        .byte $08   ; 04 level
-                                        .byte $0A   ; 05 rest
+                                        .byte $02   ; 03 ammo
+                                        .byte $06   ; 04 continue
+                                        .byte $08   ; 05 level
+                                        .byte $0A   ; 06 rest
 
 tbl_9B0E_начальная_con:
-                                        .byte con_0x0017EA_continue   ; 03 continue
-                                        .byte con_0x0017EA_level      ; 04 level
-                                        .byte con_0x0017EA_rest       ; 05 rest
+                                        .byte con_0x0017EA_continue           ; 04 continue
+                                        .byte con_0x0017EA_level              ; 05 level
+                                        .byte con_0x0017EA_rest               ; 06 rest
 
 tbl_9B0F_номер_тайла:
-                                        .byte $81   ; 03 continue
-                                        .byte $82   ; 04 level
-                                        .byte $81   ; 05 rest
+                                        .byte $81   ; 04 continue
+                                        .byte $82   ; 05 level
+                                        .byte $81   ; 06 rest
+
+
+
+
+
+
+
+
+
+
+
 
 
 ofs_046_9B10_options_exit:
@@ -771,13 +797,15 @@ tbl_9B2B_y_координаты_стрелки:
                                         .byte $2B   ; 00
                                         .byte $3B   ; 01
                                         .byte $4B   ; 02
-                                        .byte $8B   ; 03
+                                        .byte $5B   ; 03
+                                        .byte $8B   ; 04
 
 tbl_9B2C_x_координаты_стрелки:
                                         .byte $22   ; 00
                                         .byte $22   ; 01
                                         .byte $22   ; 02
-                                        .byte $62   ; 03
+                                        .byte $22   ; 03
+                                        .byte $62   ; 04
 
 
 sub_9B30_смена_палитры_сокола:
