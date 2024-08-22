@@ -784,7 +784,7 @@ C - - - - - 0x01E3CF 07:E3BF: D0 03     BNE bra_E3C4
 ; 04
 C - - - - - 0x01E3D1 07:E3C1: 4C E9 E7  JMP loc_E7E9_игра    ; 04 игра
 bra_E3C4:
-C - - - - - 0x01FBCC 07:FBBC: 20 B9 E3  JMP loc_E3B9_bankswitch    ; 00-03
+C - - - - - 0x01FBCC 07:FBBC: 20 B9 E3  JMP loc_E3B9_bankswitch    ; 00-03,06
 
 
 loc_0x01E4A2:
