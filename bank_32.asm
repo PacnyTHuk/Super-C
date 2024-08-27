@@ -38,7 +38,7 @@ _off001_0x004C14_26_hidden_rifleman:
 
 ofs_038_26_8C16_01_initialize_object:
 C - - J - - 0x004C26 01:8C16: A9 81     LDA #$81
-C - - - - - 0x004C28 01:8C18: 9D 2C 07  STA ram_072C_obj,X
+C - - - - - 0x004C28 01:8C18: 9D 2C 07  STA ram_параметры_объектов,X
 C - - - - - 0x004C2B 01:8C1B: BD 22 05  LDA ram_позиция_y_спрайта_врага_и_пуль,X
 C - - - - - 0x004C2E 01:8C1E: 18        CLC
 C - - - - - 0x004C2F 01:8C1F: 69 05     ADC #$05
@@ -69,7 +69,7 @@ C - - - - - 0x004C56 01:8C46: 20 B7 A6  JSR sub_0x0066C7_удалить_объе
 C - - - - - 0x004C59 01:8C49: DE E6 06  DEC ram_счетчкики_для_объектов,X
 C - - - - - 0x004C5C 01:8C4C: D0 2A     BNE bra_8C78_RTS
 C - - - - - 0x004C5E 01:8C4E: A9 00     LDA #$00
-C - - - - - 0x004C60 01:8C50: 9D 2C 07  STA ram_072C_obj,X
+C - - - - - 0x004C60 01:8C50: 9D 2C 07  STA ram_параметры_объектов,X
 C - - - - - 0x004C63 01:8C53: BD 22 05  LDA ram_позиция_y_спрайта_врага_и_пуль,X
 C - - - - - 0x004C66 01:8C56: 38        SEC
 C - - - - - 0x004C67 01:8C57: E9 05     SBC #$05
@@ -97,7 +97,7 @@ ofs_038_26_8C79_04:
 C - - J - - 0x004C89 01:8C79: DE E6 06  DEC ram_счетчкики_для_объектов,X
 C - - - - - 0x004C8C 01:8C7C: D0 C2     BNE bra_8C40
 C - - - - - 0x004C8E 01:8C7E: A9 81     LDA #$81
-C - - - - - 0x004C90 01:8C80: 9D 2C 07  STA ram_072C_obj,X
+C - - - - - 0x004C90 01:8C80: 9D 2C 07  STA ram_параметры_объектов,X
 C - - - - - 0x004C93 01:8C83: DE 10 07  DEC ram_0710_obj,X
 C - - - - - 0x004C96 01:8C86: 20 B3 8C  JSR sub_8CB3
 C - - - - - 0x004C99 01:8C89: C0 00     CPY #$00
@@ -171,7 +171,7 @@ ofs_038_27_8CE8_01_initialize_object:
 C - - J - - 0x004CF8 01:8CE8: A9 08     LDA #$08
 C - - - - - 0x004CFA 01:8CEA: 20 95 AB  JSR sub_0x006BA5_set_dynamic_hp_to_enemy
 C - - - - - 0x004CFD 01:8CED: A9 81     LDA #$81
-C - - - - - 0x004CFF 01:8CEF: 9D 2C 07  STA ram_072C_obj,X
+C - - - - - 0x004CFF 01:8CEF: 9D 2C 07  STA ram_параметры_объектов,X
 C - - - - - 0x004D02 01:8CF2: A9 B0     LDA #$B0
 C - - - - - 0x004D04 01:8CF4: 9D 22 05  STA ram_позиция_y_спрайта_врага_и_пуль,X
 C - - - - - 0x004D07 01:8CF7: BD 3C 05  LDA ram_позиция_x_спрайта_врага_и_пуль,X
@@ -216,7 +216,7 @@ C - - - - - 0x004D4E 01:8D3E: 90 0F     BCC bra_8D4F
 C - - - - - 0x004D50 01:8D40: A9 01     LDA #$01
 C - - - - - 0x004D52 01:8D42: 9D 10 07  STA ram_0710_obj,X
 C - - - - - 0x004D55 01:8D45: A9 00     LDA #$00
-C - - - - - 0x004D57 01:8D47: 9D 2C 07  STA ram_072C_obj,X
+C - - - - - 0x004D57 01:8D47: 9D 2C 07  STA ram_параметры_объектов,X
 C - - - - - 0x004D5A 01:8D4A: 20 D7 A2  JSR sub_0x0062E7_increase_obj_state
 C - - - - - 0x004D5D 01:8D4D: A9 38     LDA #$38
 bra_8D4F:
@@ -335,7 +335,7 @@ ofs_038_28_8DFF_01_initialize_object:
 C - - J - - 0x004E0F 01:8DFF: A9 20     LDA #$20
 C - - - - - 0x004E11 01:8E01: 20 95 AB  JSR sub_0x006BA5_set_dynamic_hp_to_enemy
 C - - - - - 0x004E14 01:8E04: A9 81     LDA #$81
-C - - - - - 0x004E16 01:8E06: 9D 2C 07  STA ram_072C_obj,X
+C - - - - - 0x004E16 01:8E06: 9D 2C 07  STA ram_параметры_объектов,X
 C - - - - - 0x004E19 01:8E09: BD 3C 05  LDA ram_позиция_x_спрайта_врага_и_пуль,X
 C - - - - - 0x004E1C 01:8E0C: 38        SEC
 C - - - - - 0x004E1D 01:8E0D: E9 02     SBC #$02
@@ -364,7 +364,7 @@ C - - - - - 0x004E49 01:8E39: 18        CLC
 C - - - - - 0x004E4A 01:8E3A: 69 08     ADC #$08
 C - - - - - 0x004E4C 01:8E3C: 9D 3C 05  STA ram_позиция_x_спрайта_врага_и_пуль,X
 C - - - - - 0x004E4F 01:8E3F: A9 00     LDA #$00
-C - - - - - 0x004E51 01:8E41: 9D 2C 07  STA ram_072C_obj,X
+C - - - - - 0x004E51 01:8E41: 9D 2C 07  STA ram_параметры_объектов,X
 C - - - - - 0x004E54 01:8E44: A9 07     LDA #$07
 C - - - - - 0x004E56 01:8E46: 9D 48 07  STA ram_0748_obj,X
 C - - - - - 0x004E59 01:8E49: A9 01     LDA #$01
@@ -467,7 +467,7 @@ ofs_038_29_8ED9_01_initialize_object:
 C - - J - - 0x004EE9 01:8ED9: A9 02     LDA #$02
 C - - - - - 0x004EEB 01:8EDB: 9D 76 06  STA ram_жизни_объектов,X
 C - - - - - 0x004EEE 01:8EDE: A9 18     LDA #$18
-C - - - - - 0x004EF0 01:8EE0: 9D 2C 07  STA ram_072C_obj,X
+C - - - - - 0x004EF0 01:8EE0: 9D 2C 07  STA ram_параметры_объектов,X
 C - - - - - 0x004EF3 01:8EE3: A9 01     LDA #$01
 C - - - - - 0x004EF5 01:8EE5: 9D 56 05  STA ram_атрибуты_спрайта_врага_и_пуль,X
 C - - - - - 0x004EF8 01:8EE8: BD 48 07  LDA ram_0748_obj,X
@@ -557,7 +557,7 @@ ofs_038_3F_8F69_01_initialize_object:
 C - - J - - 0x004F79 01:8F69: A5 FC     LDA ram_scroll_Y
 C - - - - - 0x004F7B 01:8F6B: 85 7B     STA ram_007B
 C - - - - - 0x004F7D 01:8F6D: A9 81     LDA #$81
-C - - - - - 0x004F7F 01:8F6F: 9D 2C 07  STA ram_072C_obj,X
+C - - - - - 0x004F7F 01:8F6F: 9D 2C 07  STA ram_параметры_объектов,X
 C - - - - - 0x004F82 01:8F72: A9 01     LDA #$01
 C - - - - - 0x004F84 01:8F74: 9D 02 07  STA ram_0702_obj,X
 C - - - - - 0x004F87 01:8F77: 4C D7 A2  JMP loc_0x0062E7_increase_obj_state
@@ -925,7 +925,7 @@ _off001_0x005216_4E_robospider:
 
 ofs_038_4E_9218_01_initialize_object:
 C - - J - - 0x005228 01:9218: A9 8D     LDA #$8D
-C - - - - - 0x00522A 01:921A: 9D 2C 07  STA ram_072C_obj,X
+C - - - - - 0x00522A 01:921A: 9D 2C 07  STA ram_параметры_объектов,X
 C - - - - - 0x00522D 01:921D: A9 F0     LDA #con__hp_F0
 C - - - - - 0x00522F 01:921F: 9D 76 06  STA ram_жизни_объектов,X
 C - - - - - 0x005232 01:9222: A9 08     LDA #$08
@@ -1018,7 +1018,7 @@ C - - - - - 0x0052D6 01:92C6: BC 9C 07  LDY ram_позиция_объектов_
 C - - - - - 0x0052D9 01:92C9: F0 02     BEQ bra_92CD
 C - - - - - 0x0052DB 01:92CB: A9 8D     LDA #$8D
 bra_92CD:
-C - - - - - 0x0052DD 01:92CD: 9D 2C 07  STA ram_072C_obj,X
+C - - - - - 0x0052DD 01:92CD: 9D 2C 07  STA ram_параметры_объектов,X
 loc_92D0:
 C D 0 - - - 0x0052E0 01:92D0: A5 FF     LDA ram_for_2000
 C - - - - - 0x0052E2 01:92D2: 29 FD     AND #$FD
@@ -2239,7 +2239,7 @@ _off001_0x0059D2_4B_boss_3_ball_center:
 
 ofs_038_4B_99DA_01_initialize_object:
 C - - J - - 0x0059EA 01:99DA: A9 11     LDA #$11
-C - - - - - 0x0059EC 01:99DC: 9D 2C 07  STA ram_072C_obj,X
+C - - - - - 0x0059EC 01:99DC: 9D 2C 07  STA ram_параметры_объектов,X
 C - - - - - 0x0059EF 01:99DF: A9 F0     LDA #con__hp_F0
 C - - - - - 0x0059F1 01:99E1: 9D 76 06  STA ram_жизни_объектов,X
 C - - - - - 0x0059F4 01:99E4: 4C D7 A2  JMP loc_0x0062E7_increase_obj_state

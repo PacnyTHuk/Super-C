@@ -59,7 +59,7 @@ ofs_038_2E_8013_01_initialize_object:
 C - - J - - 0x014023 05:8013: A9 10     LDA #$10
 C - - - - - 0x014025 05:8015: 20 95 AB  JSR sub_0x006BA5_set_dynamic_hp_to_enemy
 C - - - - - 0x014028 05:8018: A9 85     LDA #$85
-C - - - - - 0x01402A 05:801A: 9D 2C 07  STA ram_072C_obj,X
+C - - - - - 0x01402A 05:801A: 9D 2C 07  STA ram_параметры_объектов,X
 C - - - - - 0x01402D 05:801D: BD 3C 05  LDA ram_позиция_x_спрайта_врага_и_пуль,X
 C - - - - - 0x014030 05:8020: 18        CLC
 C - - - - - 0x014031 05:8021: 69 08     ADC #$08
@@ -88,7 +88,7 @@ C - - - - - 0x01405E 05:804E: BD 22 05  LDA ram_позиция_y_спрайта_
 C - - - - - 0x014061 05:8051: C9 20     CMP #$20
 C - - - - - 0x014063 05:8053: 90 0A     BCC bra_805F_RTS
 C - - - - - 0x014065 05:8055: A9 05     LDA #$05
-C - - - - - 0x014067 05:8057: 9D 2C 07  STA ram_072C_obj,X
+C - - - - - 0x014067 05:8057: 9D 2C 07  STA ram_параметры_объектов,X
 C - - - - - 0x01406A 05:805A: A9 10     LDA #$10
 C - - - - - 0x01406C 05:805C: 4C E0 A2  JMP loc_0x0062F0
 bra_805F_RTS:
@@ -317,7 +317,7 @@ C - - J - - 0x0141B3 05:81A3: A9 02     LDA #$02
 C - - - - - 0x0141B5 05:81A5: 9D 48 07  STA ram_0748_obj,X
 C - - - - - 0x0141B8 05:81A8: 20 95 AE  JSR sub_0x006EA5
 C - - - - - 0x0141BB 05:81AB: A9 80     LDA #$80
-C - - - - - 0x0141BD 05:81AD: 9D 2C 07  STA ram_072C_obj,X
+C - - - - - 0x0141BD 05:81AD: 9D 2C 07  STA ram_параметры_объектов,X
 C - - - - - 0x0141C0 05:81B0: BD 1E 07  LDA ram_obj_flags,X
 C - - - - - 0x0141C3 05:81B3: 0A        ASL
 C - - - - - 0x0141C4 05:81B4: 0A        ASL
@@ -379,7 +379,7 @@ C - - - - - 0x014212 05:8202: 9D 08 05  STA ram_кадр_врага_и_пуль,
 C - - - - - 0x014215 05:8205: A9 08     LDA #$08
 C - - - - - 0x014217 05:8207: 20 95 AB  JSR sub_0x006BA5_set_dynamic_hp_to_enemy
 C - - - - - 0x01421A 05:820A: A9 85     LDA #$85
-C - - - - - 0x01421C 05:820C: 9D 2C 07  STA ram_072C_obj,X
+C - - - - - 0x01421C 05:820C: 9D 2C 07  STA ram_параметры_объектов,X
 C - - - - - 0x01421F 05:820F: BD 3C 05  LDA ram_позиция_x_спрайта_врага_и_пуль,X
 C - - - - - 0x014222 05:8212: 69 08     ADC #$08
 C - - - - - 0x014224 05:8214: 9D 3C 05  STA ram_позиция_x_спрайта_врага_и_пуль,X
@@ -398,7 +398,7 @@ C - - - - - 0x01423A 05:822A: BD 22 05  LDA ram_позиция_y_спрайта_
 C - - - - - 0x01423D 05:822D: C9 20     CMP #$20
 C - - - - - 0x01423F 05:822F: 90 12     BCC bra_8243_RTS
 C - - - - - 0x014241 05:8231: A9 05     LDA #$05
-C - - - - - 0x014243 05:8233: 9D 2C 07  STA ram_072C_obj,X
+C - - - - - 0x014243 05:8233: 9D 2C 07  STA ram_параметры_объектов,X
 C - - - - - 0x014246 05:8236: A9 02     LDA #$02
 C - - - - - 0x014248 05:8238: 9D 72 07  STA ram_0772_obj,X
 C - - - - - 0x01424B 05:823B: A9 01     LDA #$01
@@ -572,7 +572,7 @@ _off001_0x014332_5C_rifleman_standing_2:
 
 ofs_038_5C_832C_01_initialize_object:
 C - - J - - 0x01433C 05:832C: A9 02     LDA #$02
-C - - - - - 0x01433E 05:832E: 9D 2C 07  STA ram_072C_obj,X
+C - - - - - 0x01433E 05:832E: 9D 2C 07  STA ram_параметры_объектов,X
 C - - - - - 0x014341 05:8331: A9 01     LDA #$01
 C - - - - - 0x014343 05:8333: 9D 72 07  STA ram_0772_obj,X
 C - - - - - 0x014346 05:8336: 20 B7 A6  JSR sub_0x0066C7_удалить_объект_03
@@ -682,7 +682,7 @@ _off001_0x0143D2_63_mob_normal_2:
 
 ofs_038_63_83CE_01_initialize_object:
 C - - J - - 0x0143DE 05:83CE: A9 02     LDA #$02
-C - - - - - 0x0143E0 05:83D0: 9D 2C 07  STA ram_072C_obj,X
+C - - - - - 0x0143E0 05:83D0: 9D 2C 07  STA ram_параметры_объектов,X
 C - - - - - 0x0143E3 05:83D3: BD 1E 07  LDA ram_obj_flags,X
 C - - - - - 0x0143E6 05:83D6: 4A        LSR
 C - - - - - 0x0143E7 05:83D7: 90 0A     BCC bra_83E3
@@ -1256,7 +1256,7 @@ _off001_0x014737_69_boss_2_green_tankman:
 
 ofs_038_69_873B_01_initialize_object:
 C - - J - - 0x01474B 05:873B: A9 91     LDA #$91
-C - - - - - 0x01474D 05:873D: 9D 2C 07  STA ram_072C_obj,X
+C - - - - - 0x01474D 05:873D: 9D 2C 07  STA ram_параметры_объектов,X
 C - - - - - 0x014750 05:8740: A9 20     LDA #$20
 C - - - - - 0x014752 05:8742: 20 99 AB  JSR sub_0x006BA9_set_dynamic_hp_to_boss
 C - - - - - 0x014755 05:8745: 4C D7 A2  JMP loc_0x0062E7_increase_obj_state
@@ -1306,7 +1306,7 @@ C - - - - - 0x0147A0 05:8790: 9D 8E 07  STA ram_позиция_объектов_
 C - - - - - 0x0147A3 05:8793: A9 62     LDA #$62
 C - - - - - 0x0147A5 05:8795: 9D 22 05  STA ram_позиция_y_спрайта_врага_и_пуль,X
 C - - - - - 0x0147A8 05:8798: A9 10     LDA #$10
-C - - - - - 0x0147AA 05:879A: 9D 2C 07  STA ram_072C_obj,X
+C - - - - - 0x0147AA 05:879A: 9D 2C 07  STA ram_параметры_объектов,X
 C - - - - - 0x0147AD 05:879D: 20 2C 89  JSR sub_892C
 C - - - - - 0x0147B0 05:87A0: A9 31     LDA #con_sound_31   ; музыка 2й босс
 C - - - - - 0x0147B2 05:87A2: 20 DE FD  JSR sub_0x01FDEE_play_music
@@ -1993,7 +1993,7 @@ _off001_0x014B4D_36_tank_electricity:
 
 ofs_038_36_8B43_01_initialize_object:
 C - - J - - 0x014B53 05:8B43: A9 80     LDA #$80
-C - - - - - 0x014B55 05:8B45: 9D 2C 07  STA ram_072C_obj,X
+C - - - - - 0x014B55 05:8B45: 9D 2C 07  STA ram_параметры_объектов,X
 C - - - - - 0x014B58 05:8B48: 4C D7 A2  JMP loc_0x0062E7_increase_obj_state
 
 
@@ -2192,7 +2192,7 @@ _off001_0x014C67_2C_falling_platform:
 
 ofs_038_2C_8C63_01_initialize_object:
 C - - J - - 0x014C73 05:8C63: A9 01     LDA #$01
-C - - - - - 0x014C75 05:8C65: 9D 2C 07  STA ram_072C_obj,X
+C - - - - - 0x014C75 05:8C65: 9D 2C 07  STA ram_параметры_объектов,X
 C - - - - - 0x014C78 05:8C68: BD 22 05  LDA ram_позиция_y_спрайта_врага_и_пуль,X
 C - - - - - 0x014C7B 05:8C6B: 69 04     ADC #$04
 C - - - - - 0x014C7D 05:8C6D: 9D 22 05  STA ram_позиция_y_спрайта_врага_и_пуль,X
@@ -2474,7 +2474,7 @@ _off001_0x014E4B_39_elevator:
 
 ofs_038_39_8E49_01_initialize_object:
 C - - J - - 0x014E59 05:8E49: A9 81     LDA #$81
-C - - - - - 0x014E5B 05:8E4B: 9D 2C 07  STA ram_072C_obj,X
+C - - - - - 0x014E5B 05:8E4B: 9D 2C 07  STA ram_параметры_объектов,X
 C - - - - - 0x014E5E 05:8E4E: 4C D7 A2  JMP loc_0x0062E7_increase_obj_state
 
 
@@ -3472,7 +3472,7 @@ _off001_0x01541F_44_boss_4_bullet:
 
 ofs_038_44_9415_01_initialize_object:
 C - - J - - 0x015425 05:9415: A9 80     LDA #$80
-C - - - - - 0x015427 05:9417: 9D 2C 07  STA ram_072C_obj,X
+C - - - - - 0x015427 05:9417: 9D 2C 07  STA ram_параметры_объектов,X
 C - - - - - 0x01542A 05:941A: BD 22 05  LDA ram_позиция_y_спрайта_врага_и_пуль,X
 C - - - - - 0x01542D 05:941D: 18        CLC
 C - - - - - 0x01542E 05:941E: 69 08     ADC #$08
@@ -3791,7 +3791,7 @@ _off001_0x015602_42_boss_4_hanger:
 
 ofs_038_42_9606_01_initialize_object:
 C - - J - - 0x015616 05:9606: A9 10     LDA #$10
-C - - - - - 0x015618 05:9608: 9D 2C 07  STA ram_072C_obj,X
+C - - - - - 0x015618 05:9608: 9D 2C 07  STA ram_параметры_объектов,X
 C - - - - - 0x01561B 05:960B: 4C D7 A2  JMP loc_0x0062E7_increase_obj_state
 bra_960E_RTS:
 C - - - - - 0x01561E 05:960E: 60        RTS

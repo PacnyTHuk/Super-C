@@ -3804,7 +3804,7 @@ C - - - - - 0x01F78D 07:F77D: 9D E6 06  STA ram_счетчкики_для_объ
 C - - - - - 0x01F790 07:F780: 9D F4 06  STA ram_06F4_obj,X
 C - - - - - 0x01F793 07:F783: 9D 10 07  STA ram_0710_obj,X
 C - - - - - 0x01F796 07:F786: 9D 02 07  STA ram_0702_obj,X
-C - - - - - 0x01F799 07:F789: 9D 2C 07  STA ram_072C_obj,X
+C - - - - - 0x01F799 07:F789: 9D 2C 07  STA ram_параметры_объектов,X
 bra_F78C:
 C - - - - - 0x01F79C 07:F78C: 9D 48 07  STA ram_0748_obj,X
 C - - - - - 0x01F79F 07:F78F: 9D 56 07  STA ram_scroll_X_obj,X
