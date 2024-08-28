@@ -1906,11 +1906,11 @@ ofs_003_8A4E_02_живой:
                                     .if con_режим_читера <> $00 ; если не равно 00
                                         JSR sub_0x000000_чтение_комбинаций_кнопок_для_читов
                                     .endif
-C - - J - - 0x000A5E 00:8A4E: 20 EE 8C  JSR sub_8CEE_обработка_стрельбы_игрока
-                                        LDX ram_0010
-C - - - - - 0x000A61 00:8A51: 20 BF 8A  JSR sub_8ABF_обработка_скорости_игрока
+C - - - - - 0x000A61 00:8A51: 20 BF 8A  JSR sub_8ABF_обработка_движения_игрока
 C - - - - - 0x000A64 00:8A54: 20 AA 8B  JSR sub_8BAA_обработка_анимации_игрока
 C - - - - - 0x000A67 00:8A57: 20 18 8C  JSR sub_8C18_запись_угла_стрельбы_игрока
+C - - J - - 0x000A5E 00:8A4E: 20 EE 8C  JSR sub_8CEE_обработка_стрельбы_игрока
+                                        LDX ram_0010
                                         RTS
 ;C - - - - - 0x000A6A 00:8A5A: 4C 13 83  JMP loc_8313_убить_игрока_если_застрял_в_стене
 
@@ -1978,38 +1978,34 @@ C - - - - - 0x000AC7 00:8AB7: 95 B4     STA ram_00B4_счетчик_анимац
 sub_8AB9:
 C - - - - - 0x000AC9 00:8AB9: 18        CLC
 C - - - - - 0x000ACA 00:8ABA: 69 3B     ADC #$3B
-C - - - - - 0x000ACC 00:8ABC: 4C E0 8B  JMP loc_8BE0
+C - - - - - 0x000ACC 00:8ABC: 4C E0 8B  JMP loc_81CC    ; обработка с уровней видом сбоку
 
 
 
-sub_8ABF_обработка_скорости_игрока:
+sub_8ABF_обработка_движения_игрока:
 C - - - - - 0x000ACF 00:8ABF: 20 B7 84  JSR sub_84B7_уменьшить_таймеры_инвиза_и_бессмертия
 C - - - - - 0x000AD2 00:8AC2: B5 F3     LDA ram_удержанная_кнопка,X
-C - - - - - 0x000AD4 00:8AC4: 29 0F     AND #con_btns_Dpad
-C - - - - - 0x000AD6 00:8AC6: 85 13     STA ram_0013
-C - - - - - 0x000AD8 00:8AC8: C9 0B     CMP #$0B
-C - - - - - 0x000ADA 00:8ACA: 90 02     BCC bra_8ACE
-; if both up and down were pressed
-; bzk optimize, normally that's not possible. or is it?
-- - - - - - 0x000ADC 00:8ACC: A9 00     LDA #$00
-bra_8ACE:
+C - - - - - 0x000AD4 00:8AC4: 29 0F     AND #con_btns_Dpad                                 
 C - - - - - 0x000ADE 00:8ACE: A8        TAY
-C - - - - - 0x000ADF 00:8ACF: F0 05     BEQ bra_8AD6
-C - - - - - 0x000AE1 00:8AD1: B9 73 8B  LDA tbl_8B74 - $01,Y
+                                        AND #con_btns_LR
+                                        BEQ bra_8ACE
+                                        AND #$01
+                                        STA ram_сторона_игрока_вид_сверху,X  ; индекс, временное хранение куда смотрит игрок
+bra_8ACE:
+                                        TYA
+C - - - - - 0x000ADF 00:8ACF: F0 05     BNE bra_8AD1
+                                        LDA #$08
+                                        BNE bra_8AEE_скорость_игрока    ; jmp
+bra_8AD1:
+C - - - - - 0x000AE1 00:8AD1: B9 73 8B  LDA tbl_8B74_угол_игрока - $01,Y
 C - - - - - 0x000AE4 00:8AD4: 95 D0     STA ram_00D0_направление_игрока_вид_сверху,X
-bra_8AD6:
-C - - - - - 0x000AE6 00:8AD6: A9 08     LDA #$08
-C - - - - - 0x000AE8 00:8AD8: A4 13     LDY ram_0013
-C - - - - - 0x000AEA 00:8ADA: F0 12     BEQ bra_8AEE
 C - - - - - 0x000AEC 00:8ADC: B4 D0     LDY ram_00D0_направление_игрока_вид_сверху,X
-C - - - - - 0x000AEE 00:8ADE: B9 7E 8B  LDA tbl_8B7E,Y
-C - - - - - 0x000AF1 00:8AE1: 85 08     STA ram_0008
 C - - - - - 0x000AF3 00:8AE3: BD 66 05  LDA ram_атрибуты_спрайта_игрока,X
 C - - - - - 0x000AF6 00:8AE6: 29 3C     AND #$3C
-C - - - - - 0x000AF8 00:8AE8: 05 08     ORA ram_0008
+C - - - - - 0x000AF8 00:8AE8: 05 08     ORA tbl_8B7E_атрибуты_спрайта,Y
 C - - - - - 0x000AFA 00:8AEA: 9D 66 05  STA ram_атрибуты_спрайта_игрока,X
 C - - - - - 0x000AFD 00:8AED: 98        TYA
-bra_8AEE:
+bra_8AEE_скорость_игрока:
 C - - - - - 0x000AFE 00:8AEE: 0A        ASL
 C - - - - - 0x000AFF 00:8AEF: 0A        ASL
 C - - - - - 0x000B00 00:8AF0: A8        TAY
@@ -2087,60 +2083,62 @@ bra_8B73_RTS:
 C - - - - - 0x000B83 00:8B73: 60        RTS
 
 
-
-tbl_8B74:
-- D 0 - - - 0x000B84 00:8B74: 02        .byte $02   ; 01 
-- D 0 - - - 0x000B85 00:8B75: 06        .byte $06   ; 02 
-- - - - - - 0x000B86 00:8B76: 00        .byte $00   ; 03 
-- D 0 - - - 0x000B87 00:8B77: 04        .byte $04   ; 04 
-- D 0 - - - 0x000B88 00:8B78: 03        .byte $03   ; 05 
-- D 0 - - - 0x000B89 00:8B79: 05        .byte $05   ; 06 
-- - - - - - 0x000B8A 00:8B7A: 00        .byte $00   ; 07 
-- D 0 - - - 0x000B8B 00:8B7B: 00        .byte $00   ; 08 
-- D 0 - - - 0x000B8C 00:8B7C: 01        .byte $01   ; 09 
-- D 0 - - - 0x000B8D 00:8B7D: 07        .byte $07   ; 0A 
-
-
-
-tbl_8B7E:
-- D 0 - - - 0x000B8E 00:8B7E: 00        .byte $00   ; 00 
-- D 0 - - - 0x000B8F 00:8B7F: 40        .byte $40   ; 01 
-- D 0 - - - 0x000B90 00:8B80: 40        .byte $40   ; 02 
-- D 0 - - - 0x000B91 00:8B81: 40        .byte $40   ; 03 
-- D 0 - - - 0x000B92 00:8B82: 00        .byte $00   ; 04 
-- D 0 - - - 0x000B93 00:8B83: 00        .byte $00   ; 05 
-- D 0 - - - 0x000B94 00:8B84: 00        .byte $00   ; 06 
-- D 0 - - - 0x000B95 00:8B85: 00        .byte $00   ; 07 
+;     08
+;   0A  09
+; 02 DPAD 01
+;   06  05
+;     04
+tbl_8B74_угол_игрока:
+;                                       .byte $00   ; нет нажатия                            
+                                        .byte $00   ; 01 Right
+                                        .byte $04   ; 02 Left 
+                                        .byte $00   ; 03 Right+LEFT (не возможен)
+                                        .byte $02   ; 04 Down
+                                        .byte $01   ; 05 RIGHT+DOWN
+                                        .byte $03   ; 06 LEFT+DOWN
+                                        .byte $00   ; 07 Right+LEFT+DOWN (не возможен)
+                                        .byte $06   ; 08 Up
+                                        .byte $07   ; 09 RIGHT+UP
+                                        .byte $05   ; 0A LEFT+UP
 
 
+tbl_8B7E_атрибуты_спрайта:
+- D 0 - - - 0x000B8E 00:8B7E: 00        .byte $40   ; 00 Right
+- D 0 - - - 0x000B8F 00:8B7F: 40        .byte $40   ; 01 RIGHT+DOWN
+- D 0 - - - 0x000B90 00:8B80: 40        .byte $00   ; 02 Down
+- D 0 - - - 0x000B91 00:8B81: 40        .byte $00   ; 03 LEFT+DOWN
+- D 0 - - - 0x000B92 00:8B82: 00        .byte $00   ; 04 Left
+- D 0 - - - 0x000B93 00:8B83: 00        .byte $00   ; 05 LEFT+UP
+- D 0 - - - 0x000B94 00:8B84: 00        .byte $00   ; 06 Up
+- D 0 - - - 0x000B95 00:8B85: 00        .byte $40   ; 07 RIGHT+UP
 
 
 tbl_8B86_speed:
-; 00 
-- D 0 - - - 0x000B96 00:8B86: 00 00     .word $0000 ; X
-- D 0 - - - 0x000B98 00:8B88: 00 FF     .word $FF00 ; Y
-; 01 
-- D 0 - - - 0x000B9A 00:8B8A: B5 00     .word $00B5 ; X
-- D 0 - - - 0x000B9C 00:8B8C: 4B FF     .word $FF4B ; Y
-; 02 
+; 00 Right
 - D 0 - - - 0x000B9E 00:8B8E: 00 01     .word $0100 ; X
 - D 0 - - - 0x000BA0 00:8B90: 00 00     .word $0000 ; Y
-; 03 
+; 01 RIGHT+DOWN
 - D 0 - - - 0x000BA2 00:8B92: B5 00     .word $00B5 ; X
 - D 0 - - - 0x000BA4 00:8B94: B5 00     .word $00B5 ; Y
-; 04 
+; 02 Down
 - D 0 - - - 0x000BA6 00:8B96: 00 00     .word $0000 ; X
-- D 0 - - - 0x000BA8 00:8B98: 00 01     .word $0100 ; Y
-; 05 
+- D 0 - - - 0x000BA8 00:8B98: 00 01     .word $0100 ; YE
+; 03 LEFT+DOWN
 - D 0 - - - 0x000BAA 00:8B9A: 4B FF     .word $FF4B ; X
 - D 0 - - - 0x000BAC 00:8B9C: B5 00     .word $00B5 ; Y
-; 06 
+; 04 Left
 - D 0 - - - 0x000BAE 00:8B9E: 00 FF     .word $FF00 ; X
 - D 0 - - - 0x000BB0 00:8BA0: 00 00     .word $0000 ; Y
-; 07 
+; 05 LEFT+UP
 - D 0 - - - 0x000BB2 00:8BA2: 4B FF     .word $FF4B ; X
 - D 0 - - - 0x000BB4 00:8BA4: 4B FF     .word $FF4B ; Y
-; 08 
+; 06 Up
+- D 0 - - - 0x000B96 00:8B86: 00 00     .word $0000 ; X
+- D 0 - - - 0x000B98 00:8B88: 00 FF     .word $FF00 ; Y
+; 07 RIGHT+UP
+- D 0 - - - 0x000B9A 00:8B8A: B5 00     .word $00B5 ; X
+- D 0 - - - 0x000B9C 00:8B8C: 4B FF     .word $FF4B ; Y
+; 08 NONE
 - D 0 - - - 0x000BB6 00:8BA6: 00 00     .word $0000 ; X
 - D 0 - - - 0x000BB8 00:8BA8: 00 00     .word $0000 ; Y
 
@@ -2177,39 +2175,19 @@ C - - - - - 0x000BE9 00:8BD9: 18        CLC
 C - - - - - 0x000BEA 00:8BDA: 75 B4     ADC ram_00B4_счетчик_анимаций_игрока,X
 C - - - - - 0x000BEC 00:8BDC: A8        TAY
 C - - - - - 0x000BED 00:8BDD: B9 04 8C  LDA tbl_8C04,Y
-loc_8BE0:
-C D 0 - - - 0x000BF0 00:8BE0: A8        TAY
-C - - - - - 0x000BF1 00:8BE1: B5 C4     LDA ram_инвиз_игрока,X
-C - - - - - 0x000BF3 00:8BE3: F0 07     BEQ bra_8BEC
-C - - - - - 0x000BF5 00:8BE5: A5 1B     LDA ram_счетчик_кадров
-C - - - - - 0x000BF7 00:8BE7: 4A        LSR
-C - - - - - 0x000BF8 00:8BE8: 90 02     BCC bra_8BEC
-C - - - - - 0x000BFA 00:8BEA: A0 00     LDY #$00
-bra_8BEC:
-C - - - - - 0x000BFC 00:8BEC: 98        TYA
-C - - - - - 0x000BFD 00:8BED: 9D 18 05  STA ram_кадр_игрока,X
-C - - - - - 0x000C00 00:8BF0: BD 66 05  LDA ram_атрибуты_спрайта_игрока,X
-C - - - - - 0x000C03 00:8BF3: 1D FA 8B  ORA tbl_8BFA_spr_attr,X
-C - - - - - 0x000C06 00:8BF6: 9D 66 05  STA ram_атрибуты_спрайта_игрока,X
-C - - - - - 0x000C09 00:8BF9: 60        RTS
-
-
-
-tbl_8BFA_spr_attr:
-- D 0 - - - 0x000C0A 00:8BFA: 00        .byte $00   ; 00 player 1
-- D 0 - - - 0x000C0B 00:8BFB: 01        .byte $01   ; 01 player 2
-
+; удалена оригинальная обработка с уровней видом сверху
+                                        JMP loc_81CC    ; обработка с уровней видом сбоку                               
 
 
 tbl_8BFC_index:
-- D 0 - - - 0x000C0C 00:8BFC: 10        .byte off_8C14_10 - tbl_8C04   ; 00 
-- D 0 - - - 0x000C0D 00:8BFD: 08        .byte off_8C0C_08 - tbl_8C04   ; 01 
-- D 0 - - - 0x000C0E 00:8BFE: 0C        .byte off_8C10_0C - tbl_8C04   ; 02 
-- D 0 - - - 0x000C0F 00:8BFF: 04        .byte off_8C08_04 - tbl_8C04   ; 03 
-- D 0 - - - 0x000C10 00:8C00: 00        .byte off_8C04_00 - tbl_8C04   ; 04 
-- D 0 - - - 0x000C11 00:8C01: 04        .byte off_8C08_04 - tbl_8C04   ; 05 
-- D 0 - - - 0x000C12 00:8C02: 0C        .byte off_8C10_0C - tbl_8C04   ; 06 
-- D 0 - - - 0x000C13 00:8C03: 08        .byte off_8C0C_08 - tbl_8C04   ; 07 
+- D 0 - - - 0x000C0E 00:8BFE: 0C        .byte off_8C10_0C - tbl_8C04   ; 02 00
+- D 0 - - - 0x000C0F 00:8BFF: 04        .byte off_8C08_04 - tbl_8C04   ; 03 01
+- D 0 - - - 0x000C10 00:8C00: 00        .byte off_8C04_00 - tbl_8C04   ; 04 02
+- D 0 - - - 0x000C11 00:8C01: 04        .byte off_8C08_04 - tbl_8C04   ; 05 03
+- D 0 - - - 0x000C12 00:8C02: 0C        .byte off_8C10_0C - tbl_8C04   ; 06 04
+- D 0 - - - 0x000C13 00:8C03: 08        .byte off_8C0C_08 - tbl_8C04   ; 07 05
+- D 0 - - - 0x000C0C 00:8BFC: 10        .byte off_8C14_10 - tbl_8C04   ; 00 06
+- D 0 - - - 0x000C0D 00:8BFD: 08        .byte off_8C0C_08 - tbl_8C04   ; 01 07
 
 
 
@@ -2247,22 +2225,29 @@ off_8C14_10:
 
 
 sub_8C18_запись_угла_стрельбы_игрока:
-C - - - - - 0x000C28 00:8C18: B4 D0     LDY ram_00D0_направление_игрока_вид_сверху,X
-C - - - - - 0x000C2A 00:8C1A: B9 20 8C  LDA tbl_8C20,Y
+                                        LDA ram_00D0_направление_игрока_вид_сверху,X
+                                        ASL
+                                        CLC
+                                        ADC ram_сторона_игрока_вид_сверху,X   ; 00 left, 01 right
+                                        TAY
+C - - - - - 0x000C2A 00:8C1A: B9 20 8C  LDA tbl_8C20_угол_выстрела,Y
 C - - - - - 0x000C2D 00:8C1D: 95 BA     STA ram_угол_выстрела_игрока,X
 C - - - - - 0x000C2F 00:8C1F: 60        RTS
 
 
 
-tbl_8C20:
-- D 0 - - - 0x000C30 00:8C20: 00        .byte $00   ; 00 
-- D 0 - - - 0x000C31 00:8C21: 01        .byte $01   ; 01 
-- D 0 - - - 0x000C32 00:8C22: 02        .byte $02   ; 02 
-- D 0 - - - 0x000C33 00:8C23: 03        .byte $03   ; 03 
-- D 0 - - - 0x000C34 00:8C24: 06        .byte $06   ; 04 
-- D 0 - - - 0x000C35 00:8C25: 09        .byte $09   ; 05 
-- D 0 - - - 0x000C36 00:8C26: 0A        .byte $0A   ; 06 
-- D 0 - - - 0x000C37 00:8C27: 0B        .byte $0B   ; 07 
+tbl_8C20_угол_выстрела:
+;                                              ----------- LEFT
+;                                              |    ------ RIGHT
+;                                              |    |
+- D 0 - - - 0x000C30 00:8C20: 00        .byte $1F, $1F   ; 00 Right
+- D 0 - - - 0x000C31 00:8C21: 01        .byte $20, $20   ; 01 RIGHT+DOWN
+- D 0 - - - 0x000C32 00:8C22: 02        .byte $22, $21   ; 02 Down
+- D 0 - - - 0x000C33 00:8C23: 03        .byte $23, $03   ; 03 LEFT+DOWN
+- D 0 - - - 0x000C34 00:8C24: 06        .byte $24, $04   ; 04 Left
+- D 0 - - - 0x000C35 00:8C25: 09        .byte $25, $25   ; 05 LEFT+UP
+- D 0 - - - 0x000C36 00:8C26: 0A        .byte $1C, $1D   ; 06 Up
+- D 0 - - - 0x000C37 00:8C27: 0B        .byte $1E, $1E   ; 07 RIGHT+UP
 
 
 
@@ -2541,8 +2526,16 @@ bra_8D15:
                                         LDY ram_0006    ; индекс оружия игрока
                                         JMP loc_8D03
 bra_8D16:
+                                        LDA ram_конфиг_уровня_вид
+                                        BEQ bra_8D1A_уровни_вид_сбоку
+; уровни вид сверху
+                                        LDY ram_сторона_игрока_вид_сверху,X
+                                        LDA tbl_8D19,Y
+                                        JMP loc_8D1B
+bra_8D1A_уровни_вид_сбоку:
                                         LDA ram_атрибуты_спрайта_игрока,X
                                         LSR ; <-20/00->
+loc_8D1B:
                                         CLC
                                         ADC ram_счетчик_поворота_игрока,X
                                         LSR
@@ -2573,7 +2566,9 @@ tbl_8D18:
                                         .byte $01   ; 00
                                         .byte $FF   ; 01
 
-
+tbl_8D19:
+                                        .byte $20   ; 00 LEFT
+                                        .byte $00   ; 01 RIGHT
 
 
 
@@ -2691,11 +2686,11 @@ bra_8D45:
                                         CMP #$06
                                         BCS bra_8D47
 ; кадры 01-05 анимация бега игрока
-                                        LDY #$3B    ; 00 right
+                                        LDY #$45    ; 00 right
                                         LDA ram_атрибуты_спрайта_игрока,X
                                         ASL
                                         BPL bra_8D46
-                                        LDY #$40    ; 01 left
+                                        LDY #$49    ; 01 left
 bra_8D46:
                                         TYA
                                         CLC
@@ -3048,7 +3043,7 @@ ofs_036_8E10_01_flame_thrower:
                                         BEQ bra_0020
 ; углы не совпали, круговой выстрел
                                         CLC
-                                        ADC #$1C    ; смещение на таблицу кругового движения
+                                        ADC #$26    ; смещение на таблицу кругового движения
                                         PHA
                                         LDA #$0C    ; добавочное смещение для позы лежа
                                         CPY #$04    ; лежа
@@ -3179,8 +3174,9 @@ tbl_9312_offset_лазер:
 ; 8 направлений
                                         .byte $00, $00, $00, $00 
                                         .byte $00, $00, $00, $00
-
-
+; уровни с видом сверху +1C
+                                        .byte $00, $00, $00, $00, $00 
+                                        .byte $00, $00, $00, $00, $00 
 
 
 
@@ -3363,10 +3359,13 @@ tbl_8EE8_направление_пули:
                                         .byte $01, $03, $01, $07, $09 
 ; в прыжке
 ; смотрит вправо
-                                        .byte $08, $06, $00, $02, $04 
+                                        .byte $08, $06, $00, $02 
 ; смотрит влево
-                                        .byte $03, $01, $07, $07, $09 
-; круговое движение +1E
+                                        .byte $04, $03, $01, $07
+; уровни с видом сверху +1C
+                                        .byte $08, $08, $06, $00, $02
+                                        .byte $04, $04, $03, $01, $07
+; круговое движение +26
                                         .byte $E7, $F2, $FD, $04, $0B, $0B, $04, $FD    ; RIGHT/UP 
                                         .byte $E7, $F2, $FD, $04, $0B, $0B, $04, $FD    ; UP/LEFT
                                         .byte $E7, $F2, $FD, $04, $0B, $0B, $04, $FD    ; LEFT/DOWN
@@ -3413,9 +3412,20 @@ tbl_8EF0_вращение_пули:
                                         .byte $00   ; 16 RIGHT
                                         .byte $1C   ; 17 DOWN+RIGHT
                                         .byte $18   ; 18 DOWN
-                                        .byte $14   ; 1A DOWN+LEFT 
-                                        .byte $10   ; 1B LEFT
-                                        .byte $0C   ; 1C UP+LEFT
+                                        .byte $14   ; 19 DOWN+LEFT 
+                                        .byte $10   ; 1A LEFT
+                                        .byte $0C   ; 1B UP+LEFT
+; уровни с видом сверху
+                                        .byte $08   ; 1C UP
+                                        .byte $08   ; 1D UP
+                                        .byte $04   ; 1E UP+RIGHT
+                                        .byte $00   ; 1F RIGHT
+                                        .byte $1C   ; 20 DOWN+RIGHT
+                                        .byte $18   ; 21 DOWN
+                                        .byte $18   ; 22 DOWN
+                                        .byte $14   ; 23 DOWN+LEFT 
+                                        .byte $10   ; 24 LEFT
+                                        .byte $0C   ; 25 UP+LEFT
 
 
 
@@ -3461,12 +3471,15 @@ tbl_9119_Y_пули:
 ; 8 направлений
                                         .byte $F6, $F9, $00, $07 
                                         .byte $0A, $07, $00, $F9 
-; круговое движение +1C
+; уровни с видом сверху +1C
+                                        .byte $F2, $F2, $F5, $FB, $03
+                                        .byte $04, $04, $02, $FB, $F5 
+; круговое движение +26
                                         .byte $00, $FE, $FC, $FA, $F9, $F8, $F7, $F6    ; RIGHT/UP 
                                         .byte $F6, $F6, $F7, $F8, $F9, $FA, $FC, $FE    ; UP/LEFT
                                         .byte $00, $02, $04, $06, $07, $08, $09, $0A    ; LEFT/DOWN
                                         .byte $0A, $0A, $09, $08, $07, $06, $04, $02    ; DOWN/RIGHT
-; 5 доп для flame +3C
+; 5 доп для flame +46
                                         .byte $F1, $F5, $F7, $F7, $F1  ; right
                                         .byte $F1, $F5, $F7, $F7, $F8  ; left
 
@@ -3488,12 +3501,15 @@ tbl_911A_X_пули:
 ; 8 направлений
                                         .byte $00, $07, $0A, $07 
                                         .byte $00, $F9, $F6, $F9 
-; круговое движение +1C
+; уровни с видом сверху +1C
+                                        .byte $04, $04, $06, $09, $09
+                                        .byte $FD, $FD, $F8, $F7, $FA 
+; круговое движение +26
                                         .byte $0A, $0A, $09, $08, $07, $06, $04, $02    ; RIGHT/UP 
                                         .byte $00, $FE, $FC, $FA, $F9, $F8, $F7, $F6    ; UP/LEFT
                                         .byte $F6, $F6, $F7, $F8, $F9, $FA, $FC, $FE    ; LEFT/DOWN
                                         .byte $00, $02, $04, $06, $07, $08, $09, $0A    ; DOWN/RIGHT
-; 5 доп для flame +3C
+; 5 доп для flame +46
                                         .byte $09, $0B, $08, $08, $08  ; right
                                         .byte $F7, $F5, $F8, $F8, $F8  ; left
 
@@ -3514,12 +3530,15 @@ tbl_911B_offset_пули:
 ; 8 направлений
                                         .byte $C0, $E0, $00, $20 
                                         .byte $40, $60, $80, $A0 
-; круговое движение +1C
+; уровни с видом сверху +1C
+                                        .byte $C0, $C0, $E0, $00, $20
+                                        .byte $40, $40, $60, $80, $A0
+; круговое движение +26
                                         .byte $00, $F8, $F0, $E8, $E0, $D8, $D0, $C8    ; RIGHT/UP 
                                         .byte $C0, $B8, $B0, $A8, $A0, $98, $90, $88    ; UP/LEFT
                                         .byte $80, $78, $70, $68, $60, $58, $50, $48    ; LEFT/DOWN
                                         .byte $40, $38, $30, $28, $20, $18, $10, $08    ; DOWN/RIGHT
-; 5 доп для flame +3C
+; 5 доп для flame +46
                                         .byte $00, $00, $00, $00, $00, $00  ; right
                                         .byte $00, $00, $00, $00, $00, $00  ; left
 
@@ -3540,12 +3559,15 @@ tbl_911C_spr_attr_пули:
 ; 8 направлений
                                         .byte $02, $02, $02, $02 
                                         .byte $02, $42, $42, $42 
-; круговое движение +1C
+; уровни с видом сверху +1C
+                                        .byte $42, $02, $02, $02, $02
+                                        .byte $02, $42, $42, $42, $42 
+; круговое движение +26
                                         .byte $02, $02, $02, $02, $02, $02, $02, $02    ; RIGHT/UP 
                                         .byte $02, $02, $02, $02, $02, $02, $02, $02    ; UP/LEFT
                                         .byte $02, $02, $02, $02, $02, $02, $02, $02    ; LEFT/DOWN
                                         .byte $02, $02, $02, $02, $02, $02, $02, $02    ; DOWN/RIGHT
-; 5 доп для flame +3C
+; 5 доп для flame +46
                                         .byte $02, $02, $02, $02, $02, $02  ; right
                                         .byte $42, $42, $42, $42, $42, $42  ; left
 
@@ -3561,6 +3583,7 @@ C - - - - - 0x01F816 07:F806: 9D 68 05  STA ram_кадр_анимации,X
 C - - - - - 0x01F813 07:F803: 9D A8 05  STA ram_пули_игрока_аттрибуты,X
                                         STA ram_пули_игрока_сумма_скорости_y_младш,X
                                         STA ram_пули_игрока_сумма_скорости_x_младш,X
+                                        STA ram_пули_игрока_хитбокс,X
 C - - - - - 0x01F81F 07:F80F: 60        RTS
 
 
@@ -3610,14 +3633,6 @@ C - - - - - 0x0011F5 00:91E5: 88        DEY
 C - - - - - 0x0011F6 00:91E6: D0 EA     BNE bra_91D2
 ; 01 атрибут
 C - - - - - 0x0011F8 00:91E8: FE 28 06  INC ram_пули_игрока_счетчик_жизни,X
-C - - - - - 0x0011FB 00:91EB: A5 5D     LDY ram_конфиг_уровня_вид
-C - - - - - 0x0011FD 00:91ED: F0 07     BEQ bra_91F6_вид_сбоку
-; вид сверху
-                                        LDA ram_пули_игрока_счетчик_жизни,X
-C - - - - - 0x001202 00:91F2: C9 1A     CMP #$1A
-C - - - - - 0x001204 00:91F4: B0 6B     BCC bra_91F6_вид_сбоку
-                                        JMP loc_9261    ; пуля врезалась?
-bra_91F6_вид_сбоку:
                                         LDA #$9F
                                         STA ram_пули_игрока_хитбокс,X
 

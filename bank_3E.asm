@@ -4483,19 +4483,12 @@ C - - - - - 0x01FB68 07:FB58: 8D 00 A0  STA $A000
 C - - - - - 0x01FB6B 07:FB5B: 58        CLI
 bra_FB5B:
                                         LDX #$0F
-bra_FB5C_infinite_loop:
+loc_FB5C_infinite_loop:
 C D 3 - - - 0x01FB6C 07:FB5C: E6 23     INC ram_рандом_байт
 C - - - - - 0x01FB6E 07:FB5E: A5 23     LDA ram_рандом_байт
 C - - - - - 0x01FB70 07:FB60: 65 1B     ADC ram_счетчик_кадров
 C - - - - - 0x01FB72 07:FB62: 85 23     STA ram_рандом_байт
-                                        DEC ram_рандом_байт_2,X
-                                        ADC ram_рандом_байт_2,X
-                                        SBC ram_рандом_байт
-                                        ADC ram_счетчик_кадров
-                                        STA ram_рандом_байт_2,X
-                                        DEX
-                                        BMI bra_FB5B
-                                        BPL bra_FB5C_infinite_loop  ; jmp
+C - - - - - 0x01FB74 07:FB64: 4C 5C FB  JMP loc_FB5C_infinite_loop
 
 
 
