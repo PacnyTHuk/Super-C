@@ -574,7 +574,7 @@ bra_A1EE_разрыв_пули:
                                         STA ram_пули_игрока_характеристики_прокачки,X   ; новой пули
                                         RTS
 bra_A1EF_flame:
-C - - - - - 0x0061FE 01:A1EE: 4C 5D FE  JMP loc_0x01FE6D
+C - - - - - 0x0061FE 01:A1EE: 4C 5D FE  JMP loc_0x01FE6D_разрыв_flame
 
 
 

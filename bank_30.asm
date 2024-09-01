@@ -8,7 +8,7 @@
 
 .export loc_0x000011
 .export loc_0x001191_обработка_пуль_игроков
-.export loc_0x001271
+.export sub_0x001271
 .export _off004_0x002B55_01_area_2
 .export _off005_0x002B71_01_area_2
 .export _off006_0x002F4F_01_area_2
@@ -3177,7 +3177,7 @@ ofs_036_8E60_06_grenade_launcher:
                                         LDA #00
                                         STA ram_пули_игрока_счетчики_движения,X
                                         STA ram_тип_пули_игрока,X
-                                        LDA #$03
+                                        LDA #$01
                                         STA ram_пули_игрока_счетчики_анимации,X
 
                                         LDY ram_0001    ; угол выстрела игрока
@@ -4130,6 +4130,8 @@ loc_9296_grenade_launcher:
                                         LDA ram_пули_игрока_характеристики_прокачки,X   ; главной пули
                                         ORA #$30    ; бит игнорировая стен и врагов
                                         STA ram_пули_игрока_характеристики_прокачки,X   ; новой пули
+                                        LDA #$12
+                                        STA ram_кадр_анимации,X
                                         RTS
 
 
@@ -4137,7 +4139,7 @@ loc_9296_grenade_launcher:
 ; con_weapon_F_charged
 bra_9297_flame:
 loc_9297_flame:
-loc_0x001271:
+sub_0x001271:
 
                                         STX ram_000D    ; save индекс главной пули
 
