@@ -4981,8 +4981,8 @@ C - - - - - 0x01FE62 07:FE52: 4C 81 91  JMP loc_0x001191_обработка_пу
 loc_0x01FE6D:
 C D 3 - - - 0x01FE6D 07:FE5D: A9 30     LDA #con_prg_bank + $30
 C - - - - - 0x01FE6F 07:FE5F: 20 6F FD  JSR sub_FD6F_prg_bankswitch___no_return
-C - - - - - 0x01FE72 07:FE62: 20 61 92  JSR sub_0x001271
-C - - - - - 0x01FE75 07:FE65: 4C 58 FD  JMP loc_FD58_prg_bankswitch___select_secondary_bank
+C - - - - - 0x01FE72 07:FE62: 20 61 92  JMP loc_0x001271
+;C - - - - - 0x01FE75 07:FE65: 4C 58 FD  JMP loc_FD58_prg_bankswitch___select_secondary_bank
 
 
 

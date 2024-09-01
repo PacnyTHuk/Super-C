@@ -3330,10 +3330,12 @@ _off030_8F8A_C8_flame_thrower_2:
 @end:
 
 
+_off028_8EB6_B8:
+                                        .byte $C4   ; 
 
 
 ; пусто для общих спрайтов US/EU:
-_off028_8EB6_B8:
+
 _off028_8EE3_B9:
 _off028_8F2E_C9:
 _off028_8F2E_CA:

@@ -648,7 +648,7 @@ tbl_8395_hi:
 
 ofs_017_839F_00:
 C - - J - - 0x0083AF 02:839F: A9 10     LDA #$10
-C - - - - - 0x0083B1 02:83A1: 20 CB AA  JSR sub_0x006ADB
+C - - - - - 0x0083B1 02:83A1: 20 CB AA  JSR sub_0x006ADB_прибавить_скорость_y
 C - - - - - 0x0083B4 02:83A4: BD 22 05  LDA ram_позиция_y_спрайта_врага_и_пуль,X
 C - - - - - 0x0083B7 02:83A7: 85 08     STA ram_0008
 C - - - - - 0x0083B9 02:83A9: 20 48 84  JSR sub_8448
@@ -879,7 +879,7 @@ ofs_038_37_84EE_02:
 C - - J - - 0x0084FE 02:84EE: A0 16     LDY #$16
 C - - - - - 0x008500 02:84F0: 20 FD AB  JSR sub_0x006C0D
 C - - - - - 0x008503 02:84F3: A9 20     LDA #$20
-C - - - - - 0x008505 02:84F5: 20 CB AA  JSR sub_0x006ADB
+C - - - - - 0x008505 02:84F5: 20 CB AA  JSR sub_0x006ADB_прибавить_скорость_y
 C - - - - - 0x008508 02:84F8: 20 D3 A6  JSR sub_0x0066E3
 C - - - - - 0x00850B 02:84FB: BD AE 06  LDA ram_скорость_объектов_y_старш,X
 C - - - - - 0x00850E 02:84FE: 30 0A     BMI bra_850A_RTS
@@ -1580,7 +1580,7 @@ bra_893C:
 C - - - - - 0x00894C 02:893C: A0 17     LDY #$17
 C - - - - - 0x00894E 02:893E: 20 FD AB  JSR sub_0x006C0D
 C - - - - - 0x008951 02:8941: A9 20     LDA #$20
-C - - - - - 0x008953 02:8943: 20 CB AA  JSR sub_0x006ADB
+C - - - - - 0x008953 02:8943: 20 CB AA  JSR sub_0x006ADB_прибавить_скорость_y
 C - - - - - 0x008956 02:8946: 4C D3 A6  JMP loc_0x0066E3
 
 
@@ -1629,7 +1629,7 @@ C - - - - - 0x008998 02:8988: A9 28     LDA #$28
 C - - - - - 0x00899A 02:898A: 20 0A A8  JSR sub_0x00681A
 C - - - - - 0x00899D 02:898D: D0 0B     BNE bra_899A
 C - - - - - 0x00899F 02:898F: A9 14     LDA #$14
-C - - - - - 0x0089A1 02:8991: 20 CB AA  JSR sub_0x006ADB
+C - - - - - 0x0089A1 02:8991: 20 CB AA  JSR sub_0x006ADB_прибавить_скорость_y
 C - - - - - 0x0089A4 02:8994: 20 D3 A7  JSR sub_0x0067E3_clear_spd_X
 C - - - - - 0x0089A7 02:8997: 4C EF 89  JMP loc_89EF
 bra_899A:
@@ -2001,7 +2001,7 @@ C - - - - - 0x008C03 02:8BF3: F0 41     BEQ bra_8C36
 C - - - - - 0x008C05 02:8BF5: A9 9E     LDA #$9E
 C - - - - - 0x008C07 02:8BF7: 9D 08 05  STA ram_кадр_врага_и_пуль,X
 C - - - - - 0x008C0A 02:8BFA: A9 18     LDA #$18
-C - - - - - 0x008C0C 02:8BFC: 20 CB AA  JSR sub_0x006ADB
+C - - - - - 0x008C0C 02:8BFC: 20 CB AA  JSR sub_0x006ADB_прибавить_скорость_y
 C - - - - - 0x008C0F 02:8BFF: A9 10     LDA #$10
 C - - - - - 0x008C11 02:8C01: BC CA 06  LDY ram_скорость_объектов_x_старш,X
 C - - - - - 0x008C14 02:8C04: 10 02     BPL bra_8C08
@@ -2481,7 +2481,7 @@ C - - - - - 0x008EE7 02:8ED7: 4C D7 A2  JMP loc_0x0062E7_increase_obj_state
 
 ofs_038_56_8EDA_03:
 C - - J - - 0x008EEA 02:8EDA: A9 10     LDA #$10
-C - - - - - 0x008EEC 02:8EDC: 20 CB AA  JSR sub_0x006ADB
+C - - - - - 0x008EEC 02:8EDC: 20 CB AA  JSR sub_0x006ADB_прибавить_скорость_y
 C - - - - - 0x008EEF 02:8EDF: 20 D3 A6  JSR sub_0x0066E3
 C - - - - - 0x008EF2 02:8EE2: BD 22 05  LDA ram_позиция_y_спрайта_врага_и_пуль,X
 C - - - - - 0x008EF5 02:8EE5: C9 4C     CMP #$4C
@@ -2567,7 +2567,7 @@ C - - - - - 0x008F7D 02:8F6D: 4C D7 A2  JMP loc_0x0062E7_increase_obj_state
 
 ofs_038_56_8F70_06:
 C - - J - - 0x008F80 02:8F70: A9 10     LDA #$10
-C - - - - - 0x008F82 02:8F72: 20 CB AA  JSR sub_0x006ADB
+C - - - - - 0x008F82 02:8F72: 20 CB AA  JSR sub_0x006ADB_прибавить_скорость_y
 C - - - - - 0x008F85 02:8F75: 20 D3 A6  JSR sub_0x0066E3
 C - - - - - 0x008F88 02:8F78: A9 0C     LDA #$0C
 C - - - - - 0x008F8A 02:8F7A: 20 0A A8  JSR sub_0x00681A
