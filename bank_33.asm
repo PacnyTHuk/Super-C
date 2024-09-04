@@ -549,7 +549,7 @@ C - - - - - 0x0061F7 01:A1E7: D0 D5     BCC bra_A1BE_RTS
                                         BNE bra_A1FO_RTS
 ; касание объектов
                                         LDA ram_тип_пули_игрока,X
-                                        BPL bra_A1EE_разрыв_пули
+                                        BMI bra_A1EE_разрыв_пули
 bra_A1EF:
                                         LDA #$03
                                         STA ram_пули_игрока_счетчик_жизни,X
@@ -1755,6 +1755,7 @@ sub_A6ED:
 sub_0x0066FD:   ; bzk bug? so far code somehow managed to always get C = 0 after 0x006C0D,
                     ; doesn't look safe to me, I'd put CLC here
 C - - - - - 0x0066FD 01:A6ED: BD 92 06  LDA ram_позиция_врага_x_младш,X
+                                        CLC
 C - - - - - 0x006700 01:A6F0: 7D BC 06  ADC ram_скорость_объектов_x_младш,X
 C - - - - - 0x006703 01:A6F3: 9D 92 06  STA ram_позиция_врага_x_младш,X
 C - - - - - 0x006706 01:A6F6: BD 3C 05  LDA ram_позиция_x_спрайта_врага_и_пуль,X

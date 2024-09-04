@@ -2201,17 +2201,17 @@ C - - - - - 0x010D06 04:8CF6: 18        CLC
 C - - - - - 0x010D07 04:8CF7: 69 01     ADC #$01
 C - - - - - 0x010D09 04:8CF9: 29 7F     AND #$7F
 C - - - - - 0x010D0B 04:8CFB: 9D 56 07  STA ram_scroll_X_obj,X
-C - - - - - 0x010D0E 04:8CFE: BC 56 07  LDY ram_scroll_X_obj,X
+                                        TAY
 C - - - - - 0x010D11 04:8D01: B9 87 8D  LDA tbl_8D87,Y
 C - - - - - 0x010D14 04:8D04: 18        CLC
-C - - - - - 0x010D15 04:8D05: 7D 64 07  ADC ram_0764_obj,X
+C - - - - - 0x010D15 04:8D05: 7D 64 07  ADC ram_0764_obj,X  ; Y позиция игрока
 C - - - - - 0x010D18 04:8D08: 9D 22 05  STA ram_позиция_y_спрайта_врага_и_пуль,X
 C - - - - - 0x010D1B 04:8D0B: 6A        ROR
 C - - - - - 0x010D1C 04:8D0C: 59 87 8D  EOR tbl_8D87,Y
 C - - - - - 0x010D1F 04:8D0F: 30 10     BMI bra_8D21
 C - - - - - 0x010D21 04:8D11: B9 A7 8D  LDA tbl_8DA7,Y
 C - - - - - 0x010D24 04:8D14: 18        CLC
-C - - - - - 0x010D25 04:8D15: 7D 72 07  ADC ram_0772_obj,X
+C - - - - - 0x010D25 04:8D15: 7D 72 07  ADC ram_0772_obj,X  ; X позиция игрока
 C - - - - - 0x010D28 04:8D18: 9D 3C 05  STA ram_позиция_x_спрайта_врага_и_пуль,X
 C - - - - - 0x010D2B 04:8D1B: 6A        ROR
 C - - - - - 0x010D2C 04:8D1C: 59 A7 8D  EOR tbl_8DA7,Y

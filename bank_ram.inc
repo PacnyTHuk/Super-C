@@ -2117,8 +2117,8 @@ ram_кд_пуль_оружия                      = $0530     ; 00 = default
 ; ram_2p_кд_пуль_flame                      = $0539 ; 
 ; ram_1p_кд_пуль_fire_ball                  = $053A ; 
 ; ram_2p_кд_пуль_fire_ball                  = $053B ; 
-; ram_1p_кд_пуль_grenade_launcher            = $053C ; 
-; ram_2p_кд_пуль_grenade_launcher            = $053D ; 
+; ram_1p_кд_пуль_grenade_launcher           = $053C ; 
+; ram_2p_кд_пуль_grenade_launcher           = $053D ; 
 ; ram_1p_кд_пуль_flame_thrower              = $053E ; 
 ; ram_2p_кд_пуль_flame_thrower              = $053F ; 
 
