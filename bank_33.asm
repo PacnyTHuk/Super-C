@@ -549,7 +549,7 @@ C - - - - - 0x0061F7 01:A1E7: D0 D5     BCC bra_A1BE_RTS
                                         BNE bra_A1FO_RTS
 ; касание объектов
                                         LDA ram_тип_пули_игрока,X
-                                        BMI bra_A1EE_разрыв_пули
+                                        BPL bra_A1EE_разрыв_пули
 bra_A1EF:
                                         LDA #$03
                                         STA ram_пули_игрока_счетчик_жизни,X

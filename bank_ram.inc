@@ -2470,7 +2470,7 @@ ram_режим_бессмертия                    = $7FE0 ; 00 = выкл, 
 ; ram_7FFC                                = $7FFC ; 
 ; ram_7FFD                                = $7FFD ; 
 ; ram_7FFE                                = $7FFE ; 
-; ram_7FFF                                = $7FFF ; 
+ ram_7FFF                                = $7FFF ; 
 
 
 

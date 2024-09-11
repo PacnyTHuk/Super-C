@@ -370,15 +370,18 @@ bra_E0EE_garbage_loop:
 C - - - - - 0x01E0FE 07:E0EE: 88        DEY
 C - - - - - 0x01E0FF 07:E0EF: D0 FD     BNE bra_E0EE_garbage_loop
 C - - - - - 0x01E101 07:E0F1: AD 02 20  LDA $2002
+
 C - - - - - 0x01E104 07:E0F4: A2 22     LDX #> $2240
-C - - - - - 0x01E106 07:E0F6: A9 40     LDA #< $2240
-C - - - - - 0x01E108 07:E0F8: A0 00     LDY #$00
 C - - - - - 0x01E10A 07:E0FA: 8E 06 20  STX $2006
+C - - - - - 0x01E106 07:E0F6: A9 40     LDA #< $2240
 C - - - - - 0x01E10D 07:E0FD: 8D 06 20  STA $2006
+C - - - - - 0x01E108 07:E0F8: A0 00     LDY #$00
 C - - - - - 0x01E110 07:E100: 8C 05 20  STY $2005
 C - - - - - 0x01E113 07:E103: 8C 05 20  STY $2005
+
 C - - - - - 0x01E116 07:E106: A9 A8     LDA #$A8
 C - - - - - 0x01E118 07:E108: 8D 00 20  STA $2000
+
 C - - - - - 0x01E11B 07:E10B: A9 38     LDA #con_chr_bank + $38
 C - - - - - 0x01E11D 07:E10D: A2 3A     LDX #con_chr_bank + $3A
 C - - - - - 0x01E11F 07:E10F: 20 EF FB  JSR sub_FBEF_запись_chr_банков_фона
@@ -595,24 +598,23 @@ C - - - - - 0x01E290 07:E280: 4C 5D E2  JMP loc_E25D
 
 
 ofs_040_08_E283_00:
-; 1путин опт
 C - - J - - 0x01E293 07:E283: A0 04     LDY #$06
 bra_E285_garbage_loop:
 C - - - - - 0x01E295 07:E285: 88        DEY
 C - - - - - 0x01E296 07:E286: D0 FD     BNE bra_E285_garbage_loop
 C - - - - - 0x01E298 07:E288: AD 02 20  LDA $2002
 C - - - - - 0x01E29B 07:E28B: A2 22     LDX #> $2280
-C - - - - - 0x01E29D 07:E28D: A9 80     LDA #< $2280
-C - - - - - 0x01E29F 07:E28F: AC F6 07  LDY ram_07F6
 C - - - - - 0x01E2A2 07:E292: 8E 06 20  STX $2006
+C - - - - - 0x01E29D 07:E28D: A9 80     LDA #< $2280
 C - - - - - 0x01E2A5 07:E295: 8D 06 20  STA $2006
+C - - - - - 0x01E29F 07:E28F: AC F6 07  LDY ram_07F6
 C - - - - - 0x01E2A8 07:E298: 8C 05 20  STY $2005
 C - - - - - 0x01E2AB 07:E29B: 8C 05 20  STY $2005
 C - - - - - 0x01E2AE 07:E29E: A0 00     LDY #$00
-C - - - - - 0x01E2B0 07:E2A0: A9 12     LDA #$12
-C - - - - - 0x01E2B2 07:E2A2: A2 10     LDX #$10
 C - - - - - 0x01E2B4 07:E2A4: 8C 00 80  STY $8000
+C - - - - - 0x01E2B0 07:E2A0: A9 12     LDA #$12
 C - - - - - 0x01E2B7 07:E2A7: 8D 01 80  STA $8001
+C - - - - - 0x01E2B2 07:E2A2: A2 10     LDX #$10
 C - - - - - 0x01E2BA 07:E2AA: C8        INY ; 01
 C - - - - - 0x01E2BB 07:E2AB: 8C 00 80  STY $8000
 C - - - - - 0x01E2BE 07:E2AE: 8E 01 80  STX $8001
@@ -4533,8 +4535,8 @@ C - - - - - 0x01FBAD 07:FB9D: C6 1D     DEC ram_001D
 C - - - - - 0x01FBAF 07:FB9F: 29 E7     AND #$E7
 bra_FBA1:
 C - - - - - 0x01FBB1 07:FBA1: 8D 01 20  STA $2001
-C - - - - - 0x01FBB4 07:FBA4: 20 04 FC  JSR sub_FC04
-C - - - - - 0x01FBB7 07:FBA7: 20 0F FF  JSR sub_FF0F
+C - - - - - 0x01FBB4 07:FBA4: 20 04 FC  JSR sub_FC04_запуск_irq
+C - - - - - 0x01FBB7 07:FBA7: 20 0F FF  JSR sub_FF0F_запуск_банков_графики
 C - - - - - 0x01FBBA 07:FBAA: A5 2B     LDA ram_002B
 C - - - - - 0x01FBBC 07:FBAC: F0 03     BEQ bra_FBB1
 C - - - - - 0x01FBBE 07:FBAE: 20 8F FC  JSR sub_FC8F_выключить_IRQ
@@ -4560,14 +4562,14 @@ C - - - - - 0x01FBDE 07:FBCE: AA        TAX
 C - - - - - 0x01FBDF 07:FBCF: 68        PLA
 C - - - - - 0x01FBE0 07:FBD0: 40        RTI
 bra_FBD1_second_nmi:
-C - - - - - 0x01FBE1 07:FBD1: 20 0F FF  JSR sub_FF0F
+C - - - - - 0x01FBE1 07:FBD1: 20 0F FF  JSR sub_FF0F_запуск_банков_графики
 C - - - - - 0x01FBE4 07:FBD4: A5 FE     LDA ram_for_2001
 C - - - - - 0x01FBE6 07:FBD6: A6 1D     LDX ram_001D
 C - - - - - 0x01FBE8 07:FBD8: F0 02     BEQ bra_FBDC
 C - - - - - 0x01FBEA 07:FBDA: 29 E7     AND #$E7
 bra_FBDC:
 C - - - - - 0x01FBEC 07:FBDC: 8D 01 20  STA $2001
-C - - - - - 0x01FBEF 07:FBDF: 20 04 FC  JSR sub_FC04
+C - - - - - 0x01FBEF 07:FBDF: 20 04 FC  JSR sub_FC04_запуск_irq
 C - - - - - 0x01FBF2 07:FBE2: A5 1C     LDA ram_001C
 C - - - - - 0x01FBF4 07:FBE4: 30 03     BMI bra_FBE9
 C - - - - - 0x01FBF6 07:FBE6: 20 C8 FD  JSR sub_FDC8
@@ -4592,7 +4594,7 @@ C - - - - - 0x01FC13 07:FC03: 60        RTS
 
 
 
-sub_FC04:
+sub_FC04_запуск_irq:
 C - - - - - 0x01FC14 07:FC04: AD 02 20  LDA $2002
 C - - - - - 0x01FC17 07:FC07: A0 00     LDY #$00
 C - - - - - 0x01FC19 07:FC09: 8C 05 20  STY $2005
@@ -4644,6 +4646,7 @@ C - - - - - 0x01FC84 07:FC74: A5 4A     LDA ram_004A
 C - - - - - 0x01FC86 07:FC76: 8D FB 07  STA ram_07FB
 C - - - - - 0x01FC89 07:FC79: A5 4B     LDA ram_004B
 C - - - - - 0x01FC8B 07:FC7B: 8D FC 07  STA ram_07FC
+bra_FC7E_RTS:
 C - - - - - 0x01FC8E 07:FC7E: 60        RTS
 
 
@@ -5134,7 +5137,7 @@ tbl_FF07_prg_bank:
 
 
 
-sub_FF0F:
+sub_FF0F_запуск_банков_графики:
 C - - - - - 0x01FF1F 07:FF0F: A5 26     LDA ram_for_A000
 C - - - - - 0x01FF21 07:FF11: 8D 00 A0  STA $A000
 C - - - - - 0x01FF24 07:FF14: A0 00     LDY #$00
