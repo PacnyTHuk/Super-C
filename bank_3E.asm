@@ -5257,8 +5257,8 @@ vec_Ресет:
                                         STX $5102   ; disable prg ram protection 1
                                         DEX ; 01
                                         STX $5103   ; disable prg ram protection 2
-                                        LDA #$00
-                                        STA $5204   ; disable irq
+                                        DEX ; 00
+                                        STX $5204   ; disable irq
                                         LDA #$44
                                         STA $5105   ; vertical mirroring
                                         LDA #con_prg_bank + $3E
