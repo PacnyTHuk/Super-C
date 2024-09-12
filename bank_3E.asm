@@ -405,7 +405,7 @@ C - - - - - 0x01E118 07:E108: 8D 00 20  STA $2000
 C - - - - - 0x01E11B 07:E10B: A9 38     LDA #con_chr_bank + $38
 C - - - - - 0x01E11D 07:E10D: A2 3A     LDX #con_chr_bank + $3A
 C - - - - - 0x01E11F 07:E10F: 20 EF FB  JSR sub_FBEF_запись_chr_банков_фона
-C - - - - - 0x01E122 07:E112: 4C 5D E2  JMP loc_E25D_выход_из_прерывания
+C - - - - - 0x01E122 07:E112: 4C 5D E2  JMP loc_FBCB_выход_из_прерывания
 
 
 
@@ -478,7 +478,7 @@ C - - - - - 0x01E194 07:E184: 8C 00 80  STY $5127
 C - - - - - 0x01E19C 07:E18C: AD F0 07  LDA ram_bg_bank_1
 C - - - - - 0x01E19F 07:E18F: AE F1 07  LDX ram_bg_bank_2
 C - - - - - 0x01E1A2 07:E192: 20 EF FB  JSR sub_FBEF_запись_chr_банков_фона
-C - - - - - 0x01E1A5 07:E195: 4C 5D E2  JMP loc_E25D_выход_из_прерывания
+C - - - - - 0x01E1A5 07:E195: 4C 5D E2  JMP loc_FBCB_выход_из_прерывания
 
 
 
@@ -572,7 +572,7 @@ bra_E209_garbage_loop:
 C - - - - - 0x01E219 07:E209: 88        DEY
 C - - - - - 0x01E21A 07:E20A: D0 FD     BNE bra_E209_garbage_loop
 C - - - - - 0x01E21C 07:E20C: 20 EC FB  JSR sub_FBEC_запись_chr_банков_фона_42
-C - - - - - 0x01E21F 07:E20F: 4C 5D E2  JMP loc_E25D_выход_из_прерывания
+C - - - - - 0x01E21F 07:E20F: 4C 5D E2  JMP loc_FBCB_выход_из_прерывания
 
 
 
@@ -629,8 +629,6 @@ C - - - - - 0x01E263 07:E253: 8D 05 20  STA $2005
 C - - - - - 0x01E266 07:E256: A9 08     LDA #con_chr_bank + $08
 C - - - - - 0x01E268 07:E258: A2 0A     LDX #con_chr_bank + $0A
 C - - - - - 0x01E26A 07:E25A: 20 EF FB  JSR sub_FBEF_запись_chr_банков_фона
-loc_E25D_выход_из_прерывания:
-; bzk optimize
 C - - - - - 0x01E270 07:E260: 4C CB FB  JMP loc_FBCB_выход_из_прерывания
 
 
@@ -648,7 +646,7 @@ C - - - - - 0x01E284 07:E274: 8E 06 20  STX $2006
 C - - - - - 0x01E287 07:E277: 8D 06 20  STA $2006
 C - - - - - 0x01E28A 07:E27A: 8C 05 20  STY $2005
 C - - - - - 0x01E28D 07:E27D: 8C 05 20  STY $2005
-C - - - - - 0x01E290 07:E280: 4C 5D E2  JMP loc_E25D_выход_из_прерывания
+C - - - - - 0x01E290 07:E280: 4C 5D E2  JMP loc_FBCB_выход_из_прерывания
 
 
 
@@ -673,7 +671,7 @@ C - - - - - 0x01E2B2 07:E2A2: A2 10     LDY #con_chr_bank + $10
                                         STY $512A
 C - - - - - 0x01E2BA 07:E2AA: C8        INY
 C - - - - - 0x01E2BB 07:E2AB: 8C 00 80  STY $512B
-C - - - - - 0x01E2C6 07:E2B6: 4C 5D E2  JMP loc_E25D_выход_из_прерывания
+C - - - - - 0x01E2C6 07:E2B6: 4C 5D E2  JMP loc_FBCB_выход_из_прерывания
 
 
 
@@ -686,7 +684,7 @@ C - - - - - 0x01E2CE 07:E2BE: AD 02 20  LDA $2002
 C - - - - - 0x01E2D1 07:E2C1: A9 30     LDA #con_chr_bank + $30
 C - - - - - 0x01E2D3 07:E2C3: A2 2E     LDX #con_chr_bank + $2E
 C - - - - - 0x01E2D5 07:E2C5: 20 EF FB  JSR sub_FBEF_запись_chr_банков_фона
-C - - - - - 0x01E2D8 07:E2C8: 4C 5D E2  JMP loc_E25D_выход_из_прерывания
+C - - - - - 0x01E2D8 07:E2C8: 4C 5D E2  JMP loc_FBCB_выход_из_прерывания
 
 
 
@@ -706,7 +704,7 @@ C - - - - - 0x01E2F2 07:E2E2: 8C 05 20  STY $2005
 C - - - - - 0x01E2F5 07:E2E5: A9 20     LDA #con_chr_bank + $20
 C - - - - - 0x01E2F7 07:E2E7: A2 22     LDX #con_chr_bank + $22
 C - - - - - 0x01E2F9 07:E2E9: 20 EF FB  JSR sub_FBEF_запись_chr_банков_фона
-C - - - - - 0x01E2FC 07:E2EC: 4C 5D E2  JMP loc_E25D_выход_из_прерывания
+C - - - - - 0x01E2FC 07:E2EC: 4C 5D E2  JMP loc_FBCB_выход_из_прерывания
 
 
 
@@ -763,7 +761,7 @@ C - - - - - 0x01E33F 07:E32F: 8E 06 20  STX $2006
 C - - - - - 0x01E342 07:E332: 8D 06 20  STA $2006
 C - - - - - 0x01E345 07:E335: 8D 05 20  STA $2005
 C - - - - - 0x01E348 07:E338: 8D 05 20  STA $2005
-C - - - - - 0x01E34B 07:E33B: 4C 5D E2  JMP loc_E25D_выход_из_прерывания
+C - - - - - 0x01E34B 07:E33B: 4C 5D E2  JMP loc_FBCB_выход_из_прерывания
 
 
 
@@ -832,7 +830,7 @@ C - - - - - 0x01E3A5 07:E395: 8E 06 20  STX $2006
 C - - - - - 0x01E3A8 07:E398: 8D 06 20  STA $2006
 C - - - - - 0x01E3AB 07:E39B: 8C 05 20  STY $2005
 C - - - - - 0x01E3AE 07:E39E: 8C 05 20  STY $2005
-C - - - - - 0x01E3B1 07:E3A1: 4C 5D E2  JMP loc_E25D_выход_из_прерывания
+C - - - - - 0x01E3B1 07:E3A1: 4C 5D E2  JMP loc_FBCB_выход_из_прерывания
 
 
 
@@ -852,7 +850,7 @@ bra_E3B0_garbage_loop:
 C - - - - - 0x01E3C0 07:E3B0: 88        DEY
 C - - - - - 0x01E3C1 07:E3B1: D0 FD     BNE bra_E3B0_garbage_loop
 C - - - - - 0x01E3C3 07:E3B3: 20 EF FB  JSR sub_FBEF_запись_chr_банков_фона
-C - - - - - 0x01E3C6 07:E3B6: 4C 5D E2  JMP loc_E25D_выход_из_прерывания
+C - - - - - 0x01E3C6 07:E3B6: 4C 5D E2  JMP loc_FBCB_выход_из_прерывания
 
 
 sub_E3B9:
