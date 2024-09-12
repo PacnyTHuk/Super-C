@@ -259,7 +259,28 @@ C - - - - - 0x01E0A0 07:E090: 85 29     STA ram_0029
 C - - - - - 0x01E0A2 07:E092: C8        INY
 C - - - - - 0x01E0A3 07:E093: B1 2D     LDA (ram_002D),Y
 C - - - - - 0x01E0A5 07:E095: 85 2A     STA ram_002A
+                                        CLC
 C - - - - - 0x01E0A7 07:E097: 6C 29 00  JMP (ram_0029)
+
+
+
+tbl_E098_корректировка_начальной_сканлинии:
+                                        .byte $00   ; 00 placeholder
+                                        .byte $FF   ; 01 area_1_boss
+                                        .byte $01   ; 02 area_4_elevator
+                                        .byte $FF   ; 03 credits
+                                        .byte $00   ; 04 unused
+                                        .byte $00   ; 05 area_4_boss
+                                        .byte $00   ; 06 area_8_ceiling
+                                        .byte $00   ; 07 unused
+                                        .byte $FF   ; 08 area_3_boss
+                                        .byte $00   ; 09 unused
+                                        .byte $00   ; 0A area_7_boss
+                                        .byte $00   ; 0B area_5_boss
+                                        .byte $00   ; 0C area_2_boss
+                                        .byte $FF   ; 0D area_8_boss
+                                        .byte $00   ; 0E area_6_change_color
+                                        .byte $00   ; 0F area_6_boss
 
 
 
@@ -364,7 +385,7 @@ _off000_E0EA_0F_area_6_boss:
 
 
 ofs_040_01_E0EC_00:
-C - - J - - 0x01E0FC 07:E0EC: A0 01     LDY #$01
+C - - J - - 0x01E0FC 07:E0EC: A0 01     LDY #$05
 bra_E0EE_garbage_loop:
 C - - - - - 0x01E0FE 07:E0EE: 88        DEY
 C - - - - - 0x01E0FF 07:E0EF: D0 FD     BNE bra_E0EE_garbage_loop
@@ -389,11 +410,14 @@ C - - - - - 0x01E122 07:E112: 4C 5D E2  JMP loc_E25D
 
 
 ofs_040_02_E115_00:
+; C = 0
 C - - J - - 0x01E125 07:E115: AD F9 07  LDA ram_07F9
+                                        ADC ram_prev_5203
+                                        STA ram_prev_5203
 C - - - - - 0x01E128 07:E118: 8D 00 C0  STA $5203
                                         LDA #$80
                                         STA $5204
-C - - - - - 0x01E12B 07:E11B: A0 1E     LDY #$1E
+C - - - - - 0x01E12B 07:E11B: A0 1E     LDY #$01
 bra_E11D_garbage_loop:
 C - - - - - 0x01E12D 07:E11D: 88        DEY
 C - - - - - 0x01E12E 07:E11E: D0 FD     BNE bra_E11D_garbage_loop
@@ -415,11 +439,15 @@ C - - - - - 0x01E158 07:E148: 4C 36 E2  JMP loc_E236
 
 
 ofs_040_02_E14B_01:
+; C = 0
 C - - J - - 0x01E15B 07:E14B: AD FA 07  LDA ram_07FA
+                                        ADC ram_prev_5203
+                                        ADC #$01
+                                       ;STA ram_prev_5203
 C - - - - - 0x01E15E 07:E14E: 8D 00 C0  STA $5203
                                         LDA #$80
                                         STA $5204
-C - - - - - 0x01E161 07:E151: A0 14     LDY #$14
+C - - - - - 0x01E161 07:E151: A0 14     LDY #$0E
 bra_E153_garbage_loop:
 C - - - - - 0x01E163 07:E153: 88        DEY
 C - - - - - 0x01E164 07:E154: D0 FD     BNE bra_E153_garbage_loop
@@ -455,7 +483,10 @@ C - - - - - 0x01E1A5 07:E195: 4C 5D E2  JMP loc_E25D
 
 
 ofs_040_03_E198_00:
+; C = 0
 C - - J - - 0x01E1A8 07:E198: A9 20     LDA #$20
+                                        ADC ram_prev_5203
+                                        STA ram_prev_5203
 C - - - - - 0x01E1AA 07:E19A: 8D 00 C0  STA $5203
                                         LDA #$80
                                         STA $5204
@@ -471,7 +502,10 @@ C - - - - - 0x01E1BA 07:E1AA: 4C 36 E2  JMP loc_E236
 
 
 ofs_040_03_E1AD_01:
+; C = 0
 C - - J - - 0x01E1BD 07:E1AD: AD F9 07  LDA ram_07F9
+                                        ADC ram_prev_5203
+                                        STA ram_prev_5203
 C - - - - - 0x01E1C0 07:E1B0: 8D 00 C0  STA $5203
                                         LDA #$80
                                         STA $5204
@@ -487,7 +521,10 @@ C - - - - - 0x01E1D0 07:E1C0: 4C 36 E2  JMP loc_E236
 
 
 ofs_040_03_E1C3_02:
+; C = 0
 C - - J - - 0x01E1D3 07:E1C3: AD FA 07  LDA ram_07FA
+                                        ADC ram_prev_5203
+                                        STA ram_prev_5203
 C - - - - - 0x01E1D6 07:E1C6: 8D 00 C0  STA $5203
                                         LDA #$80
                                         STA $5204
@@ -511,7 +548,10 @@ C - - - - - 0x01E1FE 07:E1EE: 4C 36 E2  JMP loc_E236
 
 
 ofs_040_03_E1F1_03:
+; C = 0
 C - - J - - 0x01E201 07:E1F1: A9 40     LDA #$40
+                                        ADC ram_prev_5203
+                                       ;STA ram_prev_5203
 C - - - - - 0x01E203 07:E1F3: 8D 00 C0  STA $5203
                                         LDA #$80
                                         STA $5204
@@ -537,7 +577,10 @@ C - - - - - 0x01E21F 07:E20F: 4C 5D E2  JMP loc_E25D
 
 
 ofs_040_05_E212_00:
+; C = 0
 C - - J - - 0x01E222 07:E212: AD F9 07  LDA ram_07F9
+                                        ADC ram_prev_5203
+                                        STA ram_prev_5203
 C - - - - - 0x01E225 07:E215: 8D 00 C0  STA $5203
                                         LDA #$80
                                         STA $5204
@@ -561,7 +604,11 @@ C - - - - - 0x01E248 07:E238: 4C CB FB  JMP loc_FBCB
 
 
 ofs_040_05_E23B_01:
+; C = 0
 C - - J - - 0x01E24B 07:E23B: AD FA 07  LDA ram_07FA
+                                        ADC ram_prev_5203
+                                        ADC #$02
+                                       ;STA ram_prev_5203
 C - - - - - 0x01E24E 07:E23E: 8D 00 C0  STA $5203
                                         LDA #$80
                                         STA $5204
@@ -570,7 +617,7 @@ C - - - - - 0x01E251 07:E241: 4C 36 E2  JMP loc_E236
 
 
 ofs_040_05_E244_02:
-C - - J - - 0x01E254 07:E244: A0 09     LDY #$09
+C - - J - - 0x01E254 07:E244: A0 09     LDY #$01
 bra_E246_garbage_loop:
 C - - - - - 0x01E256 07:E246: 88        DEY
 C - - - - - 0x01E257 07:E247: D0 FD     BNE bra_E246_garbage_loop
@@ -606,7 +653,7 @@ C - - - - - 0x01E290 07:E280: 4C 5D E2  JMP loc_E25D
 
 
 ofs_040_08_E283_00:
-C - - J - - 0x01E293 07:E283: A0 04     LDY #$06
+C - - J - - 0x01E293 07:E283: A0 04     LDY #$03
 bra_E285_garbage_loop:
 C - - - - - 0x01E295 07:E285: 88        DEY
 C - - - - - 0x01E296 07:E286: D0 FD     BNE bra_E285_garbage_loop
@@ -664,7 +711,10 @@ C - - - - - 0x01E2FC 07:E2EC: 4C 5D E2  JMP loc_E25D
 
 
 ofs_040_0C_E2EF_00:
+; C = 0
 C - - J - - 0x01E2FF 07:E2EF: AD F9 07  LDA ram_07F9
+                                        ADC ram_prev_5203
+                                        STA ram_prev_5203
 C - - - - - 0x01E302 07:E2F2: 8D 00 C0  STA $5203
                                         LDA #$80
                                         STA $5204
@@ -685,7 +735,11 @@ C - - - - - 0x01E322 07:E312: 4C 36 E2  JMP loc_E236
 
 
 ofs_040_0C_E315_01:
+; C = 0
 C - - J - - 0x01E325 07:E315: AD FA 07  LDA ram_07FA
+                                        ADC ram_prev_5203
+                                        ADC #$02
+                                       ;STA ram_prev_5203
 C - - - - - 0x01E328 07:E318: 8D 00 C0  STA $5203
                                         LDA #$80
                                         STA $5204
@@ -714,7 +768,11 @@ C - - - - - 0x01E34B 07:E33B: 4C 5D E2  JMP loc_E25D
 
 
 ofs_040_0D_E33E_00:
+; C = 0
 C - - J - - 0x01E34E 07:E33E: AD F9 07  LDA ram_07F9
+                                        ADC ram_prev_5203
+                                        ADC #$01
+                                        STA ram_prev_5203
 C - - - - - 0x01E351 07:E341: 8D 00 C0  STA $5203
                                         LDA #$80
                                         STA $5204
@@ -738,7 +796,11 @@ C - - - - - 0x01E378 07:E368: 4C 36 E2  JMP loc_E236
 
 
 ofs_040_0D_E36B_01:
+; C = 0
 C - - J - - 0x01E37B 07:E36B: AD FA 07  LDA ram_07FA
+                                        ADC ram_prev_5203
+                                        ADC #$01
+                                       ;STA ram_prev_5203
 C - - - - - 0x01E37E 07:E36E: 8D 00 C0  STA $5203
                                         LDA #$80
                                         STA $5204
@@ -751,7 +813,7 @@ C - - - - - 0x01E386 07:E376: 4C 36 E2  JMP loc_E236
 
 
 ofs_040_0D_E379_02:
-C - - J - - 0x01E389 07:E379: A0 07     LDY #$07
+C - - J - - 0x01E389 07:E379: A0 07     LDY #$03
 bra_E37B_garbage_loop:
 C - - - - - 0x01E38B 07:E37B: 88        DEY
 C - - - - - 0x01E38C 07:E37C: D0 FD     BNE bra_E37B_garbage_loop
@@ -785,7 +847,7 @@ ofs_040_0F_E3AA_00:
 C - - J - - 0x01E3BA 07:E3AA: A9 50     LDA #con_chr_bank + $50
 C - - - - - 0x01E3BC 07:E3AC: A2 52     LDX #con_chr_bank + $52
 bra_E3AE:
-C - - - - - 0x01E3BE 07:E3AE: A0 05     LDY #$05
+C - - - - - 0x01E3BE 07:E3AE: A0 05     LDY #$01
 bra_E3B0_garbage_loop:
 C - - - - - 0x01E3C0 07:E3B0: 88        DEY
 C - - - - - 0x01E3C1 07:E3B1: D0 FD     BNE bra_E3B0_garbage_loop
@@ -4624,9 +4686,12 @@ C - - - - - 0x01FC44 07:FC34: 8C 06 20  STY $2006
 C - - - - - 0x01FC47 07:FC37: 8C 06 20  STY $2006
                                         LDA #$00
                                         STA $5204
-C - - - - - 0x01FC4A 07:FC3A: A6 27     LDA ram_irq_handler_hi
+C - - - - - 0x01FC4A 07:FC3A: A6 27     LDY ram_irq_handler_hi
 C - - - - - 0x01FC4C 07:FC3C: F0 02     BEQ bra_FC4B
 C - - - - - 0x01FC50 07:FC40: A5 45     LDA ram_номер_сканлинии
+                                        CLC
+                                        ADC tbl_E098_корректировка_начальной_сканлинии,Y
+                                        STA ram_prev_5203
 C - - - - - 0x01FC52 07:FC42: 8D 00 C0  STA $5203
                                         LDA #$80
 C - - - - - 0x01FC58 07:FC48: 9D 00 E0  STA $5204
