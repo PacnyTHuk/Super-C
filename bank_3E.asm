@@ -5212,6 +5212,14 @@ C - - - - - 0x01FF51 07:FF41: AD F4 07  LDA ram_spr_bank_3
 C - - - - - 0x01FF54 07:FF44: 8D 01 80  STA $5126
 C - - - - - 0x01FF5B 07:FF4B: AD F5 07  LDA ram_spr_bank_4
 C - - - - - 0x01FF5E 07:FF4E: 8D 01 80  STA $5127
+                                        LDY #con_chr_bank + $FC
+                                        STY $5120
+                                        INY ; con_chr_bank + $FD
+                                        STY $5121
+                                        INY ; con_chr_bank + $FE
+                                        STY $5122
+                                        INY ; con_chr_bank + $FF
+                                        STY $5123
 C - - - - - 0x01FF61 07:FF51: 60        RTS
 
 
