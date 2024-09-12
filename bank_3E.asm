@@ -4421,10 +4421,8 @@ bra_FAC9_RTS:
 C - - - - - 0x01FAD9 07:FAC9: 60        RTS
 
 
-; 1путин: подключение батарейки
+
 loc_FACA_Ресет:
-                                        LDA #$80
-                                        STA $A001
 C - - - - - 0x01FADA 07:FACA: D8        CLD
 C - - - - - 0x01FADB 07:FACB: 78        SEI
 C - - - - - 0x01FADC 07:FACC: A2 FF     LDX #$FF
