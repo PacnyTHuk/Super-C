@@ -1200,7 +1200,7 @@ C - - - - - 0x00232B 00:A31B: 99 80 00  STA $00 + $80,Y
 C - - - - - 0x00232E 00:A31E: 88        DEY
 C - - - - - 0x00232F 00:A31F: 10 FA     BPL bra_A31B_loop
 C - - - - - 0x002331 00:A321: A9 00     LDA #con_mirroring_V
-C - - - - - 0x002333 00:A323: 85 26     STA ram_for_A000
+C - - - - - 0x002333 00:A323: 85 26     STA ram_mirroring
 C - - - - - 0x002335 00:A325: A9 A9     LDA #$A9
 C - - - - - 0x002337 00:A327: 85 FF     STA ram_for_2000
 C - - - - - 0x002339 00:A329: 85 85     STA ram_0085_for_2006

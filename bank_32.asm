@@ -941,7 +941,7 @@ C - - - - - 0x00523E 01:922E: A5 60     LDA ram_0060_unk
 C - - - - - 0x005240 01:9230: 05 70     ORA ram_0070
 C - - - - - 0x005242 01:9232: D0 30     BNE bra_9264_RTS
 C - - - - - 0x005244 01:9234: A9 01     LDA #con_mirroring_H
-C - - - - - 0x005246 01:9236: 85 26     STA ram_for_A000
+C - - - - - 0x005246 01:9236: 85 26     STA ram_mirroring
 C - - - - - 0x005248 01:9238: A9 9C     LDA #$9C
 C - - - - - 0x00524A 01:923A: 9D 22 05  STA ram_позиция_y_спрайта_врага_и_пуль,X
 C - - - - - 0x00524D 01:923D: A9 60     LDA #$60
@@ -2280,7 +2280,7 @@ C - - - - - 0x005A2A 01:9A1A: 9D 8E 07  STA ram_позиция_объектов_
 C - - - - - 0x005A2D 01:9A1D: A9 00     LDA #$00
 C - - - - - 0x005A2F 01:9A1F: 9D 9C 07  STA ram_позиция_объектов_x_старш,X
 C - - - - - 0x005A32 01:9A22: A9 01     LDA #con_mirroring_H
-C - - - - - 0x005A34 01:9A24: 85 26     STA ram_for_A000
+C - - - - - 0x005A34 01:9A24: 85 26     STA ram_mirroring
 C - - - - - 0x005A36 01:9A26: A9 00     LDA #$00
 C - - - - - 0x005A38 01:9A28: 85 FC     STA ram_scroll_Y
 C - - - - - 0x005A3A 01:9A2A: 85 F9     STA ram_00F9

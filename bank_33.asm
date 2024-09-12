@@ -5233,7 +5233,7 @@ C - - - - - 0x007B1C 01:BB0C: 85 04     STA ram_0004
 C - - - - - 0x007B1E 01:BB0E: 98        TYA
 C - - - - - 0x007B1F 01:BB0F: 45 05     EOR ram_0005
 C - - - - - 0x007B21 01:BB11: 4A        LSR
-C - - - - - 0x007B22 01:BB12: A4 26     LDY ram_for_A000
+C - - - - - 0x007B22 01:BB12: A4 26     LDY ram_mirroring
 C - - - - - 0x007B24 01:BB14: F0 01     BEQ bra_BB17    ; if con_mirroring_V
 ; if con_mirroring_H
 C - - - - - 0x007B26 01:BB16: 4A        LSR
@@ -5347,7 +5347,7 @@ C - - - - - 0x007BB3 01:BBA3: 98        TYA
 C - - - - - 0x007BB4 01:BBA4: B0 0A     BCS bra_BBB0
 ; C = 0
 C - - - - - 0x007BB6 01:BBA6: 69 70     ADC #$70
-C - - - - - 0x007BB8 01:BBA8: A4 26     LDY ram_for_A000
+C - - - - - 0x007BB8 01:BBA8: A4 26     LDY ram_mirroring
 C - - - - - 0x007BBA 01:BBAA: F0 02     BEQ bra_BBAE    ; if con_mirroring_V
 ; if con_mirroring_H
 C - - - - - 0x007BBC 01:BBAC: 49 80     EOR #$80

@@ -706,7 +706,7 @@ C - - - - - 0x001C08 00:9BF8: 9D D0 07  STA ram_07D0,X
 C - - - - - 0x001C0B 00:9BFB: CA        DEX
 C - - - - - 0x001C0C 00:9BFC: 10 FA     BPL bra_9BF8_loop
 ; A = 00
-C - - - - - 0x001C0E 00:9BFE: 85 26     STA ram_for_A000    ; con_mirroring_V
+C - - - - - 0x001C0E 00:9BFE: 85 26     STA ram_mirroring    ; con_mirroring_V
 C - - - - - 0x001C10 00:9C00: 85 FD     STA ram_scroll_X
 C - - - - - 0x001C12 00:9C02: 85 7A     STA ram_007A
 C - - - - - 0x001C14 00:9C04: 85 FC     STA ram_scroll_Y
@@ -1871,7 +1871,7 @@ C - - - - - 0x0023ED 00:A3DD: A9 03     LDA #con_irq_credits
 C - - - - - 0x0023EF 00:A3DF: 85 27     STA ram_irq_handler_hi
 C - - - - - 0x0023F1 00:A3E1: 20 03 A6  JSR sub_A603
 C - - - - - 0x0023F4 00:A3E4: A9 01     LDA #con_mirroring_H
-C - - - - - 0x0023F6 00:A3E6: 85 26     STA ram_for_A000
+C - - - - - 0x0023F6 00:A3E6: 85 26     STA ram_mirroring
 C - - - - - 0x0023F8 00:A3E8: A9 02     LDA #$02
 loc_A3EA:
 C D 1 - - - 0x0023FA 00:A3EA: 85 70     STA ram_0070

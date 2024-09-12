@@ -228,7 +228,7 @@ C - - - - - 0x004589 01:8579: 10 DA     BPL bra_8555_loop
 bra_857B:
 C - - - - - 0x00458B 01:857B: 20 CE A9  JSR sub_0x0069DE
 C - - - - - 0x00458E 01:857E: A9 01     LDA #con_mirroring_H
-C - - - - - 0x004590 01:8580: 85 26     STA ram_for_A000
+C - - - - - 0x004590 01:8580: 85 26     STA ram_mirroring
 C - - - - - 0x004592 01:8582: A9 01     LDA #con_irq_area_1_boss
 C - - - - - 0x004594 01:8584: 85 27     STA ram_irq_handler_hi
 C - - - - - 0x004596 01:8586: A9 A2     LDA #$A2

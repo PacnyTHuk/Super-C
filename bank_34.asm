@@ -522,7 +522,7 @@ C - - - - - 0x0082E9 02:82D9: 20 94 AA  JSR sub_0x006AA4_save_reg_values
 C - - - - - 0x0082EC 02:82DC: A9 80     LDA #$80
 C - - - - - 0x0082EE 02:82DE: 85 85     STA ram_0085_for_2006
 C - - - - - 0x0082F0 02:82E0: A9 01     LDA #con_mirroring_H
-C - - - - - 0x0082F2 02:82E2: 85 26     STA ram_for_A000
+C - - - - - 0x0082F2 02:82E2: 85 26     STA ram_mirroring
 C - - - - - 0x0082F4 02:82E4: A9 06     LDA #con_irq_area_8_ceiling
 C - - - - - 0x0082F6 02:82E6: 85 27     STA ram_irq_handler_hi
 C - - - - - 0x0082F8 02:82E8: A9 B9     LDA #$B9
@@ -1086,7 +1086,7 @@ C - - - - - 0x00863E 02:862E: BD 1E 07  LDA ram_obj_flags,X
 C - - - - - 0x008641 02:8631: C9 14     CMP #$14
 C - - - - - 0x008643 02:8633: 90 AE     BCC bra_85E3_RTS
 C - - - - - 0x008645 02:8635: A9 01     LDA #con_mirroring_H
-C - - - - - 0x008647 02:8637: 85 26     STA ram_for_A000
+C - - - - - 0x008647 02:8637: 85 26     STA ram_mirroring
 C - - - - - 0x008649 02:8639: A9 C8     LDA #$C8
 C - - - - - 0x00864B 02:863B: 9D 3C 05  STA ram_позиция_x_спрайта_врага_и_пуль,X
 C - - - - - 0x00864E 02:863E: A9 58     LDA #$58
