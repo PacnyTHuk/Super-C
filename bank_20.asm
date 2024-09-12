@@ -395,7 +395,7 @@ tbl_EAC8_chr_banks:
 - D 3 - - - 0x01EADD 07:EACD: 47        .byte con_chr_bank + $47   ; spr
 ; EU
                                         .byte con_chr_bank + $B0   ; bg на боссе $AD
-                                        .byte con_chr_bank + $AB   ; bg на боссе $AF
+                                        .byte con_chr_bank + $AA   ; bg на боссе $AF
                                         .byte con_chr_bank + $94   ; spr
                                         .byte con_chr_bank + $95   ; spr
                                         .byte con_chr_bank + $96   ; spr

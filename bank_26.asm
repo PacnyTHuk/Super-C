@@ -266,9 +266,9 @@ C - - - - - 0x0045D5 01:85C5: 4C D7 A2  JMP loc_0x0062E7_increase_obj_state
 
 tbl_85C6_bg_bank:
                                         .byte con_chr_bank + $04    ; 00 US
-                                        .byte con_chr_bank + $AD    ; 01 EU
+                                        .byte con_chr_bank + $AC    ; 01 EU
                                         .byte con_chr_bank + $06    ; 00 US
-                                        .byte con_chr_bank + $AF    ; 01 EU
+                                        .byte con_chr_bank + $AE    ; 01 EU
 
 tbl_85C7_color:
                                         .byte con_F97C_colors + $00 * $04   ; 00 US
