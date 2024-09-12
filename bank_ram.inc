@@ -119,8 +119,12 @@ ram_начальный_индекс_спрайтов           = $0024 ; отк�
 
 
 
-; a copy of register values
-ram_for_8000                            = $0025 ; 01E153 01E2C1 01FB03 01FC0E 01FD86 01FD8F 01FDB5 
+; free address
+; ram_0025                              = $0025 ; 01E153 01E2C1 01FB03 01FC0E 01FD86 01FD8F 01FDB5 
+
+
+
+; a copy of register value
 ram_for_A000                            = $0026 ; 001C0E 002333 0023F6 004590 005246 005A34 007B22 007BB8 0082F2 008647 0104A1 014783 014906 01F19C 01FB03 01FF1F 
 
 
@@ -2239,8 +2243,8 @@ ram_cheat_flag                          = $07EC ; 0022C5 01E5B4 01FB3A
 
 
 
-; a copy of X during prg bankswitch
-ram_save_X                              = $07ED ; 01FB3A 01FD81 01FD97 
+; free address
+; ram_07ED                              = $07ED ; 01FB3A 01FD81 01FD97 
 
 
 

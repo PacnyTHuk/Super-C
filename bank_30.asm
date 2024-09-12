@@ -2896,8 +2896,6 @@ bra_8DB3:
                                         STA ram_0003    ; позиция_x_спрайта
 
 ; смена 2й половины банка
-                                        LDA #$07
-                                        STA $8000
                                         LDY ram_0006    ; индекс оружия текущего игрока
                                         LDA ram_скорость_пуль_оружия,Y
 ; сохранить текущий банк
@@ -2913,7 +2911,7 @@ bra_8DB3:
 bra_8DB4:
                                         AND #$07
 bra_8DB5:
-                                        STY $8001
+                                        STY $5115
                                         ASL
                                         ASL
                                         ORA #$A0    ; старший байт
@@ -2931,10 +2929,8 @@ C - - - - - 0x000DDF 00:8DCF: E6 00     INC ram_0000    ; номер пули д
 C - - - - - 0x000DE1 00:8DD1: D9 F7 8D  DEC ram_000C    ; кол-во разрешенных выстрелов
 C - - - - - 0x000DE4 00:8DD4: 90 E9     BNE bra_8DBF_loop
 ; возвращаем банк
-                                        LDA #$07
-                                        STA $8000
                                         LDA ram_prg_bank + $01
-                                        STA $8001
+                                        STA $5115
                                         LDA tbl_8F03_звук_пуль,Y
                                         JMP loc_0x01FDEE_play_sound ; exit
 

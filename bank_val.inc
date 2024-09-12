@@ -9,11 +9,11 @@
 
 ; MISC
 con_режим_читера                        = $01 ; 00 = выключить читы, остальные = включить читы
-con_prg_bank                            = $00 ; 
+con_prg_bank                            = $80 ; 
 con_chr_bank                            = $00 ; 
 con_F97C_colors                         = $00 ; for 0x01F98C
-con_mirroring_V                         = $00 ; vertical
-con_mirroring_H                         = $01 ; horisontal
+con_mirroring_V                         = $00 ; vertical (44)
+con_mirroring_H                         = $01 ; horisontal (50)
 con__hp_F0                              = $F0 ; unkillable object
 con__hp_F1                              = $F1 ; unkillable object
 
