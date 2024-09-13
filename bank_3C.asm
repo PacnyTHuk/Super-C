@@ -1474,7 +1474,6 @@ C - - - - - 0x0189E6 06:89D6: 4C B5 84  JMP loc_84B5
 
 
 
-loc_89D9:
 ofs_042_89D9_E0:
 C - - J - - 0x0189E9 06:89D9: 85 E2     STA ram_00E2
 C - - - - - 0x0189EB 06:89DB: BD 75 01  LDA ram_0175,X
@@ -1498,13 +1497,6 @@ C - - - - - 0x018A0C 06:89FC: BD 10 8A  LDA tbl_8A0F + $01,X
 C - - - - - 0x018A0F 06:89FF: 85 E3     STA ram_00E3
 C - - - - - 0x018A11 06:8A01: AE 5B 01  LDX ram_0158 + $03
 C - - - - - 0x018A14 06:8A04: 6C E2 00  JMP (ram_00E2)
-
-
-; bzk garbage
-- - - - - - 0x018A17 06:8A07: C8        INY
-- - - - - - 0x018A18 06:8A08: B1 E0     LDA (ram_00E0),Y
-- - - - - - 0x018A1A 06:8A0A: 29 0F     AND #$0F
-- - - - - - 0x018A1C 06:8A0C: 4C D9 89  JMP loc_89D9
 
 
 
