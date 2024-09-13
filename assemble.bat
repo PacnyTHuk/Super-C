@@ -101,7 +101,7 @@ if %fast_assembly% equ 1 (
     ca65 -U -l copy_bank_2C.lst -g copy_bank_2C.asm
     ca65 -U -l copy_bank_2D.lst -g copy_bank_2D.asm
     ca65 -U -l copy_bank_2E.lst -g copy_bank_2E.asm
-    ca65 -U -l copy_bank_2E.lst -g copy_bank_2F.asm
+    ca65 -U -l copy_bank_2F.lst -g copy_bank_2F.asm
     ca65 -U -l copy_bank_30.lst -g copy_bank_30.asm
     ca65 -U -l copy_bank_32.lst -g copy_bank_32.asm
     ca65 -U -l copy_bank_33.lst -g copy_bank_33.asm
