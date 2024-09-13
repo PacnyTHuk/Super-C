@@ -989,7 +989,6 @@ bra_A340:
 C - - - - - 0x006350 01:A340: BD 1E 07  LDA ram_obj_flags,X
 C - - - - - 0x006353 01:A343: 29 FB     AND #$FB
 C - - - - - 0x006355 01:A345: 9D 1E 07  STA ram_obj_flags,X
-C - - - - - 0x006358 01:A348: A0 FF     LDY #$FF    ; bzk optimize, Y will be overwritten
 C - - - - - 0x00635A 01:A34A: 4C 75 A2  JMP loc_A275_удалить_объект_02
 
 
