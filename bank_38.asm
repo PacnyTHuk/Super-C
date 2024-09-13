@@ -1397,51 +1397,6 @@ C - - - - - 0x010849 04:8839: 20 5D A7  JSR sub_0x00676D
 C - - - - - 0x01084C 04:883C: 4C 0A AA  JMP loc_0x006A1A
 
 
-; bzk garbage, same code as 0x0047A9
-- - - - - - 0x01084F 04:883F: A9 14     LDA #$14
-- - - - - - 0x010851 04:8841: 85 08     STA ram_0008
-- - - - - - 0x010853 04:8843: A0 00     LDY #$00
-; bzk optimize, check ram_index_ppu_buffer first
-- - - - - - 0x010855 04:8845: A6 1E     LDX ram_index_ppu_buffer
-- - - - - - 0x010857 04:8847: E0 40     CPX #$40
-- - - - - - 0x010859 04:8849: B0 0F     BCS bra_885A
-; if buffer is not too loaded
-bra_884B_loop:
-- - - - - - 0x01085B 04:884B: B9 5D 88  LDA tbl_885D,Y
-- - - - - - 0x01085E 04:884E: 9D 00 03  STA ram_nmt_buffer,X
-- - - - - - 0x010861 04:8851: E8        INX
-- - - - - - 0x010862 04:8852: C8        INY
-- - - - - - 0x010863 04:8853: C6 08     DEC ram_0008
-- - - - - - 0x010865 04:8855: D0 F4     BNE bra_884B_loop
-- - - - - - 0x010867 04:8857: 86 1E     STX ram_index_ppu_buffer
-- - - - - - 0x010869 04:8859: 18        CLC
-bra_885A:
-- - - - - - 0x01086A 04:885A: A6 10     LDX ram_0010
-- - - - - - 0x01086C 04:885C: 60        RTS
-
-
-
-tbl_885D:
-; bzk garbage, same table as 0x015847
-- - - - - - 0x01086D 04:885D: 03        .byte con_buf_mode_03   ; 
-
-- - - - - - 0x01086E 04:885E: 23 D8     .dbyt $23D8 ; ppu address
-- - - - - - 0x010870 04:8860: 12        .byte $12, $AA   ; counter + fill tile
-
-- - - - - - 0x010872 04:8862: 06        .byte con_buf_mode_06   ; 
-
-- - - - - - 0x010873 04:8863: 23 EA     .dbyt $23EA ; ppu address
-- - - - - - 0x010875 04:8865: 05        .byte $05   ; counter
-- - - - - - 0x010876 04:8866: AE        .byte $AE, $FA, $FA, $FA, $FA   ; tiles
-
-- - - - - - 0x01087B 04:886B: FF        .byte $FF   ; change mode
-
-- - - - - - 0x01087C 04:886C: 03        .byte con_buf_mode_03   ; 
-
-- - - - - - 0x01087D 04:886D: 23 EF     .dbyt $23EF ; ppu address
-- - - - - - 0x01087F 04:886F: 08        .byte $08, $AA   ; counter + fill tile
-
-
 
 _off001_0x010881_5D_giant_mouth:
 - D 0 - I - 0x010881 04:8871: 7D 88     .word ofs_038_5D_887D_01_initialize_object ; 

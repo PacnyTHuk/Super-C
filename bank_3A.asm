@@ -4148,51 +4148,6 @@ C - - - - - 0x015826 05:9816: 85 FB     STA ram_00FB
 C - - - - - 0x015828 05:9818: 60        RTS
 
 
-; bzk garbage, same code as 0x0047A9
-- - - - - - 0x015829 05:9819: A9 14     LDA #$14
-- - - - - - 0x01582B 05:981B: 85 08     STA ram_0008
-- - - - - - 0x01582D 05:981D: A0 00     LDY #$00
-; bzk optimize, check ram_index_ppu_buffer first
-- - - - - - 0x01582F 05:981F: A6 1E     LDX ram_index_ppu_buffer
-- - - - - - 0x015831 05:9821: E0 40     CPX #$40
-- - - - - - 0x015833 05:9823: B0 0F     BCS bra_9834_skip
-; if buffer is not too loaded
-bra_9825_loop:
-- - - - - - 0x015835 05:9825: B9 37 98  LDA tbl_9837,Y
-- - - - - - 0x015838 05:9828: 9D 00 03  STA ram_nmt_buffer,X
-- - - - - - 0x01583B 05:982B: E8        INX
-- - - - - - 0x01583C 05:982C: C8        INY
-- - - - - - 0x01583D 05:982D: C6 08     DEC ram_0008
-- - - - - - 0x01583F 05:982F: D0 F4     BNE bra_9825_loop
-- - - - - - 0x015841 05:9831: 86 1E     STX ram_index_ppu_buffer
-- - - - - - 0x015843 05:9833: 18        CLC
-bra_9834_skip:
-- - - - - - 0x015844 05:9834: A6 10     LDX ram_0010
-- - - - - - 0x015846 05:9836: 60        RTS
-
-
-
-tbl_9837:
-; bzk garbage, same table as 0x01086D
-- - - - - - 0x015847 05:9837: 03        .byte con_buf_mode_03   ; 
-
-- - - - - - 0x015848 05:9838: 23 D8     .dbyt $23D8 ; ppu address
-- - - - - - 0x01584A 05:983A: 12        .byte $12, $AA   ; counter + fill tile
-
-- - - - - - 0x01584C 05:983C: 06        .byte con_buf_mode_06   ; 
-
-- - - - - - 0x01584D 05:983D: 23 EA     .dbyt $23EA ; ppu address
-- - - - - - 0x01584F 05:983F: 05        .byte $05   ; counter
-- - - - - - 0x015850 05:9840: AE        .byte $AE, $FA, $FA, $FA, $FA   ; tiles
-
-- - - - - - 0x015855 05:9845: FF        .byte $FF   ; change mode
-
-- - - - - - 0x015856 05:9846: 03        .byte con_buf_mode_03   ;
- 
-- - - - - - 0x015857 05:9847: 23 EF     .dbyt $23EF ; ppu address
-- - - - - - 0x015859 05:9849: 08        .byte $08, $AA   ; counter + fill tile
-
-
 
 _off004_0x01585B_06_area_7:
 - D 0 - I - 0x01585B 05:984B: 02        .byte $02   ; столбцы
