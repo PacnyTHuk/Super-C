@@ -4859,18 +4859,6 @@ C - - - - - 0x01FDA1 07:FD91: 4C 71 FD  JMP loc_FD71_prg_bankswitch___no_return
 
 
 
-sub_FD94:
-; X свободен
-C - - - - - 0x01FDA4 07:FD94: A8        TAY
-C - - - - - 0x01FDA5 07:FD95: C8        INY
-loc_FD96:
-; X свободен
-C - - - - - 0x01FDAB 07:FD9B: 8D 01 80  STA $5114
-C - - - - - 0x01FDB2 07:FDA2: 8C 01 80  STY $5115
-C - - - - - 0x01FDBA 07:FDAA: 60        RTS
-
-
-
 sub_FDAB_выбрать_второй_банк_с_данными_музыки:
 sub_0x01FDBB_выбрать_второй_банк_с_данными_музыки:
 C - - - - - 0x01FDBB 07:FDAB: A0 31     LDY #con_prg_bank + $2F ; банк с мцзыкой был перенесес с 31 в 2F
@@ -4903,12 +4891,12 @@ C - - - - - 0x01FDDB 07:FDCB: 48        PHA
 C - - - - - 0x01FDDC 07:FDCC: AD FF BF  LDA $BFFF
 C - - - - - 0x01FDDF 07:FDCF: 48        PHA
 C - - - - - 0x01FDE0 07:FDD0: A9 3C     LDA #con_prg_bank + $3C
-C - - - - - 0x01FDE2 07:FDD2: 20 94 FD  JSR sub_FD94
+C - - - - - 0x01FDE2 07:FDD2: 20 94 FD  JSR sub_FD6F_prg_bankswitch___no_return
 C - - - - - 0x01FDE5 07:FDD5: 20 3C 81  JSR sub_0x01814C
 C - - - - - 0x01FDE8 07:FDD8: 68        PLA
 C - - - - - 0x01FDE9 07:FDD9: A8        TAY
 C - - - - - 0x01FDEA 07:FDDA: 68        PLA
-C - - - - - 0x01FDEB 07:FDDB: 4C 96 FD  JMP loc_FD96
+C - - - - - 0x01FDEB 07:FDDB: 4C 96 FD  JMP loc_FD71_prg_bankswitch___no_return
 
 
 sub_FDDE_play_music:
