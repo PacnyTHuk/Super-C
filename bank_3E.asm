@@ -84,11 +84,6 @@
 .incbin "DPCM.bin"
 
 
-; bzk garbage
-; first byte at DF00 is technically a part of DPCM
-- D 2 - - A 0x01DF10 07:DF00: FF        .byte $FF
-
-
 
 sub_0x000000_чтение_комбинаций_кнопок_для_читов:
 ; cyneprepou4uk
@@ -285,7 +280,7 @@ tbl_E098_корректировка_начальной_сканлинии:
 
 
 tbl_E09A_irq_handler:
-- D 3 - - - 0x01E0AA 07:E09A: BA E0     .word _off000_E0BA_00_irq_disabled
+- D 3 - - - 0x01E0AA 07:E09A: BA E0     .word $FFFF ; 00 irq off, placeholder (поинтер читается, но не используется)
 - D 3 - - - 0x01E0AC 07:E09C: BC E0     .word _off000_E0BC_01_area_1_boss
 - D 3 - - - 0x01E0AE 07:E09E: BE E0     .word _off000_E0BE_02_area_4_elevator
 - D 3 - - - 0x01E0B0 07:E0A0: C4 E0     .word _off000_E0C4_03_credits
@@ -301,11 +296,6 @@ tbl_E09A_irq_handler:
 - D 3 - - - 0x01E0C4 07:E0B4: E2 E0     .word _off000_E0E2_0D_area_8_boss
 - D 3 - - - 0x01E0C6 07:E0B6: E8 E0     .word _off000_E0E8_0E_area_6_change_color
 - D 3 - - - 0x01E0C8 07:E0B8: EA E0     .word _off000_E0EA_0F_area_6_boss
-
-
-
-_off000_E0BA_00_irq_disabled:
-- - - - - - 0x01E0CA 07:E0BA: CB FB     .word ofs_040_00_FBCB_00
 
 
 
@@ -4624,7 +4614,6 @@ C - - - - - 0x01FBD4 07:FBC4: A9 00     LDA #con_buf_mode_00
 C - - - - - 0x01FBD6 07:FBC6: 9D 00 03  STA ram_nmt_buffer,X
 C - - - - - 0x01FBD9 07:FBC9: 85 1C     STA ram_001C
 loc_FBCB_выход_из_прерывания:
-ofs_040_00_FBCB_00:
 C D 3 - - - 0x01FBDB 07:FBCB: 68        PLA
 C - - - - - 0x01FBDC 07:FBCC: A8        TAY
 C - - - - - 0x01FBDD 07:FBCD: 68        PLA
