@@ -1666,13 +1666,6 @@ tbl_A5B4:
 
 
 
-loc_A6B4:
-; bzk optimize
-- - - - - - 0x0066C4 01:A6B4: 38        SEC
-- - - - - - 0x0066C5 01:A6B5: B0 0D     BCS bra_A6C4    ; jmp
-
-
-
 sub_A6B7_удалить_объект_03:
 loc_A6B7_удалить_объект_03:
 sub_0x0066C7_удалить_объект_03:
@@ -1684,7 +1677,7 @@ C - - - - - 0x0066CB 01:A6BB: E5 62     SBC ram_cam_spd_X
 C - - - - - 0x0066CD 01:A6BD: 9D 3C 05  STA ram_позиция_x_спрайта_врага_и_пуль,X
 C - - - - - 0x0066D0 01:A6C0: C9 06     CMP #$06
 C - - - - - 0x0066D2 01:A6C2: 90 0C     BCC bra_A6D0
-bra_A6C4:
+loc_A6C4:
 ; C = 1
 C - - - - - 0x0066D4 01:A6C4: BD 22 05  LDA ram_позиция_y_спрайта_врага_и_пуль,X
 C - - - - - 0x0066D7 01:A6C7: E5 72     SBC ram_cam_spd_Y
@@ -3220,7 +3213,8 @@ ofs_038_03_AEFF_01_initialize_object:
 C - - J - - 0x006F0F 01:AEFF: BD E6 06  LDA ram_счетчкики_для_объектов,X
 C - - - - - 0x006F12 01:AF02: F0 06     BEQ bra_AF0A
 - - - - - - 0x006F14 01:AF04: DE E6 06  DEC ram_счетчкики_для_объектов,X
-- - - - - - 0x006F17 01:AF07: 4C B4 A6  JMP loc_A6B4
+                                        SEC
+- - - - - - 0x006F17 01:AF07: 4C B4 A6  JMP loc_A6C4
 bra_AF0A:
 C - - - - - 0x006F1A 01:AF0A: A0 12     LDY #$12
 C - - - - - 0x006F1C 01:AF0C: 20 00 A8  JSR sub_A800
