@@ -652,14 +652,6 @@ tbl_83AB_spr_attr:
 - D 0 - - - 0x0143C2 05:83B2: 40        .byte $40   ; 07 
 
 
-; bzk garbage
-- - - - - - 0x0143C3 05:83B3: 4C 3E B1  JMP loc_0x00714E
-
-
-; bzk garbage
-- - - - - - 0x0143C6 05:83B6: 4C 7C B1  JMP loc_0x00718C
-
-
 
 sub_83B9:
 C - - - - - 0x0143C9 05:83B9: D0 06     BNE bra_83C1_RTS
@@ -1173,14 +1165,6 @@ C - - - - - 0x0146E7 05:86D7: 69 70     ADC #$70
 C - - - - - 0x0146E9 05:86D9: 9D F4 06  STA ram_06F4_obj,X
 C - - - - - 0x0146EC 05:86DC: A9 02     LDA #$02
 C - - - - - 0x0146EE 05:86DE: 4C 83 A2  JMP loc_0x006293_set_obj_state
-
-
-; bzk garbage
-- - - - - - 0x0146F1 05:86E1: 4C 3E B1  JMP loc_0x00714E
-
-
-; bzk garbage
-- - - - - - 0x0146F4 05:86E4: 4C 7C B1  JMP loc_0x00718C
 
 
 
@@ -3108,11 +3092,6 @@ C - - - - - 0x0151FF 05:91EF: 9D BC 06  STA ram_скорость_объекто�
 C - - - - - 0x015202 05:91F2: B9 00 92  LDA tbl_91FD_speed + $03,Y
 C - - - - - 0x015205 05:91F5: 9D CA 06  STA ram_скорость_объектов_x_старш,X
 C - - - - - 0x015208 05:91F8: 4C D7 A2  JMP loc_0x0062E7_increase_obj_state
-
-
-; bzk garbage
-- - - - - - 0x01520B 05:91FB: 01        .byte $01   ; 
-- - - - - - 0x01520C 05:91FC: 02        .byte $02   ; 
 
 
 

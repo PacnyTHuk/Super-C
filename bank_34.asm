@@ -2414,10 +2414,6 @@ C - - - - - 0x008E89 02:8E79: A9 2C     LDA #$2C
 C - - - - - 0x008E8B 02:8E7B: 4C E0 A2  JMP loc_0x0062F0
 
 
-; bzk garbage
-- - - - - - 0x008E8E 02:8E7E: 60        RTS
-
-
 
 tbl_8E7F:
 - D 0 - - - 0x008E8F 02:8E7F: 00        .byte $00   ; 00 

@@ -236,9 +236,7 @@
 .export loc_0x006EA5
 .export ofs_038_30_0x006EB9_02
 .export loc_0x00714B
-.export loc_0x00714E   ; bzk garbage label
 .export loc_0x007189
-.export loc_0x00718C   ; bzk garbage label
 .export sub_0x007A90
 .export sub_0x007ABA_calculate_surface_type
 .export sub_0x007AD0
@@ -3609,7 +3607,6 @@ C - - - - - 0x007148 01:B138: 20 93 B1  JSR sub_B193
 loc_B13B:
 loc_0x00714B:
 C D 1 - - - 0x00714B 01:B13B: 9D 08 05  STA ram_кадр_врага_и_пуль,X
-loc_0x00714E:   ; bzk garbage label
 C - - - - - 0x00714E 01:B13E: A9 83     LDA #$83
 C - - - - - 0x007150 01:B140: 9D 2C 07  STA ram_параметры_объектов,X
 C - - - - - 0x007153 01:B143: A9 80     LDA #< $FC80
@@ -3645,7 +3642,6 @@ C - - J - - 0x007186 01:B176: 20 93 B1  JSR sub_B193
 loc_B179:
 loc_0x007189:
 C D 1 - - - 0x007189 01:B179: 9D 08 05  STA ram_кадр_врага_и_пуль,X
-loc_0x00718C:   ; bzk garbage label
 C - - - - - 0x00718C 01:B17C: A9 30     LDA #$30
 C - - - - - 0x00718E 01:B17E: 20 CB AA  JSR sub_AACB_прибавить_скорость_y
 C - - - - - 0x007191 01:B181: BD 22 05  LDA ram_позиция_y_спрайта_врага_и_пуль,X
