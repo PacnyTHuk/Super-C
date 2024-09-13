@@ -1535,44 +1535,6 @@ C - - - - - 0x0065BE 01:A5AE: 60        RTS
 
 
 
-_off001_A5AF_08:
-_off001_A5AF_11:
-_off001_A5AF_12:
-_off001_A5AF_13:
-_off001_A5AF_14:
-_off001_A5AF_15:
-_off001_A5AF_16:
-_off001_A5AF_17:
-_off001_A5AF_18:
-_off001_A5AF_19:
-_off001_A5AF_1A:
-_off001_A5AF_1B:
-_off001_A5AF_1C:
-_off001_A5AF_1D:
-_off001_A5AF_1E:
-_off001_A5AF_1F:
-_off001_A5AF_4A:
-_off001_A5AF_4C:
-_off001_A5AF_4D:
-_off001_A5AF_4F:
-_off001_A5AF_57:
-_off001_A5AF_67:
-_off001_A5AF_72:
-_off001_A5AF_73:
-_off001_A5AF_74:
-_off001_A5AF_75:
-_off001_A5AF_76:
-_off001_A5AF_77:
-_off001_A5AF_78:
-_off001_A5AF_79:
-_off001_A5AF_7A:
-_off001_A5AF_7B:
-_off001_A5AF_7C:
-_off001_A5AF_7D:
-_off001_A5AF_7E:
-
-
-
 tbl_A5B4:
 - D 1 - - - 0x0065C4 01:A5B4: DA AC     .word _off001_ACDC_00_bonus_item - $02
 - D 1 - - - 0x0065C6 01:A5B6: 83 AD     .word _off001_AD83_01_bonus_capsule - $02
@@ -1582,7 +1544,7 @@ tbl_A5B4:
 - D 1 - - - 0x0065CE 01:A5BE: 12 B3     .word _off001_B312_05_grenadier - $02
 - D 1 - - - 0x0065D0 01:A5C0: A8 B3     .word _off001_B3A8_06_grenade - $02
 - D 1 - - - 0x0065D2 01:A5C2: 3C B4     .word _off001_B43C_07_rifleman_trench - $02
-- - - - - - 0x0065D4 01:A5C4: AF A5     .word _off001_A5AF_08 - $02
+- - - - - - 0x0065D4 01:A5C4: AF A5     .word $FFFF ; 08
 - D 1 - - - 0x0065D6 01:A5C6: BE B4     .word _off001_B4BE_09_rifleman_standing_1 - $02
 - D 1 - - - 0x0065D8 01:A5C8: 86 B5     .word _off001_B586_0A_cannon_rotating - $02
 - D 1 - - - 0x0065DA 01:A5CA: E1 B6     .word _off001_B6E1_0B_cannon_hidden_5_1 - $02
@@ -1591,21 +1553,21 @@ tbl_A5B4:
 - D 1 - - - 0x0065E0 01:A5D0: 42 AE     .word _off001_AE42_0E_bullet_enemy_short_range - $02
 - D 1 - - - 0x0065E2 01:A5D2: 65 B9     .word _off001_B965_0F_spawner_grenades - $02
 - D 1 - - - 0x0065E4 01:A5D4: D4 B9     .word _off001_B9D4_10_spawner_normal_mobs - $02
-- - - - - - 0x0065E6 01:A5D6: AF A5     .word _off001_A5AF_11 - $02
-- - - - - - 0x0065E8 01:A5D8: AF A5     .word _off001_A5AF_12 - $02
-- - - - - - 0x0065EA 01:A5DA: AF A5     .word _off001_A5AF_13 - $02
-- - - - - - 0x0065EC 01:A5DC: AF A5     .word _off001_A5AF_14 - $02
-- - - - - - 0x0065EE 01:A5DE: AF A5     .word _off001_A5AF_15 - $02
-- - - - - - 0x0065F0 01:A5E0: AF A5     .word _off001_A5AF_16 - $02
-- - - - - - 0x0065F2 01:A5E2: AF A5     .word _off001_A5AF_17 - $02
-- - - - - - 0x0065F4 01:A5E4: AF A5     .word _off001_A5AF_18 - $02
-- - - - - - 0x0065F6 01:A5E6: AF A5     .word _off001_A5AF_19 - $02
-- - - - - - 0x0065F8 01:A5E8: AF A5     .word _off001_A5AF_1A - $02
-- - - - - - 0x0065FA 01:A5EA: AF A5     .word _off001_A5AF_1B - $02
-- - - - - - 0x0065FC 01:A5EC: AF A5     .word _off001_A5AF_1C - $02
-- - - - - - 0x0065FE 01:A5EE: AF A5     .word _off001_A5AF_1D - $02
-- - - - - - 0x006600 01:A5F0: AF A5     .word _off001_A5AF_1E - $02
-- - - - - - 0x006602 01:A5F2: AF A5     .word _off001_A5AF_1F - $02
+- - - - - - 0x0065E6 01:A5D6: AF A5     .word $FFFF ; 11
+- - - - - - 0x0065E8 01:A5D8: AF A5     .word $FFFF ; 12
+- - - - - - 0x0065EA 01:A5DA: AF A5     .word $FFFF ; 13
+- - - - - - 0x0065EC 01:A5DC: AF A5     .word $FFFF ; 14
+- - - - - - 0x0065EE 01:A5DE: AF A5     .word $FFFF ; 15
+- - - - - - 0x0065F0 01:A5E0: AF A5     .word $FFFF ; 16
+- - - - - - 0x0065F2 01:A5E2: AF A5     .word $FFFF ; 17
+- - - - - - 0x0065F4 01:A5E4: AF A5     .word $FFFF ; 18
+- - - - - - 0x0065F6 01:A5E6: AF A5     .word $FFFF ; 19
+- - - - - - 0x0065F8 01:A5E8: AF A5     .word $FFFF ; 1A
+- - - - - - 0x0065FA 01:A5EA: AF A5     .word $FFFF ; 1B
+- - - - - - 0x0065FC 01:A5EC: AF A5     .word $FFFF ; 1C
+- - - - - - 0x0065FE 01:A5EE: AF A5     .word $FFFF ; 1D
+- - - - - - 0x006600 01:A5F0: AF A5     .word $FFFF ; 1E
+- - - - - - 0x006602 01:A5F2: AF A5     .word $FFFF ; 1F
 - D 1 - - - 0x006604 01:A5F4: 01 80     .word _off001_0x004011_20_cannon_hidden_1 - $02
 - D 1 - - - 0x006606 01:A5F6: F6 84     .word _off001_0x004506_21_boss_area_1_helicopter - $02
 - D 1 - - - 0x006608 01:A5F8: D9 80     .word _off001_0x0040E9_22_boss_area_1_gun - $02
@@ -1648,12 +1610,12 @@ tbl_A5B4:
 - D 1 - - - 0x006652 01:A642: 06 82     .word _off001_0x008216_47_cannon_skul - $02
 - D 1 - - - 0x006654 01:A644: 89 82     .word _off001_0x008299_48_bullet_cannon_skul - $02
 - D 1 - - - 0x006656 01:A646: B5 82     .word _off001_0x0082C5_49_ceiling - $02
-- - - - - - 0x006658 01:A648: AF A5     .word _off001_A5AF_4A - $02
+- - - - - - 0x006658 01:A648: AF A5     .word $FFFF ; 4A
 - D 1 - - - 0x00665A 01:A64A: C2 99     .word _off001_0x0059D2_4B_boss_3_ball_center - $02
-- - - - - - 0x00665C 01:A64C: AF A5     .word _off001_A5AF_4C - $02
-- - - - - - 0x00665E 01:A64E: AF A5     .word _off001_A5AF_4D - $02
+- - - - - - 0x00665C 01:A64C: AF A5     .word $FFFF ; 4C
+- - - - - - 0x00665E 01:A64E: AF A5     .word $FFFF ; 4D
 - D 1 - - - 0x006660 01:A650: 06 92     .word _off001_0x005216_4E_robospider - $02
-- - - - - - 0x006662 01:A652: AF A5     .word _off001_A5AF_4F - $02
+- - - - - - 0x006662 01:A652: AF A5     .word $FFFF ; 4F
 - D 1 - - - 0x006664 01:A654: DE 9B     .word _off001_0x005BEE_50_boss_3_ball_violet - $02
 - D 1 - - - 0x006666 01:A656: F2 8F     .word _off001_0x009002_51_boss_7_mouth - $02
 - D 1 - - - 0x006668 01:A658: 8D 8C     .word _off001_0x008C9D_52_boss_7_chest - $02
@@ -1661,7 +1623,7 @@ tbl_A5B4:
 - D 1 - - - 0x00666C 01:A65C: 08 8E     .word _off001_0x008E18_54_boss_7_fireball - $02
 - D 1 - - - 0x00666E 01:A65E: 41 8E     .word _off001_0x008E51_55_boss_7_red_spikeball - $02
 - D 1 - - - 0x006670 01:A660: A4 8E     .word _off001_0x008EB4_56_boss_7_slime - $02
-- - - - - - 0x006672 01:A662: AF A5     .word _off001_A5AF_57 - $02
+- - - - - - 0x006672 01:A662: AF A5     .word $FFFF ; 57
 - D 1 - - - 0x006674 01:A664: 66 82     .word _off001_0x010276_58_spawner_container_normal_mobs - $02
 - D 1 - - - 0x006676 01:A666: 2B 84     .word _off001_0x01043B_59_boss_5_body - $02
 - D 1 - - - 0x006678 01:A668: FC 82     .word _off001_0x01030C_5A_boss_5_skull - $02
@@ -1677,7 +1639,7 @@ tbl_A5B4:
 - D 1 - - - 0x00668C 01:A67C: 28 98     .word _off001_0x011838_64_boss_6_phase_1 - $02
 - D 1 - - - 0x00668E 01:A67E: 14 94     .word _off001_0x011424_65_boss_6_phase_2 - $02
 - D 1 - - - 0x006690 01:A680: 32 9B     .word _off001_0x011B42_66_boss_6_snake - $02
-- - - - - - 0x006692 01:A682: AF A5     .word _off001_A5AF_67 - $02
+- - - - - - 0x006692 01:A682: AF A5     .word $FFFF ; 67
 - D 1 - - - 0x006694 01:A684: F2 97     .word _off001_0x011802_68_boss_6_big_bullet - $02
 - D 1 - - - 0x006696 01:A686: 27 87     .word _off001_0x014737_69_boss_2_green_tankman - $02
 - D 1 - - - 0x006698 01:A688: F9 89     .word _off001_0x014A09_6A_boss_2_red_tankman - $02
@@ -1688,19 +1650,19 @@ tbl_A5B4:
 - D 1 - - - 0x0066A2 01:A692: 7A 84     .word _off001_0x00448A_6F_thunder - $02
 - D 1 - - - 0x0066A4 01:A694: A2 93     .word _off001_0x0113B2_70_boss_6_hole - $02
 - D 1 - - - 0x0066A6 01:A696: CA 93     .word _off001_0x0113DA_71_chr_banks_changer - $02
-- - - - - - 0x0066A8 01:A698: AF A5     .word _off001_A5AF_72 - $02
-- - - - - - 0x0066AA 01:A69A: AF A5     .word _off001_A5AF_73 - $02
-- - - - - - 0x0066AC 01:A69C: AF A5     .word _off001_A5AF_74 - $02
-- - - - - - 0x0066AE 01:A69E: AF A5     .word _off001_A5AF_75 - $02
-- - - - - - 0x0066B0 01:A6A0: AF A5     .word _off001_A5AF_76 - $02
-- - - - - - 0x0066B2 01:A6A2: AF A5     .word _off001_A5AF_77 - $02
-- - - - - - 0x0066B4 01:A6A4: AF A5     .word _off001_A5AF_78 - $02
-- - - - - - 0x0066B6 01:A6A6: AF A5     .word _off001_A5AF_79 - $02
-- - - - - - 0x0066B8 01:A6A8: AF A5     .word _off001_A5AF_7A - $02
-- - - - - - 0x0066BA 01:A6AA: AF A5     .word _off001_A5AF_7B - $02
-- - - - - - 0x0066BC 01:A6AC: AF A5     .word _off001_A5AF_7C - $02
-- - - - - - 0x0066BE 01:A6AE: AF A5     .word _off001_A5AF_7D - $02
-- - - - - - 0x0066C0 01:A6B0: AF A5     .word _off001_A5AF_7E - $02
+- - - - - - 0x0066A8 01:A698: AF A5     .word $FFFF ; 72
+- - - - - - 0x0066AA 01:A69A: AF A5     .word $FFFF ; 73
+- - - - - - 0x0066AC 01:A69C: AF A5     .word $FFFF ; 74
+- - - - - - 0x0066AE 01:A69E: AF A5     .word $FFFF ; 75
+- - - - - - 0x0066B0 01:A6A0: AF A5     .word $FFFF ; 76
+- - - - - - 0x0066B2 01:A6A2: AF A5     .word $FFFF ; 77
+- - - - - - 0x0066B4 01:A6A4: AF A5     .word $FFFF ; 78
+- - - - - - 0x0066B6 01:A6A6: AF A5     .word $FFFF ; 79
+- - - - - - 0x0066B8 01:A6A8: AF A5     .word $FFFF ; 7A
+- - - - - - 0x0066BA 01:A6AA: AF A5     .word $FFFF ; 7B
+- - - - - - 0x0066BC 01:A6AC: AF A5     .word $FFFF ; 7C
+- - - - - - 0x0066BE 01:A6AE: AF A5     .word $FFFF ; 7D
+- - - - - - 0x0066C0 01:A6B0: AF A5     .word $FFFF ; 7E
 
 
 
