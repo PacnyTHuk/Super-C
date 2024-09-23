@@ -74,7 +74,7 @@ ram_счетчик_мерцания_экрана             = $001A ;
 
 
 
-ram_счетчик_кадров                    = $001B ; Счетчик кадров +1
+ram_счетчик_кадров                      = $001B ; Счетчик кадров +1
 
 
 
@@ -2060,8 +2060,8 @@ ram_лимит_пуль_оружия                   = $0500     ; 00 = defaul
 ; ram_2p_лимит_пуль_flame                   = $0509 ; 
 ; ram_1p_лимит_пуль_fire_ball               = $050A ; 
 ; ram_2p_лимит_пуль_fire_ball               = $050B ;
-; ram_1p_лимит_пуль_grenade_launcher         = $050C ; 
-; ram_2p_лимит_пуль_grenade_launcher         = $050D ;
+; ram_1p_лимит_пуль_grenade_launcher        = $050C ; 
+; ram_2p_лимит_пуль_grenade_launcher        = $050D ;
 ; ram_1p_лимит_пуль_flame_thrower           = $050E ; 
 ; ram_2p_лимит_пуль_flame_thrower           = $050F ; 
 
@@ -2079,8 +2079,8 @@ ram_урон_пуль_оружия                    = $0510     ; 00 = default
 ; ram_2p_урон_пуль_flame                    = $0519 ; 
 ; ram_1p_урон_пуль_fire_ball                = $051A ; 
 ; ram_2p_урон_пуль_fire_ball                = $051B ; 
-; ram_1p_урон_пуль_grenade_launcher          = $051C ; 
-; ram_2p_урон_пуль_grenade_launcher          = $051D ; 
+; ram_1p_урон_пуль_grenade_launcher         = $051C ; 
+; ram_2p_урон_пуль_grenade_launcher         = $051D ; 
 ; ram_1p_урон_пуль_flame_thrower            = $051E ; 
 ; ram_2p_урон_пуль_flame_thrower            = $051F ; 
 
@@ -2098,8 +2098,8 @@ ram_скорость_пуль_оружия                = $0520     ; 00 = def
 ; ram_2p_скорость_пуль_flame                = $0529 ; 
 ; ram_1p_скорость_пуль_fire_ball            = $052A ; 
 ; ram_2p_скорость_пуль_fire_ball            = $052B ; 
-; ram_1p_скорость_пуль_grenade_launcher      = $052C ; 
-; ram_2p_скорость_пуль_grenade_launcher      = $052D ; 
+; ram_1p_скорость_пуль_grenade_launcher     = $052C ; 
+; ram_2p_скорость_пуль_grenade_launcher     = $052D ; 
 ; ram_1p_скорость_пуль_flame_thrower        = $052E ; 
 ; ram_2p_скорость_пуль_flame_thrower        = $052F ; 
 
@@ -2141,19 +2141,14 @@ ram_прокачка_характеристик_оружия       = $0540     ;
 ; ram_прокачка_flame                        = $0549 ; 
 ; ram_прокачка_fire_ball                    = $054A ; 
 ; ram_прокачка_fire_ball                    = $054B ; 
-; ram_прокачка_grenade_launcher              = $054C ; 
-; ram_прокачка_grenade_launcher              = $054D ; 
+; ram_прокачка_grenade_launcher             = $054C ; 
+; ram_прокачка_grenade_launcher             = $054D ; 
 ; ram_прокачка_flame_thrower                = $054E ; 
 ; ram_прокачка_flame_thrower                = $054F ; 
 
 
 
-; 0550-056F pal buffer 
-ram_копия_pal_buffer                    = $0550 ; Копия палитры для затемнения паузы
-
-
-
-; свободные адреса 0570-07BF
+; свободные адреса 0550-07BF
 
 ; свободные адреса 07C0-07CB
 ; ram_07C0                                  = $07C0 ; 

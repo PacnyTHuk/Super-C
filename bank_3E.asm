@@ -126,27 +126,6 @@ bra_85A9_RTS:
                                         RTS
 
 
-sub_0001_мерцание_экрана:
-                                        LDA ram_счетчик_мерцания_экрана
-                                        BEQ bra_0003_RTS
-                                        LDA ram_пауза
-                                        BNE bra_0003_RTS
-                                        DEC ram_счетчик_мерцания_экрана
-                                        LDA ram_счетчик_мерцания_экрана
-                                        LSR
-                                        BCS bra_0003_RTS
-                                        AND #$01
-                                        TAY
-                                        LDA tbl_0002_цвета,Y
-                                        STA ram_pal_buffer + $10
-                                        JSR sub_F7BE_запись_палитры_из_03E0x_в_0300x
-bra_0003_RTS:
-                                        RTS
-
-tbl_0002_цвета:
-                                        .byte $0F   ; черный
-                                        .byte $30   ; белый
-
 
 tbl_E000_config_2000:
 ; see con_buf_mode
@@ -1787,28 +1766,12 @@ C - - - - - 0x01EAAC 07:EA9C: A9 01     LDA #$01
 C - - - - - 0x01EAAE 07:EA9E: 85 39     STA ram_пауза
 C - - - - - 0x01EAB0 07:EAA0: A9 27     LDA #con_sound_27
 C - - - - - 0x01EAB2 07:EAA2: 4C DE FD  JSR sub_FDDE_play_sound
-; 1путин: сохраняем копию палитру в ram
-                                        LDY #$1F
-bra_EAA4_loop:
-                                        LDA ram_pal_buffer,Y
-                                        STA ram_копия_pal_buffer,Y
-                                        DEY
-                                        BPL bra_EAA4_loop
-                                        JSR sub_FAAB_затемнение_палитры
                                         RTS
 bra_EAA6_игра_на_паузе:
 C - - - - - 0x01EAB6 07:EAA6: 29 10     AND #con_btn_Start
 C - - - - - 0x01EAB8 07:EAA8: F0 05     BEQ bra_EAAE_RTS
 C - - - - - 0x01EABA 07:EAAA: A9 00     LDA #$00
 C - - - - - 0x01EABC 07:EAAC: 85 39     STA ram_пауза
-; 1путин: восстанавливаем палитру
-                                        LDY #$1F
-bra_EAAD_loop:
-                                        LDA ram_копия_pal_buffer,Y
-                                        STA ram_pal_buffer,Y
-                                        DEY 
-                                        BPL bra_EAAD_loop
-                                        JSR sub_F7BE_запись_палитры_из_03E0x_в_0300x
 bra_EAAE_RTS:
 C - - - - - 0x01EABE 07:EAAE: 60        RTS
 
@@ -4606,7 +4569,6 @@ C - - - - - 0x01FBC3 07:FBB3: 20 6F FD  JSR sub_FD6F_prg_bankswitch___no_return
 C - - - - - 0x01FBC6 07:FBB6: 20 3C 81  JSR sub_0x01814C
 C - - - - - 0x01FBC9 07:FBB9: 20 FC FC  JSR sub_FCFC_read_joy_regs
                                         INC ram_счетчик_кадров
-                                        JSR sub_0001_мерцание_экрана
 C - - - - - 0x01FBCC 07:FBBC: 20 B9 E3  JSR sub_E3B9
 C - - - - - 0x01FBCF 07:FBBF: 20 17 FE  JSR sub_FE17_спрайтовый_движок
 C - - - - - 0x01FBD2 07:FBC2: A6 1E     LDX ram_index_ppu_buffer
