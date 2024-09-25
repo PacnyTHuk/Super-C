@@ -126,6 +126,28 @@ bra_85A9_RTS:
                                         RTS
 
 
+sub_0001_мерцание_экрана:
+                                        LDA ram_счетчик_мерцания_экрана
+                                        BEQ bra_0003_RTS
+                                        LDA ram_пауза
+                                        BNE bra_0003_RTS
+                                        DEC ram_счетчик_мерцания_экрана
+                                        LDA ram_счетчик_мерцания_экрана
+                                        LSR
+                                        BCS bra_0003_RTS
+                                        AND #$01
+                                        TAY
+                                        LDA tbl_0002_цвета,Y
+                                        STA ram_pal_buffer + $10
+                                        JSR sub_F7BE_запись_палитры_из_03E0x_в_0300x
+bra_0003_RTS:
+                                        RTS
+
+tbl_0002_цвета:
+                                        .byte $0F   ; черный
+                                        .byte $30   ; белый
+
+
 
 tbl_E000_config_2000:
 ; see con_buf_mode
@@ -1753,7 +1775,6 @@ C - - - - - 0x01EA97 07:EA87: 4C 01 E9  JMP loc_E901
 
 sub_EA8A:
 C - - - - - 0x01EA9A 07:EA8A: A5 1F     LDA ram_001F_flag
-C - - - - - 0x01EA9C 07:EA8C: 05 3A     ORA ram_003A
 C - - - - - 0x01EA9E 07:EA8E: 05 1D     ORA ram_001D
 C - - - - - 0x01EAA0 07:EA90: D0 1C     BNE bra_EAAE_RTS
 C - - - - - 0x01EAA2 07:EA92: A5 F5     LDA ram_копия_нажатая_кнопка
@@ -3708,9 +3729,9 @@ C - - - - - 0x01F6C1 07:F6B1: A9 25     LDA #con_sound_25
 C - - - - - 0x01F6C3 07:F6B3: 20 DE FD  JSR sub_FDDE_play_sound
 C - - - - - 0x01F6C6 07:F6B6: A9 00     LDA #$00
 C - - - - - 0x01F6C8 07:F6B8: 95 C4     STA ram_инвиз_игрока,X
-C - - - - - 0x01F6CA 07:F6BA: A9 01     LDA #$01
+                                        STA ram_хитбоксы_игрока,X
+C - - - - - 0x01F6CA 07:F6BA: A9 01     LDA #$01    ; также флаг смерти
 C - - - - - 0x01F6CC 07:F6BC: 95 C0     STA ram_таймер_респавна_игрока,X
-C - - - - - 0x01F6CE 07:F6BE: A9 01     LDA #$01    ; флаг смерти
 C - - - - - 0x01F6D0 07:F6C0: 95 C2     STA ram_флаг_мертвого_игрока,X
 C - - - - - 0x01F6D2 07:F6C2: A9 03     LDA #con_plr_status_death_init
 C - - - - - 0x01F6D4 07:F6C4: 95 A0     STA ram_статус_игрока,X
@@ -4552,6 +4573,11 @@ C - - - - - 0x01FB9F 07:FB8F: A9 02     LDA #$02
 C - - - - - 0x01FBA1 07:FB91: 8D 14 40  STA $4014
 C - - - - - 0x01FBA4 07:FB94: 20 12 E0  JSR sub_E012
 C - - - - - 0x01FBA7 07:FB97: A5 FE     LDA ram_for_2001
+; затемнить паузу
+                                        LDY ram_пауза
+                                        BEQ bra_FB99
+                                        ORA #$E0
+bra_FB99:
 C - - - - - 0x01FBA9 07:FB99: A6 1D     LDX ram_001D
 C - - - - - 0x01FBAB 07:FB9B: F0 04     BEQ bra_FBA1
 C - - - - - 0x01FBAD 07:FB9D: C6 1D     DEC ram_001D
@@ -4569,6 +4595,7 @@ C - - - - - 0x01FBC3 07:FBB3: 20 6F FD  JSR sub_FD6F_prg_bankswitch___no_return
 C - - - - - 0x01FBC6 07:FBB6: 20 3C 81  JSR sub_0x01814C
 C - - - - - 0x01FBC9 07:FBB9: 20 FC FC  JSR sub_FCFC_read_joy_regs
                                         INC ram_счетчик_кадров
+                                        JSR sub_0001_мерцание_экрана
 C - - - - - 0x01FBCC 07:FBBC: 20 B9 E3  JSR sub_E3B9
 C - - - - - 0x01FBCF 07:FBBF: 20 17 FE  JSR sub_FE17_спрайтовый_движок
 C - - - - - 0x01FBD2 07:FBC2: A6 1E     LDX ram_index_ppu_buffer
