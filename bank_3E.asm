@@ -4880,14 +4880,14 @@ C - - - - - 0x01FDEB 07:FDDB: 4C 96 FD  JMP loc_FD71_prg_bankswitch___no_return
 sub_FDDE_play_music:
 sub_0x01FDEE_play_music:
                                         BIT ram_флаг_музыки_звука
-                                        BMI bra_FDF5_RTS
+                                        BVS bra_FDF5_RTS
                                         JMP loc_FDEE_play_sound_напрямую
 sub_FDDE_play_sound:
 loc_FDDE_play_sound:
 sub_0x01FDEE_play_sound:
 loc_0x01FDEE_play_sound:
                                         BIT ram_флаг_музыки_звука
-                                        BVS bra_FDF5_RTS
+                                        BMI bra_FDF5_RTS
 sub_0x01FDEE_play_sound_напрямую:                          
 loc_FDEE_play_sound_напрямую:
 loc_0x01FDEE_play_sound_напрямую:
