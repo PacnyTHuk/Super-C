@@ -6,7 +6,8 @@
 
 
 
-.export loc_0x010050_работа_с_экранами
+.export loc_0x008010_работа_с_экранами
+
 
 
 ; bzk this byte must be placed at 8000
@@ -14,79 +15,90 @@
 
 
 
-
-
-
-loc_0x010050_работа_с_экранами:
-C - - - - - 0x01E3CB 07:E3BB: A5 18     LDY ram_демка
-; 1путин опт
-                                        LDA tbl_E3C7_lo,y
+loc_0x008010_работа_с_экранами:
+                                        LDY ram_демка
+                                        LDA tbl_8001_lo,Y
                                         STA ram_0000
-                                        LDA tbl_E3C7_hi,y
+                                        LDA tbl_8002_hi,Y
                                         STA ram_0001
                                         JMP (ram_0000)
-tbl_E3C7_lo:
-- D 3 - I - 0x01E3D7 07:E3C7: D3 E3     .byte < ofs_032_E3D3_00_главный_экран
-- D 3 - I - 0x01E3D9 07:E3C9: 72 E4     .byte < ofs_032_E472_01
-- D 3 - I - 0x01E3DB 07:E3CB: A3 E4     .byte < ofs_032_E4A3_02
-- D 3 - I - 0x01E3DD 07:E3CD: C2 E4     .byte < ofs_032_E4C2_03
-- - - - - - 0x01E3DF 07:E3CF: E9 E7     .byte < ofs_032_E7E9_04_игра   ; never used 0x01E3CF
-- D 3 - I - 0x01E3E1 07:E3D1: C9 E4     .byte < ofs_032_E4C9_05_соунд_тест
-                                        .byte < ofs_032_E4E5_06_options
-tbl_E3C7_hi:
-- D 3 - I - 0x01E3D7 07:E3C7: D3 E3     .byte > ofs_032_E3D3_00_главный_экран
-- D 3 - I - 0x01E3D9 07:E3C9: 72 E4     .byte > ofs_032_E472_01
-- D 3 - I - 0x01E3DB 07:E3CB: A3 E4     .byte > ofs_032_E4A3_02
-- D 3 - I - 0x01E3DD 07:E3CD: C2 E4     .byte > ofs_032_E4C2_03
-- - - - - - 0x01E3DF 07:E3CF: E9 E7     .byte > ofs_032_E7E9_04_игра   ; never used 0x01E3CF
-- D 3 - I - 0x01E3E1 07:E3D1: C9 E4     .byte > ofs_032_E4C9_05_соунд_тест
-                                        .byte > ofs_032_E4E5_06_options
+tbl_8001_lo:
+                                        .byte < ofs_00_8010_00_главный_экран
+                                        .byte < ofs_00_8100_01_демка_ботов
+                                        .byte < ofs_00_8110_02_подготовка_данных_для_старта_игроков
+                                        .byte < ofs_00_8120_03_подготовка_экрана_для_старта_игроков
+                                        .byte < ofs_00_8130_04_игра   ; never used 0x01E3CF
+                                        .byte < ofs_00_8140_05_соунд_тест
+                                        .byte < ofs_00_8150_06_options
+tbl_8002_hi:
+                                        .byte > ofs_00_8010_00_главный_экран
+                                        .byte > ofs_00_8100_01_демка_ботов
+                                        .byte > ofs_00_8110_02_подготовка_данных_для_старта_игроков
+                                        .byte > ofs_00_8120_03_подготовка_экрана_для_старта_игроков
+                                        .byte > ofs_00_8130_04_игра   ; never used 0x01E3CF
+                                        .byte > ofs_00_8140_05_соунд_тест
+                                        .byte > ofs_00_8150_06_options
+
+ofs_00_8010_00_главный_экран:
+                                        LDY ram_номер_действия_на_заставке
+                                        LDA tbl_8011_lo,Y
+                                        STA ram_0000
+                                        LDA tbl_8012_hi,Y
+                                        STA ram_0001
+                                        JMP (ram_0000)
+tbl_8011_lo:
+                                        .byte < ofs_01_8020_00_подготовка
+                                        .byte < ofs_01_8030_01_слияние_логотипа
+                                        .byte < ofs_01_8040_02_press_start
+                                        .byte < ofs_01_8050_03_мигание_press_start
+                                        .byte < ofs_01_8060_04_выбор_режима_игры
+                                        .byte < ofs_01_8070_05_мигание_надписей
+                                        .byte < ofs_01_8080_06_options
+tbl_8012_hi:
+                                        .byte > ofs_01_8020_00_подготовка
+                                        .byte > ofs_01_8030_01_слияние_логотипа
+                                        .byte > ofs_01_8040_02_press_start
+                                        .byte > ofs_01_8050_03_мигание_press_start
+                                        .byte > ofs_01_8060_04_выбор_режима_игры
+                                        .byte > ofs_01_8070_05_мигание_надписей
+                                        .byte > ofs_01_8080_06_options
 
 
+ofs_01_8020_00_подготовка:
+                                        JSR sub_E50B_подготовка_главного_экрана
+                                        LDA #$11    ; палитра логотипа слияние
+                                        JSR sub_0x01FE80_bankswitch_загрузка_палитры_в_03E0x
+                                        JSR sub_0x01F7CE_запись_палитры_из_03E0x_в_0300x
+                                        INC ram_номер_действия_на_заставке
+                                        RTS
 
-ofs_032_E3D3_00_главный_экран:
-C - - J - - 0x01E3E3 07:E3D3: A6 19     LDX ram_номер_действия_на_заставке
-C - - - - - 0x01E3E5 07:E3D5: D0 0E     BNE bra_E3E5_минус_x
-; X=00 подготовка
-C - - - - - 0x01E3E7 07:E3D7: 20 0B E5  JSR sub_E50B_подготовка_главного_экрана
-C - - - - - 0x01E3EA 07:E3DA: A9 09     LDA #$11    ; палитра логотипа слияние
-C - - - - - 0x01E3EC 07:E3DC: 20 70 FE  JSR sub_0x01FE80_bankswitch_загрузка_палитры_в_03E0x
-C - - - - - 0x01E3EF 07:E3DF: 20 BE F7  JSR sub_0x01F7CE_запись_палитры_из_03E0x_в_0300x
-C - - - - - 0x01E3F2 07:E3E2: E6 19     INC ram_номер_действия_на_заставке
-bra_E3E4_RTS:
-C - - - - - 0x01E3F4 07:E3E4: 60        RTS
-
-bra_E3E5_минус_x:
-C - - - - - 0x01E3F5 07:E3E5: CA        DEX
-C - - - - - 0x01E3F6 07:E3E6: D0 20     BNE bra_E408_минус_x
-; X=01 слияние логотипа
+ofs_01_8030_01_слияние_логотипа:
                                         JSR sub_E4D0_переключение_банков_анимация_super
-C - - - - - 0x01E3FB 07:E3EB: 20 EF FE  JSR sub_A30F_обработчик_главного_экрана
-C - - - - - 0x01E3FE 07:E3EE: B0 09     BCS bra_E3F9
+                                        JSR sub_A30F_обработчик_главного_экрана
+                                        BCS bra_8031
 ; заставка еще идет
-C - - - - - 0x01E400 07:E3F0: A5 F5     LDA ram_копия_нажатая_кнопка
-C - - - - - 0x01E402 07:E3F2: 29 30     AND #con_btns_SS
-C - - - - - 0x01E404 07:E3F4: F0 EE     BEQ bra_E3E4_RTS
-loc_E3F6_подготовка_начального_экрана:
+                                        LDA ram_копия_нажатая_кнопка
+                                        AND #con_btns_SS
+                                        BEQ bra_8032_RTS
+loc_8031_подготовка_начального_экрана:
 ; нажата кнопка ss/скип заставки
-C D 3 - - - 0x01E406 07:E3F6: 20 0B E5  JSR sub_E50B_подготовка_главного_экрана
-bra_E3F9:
+                                        JSR sub_E50B_подготовка_главного_экрана
+bra_8031:
                                         JSR sub_0x01E5E0_очистка_оперативки
-C - - - - - 0x01E409 07:E3F9: 20 2A E5  JSR sub_E52A_палитра_и_надпись_press_start
-C - - - - - 0x01E40C 07:E3FC: 20 02 E5  JSR sub_E502_подготовка_счетчиков
-C - - - - - 0x01E40F 07:E3FF: A9 00     LDA #$00
-C - - - - - 0x01E411 07:E401: 85 18     STA ram_демка
-C - - - - - 0x01E413 07:E403: A9 02     LDA #$02
-C - - - - - 0x01E415 07:E405: 85 19     STA ram_номер_действия_на_заставке
-C - - - - - 0x01E417 07:E407: 60        RTS
+                                        JSR sub_E52A_палитра_и_надпись_press_start
+                                        LDA #con_chr_bank + $84
+                                        STA ram_bg_bank_2
+                                        JSR sub_E502_подготовка_счетчиков
+                                        LDA #$00
+                                        STA ram_демка
+                                        LDA #$02
+                                        STA ram_номер_действия_на_заставке
+bra_8032_RTS:
+                                        RTS
 
-bra_E408_минус_x:
+ofs_01_8040_02_press_start:
                                         JSR sub_E4D0_переключение_банков_анимация_super
                                         JSR sub_E4BC_переключение_банков_анимация_contra
-C - - - - - 0x01E418 07:E408: CA        DEX
-C - - - - - 0x01E419 07:E409: D0 3E     BNE bra_E443_минус_x
-
-; X=02 логотип + press start
                                         LDA ram_таймер_до_демки
                                         AND #$10
                                         ASL
@@ -95,28 +107,25 @@ C - - - - - 0x01E419 07:E409: D0 3E     BNE bra_E443_минус_x
                                         CLC
                                         ADC #con_0x0017EA_press_start
                                         JSR sub_0x01FE8A_bankswitch_отрисовка_текста_через_буфер_0300x
-bra_E40E:
-C - - - - - 0x01E41E 07:E40E: 20 F1 E4  JSR sub_E4F1_проверка_на_демку
-C - - - - - 0x01E421 07:E411: D0 03     BNE bra_E416_нет_демки
-C - - - - - 0x01E423 07:E413: 4C E5 E4  JMP loc_0x01E4F5_плюс1_демка
-bra_E416_нет_демки:
-C - - - - - 0x01E43F 07:E42F: A5 F5     LDA ram_копия_нажатая_кнопка
-C - - - - - 0x01E441 07:E431: 29 10     AND #con_btn_Start
-C - - - - - 0x01E443 07:E433: F0 0E     BEQ bra_E442_RTS
+                                        JSR sub_E4F1_проверка_на_демку
+                                        BNE bra_8042_нет_демки
+                                        JMP loc_0x01E4F5_плюс1_демка
+bra_8042_нет_демки:
+                                        LDA ram_копия_нажатая_кнопка
+                                        AND #con_btn_Start
+                                        BEQ bra_8043_RTS
 ; нажата start
-C - - - - - 0x01E44D 07:E43D: A9 80     LDA #$47
-C - - - - - 0x01E44F 07:E43F: 85 3C     STA ram_таймер_до_демки
-C - - - - - 0x01E451 07:E441: E6 19     INC ram_номер_действия_на_заставке
+                                        LDA #$47
+                                        STA ram_таймер_до_демки
+                                        INC ram_номер_действия_на_заставке
                                         LDA #con_sound_1A
                                         JMP loc_0x01FDEE_play_sound_напрямую
-bra_E442_RTS:
-C - - - - - 0x01E453 07:E443: 60        RTS
+bra_8043_RTS:
+                                        RTS
 
-bra_E443_минус_x:
-                                        DEX
-                                        BNE bra_E447_минус_x
-
-; X=03 мерцание press start
+ofs_01_8050_03_мигание_press_start:
+                                        JSR sub_E4D0_переключение_банков_анимация_super
+                                        JSR sub_E4BC_переключение_банков_анимация_contra
                                         LDA ram_таймер_до_демки
                                         AND #$04
                                         ASL
@@ -128,7 +137,7 @@ bra_E443_минус_x:
                                         ADC #con_0x0017EA_press_start
                                         JSR sub_0x01FE8A_bankswitch_отрисовка_текста_через_буфер_0300x
                                         DEC ram_таймер_до_демки
-                                        BNE bra_E446_RTS
+                                        BNE bra_8051_RTS
                                         INC ram_номер_действия_на_заставке
                                         JSR sub_E502_подготовка_счетчиков
                                         LDA #con_0x0017EA_press_start + $80 ; удалить надпись
@@ -136,296 +145,299 @@ bra_E443_минус_x:
                                         JSR sub_E538_надписи_p1_p2_options
                                         LDY #$52 ; X координата стрелки
                                         LDX ram_номер_опции_колво_игроков
-                                        LDA tbl_E470_y_координаты_стрелки,X
+                                        LDA tbl_8052_y_координаты_стрелки,X
                                         JSR sub_E45F_запись_данных_для_стрелки
-bra_E446_RTS:
+bra_8051_RTS:
                                         RTS
 
-bra_E447_минус_x:
-                                        DEX
-                                        BNE bra_E440_минус_x
+tbl_8052_y_координаты_стрелки:
+                                        .byte $8B   ; 00 1 Player
+                                        .byte $9B   ; 01 2 Players
+                                        .byte $AB   ; 02 Options
 
-; X=04 выбор режима игры
-C - - - - - 0x01E41B 07:E40B: 20 DF FE  JSR sub_A29C_чит_коды
-C - - - - - 0x01E426 07:E416: A6 22     LDX ram_номер_опции_колво_игроков
-C - - - - - 0x01E428 07:E418: A9 A7     LDY #$52 ; X координата стрелки
-C - - - - - 0x01E42A 07:E41A: BC 70 E4  LDA tbl_E470_y_координаты_стрелки,X
-C - - - - - 0x01E42D 07:E41D: 20 5F E4  JSR sub_E45F_запись_данных_для_стрелки
-C - - - - - 0x01E430 07:E420: A5 F5     LDA ram_копия_нажатая_кнопка
+ofs_01_8060_04_выбор_режима_игры:
+                                        JSR sub_E4D0_переключение_банков_анимация_super
+                                        JSR sub_E4BC_переключение_банков_анимация_contra
+                                        JSR sub_A29C_чит_коды
+                                        LDX ram_номер_опции_колво_игроков
+                                        LDY #$52 ; X координата стрелки
+                                        LDA tbl_8052_y_координаты_стрелки,X
+                                        JSR sub_E45F_запись_данных_для_стрелки
+                                        LDA ram_копия_нажатая_кнопка
                                         AND #con_btns_UD
-                                        BEQ bra_E42A
+                                        BEQ bra_8062
                                         AND #con_btn_Up
-                                        BNE bra_E430_up
+                                        BNE bra_8061_up
 ; down
                                         INC ram_номер_опции_колво_игроков
                                         LDA ram_номер_опции_колво_игроков
                                         CMP #$03
-                                        BCC bra_E42A
+                                        BCC bra_8062
                                         DEC ram_номер_опции_колво_игроков
-                                        BNE bra_E42A
-bra_E430_up:
+                                        BNE bra_8062
+bra_8061_up:
                                         DEC ram_номер_опции_колво_игроков
-                                        BPL bra_E42A
+                                        BPL bra_8062
                                         INC ram_номер_опции_колво_игроков
-bra_E42A:
-C - - - - - 0x01E43C 07:E42C: 20 02 E5  JSR sub_E502_подготовка_счетчиков
-bra_E42F:
-C - - - - - 0x01E43F 07:E42F: A5 F5     LDA ram_копия_нажатая_кнопка
-C - - - - - 0x01E441 07:E431: 29 10     AND #con_btn_Start
-C - - - - - 0x01E443 07:E433: F0 0E     BEQ bra_E443_RTS
+bra_8062:
+                                        JSR sub_E502_подготовка_счетчиков
+                                        LDA ram_копия_нажатая_кнопка
+                                        AND #con_btn_Start
+                                        BEQ bra_8066_RTS
 ; нажата start
 ; проверка чита для sound test
-C - - - - - 0x01E445 07:E435: A5 F7     LDA ram_копия_удержанная_кнопка
-C - - - - - 0x01E447 07:E437: 29 C0     AND #con_btns_AB
-C - - - - - 0x01E449 07:E439: C9 C0     CMP #con_btns_AB
-C - - - - - 0x01E44B 07:E43B: F0 07     BEQ bra_E444
+                                        LDA ram_копия_удержанная_кнопка
+                                        AND #con_btns_AB
+                                        CMP #con_btns_AB
+                                        BNE bra_8063
+; соунд тест
+                                        LDA #$05
+                                        JMP loc_0x01E4FC_запись_в_демку   
+bra_8063:
                                         LDA ram_номер_опции_колво_игроков
                                         CMP #$02
-                                        BNE bra_E43D
+                                        BNE bra_8064
                                         LDA #$40
-                                        BNE bra_E43F    ; jmp
-bra_E43D:
-C - - - - - 0x01E44D 07:E43D: A9 80     LDA #$80
-bra_E43F:
-C - - - - - 0x01E44F 07:E43F: 85 3C     STA ram_таймер_до_демки
-C - - - - - 0x01E451 07:E441: E6 19     INC ram_номер_действия_на_заставке
-bra_E443_RTS:
-C - - - - - 0x01E453 07:E443: 60        RTS
-; sound test
-bra_E444:
-C - - - - - 0x01E454 07:E444: A9 05     LDA #$05
-C - - - - - 0x01E456 07:E446: 4C EC E4  JMP loc_0x01E4FC_запись_в_демку
+                                        BNE bra_8065    ; jmp
+bra_8064:
+                                        LDA #$80
+bra_8065:
+                                        STA ram_таймер_до_демки
+                                        INC ram_номер_действия_на_заставке
+bra_8066_RTS:
+                                        RTS
 
-bra_E440_минус_x:
-                                        DEX
-                                        BNE bra_E460_x06
-
-; X=05 мигание надписей
-C - - - - - 0x01E459 07:E449: A5 3C     LDA ram_таймер_до_демки
-C - - - - - 0x01E45B 07:E44B: 29 08     AND #$08
-C - - - - - 0x01E45D 07:E44D: 0A        ASL
-C - - - - - 0x01E45E 07:E44E: 0A        ASL
-C - - - - - 0x01E45F 07:E44F: 0A        ASL
-C - - - - - 0x01E460 07:E450: 0A        ASL
+ofs_01_8070_05_мигание_надписей:
+                                        JSR sub_E4D0_переключение_банков_анимация_super
+                                        JSR sub_E4BC_переключение_банков_анимация_contra
+                                        LDA ram_таймер_до_демки
+                                        AND #$08
+                                        ASL
+                                        ASL
+                                        ASL
+                                        ASL
                                         CLC
-C - - - - - 0x01E461 07:E451: 65 22     ADC ram_номер_опции_колво_игроков
-C - - - - - 0x01E463 07:E453: 20 7A FE  JSR sub_0x01FE8A_bankswitch_отрисовка_текста_через_буфер_0300x
-C - - - - - 0x01E466 07:E456: C6 3C     DEC ram_таймер_до_демки
-C - - - - - 0x01E468 07:E458: D0 E9     BNE bra_E443_RTS
+                                        ADC ram_номер_опции_колво_игроков
+                                        JSR sub_0x01FE8A_bankswitch_отрисовка_текста_через_буфер_0300x
+                                        DEC ram_таймер_до_демки
+                                        BNE bra_8072_RTS
                                         LDA ram_номер_опции_колво_игроков
                                         CMP #con_0x0017EA_options
-                                        BNE bra_E45A
+                                        BEQ bra_8071_options
+                                        LDA #$02
+                                        JMP loc_0x01E4FC_запись_в_демку
+bra_8071_options:
                                         INC ram_номер_действия_на_заставке
                                         LDA #$01
                                         STA ram_0095
+bra_8072_RTS:
                                         RTS
-bra_E45A:
-C - - - - - 0x01E46A 07:E45A: A9 02     LDA #$02
-C - - - - - 0x01E46C 07:E45C: 4C EC E4  JMP loc_0x01E4FC_запись_в_демку
 
-
-bra_E460_x06:
-; X=06 options
+ofs_01_8080_06_options:
                                         JSR sub_0x01FAAF_затемнение_экрана
                                         PHP
                                         JSR sub_0x01F7CE_запись_палитры_из_03E0x_в_0300x
                                         PLP
-                                        BCC bra_E4BA_RTS
+                                        BCC bra_8081_RTS
                                         JSR sub_0x01E5E0_очистка_оперативки
                                         LDA #$06
                                         STA ram_демка
                                         LDA #$00
                                         STA ram_номер_действия_на_заставке
                                         STA ram_номер_опции_колво_игроков
-bra_E4BA_RTS:
+bra_8081_RTS:
                                         RTS
 
 
-ofs_032_E472_01:
-C - - J - - 0x01E482 07:E472: A6 19     LDX ram_номер_действия_на_заставке
-C - - - - - 0x01E484 07:E474: D0 06     BNE bra_E47C
-C - - - - - 0x01E486 07:E476: 20 5C E5  JSR sub_E55C_подготовка_ботов_к_игре
-C - - - - - 0x01E489 07:E479: E6 19     INC ram_номер_действия_на_заставке
-C - - - - - 0x01E48B 07:E47B: 60        RTS
-bra_E47C:
-C - - - - - 0x01E48C 07:E47C: A5 F1     LDA ram_нажатая_кнопка
-C - - - - - 0x01E48E 07:E47E: 29 30     AND #con_btns_SS
-C - - - - - 0x01E490 07:E480: F0 06     BEQ bra_E488
-C - - - - - 0x01E492 07:E482: 20 96 E4  JSR sub_0x01E4A6_выбрать_следующий_уровень_для_демки
-C - - - - - 0x01E495 07:E485: 4C F6 E3  JMP loc_E3F6_подготовка_начального_экрана
-bra_E488:
-                                        JMP loc_0x01E7F1
 
-ofs_032_E4A3_02:
-C - - J - - 0x01E4B3 07:E4A3: A9 00     LDA #$00
-C - - - - - 0x01E4B5 07:E4A5: 85 1F     STA ram_001F_flag
-C - - - - - 0x01E4B7 07:E4A7: A6 19     LDX ram_номер_действия_на_заставке
-C - - - - - 0x01E4B9 07:E4A9: D0 03     BNE bra_E4AE
-C - - - - - 0x01E4BB 07:E4AB: E6 19     INC ram_номер_действия_на_заставке
-C - - - - - 0x01E4BD 07:E4AD: 60        RTS
-bra_E4AE:
-C - - - - - 0x01E4C1 07:E4B1: 20 D0 E5  JSR sub_0x01E5E0_очистка_оперативки
-C - - - - - 0x01E4C4 07:E4B4: 20 82 E5  JSR sub_0x01E592_подготовка_игроков_к_началу
-C - - - - - 0x01E4C7 07:E4B7: 4C E5 E4  JMP loc_0x01E4F5_плюс1_демка
+ofs_00_8100_01_демка_ботов:
+                                        LDX ram_номер_действия_на_заставке
+                                        BNE bra_8101
+                                        JSR sub_E55C_подготовка_ботов_к_игре
+                                        INC ram_номер_действия_на_заставке
+                                        RTS
+bra_8101:
+                                        LDA ram_нажатая_кнопка
+                                        AND #con_btns_SS
+                                        BEQ bra_8102_боты_играют
+; скип просмотра демки
+                                        JSR sub_0x01E4A6_выбрать_следующий_уровень_для_демки
+                                        JMP loc_8031_подготовка_начального_экрана
+bra_8102_боты_играют:
+                                        JSR sub_9D94_игра_ботов_в_демке
+                                        BCS bra_8103_закончить_демку
+                                        JMP loc_0x01E7F9_игра
+bra_8103_закончить_демку:
+                                        JSR sub_0x01E4A6_выбрать_следующий_уровень_для_демки
+                                        JMP loc_0x01E4A2
 
 
-ofs_032_E4C2_03:
-C - - J - - 0x01E4D2 07:E4C2: A9 00     LDA #$00
-C - - - - - 0x01E4D4 07:E4C4: 85 38     STA ram_номер_экрана
-C - - - - - 0x01E4D6 07:E4C6: 4C E5 E4  JMP loc_0x01E4F5_плюс1_демка
+ofs_00_8110_02_подготовка_данных_для_старта_игроков:
+                                        LDA #$00
+                                        STA ram_флаг_игры_ботов_в_демке
+                                        LDX ram_номер_действия_на_заставке
+                                        BNE bra_8111
+                                        INC ram_номер_действия_на_заставке
+                                        RTS
+bra_8111:
+                                        JSR sub_0x01E5E0_очистка_оперативки
+                                        JSR sub_0x01E592_подготовка_игроков_к_началу
+                                        JMP loc_0x01E4F5_плюс1_демка
 
 
-ofs_032_E7E9_04_игра:
+ofs_00_8120_03_подготовка_экрана_для_старта_игроков:
+                                        LDA #$00
+                                        STA ram_номер_экрана
+                                        JMP loc_0x01E4F5_плюс1_демка
+
+
+ofs_00_8130_04_игра:
                                         JMP loc_0x01E7F9_игра
 
 
-ofs_032_E4C9_05_соунд_тест:
+ofs_00_8140_05_соунд_тест:
                                         JSR sub_E4D0_переключение_банков_анимация_super
                                         JSR sub_E4BC_переключение_банков_анимация_contra
-C - - J - - 0x01E4D9 07:E4C9: A6 19     LDX ram_номер_действия_на_заставке
-C - - - - - 0x01E4DB 07:E4CB: D0 0E     BNE bra_E4DB_соунд_тест
-C - - - - - 0x01E4DD 07:E4CD: A9 00     LDA #$00
-C - - - - - 0x01E4DF 07:E4CF: 8D 00 05  STA ram_кадр_анимации + $02
-C - - - - - 0x01E4E2 07:E4D2: E6 19     INC ram_номер_действия_на_заставке
-C - - - - - 0x01E4E6 07:E4D6: 85 50     STA ram_номер_уровня
-; 1путин опт
-C - - - - - 0x01E4EA 07:E4DA: 60        RTS
-bra_E4DB_соунд_тест:
-C - - - - - 0x01E4EB 07:E4DB: 20 D7 FE  JSR sub_9AE9_sound_mode_handler
-C - - - - - 0x01E4EE 07:E4DE: A5 F5     LDA ram_копия_нажатая_кнопка
-C - - - - - 0x01E4F0 07:E4E0: 29 10     AND #con_btn_Start
-C - - - - - 0x01E4F2 07:E4E2: D0 AB     BNE bra_E48F_exit_sound_mode
-C - - - - - 0x01E4F4 07:E4E4: 60        RTS
-bra_E48F_exit_sound_mode:
+                                        LDX ram_номер_действия_на_заставке
+                                        BNE bra_8141_соунд_тест
+                                        LDA #$00
+                                        STA ram_кадр_анимации + $02
+                                        INC ram_номер_действия_на_заставке
+                                        STA ram_номер_уровня
+                                        RTS
+bra_8141_соунд_тест:
+                                        JSR sub_9AE9_sound_mode_handler
+                                        LDA ram_копия_нажатая_кнопка
+                                        AND #con_btn_Start
+                                        BNE bra_8142_выход_из_соунд_теста
+                                        RTS
+bra_8142_выход_из_соунд_теста:
                                         JSR sub_0x01E4A6_выбрать_следующий_уровень_для_демки
                                         LDA #$00
                                         JMP loc_0x01E4FC_запись_в_демку    ; jmp
 
 
-
-ofs_032_E4E5_06_options:
+ofs_00_8150_06_options:
                                         LDY ram_номер_действия_на_заставке
-                                        LDA tbl_9900_lo,y
+                                        LDA tbl_8151_lo,Y
                                         STA ram_0000
-                                        LDA tbl_9904_hi,y
+                                        LDA tbl_8152_hi,Y
                                         STA ram_0001
                                         JMP (ram_0000)
-tbl_9900_lo:
-                                        .byte < ofs_options_9908_00_подготовка_экрана_options
-                                        .byte < ofs_options_9AFF_01_выбор_опций
-                                        .byte < ofs_options_9B12_02_мерцание_exit
-                                        .byte < ofs_options_9B27_03_выход_из_экрана_options
-tbl_9904_hi:
-                                        .byte > ofs_options_9908_00_подготовка_экрана_options
-                                        .byte > ofs_options_9AFF_01_выбор_опций
-                                        .byte > ofs_options_9B12_02_мерцание_exit
-                                        .byte > ofs_options_9B27_03_выход_из_экрана_options
+tbl_8151_lo:
+                                        .byte < ofs_02_8200_00_подготовка_экрана_options
+                                        .byte < ofs_02_8220_01_выбор_опций
+                                        .byte < ofs_02_8230_02_мерцание_exit
+                                        .byte < ofs_02_8240_03_выход_из_экрана_options
+tbl_8152_hi:
+                                        .byte > ofs_02_8200_00_подготовка_экрана_options
+                                        .byte > ofs_02_8220_01_выбор_опций
+                                        .byte > ofs_02_8230_02_мерцание_exit
+                                        .byte > ofs_02_8240_03_выход_из_экрана_options
 
 
 
-ofs_options_9908_00_подготовка_экрана_options:
+ofs_02_8200_00_подготовка_экрана_options:
                                         LDA #con_chr_bank + $B4
                                         STA ram_bg_bank_1
                                         LDA #con_chr_bank + $40
                                         STA ram_bg_bank_2
                                         LDX #$04    ; options
-                                        LDA ram_cheat_flag
-                                        BPL bra_9910
+                                        LDA ram_флаг_читов
+                                        BPL bra_8201
                                         INX
                                         INX
-bra_9910:
+bra_8201:
                                         JSR sub_0x01FE94_bankswitch_отрисовка_экранов
-
                                         LDA #$13    ; палитра экрана с опциями
                                         JSR sub_0x01FE80_bankswitch_загрузка_палитры_в_03E0x
                                         JSR sub_0x01F7CE_запись_палитры_из_03E0x_в_0300x
-                                        
-                                        LDA ram_cheat_flag
-                                        BMI bra_9912
-                                        JSR sub_9924_отрисовать_difficulty
-                                        JSR sub_9926_отрисовать_graphics
-                                        JSR sub_9928_отрисовать_obj_limit
-                                        JSR sub_992A_отрисовать_music
-                                        JSR sub_992C_отрисовать_sound
-                                        JMP loc_9914
-bra_9912:
-                                        JSR sub_992E_отрисовать_infinite_ammo
-                                        JSR sub_9930_отрисовать_continue
-                                        JSR sub_9932_отрисовать_level
-                                        JSR sub_9934_отрисовать_rest
-loc_9914:
-                                        JSR sub_9936_отрисовать_exit
+                                        LDA ram_флаг_читов
+                                        BMI bra_8202
+                                        JSR sub_8204_отрисовать_difficulty
+                                        JSR sub_8206_отрисовать_graphics
+                                        JSR sub_8208_отрисовать_obj_limit
+                                        JSR sub_820A_отрисовать_music
+                                        JSR sub_820C_отрисовать_sound
+                                        JMP loc_8203
+bra_8202:
+                                        JSR sub_820E_отрисовать_infinite_ammo
+                                        JSR sub_8210_отрисовать_continue
+                                        JSR sub_8211_отрисовать_level
+                                        JSR sub_8212_отрисовать_rest
+loc_8203:
+                                        JSR sub_8213_отрисовать_exit
                                         INC ram_номер_действия_на_заставке
                                         RTS
 
 
 
-sub_9924_отрисовать_difficulty:
+sub_8204_отрисовать_difficulty:
                                         LDY ram_option_сложность
-                                        LDA tbl_9925_варианты_difficulty,Y
+                                        LDA tbl_8205_варианты_difficulty,Y
                                         JSR sub_0x01FE8A_bankswitch_отрисовка_текста_через_буфер_0300x
                                         RTS
 
-tbl_9925_варианты_difficulty:
+tbl_8205_варианты_difficulty:
                                         .byte con_0x0017EA_normal   ; 00 
                                         .byte con_0x0017EA_hard     ; 01 
                                         .byte con_0x0017EA_expert   ; 02 
 
-sub_9926_отрисовать_graphics:
+sub_8206_отрисовать_graphics:
                                         LDY ram_option_регион
-                                        LDA tbl_9927_варианты_graphics,Y
+                                        LDA tbl_8207_варианты_graphics,Y
                                         JSR sub_0x01FE8A_bankswitch_отрисовка_текста_через_буфер_0300x
                                         RTS
 
-tbl_9927_варианты_graphics:
+tbl_8207_варианты_graphics:
                                         .byte con_0x0017EA_human   ; 00 
                                         .byte con_0x0017EA_robot   ; 01 
 
-sub_9928_отрисовать_obj_limit:
+sub_8208_отрисовать_obj_limit:
                                         LDY ram_option_колво_объектов
-                                        LDA tbl_9929_варианты_obj_limit,Y
+                                        LDA tbl_8209_варианты_obj_limit,Y
                                         JSR sub_0x01FE8A_bankswitch_отрисовка_текста_через_буфер_0300x
                                         RTS
                                         
-tbl_9929_варианты_obj_limit:
+tbl_8209_варианты_obj_limit:
                                         .byte con_0x0017EA_obj_limit_14   ; 00 
                                         .byte con_0x0017EA_obj_limit_32   ; 01 
                                         
                                         
-sub_992A_отрисовать_music:
+sub_820A_отрисовать_music:
                                         LDX ram_option_music
-                                        LDA tbl_992B_варианты_music,X
+                                        LDA tbl_820B_варианты_music,X
                                         JSR sub_0x01FE8A_bankswitch_отрисовка_текста_через_буфер_0300x
                                         RTS
 
-tbl_992B_варианты_music:
+tbl_820B_варианты_music:
                                         .byte con_0x0017EA_music_on    ; 00 
                                         .byte con_0x0017EA_music_off   ; 01 
 
 
-sub_992C_отрисовать_sound:
+sub_820C_отрисовать_sound:
                                         LDX ram_option_sound
-                                        LDA tbl_992D_варианты_sound,X
+                                        LDA tbl_820D_варианты_sound,X
                                         JSR sub_0x01FE8A_bankswitch_отрисовка_текста_через_буфер_0300x
                                         RTS
 
-tbl_992D_варианты_sound:
+tbl_820D_варианты_sound:
                                         .byte con_0x0017EA_sound_on    ; 00 
                                         .byte con_0x0017EA_sound_off   ; 01 
 
 
-sub_992E_отрисовать_infinite_ammo:
+sub_820E_отрисовать_infinite_ammo:
                                         LDX ram_option_бесконечные_патроны
-                                        LDA tbl_992F_варианты_infinite_ammo,X
+                                        LDA tbl_820F_варианты_infinite_ammo,X
                                         JSR sub_0x01FE8A_bankswitch_отрисовка_текста_через_буфер_0300x
                                         RTS
 
-tbl_992F_варианты_infinite_ammo:
+tbl_820F_варианты_infinite_ammo:
                                        .byte con_0x0017EA_infinite_ammo_off  ; 00
                                        .byte con_0x0017EA_infinite_ammo_on   ; 01
 
 
-sub_9930_отрисовать_continue:
+sub_8210_отрисовать_continue:
                                         LDA #con_0x0017EA_continue
                                         JSR sub_0x01FE8A_bankswitch_отрисовка_текста_через_буфер_0300x
                                         LDA ram_option_конты
@@ -434,7 +446,7 @@ sub_9930_отрисовать_continue:
                                         STA ram_nmt_buffer - $02,X
                                         RTS
 
-sub_9932_отрисовать_level:
+sub_8211_отрисовать_level:
                                         LDA #con_0x0017EA_level
                                         JSR sub_0x01FE8A_bankswitch_отрисовка_текста_через_буфер_0300x
                                         LDA ram_option_уровень
@@ -443,7 +455,7 @@ sub_9932_отрисовать_level:
                                         STA ram_nmt_buffer - $02,X
                                         RTS
 
-sub_9934_отрисовать_rest:
+sub_8212_отрисовать_rest:
                                         LDA #con_0x0017EA_rest
                                         JSR sub_0x01FE8A_bankswitch_отрисовка_текста_через_буфер_0300x
                                         LDA ram_option_жизни
@@ -452,100 +464,100 @@ sub_9934_отрисовать_rest:
                                         STA ram_nmt_buffer - $02,X
                                         RTS
 
-sub_9936_отрисовать_exit:
+sub_8213_отрисовать_exit:
                                         LDA #con_0x0017EA_exit
                                         JSR sub_0x01FE8A_bankswitch_отрисовка_текста_через_буфер_0300x
                                         RTS
 
 
-ofs_options_9AFF_01_выбор_опций:
+ofs_02_8220_01_выбор_опций:
                                         JSR sub_9B30_смена_палитры_сокола
                                         JSR sub_9B34_анимации_орла
 
                                         LDA ram_копия_нажатая_кнопка
                                         AND #con_btns_UD
-                                        BEQ bra_9B01
+                                        BEQ bra_8223
                                         AND #con_btn_Up
-                                        BNE bra_9B00_up
+                                        BNE bra_8222_up
 ; down
                                         INC ram_номер_опции_колво_игроков
                                         LDX #$04
-                                        LDA ram_cheat_flag
-                                        BMI bra_9AFF
+                                        LDA ram_флаг_читов
+                                        BMI bra_8221
                                         INX
-bra_9AFF:
+bra_8221:
                                         CPX ram_номер_опции_колво_игроков
-                                        BCS bra_9B01
+                                        BCS bra_8223
                                         DEC ram_номер_опции_колво_игроков
-                                        BNE bra_9B01
+                                        BNE bra_8223
 
-bra_9B00_up:
+bra_8222_up:
                                         DEC ram_номер_опции_колво_игроков
-                                        BPL bra_9B01
+                                        BPL bra_8223
                                         INC ram_номер_опции_колво_игроков
 
-bra_9B01:
+bra_8223:
                                         LDX ram_номер_опции_колво_игроков
-                                        LDA ram_cheat_flag
-                                        BMI bra_9BBA
+                                        LDA ram_флаг_читов
+                                        BMI bra_8224
                                         
                                         LDY tbl_9B2A_x_координаты_стрелки,X ; X координата стрелки
                                         LDA tbl_9B29_y_координаты_стрелки,X ; Y координата стрелки
-                                        BNE bra_9BBB ; jmp
-bra_9BBA:
+                                        BNE bra_8225 ; jmp
+bra_8224:
                                         LDY tbl_9B2C_x_координаты_стрелки,X ; X координата стрелки
                                         LDA tbl_9B2B_y_координаты_стрелки,X ; Y координата стрелки
-bra_9BBB:
+bra_8225:
                                         JSR sub_E45F_запись_данных_для_стрелки
-                                        LDA ram_cheat_flag
-                                        BMI bra_9BBC
-                                        LDA tbl_99B2_опции_lo,X
+                                        LDA ram_флаг_читов
+                                        BMI bra_8226
+                                        LDA tbl_8227_опции_lo,X
                                         STA ram_0000
-                                        LDA tbl_99B2_опции_hi,X
+                                        LDA tbl_8228_опции_hi,X
                                         STA ram_0001
                                         JMP (ram_0000)
-bra_9BBC:
-                                        LDA tbl_99B3_секретные_опции_lo,X
+bra_8226:
+                                        LDA tbl_8229_секретные_опции_lo,X
                                         STA ram_0000
-                                        LDA tbl_99B3_секретные_опции_hi,X
+                                        LDA tbl_822A_секретные_опции_hi,X
                                         STA ram_0001
                                         JMP (ram_0000)
 
-tbl_99B2_опции_lo:
-                                        .byte < ofs_046_99B3_options_difficulty
-                                        .byte < ofs_046_99B3_options_graphics
-                                        .byte < ofs_046_99B3_options_obj_limit
-                                        .byte < ofs_046_99B3_options_music
-                                        .byte < ofs_046_99B3_options_sound
-                                        .byte < ofs_046_9B10_options_exit
-tbl_99B2_опции_hi:
-                                        .byte > ofs_046_99B3_options_difficulty
-                                        .byte > ofs_046_99B3_options_graphics
-                                        .byte > ofs_046_99B3_options_obj_limit
-                                        .byte > ofs_046_99B3_options_music
-                                        .byte > ofs_046_99B3_options_sound
-                                        .byte > ofs_046_9B10_options_exit
+tbl_8227_опции_lo:
+                                        .byte < ofs_03_99B3_options_difficulty
+                                        .byte < ofs_03_99B3_options_graphics
+                                        .byte < ofs_03_99B3_options_obj_limit
+                                        .byte < ofs_03_99B3_options_music
+                                        .byte < ofs_03_99B3_options_sound
+                                        .byte < ofs_03_9B10_options_exit
+tbl_8228_опции_hi:
+                                        .byte > ofs_03_99B3_options_difficulty
+                                        .byte > ofs_03_99B3_options_graphics
+                                        .byte > ofs_03_99B3_options_obj_limit
+                                        .byte > ofs_03_99B3_options_music
+                                        .byte > ofs_03_99B3_options_sound
+                                        .byte > ofs_03_9B10_options_exit
 
-tbl_99B3_секретные_опции_lo:
-                                        .byte < ofs_046_9B09_secret_options_ammo
-                                        .byte < ofs_046_9B09_secret_options_continue
-                                        .byte < ofs_046_9B09_secret_options_level
-                                        .byte < ofs_046_9B09_secret_options_rest
-                                        .byte < ofs_046_9B10_options_exit
-tbl_99B3_секретные_опции_hi:
-                                        .byte > ofs_046_9B09_secret_options_ammo
-                                        .byte > ofs_046_9B09_secret_options_continue
-                                        .byte > ofs_046_9B09_secret_options_level
-                                        .byte > ofs_046_9B09_secret_options_rest
-                                        .byte > ofs_046_9B10_options_exit
+tbl_8229_секретные_опции_lo:
+                                        .byte < ofs_03_9B09_secret_options_ammo
+                                        .byte < ofs_03_9B09_secret_options_continue
+                                        .byte < ofs_03_9B09_secret_options_level
+                                        .byte < ofs_03_9B09_secret_options_rest
+                                        .byte < ofs_03_9B10_options_exit
+tbl_822A_секретные_опции_hi:
+                                        .byte > ofs_03_9B09_secret_options_ammo
+                                        .byte > ofs_03_9B09_secret_options_continue
+                                        .byte > ofs_03_9B09_secret_options_level
+                                        .byte > ofs_03_9B09_secret_options_rest
+                                        .byte > ofs_03_9B10_options_exit
 
 
 ; X00-02
-ofs_046_99B3_options_difficulty:
-ofs_046_99B3_options_graphics:
-ofs_046_99B3_options_obj_limit:
-ofs_046_99B3_options_music:
-ofs_046_99B3_options_sound:
+ofs_03_99B3_options_difficulty:
+ofs_03_99B3_options_graphics:
+ofs_03_99B3_options_obj_limit:
+ofs_03_99B3_options_music:
+ofs_03_99B3_options_sound:
                                         LDA ram_копия_нажатая_кнопка
                                         AND #con_btns_LR
                                         BEQ bra_9B06_RTS
@@ -632,10 +644,10 @@ tbl_9B0A_sound:
                                         .byte $80   ; 01 sound
 
 
-ofs_046_9B09_secret_options_ammo:
-ofs_046_9B09_secret_options_continue:
-ofs_046_9B09_secret_options_level:
-ofs_046_9B09_secret_options_rest:
+ofs_03_9B09_secret_options_ammo:
+ofs_03_9B09_secret_options_continue:
+ofs_03_9B09_secret_options_level:
+ofs_03_9B09_secret_options_rest:
                                         LDA ram_копия_нажатая_кнопка
                                         AND #con_btns_LR
                                         BEQ bra_9B0B
@@ -701,7 +713,7 @@ tbl_9B0F_номер_тайла:
 
 
 
-ofs_046_9B10_options_exit:
+ofs_03_9B10_options_exit:
                                         LDA ram_копия_нажатая_кнопка
                                         AND #con_btn_Start      
                                         BEQ bra_9B11_RTS
@@ -716,7 +728,7 @@ bra_9B11_RTS:
 
 
 
-ofs_options_9B12_02_мерцание_exit:
+ofs_02_8230_02_мерцание_exit:
                                         JSR sub_9B30_смена_палитры_сокола
                                         JSR sub_9B34_анимации_орла
                                         LDA ram_таймер_до_демки
@@ -736,7 +748,7 @@ bra_9B13_RTS:
 
 
 
-ofs_options_9B27_03_выход_из_экрана_options:
+ofs_02_8240_03_выход_из_экрана_options:
                                         JSR sub_0x01FAAF_затемнение_экрана
                                         PHP
                                         JSR sub_0x01F7CE_запись_палитры_из_03E0x_в_0300x
@@ -761,11 +773,11 @@ ofs_options_9B27_03_выход_из_экрана_options:
                                         JSR sub_0x01FE8A_bankswitch_отрисовка_текста_через_буфер_0300x
                                         LDA #$00
                                         STA ram_демка
-                                        STA ram_001F_flag
+                                        STA ram_флаг_игры_ботов_в_демке
                                         STA ram_номер_уровня
-                                        LDA ram_cheat_flag
+                                        LDA ram_флаг_читов
                                         AND #$7F
-                                        STA ram_cheat_flag
+                                        STA ram_флаг_читов
                                         LDA #$04
                                         STA ram_номер_действия_на_заставке
                                         INC ram_002B
@@ -809,19 +821,19 @@ tbl_9B2C_x_координаты_стрелки:
 
 
 sub_9B30_смена_палитры_сокола:
-                                        INC ram_счетчик_палитры_орла_lo 
-                                        LDA ram_счетчик_палитры_орла_lo 
+                                        INC ram_счетчик_палитры_орла_младш 
+                                        LDA ram_счетчик_палитры_орла_младш 
                                         CMP #$08
                                         BCC bra_9B32_RTS
                                         LDA #$00
-                                        STA ram_счетчик_палитры_орла_lo 
-                                        INC ram_счетчик_палитры_орла_hi
-                                        LDY ram_счетчик_палитры_орла_hi
+                                        STA ram_счетчик_палитры_орла_младш 
+                                        INC ram_счетчик_палитры_орла_старш
+                                        LDY ram_счетчик_палитры_орла_старш
                                         CPY #$04
                                         BCC bra_9B31
                                         LDY #$00
 bra_9B31:
-                                        STY ram_счетчик_палитры_орла_hi
+                                        STY ram_счетчик_палитры_орла_старш
                                         LDA tbl_9B33_цвет,y
                                         STA ram_pal_buffer + $05
                                         JSR sub_0x01F7CE_запись_палитры_из_03E0x_в_0300x
@@ -1060,7 +1072,8 @@ off_9BC0_01_X_спрайта_right:
 
 
 sub_E4BC_переключение_банков_анимация_contra:
-                                        LDA ram_счетчик_кадров
+                                        INC ram_007F
+                                        LDA ram_007F
                                         AND #$07
                                         BNE bra_E4BC_RTS
                                         DEC ram_счетчик_анимации_contra
@@ -1099,7 +1112,7 @@ bra_E4D7:
                                         CMP #$03
                                         BNE bra_E4D1_RTS
                                         LDA ram_0081
-                                        CMP #$30
+                                        CMP #$40
                                         BNE bra_E4D1_RTS
 bra_E4D8_запись:
                                         LDY #$06
@@ -1280,7 +1293,7 @@ C - - - - - 0x0023A2 00:A392: E6 82     INC ram_0082_конфиг_уровня
 C - - - - - 0x0023A4 00:A394: A5 82     LDA ram_0082_конфиг_уровня
 C - - - - - 0x0023A6 00:A396: C9 03     CMP #$03
 C - - - - - 0x0023A8 00:A398: 90 CF     BCC bra_A369
-C - - - - - 0x0023AA 00:A39A: A9 70     LDA #$70
+C - - - - - 0x0023AA 00:A39A: A9 70     LDA #$80
 C - - - - - 0x0023AC 00:A39C: 4C 64 A3  JMP loc_A364
 
 
@@ -1308,7 +1321,7 @@ C - - - - - 0x0023C6 00:A3B6: 60        RTS
 sub_E55C_подготовка_ботов_к_игре:
 C - - - - - 0x01E56C 07:E55C: 20 D0 E5  JSR sub_0x01E5E0_очистка_оперативки
 C - - - - - 0x01E56F 07:E55F: A9 01     LDA #$01
-C - - - - - 0x01E571 07:E561: 85 1F     STA ram_001F_flag
+C - - - - - 0x01E571 07:E561: 85 1F     STA ram_флаг_игры_ботов_в_демке
 C - - - - - 0x01E573 07:E563: 85 20     STA ram_колво_игроков
 C - - - - - 0x01E575 07:E565: A9 01     LDA #con_plr_status_респавн
 C - - - - - 0x01E577 07:E567: 85 A0     STA ram_статус_игрока
@@ -1317,7 +1330,6 @@ C - - - - - 0x01E57B 07:E56B: A9 00     LDA #$00
 C - - - - - 0x01E57D 07:E56D: 85 CA     STA ram_plr_game_over
 C - - - - - 0x01E57F 07:E56F: 85 CB     STA ram_plr_game_over + $01
 C - - - - - 0x01E581 07:E571: 85 1B     STA ram_счетчик_кадров
-;C - - - - - 0x01E583 07:E573: 85 5B     STA ram_счетчик_кадров_2
 C - - - - - 0x01E585 07:E575: 85 23     STA ram_рандом_байт
 C - - - - - 0x01E587 07:E577: A9 10     LDA #$10
 C - - - - - 0x01E589 07:E579: 85 53     STA ram_жизни
@@ -1328,9 +1340,552 @@ C - - - - - 0x01E591 07:E581: 60        RTS
 
 
 
+
+sub_9D94_игра_ботов_в_демке:
+C D 0 - - - 0x001DA4 00:9D94: E6 4E     INC ram_004E
+C - - - - - 0x001DA6 00:9D96: D0 02     BNE bra_9D9A
+C - - - - - 0x001DA8 00:9D98: C6 4E     DEC ram_004E
+bra_9D9A:
+C - - - - - 0x001DAA 00:9D9A: A2 01     LDX #$01
+C - - - - - 0x001DAC 00:9D9C: 20 A0 9D  JSR sub_9DA0
+C - - - - - 0x001DAF 00:9D9F: CA        DEX ; 00
+sub_9DA0:
+C - - - - - 0x001DB0 00:9DA0: A5 1B     LDA ram_счетчик_кадров
+C - - - - - 0x001DB2 00:9DA2: 4A        LSR
+C - - - - - 0x001DB3 00:9DA3: B0 33     BCS bra_9DD8
+C - - - - - 0x001DB5 00:9DA5: B5 41     LDA ram_0041_игрок,X
+C - - - - - 0x001DB7 00:9DA7: D0 2D     BNE bra_9DD6
+C - - - - - 0x001DB9 00:9DA9: A5 50     LDA ram_номер_уровня
+C - - - - - 0x001DBB 00:9DAB: C9 03     CMP #$03
+C - - - - - 0x001DBD 00:9DAD: 90 02     BCC bra_9DB1_00_02
+; 03+
+- - - - - - 0x001DBF 00:9DAF: A9 00     LDA #$00
+bra_9DB1_00_02:
+C - - - - - 0x001DC1 00:9DB1: 0A        ASL
+C - - - - - 0x001DC2 00:9DB2: 0A        ASL
+C - - - - - 0x001DC3 00:9DB3: 85 08     STA ram_0008
+C - - - - - 0x001DC5 00:9DB5: 8A        TXA
+C - - - - - 0x001DC6 00:9DB6: 0A        ASL
+C - - - - - 0x001DC7 00:9DB7: 65 08     ADC ram_0008
+C - - - - - 0x001DC9 00:9DB9: A8        TAY
+C - - - - - 0x001DCA 00:9DBA: B9 08 9E  LDA tbl_9E08_выбор_игрока_и_уровня,Y
+C - - - - - 0x001DCD 00:9DBD: 85 08     STA ram_0008
+C - - - - - 0x001DCF 00:9DBF: B9 09 9E  LDA tbl_9E08_выбор_игрока_и_уровня + $01,Y
+C - - - - - 0x001DD2 00:9DC2: 85 09     STA ram_0009
+C - - - - - 0x001DD4 00:9DC4: B4 43     LDY ram_0043_игрок,X
+C - - - - - 0x001DD6 00:9DC6: B1 08     LDA (ram_0008),Y
+C - - - - - 0x001DD8 00:9DC8: C9 FF     CMP #$FF
+C - - - - - 0x001DDA 00:9DCA: F0 39     BEQ bra_9E05_FF
+C - - - - - 0x001DDC 00:9DCC: 95 4C     STA ram_004C_игрок,X
+C - - - - - 0x001DDE 00:9DCE: C8        INY
+C - - - - - 0x001DDF 00:9DCF: B1 08     LDA (ram_0008),Y
+C - - - - - 0x001DE1 00:9DD1: 95 41     STA ram_0041_игрок,X
+C - - - - - 0x001DE3 00:9DD3: C8        INY
+C - - - - - 0x001DE4 00:9DD4: 94 43     STY ram_0043_игрок,X
+bra_9DD6:
+C - - - - - 0x001DE6 00:9DD6: D6 41     DEC ram_0041_игрок,X
+bra_9DD8:
+C - - - - - 0x001DE8 00:9DD8: B5 4C     LDA ram_004C_игрок,X
+C - - - - - 0x001DEA 00:9DDA: 95 F1     STA ram_нажатая_кнопка,X
+C - - - - - 0x001DEC 00:9DDC: 95 F3     STA ram_удержанная_кнопка,X
+C - - - - - 0x001DEE 00:9DDE: A5 4E     LDA ram_004E
+C - - - - - 0x001DF0 00:9DE0: C9 E0     CMP #$E0
+C - - - - - 0x001DF2 00:9DE2: 90 20     BCC bra_9E04_RTS
+C - - - - - 0x001DF4 00:9DE4: B5 B8     LDA ram_оружие_игрока,X
+C - - - - - 0x001DF6 00:9DE6: 29 0F     AND #$0F
+C - - - - - 0x001DF8 00:9DE8: C9 01     CMP #con_weapon_machine_gun
+C - - - - - 0x001DFA 00:9DEA: F0 04     BEQ bra_9DF0
+C - - - - - 0x001DFC 00:9DEC: C9 03     CMP #con_weapon_laser
+C - - - - - 0x001DFE 00:9DEE: D0 08     BNE bra_9DF8
+bra_9DF0:
+; if M or L
+C - - - - - 0x001E00 00:9DF0: B5 F3     LDA ram_удержанная_кнопка,X
+C - - - - - 0x001E02 00:9DF2: 09 40     ORA #con_btn_B
+C - - - - - 0x001E04 00:9DF4: 95 F3     STA ram_удержанная_кнопка,X
+C - - - - - 0x001E06 00:9DF6: D0 0C     BNE bra_9E04_RTS    ; jmp
+bra_9DF8:
+C - - - - - 0x001E08 00:9DF8: A5 1B     LDA ram_счетчик_кадров
+C - - - - - 0x001E0A 00:9DFA: 29 06     AND #$06
+C - - - - - 0x001E0C 00:9DFC: D0 06     BNE bra_9E04_RTS
+C - - - - - 0x001E0E 00:9DFE: B5 F1     LDA ram_нажатая_кнопка,X
+C - - - - - 0x001E10 00:9E00: 09 40     ORA #con_btn_B
+C - - - - - 0x001E12 00:9E02: 95 F1     STA ram_нажатая_кнопка,X
+bra_9E04_RTS:
+                                        CLC
+C - - - - - 0x001E14 00:9E04: 60        RTS
+bra_9E05_FF:
+;C - - - - - 0x001E15 00:9E05: E6 3B     INC ram_003B
+                                        SEC
+C - - - - - 0x001E17 00:9E07: 60        RTS
+
+
+
+tbl_9E08_выбор_игрока_и_уровня:
+- D 0 - - - 0x001E18 00:9E08: 14 9E     .word _off012_00_9E14_00_кнопки_игрок1_уровень1
+- D 0 - - - 0x001E1A 00:9E0A: 5C 9E     .word _off012_01_9E5C_00_кнопки_игрок2_уровень1
+- D 0 - - - 0x001E1C 00:9E0C: BC 9E     .word _off012_00_9EBC_01_кнопки_игрок1_уровень2
+- D 0 - - - 0x001E1E 00:9E0E: 54 9F     .word _off012_01_9F54_01_кнопки_игрок2_уровень2
+- D 0 - - - 0x001E20 00:9E10: D0 9F     .word _off012_00_9FD0_02_кнопки_игрок1_уровень3
+- D 0 - - - 0x001E22 00:9E12: 8C A0     .word _off012_01_A08C_02_кнопки_игрок2_уровень3
+
+
+; ???
+_off012_00_9E14_00_кнопки_игрок1_уровень1:
+- D 0 - I - 0x001E24 00:9E14: 00        .byte $00, $6F   ; 
+- D 0 - I - 0x001E26 00:9E16: 01        .byte $01, $33   ; 
+- D 0 - I - 0x001E28 00:9E18: 00        .byte $00, $01   ; 
+- D 0 - I - 0x001E2A 00:9E1A: 08        .byte $08, $21   ; 
+- D 0 - I - 0x001E2C 00:9E1C: 09        .byte $09, $02   ; 
+- D 0 - I - 0x001E2E 00:9E1E: 01        .byte $01, $0F   ; 
+- D 0 - I - 0x001E30 00:9E20: 00        .byte $00, $13   ; 
+- D 0 - I - 0x001E32 00:9E22: 01        .byte $01, $15   ; 
+- D 0 - I - 0x001E34 00:9E24: 02        .byte $02, $06   ; 
+- D 0 - I - 0x001E36 00:9E26: 00        .byte $00, $07   ; 
+- D 0 - I - 0x001E38 00:9E28: 01        .byte $01, $1A   ; 
+- D 0 - I - 0x001E3A 00:9E2A: 09        .byte $09, $5A   ; 
+- D 0 - I - 0x001E3C 00:9E2C: 08        .byte $08, $05   ; 
+- D 0 - I - 0x001E3E 00:9E2E: 00        .byte $00, $06   ; 
+- D 0 - I - 0x001E40 00:9E30: 08        .byte $08, $10   ; 
+- D 0 - I - 0x001E42 00:9E32: 00        .byte $00, $17   ; 
+- D 0 - I - 0x001E44 00:9E34: 01        .byte $01, $0A   ; 
+- D 0 - I - 0x001E46 00:9E36: 09        .byte $09, $19   ; 
+- D 0 - I - 0x001E48 00:9E38: 08        .byte $08, $02   ; 
+- D 0 - I - 0x001E4A 00:9E3A: 0A        .byte $0A, $0E   ; 
+- D 0 - I - 0x001E4C 00:9E3C: 08        .byte $08, $02   ; 
+- D 0 - I - 0x001E4E 00:9E3E: 88        .byte $88, $0A   ; 
+- D 0 - I - 0x001E50 00:9E40: 89        .byte $89, $06   ; 
+- D 0 - I - 0x001E52 00:9E42: 88        .byte $88, $03   ; 
+- D 0 - I - 0x001E54 00:9E44: 8A        .byte $8A, $02   ; 
+- D 0 - I - 0x001E56 00:9E46: 0A        .byte $0A, $01   ; 
+- D 0 - I - 0x001E58 00:9E48: 08        .byte $08, $05   ; 
+- D 0 - I - 0x001E5A 00:9E4A: 09        .byte $09, $04   ; 
+- D 0 - I - 0x001E5C 00:9E4C: 89        .byte $89, $12   ; 
+- D 0 - I - 0x001E5E 00:9E4E: 09        .byte $09, $13   ; 
+- D 0 - I - 0x001E60 00:9E50: 08        .byte $08, $01   ; 
+- D 0 - I - 0x001E62 00:9E52: 88        .byte $88, $04   ; 
+- D 0 - I - 0x001E64 00:9E54: 89        .byte $89, $05   ; 
+- D 0 - I - 0x001E66 00:9E56: 09        .byte $09, $0E   ; 
+- D 0 - I - 0x001E68 00:9E58: 01        .byte $01, $0E   ; 
+- - - - - - 0x001E6A 00:9E5A: FF        .byte $FF, $FF   ; 
+
+
+
+_off012_01_9E5C_00_кнопки_игрок2_уровень1:
+- D 0 - I - 0x001E6C 00:9E5C: 00        .byte $00, $84   ; 
+- D 0 - I - 0x001E6E 00:9E5E: 01        .byte $01, $1E   ; 
+- D 0 - I - 0x001E70 00:9E60: 00        .byte $00, $01   ; 
+- D 0 - I - 0x001E72 00:9E62: 02        .byte $02, $07   ; 
+- D 0 - I - 0x001E74 00:9E64: 00        .byte $00, $01   ; 
+- D 0 - I - 0x001E76 00:9E66: 01        .byte $01, $04   ; 
+- D 0 - I - 0x001E78 00:9E68: 08        .byte $08, $03   ; 
+- D 0 - I - 0x001E7A 00:9E6A: 88        .byte $88, $05   ; 
+- D 0 - I - 0x001E7C 00:9E6C: 08        .byte $08, $03   ; 
+- D 0 - I - 0x001E7E 00:9E6E: 09        .byte $09, $0B   ; 
+- D 0 - I - 0x001E80 00:9E70: 08        .byte $08, $03   ; 
+- D 0 - I - 0x001E82 00:9E72: 0A        .byte $0A, $07   ; 
+- D 0 - I - 0x001E84 00:9E74: 08        .byte $08, $04   ; 
+- D 0 - I - 0x001E86 00:9E76: 00        .byte $00, $08   ; 
+- D 0 - I - 0x001E88 00:9E78: 01        .byte $01, $02   ; 
+- D 0 - I - 0x001E8A 00:9E7A: 81        .byte $81, $05   ; 
+- D 0 - I - 0x001E8C 00:9E7C: 01        .byte $01, $04   ; 
+- D 0 - I - 0x001E8E 00:9E7E: 09        .byte $09, $01   ; 
+- D 0 - I - 0x001E90 00:9E80: 08        .byte $08, $04   ; 
+- D 0 - I - 0x001E92 00:9E82: 00        .byte $00, $0E   ; 
+- D 0 - I - 0x001E94 00:9E84: 01        .byte $01, $07   ; 
+- D 0 - I - 0x001E96 00:9E86: 02        .byte $02, $04   ; 
+- D 0 - I - 0x001E98 00:9E88: 00        .byte $00, $1A   ; 
+- D 0 - I - 0x001E9A 00:9E8A: 01        .byte $01, $05   ; 
+- D 0 - I - 0x001E9C 00:9E8C: 81        .byte $81, $05   ; 
+- D 0 - I - 0x001E9E 00:9E8E: 01        .byte $01, $47   ; 
+- D 0 - I - 0x001EA0 00:9E90: 09        .byte $09, $01   ; 
+- D 0 - I - 0x001EA2 00:9E92: 08        .byte $08, $09   ; 
+- D 0 - I - 0x001EA4 00:9E94: 09        .byte $09, $10   ; 
+- D 0 - I - 0x001EA6 00:9E96: 08        .byte $08, $01   ; 
+- D 0 - I - 0x001EA8 00:9E98: 0A        .byte $0A, $10   ; 
+- D 0 - I - 0x001EAA 00:9E9A: 8A        .byte $8A, $05   ; 
+- D 0 - I - 0x001EAC 00:9E9C: 88        .byte $88, $02   ; 
+- D 0 - I - 0x001EAE 00:9E9E: 09        .byte $09, $1D   ; 
+- D 0 - I - 0x001EB0 00:9EA0: 01        .byte $01, $1A   ; 
+- D 0 - I - 0x001EB2 00:9EA2: 09        .byte $09, $07   ; 
+- D 0 - I - 0x001EB4 00:9EA4: 08        .byte $08, $02   ; 
+- D 0 - I - 0x001EB6 00:9EA6: 0A        .byte $0A, $0E   ; 
+- D 0 - I - 0x001EB8 00:9EA8: 08        .byte $08, $03   ; 
+- D 0 - I - 0x001EBA 00:9EAA: 0A        .byte $0A, $0E   ; 
+- D 0 - I - 0x001EBC 00:9EAC: 08        .byte $08, $02   ; 
+- D 0 - I - 0x001EBE 00:9EAE: 88        .byte $88, $05   ; 
+- D 0 - I - 0x001EC0 00:9EB0: 89        .byte $89, $01   ; 
+- D 0 - I - 0x001EC2 00:9EB2: 09        .byte $09, $1A   ; 
+- D 0 - I - 0x001EC4 00:9EB4: 89        .byte $89, $06   ; 
+- D 0 - I - 0x001EC6 00:9EB6: 09        .byte $09, $06   ; 
+- D 0 - I - 0x001EC8 00:9EB8: 01        .byte $01, $20   ; 
+- D 0 - I - 0x001ECA 00:9EBA: FF        .byte $FF, $FF   ; 
+
+
+
+_off012_00_9EBC_01_кнопки_игрок1_уровень2:
+- D 0 - I - 0x001ECC 00:9EBC: 00        .byte $00, $38   ; 
+- D 0 - I - 0x001ECE 00:9EBE: 02        .byte $02, $04   ; 
+- D 0 - I - 0x001ED0 00:9EC0: 0A        .byte $0A, $1D   ; 
+- D 0 - I - 0x001ED2 00:9EC2: 02        .byte $02, $08   ; 
+- D 0 - I - 0x001ED4 00:9EC4: 0A        .byte $0A, $01   ; 
+- D 0 - I - 0x001ED6 00:9EC6: 02        .byte $02, $01   ; 
+- D 0 - I - 0x001ED8 00:9EC8: 00        .byte $00, $05   ; 
+- D 0 - I - 0x001EDA 00:9ECA: 01        .byte $01, $08   ; 
+- D 0 - I - 0x001EDC 00:9ECC: 08        .byte $08, $25   ; 
+- D 0 - I - 0x001EDE 00:9ECE: 01        .byte $01, $07   ; 
+- D 0 - I - 0x001EE0 00:9ED0: 09        .byte $09, $02   ; 
+- D 0 - I - 0x001EE2 00:9ED2: 08        .byte $08, $0B   ; 
+- D 0 - I - 0x001EE4 00:9ED4: 0A        .byte $0A, $01   ; 
+- D 0 - I - 0x001EE6 00:9ED6: 02        .byte $02, $02   ; 
+- D 0 - I - 0x001EE8 00:9ED8: 0A        .byte $0A, $07   ; 
+- D 0 - I - 0x001EEA 00:9EDA: 08        .byte $08, $0A   ; 
+- D 0 - I - 0x001EEC 00:9EDC: 00        .byte $00, $0C   ; 
+- D 0 - I - 0x001EEE 00:9EDE: 08        .byte $08, $03   ; 
+- D 0 - I - 0x001EF0 00:9EE0: 00        .byte $00, $03   ; 
+- D 0 - I - 0x001EF2 00:9EE2: 08        .byte $08, $0C   ; 
+- D 0 - I - 0x001EF4 00:9EE4: 01        .byte $01, $06   ; 
+- D 0 - I - 0x001EF6 00:9EE6: 08        .byte $08, $1A   ; 
+- D 0 - I - 0x001EF8 00:9EE8: 01        .byte $01, $0A   ; 
+- D 0 - I - 0x001EFA 00:9EEA: 05        .byte $05, $01   ; 
+- D 0 - I - 0x001EFC 00:9EEC: 04        .byte $04, $0B   ; 
+- D 0 - I - 0x001EFE 00:9EEE: 05        .byte $05, $03   ; 
+- D 0 - I - 0x001F00 00:9EF0: 04        .byte $04, $05   ; 
+- D 0 - I - 0x001F02 00:9EF2: 05        .byte $05, $03   ; 
+- D 0 - I - 0x001F04 00:9EF4: 01        .byte $01, $06   ; 
+- D 0 - I - 0x001F06 00:9EF6: 09        .byte $09, $07   ; 
+- D 0 - I - 0x001F08 00:9EF8: 01        .byte $01, $01   ; 
+- D 0 - I - 0x001F0A 00:9EFA: 04        .byte $04, $09   ; 
+- D 0 - I - 0x001F0C 00:9EFC: 05        .byte $05, $06   ; 
+- D 0 - I - 0x001F0E 00:9EFE: 01        .byte $01, $0C   ; 
+- D 0 - I - 0x001F10 00:9F00: 09        .byte $09, $01   ; 
+- D 0 - I - 0x001F12 00:9F02: 08        .byte $08, $0A   ; 
+- D 0 - I - 0x001F14 00:9F04: 09        .byte $09, $01   ; 
+- D 0 - I - 0x001F16 00:9F06: 01        .byte $01, $0A   ; 
+- D 0 - I - 0x001F18 00:9F08: 09        .byte $09, $01   ; 
+- D 0 - I - 0x001F1A 00:9F0A: 08        .byte $08, $0C   ; 
+- D 0 - I - 0x001F1C 00:9F0C: 09        .byte $09, $07   ; 
+- D 0 - I - 0x001F1E 00:9F0E: 08        .byte $08, $04   ; 
+- D 0 - I - 0x001F20 00:9F10: 09        .byte $09, $03   ; 
+- D 0 - I - 0x001F22 00:9F12: 08        .byte $08, $12   ; 
+- D 0 - I - 0x001F24 00:9F14: 0A        .byte $0A, $04   ; 
+- D 0 - I - 0x001F26 00:9F16: 08        .byte $08, $0A   ; 
+- D 0 - I - 0x001F28 00:9F18: 00        .byte $00, $06   ; 
+- D 0 - I - 0x001F2A 00:9F1A: 08        .byte $08, $11   ; 
+- D 0 - I - 0x001F2C 00:9F1C: 0A        .byte $0A, $14   ; 
+- D 0 - I - 0x001F2E 00:9F1E: 08        .byte $08, $12   ; 
+- D 0 - I - 0x001F30 00:9F20: 0A        .byte $0A, $11   ; 
+- D 0 - I - 0x001F32 00:9F22: 02        .byte $02, $04   ; 
+- D 0 - I - 0x001F34 00:9F24: 0A        .byte $0A, $01   ; 
+- D 0 - I - 0x001F36 00:9F26: 08        .byte $08, $05   ; 
+- D 0 - I - 0x001F38 00:9F28: 0A        .byte $0A, $0B   ; 
+- D 0 - I - 0x001F3A 00:9F2A: 02        .byte $02, $05   ; 
+- D 0 - I - 0x001F3C 00:9F2C: 06        .byte $06, $05   ; 
+- D 0 - I - 0x001F3E 00:9F2E: 02        .byte $02, $02   ; 
+- D 0 - I - 0x001F40 00:9F30: 06        .byte $06, $02   ; 
+- D 0 - I - 0x001F42 00:9F32: 02        .byte $02, $07   ; 
+- D 0 - I - 0x001F44 00:9F34: 0A        .byte $0A, $12   ; 
+- D 0 - I - 0x001F46 00:9F36: 08        .byte $08, $17   ; 
+- D 0 - I - 0x001F48 00:9F38: 00        .byte $00, $06   ; 
+- D 0 - I - 0x001F4A 00:9F3A: 02        .byte $02, $01   ; 
+- D 0 - I - 0x001F4C 00:9F3C: 0A        .byte $0A, $02   ; 
+- D 0 - I - 0x001F4E 00:9F3E: 08        .byte $08, $06   ; 
+- D 0 - I - 0x001F50 00:9F40: 00        .byte $00, $06   ; 
+- D 0 - I - 0x001F52 00:9F42: 08        .byte $08, $02   ; 
+- D 0 - I - 0x001F54 00:9F44: 00        .byte $00, $10   ; 
+- D 0 - I - 0x001F56 00:9F46: 02        .byte $02, $06   ; 
+- D 0 - I - 0x001F58 00:9F48: 00        .byte $00, $0C   ; 
+- D 0 - I - 0x001F5A 00:9F4A: 01        .byte $01, $07   ; 
+- D 0 - I - 0x001F5C 00:9F4C: 04        .byte $04, $08   ; 
+- D 0 - I - 0x001F5E 00:9F4E: 01        .byte $01, $04   ; 
+- D 0 - I - 0x001F60 00:9F50: 08        .byte $08, $01   ; 
+- D 0 - I - 0x001F62 00:9F52: FF        .byte $FF, $FF   ; 
+
+
+
+_off012_01_9F54_01_кнопки_игрок2_уровень2:
+- D 0 - I - 0x001F64 00:9F54: 00        .byte $00, $56   ; 
+- D 0 - I - 0x001F66 00:9F56: 02        .byte $02, $14   ; 
+- D 0 - I - 0x001F68 00:9F58: 00        .byte $00, $06   ; 
+- D 0 - I - 0x001F6A 00:9F5A: 01        .byte $01, $04   ; 
+- D 0 - I - 0x001F6C 00:9F5C: 00        .byte $00, $0B   ; 
+- D 0 - I - 0x001F6E 00:9F5E: 08        .byte $08, $22   ; 
+- D 0 - I - 0x001F70 00:9F60: 09        .byte $09, $08   ; 
+- D 0 - I - 0x001F72 00:9F62: 08        .byte $08, $15   ; 
+- D 0 - I - 0x001F74 00:9F64: 0A        .byte $0A, $13   ; 
+- D 0 - I - 0x001F76 00:9F66: 08        .byte $08, $02   ; 
+- D 0 - I - 0x001F78 00:9F68: 09        .byte $09, $06   ; 
+- D 0 - I - 0x001F7A 00:9F6A: 08        .byte $08, $06   ; 
+- D 0 - I - 0x001F7C 00:9F6C: 09        .byte $09, $03   ; 
+- D 0 - I - 0x001F7E 00:9F6E: 01        .byte $01, $05   ; 
+- D 0 - I - 0x001F80 00:9F70: 09        .byte $09, $0D   ; 
+- D 0 - I - 0x001F82 00:9F72: 08        .byte $08, $02   ; 
+- D 0 - I - 0x001F84 00:9F74: 0A        .byte $0A, $0F   ; 
+- D 0 - I - 0x001F86 00:9F76: 08        .byte $08, $03   ; 
+- D 0 - I - 0x001F88 00:9F78: 09        .byte $09, $03   ; 
+- D 0 - I - 0x001F8A 00:9F7A: 01        .byte $01, $15   ; 
+- D 0 - I - 0x001F8C 00:9F7C: 09        .byte $09, $06   ; 
+- D 0 - I - 0x001F8E 00:9F7E: 01        .byte $01, $01   ; 
+- D 0 - I - 0x001F90 00:9F80: 05        .byte $05, $04   ; 
+- D 0 - I - 0x001F92 00:9F82: 04        .byte $04, $0C   ; 
+- D 0 - I - 0x001F94 00:9F84: 05        .byte $05, $06   ; 
+- D 0 - I - 0x001F96 00:9F86: 01        .byte $01, $04   ; 
+- D 0 - I - 0x001F98 00:9F88: 09        .byte $09, $11   ; 
+- D 0 - I - 0x001F9A 00:9F8A: 08        .byte $08, $05   ; 
+- D 0 - I - 0x001F9C 00:9F8C: 09        .byte $09, $15   ; 
+- D 0 - I - 0x001F9E 00:9F8E: 08        .byte $08, $03   ; 
+- D 0 - I - 0x001FA0 00:9F90: 0A        .byte $0A, $01   ; 
+- D 0 - I - 0x001FA2 00:9F92: 02        .byte $02, $03   ; 
+- D 0 - I - 0x001FA4 00:9F94: 04        .byte $04, $12   ; 
+- D 0 - I - 0x001FA6 00:9F96: 05        .byte $05, $03   ; 
+- D 0 - I - 0x001FA8 00:9F98: 01        .byte $01, $05   ; 
+- D 0 - I - 0x001FAA 00:9F9A: 09        .byte $09, $01   ; 
+- D 0 - I - 0x001FAC 00:9F9C: 08        .byte $08, $26   ; 
+- D 0 - I - 0x001FAE 00:9F9E: 0A        .byte $0A, $13   ; 
+- D 0 - I - 0x001FB0 00:9FA0: 08        .byte $08, $04   ; 
+- D 0 - I - 0x001FB2 00:9FA2: 09        .byte $09, $01   ; 
+- D 0 - I - 0x001FB4 00:9FA4: 08        .byte $08, $03   ; 
+- D 0 - I - 0x001FB6 00:9FA6: 0A        .byte $0A, $07   ; 
+- D 0 - I - 0x001FB8 00:9FA8: 08        .byte $08, $02   ; 
+- D 0 - I - 0x001FBA 00:9FAA: 01        .byte $01, $03   ; 
+- D 0 - I - 0x001FBC 00:9FAC: 08        .byte $08, $02   ; 
+- D 0 - I - 0x001FBE 00:9FAE: 0A        .byte $0A, $10   ; 
+- D 0 - I - 0x001FC0 00:9FB0: 08        .byte $08, $01   ; 
+- D 0 - I - 0x001FC2 00:9FB2: 01        .byte $01, $04   ; 
+- D 0 - I - 0x001FC4 00:9FB4: 09        .byte $09, $04   ; 
+- D 0 - I - 0x001FC6 00:9FB6: 08        .byte $08, $09   ; 
+- D 0 - I - 0x001FC8 00:9FB8: 0A        .byte $0A, $26   ; 
+- D 0 - I - 0x001FCA 00:9FBA: 08        .byte $08, $04   ; 
+- D 0 - I - 0x001FCC 00:9FBC: 09        .byte $09, $06   ; 
+- D 0 - I - 0x001FCE 00:9FBE: 08        .byte $08, $08   ; 
+- D 0 - I - 0x001FD0 00:9FC0: 09        .byte $09, $10   ; 
+- D 0 - I - 0x001FD2 00:9FC2: 08        .byte $08, $06   ; 
+- D 0 - I - 0x001FD4 00:9FC4: 0A        .byte $0A, $1C   ; 
+- D 0 - I - 0x001FD6 00:9FC6: 08        .byte $08, $0D   ; 
+- D 0 - I - 0x001FD8 00:9FC8: 00        .byte $00, $1D   ; 
+- - - - - - 0x001FDA 00:9FCA: 04        .byte $04, $0F   ; 
+- - - - - - 0x001FDC 00:9FCC: 01        .byte $01, $01   ; 
+- - - - - - 0x001FDE 00:9FCE: FF        .byte $FF, $FF   ; 
+
+
+
+_off012_00_9FD0_02_кнопки_игрок1_уровень3:
+- D 0 - I - 0x001FE0 00:9FD0: 00        .byte $00, $54   ; 
+- D 0 - I - 0x001FE2 00:9FD2: 01        .byte $01, $43   ; 
+- D 0 - I - 0x001FE4 00:9FD4: 08        .byte $08, $02   ; 
+- D 0 - I - 0x001FE6 00:9FD6: 09        .byte $09, $2C   ; 
+- D 0 - I - 0x001FE8 00:9FD8: 01        .byte $01, $04   ; 
+- D 0 - I - 0x001FEA 00:9FDA: 04        .byte $04, $13   ; 
+- D 0 - I - 0x001FEC 00:9FDC: 01        .byte $01, $0B   ; 
+- D 0 - I - 0x001FEE 00:9FDE: 05        .byte $05, $01   ; 
+- D 0 - I - 0x001FF0 00:9FE0: 04        .byte $04, $13   ; 
+- D 0 - I - 0x001FF2 00:9FE2: 84        .byte $84, $01   ; 
+- D 0 - I - 0x001FF4 00:9FE4: 86        .byte $86, $0B   ; 
+- D 0 - I - 0x001FF6 00:9FE6: 84        .byte $84, $01   ; 
+- D 0 - I - 0x001FF8 00:9FE8: 81        .byte $81, $02   ; 
+- D 0 - I - 0x001FFA 00:9FEA: 01        .byte $01, $12   ; 
+- D 0 - I - 0x001FFC 00:9FEC: 09        .byte $09, $1F   ; 
+- D 0 - I - 0x001FFE 00:9FEE: 01        .byte $01, $02   ; 
+- D 0 - I - 0x002000 00:9FF0: 04        .byte $04, $0A   ; 
+- D 0 - I - 0x002002 00:9FF2: 01        .byte $01, $03   ; 
+- D 0 - I - 0x002004 00:9FF4: 09        .byte $09, $05   ; 
+- D 0 - I - 0x002006 00:9FF6: 01        .byte $01, $02   ; 
+- D 0 - I - 0x002008 00:9FF8: 04        .byte $04, $24   ; 
+- D 0 - I - 0x00200A 00:9FFA: 01        .byte $01, $0A   ; 
+- D 0 - I - 0x00200C 00:9FFC: 09        .byte $09, $0C   ; 
+- D 0 - I - 0x00200E 00:9FFE: 08        .byte $08, $01   ; 
+- D 1 - I - 0x002010 00:A000: 09        .byte $09, $13   ; 
+- D 1 - I - 0x002012 00:A002: 01        .byte $01, $01   ; 
+- D 1 - I - 0x002014 00:A004: 04        .byte $04, $0E   ; 
+- D 1 - I - 0x002016 00:A006: 01        .byte $01, $04   ; 
+- D 1 - I - 0x002018 00:A008: 09        .byte $09, $20   ; 
+- D 1 - I - 0x00201A 00:A00A: 01        .byte $01, $01   ; 
+- D 1 - I - 0x00201C 00:A00C: 04        .byte $04, $22   ; 
+- D 1 - I - 0x00201E 00:A00E: 01        .byte $01, $01   ; 
+- D 1 - I - 0x002020 00:A010: 09        .byte $09, $20   ; 
+- D 1 - I - 0x002022 00:A012: 01        .byte $01, $03   ; 
+- D 1 - I - 0x002024 00:A014: 09        .byte $09, $07   ; 
+- D 1 - I - 0x002026 00:A016: 08        .byte $08, $15   ; 
+- D 1 - I - 0x002028 00:A018: 09        .byte $09, $02   ; 
+- D 1 - I - 0x00202A 00:A01A: 01        .byte $01, $10   ; 
+- D 1 - I - 0x00202C 00:A01C: 00        .byte $00, $01   ; 
+- D 1 - I - 0x00202E 00:A01E: 02        .byte $02, $05   ; 
+- D 1 - I - 0x002030 00:A020: 00        .byte $00, $01   ; 
+- D 1 - I - 0x002032 00:A022: 04        .byte $04, $01   ; 
+- D 1 - I - 0x002034 00:A024: 01        .byte $01, $0B   ; 
+- D 1 - I - 0x002036 00:A026: 08        .byte $08, $01   ; 
+- D 1 - I - 0x002038 00:A028: 0A        .byte $0A, $06   ; 
+- D 1 - I - 0x00203A 00:A02A: 02        .byte $02, $01   ; 
+- D 1 - I - 0x00203C 00:A02C: 0A        .byte $0A, $06   ; 
+- D 1 - I - 0x00203E 00:A02E: 08        .byte $08, $01   ; 
+- D 1 - I - 0x002040 00:A030: 09        .byte $09, $02   ; 
+- D 1 - I - 0x002042 00:A032: 01        .byte $01, $21   ; 
+- D 1 - I - 0x002044 00:A034: 09        .byte $09, $02   ; 
+- D 1 - I - 0x002046 00:A036: 08        .byte $08, $09   ; 
+- D 1 - I - 0x002048 00:A038: 09        .byte $09, $10   ; 
+- D 1 - I - 0x00204A 00:A03A: 01        .byte $01, $01   ; 
+- D 1 - I - 0x00204C 00:A03C: 04        .byte $04, $1A   ; 
+- D 1 - I - 0x00204E 00:A03E: 01        .byte $01, $01   ; 
+- D 1 - I - 0x002050 00:A040: 89        .byte $89, $04   ; 
+- D 1 - I - 0x002052 00:A042: 88        .byte $88, $01   ; 
+- D 1 - I - 0x002054 00:A044: 8A        .byte $8A, $05   ; 
+- D 1 - I - 0x002056 00:A046: 82        .byte $82, $02   ; 
+- D 1 - I - 0x002058 00:A048: 88        .byte $88, $01   ; 
+- D 1 - I - 0x00205A 00:A04A: 81        .byte $81, $01   ; 
+- D 1 - I - 0x00205C 00:A04C: 01        .byte $01, $07   ; 
+- D 1 - I - 0x00205E 00:A04E: 09        .byte $09, $0F   ; 
+- D 1 - I - 0x002060 00:A050: 08        .byte $08, $01   ; 
+- D 1 - I - 0x002062 00:A052: 09        .byte $09, $05   ; 
+- D 1 - I - 0x002064 00:A054: 08        .byte $08, $04   ; 
+- D 1 - I - 0x002066 00:A056: 09        .byte $09, $09   ; 
+- D 1 - I - 0x002068 00:A058: 08        .byte $08, $02   ; 
+- D 1 - I - 0x00206A 00:A05A: 09        .byte $09, $0D   ; 
+- D 1 - I - 0x00206C 00:A05C: 08        .byte $08, $06   ; 
+- D 1 - I - 0x00206E 00:A05E: 09        .byte $09, $02   ; 
+- D 1 - I - 0x002070 00:A060: 08        .byte $08, $0C   ; 
+- D 1 - I - 0x002072 00:A062: 09        .byte $09, $03   ; 
+- D 1 - I - 0x002074 00:A064: 08        .byte $08, $03   ; 
+- D 1 - I - 0x002076 00:A066: 09        .byte $09, $0B   ; 
+- D 1 - I - 0x002078 00:A068: 01        .byte $01, $01   ; 
+- D 1 - I - 0x00207A 00:A06A: 04        .byte $04, $1B   ; 
+- D 1 - I - 0x00207C 00:A06C: 84        .byte $84, $01   ; 
+- D 1 - I - 0x00207E 00:A06E: 88        .byte $88, $01   ; 
+- D 1 - I - 0x002080 00:A070: 89        .byte $89, $07   ; 
+- D 1 - I - 0x002082 00:A072: 81        .byte $81, $01   ; 
+- D 1 - I - 0x002084 00:A074: 01        .byte $01, $05   ; 
+- D 1 - I - 0x002086 00:A076: 09        .byte $09, $05   ; 
+- D 1 - I - 0x002088 00:A078: 08        .byte $08, $08   ; 
+- D 1 - I - 0x00208A 00:A07A: 09        .byte $09, $03   ; 
+- D 1 - I - 0x00208C 00:A07C: 01        .byte $01, $0B   ; 
+- D 1 - I - 0x00208E 00:A07E: 09        .byte $09, $04   ; 
+- D 1 - I - 0x002090 00:A080: 08        .byte $08, $06   ; 
+- D 1 - I - 0x002092 00:A082: 09        .byte $09, $02   ; 
+- D 1 - I - 0x002094 00:A084: 08        .byte $08, $04   ; 
+- D 1 - I - 0x002096 00:A086: 09        .byte $09, $1E   ; 
+- - - - - - 0x002098 00:A088: 01        .byte $01, $01   ; 
+- - - - - - 0x00209A 00:A08A: FF        .byte $FF, $FF   ; 
+
+
+
+_off012_01_A08C_02_кнопки_игрок2_уровень3:
+- D 1 - I - 0x00209C 00:A08C: 00        .byte $00, $57   ; 
+- D 1 - I - 0x00209E 00:A08E: 02        .byte $02, $09   ; 
+- D 1 - I - 0x0020A0 00:A090: 0A        .byte $0A, $03   ; 
+- D 1 - I - 0x0020A2 00:A092: 08        .byte $08, $01   ; 
+- D 1 - I - 0x0020A4 00:A094: 01        .byte $01, $5D   ; 
+- D 1 - I - 0x0020A6 00:A096: 02        .byte $02, $04   ; 
+- D 1 - I - 0x0020A8 00:A098: 00        .byte $00, $05   ; 
+- D 1 - I - 0x0020AA 00:A09A: 01        .byte $01, $0C   ; 
+- D 1 - I - 0x0020AC 00:A09C: 81        .byte $81, $03   ; 
+- D 1 - I - 0x0020AE 00:A09E: 89        .byte $89, $02   ; 
+- D 1 - I - 0x0020B0 00:A0A0: 09        .byte $09, $03   ; 
+- D 1 - I - 0x0020B2 00:A0A2: 08        .byte $08, $01   ; 
+- D 1 - I - 0x0020B4 00:A0A4: 0A        .byte $0A, $05   ; 
+- D 1 - I - 0x0020B6 00:A0A6: 02        .byte $02, $06   ; 
+- D 1 - I - 0x0020B8 00:A0A8: 00        .byte $00, $01   ; 
+- D 1 - I - 0x0020BA 00:A0AA: 05        .byte $05, $08   ; 
+- D 1 - I - 0x0020BC 00:A0AC: 01        .byte $01, $06   ; 
+- D 1 - I - 0x0020BE 00:A0AE: 04        .byte $04, $01   ; 
+- D 1 - I - 0x0020C0 00:A0B0: 00        .byte $00, $05   ; 
+- D 1 - I - 0x0020C2 00:A0B2: 01        .byte $01, $05   ; 
+- D 1 - I - 0x0020C4 00:A0B4: 02        .byte $02, $04   ; 
+- D 1 - I - 0x0020C6 00:A0B6: 00        .byte $00, $07   ; 
+- D 1 - I - 0x0020C8 00:A0B8: 01        .byte $01, $39   ; 
+- D 1 - I - 0x0020CA 00:A0BA: 09        .byte $09, $09   ; 
+- D 1 - I - 0x0020CC 00:A0BC: 08        .byte $08, $02   ; 
+- D 1 - I - 0x0020CE 00:A0BE: 02        .byte $02, $0D   ; 
+- D 1 - I - 0x0020D0 00:A0C0: 0A        .byte $0A, $04   ; 
+- D 1 - I - 0x0020D2 00:A0C2: 08        .byte $08, $01   ; 
+- D 1 - I - 0x0020D4 00:A0C4: 81        .byte $81, $03   ; 
+- D 1 - I - 0x0020D6 00:A0C6: 01        .byte $01, $14   ; 
+- D 1 - I - 0x0020D8 00:A0C8: 08        .byte $08, $04   ; 
+- D 1 - I - 0x0020DA 00:A0CA: 0A        .byte $0A, $08   ; 
+- D 1 - I - 0x0020DC 00:A0CC: 08        .byte $08, $01   ; 
+- D 1 - I - 0x0020DE 00:A0CE: 01        .byte $01, $29   ; 
+- D 1 - I - 0x0020E0 00:A0D0: 09        .byte $09, $14   ; 
+- D 1 - I - 0x0020E2 00:A0D2: 01        .byte $01, $01   ; 
+- D 1 - I - 0x0020E4 00:A0D4: 09        .byte $09, $06   ; 
+- D 1 - I - 0x0020E6 00:A0D6: 01        .byte $01, $09   ; 
+- D 1 - I - 0x0020E8 00:A0D8: 09        .byte $09, $02   ; 
+- D 1 - I - 0x0020EA 00:A0DA: 0A        .byte $0A, $02   ; 
+- D 1 - I - 0x0020EC 00:A0DC: 02        .byte $02, $0D   ; 
+- D 1 - I - 0x0020EE 00:A0DE: 0A        .byte $0A, $01   ; 
+- D 1 - I - 0x0020F0 00:A0E0: 08        .byte $08, $01   ; 
+- D 1 - I - 0x0020F2 00:A0E2: 88        .byte $88, $02   ; 
+- D 1 - I - 0x0020F4 00:A0E4: 89        .byte $89, $02   ; 
+- D 1 - I - 0x0020F6 00:A0E6: 81        .byte $81, $01   ; 
+- D 1 - I - 0x0020F8 00:A0E8: 01        .byte $01, $0D   ; 
+- D 1 - I - 0x0020FA 00:A0EA: 09        .byte $09, $01   ; 
+- D 1 - I - 0x0020FC 00:A0EC: 08        .byte $08, $05   ; 
+- D 1 - I - 0x0020FE 00:A0EE: 01        .byte $01, $07   ; 
+- D 1 - I - 0x002100 00:A0F0: 08        .byte $08, $01   ; 
+- D 1 - I - 0x002102 00:A0F2: 0A        .byte $0A, $03   ; 
+- D 1 - I - 0x002104 00:A0F4: 08        .byte $08, $04   ; 
+- D 1 - I - 0x002106 00:A0F6: 09        .byte $09, $06   ; 
+- D 1 - I - 0x002108 00:A0F8: 08        .byte $08, $05   ; 
+- D 1 - I - 0x00210A 00:A0FA: 09        .byte $09, $06   ; 
+- D 1 - I - 0x00210C 00:A0FC: 08        .byte $08, $04   ; 
+- D 1 - I - 0x00210E 00:A0FE: 88        .byte $88, $01   ; 
+- D 1 - I - 0x002110 00:A100: 8A        .byte $8A, $05   ; 
+- D 1 - I - 0x002112 00:A102: 0A        .byte $0A, $07   ; 
+- D 1 - I - 0x002114 00:A104: 02        .byte $02, $11   ; 
+- D 1 - I - 0x002116 00:A106: 8A        .byte $8A, $02   ; 
+- D 1 - I - 0x002118 00:A108: 88        .byte $88, $01   ; 
+- D 1 - I - 0x00211A 00:A10A: 89        .byte $89, $01   ; 
+- D 1 - I - 0x00211C 00:A10C: 09        .byte $09, $02   ; 
+- D 1 - I - 0x00211E 00:A10E: 01        .byte $01, $07   ; 
+- D 1 - I - 0x002120 00:A110: 05        .byte $05, $05   ; 
+- D 1 - I - 0x002122 00:A112: 04        .byte $04, $02   ; 
+- D 1 - I - 0x002124 00:A114: 02        .byte $02, $06   ; 
+- D 1 - I - 0x002126 00:A116: 04        .byte $04, $01   ; 
+- D 1 - I - 0x002128 00:A118: 01        .byte $01, $30   ; 
+- D 1 - I - 0x00212A 00:A11A: 09        .byte $09, $01   ; 
+- D 1 - I - 0x00212C 00:A11C: 00        .byte $00, $01   ; 
+- D 1 - I - 0x00212E 00:A11E: 02        .byte $02, $03   ; 
+- D 1 - I - 0x002130 00:A120: 00        .byte $00, $02   ; 
+- D 1 - I - 0x002132 00:A122: 01        .byte $01, $0C   ; 
+- D 1 - I - 0x002134 00:A124: 81        .byte $81, $02   ; 
+- D 1 - I - 0x002136 00:A126: 89        .byte $89, $01   ; 
+- D 1 - I - 0x002138 00:A128: 88        .byte $88, $01   ; 
+- D 1 - I - 0x00213A 00:A12A: 08        .byte $08, $01   ; 
+- D 1 - I - 0x00213C 00:A12C: 0A        .byte $0A, $04   ; 
+- D 1 - I - 0x00213E 00:A12E: 02        .byte $02, $09   ; 
+- D 1 - I - 0x002140 00:A130: 06        .byte $06, $01   ; 
+- D 1 - I - 0x002142 00:A132: 04        .byte $04, $02   ; 
+- D 1 - I - 0x002144 00:A134: 05        .byte $05, $01   ; 
+- D 1 - I - 0x002146 00:A136: 01        .byte $01, $0A   ; 
+- D 1 - I - 0x002148 00:A138: 00        .byte $00, $0C   ; 
+- D 1 - I - 0x00214A 00:A13A: 01        .byte $01, $10   ; 
+- D 1 - I - 0x00214C 00:A13C: 09        .byte $09, $13   ; 
+- D 1 - I - 0x00214E 00:A13E: 08        .byte $08, $02   ; 
+- D 1 - I - 0x002150 00:A140: 0A        .byte $0A, $06   ; 
+- D 1 - I - 0x002152 00:A142: 00        .byte $00, $01   ; 
+- D 1 - I - 0x002154 00:A144: 01        .byte $01, $1A   ; 
+- D 1 - I - 0x002156 00:A146: 09        .byte $09, $04   ; 
+- D 1 - I - 0x002158 00:A148: 08        .byte $08, $01   ; 
+- D 1 - I - 0x00215A 00:A14A: 0A        .byte $0A, $01   ; 
+- D 1 - I - 0x00215C 00:A14C: 02        .byte $02, $02   ; 
+- D 1 - I - 0x00215E 00:A14E: 00        .byte $00, $0D   ; 
+- D 1 - I - 0x002160 00:A150: 80        .byte $80, $03   ; 
+- D 1 - I - 0x002162 00:A152: 81        .byte $81, $02   ; 
+- D 1 - I - 0x002164 00:A154: 01        .byte $01, $18   ; 
+- D 1 - I - 0x002166 00:A156: 00        .byte $00, $02   ; 
+- D 1 - I - 0x002168 00:A158: 01        .byte $01, $01   ; 
+- D 1 - I - 0x00216A 00:A15A: 05        .byte $05, $02   ; 
+- D 1 - I - 0x00216C 00:A15C: 04        .byte $04, $09   ; 
+- D 1 - I - 0x00216E 00:A15E: 05        .byte $05, $02   ; 
+- D 1 - I - 0x002170 00:A160: 01        .byte $01, $1F   ; 
+- D 1 - I - 0x002172 00:A162: 02        .byte $02, $05   ; 
+- D 1 - I - 0x002174 00:A164: 00        .byte $00, $0D   ; 
+- D 1 - I - 0x002176 00:A166: FF        .byte $FF, $FF   ; 
+
+
+
+
+
+
 sub_A29C_чит_коды:
 ; 1путин: опт/замена кода
-C D 1 - - - 0x0022AC 00:A29C: A4 50     LDA ram_cheat_flag
+C D 1 - - - 0x0022AC 00:A29C: A4 50     LDA ram_флаг_читов
 C - - - - - 0x0022AE 00:A29E: 30 1C     BMI bra_A2BC_RTS
                                         LDY ram_cheat_input_cnt
 C - - - - - 0x0022B0 00:A2A0: A5 F1     LDA ram_нажатая_кнопка
@@ -1344,7 +1899,7 @@ C - - - - - 0x0022BE 00:A2AE: B9 BD A2  LDA tbl_A2BD_cheat_code,Y
 C - - - - - 0x0022C1 00:A2B1: D0 09     BNE bra_A2BC_RTS
 ; if cheat was entered successfully
 C - - - - - 0x0022C3 00:A2B3: A9 01     LDA #$81
-C - - - - - 0x0022C5 00:A2B5: 8D EC 07  STA ram_cheat_flag
+C - - - - - 0x0022C5 00:A2B5: 8D EC 07  STA ram_флаг_читов
                                         LDA #$20
                                         STA ram_счетчик_мерцания_экрана
                                         LDA #con_sound_23
@@ -1420,7 +1975,7 @@ C - - - - - 0x01E51B 07:E50B: 20 0E FE  JSR sub_0x01FE1E_остановить_з
 C - - - - - 0x01E521 07:E511: A2 02     LDX #$00
 C - - - - - 0x01E523 07:E513: 20 84 FE  JSR sub_0x01FE94_bankswitch_отрисовка_экранов
 C - - - - - 0x01E526 07:E516: A9 00     LDA #$00
-C - - - - - 0x01E528 07:E518: 85 1F     STA ram_001F_flag
+C - - - - - 0x01E528 07:E518: 85 1F     STA ram_флаг_игры_ботов_в_демке
 C - - - - - 0x01E52A 07:E51A: 85 50     STA ram_номер_уровня
 C - - - - - 0x01E52C 07:E51C: 20 D0 E5  JSR sub_0x01E5E0_очистка_оперативки
 C - - - - - 0x01E52F 07:E51F: 20 C0 E7  JSR sub_0x01E7D0_выбор_банков_графики

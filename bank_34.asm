@@ -798,7 +798,7 @@ ofs_038_2B_8477_01_initialize_object:
 C - - J - - 0x008487 02:8477: A9 80     LDA #$80
 C - - - - - 0x008489 02:8479: 9D 2C 07  STA ram_параметры_объектов,X
 C - - - - - 0x00848C 02:847C: A9 F1     LDA #con__hp_F1
-C - - - - - 0x00848E 02:847E: 9D 76 06  STA ram_жизни_объектов,X
+C - - - - - 0x00848E 02:847E: 9D 76 06  STA ram_жизни_объектов_8bit,X
 C - - - - - 0x008491 02:8481: BC 48 07  LDY ram_0748_obj,X
 C - - - - - 0x008494 02:8484: B9 8A 84  LDA tbl_848A,Y
 C - - - - - 0x008497 02:8487: 4C E0 A2  JMP loc_0x0062F0
@@ -1014,7 +1014,7 @@ ofs_038_6D_85AC_01_initialize_object:
 C - - J - - 0x0085BC 02:85AC: A9 91     LDA #$91
 C - - - - - 0x0085BE 02:85AE: 9D 2C 07  STA ram_параметры_объектов,X
 C - - - - - 0x0085C1 02:85B1: A9 F0     LDA #con__hp_F0
-C - - - - - 0x0085C3 02:85B3: 9D 76 06  STA ram_жизни_объектов,X
+C - - - - - 0x0085C3 02:85B3: 9D 76 06  STA ram_жизни_объектов_8bit,X
 C - - - - - 0x0085C6 02:85B6: 4C D7 A2  JMP loc_0x0062E7_increase_obj_state
 
 
@@ -1597,7 +1597,7 @@ _off001_0x008959_3B_purple_mutant:
 
 ofs_038_3B_8955_01_initialize_object:
 C - - J - - 0x008965 02:8955: A9 F1     LDA #con__hp_F1
-C - - - - - 0x008967 02:8957: 9D 76 06  STA ram_жизни_объектов,X
+C - - - - - 0x008967 02:8957: 9D 76 06  STA ram_жизни_объектов_8bit,X
 C - - - - - 0x00896A 02:895A: A9 00     LDA #$00
 C - - - - - 0x00896C 02:895C: 9D 2C 07  STA ram_параметры_объектов,X
 C - - - - - 0x00896F 02:895F: A9 10     LDA #$10
@@ -1637,7 +1637,7 @@ C - - - - - 0x0089AA 02:899A: 20 3D A8  JSR sub_0x00684D
 C - - - - - 0x0089AD 02:899D: A0 00     LDY #$00
 C - - - - - 0x0089AF 02:899F: BD 48 07  LDA ram_0748_obj,X
 C - - - - - 0x0089B2 02:89A2: 38        SEC
-C - - - - - 0x0089B3 02:89A3: FD 76 06  SBC ram_жизни_объектов,X
+C - - - - - 0x0089B3 02:89A3: FD 76 06  SBC ram_жизни_объектов_8bit,X
 C - - - - - 0x0089B6 02:89A6: 0A        ASL
 C - - - - - 0x0089B7 02:89A7: 0A        ASL
 C - - - - - 0x0089B8 02:89A8: 0A        ASL
@@ -1649,7 +1649,7 @@ C - - - - - 0x0089BF 02:89AF: 90 02     BCC bra_89B3
 C - - - - - 0x0089C1 02:89B1: A9 FF     LDA #$FF
 bra_89B3:
 C - - - - - 0x0089C3 02:89B3: 9D 56 07  STA ram_scroll_X_obj,X
-C - - - - - 0x0089C6 02:89B6: BD 76 06  LDA ram_жизни_объектов,X
+C - - - - - 0x0089C6 02:89B6: BD 76 06  LDA ram_жизни_объектов_8bit,X
 C - - - - - 0x0089C9 02:89B9: 9D 48 07  STA ram_0748_obj,X
 C - - - - - 0x0089CC 02:89BC: BD 56 07  LDA ram_scroll_X_obj,X
 C - - - - - 0x0089CF 02:89BF: F0 18     BEQ bra_89D9
@@ -2109,7 +2109,7 @@ C - - - - - 0x008CB5 02:8CA5: A9 18     LDA #$18
 C - - - - - 0x008CB7 02:8CA7: 20 95 AB  JSR sub_0x006BA5_set_dynamic_hp_to_enemy
 C - - - - - 0x008CBA 02:8CAA: 9D 48 07  STA ram_0748_obj,X
 C - - - - - 0x008CBD 02:8CAD: A9 F0     LDA #con__hp_F0
-C - - - - - 0x008CBF 02:8CAF: 9D 76 06  STA ram_жизни_объектов,X
+C - - - - - 0x008CBF 02:8CAF: 9D 76 06  STA ram_жизни_объектов_8bit,X
 C - - - - - 0x008CC2 02:8CB2: A9 70     LDA #$70
 C - - - - - 0x008CC4 02:8CB4: 9D 22 05  STA ram_позиция_y_спрайта_врага_и_пуль,X
 C - - - - - 0x008CC7 02:8CB7: A9 80     LDA #$80
@@ -2133,7 +2133,7 @@ C - - - - - 0x008CE7 02:8CD7: A9 08     LDA #$08
 C - - - - - 0x008CE9 02:8CD9: 90 13     BCC bra_8CEE
 C - - - - - 0x008CEB 02:8CDB: DE 10 07  DEC ram_0710_obj,X
 C - - - - - 0x008CEE 02:8CDE: BD 48 07  LDA ram_0748_obj,X
-C - - - - - 0x008CF1 02:8CE1: 9D 76 06  STA ram_жизни_объектов,X
+C - - - - - 0x008CF1 02:8CE1: 9D 76 06  STA ram_жизни_объектов_8bit,X
 C - - - - - 0x008CF4 02:8CE4: A9 10     LDA #$10
 C - - - - - 0x008CF6 02:8CE6: 9D F4 06  STA ram_06F4_obj,X
 C - - - - - 0x008CF9 02:8CE9: A9 70     LDA #$70
@@ -2162,10 +2162,10 @@ C - - - - - 0x008D12 02:8D02: 20 C8 AB  JSR sub_0x006BD8
 bra_8D05:
 C - - - - - 0x008D15 02:8D05: DE E6 06  DEC ram_счетчкики_для_объектов,X
 C - - - - - 0x008D18 02:8D08: D0 EA     BNE bra_8CF4_RTS
-C - - - - - 0x008D1A 02:8D0A: BD 76 06  LDA ram_жизни_объектов,X
+C - - - - - 0x008D1A 02:8D0A: BD 76 06  LDA ram_жизни_объектов_8bit,X
 C - - - - - 0x008D1D 02:8D0D: 9D 48 07  STA ram_0748_obj,X
 C - - - - - 0x008D20 02:8D10: A9 F0     LDA #con__hp_F0
-C - - - - - 0x008D22 02:8D12: 9D 76 06  STA ram_жизни_объектов,X
+C - - - - - 0x008D22 02:8D12: 9D 76 06  STA ram_жизни_объектов_8bit,X
 C - - - - - 0x008D25 02:8D15: A9 01     LDA #$01
 C - - - - - 0x008D27 02:8D17: 4C E0 A2  JMP loc_0x0062F0
 
@@ -2351,7 +2351,7 @@ _off001_0x008E18_54_boss_7_fireball:
 
 ofs_038_54_8E14_01_initialize_object:
 C - - J - - 0x008E24 02:8E14: A9 03     LDA #$03
-C - - - - - 0x008E26 02:8E16: 9D 76 06  STA ram_жизни_объектов,X
+C - - - - - 0x008E26 02:8E16: 9D 76 06  STA ram_жизни_объектов_8bit,X
 C - - - - - 0x008E29 02:8E19: A9 02     LDA #$02
 C - - - - - 0x008E2B 02:8E1B: 9D 56 05  STA ram_атрибуты_спрайта_врага_и_пуль,X
 C - - - - - 0x008E2E 02:8E1E: A9 28     LDA #$28
@@ -2674,7 +2674,7 @@ C - - - - - 0x00901D 02:900D: A9 20     LDA #$20
 C - - - - - 0x00901F 02:900F: 20 99 AB  JSR sub_0x006BA9_set_dynamic_hp_to_boss
 C - - - - - 0x009022 02:9012: 9D 56 07  STA ram_scroll_X_obj,X
 C - - - - - 0x009025 02:9015: A9 F0     LDA #con__hp_F0
-C - - - - - 0x009027 02:9017: 9D 76 06  STA ram_жизни_объектов,X
+C - - - - - 0x009027 02:9017: 9D 76 06  STA ram_жизни_объектов_8bit,X
 C - - - - - 0x00902A 02:901A: 4C D7 A2  JMP loc_0x0062E7_increase_obj_state
 
 
@@ -2753,7 +2753,7 @@ C - - - - - 0x0090A1 02:9091: A9 08     LDA #$08
 C - - - - - 0x0090A3 02:9093: 90 13     BCC bra_90A8
 C - - - - - 0x0090A5 02:9095: DE 10 07  DEC ram_0710_obj,X
 C - - - - - 0x0090A8 02:9098: BD 56 07  LDA ram_scroll_X_obj,X
-C - - - - - 0x0090AB 02:909B: 9D 76 06  STA ram_жизни_объектов,X
+C - - - - - 0x0090AB 02:909B: 9D 76 06  STA ram_жизни_объектов_8bit,X
 C - - - - - 0x0090AE 02:909E: A9 08     LDA #$08
 C - - - - - 0x0090B0 02:90A0: 9D F4 06  STA ram_06F4_obj,X
 C - - - - - 0x0090B3 02:90A3: A9 50     LDA #$50
@@ -2792,10 +2792,10 @@ C - - - - - 0x0090DF 02:90CF: 10 EB     BPL bra_90BC_loop
 bra_90D1:
 C - - - - - 0x0090E1 02:90D1: DE E6 06  DEC ram_счетчкики_для_объектов,X
 C - - - - - 0x0090E4 02:90D4: D0 D8     BNE bra_90AE_RTS
-C - - - - - 0x0090E6 02:90D6: BD 76 06  LDA ram_жизни_объектов,X
+C - - - - - 0x0090E6 02:90D6: BD 76 06  LDA ram_жизни_объектов_8bit,X
 C - - - - - 0x0090E9 02:90D9: 9D 56 07  STA ram_scroll_X_obj,X
 C - - - - - 0x0090EC 02:90DC: A9 F0     LDA #con__hp_F0
-C - - - - - 0x0090EE 02:90DE: 9D 76 06  STA ram_жизни_объектов,X
+C - - - - - 0x0090EE 02:90DE: 9D 76 06  STA ram_жизни_объектов_8bit,X
 C - - - - - 0x0090F1 02:90E1: A9 01     LDA #$01
 C - - - - - 0x0090F3 02:90E3: 4C E0 A2  JMP loc_0x0062F0
 

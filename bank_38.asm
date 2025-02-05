@@ -598,7 +598,7 @@ C - - - - - 0x010386 04:8376: B9 89 83  LDA tbl_8388_spd_X + $01,Y
 C - - - - - 0x010389 04:8379: 9D CA 06  STA ram_скорость_объектов_x_старш,X
 C - - - - - 0x01038C 04:837C: 20 94 83  JSR sub_8394
 C - - - - - 0x01038F 04:837F: A9 01     LDA #$01
-C - - - - - 0x010391 04:8381: 9D 76 06  STA ram_жизни_объектов,X
+C - - - - - 0x010391 04:8381: 9D 76 06  STA ram_жизни_объектов_8bit,X
 C - - - - - 0x010394 04:8384: 4C D7 A2  JMP loc_0x0062E7_increase_obj_state
 bra_8387_RTS:
 C - - - - - 0x010397 04:8387: 60        RTS
@@ -739,7 +739,7 @@ ofs_038_59_843F_01_initialize_object:
 C - - J - - 0x01044F 04:843F: A9 10     LDA #$10
 C - - - - - 0x010451 04:8441: 9D 2C 07  STA ram_параметры_объектов,X
 C - - - - - 0x010454 04:8444: A9 F0     LDA #con__hp_F0
-C - - - - - 0x010456 04:8446: 9D 76 06  STA ram_жизни_объектов,X
+C - - - - - 0x010456 04:8446: 9D 76 06  STA ram_жизни_объектов_8bit,X
 C - - - - - 0x010459 04:8449: 4C D7 A2  JMP loc_0x0062E7_increase_obj_state
 
 
@@ -1839,7 +1839,7 @@ _off001_0x010B24_5E_spawner_giant_mouths:
 
 ofs_038_5E_8B18_01_initialize_object:
 C - - J - - 0x010B28 04:8B18: A9 F0     LDA #con__hp_F0
-C - - - - - 0x010B2A 04:8B1A: 9D 76 06  STA ram_жизни_объектов,X
+C - - - - - 0x010B2A 04:8B1A: 9D 76 06  STA ram_жизни_объектов_8bit,X
 C - - - - - 0x010B2D 04:8B1D: A9 01     LDA #$01
 C - - - - - 0x010B2F 04:8B1F: 4C E0 A2  JMP loc_0x0062F0
 
@@ -2063,7 +2063,7 @@ _off001_0x010C55_5F_red_skull_head:
 
 ofs_038_5F_8C53_01_initialize_object:
 C - - J - - 0x010C63 04:8C53: A9 08     LDA #$08
-C - - - - - 0x010C65 04:8C55: 9D 76 06  STA ram_жизни_объектов,X
+C - - - - - 0x010C65 04:8C55: 9D 76 06  STA ram_жизни_объектов_8bit,X
 C - - - - - 0x010C68 04:8C58: A9 02     LDA #$02
 C - - - - - 0x010C6A 04:8C5A: 9D 56 05  STA ram_атрибуты_спрайта_врага_и_пуль,X
 C - - - - - 0x010C6D 04:8C5D: BD 1E 07  LDA ram_obj_flags,X
@@ -3362,7 +3362,7 @@ _off001_0x0113DA_71_chr_banks_changer:
 
 ofs_038_71_93CE_01_initialize_object:
 C - - J - - 0x0113DE 04:93CE: A9 F0     LDA #con__hp_F0
-C - - - - - 0x0113E0 04:93D0: 9D 76 06  STA ram_жизни_объектов,X
+C - - - - - 0x0113E0 04:93D0: 9D 76 06  STA ram_жизни_объектов_8bit,X
 C - - - - - 0x0113E3 04:93D3: BD 1E 07  LDA ram_obj_flags,X
 C - - - - - 0x0113E6 04:93D6: 29 01     AND #$01
 C - - - - - 0x0113E8 04:93D8: A8        TAY
@@ -3443,7 +3443,7 @@ ofs_038_65_942E_01_initialize_object:
 C - - J - - 0x01143E 04:942E: A9 10     LDA #$10
 C - - - - - 0x011440 04:9430: 9D 2C 07  STA ram_параметры_объектов,X
 C - - - - - 0x011443 04:9433: A9 F0     LDA #con__hp_F0
-C - - - - - 0x011445 04:9435: 9D 76 06  STA ram_жизни_объектов,X
+C - - - - - 0x011445 04:9435: 9D 76 06  STA ram_жизни_объектов_8bit,X
 C - - - - - 0x011448 04:9438: A9 58     LDA #con_chr_bank + $58
 C - - - - - 0x01144A 04:943A: 8D F1 07  STA ram_bg_bank_2
 C - - - - - 0x01144D 04:943D: A9 11     LDA #con_chr_bank + $11
@@ -4058,7 +4058,7 @@ _off001_0x011838_64_boss_6_phase_1:
 
 ofs_038_64_983A_01_initialize_object:
 C - - J - - 0x01184A 04:983A: A9 F0     LDA #con__hp_F0
-C - - - - - 0x01184C 04:983C: 9D 76 06  STA ram_жизни_объектов,X
+C - - - - - 0x01184C 04:983C: 9D 76 06  STA ram_жизни_объектов_8bit,X
 C - - - - - 0x01184F 04:983F: A9 91     LDA #$91
 C - - - - - 0x011851 04:9841: 9D 2C 07  STA ram_параметры_объектов,X
 C - - - - - 0x011854 04:9844: A9 01     LDA #$01
@@ -4450,7 +4450,7 @@ C - - - - - 0x011B51 04:9B41: BC 64 07  LDY ram_0764_obj,X
 C - - - - - 0x011B54 04:9B44: F0 02     BEQ bra_9B48
 C - - - - - 0x011B56 04:9B46: A9 F1     LDA #con__hp_F1
 bra_9B48:
-C - - - - - 0x011B58 04:9B48: 9D 76 06  STA ram_жизни_объектов,X
+C - - - - - 0x011B58 04:9B48: 9D 76 06  STA ram_жизни_объектов_8bit,X
 C - - - - - 0x011B5B 04:9B4B: BD 64 07  LDA ram_0764_obj,X
 C - - - - - 0x011B5E 04:9B4E: D0 40     BNE bra_9B90
 C - - - - - 0x011B60 04:9B50: A9 F0     LDA #$F0

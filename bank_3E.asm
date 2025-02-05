@@ -16,7 +16,6 @@
 .export sub_0x01E648
 .export loc_0x01E64C_add_points_to_score
 .export sub_0x01E7D0_выбор_банков_графики
-.export loc_0x01E7F1
 .export loc_0x01E7F9_игра
 .export loc_0x01E906
 .export sub_0x01F0A5
@@ -872,13 +871,6 @@ C - - - - - 0x01E4B0 07:E4A0: 85 F0     STA ram_00F0
 bra_E4A2_RTS:
 C - - - - - 0x01E4B2 07:E4A2: 60        RTS
 
-loc_0x01E7F1:
-                                        JSR sub_E7DF
-                                        LDA ram_003B
-                                        BEQ bra_E4A2_RTS
-                                        JSR sub_E496_выбрать_следующий_уровень_для_демки
-                                        LDA #$00
-                                        JMP loc_E4EC_запись_в_демку   ; jmp
 
 loc_0x01E4F5_плюс1_демка:
 C D 3 - - - 0x01E4F5 07:E4E5: E6 18     INC ram_демка
@@ -911,7 +903,7 @@ C - - - - - 0x01E5A4 07:E594: A6 20     LDX ram_колво_игроков
 bra_E596_loop:
 C - - - - - 0x01E5A6 07:E596: A9 01     LDA #con_plr_status_респавн
 C - - - - - 0x01E5A8 07:E598: 95 A0     STA ram_статус_игрока,X
-C - - - - - 0x01E5AA 07:E59A: A9 00     LDA #$00    ; con_weapon_default
+C - - - - - 0x01E5AA 07:E59A: A9 00     LDA #$00    ; con_weapon_pistol
 C - - - - - 0x01E5AC 07:E59C: 95 CA     STA ram_plr_game_over,X
 C - - - - - 0x01E5AE 07:E59E: 95 C4     STA ram_инвиз_игрока,X
 C - - - - - 0x01E5B0 07:E5A0: 95 B8     STA ram_оружие_игрока,X
@@ -1025,7 +1017,7 @@ C - - - - - 0x01E64A 07:E63A: 85 02     STA ram_0002
 loc_0x01E64C_add_points_to_score:
 C D 3 - - - 0x01E64C 07:E63C: A9 00     LDA #$00
 C - - - - - 0x01E64E 07:E63E: 85 03     STA ram_0003
-C - - - - - 0x01E650 07:E640: A5 1F     LDA ram_001F_flag
+C - - - - - 0x01E650 07:E640: A5 1F     LDA ram_флаг_игры_ботов_в_демке
 C - - - - - 0x01E652 07:E642: F0 01     BEQ bra_E645
 C - - - - - 0x01E654 07:E644: 60        RTS
 bra_E645:
@@ -1272,12 +1264,6 @@ C - - - - - 0x01E7EB 07:E7DB: 8D F5 07  STA ram_spr_bank_4
 C - - - - - 0x01E7EE 07:E7DE: 60        RTS
 
 
-sub_E7DF:
-C - - - - - 0x01E7EF 07:E7DF: 20 B7 FE  JSR sub_FEB7_bankswitch
-C - - - - - 0x01E7F2 07:E7E2: A5 3B     LDA ram_003B
-C - - - - - 0x01E7F4 07:E7E4: F0 03     BEQ bra_E7E9_игра
-C - - - - - 0x01E7F6 07:E7E6: 4C 56 EA  JMP loc_E492
-bra_E7E9_игра:
 loc_0x01E7F9_игра:
 loc_E7E9_игра:
 ; 1путин опт
@@ -1358,7 +1344,7 @@ C - - - - - 0x01E85D 07:E84D: 20 C7 FE  JSR sub_FEC7_prepare_area_config
 ; 1путин опт
                                         INC ram_002B
 C - - - - - 0x01E863 07:E853: A9 01     LDA #$01
-C - - - - - 0x01E865 07:E855: A4 1F     LDY ram_001F_flag
+C - - - - - 0x01E865 07:E855: A4 1F     LDY ram_флаг_игры_ботов_в_демке
 C - - - - - 0x01E867 07:E857: D0 0B     BNE bra_E864
 C - - - - - 0x01E869 07:E859: 20 23 E7  JSR sub_E723
 C - - - - - 0x01E86C 07:E85C: 20 31 E7  JSR sub_E731
@@ -1443,7 +1429,7 @@ C - - - - - 0x01E8C8 07:E8B8: 60        RTS
 
 
 sub_E8B9_выбрать_саундтрек_уровня:
-C - - - - - 0x01E8C9 07:E8B9: A5 1F     LDA ram_001F_flag
+C - - - - - 0x01E8C9 07:E8B9: A5 1F     LDA ram_флаг_игры_ботов_в_демке
 C - - - - - 0x01E8CB 07:E8BB: D0 08     BNE bra_E8C5
 C - - - - - 0x01E8CD 07:E8BD: A4 50     LDY ram_номер_уровня
 C - - - - - 0x01E8CF 07:E8BF: B9 CE E8  LDA tbl_E8CE,Y
@@ -1765,7 +1751,7 @@ bra_EA78:
 C - - - - - 0x01EA88 07:EA78: 20 F7 FE  JSR sub_FEF7_credits_handler
 C - - - - - 0x01EA8B 07:EA7B: A5 60     LDA ram_0060_unk
 C - - - - - 0x01EA8D 07:EA7D: F0 DA     BEQ bra_EA59_RTS
-C - - - - - 0x01EA8F 07:EA7F: A9 00     LDA #$00    ; con_weapon_default
+C - - - - - 0x01EA8F 07:EA7F: A9 00     LDA #$00    ; con_weapon_pistol
 C - - - - - 0x01EA91 07:EA81: 85 B8     STA ram_оружие_игрока
 C - - - - - 0x01EA93 07:EA83: 85 B9     STA ram_оружие_игрока + $01
 C - - - - - 0x01EA95 07:EA85: A9 00     LDA #$00
@@ -1774,7 +1760,7 @@ C - - - - - 0x01EA97 07:EA87: 4C 01 E9  JMP loc_E901
 
 
 sub_EA8A:
-C - - - - - 0x01EA9A 07:EA8A: A5 1F     LDA ram_001F_flag
+C - - - - - 0x01EA9A 07:EA8A: A5 1F     LDA ram_флаг_игры_ботов_в_демке
 C - - - - - 0x01EA9E 07:EA8E: 05 1D     ORA ram_001D
 C - - - - - 0x01EAA0 07:EA90: D0 1C     BNE bra_EAAE_RTS
 C - - - - - 0x01EAA2 07:EA92: A5 F5     LDA ram_копия_нажатая_кнопка
@@ -3826,7 +3812,7 @@ sub_0x01F74F_начать_создание_нового_объекта:
 C D 3 - - - 0x01F74F 07:F73F: 20 9E F7  JSR sub_F79E_подготовить_объект
 C - - - - - 0x01F752 07:F742: A9 01     LDA #$01
 C - - - - - 0x01F754 07:F744: 9D 68 06  STA ram_состояние_объектов,X
-C - - - - - 0x01F757 07:F747: 9D 76 06  STA ram_жизни_объектов,X
+C - - - - - 0x01F757 07:F747: 9D 76 06  STA ram_жизни_объектов_8bit,X
 C - - - - - 0x01F75A 07:F74A: A9 00     LDA #$00    ; флаг успеха
 C - - - - - 0x01F75C 07:F74C: F0 0B     BEQ bra_F759    ; jmp
 
@@ -3836,7 +3822,7 @@ sub_F74E_удалить_объект_и_очистить_его_данные:
 C - - - - - 0x01F75E 07:F74E: 20 9C F7  JSR sub_F79C_удалить_объект_01
 C - - - - - 0x01F761 07:F751: A9 00     LDA #$00
 C - - - - - 0x01F763 07:F753: 9D 68 06  STA ram_состояние_объектов,X
-C - - - - - 0x01F766 07:F756: 9D 76 06  STA ram_жизни_объектов,X
+C - - - - - 0x01F766 07:F756: 9D 76 06  STA ram_жизни_объектов_8bit,X
 bra_F759:
 C - - - - - 0x01F769 07:F759: 9D 1E 07  STA ram_obj_flags,X
 C - - - - - 0x01F76C 07:F75C: 9D 08 05  STA ram_кадр_врага_и_пуль,X
@@ -4501,7 +4487,7 @@ bra_FB30_US:
                                         LDA tbl_FB75_индексы + $02,X
                                         STA ram_макс_индекс_враги
                                         LDA #$81    ; вкл. чит
-                                        STA ram_cheat_flag
+                                        STA ram_флаг_читов
 C - - - - - 0x01FB40 07:FB30: A9 53     LDA #$53
 C - - - - - 0x01FB42 07:FB32: 8D EA 07  STA ram_reset_check
 C - - - - - 0x01FB45 07:FB35: A9 B1     LDA #$B1
@@ -5002,7 +4988,7 @@ C - - - - - 0x01FE62 07:FE52: 4C 81 91  JMP loc_0x001191_обработка_пу
 loc_0x01FE6D_разрыв_flame:
 C D 3 - - - 0x01FE6D 07:FE5D: A9 30     LDA #con_prg_bank + $30
 C - - - - - 0x01FE6F 07:FE5F: 20 6F FD  JSR sub_FD6F_prg_bankswitch___no_return
-C - - - - - 0x01FE72 07:FE62: 20 61 92  JSR sub_0x001271
+C - - - - - 0x01FE72 07:FE62: 20 61 92  JSR sub_0x001271_flame_разрыв
 C - - - - - 0x01FE75 07:FE65: 4C 58 FD  JMP loc_FD58_prg_bankswitch___select_secondary_bank
 
 
@@ -5087,14 +5073,6 @@ C - - - - - 0x01FEC4 07:FEB4: 4C 58 FD  JMP loc_FD58_prg_bankswitch___select_sec
 
 
 
-sub_FEB7_bankswitch:
-C - - - - - 0x01FEC7 07:FEB7: A9 30     LDA #con_prg_bank + $28
-C - - - - - 0x01FEC9 07:FEB9: 20 6F FD  JSR sub_FD63_prg_bankswitch___with_return
-C - - - - - 0x01FECC 07:FEBC: 4C 94 9D  JSR sub_0x001DA4
-                                        JMP loc_FD8B_restore_prg_bank
-
-
-
 sub_FEBF:
 C - - - - - 0x01FECF 07:FEBF: A9 30     LDA #con_prg_bank + $28
 C - - - - - 0x01FED1 07:FEC1: 20 6F FD  JSR sub_FD6F_prg_bankswitch___no_return
@@ -5119,7 +5097,7 @@ C - - - - - 0x01FEE4 07:FED4: 4C 68 A1  JMP loc_0x002178_stage_complete_handler
 loc_E3B9_bankswitch:
                                         LDA #con_prg_bank + $24
                                         JSR sub_FD6F_prg_bankswitch___no_return
-                                        JMP loc_0x010050_работа_с_экранами
+                                        JMP loc_0x008010_работа_с_экранами
 
 
 

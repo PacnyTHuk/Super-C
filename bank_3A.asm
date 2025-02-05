@@ -2205,7 +2205,7 @@ C - - - - - 0x014C9C 05:8C8C: 85 08     STA ram_0008
 C - - - - - 0x014C9E 05:8C8E: 85 09     STA ram_0009
 C - - - - - 0x014CA0 05:8C90: A0 0F     LDY #$0F
 bra_8C92_loop:
-C - - - - - 0x014CA2 05:8C92: B9 A8 05  LDA ram_пули_игрока_аттрибуты,Y
+C - - - - - 0x014CA2 05:8C92: B9 A8 05  LDA ram_пули_игрока_атрибуты_обработки,Y
 C - - - - - 0x014CA5 05:8C95: C9 01     CMP #$01
 C - - - - - 0x014CA7 05:8C97: D0 16     BNE bra_8CAF
 C - - - - - 0x014CA9 05:8C99: B9 88 05  LDA ram_позиция_x_спрайта,Y
@@ -2367,7 +2367,7 @@ ofs_038_2D_8DB4_01_initialize_object:
 C - - J - - 0x014DC4 05:8DB4: A9 62     LDA #$62
 C - - - - - 0x014DC6 05:8DB6: 9D 08 05  STA ram_кадр_врага_и_пуль,X
 C - - - - - 0x014DC9 05:8DB9: A9 04     LDA #$04
-C - - - - - 0x014DCB 05:8DBB: 9D 76 06  STA ram_жизни_объектов,X
+C - - - - - 0x014DCB 05:8DBB: 9D 76 06  STA ram_жизни_объектов_8bit,X
 C - - - - - 0x014DCE 05:8DBE: 20 B7 A6  JSR sub_0x0066C7_удалить_объект_03
 bra_8DC1:
 C - - - - - 0x014DD1 05:8DC1: 4C D7 A2  JMP loc_0x0062E7_increase_obj_state
@@ -3279,10 +3279,10 @@ C - - - - - 0x01532D 05:931D: A4 11     LDY ram_0011
 C - - - - - 0x01532F 05:931F: 8A        TXA
 C - - - - - 0x015330 05:9320: 99 80 07  STA ram_0780_obj,Y
 bra_9323:
-C - - - - - 0x015333 05:9323: BD 76 06  LDA ram_жизни_объектов,X
+C - - - - - 0x015333 05:9323: BD 76 06  LDA ram_жизни_объектов_8bit,X
 C - - - - - 0x015336 05:9326: 9D 56 07  STA ram_scroll_X_obj,X
 C - - - - - 0x015339 05:9329: A9 F0     LDA #con__hp_F0
-C - - - - - 0x01533B 05:932B: 9D 76 06  STA ram_жизни_объектов,X
+C - - - - - 0x01533B 05:932B: 9D 76 06  STA ram_жизни_объектов_8bit,X
 C - - - - - 0x01533E 05:932E: A9 10     LDA #$10
 C - - - - - 0x015340 05:9330: 4C E0 A2  JMP loc_0x0062F0
 
@@ -3293,7 +3293,7 @@ C - - J - - 0x015343 05:9333: 20 94 93  JSR sub_9394
 C - - - - - 0x015346 05:9336: DE E6 06  DEC ram_счетчкики_для_объектов,X
 C - - - - - 0x015349 05:9339: D0 CD     BNE bra_9308_RTS
 C - - - - - 0x01534B 05:933B: BD 56 07  LDA ram_scroll_X_obj,X
-C - - - - - 0x01534E 05:933E: 9D 76 06  STA ram_жизни_объектов,X
+C - - - - - 0x01534E 05:933E: 9D 76 06  STA ram_жизни_объектов_8bit,X
 C - - - - - 0x015351 05:9341: 4C D7 A2  JMP loc_0x0062E7_increase_obj_state
 
 
@@ -3725,7 +3725,7 @@ _off001_0x0155C1_6C_spawner_blue_bubbles:
 ofs_038_6C_95BB_01_initialize_object:
 C - - J - - 0x0155CB 05:95BB: A9 01     LDA #$01
 C - - - - - 0x0155CD 05:95BD: A9 20     LDA #$20
-C - - - - - 0x0155CF 05:95BF: 9D 76 06  STA ram_жизни_объектов,X
+C - - - - - 0x0155CF 05:95BF: 9D 76 06  STA ram_жизни_объектов_8bit,X
 C - - - - - 0x0155D2 05:95C2: A9 14     LDA #$14
 C - - - - - 0x0155D4 05:95C4: 9D 48 07  STA ram_0748_obj,X
 C - - - - - 0x0155D7 05:95C7: BD 3C 05  LDA ram_позиция_x_спрайта_врага_и_пуль,X

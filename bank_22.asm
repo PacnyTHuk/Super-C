@@ -24,7 +24,7 @@ bra_8007_loop:
 C - - - - - 0x00C017 03:8007: 84 02     STY ram_0002    ; player index
 C - - - - - 0x00C019 03:8009: B9 CA 00  LDA ram_plr_game_over,Y
 C - - - - - 0x00C01C 03:800C: A0 04     LDY #$04
-C - - - - - 0x00C01E 03:800E: 05 1F     ORA ram_001F_flag
+C - - - - - 0x00C01E 03:800E: 05 1F     ORA ram_флаг_игры_ботов_в_демке
 C - - - - - 0x00C020 03:8010: D0 0B     BNE bra_801D
 C - - - - - 0x00C022 03:8012: A4 02     LDY ram_0002    ; player index
 C - - - - - 0x00C024 03:8014: B9 53 00  LDA ram_жизни,Y
@@ -3555,6 +3555,7 @@ tbl_8F31_игроки_US:
 - D 0 - - - 0x00CFB5 03:8FA5: 6F 93     .word _off020_936F_3B
 - D 0 - - - 0x00CFB7 03:8FA7: 80 93     .word _off020_9380_3C
 - D 0 - - - 0x00CFB9 03:8FA9: 91 93     .word _off020_9391_3D
+                                        .word _off020_93A3_3E
 
 
 
@@ -4417,6 +4418,22 @@ _off020_9391_3D:
 - D 0 - I - 0x00D3AA 03:939A: 00        .byte $00, $2F, $01, $F2   ; 03 
 - D 0 - I - 0x00D3AE 03:939E: FF        .byte $FF, $47, $01, $FA   ; 04 
 - D 0 - I - 0x00D3B2 03:93A2: 03        .byte $03, $49, $01, $02   ; 05 
+
+
+
+
+_off020_93A3_3E:
+                                        .byte $06   ; counter
+;                                              +-------------------- spr_Y
+;                                              |    +--------------- spr_T
+;                                              |    |    +---------- spr_A
+;                                              |    |    |    +----- spr_X
+;                                              |    |    |    |
+                                        .byte $E0, $35, $01, $FF   ; 01 
+                                        .byte $EF, $37, $01, $F6   ; 02 
+                                        .byte $F0, $39, $01, $FE   ; 03 
+                                        .byte $80   ; jump
+                                        .word ofs_9038_06
 
 
 

@@ -465,7 +465,7 @@ _off001_0x004EDF_29_bullet_cannon_howitzer:
 
 ofs_038_29_8ED9_01_initialize_object:
 C - - J - - 0x004EE9 01:8ED9: A9 02     LDA #$02
-C - - - - - 0x004EEB 01:8EDB: 9D 76 06  STA ram_жизни_объектов,X
+C - - - - - 0x004EEB 01:8EDB: 9D 76 06  STA ram_жизни_объектов_8bit,X
 C - - - - - 0x004EEE 01:8EDE: A9 18     LDA #$18
 C - - - - - 0x004EF0 01:8EE0: 9D 2C 07  STA ram_параметры_объектов,X
 C - - - - - 0x004EF3 01:8EE3: A9 01     LDA #$01
@@ -927,7 +927,7 @@ ofs_038_4E_9218_01_initialize_object:
 C - - J - - 0x005228 01:9218: A9 8D     LDA #$8D
 C - - - - - 0x00522A 01:921A: 9D 2C 07  STA ram_параметры_объектов,X
 C - - - - - 0x00522D 01:921D: A9 F0     LDA #con__hp_F0
-C - - - - - 0x00522F 01:921F: 9D 76 06  STA ram_жизни_объектов,X
+C - - - - - 0x00522F 01:921F: 9D 76 06  STA ram_жизни_объектов_8bit,X
 C - - - - - 0x005232 01:9222: A9 08     LDA #$08
 C - - - - - 0x005234 01:9224: 9D 02 07  STA ram_0702_obj,X
 C - - - - - 0x005237 01:9227: 4C D7 A2  JMP loc_0x0062E7_increase_obj_state
@@ -1114,7 +1114,7 @@ C - - - - - 0x005367 01:9357: A9 01     LDA #$01
 bra_9359:
 C - - - - - 0x005369 01:9359: 9D 72 07  STA ram_0772_obj,X
 C - - - - - 0x00536C 01:935C: A9 60     LDA #$60
-C - - - - - 0x00536E 01:935E: BC 76 06  LDY ram_жизни_объектов,X
+C - - - - - 0x00536E 01:935E: BC 76 06  LDY ram_жизни_объектов_8bit,X
 C - - - - - 0x005371 01:9361: C0 10     CPY #$10
 C - - - - - 0x005373 01:9363: B0 02     BCS bra_9367
 C - - - - - 0x005375 01:9365: A9 40     LDA #$40
@@ -1256,7 +1256,7 @@ C - - - - - 0x005437 01:9427: A9 05     LDA #$05
 C - - - - - 0x005439 01:9429: 90 11     BCC bra_943C
 bra_942B:
 C - - - - - 0x00543B 01:942B: A9 07     LDA #$07
-C - - - - - 0x00543D 01:942D: BC 76 06  LDY ram_жизни_объектов,X
+C - - - - - 0x00543D 01:942D: BC 76 06  LDY ram_жизни_объектов_8bit,X
 C - - - - - 0x005440 01:9430: C0 10     CPY #$10
 C - - - - - 0x005442 01:9432: B0 08     BCS bra_943C
 C - - - - - 0x005444 01:9434: A9 06     LDA #$06
@@ -2241,7 +2241,7 @@ ofs_038_4B_99DA_01_initialize_object:
 C - - J - - 0x0059EA 01:99DA: A9 11     LDA #$11
 C - - - - - 0x0059EC 01:99DC: 9D 2C 07  STA ram_параметры_объектов,X
 C - - - - - 0x0059EF 01:99DF: A9 F0     LDA #con__hp_F0
-C - - - - - 0x0059F1 01:99E1: 9D 76 06  STA ram_жизни_объектов,X
+C - - - - - 0x0059F1 01:99E1: 9D 76 06  STA ram_жизни_объектов_8bit,X
 C - - - - - 0x0059F4 01:99E4: 4C D7 A2  JMP loc_0x0062E7_increase_obj_state
 
 
@@ -2565,7 +2565,7 @@ C - - J - - 0x005C00 01:9BF0: A9 10     LDA #$10
 C - - - - - 0x005C02 01:9BF2: 20 95 AB  JSR sub_0x006BA5_set_dynamic_hp_to_enemy
 C - - - - - 0x005C05 01:9BF5: 9D 56 07  STA ram_scroll_X_obj,X
 C - - - - - 0x005C08 01:9BF8: A9 F1     LDA #con__hp_F1
-C - - - - - 0x005C0A 01:9BFA: 9D 76 06  STA ram_жизни_объектов,X
+C - - - - - 0x005C0A 01:9BFA: 9D 76 06  STA ram_жизни_объектов_8bit,X
 C - - - - - 0x005C0D 01:9BFD: BD 1E 07  LDA ram_obj_flags,X
 C - - - - - 0x005C10 01:9C00: 9D 48 07  STA ram_0748_obj,X
 C - - - - - 0x005C13 01:9C03: 4C D7 A2  JMP loc_0x0062E7_increase_obj_state
@@ -2626,7 +2626,7 @@ C - - - - - 0x005C5F 01:9C4F: DE E6 06  DEC ram_счетчкики_для_объ
 C - - - - - 0x005C62 01:9C52: D0 F7     BNE bra_9C4B_RTS
 C - - - - - 0x005C64 01:9C54: 20 AE 9C  JSR sub_9CAE
 C - - - - - 0x005C67 01:9C57: BD 56 07  LDA ram_scroll_X_obj,X
-C - - - - - 0x005C6A 01:9C5A: 9D 76 06  STA ram_жизни_объектов,X
+C - - - - - 0x005C6A 01:9C5A: 9D 76 06  STA ram_жизни_объектов_8bit,X
 C - - - - - 0x005C6D 01:9C5D: 20 D7 A2  JSR sub_0x0062E7_increase_obj_state
 C - - - - - 0x005C70 01:9C60: A9 10     LDA #$10
 C - - - - - 0x005C72 01:9C62: 9D F4 06  STA ram_06F4_obj,X
@@ -2649,10 +2649,10 @@ bra_9C7D:
 C - - - - - 0x005C8D 01:9C7D: DE E6 06  DEC ram_счетчкики_для_объектов,X
 C - - - - - 0x005C90 01:9C80: D0 C9     BNE bra_9C4B_RTS
 C - - - - - 0x005C92 01:9C82: 20 A8 9C  JSR sub_9CA8
-C - - - - - 0x005C95 01:9C85: BD 76 06  LDA ram_жизни_объектов,X
+C - - - - - 0x005C95 01:9C85: BD 76 06  LDA ram_жизни_объектов_8bit,X
 C - - - - - 0x005C98 01:9C88: 9D 56 07  STA ram_scroll_X_obj,X
 C - - - - - 0x005C9B 01:9C8B: A9 F1     LDA #con__hp_F1
-C - - - - - 0x005C9D 01:9C8D: 9D 76 06  STA ram_жизни_объектов,X
+C - - - - - 0x005C9D 01:9C8D: 9D 76 06  STA ram_жизни_объектов_8bit,X
 C - - - - - 0x005CA0 01:9C90: A9 04     LDA #$04
 C - - - - - 0x005CA2 01:9C92: 4C E0 A2  JMP loc_0x0062F0
 
