@@ -781,7 +781,12 @@ C - - - - - 0x018543 06:8533: AE 5B 01  LDX ram_0158 + $03
 C - - - - - 0x018546 06:8536: C9 37     CMP #$37
 C - - - - - 0x018548 06:8538: B0 35     BCS bra_856F_37_3B
 ; 01-05
-C - - - - - 0x01854A 06:853A: 4C F6 FD  JMP loc_0x01FE06
+                                        LDY $BFFF
+                                        STY ram_prg_bank + $01
+                                        JSR sub_0x01FE06
+                                        LDA ram_prg_bank + $01
+                                        STA $5115
+                                        RTS
 bra_853D_E0:
 C - - - - - 0x01854D 06:853D: BD 16 01  LDA ram_0116,X
 C - - - - - 0x018550 06:8540: 09 80     ORA #$80

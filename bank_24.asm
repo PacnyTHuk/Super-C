@@ -83,6 +83,8 @@ ofs_01_8030_01_слияние_логотипа:
 loc_8031_подготовка_начального_экрана:
 ; нажата кнопка ss/скип заставки
                                         JSR sub_E50B_подготовка_главного_экрана
+                                        LDY #$04
+                                        JSR sub_A36D_смена_атрибута_фона
 bra_8031:
                                         JSR sub_0x01E5E0_очистка_оперативки
                                         JSR sub_E52A_палитра_и_надпись_press_start
@@ -757,6 +759,8 @@ ofs_02_8240_03_выход_из_экрана_options:
                                         JSR sub_0x01FE1E_остановить_звуковой_движок
                                         JSR sub_0x01E5E0_очистка_оперативки
                                         JSR sub_0x01E7D0_выбор_банков_графики
+                                        LDA #con_chr_bank + $84
+                                        STA ram_bg_bank_2
                                         LDX #$00
                                         JSR sub_0x01FE94_bankswitch_отрисовка_экранов
                                         LDA ram_for_2000
@@ -1231,6 +1235,11 @@ C - - - - - 0x00234B 00:A33B: 60        RTS
 
 
 ofs_010_A33C_01_слияние:
+                                        LDA ram_счетчик_кадров
+                                        AND #$01
+                                        ASL
+                                        TAY
+                                        JSR sub_A36D_смена_атрибута_фона
 C - - J - - 0x00234C 00:A33C: A5 1B     LDA ram_счетчик_кадров
 C - - - - - 0x00234E 00:A33E: 29 01     AND #$01
 C - - - - - 0x002350 00:A340: AA        TAX
@@ -1255,6 +1264,8 @@ C - - - - - 0x00236D 00:A35D: D0 0A     BNE bra_A369
 C - - - - - 0x002372 00:A362: A9 40     LDA #$40
 loc_A364:
 C D 1 - - - 0x002374 00:A364: 85 81     STA ram_0081
+                                        LDY #$04
+                                        JSR sub_A36D_смена_атрибута_фона
 C - - - - - 0x002376 00:A366: 4C 38 A3  JMP loc_A338
 bra_A369:
 C - - - - - 0x002379 00:A369: 18        CLC
@@ -1263,9 +1274,8 @@ C - - - - - 0x00237A 00:A36A: 60        RTS
 
 
 tbl_A36B_x_скорость_смещения:
-- D 1 - - - 0x00237B 00:A36B: 02        .byte $02   ; 00 движение налево
-- D 1 - - - 0x00237C 00:A36C: FE        .byte $FE   ; 01 движение нарпаво
-
+- D 1 - - - 0x00237B 00:A36B: 02        .byte $FE   ; 00 движение налево
+- D 1 - - - 0x00237C 00:A36C: FE        .byte $02   ; 01 движение нарпаво
 
 
 ofs_010_A36D_02:
@@ -1316,6 +1326,54 @@ C - - J - - 0x0023C1 00:A3B1: C6 81     DEC ram_0081
 C - - - - - 0x0023C3 00:A3B3: D0 B4     BNE bra_A369
 C - - - - - 0x0023C5 00:A3B5: 38        SEC
 C - - - - - 0x0023C6 00:A3B6: 60        RTS
+
+
+sub_A36D_смена_атрибута_фона:
+                                        LDA tbl_A370,Y
+                                        STA ram_0000
+                                        LDA tbl_A370 + $01,Y
+                                        STA ram_0001
+                                        LDX ram_index_ppu_buffer
+                                        LDA #con_buf_mode_01
+                                        STA ram_nmt_buffer,X
+                                        INX
+                                        LDY #$00
+bra_A36E_loop:
+                                        LDA (ram_0000),Y
+                                        CMP #$FF
+                                        BEQ bra_A36F_FF
+                                        STA ram_nmt_buffer,X
+                                        INX
+                                        INY
+                                        BNE bra_A36E_loop    ; jmp
+bra_A36F_FF:
+                                        STA ram_nmt_buffer,X
+                                        INX
+                                        STX ram_index_ppu_buffer
+                                        RTS
+
+tbl_A370:
+                                        .word _off005_A370_00
+                                        .word _off005_A371_01
+                                        .word _off005_A372_02
+
+
+_off005_A370_00:
+                                        .dbyt $23C0 ; ppu address
+                                        .byte $00, $00, $00, $00, $00, $00, $00, $00, $00, $50, $50, $50, $00, $00, $00, $00   ; 
+                                        .byte $00, $55, $05, $0D, $0F, $0F, $0F, $0F, $00, $55, $50, $50, $50, $50, $50, $00   ; 
+                                        .byte $FF   ; end token
+_off005_A371_01:
+                                        .dbyt $23C0 ; ppu address
+                                        .byte $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00   ; 
+                                        .byte $00, $00, $50, $50, $5F, $5F, $5F, $0F, $00, $00, $05, $05, $05, $05, $05, $00   ; 
+                                        .byte $FF   ; end token
+_off005_A372_02:
+                                        .dbyt $23C0 ; ppu address
+                                        .byte $00, $00, $00, $00, $00, $00, $00, $00, $00, $50, $50, $50, $00, $00, $00, $00   ; 
+                                        .byte $00, $55, $55, $5D, $5F, $5F, $5F, $0F, $00, $55, $55, $55, $05, $05, $05, $00   ; 
+                                        .byte $FF   ; end token
+
 
 
 sub_E55C_подготовка_ботов_к_игре:
@@ -1913,17 +1971,17 @@ C - - - - - 0x0022CC 00:A2BC: 60        RTS
 
 
 tbl_A2BD_cheat_code:
-                                        .byte con_btn_A   ; 00
-                                        .byte con_btn_B   ; 01
-                                        .byte con_btn_Right   ; 02
+                                        .byte con_btn_A      ; 00
+                                        .byte con_btn_B      ; 01
+                                        .byte con_btn_Right  ; 02
                                         .byte con_btn_Left   ; 03
-                                        .byte con_btn_Right   ; 04
+                                        .byte con_btn_Right  ; 04
                                         .byte con_btn_Left   ; 05
                                         .byte con_btn_Down   ; 06
                                         .byte con_btn_Down   ; 07
-                                        .byte con_btn_Up   ; 08
-                                        .byte con_btn_Up   ; 09
-                                        .byte $00   ; 0A end token
+                                        .byte con_btn_Up     ; 08
+                                        .byte con_btn_Up     ; 09
+                                        .byte $00            ; 0A end token
 
 
 

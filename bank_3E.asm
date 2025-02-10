@@ -13,8 +13,8 @@
 .export loc_0x01E4FC_запись_в_демку
 .export sub_0x01E592_подготовка_игроков_к_началу
 .export sub_0x01E5E0_очистка_оперативки
-.export sub_0x01E648
-.export loc_0x01E64C_add_points_to_score
+.export sub_0x01E648_обработка_очков
+.export loc_0x01E64C_обработка_очков
 .export sub_0x01E7D0_выбор_банков_графики
 .export loc_0x01E7F9_игра
 .export loc_0x01E906
@@ -39,6 +39,7 @@
 .export sub_0x01F4FC
 .export sub_0x01F500
 .export loc_0x01F6BD_убить_игрока
+.export sub_0x01F6BD_убить_игрока
 .export sub_0x01F70D_попытка_создать_объект
 .export sub_0x01F716_попытка_найти_свободный_слот_для_объекта___первые_4_слота
 .export sub_0x01F718_попытка_найти_свободный_слот_для_объекта___X_слотов
@@ -67,7 +68,7 @@
 .export loc_0x01FDEE_play_sound
 .export sub_0x01FDEE_play_sound_напрямую
 .export loc_0x01FDEE_play_sound_напрямую
-.export loc_0x01FE06
+.export sub_0x01FE06
 .export sub_0x01FE1E_остановить_звуковой_движок
 .export loc_0x01FE1E_остановить_звуковой_движок
 .export loc_0x01FE6D_разрыв_flame
@@ -1009,12 +1010,10 @@ C - - - - - 0x01E616 07:E606: D0 FA     BNE bra_E602_loop
 C - - - - - 0x01E618 07:E608: 60        RTS
 
 
-
-
-sub_0x01E648:
+sub_0x01E648_обработка_очков:
 C - - - - - 0x01E648 07:E638: A9 00     LDA #$00
 C - - - - - 0x01E64A 07:E63A: 85 02     STA ram_0002
-loc_0x01E64C_add_points_to_score:
+loc_0x01E64C_обработка_очков:
 C D 3 - - - 0x01E64C 07:E63C: A9 00     LDA #$00
 C - - - - - 0x01E64E 07:E63E: 85 03     STA ram_0003
 C - - - - - 0x01E650 07:E640: A5 1F     LDA ram_флаг_игры_ботов_в_демке
@@ -1490,11 +1489,11 @@ C - - - - - 0x01E913 07:E903: 4C B4 E8  JMP loc_E8B4
 
 sub_E906_обработчик_геймплея:
 ;C - - - - - 0x01E916 07:E906: E6 5B     INC ram_счетчик_кадров_2
-C - - - - - 0x01E918 07:E908: 20 3A F8  JSR sub_F83A
-C - - - - - 0x01E91B 07:E90B: 20 45 FE  JSR sub_FE45
+C - - - - - 0x01E918 07:E908: 20 3A F8  JSR sub_F83A_сканлинии
+C - - - - - 0x01E91B 07:E90B: 20 45 FE  JSR sub_FE45_обработка_игроков
 C - - - - - 0x01E91E 07:E90E: 20 BF FE  JSR sub_FEBF
 C - - - - - 0x01E921 07:E911: 20 98 FE  JSR sub_FE98
-C - - - - - 0x01E924 07:E914: 20 4D FE  JSR sub_FE4D_обработчик_пуль_игроков
+C - - - - - 0x01E924 07:E914: 20 4D FE  JSR sub_FE4D_обработчик_пуль_игроков    ; пули первые
 C - - - - - 0x01E927 07:E917: 20 25 FE  JSR sub_FE25_спавн_объектов_из_данных_уровня
 C - - - - - 0x01E92A 07:E91A: 20 2D FE  JSR sub_FE2D_спавн_обычных_мобов
 C - - - - - 0x01E92D 07:E91D: 20 1F FE  JSR sub_FE1F_обработчик_объектов
@@ -3135,9 +3134,9 @@ C - - - - - 0x01F380 07:F370: 90 02     BCC bra_F374_not_overflow
 bra_F374_not_overflow:
 C - - - - - 0x01F384 07:F374: 85 06     STA ram_0006
 C - - - - - 0x01F386 07:F376: A5 08     LDA ram_0008
-C - - - - - 0x01F388 07:F378: 9D 22 05  STA ram_позиция_y_спрайта_врага_и_пуль,X
+C - - - - - 0x01F388 07:F378: 9D 22 05  STA ram_позиция_y_спрайта_объекта_или_пули,X
 C - - - - - 0x01F38B 07:F37B: A5 09     LDA ram_0009
-C - - - - - 0x01F38D 07:F37D: 9D 3C 05  STA ram_позиция_x_спрайта_врага_и_пуль,X
+C - - - - - 0x01F38D 07:F37D: 9D 3C 05  STA ram_позиция_x_спрайта_объекта_или_пули,X
 C - - - - - 0x01F390 07:F380: A5 0A     LDA ram_000A
 C - - - - - 0x01F392 07:F382: 29 1F     AND #$1F
 C - - - - - 0x01F394 07:F384: 20 AB F3  JSR sub_F3AB
@@ -3709,6 +3708,7 @@ C - - - - - 0x01F6BB 07:F6AB: 60        RTS
 
 
 loc_0x01F6BD_убить_игрока:
+sub_0x01F6BD_убить_игрока:
 C D 3 - - - 0x01F6BD 07:F6AD: A5 5C     LDA ram_статус_завершения_уровня
 C - - - - - 0x01F6BF 07:F6AF: D0 15     BNE bra_F6C6_RTS
 C - - - - - 0x01F6C1 07:F6B1: A9 25     LDA #con_sound_25
@@ -3760,7 +3760,7 @@ sub_F711_поиск_свободного_слота:
 C - - - - - 0x01F721 07:F711: A2 0D     LDX ram_макс_индекс_враги
 sub_F713_поиск_свободного_слота___кастомный_X:
 bra_F713_loop:
-C - - - - - 0x01F723 07:F713: BD 68 06  LDA ram_состояние_объектов,X
+C - - - - - 0x01F723 07:F713: BD 68 06  LDA ram_состояние_объектов_для_обработчика,X
 C - - - - - 0x01F726 07:F716: F0 03     BEQ bra_F71B_RTS
 C - - - - - 0x01F728 07:F718: CA        DEX
 C - - - - - 0x01F729 07:F719: 10 F8     BPL bra_F713_loop
@@ -3811,9 +3811,11 @@ loc_F73F_начать_создание_нового_объекта:
 sub_0x01F74F_начать_создание_нового_объекта:
 C D 3 - - - 0x01F74F 07:F73F: 20 9E F7  JSR sub_F79E_подготовить_объект
 C - - - - - 0x01F752 07:F742: A9 01     LDA #$01
-C - - - - - 0x01F754 07:F744: 9D 68 06  STA ram_состояние_объектов,X
+C - - - - - 0x01F754 07:F744: 9D 68 06  STA ram_состояние_объектов_для_обработчика,X
 C - - - - - 0x01F757 07:F747: 9D 76 06  STA ram_жизни_объектов_8bit,X
 C - - - - - 0x01F75A 07:F74A: A9 00     LDA #$00    ; флаг успеха
+                                        STA ram_жизни_объектов_16bit,X  ; временно
+                                        STA ram_жизни_объектов_32bit,X  ; временно
 C - - - - - 0x01F75C 07:F74C: F0 0B     BEQ bra_F759    ; jmp
 
 
@@ -3821,32 +3823,34 @@ C - - - - - 0x01F75C 07:F74C: F0 0B     BEQ bra_F759    ; jmp
 sub_F74E_удалить_объект_и_очистить_его_данные:
 C - - - - - 0x01F75E 07:F74E: 20 9C F7  JSR sub_F79C_удалить_объект_01
 C - - - - - 0x01F761 07:F751: A9 00     LDA #$00
-C - - - - - 0x01F763 07:F753: 9D 68 06  STA ram_состояние_объектов,X
+C - - - - - 0x01F763 07:F753: 9D 68 06  STA ram_состояние_объектов_для_обработчика,X
 C - - - - - 0x01F766 07:F756: 9D 76 06  STA ram_жизни_объектов_8bit,X
+                                        STA ram_жизни_объектов_16bit,X
+                                        STA ram_жизни_объектов_32bit,X
 bra_F759:
 C - - - - - 0x01F769 07:F759: 9D 1E 07  STA ram_obj_flags,X
-C - - - - - 0x01F76C 07:F75C: 9D 08 05  STA ram_кадр_врага_и_пуль,X
-C - - - - - 0x01F76F 07:F75F: 9D 56 05  STA ram_атрибуты_спрайта_врага_и_пуль,X
+C - - - - - 0x01F76C 07:F75C: 9D 08 05  STA ram_кадр_объекта_или_пули,X
+C - - - - - 0x01F76F 07:F75F: 9D 56 05  STA ram_атрибуты_спрайта_объекта_или_пули,X
 C - - - - - 0x01F772 07:F762: 9D 8E 07  STA ram_позиция_объектов_y_старш,X
 C - - - - - 0x01F775 07:F765: 9D 9C 07  STA ram_позиция_объектов_x_старш,X
-C - - - - - 0x01F778 07:F768: 9D 22 05  STA ram_позиция_y_спрайта_врага_и_пуль,X
-C - - - - - 0x01F77B 07:F76B: 9D 84 06  STA ram_позиция_врага_y_младш,X
-C - - - - - 0x01F77E 07:F76E: 9D 92 06  STA ram_позиция_врага_x_младш,X
+C - - - - - 0x01F778 07:F768: 9D 22 05  STA ram_позиция_y_спрайта_объекта_или_пули,X
+C - - - - - 0x01F77B 07:F76B: 9D 84 06  STA ram_сумма_скорости_объекта_y_младш,X
+C - - - - - 0x01F77E 07:F76E: 9D 92 06  STA ram_сумма_скорости_объекта_x_младш,X
 C - - - - - 0x01F781 07:F771: 9D A0 06  STA ram_скорость_объектов_y_младш,X
 C - - - - - 0x01F784 07:F774: 9D BC 06  STA ram_скорость_объектов_x_младш,X
 C - - - - - 0x01F787 07:F777: 9D AE 06  STA ram_скорость_объектов_y_старш,X
 C - - - - - 0x01F78A 07:F77A: 9D CA 06  STA ram_скорость_объектов_x_старш,X
 C - - - - - 0x01F78D 07:F77D: 9D E6 06  STA ram_счетчкики_для_объектов,X
-C - - - - - 0x01F790 07:F780: 9D F4 06  STA ram_06F4_obj,X
+C - - - - - 0x01F790 07:F780: 9D F4 06  STA ram_счетчкик_жизни_объектов,X
 C - - - - - 0x01F793 07:F783: 9D 10 07  STA ram_0710_obj,X
 C - - - - - 0x01F796 07:F786: 9D 02 07  STA ram_0702_obj,X
-C - - - - - 0x01F799 07:F789: 9D 2C 07  STA ram_параметры_объектов,X
-bra_F78C:
+C - - - - - 0x01F799 07:F789: 9D 2C 07  STA ram_состояние_хитбоксов_объектов,X
 C - - - - - 0x01F79C 07:F78C: 9D 48 07  STA ram_0748_obj,X
 C - - - - - 0x01F79F 07:F78F: 9D 56 07  STA ram_scroll_X_obj,X
 C - - - - - 0x01F7A2 07:F792: 9D 64 07  STA ram_0764_obj,X
 C - - - - - 0x01F7A5 07:F795: 9D 72 07  STA ram_0772_obj,X
 C - - - - - 0x01F7A8 07:F798: 9D 80 07  STA ram_0780_obj,X
+                                        STA ram_характеристики_пуль_объектов,X
 C - - - - - 0x01F7AB 07:F79B: 60        RTS
 
 
@@ -3975,7 +3979,7 @@ C - - - - - 0x01F849 07:F839: 60        RTS
 
 
 
-sub_F83A:
+sub_F83A_сканлинии:
 C - - - - - 0x01F84A 07:F83A: A9 FF     LDA #$FF
 C - - - - - 0x01F84C 07:F83C: 85 48     STA ram_0048
 C - - - - - 0x01F84E 07:F83E: 85 49     STA ram_0049
@@ -4797,7 +4801,7 @@ C - - - - - 0x01FD6D 07:FD5D: A0 33     LDY #con_prg_bank + $33
 C - - - - - 0x01FD6F 07:FD5F: D0 10     BNE bra_FD71    ; jmp
 sub_FD61_prg_bankswitch_3C_with_return:
 ; 1путин: Загрузка банка 3C - подвинута повыше
-C - - - - - 0x01FD7D 07:FD6D: A9 3C     LDA #con_prg_bank + $3C
+C - - - - - 0x01FD7D 07:FD6D: A9 3C     LDA #con_prg_bank + $3C ; муз банк
 sub_FD63_prg_bankswitch___with_return:
 C - - - - - 0x01FD71 07:FD61: AC 00 80  LDY $8000
 C - - - - - 0x01FD74 07:FD64: 8C EE 07  STY ram_prg_bank
@@ -4825,7 +4829,7 @@ C - - - - - 0x01FDA1 07:FD91: 4C 71 FD  JMP loc_FD71_prg_bankswitch___no_return
 
 sub_FDAB_выбрать_второй_банк_с_данными_музыки:
 sub_0x01FDBB_выбрать_второй_банк_с_данными_музыки:
-C - - - - - 0x01FDBB 07:FDAB: A0 31     LDY #con_prg_bank + $2F ; банк с мцзыкой был перенесес с 31 в 2F
+C - - - - - 0x01FDBB 07:FDAB: A0 31     LDY #con_prg_bank + $2F ; банк с музыкой был перенесес с 31 в 2F
 C - - - - - 0x01FDBD 07:FDAD: C9 32     CMP #con_sound_32
 C - - - - - 0x01FDBF 07:FDAF: F0 06     BEQ bra_FDB7_32_36
 C - - - - - 0x01FDC1 07:FDB1: C9 36     CMP #con_sound_36
@@ -4877,12 +4881,12 @@ loc_0x01FDEE_play_sound:
 sub_0x01FDEE_play_sound_напрямую:                          
 loc_FDEE_play_sound_напрямую:
 loc_0x01FDEE_play_sound_напрямую:
-C D 3 - - - 0x01FDEE 07:FDDE: 48        PHA
+                                        PHA ; номер звука
 C - - - - - 0x01FDEF 07:FDDF: A5 1C     LDA ram_001C
 C - - - - - 0x01FDF1 07:FDE1: 09 80     ORA #$80
 C - - - - - 0x01FDF3 07:FDE3: 85 1C     STA ram_001C
 C - - - - - 0x01FDF5 07:FDE5: 20 61 FD  JSR sub_FD61_prg_bankswitch_3C_with_return
-C - - - - - 0x01FDF8 07:FDE8: 68        PLA
+                                        PLA ; номер звука
 C - - - - - 0x01FDF9 07:FDE9: 20 F6 FD  JSR sub_FDF6
 C - - - - - 0x01FDFC 07:FDEC: 20 8B FD  JSR sub_FD8B_restore_prg_bank
 C - - - - - 0x01FDFF 07:FDEF: A5 1C     LDA ram_001C
@@ -4893,17 +4897,10 @@ C - - - - - 0x01FE05 07:FDF5: 60        RTS
 
 
 
+sub_0x01FE06:
 sub_FDF6:
-loc_0x01FE06:
-C D 3 - - - 0x01FE06 07:FDF6: 8D E9 07  STA ram_07E9_sound
-C - - - - - 0x01FE09 07:FDF9: AD FF BF  LDA $BFFF
-C - - - - - 0x01FE0C 07:FDFC: 48        PHA
-C - - - - - 0x01FE0D 07:FDFD: AD E9 07  LDA ram_07E9_sound
 C - - - - - 0x01FE10 07:FE00: 20 AB FD  JSR sub_FDAB_выбрать_второй_банк_с_данными_музыки
-C - - - - - 0x01FE13 07:FE03: AD E9 07  LDA ram_07E9_sound
 C - - - - - 0x01FE16 07:FE06: 20 39 80  JSR sub_0x018049_play_sound
-C - - - - - 0x01FE19 07:FE09: 68        PLA
-C - - - - - 0x01FE1B 07:FE0B: 4C B7 FD  STA $5115
                                         RTS
 
 
@@ -4971,10 +4968,10 @@ C - - - - - 0x01FE52 07:FE42: 4C 73 F2  JMP loc_F273_обработчик_уро
 
 
 
-sub_FE45:
+sub_FE45_обработка_игроков:
 C - - - - - 0x01FE55 07:FE45: A9 30     LDA #con_prg_bank + $30
 C - - - - - 0x01FE57 07:FE47: 20 5D FD  JSR sub_FD5D_prg_bankswitch_30_33
-C - - - - - 0x01FE5A 07:FE4A: 4C 01 80  JMP loc_0x000011
+C - - - - - 0x01FE5A 07:FE4A: 4C 01 80  JMP loc_0x000011_обработка_игроков
 
 
 
