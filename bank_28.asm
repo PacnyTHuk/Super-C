@@ -2,9 +2,7 @@
 .include "copy_bank_ram.inc"
 .include "copy_bank_val.inc"
 .org $8000 ; for listing file
-; 0x010010-0x01400F
-
-
+; 0x010010-0x01200F
 
 .export loc_0x001411_спавн_рядовых_мобов
 .export loc_0x001C02_prepare_area_config
@@ -12,12 +10,11 @@
 .export loc_0x002178_stage_complete_handler
 .export loc_0x0023C7_credits_handler
 
-
-
+; bzk this byte must be placed at 8000
+    .byte con_prg_bank + $28   ; 
 
 bra_9400_RTS:
 C - - - - - 0x001410 00:9400: 60        RTS
-
 loc_0x001411_спавн_рядовых_мобов:
 C D 0 - - - 0x001411 00:9401: A5 5C     LDA ram_статус_завершения_уровня
 C - - - - - 0x001413 00:9403: D0 FB     BNE bra_9400_RTS
@@ -90,9 +87,9 @@ C - - - - - 0x00146E 00:945E: 90 0F     BCC bra_946F
 C - - - - - 0x001470 00:9460: A5 94     LDA ram_0094_конфиг_уровня
 C - - - - - 0x001472 00:9462: A0 02     LDY #$02
 C - - - - - 0x001474 00:9464: 4A        LSR
-C - - - - - 0x001475 00:9465: A5 62     LDA ram_cam_spd_X
+C - - - - - 0x001475 00:9465: A5 62     LDA ram_скорость_камеры_X
 C - - - - - 0x001477 00:9467: 90 02     BCC bra_946B
-C - - - - - 0x001479 00:9469: A5 72     LDA ram_cam_spd_Y
+C - - - - - 0x001479 00:9469: A5 72     LDA ram_скорость_камеры_Y
 bra_946B:
 C - - - - - 0x00147B 00:946B: 85 17     STA ram_0017
 C - - - - - 0x00147D 00:946D: D0 02     BNE bra_9471
@@ -167,7 +164,7 @@ bra_94E9:
 C - - - - - 0x0014F9 00:94E9: 20 06 F7  JSR sub_0x01F716_попытка_найти_свободный_слот_для_объекта___первые_4_слота
 C - - - - - 0x0014FC 00:94EC: D0 35     BNE bra_9523
 C - - - - - 0x0014FE 00:94EE: A0 03     LDY #con_obj_id_03
-C - - - - - 0x001500 00:94F0: 20 9E F7  JSR sub_0x01F7AE_подготовить_объект
+C - - - - - 0x001500 00:94F0: 20 9E F7  JSR sub_0x01F7AE_записать_ID_объекта_и_его_хитбокс
 C - - - - - 0x001503 00:94F3: A4 0F     LDY ram_000F
 C - - - - - 0x001505 00:94F5: B1 08     LDA (ram_0008),Y
 C - - - - - 0x001507 00:94F7: 29 0F     AND #$0F
@@ -184,7 +181,7 @@ C - - - - - 0x001515 00:9505: 18        CLC
 C - - - - - 0x001516 00:9506: 65 0A     ADC ram_000A
 C - - - - - 0x001518 00:9508: A8        TAY
 C - - - - - 0x001519 00:9509: B9 4C 97  LDA tbl_974C,Y
-C - - - - - 0x00151C 00:950C: 9D 1E 07  STA ram_obj_flags,X
+C - - - - - 0x00151C 00:950C: 9D 1E 07  STA ram_флаги_объектов,X
 sub_950F:
 C - - - - - 0x00151F 00:950F: A5 10     LDA ram_0010
 C - - - - - 0x001521 00:9511: 38        SEC
@@ -193,7 +190,7 @@ C - - - - - 0x001524 00:9514: 9D 22 05  STA ram_позиция_y_спрайта_
 C - - - - - 0x001527 00:9517: A5 11     LDA ram_0011
 C - - - - - 0x001529 00:9519: 9D 3C 05  STA ram_позиция_x_спрайта_объекта_или_пули,X
 C - - - - - 0x00152C 00:951C: 30 03     BMI bra_9521
-C - - - - - 0x00152E 00:951E: FE 1E 07  INC ram_obj_flags,X
+C - - - - - 0x00152E 00:951E: FE 1E 07  INC ram_флаги_объектов,X
 bra_9521:
 loc_9521:
 C D 0 - - - 0x001531 00:9521: E6 90     INC ram_колво_спавн_мобов
@@ -208,14 +205,14 @@ C - - - - - 0x001537 00:9527: 60        RTS
 loc_9528:
 C D 0 - - - 0x001538 00:9528: 20 06 F7  JSR sub_0x01F716_попытка_найти_свободный_слот_для_объекта___первые_4_слота
 C - - - - - 0x00153B 00:952B: D0 F6     BNE bra_9523
-C - - - - - 0x00153D 00:952D: A0 63     LDY #con_obj_id_63
+C - - - - - 0x00153D 00:952D: A0 63     LDY #con_obj_id_4E
 C - - - - - 0x00153F 00:952F: A5 94     LDA ram_0094_конфиг_уровня
 C - - - - - 0x001541 00:9531: 4A        LSR
 C - - - - - 0x001542 00:9532: 4A        LSR
 C - - - - - 0x001543 00:9533: 90 02     BCC bra_9537
-C - - - - - 0x001545 00:9535: A0 24     LDY #con_obj_id_24
+C - - - - - 0x001545 00:9535: A0 24     LDY #con_obj_id_15
 bra_9537:
-C - - - - - 0x001547 00:9537: 20 9E F7  JSR sub_0x01F7AE_подготовить_объект
+C - - - - - 0x001547 00:9537: 20 9E F7  JSR sub_0x01F7AE_записать_ID_объекта_и_его_хитбокс
 C - - - - - 0x00154A 00:953A: A4 0F     LDY ram_000F
 C - - - - - 0x00154C 00:953C: B1 08     LDA (ram_0008),Y
 C - - - - - 0x00154E 00:953E: 29 0F     AND #$0F
@@ -230,13 +227,13 @@ C - - - - - 0x00155A 00:954A: 18        CLC
 C - - - - - 0x00155B 00:954B: 65 0A     ADC ram_000A
 C - - - - - 0x00155D 00:954D: A8        TAY
 C - - - - - 0x00155E 00:954E: B9 68 97  LDA tbl_9768,Y
-C - - - - - 0x001561 00:9551: 9D 1E 07  STA ram_obj_flags,X
+C - - - - - 0x001561 00:9551: 9D 1E 07  STA ram_флаги_объектов,X
 C - - - - - 0x001564 00:9554: A5 11     LDA ram_0011
 C - - - - - 0x001566 00:9556: 9D 3C 05  STA ram_позиция_x_спрайта_объекта_или_пули,X
 C - - - - - 0x001569 00:9559: A5 10     LDA ram_0010
 C - - - - - 0x00156B 00:955B: 9D 22 05  STA ram_позиция_y_спрайта_объекта_или_пули,X
 C - - - - - 0x00156E 00:955E: 10 03     BPL bra_9563
-C - - - - - 0x001570 00:9560: FE 1E 07  INC ram_obj_flags,X
+C - - - - - 0x001570 00:9560: FE 1E 07  INC ram_флаги_объектов,X
 bra_9563:
 C - - - - - 0x001573 00:9563: 4C 21 95  JMP loc_9521
 
@@ -249,7 +246,7 @@ loc_956A:
 C D 0 - - - 0x00157A 00:956A: 20 06 F7  JSR sub_0x01F716_попытка_найти_свободный_слот_для_объекта___первые_4_слота
 C - - - - - 0x00157D 00:956D: D0 B4     BNE bra_9523
 C - - - - - 0x00157F 00:956F: A0 03     LDY #con_obj_id_03
-C - - - - - 0x001581 00:9571: 20 9E F7  JSR sub_0x01F7AE_подготовить_объект
+C - - - - - 0x001581 00:9571: 20 9E F7  JSR sub_0x01F7AE_записать_ID_объекта_и_его_хитбокс
 C - - - - - 0x001584 00:9574: 20 0F 95  JSR sub_950F
 C - - - - - 0x001587 00:9577: E6 91     INC ram_0091
 C - - - - - 0x001589 00:9579: A9 10     LDA #$10
@@ -727,10 +724,10 @@ C - - - - - 0x001C34 00:9C24: 85 61     STA ram_0061_конфиг_уровня
 C - - - - - 0x001C36 00:9C26: B9 5E 9C  LDA tbl_9C5E,Y
 C - - - - - 0x001C39 00:9C29: 85 71     STA ram_0071_тип_скролла
 C - - - - - 0x001C3B 00:9C2B: 85 7D     STA ram_007D_тип_скролла
-C - - - - - 0x001C3D 00:9C2D: B9 66 9C  LDA tbl_9C66,Y
-C - - - - - 0x001C40 00:9C30: 85 8F     STA ram_008F_конфиг_уровня
-C - - - - - 0x001C42 00:9C32: B9 6E 9C  LDA tbl_9C6E_вид,Y
-C - - - - - 0x001C45 00:9C35: 85 5D     STA ram_конфиг_уровня_вид
+C - - - - - 0x001C3D 00:9C2D: B9 66 9C  LDA tbl_9C66_конфиг_уровний,Y
+C - - - - - 0x001C40 00:9C30: 85 8F     STA ram_конфиг_уровня_для_пуль
+C - - - - - 0x001C42 00:9C32: B9 6E 9C  LDA tbl_9C6E_тип_уровней,Y
+C - - - - - 0x001C45 00:9C35: 85 5D     STA ram_тип_уровней
 C - - - - - 0x001C47 00:9C37: B9 76 9C  LDA tbl_9C76,Y
 C - - - - - 0x001C4A 00:9C3A: 85 97     STA ram_0097_конфиг_уровня
 C - - - - - 0x001C4C 00:9C3C: B9 7E 9C  LDA tbl_9C7E,Y
@@ -779,7 +776,7 @@ tbl_9C5E:
 
 
 
-tbl_9C66:
+tbl_9C66_конфиг_уровний:
 - D 0 - - - 0x001C76 00:9C66: 01        .byte $01   ; 00 
 - D 0 - - - 0x001C77 00:9C67: 01        .byte $01   ; 01 
 - D 0 - - - 0x001C78 00:9C68: 01        .byte $01   ; 02 
@@ -791,7 +788,7 @@ tbl_9C66:
 
 
 
-tbl_9C6E_вид:
+tbl_9C6E_тип_уровней:
 ; 00 = вид сбоку
 ; 01 = вид сверху
 - D 0 - - - 0x001C7E 00:9C6E: 00        .byte $00   ; 00 
@@ -862,7 +859,7 @@ C - - - - - 0x001CB0 00:9CA0: D0 1B     BNE bra_9CBD    ; jmp
 bra_9CA2:
 C - - - - - 0x001CB2 00:9CA2: A6 85     LDX ram_0085_for_2006
 C - - - - - 0x001CB4 00:9CA4: 30 17     BMI bra_9CBD
-C - - - - - 0x001CB6 00:9CA6: A5 62     LDA ram_cam_spd_X
+C - - - - - 0x001CB6 00:9CA6: A5 62     LDA ram_скорость_камеры_X
 C - - - - - 0x001CB8 00:9CA8: F0 38     BEQ bra_9CE2_RTS
 C - - - - - 0x001CBA 00:9CAA: 18        CLC
 C - - - - - 0x001CBB 00:9CAB: 65 FD     ADC ram_scroll_X
@@ -911,7 +908,7 @@ sub_9CE8:
 C - - - - - 0x001CF8 00:9CE8: A5 FC     LDA ram_scroll_Y
 C - - - - - 0x001CFA 00:9CEA: 29 0F     AND #$0F
 C - - - - - 0x001CFC 00:9CEC: 85 00     STA ram_0000
-C - - - - - 0x001CFE 00:9CEE: A5 72     LDA ram_cam_spd_Y
+C - - - - - 0x001CFE 00:9CEE: A5 72     LDA ram_скорость_камеры_Y
 C - - - - - 0x001D00 00:9CF0: F0 F5     BEQ bra_9CE7_RTS
 C - - - - - 0x001D02 00:9CF2: 30 57     BMI bra_9D4B
 C - - - - - 0x001D04 00:9CF4: 18        CLC
@@ -1352,7 +1349,7 @@ C - - - - - 0x002405 00:A3F5: C6 70     DEC ram_0070
 C - - - - - 0x002407 00:A3F7: D0 F5     BNE bra_A3EE_RTS
 C - - - - - 0x002409 00:A3F9: A9 00     LDA #$00
 C - - - - - 0x00240B 00:A3FB: 85 71     STA ram_0071_тип_скролла
-C - - - - - 0x00240D 00:A3FD: 85 72     STA ram_cam_spd_Y
+C - - - - - 0x00240D 00:A3FD: 85 72     STA ram_скорость_камеры_Y
 C - - - - - 0x00240F 00:A3FF: 4C EC A3  JMP loc_A3EC
 
 
@@ -1526,10 +1523,10 @@ C - - - - - 0x0024FE 00:A4EE: A9 FF     LDA #$FF
 C - - - - - 0x002500 00:A4F0: 9D 00 03  STA ram_nmt_buffer,X
 C - - - - - 0x002503 00:A4F3: E8        INX
 C - - - - - 0x002504 00:A4F4: 86 1E     STX ram_index_ppu_buffer
-C - - - - - 0x002506 00:A4F6: E6 72     INC ram_cam_spd_Y
+C - - - - - 0x002506 00:A4F6: E6 72     INC ram_скорость_камеры_Y
 C - - - - - 0x002508 00:A4F8: A4 71     LDY ram_0071_тип_скролла
 C - - - - - 0x00250A 00:A4FA: B9 3B A5  LDA tbl_A53B_credits,Y
-C - - - - - 0x00250D 00:A4FD: C5 72     CMP ram_cam_spd_Y
+C - - - - - 0x00250D 00:A4FD: C5 72     CMP ram_скорость_камеры_Y
 C - - - - - 0x00250F 00:A4FF: D0 24     BNE bra_A525
 C - - - - - 0x002511 00:A501: C8        INY
 C - - - - - 0x002512 00:A502: B9 3B A5  LDA tbl_A53B_credits,Y
@@ -1701,34 +1698,4 @@ C - - - - - 0x00263C 00:A62C: 85 4A     STA ram_004A
 C - - - - - 0x00263E 00:A62E: 60        RTS
 
 
-
-
-
-
-
-
-
-
-
-; bzk this byte must be placed at 8000
-    .byte con_prg_bank + $28   ; 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.out .sprintf("Free bytes in bank 28: %Xh [%d]", ($BFFF - *), ($BFFF - *))
-
-.segment "BANK_28b"
-    .byte con_prg_bank + $29   ; 
+.out .sprintf("Free bytes in bank 28: %Xh [%d]", ($A000 - *), ($A000 - *))

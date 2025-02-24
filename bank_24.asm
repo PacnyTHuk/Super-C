@@ -2656,7 +2656,6 @@ C - - - - - 0x009F61 02:9F51: A9 00     LDA #$00
 C - - - - - 0x009F63 02:9F53: 85 59     STA ram_play_all
 C - - - - - 0x009F65 02:9F55: 85 5A     STA ram_005A_sound_mode
 C - - - - - 0x009F67 02:9F57: 85 5B     STA ram_005B_sound_mode
-; 1путин: del ram 005E-005F
 C - - - - - 0x009F6D 02:9F5D: 60        RTS
 
 

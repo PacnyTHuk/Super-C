@@ -1,1355 +1,1517 @@
 .segment "BANK_2F"
 .include "copy_bank_ram.inc"
 .include "copy_bank_val.inc"
-.org $A000 ; for listing file
+.org $8000 ; for listing file
 ; 0x01E010-0x02000F
-; перенесен с 31 банка, музыка/звуки разделен на 2E-2F
 
+; БОССЫ 7-8 уровни
 
+.export _off001_0x009002_3D_босс_7_пасть_черепа
+.export _off001_0x008C9D_3E_босс_7_грудная_клетка
+.export _off001_0x008DD4_3F_босс_7_костяное_ухо
+.export _off001_0x008E18_40_босс_7_большой_красный_шар
+.export _off001_0x008E51_41_босс_7_летающие_шипы
+.export _off001_0x008EB4_42_босс_7_ползающая_слизь
 
+.export _off001_0x00847F_1C_босс_8_летящий_красный_шип
+.export _off001_0x0084B9_28_босс_8_летящий_синий_шип
+.export _off001_0x0085A4_57_босс_8_глаз
+.export _off001_0x0088CD_58_босс_8_падающие_камни
 
-.export _off014_32_0x00263F_00
-.export _off014_32_0x002730_01
-.export _off014_32_0x0027DC_02
-.export _off014_32_0x002854_03
-.export _off014_36_0x0028DE_00
-.export _off014_36_0x002962_01
-.export _off014_36_0x0029E4_02
-.export _off014_36_0x002A7D_03
-
-
-
-
-_off014_32_0x00263F_00:
-- D 1 - I - 0x00263F 00:A62F: EE        .byte $EE   ; 
-- D 1 - I - 0x002640 00:A630: 06        .byte $06   ; 
-- D 1 - I - 0x002641 00:A631: E6        .byte $E6   ; 
-- D 1 - I - 0x002642 00:A632: 06        .byte $06   ; 
-- D 1 - I - 0x002643 00:A633: C5        .byte $C5   ; 
-loc_FF_A634:
-- D 1 - I - 0x002644 00:A634: EE        .byte $EE   ; 
-- D 1 - I - 0x002645 00:A635: 06        .byte $06   ; 
-- D 1 - I - 0x002646 00:A636: E6        .byte $E6   ; 
-- D 1 - I - 0x002647 00:A637: 01        .byte $01   ; 
-- D 1 - I - 0x002648 00:A638: C0        .byte $C0   ; 
-- D 1 - I - 0x002649 00:A639: ED        .byte $ED   ; 
-- D 1 - I - 0x00264A 00:A63A: 81        .byte $81   ; 
-- D 1 - I - 0x00264B 00:A63B: EC        .byte $EC   ; 
-- D 1 - I - 0x00264C 00:A63C: 05        .byte $05   ; 
-- D 1 - I - 0x00264D 00:A63D: E9        .byte $E9   ; 
-- D 1 - I - 0x00264E 00:A63E: B9        .byte $B9   ; 
-- D 1 - I - 0x00264F 00:A63F: D6        .byte $D6   ; 
-- D 1 - I - 0x002650 00:A640: 30        .byte $30   ; 
-- D 1 - I - 0x002651 00:A641: 26        .byte $26   ; 
-- D 1 - I - 0x002652 00:A642: 17        .byte $17   ; 
-- D 1 - I - 0x002653 00:A643: E4        .byte $E4   ; 
-- D 1 - I - 0x002654 00:A644: 53        .byte $53   ; 
-- D 1 - I - 0x002655 00:A645: 22        .byte $22   ; 
-- D 1 - I - 0x002656 00:A646: 74        .byte $74   ; 
-- D 1 - I - 0x002657 00:A647: 22        .byte $22   ; 
-- D 1 - I - 0x002658 00:A648: 84        .byte $84   ; 
-- D 1 - I - 0x002659 00:A649: 22        .byte $22   ; 
-- D 1 - I - 0x00265A 00:A64A: 91        .byte $91   ; 
-- D 1 - I - 0x00265B 00:A64B: E6        .byte $E6   ; 
-- D 1 - I - 0x00265C 00:A64C: 11        .byte $11   ; 
-- D 1 - I - 0x00265D 00:A64D: 80        .byte $80   ; 
-- D 1 - I - 0x00265E 00:A64E: E6        .byte $E6   ; 
-- D 1 - I - 0x00265F 00:A64F: 06        .byte $06   ; 
-- D 1 - I - 0x002660 00:A650: ED        .byte $ED   ; 
-- D 1 - I - 0x002661 00:A651: 01        .byte $01   ; 
-- D 1 - I - 0x002662 00:A652: E9        .byte $E9   ; 
-- D 1 - I - 0x002663 00:A653: 31        .byte $31   ; 
-- D 1 - I - 0x002664 00:A654: E2        .byte $E2   ; 
-- D 1 - I - 0x002665 00:A655: 71        .byte $71   ; 
-- D 1 - I - 0x002666 00:A656: 80        .byte $80   ; 
-- D 1 - I - 0x002667 00:A657: E8        .byte $E8   ; 
-- D 1 - I - 0x002668 00:A658: 11        .byte $11   ; 
-- D 1 - I - 0x002669 00:A659: 94        .byte $94   ; 
-- D 1 - I - 0x00266A 00:A65A: E8        .byte $E8   ; 
-- D 1 - I - 0x00266B 00:A65B: 17        .byte $17   ; 
-- D 1 - I - 0x00266C 00:A65C: E6        .byte $E6   ; 
-- D 1 - I - 0x00266D 00:A65D: 01        .byte $01   ; 
-- D 1 - I - 0x00266E 00:A65E: C0        .byte $C0   ; 
-- D 1 - I - 0x00266F 00:A65F: E6        .byte $E6   ; 
-- D 1 - I - 0x002670 00:A660: 06        .byte $06   ; 
-- D 1 - I - 0x002671 00:A661: ED        .byte $ED   ; 
-- D 1 - I - 0x002672 00:A662: 81        .byte $81   ; 
-- D 1 - I - 0x002673 00:A663: E9        .byte $E9   ; 
-- D 1 - I - 0x002674 00:A664: B9        .byte $B9   ; 
-- D 1 - I - 0x002675 00:A665: E4        .byte $E4   ; 
-- D 1 - I - 0x002676 00:A666: 22        .byte $22   ; 
-- D 1 - I - 0x002677 00:A667: 74        .byte $74   ; 
-- D 1 - I - 0x002678 00:A668: 22        .byte $22   ; 
-- D 1 - I - 0x002679 00:A669: 84        .byte $84   ; 
-- D 1 - I - 0x00267A 00:A66A: 22        .byte $22   ; 
-- D 1 - I - 0x00267B 00:A66B: 91        .byte $91   ; 
-- D 1 - I - 0x00267C 00:A66C: E6        .byte $E6   ; 
-- D 1 - I - 0x00267D 00:A66D: 11        .byte $11   ; 
-- D 1 - I - 0x00267E 00:A66E: 80        .byte $80   ; 
-- D 1 - I - 0x00267F 00:A66F: E6        .byte $E6   ; 
-- D 1 - I - 0x002680 00:A670: 06        .byte $06   ; 
-- D 1 - I - 0x002681 00:A671: ED        .byte $ED   ; 
-- D 1 - I - 0x002682 00:A672: 01        .byte $01   ; 
-- D 1 - I - 0x002683 00:A673: E9        .byte $E9   ; 
-- D 1 - I - 0x002684 00:A674: 31        .byte $31   ; 
-- D 1 - I - 0x002685 00:A675: E2        .byte $E2   ; 
-- D 1 - I - 0x002686 00:A676: 91        .byte $91   ; 
-- D 1 - I - 0x002687 00:A677: 90        .byte $90   ; 
-- D 1 - I - 0x002688 00:A678: E8        .byte $E8   ; 
-- D 1 - I - 0x002689 00:A679: 11        .byte $11   ; 
-- D 1 - I - 0x00268A 00:A67A: A4        .byte $A4   ; 
-- D 1 - I - 0x00268B 00:A67B: E8        .byte $E8   ; 
-- D 1 - I - 0x00268C 00:A67C: 17        .byte $17   ; 
-- D 1 - I - 0x00268D 00:A67D: E6        .byte $E6   ; 
-- D 1 - I - 0x00268E 00:A67E: 01        .byte $01   ; 
-- D 1 - I - 0x00268F 00:A67F: C0        .byte $C0   ; 
-- D 1 - I - 0x002690 00:A680: E6        .byte $E6   ; 
-- D 1 - I - 0x002691 00:A681: 06        .byte $06   ; 
-- D 1 - I - 0x002692 00:A682: ED        .byte $ED   ; 
-- D 1 - I - 0x002693 00:A683: 81        .byte $81   ; 
-- D 1 - I - 0x002694 00:A684: E9        .byte $E9   ; 
-- D 1 - I - 0x002695 00:A685: B9        .byte $B9   ; 
-- D 1 - I - 0x002696 00:A686: E4        .byte $E4   ; 
-- D 1 - I - 0x002697 00:A687: 32        .byte $32   ; 
-- D 1 - I - 0x002698 00:A688: 84        .byte $84   ; 
-- D 1 - I - 0x002699 00:A689: 32        .byte $32   ; 
-- D 1 - I - 0x00269A 00:A68A: 94        .byte $94   ; 
-- D 1 - I - 0x00269B 00:A68B: 32        .byte $32   ; 
-- D 1 - I - 0x00269C 00:A68C: A1        .byte $A1   ; 
-- D 1 - I - 0x00269D 00:A68D: E6        .byte $E6   ; 
-- D 1 - I - 0x00269E 00:A68E: 11        .byte $11   ; 
-- D 1 - I - 0x00269F 00:A68F: 90        .byte $90   ; 
-- D 1 - I - 0x0026A0 00:A690: E6        .byte $E6   ; 
-- D 1 - I - 0x0026A1 00:A691: 06        .byte $06   ; 
-- D 1 - I - 0x0026A2 00:A692: ED        .byte $ED   ; 
-- D 1 - I - 0x0026A3 00:A693: 01        .byte $01   ; 
-- D 1 - I - 0x0026A4 00:A694: E9        .byte $E9   ; 
-- D 1 - I - 0x0026A5 00:A695: 31        .byte $31   ; 
-- D 1 - I - 0x0026A6 00:A696: E2        .byte $E2   ; 
-- D 1 - I - 0x0026A7 00:A697: 81        .byte $81   ; 
-- D 1 - I - 0x0026A8 00:A698: 90        .byte $90   ; 
-- D 1 - I - 0x0026A9 00:A699: E8        .byte $E8   ; 
-- D 1 - I - 0x0026AA 00:A69A: 11        .byte $11   ; 
-- D 1 - I - 0x0026AB 00:A69B: A4        .byte $A4   ; 
-- D 1 - I - 0x0026AC 00:A69C: E8        .byte $E8   ; 
-- D 1 - I - 0x0026AD 00:A69D: 17        .byte $17   ; 
-- D 1 - I - 0x0026AE 00:A69E: E6        .byte $E6   ; 
-- D 1 - I - 0x0026AF 00:A69F: 01        .byte $01   ; 
-- D 1 - I - 0x0026B0 00:A6A0: C0        .byte $C0   ; 
-- D 1 - I - 0x0026B1 00:A6A1: E6        .byte $E6   ; 
-- D 1 - I - 0x0026B2 00:A6A2: 06        .byte $06   ; 
-- D 1 - I - 0x0026B3 00:A6A3: ED        .byte $ED   ; 
-- D 1 - I - 0x0026B4 00:A6A4: 81        .byte $81   ; 
-- D 1 - I - 0x0026B5 00:A6A5: E9        .byte $E9   ; 
-- D 1 - I - 0x0026B6 00:A6A6: B9        .byte $B9   ; 
-- D 1 - I - 0x0026B7 00:A6A7: E4        .byte $E4   ; 
-- D 1 - I - 0x0026B8 00:A6A8: 32        .byte $32   ; 
-- D 1 - I - 0x0026B9 00:A6A9: 84        .byte $84   ; 
-- D 1 - I - 0x0026BA 00:A6AA: 32        .byte $32   ; 
-- D 1 - I - 0x0026BB 00:A6AB: 94        .byte $94   ; 
-- D 1 - I - 0x0026BC 00:A6AC: 32        .byte $32   ; 
-- D 1 - I - 0x0026BD 00:A6AD: A1        .byte $A1   ; 
-- D 1 - I - 0x0026BE 00:A6AE: E6        .byte $E6   ; 
-- D 1 - I - 0x0026BF 00:A6AF: 11        .byte $11   ; 
-- D 1 - I - 0x0026C0 00:A6B0: 90        .byte $90   ; 
-- D 1 - I - 0x0026C1 00:A6B1: E6        .byte $E6   ; 
-- D 1 - I - 0x0026C2 00:A6B2: 06        .byte $06   ; 
-- D 1 - I - 0x0026C3 00:A6B3: ED        .byte $ED   ; 
-- D 1 - I - 0x0026C4 00:A6B4: 01        .byte $01   ; 
-- D 1 - I - 0x0026C5 00:A6B5: E9        .byte $E9   ; 
-- D 1 - I - 0x0026C6 00:A6B6: 31        .byte $31   ; 
-- D 1 - I - 0x0026C7 00:A6B7: E2        .byte $E2   ; 
-- D 1 - I - 0x0026C8 00:A6B8: 71        .byte $71   ; 
-- D 1 - I - 0x0026C9 00:A6B9: 80        .byte $80   ; 
-- D 1 - I - 0x0026CA 00:A6BA: EE        .byte $EE   ; 
-- D 1 - I - 0x0026CB 00:A6BB: 09        .byte $09   ; 
-- D 1 - I - 0x0026CC 00:A6BC: EC        .byte $EC   ; 
-- D 1 - I - 0x0026CD 00:A6BD: 00        .byte $00   ; 
-- D 1 - I - 0x0026CE 00:A6BE: E6        .byte $E6   ; 
-- D 1 - I - 0x0026CF 00:A6BF: 01        .byte $01   ; 
-- D 1 - I - 0x0026D0 00:A6C0: C0        .byte $C0   ; 
-- D 1 - I - 0x0026D1 00:A6C1: ED        .byte $ED   ; 
-- D 1 - I - 0x0026D2 00:A6C2: 81        .byte $81   ; 
-- D 1 - I - 0x0026D3 00:A6C3: E9        .byte $E9   ; 
-- D 1 - I - 0x0026D4 00:A6C4: B1        .byte $B1   ; 
-- D 1 - I - 0x0026D5 00:A6C5: D6        .byte $D6   ; 
-- D 1 - I - 0x0026D6 00:A6C6: 70        .byte $70   ; 
-- D 1 - I - 0x0026D7 00:A6C7: 1C        .byte $1C   ; 
-- D 1 - I - 0x0026D8 00:A6C8: 34        .byte $34   ; 
-- D 1 - I - 0x0026D9 00:A6C9: E4        .byte $E4   ; 
-- D 1 - I - 0x0026DA 00:A6CA: 94        .byte $94   ; 
-- D 1 - I - 0x0026DB 00:A6CB: 90        .byte $90   ; 
-- D 1 - I - 0x0026DC 00:A6CC: 20        .byte $20   ; 
-- D 1 - I - 0x0026DD 00:A6CD: 80        .byte $80   ; 
-- D 1 - I - 0x0026DE 00:A6CE: 70        .byte $70   ; 
-- D 1 - I - 0x0026DF 00:A6CF: 50        .byte $50   ; 
-- D 1 - I - 0x0026E0 00:A6D0: 70        .byte $70   ; 
-- D 1 - I - 0x0026E1 00:A6D1: 90        .byte $90   ; 
-- D 1 - I - 0x0026E2 00:A6D2: 20        .byte $20   ; 
-- D 1 - I - 0x0026E3 00:A6D3: C0        .byte $C0   ; 
-- D 1 - I - 0x0026E4 00:A6D4: F4        .byte $F4   ; 
-- D 1 - I - 0x0026E5 00:A6D5: 50        .byte $50   ; 
-- D 1 - I - 0x0026E6 00:A6D6: 70        .byte $70   ; 
-- D 1 - I - 0x0026E7 00:A6D7: 90        .byte $90   ; 
-- D 1 - I - 0x0026E8 00:A6D8: F0        .byte $F0   ; 
-- D 1 - I - 0x0026E9 00:A6D9: 20        .byte $20   ; 
-- D 1 - I - 0x0026EA 00:A6DA: 40        .byte $40   ; 
-- D 1 - I - 0x0026EB 00:A6DB: 50        .byte $50   ; 
-- D 1 - I - 0x0026EC 00:A6DC: 20        .byte $20   ; 
-- D 1 - I - 0x0026ED 00:A6DD: A0        .byte $A0   ; 
-- D 1 - I - 0x0026EE 00:A6DE: 20        .byte $20   ; 
-- D 1 - I - 0x0026EF 00:A6DF: 90        .byte $90   ; 
-- D 1 - I - 0x0026F0 00:A6E0: 70        .byte $70   ; 
-- D 1 - I - 0x0026F1 00:A6E1: 50        .byte $50   ; 
-- D 1 - I - 0x0026F2 00:A6E2: 70        .byte $70   ; 
-- D 1 - I - 0x0026F3 00:A6E3: 90        .byte $90   ; 
-- D 1 - I - 0x0026F4 00:A6E4: 30        .byte $30   ; 
-- D 1 - I - 0x0026F5 00:A6E5: A3        .byte $A3   ; 
-- D 1 - I - 0x0026F6 00:A6E6: 94        .byte $94   ; 
-- D 1 - I - 0x0026F7 00:A6E7: 20        .byte $20   ; 
-- D 1 - I - 0x0026F8 00:A6E8: 80        .byte $80   ; 
-- D 1 - I - 0x0026F9 00:A6E9: 70        .byte $70   ; 
-- D 1 - I - 0x0026FA 00:A6EA: 50        .byte $50   ; 
-- D 1 - I - 0x0026FB 00:A6EB: 70        .byte $70   ; 
-- D 1 - I - 0x0026FC 00:A6EC: 90        .byte $90   ; 
-- D 1 - I - 0x0026FD 00:A6ED: 20        .byte $20   ; 
-- D 1 - I - 0x0026FE 00:A6EE: C0        .byte $C0   ; 
-- D 1 - I - 0x0026FF 00:A6EF: F4        .byte $F4   ; 
-- D 1 - I - 0x002700 00:A6F0: 50        .byte $50   ; 
-- D 1 - I - 0x002701 00:A6F1: 70        .byte $70   ; 
-- D 1 - I - 0x002702 00:A6F2: 90        .byte $90   ; 
-- D 1 - I - 0x002703 00:A6F3: F0        .byte $F0   ; 
-- D 1 - I - 0x002704 00:A6F4: 20        .byte $20   ; 
-- D 1 - I - 0x002705 00:A6F5: 40        .byte $40   ; 
-- D 1 - I - 0x002706 00:A6F6: 50        .byte $50   ; 
-- D 1 - I - 0x002707 00:A6F7: 20        .byte $20   ; 
-- D 1 - I - 0x002708 00:A6F8: A0        .byte $A0   ; 
-- D 1 - I - 0x002709 00:A6F9: 20        .byte $20   ; 
-- D 1 - I - 0x00270A 00:A6FA: 90        .byte $90   ; 
-- D 1 - I - 0x00270B 00:A6FB: 70        .byte $70   ; 
-- D 1 - I - 0x00270C 00:A6FC: 50        .byte $50   ; 
-- D 1 - I - 0x00270D 00:A6FD: 60        .byte $60   ; 
-- D 1 - I - 0x00270E 00:A6FE: 70        .byte $70   ; 
-- D 1 - I - 0x00270F 00:A6FF: 30        .byte $30   ; 
-- D 1 - I - 0x002710 00:A700: C0        .byte $C0   ; 
-- D 1 - I - 0x002711 00:A701: F4        .byte $F4   ; 
-- D 1 - I - 0x002712 00:A702: 50        .byte $50   ; 
-- D 1 - I - 0x002713 00:A703: 60        .byte $60   ; 
-- D 1 - I - 0x002714 00:A704: E6        .byte $E6   ; 
-- D 1 - I - 0x002715 00:A705: 05        .byte $05   ; 
-- D 1 - I - 0x002716 00:A706: 70        .byte $70   ; 
-- D 1 - I - 0x002717 00:A707: E6        .byte $E6   ; 
-- D 1 - I - 0x002718 00:A708: 06        .byte $06   ; 
-- D 1 - I - 0x002719 00:A709: E7        .byte $E7   ; 
-- D 1 - I - 0x00271A 00:A70A: 25        .byte $25   ; 
-- D 1 - I - 0x00271B 00:A70B: F0        .byte $F0   ; 
-- D 1 - I - 0x00271C 00:A70C: E6        .byte $E6   ; 
-- D 1 - I - 0x00271D 00:A70D: 01        .byte $01   ; 
-- D 1 - I - 0x00271E 00:A70E: E5        .byte $E5   ; 
-- D 1 - I - 0x00271F 00:A70F: 47        .byte $47   ; 
-- D 1 - I - 0x002720 00:A710: 57        .byte $57   ; 
-- D 1 - I - 0x002721 00:A711: 67        .byte $67   ; 
-- D 1 - I - 0x002722 00:A712: 77        .byte $77   ; 
-- D 1 - I - 0x002723 00:A713: 87        .byte $87   ; 
-- D 1 - I - 0x002724 00:A714: 97        .byte $97   ; 
-- D 1 - I - 0x002725 00:A715: A7        .byte $A7   ; 
-- D 1 - I - 0x002726 00:A716: B7        .byte $B7   ; 
-- D 1 - I - 0x002727 00:A717: E4        .byte $E4   ; 
-- D 1 - I - 0x002728 00:A718: 07        .byte $07   ; 
-- D 1 - I - 0x002729 00:A719: 17        .byte $17   ; 
-- D 1 - I - 0x00272A 00:A71A: 27        .byte $27   ; 
-- D 1 - I - 0x00272B 00:A71B: 37        .byte $37   ; 
-- D 1 - I - 0x00272C 00:A71C: FE        .byte $FE   ; 
-- D 1 - I - 0x00272D 00:A71D: FF        .byte $FF   ; 
-- D 1 - I - 0x00272E 00:A71E: 34 A6     .word loc_FF_A634
-
-
-_off014_32_0x002730_01:
-- D 1 - I - 0x002730 00:A720: E6        .byte $E6   ; 
-- D 1 - I - 0x002731 00:A721: 06        .byte $06   ; 
-- D 1 - I - 0x002732 00:A722: C5        .byte $C5   ; 
-loc_FF_A723:
-- D 1 - I - 0x002733 00:A723: EC        .byte $EC   ; 
-- D 1 - I - 0x002734 00:A724: 05        .byte $05   ; 
-- D 1 - I - 0x002735 00:A725: E9        .byte $E9   ; 
-- D 1 - I - 0x002736 00:A726: 39        .byte $39   ; 
-- D 1 - I - 0x002737 00:A727: D6        .byte $D6   ; 
-- D 1 - I - 0x002738 00:A728: 70        .byte $70   ; 
-- D 1 - I - 0x002739 00:A729: 26        .byte $26   ; 
-- D 1 - I - 0x00273A 00:A72A: 17        .byte $17   ; 
-- D 1 - I - 0x00273B 00:A72B: E3        .byte $E3   ; 
-- D 1 - I - 0x00273C 00:A72C: 53        .byte $53   ; 
-- D 1 - I - 0x00273D 00:A72D: 22        .byte $22   ; 
-- D 1 - I - 0x00273E 00:A72E: 74        .byte $74   ; 
-- D 1 - I - 0x00273F 00:A72F: 22        .byte $22   ; 
-- D 1 - I - 0x002740 00:A730: 84        .byte $84   ; 
-- D 1 - I - 0x002741 00:A731: 22        .byte $22   ; 
-- D 1 - I - 0x002742 00:A732: 91        .byte $91   ; 
-- D 1 - I - 0x002743 00:A733: 82        .byte $82   ; 
-- D 1 - I - 0x002744 00:A734: E9        .byte $E9   ; 
-- D 1 - I - 0x002745 00:A735: 30        .byte $30   ; 
-- D 1 - I - 0x002746 00:A736: E2        .byte $E2   ; 
-- D 1 - I - 0x002747 00:A737: 01        .byte $01   ; 
-- D 1 - I - 0x002748 00:A738: 10        .byte $10   ; 
-- D 1 - I - 0x002749 00:A739: 27        .byte $27   ; 
-- D 1 - I - 0x00274A 00:A73A: E9        .byte $E9   ; 
-- D 1 - I - 0x00274B 00:A73B: 70        .byte $70   ; 
-- D 1 - I - 0x00274C 00:A73C: E3        .byte $E3   ; 
-- D 1 - I - 0x00274D 00:A73D: 74        .byte $74   ; 
-- D 1 - I - 0x00274E 00:A73E: E3        .byte $E3   ; 
-- D 1 - I - 0x00274F 00:A73F: 22        .byte $22   ; 
-- D 1 - I - 0x002750 00:A740: 84        .byte $84   ; 
-- D 1 - I - 0x002751 00:A741: 22        .byte $22   ; 
-- D 1 - I - 0x002752 00:A742: 91        .byte $91   ; 
-- D 1 - I - 0x002753 00:A743: 82        .byte $82   ; 
-- D 1 - I - 0x002754 00:A744: E9        .byte $E9   ; 
-- D 1 - I - 0x002755 00:A745: 30        .byte $30   ; 
-- D 1 - I - 0x002756 00:A746: E2        .byte $E2   ; 
-- D 1 - I - 0x002757 00:A747: 21        .byte $21   ; 
-- D 1 - I - 0x002758 00:A748: 20        .byte $20   ; 
-- D 1 - I - 0x002759 00:A749: 37        .byte $37   ; 
-- D 1 - I - 0x00275A 00:A74A: E9        .byte $E9   ; 
-- D 1 - I - 0x00275B 00:A74B: 70        .byte $70   ; 
-- D 1 - I - 0x00275C 00:A74C: E3        .byte $E3   ; 
-- D 1 - I - 0x00275D 00:A74D: 84        .byte $84   ; 
-- D 1 - I - 0x00275E 00:A74E: E3        .byte $E3   ; 
-- D 1 - I - 0x00275F 00:A74F: 32        .byte $32   ; 
-- D 1 - I - 0x002760 00:A750: 94        .byte $94   ; 
-- D 1 - I - 0x002761 00:A751: 32        .byte $32   ; 
-- D 1 - I - 0x002762 00:A752: A1        .byte $A1   ; 
-- D 1 - I - 0x002763 00:A753: 92        .byte $92   ; 
-- D 1 - I - 0x002764 00:A754: E9        .byte $E9   ; 
-- D 1 - I - 0x002765 00:A755: 30        .byte $30   ; 
-- D 1 - I - 0x002766 00:A756: E2        .byte $E2   ; 
-- D 1 - I - 0x002767 00:A757: 11        .byte $11   ; 
-- D 1 - I - 0x002768 00:A758: 20        .byte $20   ; 
-- D 1 - I - 0x002769 00:A759: 37        .byte $37   ; 
-- D 1 - I - 0x00276A 00:A75A: E9        .byte $E9   ; 
-- D 1 - I - 0x00276B 00:A75B: 70        .byte $70   ; 
-- D 1 - I - 0x00276C 00:A75C: E3        .byte $E3   ; 
-- D 1 - I - 0x00276D 00:A75D: 84        .byte $84   ; 
-- D 1 - I - 0x00276E 00:A75E: E3        .byte $E3   ; 
-- D 1 - I - 0x00276F 00:A75F: 32        .byte $32   ; 
-- D 1 - I - 0x002770 00:A760: 94        .byte $94   ; 
-- D 1 - I - 0x002771 00:A761: 32        .byte $32   ; 
-- D 1 - I - 0x002772 00:A762: A1        .byte $A1   ; 
-- D 1 - I - 0x002773 00:A763: 92        .byte $92   ; 
-- D 1 - I - 0x002774 00:A764: E9        .byte $E9   ; 
-- D 1 - I - 0x002775 00:A765: 30        .byte $30   ; 
-- D 1 - I - 0x002776 00:A766: E2        .byte $E2   ; 
-- D 1 - I - 0x002777 00:A767: 01        .byte $01   ; 
-- D 1 - I - 0x002778 00:A768: 10        .byte $10   ; 
-- D 1 - I - 0x002779 00:A769: EC        .byte $EC   ; 
-- D 1 - I - 0x00277A 00:A76A: 00        .byte $00   ; 
-- D 1 - I - 0x00277B 00:A76B: E9        .byte $E9   ; 
-- D 1 - I - 0x00277C 00:A76C: B1        .byte $B1   ; 
-- D 1 - I - 0x00277D 00:A76D: D6        .byte $D6   ; 
-- D 1 - I - 0x00277E 00:A76E: 30        .byte $30   ; 
-- D 1 - I - 0x00277F 00:A76F: 27        .byte $27   ; 
-- D 1 - I - 0x002780 00:A770: 34        .byte $34   ; 
-- D 1 - I - 0x002781 00:A771: E2        .byte $E2   ; 
-- D 1 - I - 0x002782 00:A772: 21        .byte $21   ; 
-- D 1 - I - 0x002783 00:A773: 40        .byte $40   ; 
-- D 1 - I - 0x002784 00:A774: 50        .byte $50   ; 
-- D 1 - I - 0x002785 00:A775: 20        .byte $20   ; 
-- D 1 - I - 0x002786 00:A776: 90        .byte $90   ; 
-- D 1 - I - 0x002787 00:A777: C0        .byte $C0   ; 
-- D 1 - I - 0x002788 00:A778: 80        .byte $80   ; 
-- D 1 - I - 0x002789 00:A779: 70        .byte $70   ; 
-- D 1 - I - 0x00278A 00:A77A: 50        .byte $50   ; 
-- D 1 - I - 0x00278B 00:A77B: 70        .byte $70   ; 
-- D 1 - I - 0x00278C 00:A77C: 90        .byte $90   ; 
-- D 1 - I - 0x00278D 00:A77D: 20        .byte $20   ; 
-- D 1 - I - 0x00278E 00:A77E: C0        .byte $C0   ; 
-- D 1 - I - 0x00278F 00:A77F: F4        .byte $F4   ; 
-- D 1 - I - 0x002790 00:A780: 50        .byte $50   ; 
-- D 1 - I - 0x002791 00:A781: 70        .byte $70   ; 
-- D 1 - I - 0x002792 00:A782: 90        .byte $90   ; 
-- D 1 - I - 0x002793 00:A783: F0        .byte $F0   ; 
-- D 1 - I - 0x002794 00:A784: E2        .byte $E2   ; 
-- D 1 - I - 0x002795 00:A785: 20        .byte $20   ; 
-- D 1 - I - 0x002796 00:A786: 40        .byte $40   ; 
-- D 1 - I - 0x002797 00:A787: 50        .byte $50   ; 
-- D 1 - I - 0x002798 00:A788: 20        .byte $20   ; 
-- D 1 - I - 0x002799 00:A789: A0        .byte $A0   ; 
-- D 1 - I - 0x00279A 00:A78A: C0        .byte $C0   ; 
-- D 1 - I - 0x00279B 00:A78B: 90        .byte $90   ; 
-- D 1 - I - 0x00279C 00:A78C: 70        .byte $70   ; 
-- D 1 - I - 0x00279D 00:A78D: 50        .byte $50   ; 
-- D 1 - I - 0x00279E 00:A78E: 70        .byte $70   ; 
-- D 1 - I - 0x00279F 00:A78F: 90        .byte $90   ; 
-- D 1 - I - 0x0027A0 00:A790: 34        .byte $34   ; 
-- D 1 - I - 0x0027A1 00:A791: 20        .byte $20   ; 
-- D 1 - I - 0x0027A2 00:A792: 40        .byte $40   ; 
-- D 1 - I - 0x0027A3 00:A793: 50        .byte $50   ; 
-- D 1 - I - 0x0027A4 00:A794: 20        .byte $20   ; 
-- D 1 - I - 0x0027A5 00:A795: 90        .byte $90   ; 
-- D 1 - I - 0x0027A6 00:A796: C0        .byte $C0   ; 
-- D 1 - I - 0x0027A7 00:A797: 80        .byte $80   ; 
-- D 1 - I - 0x0027A8 00:A798: 70        .byte $70   ; 
-- D 1 - I - 0x0027A9 00:A799: 50        .byte $50   ; 
-- D 1 - I - 0x0027AA 00:A79A: 70        .byte $70   ; 
-- D 1 - I - 0x0027AB 00:A79B: 90        .byte $90   ; 
-- D 1 - I - 0x0027AC 00:A79C: 20        .byte $20   ; 
-- D 1 - I - 0x0027AD 00:A79D: C0        .byte $C0   ; 
-- D 1 - I - 0x0027AE 00:A79E: F4        .byte $F4   ; 
-- D 1 - I - 0x0027AF 00:A79F: 50        .byte $50   ; 
-- D 1 - I - 0x0027B0 00:A7A0: 70        .byte $70   ; 
-- D 1 - I - 0x0027B1 00:A7A1: 90        .byte $90   ; 
-- D 1 - I - 0x0027B2 00:A7A2: F0        .byte $F0   ; 
-- D 1 - I - 0x0027B3 00:A7A3: E2        .byte $E2   ; 
-- D 1 - I - 0x0027B4 00:A7A4: 20        .byte $20   ; 
-- D 1 - I - 0x0027B5 00:A7A5: 40        .byte $40   ; 
-- D 1 - I - 0x0027B6 00:A7A6: 50        .byte $50   ; 
-- D 1 - I - 0x0027B7 00:A7A7: 20        .byte $20   ; 
-- D 1 - I - 0x0027B8 00:A7A8: A0        .byte $A0   ; 
-- D 1 - I - 0x0027B9 00:A7A9: C0        .byte $C0   ; 
-- D 1 - I - 0x0027BA 00:A7AA: 90        .byte $90   ; 
-- D 1 - I - 0x0027BB 00:A7AB: 70        .byte $70   ; 
-- D 1 - I - 0x0027BC 00:A7AC: 50        .byte $50   ; 
-- D 1 - I - 0x0027BD 00:A7AD: 60        .byte $60   ; 
-- D 1 - I - 0x0027BE 00:A7AE: 70        .byte $70   ; 
-- D 1 - I - 0x0027BF 00:A7AF: 30        .byte $30   ; 
-- D 1 - I - 0x0027C0 00:A7B0: C0        .byte $C0   ; 
-- D 1 - I - 0x0027C1 00:A7B1: F4        .byte $F4   ; 
-- D 1 - I - 0x0027C2 00:A7B2: 50        .byte $50   ; 
-- D 1 - I - 0x0027C3 00:A7B3: 60        .byte $60   ; 
-- D 1 - I - 0x0027C4 00:A7B4: 70        .byte $70   ; 
-- D 1 - I - 0x0027C5 00:A7B5: E7        .byte $E7   ; 
-- D 1 - I - 0x0027C6 00:A7B6: 24        .byte $24   ; 
-- D 1 - I - 0x0027C7 00:A7B7: F0        .byte $F0   ; 
-- D 1 - I - 0x0027C8 00:A7B8: E6        .byte $E6   ; 
-- D 1 - I - 0x0027C9 00:A7B9: 01        .byte $01   ; 
-- D 1 - I - 0x0027CA 00:A7BA: E3        .byte $E3   ; 
-- D 1 - I - 0x0027CB 00:A7BB: 47        .byte $47   ; 
-- D 1 - I - 0x0027CC 00:A7BC: 57        .byte $57   ; 
-- D 1 - I - 0x0027CD 00:A7BD: 67        .byte $67   ; 
-- D 1 - I - 0x0027CE 00:A7BE: 77        .byte $77   ; 
-- D 1 - I - 0x0027CF 00:A7BF: 87        .byte $87   ; 
-- D 1 - I - 0x0027D0 00:A7C0: 97        .byte $97   ; 
-- D 1 - I - 0x0027D1 00:A7C1: A7        .byte $A7   ; 
-- D 1 - I - 0x0027D2 00:A7C2: B7        .byte $B7   ; 
-- D 1 - I - 0x0027D3 00:A7C3: E2        .byte $E2   ; 
-- D 1 - I - 0x0027D4 00:A7C4: 07        .byte $07   ; 
-- D 1 - I - 0x0027D5 00:A7C5: 17        .byte $17   ; 
-- D 1 - I - 0x0027D6 00:A7C6: 27        .byte $27   ; 
-- D 1 - I - 0x0027D7 00:A7C7: 37        .byte $37   ; 
-- D 1 - I - 0x0027D8 00:A7C8: FE        .byte $FE   ; 
-- D 1 - I - 0x0027D9 00:A7C9: FF        .byte $FF   ; 
-- D 1 - I - 0x0027DA 00:A7CA: 23 A7     .word loc_FF_A723
-
-
-_off014_32_0x0027DC_02:
-- D 1 - I - 0x0027DC 00:A7CC: E6        .byte $E6   ; 
-- D 1 - I - 0x0027DD 00:A7CD: 06        .byte $06   ; 
-- D 1 - I - 0x0027DE 00:A7CE: C5        .byte $C5   ; 
-loc_FF_A7CF:
-- D 1 - I - 0x0027DF 00:A7CF: D6        .byte $D6   ; 
-- D 1 - I - 0x0027E0 00:A7D0: 00        .byte $00   ; 
-- D 1 - I - 0x0027E1 00:A7D1: E4        .byte $E4   ; 
-- D 1 - I - 0x0027E2 00:A7D2: 53        .byte $53   ; 
-- D 1 - I - 0x0027E3 00:A7D3: 22        .byte $22   ; 
-- D 1 - I - 0x0027E4 00:A7D4: 74        .byte $74   ; 
-- D 1 - I - 0x0027E5 00:A7D5: 22        .byte $22   ; 
-- D 1 - I - 0x0027E6 00:A7D6: 84        .byte $84   ; 
-- D 1 - I - 0x0027E7 00:A7D7: 22        .byte $22   ; 
-- D 1 - I - 0x0027E8 00:A7D8: 91        .byte $91   ; 
-- D 1 - I - 0x0027E9 00:A7D9: 82        .byte $82   ; 
-- D 1 - I - 0x0027EA 00:A7DA: 72        .byte $72   ; 
-- D 1 - I - 0x0027EB 00:A7DB: 54        .byte $54   ; 
-- D 1 - I - 0x0027EC 00:A7DC: 22        .byte $22   ; 
-- D 1 - I - 0x0027ED 00:A7DD: 74        .byte $74   ; 
-- D 1 - I - 0x0027EE 00:A7DE: E4        .byte $E4   ; 
-- D 1 - I - 0x0027EF 00:A7DF: 22        .byte $22   ; 
-- D 1 - I - 0x0027F0 00:A7E0: 84        .byte $84   ; 
-- D 1 - I - 0x0027F1 00:A7E1: 22        .byte $22   ; 
-- D 1 - I - 0x0027F2 00:A7E2: 91        .byte $91   ; 
-- D 1 - I - 0x0027F3 00:A7E3: 82        .byte $82   ; 
-- D 1 - I - 0x0027F4 00:A7E4: 73        .byte $73   ; 
-- D 1 - I - 0x0027F5 00:A7E5: 63        .byte $63   ; 
-- D 1 - I - 0x0027F6 00:A7E6: 32        .byte $32   ; 
-- D 1 - I - 0x0027F7 00:A7E7: 84        .byte $84   ; 
-- D 1 - I - 0x0027F8 00:A7E8: 32        .byte $32   ; 
-- D 1 - I - 0x0027F9 00:A7E9: 94        .byte $94   ; 
-- D 1 - I - 0x0027FA 00:A7EA: 32        .byte $32   ; 
-- D 1 - I - 0x0027FB 00:A7EB: A1        .byte $A1   ; 
-- D 1 - I - 0x0027FC 00:A7EC: 92        .byte $92   ; 
-- D 1 - I - 0x0027FD 00:A7ED: E4        .byte $E4   ; 
-- D 1 - I - 0x0027FE 00:A7EE: 82        .byte $82   ; 
-- D 1 - I - 0x0027FF 00:A7EF: 64        .byte $64   ; 
-- D 1 - I - 0x002800 00:A7F0: 32        .byte $32   ; 
-- D 1 - I - 0x002801 00:A7F1: 84        .byte $84   ; 
-- D 1 - I - 0x002802 00:A7F2: 32        .byte $32   ; 
-- D 1 - I - 0x002803 00:A7F3: 94        .byte $94   ; 
-- D 1 - I - 0x002804 00:A7F4: 32        .byte $32   ; 
-- D 1 - I - 0x002805 00:A7F5: A1        .byte $A1   ; 
-- D 1 - I - 0x002806 00:A7F6: 92        .byte $92   ; 
-- D 1 - I - 0x002807 00:A7F7: 72        .byte $72   ; 
-- D 1 - I - 0x002808 00:A7F8: D6        .byte $D6   ; 
-- D 1 - I - 0x002809 00:A7F9: 0D        .byte $0D   ; 
-- D 1 - I - 0x00280A 00:A7FA: E4        .byte $E4   ; 
-- D 1 - I - 0x00280B 00:A7FB: 71        .byte $71   ; 
-- D 1 - I - 0x00280C 00:A7FC: E3        .byte $E3   ; 
-- D 1 - I - 0x00280D 00:A7FD: 40        .byte $40   ; 
-- D 1 - I - 0x00280E 00:A7FE: 50        .byte $50   ; 
-- D 1 - I - 0x00280F 00:A7FF: 20        .byte $20   ; 
-- D 1 - I - 0x002810 00:A800: 90        .byte $90   ; 
-- D 1 - I - 0x002811 00:A801: 20        .byte $20   ; 
-- D 1 - I - 0x002812 00:A802: 80        .byte $80   ; 
-- D 1 - I - 0x002813 00:A803: 70        .byte $70   ; 
-- D 1 - I - 0x002814 00:A804: 50        .byte $50   ; 
-- D 1 - I - 0x002815 00:A805: 70        .byte $70   ; 
-- D 1 - I - 0x002816 00:A806: 90        .byte $90   ; 
-- D 1 - I - 0x002817 00:A807: 20        .byte $20   ; 
-- D 1 - I - 0x002818 00:A808: C3        .byte $C3   ; 
-- D 1 - I - 0x002819 00:A809: 20        .byte $20   ; 
-- D 1 - I - 0x00281A 00:A80A: 40        .byte $40   ; 
-- D 1 - I - 0x00281B 00:A80B: 50        .byte $50   ; 
-- D 1 - I - 0x00281C 00:A80C: 20        .byte $20   ; 
-- D 1 - I - 0x00281D 00:A80D: A0        .byte $A0   ; 
-- D 1 - I - 0x00281E 00:A80E: 20        .byte $20   ; 
-- D 1 - I - 0x00281F 00:A80F: 90        .byte $90   ; 
-- D 1 - I - 0x002820 00:A810: 70        .byte $70   ; 
-- D 1 - I - 0x002821 00:A811: 50        .byte $50   ; 
-- D 1 - I - 0x002822 00:A812: 70        .byte $70   ; 
-- D 1 - I - 0x002823 00:A813: 90        .byte $90   ; 
-- D 1 - I - 0x002824 00:A814: 31        .byte $31   ; 
-- D 1 - I - 0x002825 00:A815: C2        .byte $C2   ; 
-- D 1 - I - 0x002826 00:A816: 20        .byte $20   ; 
-- D 1 - I - 0x002827 00:A817: 40        .byte $40   ; 
-- D 1 - I - 0x002828 00:A818: 50        .byte $50   ; 
-- D 1 - I - 0x002829 00:A819: 20        .byte $20   ; 
-- D 1 - I - 0x00282A 00:A81A: 90        .byte $90   ; 
-- D 1 - I - 0x00282B 00:A81B: 20        .byte $20   ; 
-- D 1 - I - 0x00282C 00:A81C: 80        .byte $80   ; 
-- D 1 - I - 0x00282D 00:A81D: 70        .byte $70   ; 
-- D 1 - I - 0x00282E 00:A81E: 50        .byte $50   ; 
-- D 1 - I - 0x00282F 00:A81F: 70        .byte $70   ; 
-- D 1 - I - 0x002830 00:A820: 90        .byte $90   ; 
-- D 1 - I - 0x002831 00:A821: 20        .byte $20   ; 
-- D 1 - I - 0x002832 00:A822: C3        .byte $C3   ; 
-- D 1 - I - 0x002833 00:A823: 20        .byte $20   ; 
-- D 1 - I - 0x002834 00:A824: 40        .byte $40   ; 
-- D 1 - I - 0x002835 00:A825: 50        .byte $50   ; 
-- D 1 - I - 0x002836 00:A826: 20        .byte $20   ; 
-- D 1 - I - 0x002837 00:A827: A0        .byte $A0   ; 
-- D 1 - I - 0x002838 00:A828: 20        .byte $20   ; 
-- D 1 - I - 0x002839 00:A829: 90        .byte $90   ; 
-- D 1 - I - 0x00283A 00:A82A: 70        .byte $70   ; 
-- D 1 - I - 0x00283B 00:A82B: 50        .byte $50   ; 
-- D 1 - I - 0x00283C 00:A82C: 60        .byte $60   ; 
-- D 1 - I - 0x00283D 00:A82D: 90        .byte $90   ; 
-- D 1 - I - 0x00283E 00:A82E: 31        .byte $31   ; 
-- D 1 - I - 0x00283F 00:A82F: C2        .byte $C2   ; 
-- D 1 - I - 0x002840 00:A830: D1        .byte $D1   ; 
-- D 1 - I - 0x002841 00:A831: 02        .byte $02   ; 
-- D 1 - I - 0x002842 00:A832: E4        .byte $E4   ; 
-- D 1 - I - 0x002843 00:A833: 47        .byte $47   ; 
-- D 1 - I - 0x002844 00:A834: 57        .byte $57   ; 
-- D 1 - I - 0x002845 00:A835: 67        .byte $67   ; 
-- D 1 - I - 0x002846 00:A836: 77        .byte $77   ; 
-- D 1 - I - 0x002847 00:A837: 87        .byte $87   ; 
-- D 1 - I - 0x002848 00:A838: 97        .byte $97   ; 
-- D 1 - I - 0x002849 00:A839: A7        .byte $A7   ; 
-- D 1 - I - 0x00284A 00:A83A: B7        .byte $B7   ; 
-- D 1 - I - 0x00284B 00:A83B: E3        .byte $E3   ; 
-- D 1 - I - 0x00284C 00:A83C: 07        .byte $07   ; 
-- D 1 - I - 0x00284D 00:A83D: 17        .byte $17   ; 
-- D 1 - I - 0x00284E 00:A83E: 27        .byte $27   ; 
-- D 1 - I - 0x00284F 00:A83F: 37        .byte $37   ; 
-- D 1 - I - 0x002850 00:A840: FE        .byte $FE   ; 
-- D 1 - I - 0x002851 00:A841: FF        .byte $FF   ; 
-- D 1 - I - 0x002852 00:A842: CF A7     .word loc_FF_A7CF
-
-
-_off014_32_0x002854_03:
-- D 1 - I - 0x002854 00:A844: D1        .byte $D1   ; 
-- D 1 - I - 0x002855 00:A845: B0        .byte $B0   ; 
-- D 1 - I - 0x002856 00:A846: 24        .byte $24   ; 
-- D 1 - I - 0x002857 00:A847: B0        .byte $B0   ; 
-- D 1 - I - 0x002858 00:A848: 24        .byte $24   ; 
-- D 1 - I - 0x002859 00:A849: A0        .byte $A0   ; 
-- D 1 - I - 0x00285A 00:A84A: 2A        .byte $2A   ; 
-- D 1 - I - 0x00285B 00:A84B: A0        .byte $A0   ; 
-- D 1 - I - 0x00285C 00:A84C: 24        .byte $24   ; 
-- D 1 - I - 0x00285D 00:A84D: A0        .byte $A0   ; 
-- D 1 - I - 0x00285E 00:A84E: 24        .byte $24   ; 
-loc_FF_A84F:
-- D 1 - I - 0x00285F 00:A84F: D1        .byte $D1   ; 
-- D 1 - I - 0x002860 00:A850: FB        .byte $FB   ; 
-- D 1 - I - 0x002861 00:A851: B0        .byte $B0   ; 
-- D 1 - I - 0x002862 00:A852: 2A        .byte $2A   ; 
-- D 1 - I - 0x002863 00:A853: 25        .byte $25   ; 
-- D 1 - I - 0x002864 00:A854: 25        .byte $25   ; 
-- D 1 - I - 0x002865 00:A855: A0        .byte $A0   ; 
-- D 1 - I - 0x002866 00:A856: 2A        .byte $2A   ; 
-- D 1 - I - 0x002867 00:A857: 25        .byte $25   ; 
-- D 1 - I - 0x002868 00:A858: A0        .byte $A0   ; 
-- D 1 - I - 0x002869 00:A859: 24        .byte $24   ; 
-- D 1 - I - 0x00286A 00:A85A: B0        .byte $B0   ; 
-- D 1 - I - 0x00286B 00:A85B: 2A        .byte $2A   ; 
-- D 1 - I - 0x00286C 00:A85C: 25        .byte $25   ; 
-- D 1 - I - 0x00286D 00:A85D: 25        .byte $25   ; 
-- D 1 - I - 0x00286E 00:A85E: A0        .byte $A0   ; 
-- D 1 - I - 0x00286F 00:A85F: 2A        .byte $2A   ; 
-- D 1 - I - 0x002870 00:A860: 25        .byte $25   ; 
-- D 1 - I - 0x002871 00:A861: B0        .byte $B0   ; 
-- D 1 - I - 0x002872 00:A862: 24        .byte $24   ; 
-- D 1 - I - 0x002873 00:A863: FE        .byte $FE   ; 
-- D 1 - I - 0x002874 00:A864: 07        .byte $07   ; 
-- D 1 - I - 0x002875 00:A865: B0        .byte $B0   ; 
-- D 1 - I - 0x002876 00:A866: 2A        .byte $2A   ; 
-- D 1 - I - 0x002877 00:A867: 25        .byte $25   ; 
-- D 1 - I - 0x002878 00:A868: 25        .byte $25   ; 
-- D 1 - I - 0x002879 00:A869: A0        .byte $A0   ; 
-- D 1 - I - 0x00287A 00:A86A: 2A        .byte $2A   ; 
-- D 1 - I - 0x00287B 00:A86B: 25        .byte $25   ; 
-- D 1 - I - 0x00287C 00:A86C: A0        .byte $A0   ; 
-- D 1 - I - 0x00287D 00:A86D: 24        .byte $24   ; 
-- D 1 - I - 0x00287E 00:A86E: B0        .byte $B0   ; 
-- D 1 - I - 0x00287F 00:A86F: 24        .byte $24   ; 
-- D 1 - I - 0x002880 00:A870: 92        .byte $92   ; 
-- D 1 - I - 0x002881 00:A871: 92        .byte $92   ; 
-- D 1 - I - 0x002882 00:A872: 95        .byte $95   ; 
-- D 1 - I - 0x002883 00:A873: 95        .byte $95   ; 
-- D 1 - I - 0x002884 00:A874: 85        .byte $85   ; 
-- D 1 - I - 0x002885 00:A875: 85        .byte $85   ; 
-- D 1 - I - 0x002886 00:A876: 75        .byte $75   ; 
-- D 1 - I - 0x002887 00:A877: D6        .byte $D6   ; 
-- D 1 - I - 0x002888 00:A878: E3        .byte $E3   ; 
-- D 1 - I - 0x002889 00:A879: 21        .byte $21   ; 
-- D 1 - I - 0x00288A 00:A87A: 40        .byte $40   ; 
-- D 1 - I - 0x00288B 00:A87B: 50        .byte $50   ; 
-- D 1 - I - 0x00288C 00:A87C: 20        .byte $20   ; 
-- D 1 - I - 0x00288D 00:A87D: 90        .byte $90   ; 
-- D 1 - I - 0x00288E 00:A87E: C0        .byte $C0   ; 
-- D 1 - I - 0x00288F 00:A87F: 80        .byte $80   ; 
-- D 1 - I - 0x002890 00:A880: 70        .byte $70   ; 
-- D 1 - I - 0x002891 00:A881: 50        .byte $50   ; 
-- D 1 - I - 0x002892 00:A882: 70        .byte $70   ; 
-- D 1 - I - 0x002893 00:A883: 90        .byte $90   ; 
-- D 1 - I - 0x002894 00:A884: 20        .byte $20   ; 
-- D 1 - I - 0x002895 00:A885: D6        .byte $D6   ; 
-- D 1 - I - 0x002896 00:A886: C0        .byte $C0   ; 
-- D 1 - I - 0x002897 00:A887: B0        .byte $B0   ; 
-- D 1 - I - 0x002898 00:A888: A0        .byte $A0   ; 
-- D 1 - I - 0x002899 00:A889: 20        .byte $20   ; 
-- D 1 - I - 0x00289A 00:A88A: E3        .byte $E3   ; 
-- D 1 - I - 0x00289B 00:A88B: 20        .byte $20   ; 
-- D 1 - I - 0x00289C 00:A88C: 40        .byte $40   ; 
-- D 1 - I - 0x00289D 00:A88D: 50        .byte $50   ; 
-- D 1 - I - 0x00289E 00:A88E: 20        .byte $20   ; 
-- D 1 - I - 0x00289F 00:A88F: A0        .byte $A0   ; 
-- D 1 - I - 0x0028A0 00:A890: C0        .byte $C0   ; 
-- D 1 - I - 0x0028A1 00:A891: 90        .byte $90   ; 
-- D 1 - I - 0x0028A2 00:A892: 70        .byte $70   ; 
-- D 1 - I - 0x0028A3 00:A893: 50        .byte $50   ; 
-- D 1 - I - 0x0028A4 00:A894: 70        .byte $70   ; 
-- D 1 - I - 0x0028A5 00:A895: 90        .byte $90   ; 
-- D 1 - I - 0x0028A6 00:A896: 34        .byte $34   ; 
-- D 1 - I - 0x0028A7 00:A897: 20        .byte $20   ; 
-- D 1 - I - 0x0028A8 00:A898: 40        .byte $40   ; 
-- D 1 - I - 0x0028A9 00:A899: 50        .byte $50   ; 
-- D 1 - I - 0x0028AA 00:A89A: 20        .byte $20   ; 
-- D 1 - I - 0x0028AB 00:A89B: 90        .byte $90   ; 
-- D 1 - I - 0x0028AC 00:A89C: C0        .byte $C0   ; 
-- D 1 - I - 0x0028AD 00:A89D: 80        .byte $80   ; 
-- D 1 - I - 0x0028AE 00:A89E: 70        .byte $70   ; 
-- D 1 - I - 0x0028AF 00:A89F: 50        .byte $50   ; 
-- D 1 - I - 0x0028B0 00:A8A0: 70        .byte $70   ; 
-- D 1 - I - 0x0028B1 00:A8A1: 90        .byte $90   ; 
-- D 1 - I - 0x0028B2 00:A8A2: 20        .byte $20   ; 
-- D 1 - I - 0x0028B3 00:A8A3: D6        .byte $D6   ; 
-- D 1 - I - 0x0028B4 00:A8A4: 20        .byte $20   ; 
-- D 1 - I - 0x0028B5 00:A8A5: B0        .byte $B0   ; 
-- D 1 - I - 0x0028B6 00:A8A6: A0        .byte $A0   ; 
-- D 1 - I - 0x0028B7 00:A8A7: 20        .byte $20   ; 
-- D 1 - I - 0x0028B8 00:A8A8: E3        .byte $E3   ; 
-- D 1 - I - 0x0028B9 00:A8A9: 20        .byte $20   ; 
-- D 1 - I - 0x0028BA 00:A8AA: 40        .byte $40   ; 
-- D 1 - I - 0x0028BB 00:A8AB: 50        .byte $50   ; 
-- D 1 - I - 0x0028BC 00:A8AC: 20        .byte $20   ; 
-- D 1 - I - 0x0028BD 00:A8AD: A0        .byte $A0   ; 
-- D 1 - I - 0x0028BE 00:A8AE: C0        .byte $C0   ; 
-- D 1 - I - 0x0028BF 00:A8AF: 90        .byte $90   ; 
-- D 1 - I - 0x0028C0 00:A8B0: 70        .byte $70   ; 
-- D 1 - I - 0x0028C1 00:A8B1: 50        .byte $50   ; 
-- D 1 - I - 0x0028C2 00:A8B2: 60        .byte $60   ; 
-- D 1 - I - 0x0028C3 00:A8B3: 70        .byte $70   ; 
-- D 1 - I - 0x0028C4 00:A8B4: 30        .byte $30   ; 
-- D 1 - I - 0x0028C5 00:A8B5: D1        .byte $D1   ; 
-- D 1 - I - 0x0028C6 00:A8B6: 92        .byte $92   ; 
-- D 1 - I - 0x0028C7 00:A8B7: 92        .byte $92   ; 
-- D 1 - I - 0x0028C8 00:A8B8: D6        .byte $D6   ; 
-- D 1 - I - 0x0028C9 00:A8B9: 90        .byte $90   ; 
-- D 1 - I - 0x0028CA 00:A8BA: 90        .byte $90   ; 
-- D 1 - I - 0x0028CB 00:A8BB: 90        .byte $90   ; 
-- D 1 - I - 0x0028CC 00:A8BC: D1        .byte $D1   ; 
-- D 1 - I - 0x0028CD 00:A8BD: FB        .byte $FB   ; 
-- D 1 - I - 0x0028CE 00:A8BE: A0        .byte $A0   ; 
-- D 1 - I - 0x0028CF 00:A8BF: 26        .byte $26   ; 
-- D 1 - I - 0x0028D0 00:A8C0: FE        .byte $FE   ; 
-- D 1 - I - 0x0028D1 00:A8C1: 06        .byte $06   ; 
-- D 1 - I - 0x0028D2 00:A8C2: D1        .byte $D1   ; 
-- D 1 - I - 0x0028D3 00:A8C3: B7        .byte $B7   ; 
-- D 1 - I - 0x0028D4 00:A8C4: B7        .byte $B7   ; 
-- D 1 - I - 0x0028D5 00:A8C5: B7        .byte $B7   ; 
-- D 1 - I - 0x0028D6 00:A8C6: 93        .byte $93   ; 
-- D 1 - I - 0x0028D7 00:A8C7: 93        .byte $93   ; 
-- D 1 - I - 0x0028D8 00:A8C8: 87        .byte $87   ; 
-- D 1 - I - 0x0028D9 00:A8C9: 67        .byte $67   ; 
-- D 1 - I - 0x0028DA 00:A8CA: FE        .byte $FE   ; 
-- D 1 - I - 0x0028DB 00:A8CB: FF        .byte $FF   ; 
-- D 1 - I - 0x0028DC 00:A8CC: 4F A8     .word loc_FF_A84F
-
-
-_off014_36_0x0028DE_00:
-- D 1 - I - 0x0028DE 00:A8CE: E9        .byte $E9   ; 
-- D 1 - I - 0x0028DF 00:A8CF: 71        .byte $71   ; 
-- D 1 - I - 0x0028E0 00:A8D0: D4        .byte $D4   ; 
-- D 1 - I - 0x0028E1 00:A8D1: 37        .byte $37   ; 
-- D 1 - I - 0x0028E2 00:A8D2: 84        .byte $84   ; 
-- D 1 - I - 0x0028E3 00:A8D3: 14        .byte $14   ; 
-- D 1 - I - 0x0028E4 00:A8D4: E3        .byte $E3   ; 
-- D 1 - I - 0x0028E5 00:A8D5: 73        .byte $73   ; 
-- D 1 - I - 0x0028E6 00:A8D6: 71        .byte $71   ; 
-- D 1 - I - 0x0028E7 00:A8D7: C0        .byte $C0   ; 
-- D 1 - I - 0x0028E8 00:A8D8: F4        .byte $F4   ; 
-- D 1 - I - 0x0028E9 00:A8D9: 70        .byte $70   ; 
-- D 1 - I - 0x0028EA 00:A8DA: F0        .byte $F0   ; 
-- D 1 - I - 0x0028EB 00:A8DB: 71        .byte $71   ; 
-- D 1 - I - 0x0028EC 00:A8DC: 71        .byte $71   ; 
-- D 1 - I - 0x0028ED 00:A8DD: 53        .byte $53   ; 
-- D 1 - I - 0x0028EE 00:A8DE: 51        .byte $51   ; 
-- D 1 - I - 0x0028EF 00:A8DF: C0        .byte $C0   ; 
-- D 1 - I - 0x0028F0 00:A8E0: F4        .byte $F4   ; 
-- D 1 - I - 0x0028F1 00:A8E1: 50        .byte $50   ; 
-- D 1 - I - 0x0028F2 00:A8E2: F0        .byte $F0   ; 
-- D 1 - I - 0x0028F3 00:A8E3: 51        .byte $51   ; 
-- D 1 - I - 0x0028F4 00:A8E4: 51        .byte $51   ; 
-- D 1 - I - 0x0028F5 00:A8E5: 43        .byte $43   ; 
-- D 1 - I - 0x0028F6 00:A8E6: 41        .byte $41   ; 
-- D 1 - I - 0x0028F7 00:A8E7: C0        .byte $C0   ; 
-- D 1 - I - 0x0028F8 00:A8E8: F4        .byte $F4   ; 
-- D 1 - I - 0x0028F9 00:A8E9: 40        .byte $40   ; 
-- D 1 - I - 0x0028FA 00:A8EA: F0        .byte $F0   ; 
-- D 1 - I - 0x0028FB 00:A8EB: 41        .byte $41   ; 
-- D 1 - I - 0x0028FC 00:A8EC: 41        .byte $41   ; 
-- D 1 - I - 0x0028FD 00:A8ED: 23        .byte $23   ; 
-- D 1 - I - 0x0028FE 00:A8EE: 21        .byte $21   ; 
-- D 1 - I - 0x0028FF 00:A8EF: C0        .byte $C0   ; 
-- D 1 - I - 0x002900 00:A8F0: F4        .byte $F4   ; 
-- D 1 - I - 0x002901 00:A8F1: 20        .byte $20   ; 
-- D 1 - I - 0x002902 00:A8F2: F0        .byte $F0   ; 
-- D 1 - I - 0x002903 00:A8F3: 21        .byte $21   ; 
-- D 1 - I - 0x002904 00:A8F4: 21        .byte $21   ; 
-- D 1 - I - 0x002905 00:A8F5: E9        .byte $E9   ; 
-- D 1 - I - 0x002906 00:A8F6: 31        .byte $31   ; 
-- D 1 - I - 0x002907 00:A8F7: D8        .byte $D8   ; 
-- D 1 - I - 0x002908 00:A8F8: 74        .byte $74   ; 
-- D 1 - I - 0x002909 00:A8F9: 82        .byte $82   ; 
-- D 1 - I - 0x00290A 00:A8FA: 11        .byte $11   ; 
-- D 1 - I - 0x00290B 00:A8FB: FB        .byte $FB   ; 
-- D 1 - I - 0x00290C 00:A8FC: E2        .byte $E2   ; 
-- D 1 - I - 0x00290D 00:A8FD: 70        .byte $70   ; 
-- D 1 - I - 0x00290E 00:A8FE: 50        .byte $50   ; 
-- D 1 - I - 0x00290F 00:A8FF: E2        .byte $E2   ; 
-- D 1 - I - 0x002910 00:A900: A0        .byte $A0   ; 
-- D 1 - I - 0x002911 00:A901: 90        .byte $90   ; 
-- D 1 - I - 0x002912 00:A902: 70        .byte $70   ; 
-- D 1 - I - 0x002913 00:A903: 90        .byte $90   ; 
-- D 1 - I - 0x002914 00:A904: 50        .byte $50   ; 
-- D 1 - I - 0x002915 00:A905: 03        .byte $03   ; 
-- D 1 - I - 0x002916 00:A906: 00        .byte $00   ; 
-- D 1 - I - 0x002917 00:A907: 50        .byte $50   ; 
-- D 1 - I - 0x002918 00:A908: 90        .byte $90   ; 
-- D 1 - I - 0x002919 00:A909: E1        .byte $E1   ; 
-- D 1 - I - 0x00291A 00:A90A: 05        .byte $05   ; 
-- D 1 - I - 0x00291B 00:A90B: E2        .byte $E2   ; 
-- D 1 - I - 0x00291C 00:A90C: 75        .byte $75   ; 
-- D 1 - I - 0x00291D 00:A90D: A0        .byte $A0   ; 
-- D 1 - I - 0x00291E 00:A90E: 90        .byte $90   ; 
-- D 1 - I - 0x00291F 00:A90F: 70        .byte $70   ; 
-- D 1 - I - 0x002920 00:A910: A5        .byte $A5   ; 
-- D 1 - I - 0x002921 00:A911: 70        .byte $70   ; 
-- D 1 - I - 0x002922 00:A912: 90        .byte $90   ; 
-- D 1 - I - 0x002923 00:A913: A0        .byte $A0   ; 
-- D 1 - I - 0x002924 00:A914: 93        .byte $93   ; 
-- D 1 - I - 0x002925 00:A915: 50        .byte $50   ; 
-- D 1 - I - 0x002926 00:A916: 90        .byte $90   ; 
-- D 1 - I - 0x002927 00:A917: E1        .byte $E1   ; 
-- D 1 - I - 0x002928 00:A918: 22        .byte $22   ; 
-- D 1 - I - 0x002929 00:A919: 52        .byte $52   ; 
-- D 1 - I - 0x00292A 00:A91A: E1        .byte $E1   ; 
-- D 1 - I - 0x00292B 00:A91B: 70        .byte $70   ; 
-- D 1 - I - 0x00292C 00:A91C: 50        .byte $50   ; 
-- D 1 - I - 0x00292D 00:A91D: 40        .byte $40   ; 
-- D 1 - I - 0x00292E 00:A91E: 25        .byte $25   ; 
-- D 1 - I - 0x00292F 00:A91F: 20        .byte $20   ; 
-- D 1 - I - 0x002930 00:A920: 40        .byte $40   ; 
-- D 1 - I - 0x002931 00:A921: 50        .byte $50   ; 
-- D 1 - I - 0x002932 00:A922: 43        .byte $43   ; 
-- D 1 - I - 0x002933 00:A923: 20        .byte $20   ; 
-- D 1 - I - 0x002934 00:A924: 00        .byte $00   ; 
-- D 1 - I - 0x002935 00:A925: 42        .byte $42   ; 
-- D 1 - I - 0x002936 00:A926: 00        .byte $00   ; 
-- D 1 - I - 0x002937 00:A927: 20        .byte $20   ; 
-- D 1 - I - 0x002938 00:A928: 40        .byte $40   ; 
-- D 1 - I - 0x002939 00:A929: 52        .byte $52   ; 
-- D 1 - I - 0x00293A 00:A92A: 50        .byte $50   ; 
-- D 1 - I - 0x00293B 00:A92B: 40        .byte $40   ; 
-- D 1 - I - 0x00293C 00:A92C: 20        .byte $20   ; 
-- D 1 - I - 0x00293D 00:A92D: 52        .byte $52   ; 
-- D 1 - I - 0x00293E 00:A92E: 50        .byte $50   ; 
-- D 1 - I - 0x00293F 00:A92F: 70        .byte $70   ; 
-- D 1 - I - 0x002940 00:A930: 90        .byte $90   ; 
-- D 1 - I - 0x002941 00:A931: 93        .byte $93   ; 
-- D 1 - I - 0x002942 00:A932: 70        .byte $70   ; 
-- D 1 - I - 0x002943 00:A933: 50        .byte $50   ; 
-- D 1 - I - 0x002944 00:A934: 72        .byte $72   ; 
-- D 1 - I - 0x002945 00:A935: 90        .byte $90   ; 
-- D 1 - I - 0x002946 00:A936: FE        .byte $FE   ; 
-- D 1 - I - 0x002947 00:A937: 03        .byte $03   ; 
-- D 1 - I - 0x002948 00:A938: EA        .byte $EA   ; 
-- D 1 - I - 0x002949 00:A939: 00        .byte $00   ; 
-- D 1 - I - 0x00294A 00:A93A: E9        .byte $E9   ; 
-- D 1 - I - 0x00294B 00:A93B: 31        .byte $31   ; 
-- D 1 - I - 0x00294C 00:A93C: D8        .byte $D8   ; 
-- D 1 - I - 0x00294D 00:A93D: 70        .byte $70   ; 
-- D 1 - I - 0x00294E 00:A93E: 28        .byte $28   ; 
-- D 1 - I - 0x00294F 00:A93F: 11        .byte $11   ; 
-- D 1 - I - 0x002950 00:A940: EB        .byte $EB   ; 
-- D 1 - I - 0x002951 00:A941: 50        .byte $50   ; 
-- D 1 - I - 0x002952 00:A942: 21        .byte $21   ; 
-- D 1 - I - 0x002953 00:A943: E1        .byte $E1   ; 
-- D 1 - I - 0x002954 00:A944: 08        .byte $08   ; 
-- D 1 - I - 0x002955 00:A945: 02        .byte $02   ; 
-- D 1 - I - 0x002956 00:A946: 05        .byte $05   ; 
-- D 1 - I - 0x002957 00:A947: 12        .byte $12   ; 
-- D 1 - I - 0x002958 00:A948: E2        .byte $E2   ; 
-- D 1 - I - 0x002959 00:A949: A2        .byte $A2   ; 
-- D 1 - I - 0x00295A 00:A94A: A8        .byte $A8   ; 
-- D 1 - I - 0x00295B 00:A94B: A0        .byte $A0   ; 
-- D 1 - I - 0x00295C 00:A94C: E1        .byte $E1   ; 
-- D 1 - I - 0x00295D 00:A94D: 00        .byte $00   ; 
-- D 1 - I - 0x00295E 00:A94E: E2        .byte $E2   ; 
-- D 1 - I - 0x00295F 00:A94F: A0        .byte $A0   ; 
-- D 1 - I - 0x002960 00:A950: 9B        .byte $9B   ; 
-- D 1 - I - 0x002961 00:A951: FF        .byte $FF   ; 
-
-
-_off014_36_0x002962_01:
-- D 1 - I - 0x002962 00:A952: E9        .byte $E9   ; 
-- D 1 - I - 0x002963 00:A953: 71        .byte $71   ; 
-- D 1 - I - 0x002964 00:A954: D4        .byte $D4   ; 
-- D 1 - I - 0x002965 00:A955: 37        .byte $37   ; 
-- D 1 - I - 0x002966 00:A956: 84        .byte $84   ; 
-- D 1 - I - 0x002967 00:A957: 14        .byte $14   ; 
-- D 1 - I - 0x002968 00:A958: E2        .byte $E2   ; 
-- D 1 - I - 0x002969 00:A959: 03        .byte $03   ; 
-- D 1 - I - 0x00296A 00:A95A: 01        .byte $01   ; 
-- D 1 - I - 0x00296B 00:A95B: C0        .byte $C0   ; 
-- D 1 - I - 0x00296C 00:A95C: F4        .byte $F4   ; 
-- D 1 - I - 0x00296D 00:A95D: 00        .byte $00   ; 
-- D 1 - I - 0x00296E 00:A95E: F0        .byte $F0   ; 
-- D 1 - I - 0x00296F 00:A95F: 01        .byte $01   ; 
-- D 1 - I - 0x002970 00:A960: 01        .byte $01   ; 
-- D 1 - I - 0x002971 00:A961: E3        .byte $E3   ; 
-- D 1 - I - 0x002972 00:A962: A3        .byte $A3   ; 
-- D 1 - I - 0x002973 00:A963: A1        .byte $A1   ; 
-- D 1 - I - 0x002974 00:A964: C0        .byte $C0   ; 
-- D 1 - I - 0x002975 00:A965: F4        .byte $F4   ; 
-- D 1 - I - 0x002976 00:A966: A0        .byte $A0   ; 
-- D 1 - I - 0x002977 00:A967: F0        .byte $F0   ; 
-- D 1 - I - 0x002978 00:A968: A1        .byte $A1   ; 
-- D 1 - I - 0x002979 00:A969: A1        .byte $A1   ; 
-- D 1 - I - 0x00297A 00:A96A: 93        .byte $93   ; 
-- D 1 - I - 0x00297B 00:A96B: 91        .byte $91   ; 
-- D 1 - I - 0x00297C 00:A96C: C0        .byte $C0   ; 
-- D 1 - I - 0x00297D 00:A96D: F4        .byte $F4   ; 
-- D 1 - I - 0x00297E 00:A96E: 90        .byte $90   ; 
-- D 1 - I - 0x00297F 00:A96F: F0        .byte $F0   ; 
-- D 1 - I - 0x002980 00:A970: 91        .byte $91   ; 
-- D 1 - I - 0x002981 00:A971: 91        .byte $91   ; 
-- D 1 - I - 0x002982 00:A972: 73        .byte $73   ; 
-- D 1 - I - 0x002983 00:A973: 71        .byte $71   ; 
-- D 1 - I - 0x002984 00:A974: C0        .byte $C0   ; 
-- D 1 - I - 0x002985 00:A975: F4        .byte $F4   ; 
-- D 1 - I - 0x002986 00:A976: 70        .byte $70   ; 
-- D 1 - I - 0x002987 00:A977: F0        .byte $F0   ; 
-- D 1 - I - 0x002988 00:A978: 71        .byte $71   ; 
-- D 1 - I - 0x002989 00:A979: 71        .byte $71   ; 
-- D 1 - I - 0x00298A 00:A97A: E9        .byte $E9   ; 
-- D 1 - I - 0x00298B 00:A97B: 31        .byte $31   ; 
-- D 1 - I - 0x00298C 00:A97C: D8        .byte $D8   ; 
-- D 1 - I - 0x00298D 00:A97D: 70        .byte $70   ; 
-- D 1 - I - 0x00298E 00:A97E: 28        .byte $28   ; 
-- D 1 - I - 0x00298F 00:A97F: 11        .byte $11   ; 
-- D 1 - I - 0x002990 00:A980: EB        .byte $EB   ; 
-- D 1 - I - 0x002991 00:A981: 50        .byte $50   ; 
-- D 1 - I - 0x002992 00:A982: 21        .byte $21   ; 
-- D 1 - I - 0x002993 00:A983: FB        .byte $FB   ; 
-- D 1 - I - 0x002994 00:A984: E2        .byte $E2   ; 
-- D 1 - I - 0x002995 00:A985: A0        .byte $A0   ; 
-- D 1 - I - 0x002996 00:A986: 90        .byte $90   ; 
-- D 1 - I - 0x002997 00:A987: 70        .byte $70   ; 
-- D 1 - I - 0x002998 00:A988: 90        .byte $90   ; 
-- D 1 - I - 0x002999 00:A989: 50        .byte $50   ; 
-- D 1 - I - 0x00299A 00:A98A: 03        .byte $03   ; 
-- D 1 - I - 0x00299B 00:A98B: 00        .byte $00   ; 
-- D 1 - I - 0x00299C 00:A98C: 50        .byte $50   ; 
-- D 1 - I - 0x00299D 00:A98D: 90        .byte $90   ; 
-- D 1 - I - 0x00299E 00:A98E: E1        .byte $E1   ; 
-- D 1 - I - 0x00299F 00:A98F: 05        .byte $05   ; 
-- D 1 - I - 0x0029A0 00:A990: E2        .byte $E2   ; 
-- D 1 - I - 0x0029A1 00:A991: 75        .byte $75   ; 
-- D 1 - I - 0x0029A2 00:A992: A0        .byte $A0   ; 
-- D 1 - I - 0x0029A3 00:A993: 90        .byte $90   ; 
-- D 1 - I - 0x0029A4 00:A994: 70        .byte $70   ; 
-- D 1 - I - 0x0029A5 00:A995: A5        .byte $A5   ; 
-- D 1 - I - 0x0029A6 00:A996: 70        .byte $70   ; 
-- D 1 - I - 0x0029A7 00:A997: 90        .byte $90   ; 
-- D 1 - I - 0x0029A8 00:A998: A0        .byte $A0   ; 
-- D 1 - I - 0x0029A9 00:A999: 93        .byte $93   ; 
-- D 1 - I - 0x0029AA 00:A99A: 50        .byte $50   ; 
-- D 1 - I - 0x0029AB 00:A99B: 90        .byte $90   ; 
-- D 1 - I - 0x0029AC 00:A99C: E1        .byte $E1   ; 
-- D 1 - I - 0x0029AD 00:A99D: 22        .byte $22   ; 
-- D 1 - I - 0x0029AE 00:A99E: 52        .byte $52   ; 
-- D 1 - I - 0x0029AF 00:A99F: E1        .byte $E1   ; 
-- D 1 - I - 0x0029B0 00:A9A0: 70        .byte $70   ; 
-- D 1 - I - 0x0029B1 00:A9A1: 50        .byte $50   ; 
-- D 1 - I - 0x0029B2 00:A9A2: 40        .byte $40   ; 
-- D 1 - I - 0x0029B3 00:A9A3: 25        .byte $25   ; 
-- D 1 - I - 0x0029B4 00:A9A4: 20        .byte $20   ; 
-- D 1 - I - 0x0029B5 00:A9A5: 40        .byte $40   ; 
-- D 1 - I - 0x0029B6 00:A9A6: 50        .byte $50   ; 
-- D 1 - I - 0x0029B7 00:A9A7: 43        .byte $43   ; 
-- D 1 - I - 0x0029B8 00:A9A8: 20        .byte $20   ; 
-- D 1 - I - 0x0029B9 00:A9A9: 00        .byte $00   ; 
-- D 1 - I - 0x0029BA 00:A9AA: 42        .byte $42   ; 
-- D 1 - I - 0x0029BB 00:A9AB: 00        .byte $00   ; 
-- D 1 - I - 0x0029BC 00:A9AC: 20        .byte $20   ; 
-- D 1 - I - 0x0029BD 00:A9AD: 40        .byte $40   ; 
-- D 1 - I - 0x0029BE 00:A9AE: 52        .byte $52   ; 
-- D 1 - I - 0x0029BF 00:A9AF: 50        .byte $50   ; 
-- D 1 - I - 0x0029C0 00:A9B0: 40        .byte $40   ; 
-- D 1 - I - 0x0029C1 00:A9B1: 20        .byte $20   ; 
-- D 1 - I - 0x0029C2 00:A9B2: 52        .byte $52   ; 
-- D 1 - I - 0x0029C3 00:A9B3: 50        .byte $50   ; 
-- D 1 - I - 0x0029C4 00:A9B4: 70        .byte $70   ; 
-- D 1 - I - 0x0029C5 00:A9B5: 90        .byte $90   ; 
-- D 1 - I - 0x0029C6 00:A9B6: 93        .byte $93   ; 
-- D 1 - I - 0x0029C7 00:A9B7: 70        .byte $70   ; 
-- D 1 - I - 0x0029C8 00:A9B8: 50        .byte $50   ; 
-- D 1 - I - 0x0029C9 00:A9B9: 72        .byte $72   ; 
-- D 1 - I - 0x0029CA 00:A9BA: 90        .byte $90   ; 
-- D 1 - I - 0x0029CB 00:A9BB: 70        .byte $70   ; 
-- D 1 - I - 0x0029CC 00:A9BC: 50        .byte $50   ; 
-- D 1 - I - 0x0029CD 00:A9BD: FE        .byte $FE   ; 
-- D 1 - I - 0x0029CE 00:A9BE: 03        .byte $03   ; 
-- D 1 - I - 0x0029CF 00:A9BF: E9        .byte $E9   ; 
-- D 1 - I - 0x0029D0 00:A9C0: 31        .byte $31   ; 
-- D 1 - I - 0x0029D1 00:A9C1: D8        .byte $D8   ; 
-- D 1 - I - 0x0029D2 00:A9C2: 70        .byte $70   ; 
-- D 1 - I - 0x0029D3 00:A9C3: 28        .byte $28   ; 
-- D 1 - I - 0x0029D4 00:A9C4: 11        .byte $11   ; 
-- D 1 - I - 0x0029D5 00:A9C5: EB        .byte $EB   ; 
-- D 1 - I - 0x0029D6 00:A9C6: 50        .byte $50   ; 
-- D 1 - I - 0x0029D7 00:A9C7: 21        .byte $21   ; 
-- D 1 - I - 0x0029D8 00:A9C8: E2        .byte $E2   ; 
-- D 1 - I - 0x0029D9 00:A9C9: 58        .byte $58   ; 
-- D 1 - I - 0x0029DA 00:A9CA: 52        .byte $52   ; 
-- D 1 - I - 0x0029DB 00:A9CB: 55        .byte $55   ; 
-- D 1 - I - 0x0029DC 00:A9CC: 52        .byte $52   ; 
-- D 1 - I - 0x0029DD 00:A9CD: 52        .byte $52   ; 
-- D 1 - I - 0x0029DE 00:A9CE: 58        .byte $58   ; 
-- D 1 - I - 0x0029DF 00:A9CF: 50        .byte $50   ; 
-- D 1 - I - 0x0029E0 00:A9D0: 50        .byte $50   ; 
-- D 1 - I - 0x0029E1 00:A9D1: 50        .byte $50   ; 
-- D 1 - I - 0x0029E2 00:A9D2: 5B        .byte $5B   ; 
-- D 1 - I - 0x0029E3 00:A9D3: FF        .byte $FF   ; 
-
-
-_off014_36_0x0029E4_02:
-- D 1 - I - 0x0029E4 00:A9D4: D8        .byte $D8   ; 
-- D 1 - I - 0x0029E5 00:A9D5: 18        .byte $18   ; 
-- D 1 - I - 0x0029E6 00:A9D6: E2        .byte $E2   ; 
-- D 1 - I - 0x0029E7 00:A9D7: 01        .byte $01   ; 
-- D 1 - I - 0x0029E8 00:A9D8: 00        .byte $00   ; 
-- D 1 - I - 0x0029E9 00:A9D9: C0        .byte $C0   ; 
-- D 1 - I - 0x0029EA 00:A9DA: 00        .byte $00   ; 
-- D 1 - I - 0x0029EB 00:A9DB: 00        .byte $00   ; 
-- D 1 - I - 0x0029EC 00:A9DC: E3        .byte $E3   ; 
-- D 1 - I - 0x0029ED 00:A9DD: A1        .byte $A1   ; 
-- D 1 - I - 0x0029EE 00:A9DE: A0        .byte $A0   ; 
-- D 1 - I - 0x0029EF 00:A9DF: C0        .byte $C0   ; 
-- D 1 - I - 0x0029F0 00:A9E0: A0        .byte $A0   ; 
-- D 1 - I - 0x0029F1 00:A9E1: A0        .byte $A0   ; 
-- D 1 - I - 0x0029F2 00:A9E2: 91        .byte $91   ; 
-- D 1 - I - 0x0029F3 00:A9E3: 90        .byte $90   ; 
-- D 1 - I - 0x0029F4 00:A9E4: C0        .byte $C0   ; 
-- D 1 - I - 0x0029F5 00:A9E5: 90        .byte $90   ; 
-- D 1 - I - 0x0029F6 00:A9E6: 90        .byte $90   ; 
-- D 1 - I - 0x0029F7 00:A9E7: 71        .byte $71   ; 
-- D 1 - I - 0x0029F8 00:A9E8: 70        .byte $70   ; 
-- D 1 - I - 0x0029F9 00:A9E9: C0        .byte $C0   ; 
-- D 1 - I - 0x0029FA 00:A9EA: 70        .byte $70   ; 
-- D 1 - I - 0x0029FB 00:A9EB: 70        .byte $70   ; 
-- D 1 - I - 0x0029FC 00:A9EC: D8        .byte $D8   ; 
-- D 1 - I - 0x0029FD 00:A9ED: 0F        .byte $0F   ; 
-- D 1 - I - 0x0029FE 00:A9EE: FB        .byte $FB   ; 
-- D 1 - I - 0x0029FF 00:A9EF: E3        .byte $E3   ; 
-- D 1 - I - 0x002A00 00:A9F0: 51        .byte $51   ; 
-- D 1 - I - 0x002A01 00:A9F1: 50        .byte $50   ; 
-- D 1 - I - 0x002A02 00:A9F2: 50        .byte $50   ; 
-- D 1 - I - 0x002A03 00:A9F3: 50        .byte $50   ; 
-- D 1 - I - 0x002A04 00:A9F4: 50        .byte $50   ; 
-- D 1 - I - 0x002A05 00:A9F5: 51        .byte $51   ; 
-- D 1 - I - 0x002A06 00:A9F6: 50        .byte $50   ; 
-- D 1 - I - 0x002A07 00:A9F7: 50        .byte $50   ; 
-- D 1 - I - 0x002A08 00:A9F8: 50        .byte $50   ; 
-- D 1 - I - 0x002A09 00:A9F9: 50        .byte $50   ; 
-- D 1 - I - 0x002A0A 00:A9FA: 41        .byte $41   ; 
-- D 1 - I - 0x002A0B 00:A9FB: 40        .byte $40   ; 
-- D 1 - I - 0x002A0C 00:A9FC: 40        .byte $40   ; 
-- D 1 - I - 0x002A0D 00:A9FD: 40        .byte $40   ; 
-- D 1 - I - 0x002A0E 00:A9FE: 40        .byte $40   ; 
-- D 1 - I - 0x002A0F 00:A9FF: 41        .byte $41   ; 
-- D 1 - I - 0x002A10 00:AA00: 40        .byte $40   ; 
-- D 1 - I - 0x002A11 00:AA01: 40        .byte $40   ; 
-- D 1 - I - 0x002A12 00:AA02: 40        .byte $40   ; 
-- D 1 - I - 0x002A13 00:AA03: 40        .byte $40   ; 
-- D 1 - I - 0x002A14 00:AA04: 31        .byte $31   ; 
-- D 1 - I - 0x002A15 00:AA05: 30        .byte $30   ; 
-- D 1 - I - 0x002A16 00:AA06: 30        .byte $30   ; 
-- D 1 - I - 0x002A17 00:AA07: 30        .byte $30   ; 
-- D 1 - I - 0x002A18 00:AA08: 30        .byte $30   ; 
-- D 1 - I - 0x002A19 00:AA09: 31        .byte $31   ; 
-- D 1 - I - 0x002A1A 00:AA0A: 30        .byte $30   ; 
-- D 1 - I - 0x002A1B 00:AA0B: 30        .byte $30   ; 
-- D 1 - I - 0x002A1C 00:AA0C: 30        .byte $30   ; 
-- D 1 - I - 0x002A1D 00:AA0D: 30        .byte $30   ; 
-- D 1 - I - 0x002A1E 00:AA0E: 21        .byte $21   ; 
-- D 1 - I - 0x002A1F 00:AA0F: 20        .byte $20   ; 
-- D 1 - I - 0x002A20 00:AA10: 20        .byte $20   ; 
-- D 1 - I - 0x002A21 00:AA11: 20        .byte $20   ; 
-- D 1 - I - 0x002A22 00:AA12: 20        .byte $20   ; 
-- D 1 - I - 0x002A23 00:AA13: 21        .byte $21   ; 
-- D 1 - I - 0x002A24 00:AA14: 20        .byte $20   ; 
-- D 1 - I - 0x002A25 00:AA15: 20        .byte $20   ; 
-- D 1 - I - 0x002A26 00:AA16: 20        .byte $20   ; 
-- D 1 - I - 0x002A27 00:AA17: 20        .byte $20   ; 
-- D 1 - I - 0x002A28 00:AA18: E3        .byte $E3   ; 
-- D 1 - I - 0x002A29 00:AA19: A1        .byte $A1   ; 
-- D 1 - I - 0x002A2A 00:AA1A: A0        .byte $A0   ; 
-- D 1 - I - 0x002A2B 00:AA1B: A0        .byte $A0   ; 
-- D 1 - I - 0x002A2C 00:AA1C: A0        .byte $A0   ; 
-- D 1 - I - 0x002A2D 00:AA1D: A0        .byte $A0   ; 
-- D 1 - I - 0x002A2E 00:AA1E: A1        .byte $A1   ; 
-- D 1 - I - 0x002A2F 00:AA1F: A0        .byte $A0   ; 
-- D 1 - I - 0x002A30 00:AA20: A0        .byte $A0   ; 
-- D 1 - I - 0x002A31 00:AA21: A0        .byte $A0   ; 
-- D 1 - I - 0x002A32 00:AA22: A0        .byte $A0   ; 
-- D 1 - I - 0x002A33 00:AA23: 91        .byte $91   ; 
-- D 1 - I - 0x002A34 00:AA24: 90        .byte $90   ; 
-- D 1 - I - 0x002A35 00:AA25: 90        .byte $90   ; 
-- D 1 - I - 0x002A36 00:AA26: 90        .byte $90   ; 
-- D 1 - I - 0x002A37 00:AA27: 90        .byte $90   ; 
-- D 1 - I - 0x002A38 00:AA28: 91        .byte $91   ; 
-- D 1 - I - 0x002A39 00:AA29: 90        .byte $90   ; 
-- D 1 - I - 0x002A3A 00:AA2A: 90        .byte $90   ; 
-- D 1 - I - 0x002A3B 00:AA2B: 90        .byte $90   ; 
-- D 1 - I - 0x002A3C 00:AA2C: 90        .byte $90   ; 
-- D 1 - I - 0x002A3D 00:AA2D: A1        .byte $A1   ; 
-- D 1 - I - 0x002A3E 00:AA2E: A0        .byte $A0   ; 
-- D 1 - I - 0x002A3F 00:AA2F: A0        .byte $A0   ; 
-- D 1 - I - 0x002A40 00:AA30: A0        .byte $A0   ; 
-- D 1 - I - 0x002A41 00:AA31: A0        .byte $A0   ; 
-- D 1 - I - 0x002A42 00:AA32: B1        .byte $B1   ; 
-- D 1 - I - 0x002A43 00:AA33: B0        .byte $B0   ; 
-- D 1 - I - 0x002A44 00:AA34: B0        .byte $B0   ; 
-- D 1 - I - 0x002A45 00:AA35: B0        .byte $B0   ; 
-- D 1 - I - 0x002A46 00:AA36: B0        .byte $B0   ; 
-- D 1 - I - 0x002A47 00:AA37: E2        .byte $E2   ; 
-- D 1 - I - 0x002A48 00:AA38: 01        .byte $01   ; 
-- D 1 - I - 0x002A49 00:AA39: 00        .byte $00   ; 
-- D 1 - I - 0x002A4A 00:AA3A: 00        .byte $00   ; 
-- D 1 - I - 0x002A4B 00:AA3B: 00        .byte $00   ; 
-- D 1 - I - 0x002A4C 00:AA3C: 00        .byte $00   ; 
-- D 1 - I - 0x002A4D 00:AA3D: 01        .byte $01   ; 
-- D 1 - I - 0x002A4E 00:AA3E: 00        .byte $00   ; 
-- D 1 - I - 0x002A4F 00:AA3F: 00        .byte $00   ; 
-- D 1 - I - 0x002A50 00:AA40: 00        .byte $00   ; 
-- D 1 - I - 0x002A51 00:AA41: 00        .byte $00   ; 
-- D 1 - I - 0x002A52 00:AA42: FE        .byte $FE   ; 
-- D 1 - I - 0x002A53 00:AA43: 03        .byte $03   ; 
-- D 1 - I - 0x002A54 00:AA44: EA        .byte $EA   ; 
-- D 1 - I - 0x002A55 00:AA45: 00        .byte $00   ; 
-- D 1 - I - 0x002A56 00:AA46: D4        .byte $D4   ; 
-- D 1 - I - 0x002A57 00:AA47: 00        .byte $00   ; 
-- D 1 - I - 0x002A58 00:AA48: E2        .byte $E2   ; 
-- D 1 - I - 0x002A59 00:AA49: 00        .byte $00   ; 
-- D 1 - I - 0x002A5A 00:AA4A: 10        .byte $10   ; 
-- D 1 - I - 0x002A5B 00:AA4B: D8        .byte $D8   ; 
-- D 1 - I - 0x002A5C 00:AA4C: 00        .byte $00   ; 
-- D 1 - I - 0x002A5D 00:AA4D: 17        .byte $17   ; 
-- D 1 - I - 0x002A5E 00:AA4E: D8        .byte $D8   ; 
-- D 1 - I - 0x002A5F 00:AA4F: 10        .byte $10   ; 
-- D 1 - I - 0x002A60 00:AA50: 10        .byte $10   ; 
-- D 1 - I - 0x002A61 00:AA51: 10        .byte $10   ; 
-- D 1 - I - 0x002A62 00:AA52: 10        .byte $10   ; 
-- D 1 - I - 0x002A63 00:AA53: D8        .byte $D8   ; 
-- D 1 - I - 0x002A64 00:AA54: 40        .byte $40   ; 
-- D 1 - I - 0x002A65 00:AA55: 35        .byte $35   ; 
-- D 1 - I - 0x002A66 00:AA56: D2        .byte $D2   ; 
-- D 1 - I - 0x002A67 00:AA57: 20        .byte $20   ; 
-- D 1 - I - 0x002A68 00:AA58: 20        .byte $20   ; 
-- D 1 - I - 0x002A69 00:AA59: 3A        .byte $3A   ; 
-- D 1 - I - 0x002A6A 00:AA5A: 21        .byte $21   ; 
-- D 1 - I - 0x002A6B 00:AA5B: 39        .byte $39   ; 
-- D 1 - I - 0x002A6C 00:AA5C: D8        .byte $D8   ; 
-- D 1 - I - 0x002A6D 00:AA5D: 00        .byte $00   ; 
-- D 1 - I - 0x002A6E 00:AA5E: 55        .byte $55   ; 
-- D 1 - I - 0x002A6F 00:AA5F: D8        .byte $D8   ; 
-- D 1 - I - 0x002A70 00:AA60: 40        .byte $40   ; 
-- D 1 - I - 0x002A71 00:AA61: 52        .byte $52   ; 
-- D 1 - I - 0x002A72 00:AA62: D8        .byte $D8   ; 
-- D 1 - I - 0x002A73 00:AA63: 10        .byte $10   ; 
-- D 1 - I - 0x002A74 00:AA64: E2        .byte $E2   ; 
-- D 1 - I - 0x002A75 00:AA65: 50        .byte $50   ; 
-- D 1 - I - 0x002A76 00:AA66: 50        .byte $50   ; 
-- D 1 - I - 0x002A77 00:AA67: 50        .byte $50   ; 
-- D 1 - I - 0x002A78 00:AA68: D8        .byte $D8   ; 
-- D 1 - I - 0x002A79 00:AA69: 00        .byte $00   ; 
-- D 1 - I - 0x002A7A 00:AA6A: 55        .byte $55   ; 
-- D 1 - I - 0x002A7B 00:AA6B: 55        .byte $55   ; 
-- D 1 - I - 0x002A7C 00:AA6C: FF        .byte $FF   ; 
-
-
-_off014_36_0x002A7D_03:
-- D 1 - I - 0x002A7D 00:AA6D: D1        .byte $D1   ; 
-- D 1 - I - 0x002A7E 00:AA6E: E2        .byte $E2   ; 
-- D 1 - I - 0x002A7F 00:AA6F: 00        .byte $00   ; 
-- D 1 - I - 0x002A80 00:AA70: D1        .byte $D1   ; 
-- D 1 - I - 0x002A81 00:AA71: 26        .byte $26   ; 
-- D 1 - I - 0x002A82 00:AA72: 13        .byte $13   ; 
-- D 1 - I - 0x002A83 00:AA73: 13        .byte $13   ; 
-- D 1 - I - 0x002A84 00:AA74: E2        .byte $E2   ; 
-- D 1 - I - 0x002A85 00:AA75: 00        .byte $00   ; 
-- D 1 - I - 0x002A86 00:AA76: D1        .byte $D1   ; 
-- D 1 - I - 0x002A87 00:AA77: 16        .byte $16   ; 
-- D 1 - I - 0x002A88 00:AA78: A0        .byte $A0   ; 
-- D 1 - I - 0x002A89 00:AA79: 26        .byte $26   ; 
-- D 1 - I - 0x002A8A 00:AA7A: E2        .byte $E2   ; 
-- D 1 - I - 0x002A8B 00:AA7B: 00        .byte $00   ; 
-- D 1 - I - 0x002A8C 00:AA7C: D1        .byte $D1   ; 
-- D 1 - I - 0x002A8D 00:AA7D: 16        .byte $16   ; 
-- D 1 - I - 0x002A8E 00:AA7E: E2        .byte $E2   ; 
-- D 1 - I - 0x002A8F 00:AA7F: 00        .byte $00   ; 
-- D 1 - I - 0x002A90 00:AA80: D1        .byte $D1   ; 
-- D 1 - I - 0x002A91 00:AA81: 16        .byte $16   ; 
-- D 1 - I - 0x002A92 00:AA82: E3        .byte $E3   ; 
-- D 1 - I - 0x002A93 00:AA83: A0        .byte $A0   ; 
-- D 1 - I - 0x002A94 00:AA84: D1        .byte $D1   ; 
-- D 1 - I - 0x002A95 00:AA85: 16        .byte $16   ; 
-- D 1 - I - 0x002A96 00:AA86: 17        .byte $17   ; 
-- D 1 - I - 0x002A97 00:AA87: E3        .byte $E3   ; 
-- D 1 - I - 0x002A98 00:AA88: A0        .byte $A0   ; 
-- D 1 - I - 0x002A99 00:AA89: D1        .byte $D1   ; 
-- D 1 - I - 0x002A9A 00:AA8A: 16        .byte $16   ; 
-- D 1 - I - 0x002A9B 00:AA8B: A0        .byte $A0   ; 
-- D 1 - I - 0x002A9C 00:AA8C: 26        .byte $26   ; 
-- D 1 - I - 0x002A9D 00:AA8D: E3        .byte $E3   ; 
-- D 1 - I - 0x002A9E 00:AA8E: A0        .byte $A0   ; 
-- D 1 - I - 0x002A9F 00:AA8F: D1        .byte $D1   ; 
-- D 1 - I - 0x002AA0 00:AA90: 16        .byte $16   ; 
-- D 1 - I - 0x002AA1 00:AA91: E3        .byte $E3   ; 
-- D 1 - I - 0x002AA2 00:AA92: A0        .byte $A0   ; 
-- D 1 - I - 0x002AA3 00:AA93: D1        .byte $D1   ; 
-- D 1 - I - 0x002AA4 00:AA94: 16        .byte $16   ; 
-- D 1 - I - 0x002AA5 00:AA95: E3        .byte $E3   ; 
-- D 1 - I - 0x002AA6 00:AA96: 90        .byte $90   ; 
-- D 1 - I - 0x002AA7 00:AA97: D1        .byte $D1   ; 
-- D 1 - I - 0x002AA8 00:AA98: 16        .byte $16   ; 
-- D 1 - I - 0x002AA9 00:AA99: 13        .byte $13   ; 
-- D 1 - I - 0x002AAA 00:AA9A: 13        .byte $13   ; 
-- D 1 - I - 0x002AAB 00:AA9B: E3        .byte $E3   ; 
-- D 1 - I - 0x002AAC 00:AA9C: 90        .byte $90   ; 
-- D 1 - I - 0x002AAD 00:AA9D: D1        .byte $D1   ; 
-- D 1 - I - 0x002AAE 00:AA9E: 16        .byte $16   ; 
-- D 1 - I - 0x002AAF 00:AA9F: E2        .byte $E2   ; 
-- D 1 - I - 0x002AB0 00:AAA0: 00        .byte $00   ; 
-- D 1 - I - 0x002AB1 00:AAA1: D1        .byte $D1   ; 
-- D 1 - I - 0x002AB2 00:AAA2: 26        .byte $26   ; 
-- D 1 - I - 0x002AB3 00:AAA3: E3        .byte $E3   ; 
-- D 1 - I - 0x002AB4 00:AAA4: 50        .byte $50   ; 
-- D 1 - I - 0x002AB5 00:AAA5: D1        .byte $D1   ; 
-- D 1 - I - 0x002AB6 00:AAA6: 26        .byte $26   ; 
-- D 1 - I - 0x002AB7 00:AAA7: E3        .byte $E3   ; 
-- D 1 - I - 0x002AB8 00:AAA8: 70        .byte $70   ; 
-- D 1 - I - 0x002AB9 00:AAA9: D1        .byte $D1   ; 
-- D 1 - I - 0x002ABA 00:AAAA: 26        .byte $26   ; 
-- D 1 - I - 0x002ABB 00:AAAB: E2        .byte $E2   ; 
-- D 1 - I - 0x002ABC 00:AAAC: 00        .byte $00   ; 
-- D 1 - I - 0x002ABD 00:AAAD: D1        .byte $D1   ; 
-- D 1 - I - 0x002ABE 00:AAAE: 26        .byte $26   ; 
-- D 1 - I - 0x002ABF 00:AAAF: A0        .byte $A0   ; 
-- D 1 - I - 0x002AC0 00:AAB0: 22        .byte $22   ; 
-- D 1 - I - 0x002AC1 00:AAB1: A0        .byte $A0   ; 
-- D 1 - I - 0x002AC2 00:AAB2: 22        .byte $22   ; 
-- D 1 - I - 0x002AC3 00:AAB3: A0        .byte $A0   ; 
-- D 1 - I - 0x002AC4 00:AAB4: 26        .byte $26   ; 
-- D 1 - I - 0x002AC5 00:AAB5: A0        .byte $A0   ; 
-- D 1 - I - 0x002AC6 00:AAB6: 26        .byte $26   ; 
-- D 1 - I - 0x002AC7 00:AAB7: A0        .byte $A0   ; 
-- D 1 - I - 0x002AC8 00:AAB8: 26        .byte $26   ; 
-- D 1 - I - 0x002AC9 00:AAB9: A0        .byte $A0   ; 
-- D 1 - I - 0x002ACA 00:AABA: 26        .byte $26   ; 
-- D 1 - I - 0x002ACB 00:AABB: FD        .byte $FD   ; 
-- D 1 - I - 0x002ACC 00:AABC: 15 AB     .word sub_FD_AB15
-- D 1 - I - 0x002ACE 00:AABE: FD        .byte $FD   ; 
-- D 1 - I - 0x002ACF 00:AABF: 15 AB     .word sub_FD_AB15
-- D 1 - I - 0x002AD1 00:AAC1: FD        .byte $FD   ; 
-- D 1 - I - 0x002AD2 00:AAC2: 15 AB     .word sub_FD_AB15
-- D 1 - I - 0x002AD4 00:AAC4: D1        .byte $D1   ; 
-- D 1 - I - 0x002AD5 00:AAC5: B0        .byte $B0   ; 
-- D 1 - I - 0x002AD6 00:AAC6: 26        .byte $26   ; 
-- D 1 - I - 0x002AD7 00:AAC7: 23        .byte $23   ; 
-- D 1 - I - 0x002AD8 00:AAC8: 13        .byte $13   ; 
-- D 1 - I - 0x002AD9 00:AAC9: B0        .byte $B0   ; 
-- D 1 - I - 0x002ADA 00:AACA: 26        .byte $26   ; 
-- D 1 - I - 0x002ADB 00:AACB: A0        .byte $A0   ; 
-- D 1 - I - 0x002ADC 00:AACC: 26        .byte $26   ; 
-- D 1 - I - 0x002ADD 00:AACD: B0        .byte $B0   ; 
-- D 1 - I - 0x002ADE 00:AACE: 26        .byte $26   ; 
-- D 1 - I - 0x002ADF 00:AACF: 27        .byte $27   ; 
-- D 1 - I - 0x002AE0 00:AAD0: B0        .byte $B0   ; 
-- D 1 - I - 0x002AE1 00:AAD1: 26        .byte $26   ; 
-- D 1 - I - 0x002AE2 00:AAD2: 27        .byte $27   ; 
-- D 1 - I - 0x002AE3 00:AAD3: B0        .byte $B0   ; 
-- D 1 - I - 0x002AE4 00:AAD4: 26        .byte $26   ; 
-- D 1 - I - 0x002AE5 00:AAD5: A0        .byte $A0   ; 
-- D 1 - I - 0x002AE6 00:AAD6: 26        .byte $26   ; 
-- D 1 - I - 0x002AE7 00:AAD7: B0        .byte $B0   ; 
-- D 1 - I - 0x002AE8 00:AAD8: 26        .byte $26   ; 
-- D 1 - I - 0x002AE9 00:AAD9: 27        .byte $27   ; 
-- D 1 - I - 0x002AEA 00:AADA: B0        .byte $B0   ; 
-- D 1 - I - 0x002AEB 00:AADB: 26        .byte $26   ; 
-- D 1 - I - 0x002AEC 00:AADC: 93        .byte $93   ; 
-- D 1 - I - 0x002AED 00:AADD: 93        .byte $93   ; 
-- D 1 - I - 0x002AEE 00:AADE: 90        .byte $90   ; 
-- D 1 - I - 0x002AEF 00:AADF: 26        .byte $26   ; 
-- D 1 - I - 0x002AF0 00:AAE0: A0        .byte $A0   ; 
-- D 1 - I - 0x002AF1 00:AAE1: 26        .byte $26   ; 
-- D 1 - I - 0x002AF2 00:AAE2: 80        .byte $80   ; 
-- D 1 - I - 0x002AF3 00:AAE3: 26        .byte $26   ; 
-- D 1 - I - 0x002AF4 00:AAE4: 80        .byte $80   ; 
-- D 1 - I - 0x002AF5 00:AAE5: 26        .byte $26   ; 
-- D 1 - I - 0x002AF6 00:AAE6: B0        .byte $B0   ; 
-- D 1 - I - 0x002AF7 00:AAE7: 26        .byte $26   ; 
-- D 1 - I - 0x002AF8 00:AAE8: A0        .byte $A0   ; 
-- D 1 - I - 0x002AF9 00:AAE9: 26        .byte $26   ; 
-- D 1 - I - 0x002AFA 00:AAEA: A0        .byte $A0   ; 
-- D 1 - I - 0x002AFB 00:AAEB: 26        .byte $26   ; 
-- D 1 - I - 0x002AFC 00:AAEC: A0        .byte $A0   ; 
-- D 1 - I - 0x002AFD 00:AAED: 26        .byte $26   ; 
-- D 1 - I - 0x002AFE 00:AAEE: 80        .byte $80   ; 
-- D 1 - I - 0x002AFF 00:AAEF: 26        .byte $26   ; 
-- D 1 - I - 0x002B00 00:AAF0: 70        .byte $70   ; 
-- D 1 - I - 0x002B01 00:AAF1: 26        .byte $26   ; 
-- D 1 - I - 0x002B02 00:AAF2: B0        .byte $B0   ; 
-- D 1 - I - 0x002B03 00:AAF3: 26        .byte $26   ; 
-- D 1 - I - 0x002B04 00:AAF4: 23        .byte $23   ; 
-- D 1 - I - 0x002B05 00:AAF5: 23        .byte $23   ; 
-- D 1 - I - 0x002B06 00:AAF6: B0        .byte $B0   ; 
-- D 1 - I - 0x002B07 00:AAF7: 26        .byte $26   ; 
-- D 1 - I - 0x002B08 00:AAF8: A0        .byte $A0   ; 
-- D 1 - I - 0x002B09 00:AAF9: 26        .byte $26   ; 
-- D 1 - I - 0x002B0A 00:AAFA: B0        .byte $B0   ; 
-- D 1 - I - 0x002B0B 00:AAFB: 26        .byte $26   ; 
-- D 1 - I - 0x002B0C 00:AAFC: 27        .byte $27   ; 
-- D 1 - I - 0x002B0D 00:AAFD: B0        .byte $B0   ; 
-- D 1 - I - 0x002B0E 00:AAFE: 26        .byte $26   ; 
-- D 1 - I - 0x002B0F 00:AAFF: 27        .byte $27   ; 
-- D 1 - I - 0x002B10 00:AB00: B0        .byte $B0   ; 
-- D 1 - I - 0x002B11 00:AB01: 26        .byte $26   ; 
-- D 1 - I - 0x002B12 00:AB02: A3        .byte $A3   ; 
-- D 1 - I - 0x002B13 00:AB03: A3        .byte $A3   ; 
-- D 1 - I - 0x002B14 00:AB04: C7        .byte $C7   ; 
-- D 1 - I - 0x002B15 00:AB05: C7        .byte $C7   ; 
-- D 1 - I - 0x002B16 00:AB06: B0        .byte $B0   ; 
-- D 1 - I - 0x002B17 00:AB07: 26        .byte $26   ; 
-- D 1 - I - 0x002B18 00:AB08: 93        .byte $93   ; 
-- D 1 - I - 0x002B19 00:AB09: 93        .byte $93   ; 
-- D 1 - I - 0x002B1A 00:AB0A: 83        .byte $83   ; 
-- D 1 - I - 0x002B1B 00:AB0B: 73        .byte $73   ; 
-- D 1 - I - 0x002B1C 00:AB0C: A0        .byte $A0   ; 
-- D 1 - I - 0x002B1D 00:AB0D: 26        .byte $26   ; 
-- D 1 - I - 0x002B1E 00:AB0E: A0        .byte $A0   ; 
-- D 1 - I - 0x002B1F 00:AB0F: 26        .byte $26   ; 
-- D 1 - I - 0x002B20 00:AB10: A0        .byte $A0   ; 
-- D 1 - I - 0x002B21 00:AB11: 26        .byte $26   ; 
-- D 1 - I - 0x002B22 00:AB12: A0        .byte $A0   ; 
-- D 1 - I - 0x002B23 00:AB13: 26        .byte $26   ; 
-- D 1 - I - 0x002B24 00:AB14: FF        .byte $FF   ; 
-
-
-
-sub_FD_AB15:
-- D 1 - I - 0x002B25 00:AB15: D1        .byte $D1   ; 
-- D 1 - I - 0x002B26 00:AB16: FB        .byte $FB   ; 
-- D 1 - I - 0x002B27 00:AB17: B0        .byte $B0   ; 
-- D 1 - I - 0x002B28 00:AB18: 26        .byte $26   ; 
-- D 1 - I - 0x002B29 00:AB19: 23        .byte $23   ; 
-- D 1 - I - 0x002B2A 00:AB1A: 13        .byte $13   ; 
-- D 1 - I - 0x002B2B 00:AB1B: B0        .byte $B0   ; 
-- D 1 - I - 0x002B2C 00:AB1C: 26        .byte $26   ; 
-- D 1 - I - 0x002B2D 00:AB1D: A0        .byte $A0   ; 
-- D 1 - I - 0x002B2E 00:AB1E: 26        .byte $26   ; 
-- D 1 - I - 0x002B2F 00:AB1F: B0        .byte $B0   ; 
-- D 1 - I - 0x002B30 00:AB20: 26        .byte $26   ; 
-- D 1 - I - 0x002B31 00:AB21: 27        .byte $27   ; 
-- D 1 - I - 0x002B32 00:AB22: B0        .byte $B0   ; 
-- D 1 - I - 0x002B33 00:AB23: 26        .byte $26   ; 
-- D 1 - I - 0x002B34 00:AB24: 27        .byte $27   ; 
-- D 1 - I - 0x002B35 00:AB25: B0        .byte $B0   ; 
-- D 1 - I - 0x002B36 00:AB26: 26        .byte $26   ; 
-- D 1 - I - 0x002B37 00:AB27: A0        .byte $A0   ; 
-- D 1 - I - 0x002B38 00:AB28: 26        .byte $26   ; 
-- D 1 - I - 0x002B39 00:AB29: B0        .byte $B0   ; 
-- D 1 - I - 0x002B3A 00:AB2A: 26        .byte $26   ; 
-- D 1 - I - 0x002B3B 00:AB2B: 27        .byte $27   ; 
-- D 1 - I - 0x002B3C 00:AB2C: FE        .byte $FE   ; 
-- D 1 - I - 0x002B3D 00:AB2D: 07        .byte $07   ; 
-- D 1 - I - 0x002B3E 00:AB2E: B0        .byte $B0   ; 
-- D 1 - I - 0x002B3F 00:AB2F: 26        .byte $26   ; 
-- D 1 - I - 0x002B40 00:AB30: 23        .byte $23   ; 
-- D 1 - I - 0x002B41 00:AB31: 13        .byte $13   ; 
-- D 1 - I - 0x002B42 00:AB32: B0        .byte $B0   ; 
-- D 1 - I - 0x002B43 00:AB33: 26        .byte $26   ; 
-- D 1 - I - 0x002B44 00:AB34: A0        .byte $A0   ; 
-- D 1 - I - 0x002B45 00:AB35: 26        .byte $26   ; 
-- D 1 - I - 0x002B46 00:AB36: B0        .byte $B0   ; 
-- D 1 - I - 0x002B47 00:AB37: 26        .byte $26   ; 
-- D 1 - I - 0x002B48 00:AB38: 27        .byte $27   ; 
-- D 1 - I - 0x002B49 00:AB39: B0        .byte $B0   ; 
-- D 1 - I - 0x002B4A 00:AB3A: 26        .byte $26   ; 
-- D 1 - I - 0x002B4B 00:AB3B: 27        .byte $27   ; 
-- D 1 - I - 0x002B4C 00:AB3C: B0        .byte $B0   ; 
-- D 1 - I - 0x002B4D 00:AB3D: 26        .byte $26   ; 
-- D 1 - I - 0x002B4E 00:AB3E: A0        .byte $A0   ; 
-- D 1 - I - 0x002B4F 00:AB3F: 26        .byte $26   ; 
-- D 1 - I - 0x002B50 00:AB40: A0        .byte $A0   ; 
-- D 1 - I - 0x002B51 00:AB41: 26        .byte $26   ; 
-- D 1 - I - 0x002B52 00:AB42: A0        .byte $A0   ; 
-- D 1 - I - 0x002B53 00:AB43: 26        .byte $26   ; 
-- D 1 - I - 0x002B54 00:AB44: FD        .byte $FD   ; 
-
-
-
-
-.out .sprintf("Free bytes in bank 2F: %Xh [%d]", ($BFFF - *), ($BFFF - *))
-
-.segment "BANK_2Fb"
+; bzk this byte must be placed at 8000
     .byte con_prg_bank + $2F   ; 
+
+; ==================================================================================================================
+;  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+; ==================================================================================================================
+
+_off001_0x009002_3D_босс_7_пасть_черепа:
+- D 0 - I - 0x009002 02:8FF2: 08 90     .word ofs_038_3D_9008_01_активация_объекта ; 
+- D 0 - I - 0x009004 02:8FF4: 1D 90     .word ofs_038_3D_901D_02 ; 
+- D 0 - I - 0x009006 02:8FF6: 71 90     .word ofs_038_3D_9071_03 ; 
+- D 0 - I - 0x009008 02:8FF8: 80 90     .word ofs_038_3D_9080_04 ; 
+- D 0 - I - 0x00900A 02:8FFA: B5 90     .word ofs_038_3D_90B5_05 ; 
+- D 0 - I - 0x00900C 02:8FFC: E6 90     .word ofs_038_3D_90E6_06 ; 
+- D 0 - I - 0x00900E 02:8FFE: B8 A3     .word ofs_038_3D_0x0063C8_07_установить_статус_уничтожения_босса_и_убить_все_объекты ; 
+- D 0 - I - 0x009010 02:9000: D8 A3     .word ofs_038_3D_0x0063E8_08_большие_взрывы_для_боссов ; 
+- D 0 - I - 0x009012 02:9002: 06 91     .word ofs_038_3D_9106_09 ; 
+- D 0 - I - 0x009014 02:9004: F6 A2     .word ofs_038_3D_0x006306_0A ; 
+- D 0 - I - 0x009016 02:9006: 10 91     .word ofs_038_3D_0x006347_0B_удалить_объект_босс ; 
+
+; ******************************************************************************************************************
+
+ofs_038_3D_9008_01_активация_объекта:
+C - - J - - 0x009018 02:9008: A9 11     LDA #$11
+C - - - - - 0x00901A 02:900A: 9D 2C 07  STA ram_состояние_хитбоксов_объектов,X
+C - - - - - 0x00901D 02:900D: A9 20     LDA #$20
+C - - - - - 0x00901F 02:900F: 20 99 AB  JSR sub_0x006BA9_выбрать_количество_HP_от_сложности_игры
+C - - - - - 0x009022 02:9012: 9D 56 07  STA ram_скролл_объекта_X,X
+C - - - - - 0x009025 02:9015: A9 F0     LDA #con__hp_F0
+C - - - - - 0x009027 02:9017: 9D 76 06  STA ram_жизни_объектов_32bit,X
+C - - - - - 0x00902A 02:901A: 4C D7 A2  JMP loc_0x0062E7_увеличить_состояние_объекта
+
+; ******************************************************************************************************************
+
+ofs_038_3D_901D_02:
+C - - J - - 0x00902D 02:901D: A9 01     LDA #$01
+C - - - - - 0x00902F 02:901F: 9D 08 05  STA ram_кадр_объекта_или_пули,X
+C - - - - - 0x009032 02:9022: A5 7D     LDA ram_007D_тип_скролла
+C - - - - - 0x009034 02:9024: C9 C0     CMP #$C0
+C - - - - - 0x009036 02:9026: D0 45     BNE bra_906D_RTS
+C - - - - - 0x009038 02:9028: A9 31     LDA #con_sound_31 ; музыка 7й босс
+C - - - - - 0x00903A 02:902A: 20 DE FD  JSR sub_0x01FDEE_play_music
+C - - - - - 0x00903D 02:902D: A9 48     LDA #$48
+C - - - - - 0x00903F 02:902F: 9D 22 05  STA ram_позиция_y_спрайта_объекта_или_пули,X
+C - - - - - 0x009042 02:9032: A9 80     LDA #$80
+C - - - - - 0x009044 02:9034: 9D 3C 05  STA ram_позиция_x_спрайта_объекта_или_пули,X
+C - - - - - 0x009047 02:9037: A9 0A     LDA #con_irq_area_7_boss
+C - - - - - 0x009049 02:9039: 85 27     STA ram_irq_handler_hi
+C - - - - - 0x00904B 02:903B: A9 52     LDA #$52
+C - - - - - 0x00904D 02:903D: 85 45     STA ram_номер_сканлинии
+C - - - - - 0x00904F 02:903F: A9 E0     LDA #$E0
+C - - - - - 0x009051 02:9041: 85 FC     STA ram_scroll_Y
+C - - - - - 0x009053 02:9043: 85 F9     STA ram_00F9
+C - - - - - 0x009055 02:9045: A5 FD     LDA ram_scroll_X
+C - - - - - 0x009057 02:9047: 85 FA     STA ram_00FA
+C - - - - - 0x009059 02:9049: A5 FF     LDA ram_for_2000
+C - - - - - 0x00905B 02:904B: 85 FB     STA ram_00FB
+C - - - - - 0x00905D 02:904D: A0 02     LDY #$02
+bra_904F_loop:
+C - - - - - 0x00905F 02:904F: 84 08     STY ram_0008
+C - - - - - 0x009061 02:9051: B9 6E 90  LDA tbl_906E_объекты,Y
+C - - - - - 0x009064 02:9054: A8        TAY
+C - - - - - 0x009065 02:9055: 20 C8 AB  JSR loc_0x006BD8_поиск_пустого_слота_и_попытка_создать_новый_объект_на_позиции_текущего_объекта
+C - - - - - 0x009068 02:9058: 90 10     BCC bra_906A
+C - - - - - 0x00906A 02:905A: A4 11     LDY ram_0011
+C - - - - - 0x00906C 02:905C: A5 08     LDA ram_0008
+C - - - - - 0x00906E 02:905E: 99 1E 07  STA ram_флаги_объектов,Y
+C - - - - - 0x009071 02:9061: 8A        TXA
+C - - - - - 0x009072 02:9062: 99 80 07  STA ram_0780_obj,Y
+C - - - - - 0x009075 02:9065: A4 08     LDY ram_0008
+C - - - - - 0x009077 02:9067: 88        DEY
+C - - - - - 0x009078 02:9068: 10 E5     BPL bra_904F_loop
+bra_906A:
+C - - - - - 0x00907A 02:906A: 4C D7 A2  JMP loc_0x0062E7_увеличить_состояние_объекта
+bra_906D_RTS:
+C - - - - - 0x00907D 02:906D: 60        RTS
+
+tbl_906E_объекты:
+- D 0 - - - 0x00907E 02:906E: 52        .byte con_obj_id_3E   ; 00 грудь
+- D 0 - - - 0x00907F 02:906F: 53        .byte con_obj_id_3F   ; 01 ухо
+- D 0 - - - 0x009080 02:9070: 53        .byte con_obj_id_3F   ; 02 ухо
+
+; ******************************************************************************************************************
+
+ofs_038_3D_9071_03:
+C - - J - - 0x009081 02:9071: BD 48 07  LDA ram_скролл_объекта_Y,X
+C - - - - - 0x009084 02:9074: F0 F7     BEQ bra_906D_RTS
+C - - - - - 0x009086 02:9076: A9 01     LDA #$01
+C - - - - - 0x009088 02:9078: 9D 10 07  STA ram_счетчик_анимации_взрыва_объекта,X
+C - - - - - 0x00908B 02:907B: A9 40     LDA #$40    ; счетчик
+                                        STA ram_счетчики_для_объектов,X
+                                        JMP loc_0x0062E7_увеличить_состояние_объекта
+
+; ******************************************************************************************************************
+
+ofs_038_3D_9080_04:
+C - - J - - 0x009090 02:9080: DE E6 06  DEC ram_счетчики_для_объектов,X
+C - - - - - 0x009093 02:9083: D0 29     BNE bra_90AE_RTS
+C - - - - - 0x009095 02:9085: 20 13 91  JSR sub_9113
+C - - - - - 0x009098 02:9088: A9 01     LDA #$01
+C - - - - - 0x00909A 02:908A: B0 1F     BCS bra_90AB
+C - - - - - 0x00909C 02:908C: BD 10 07  LDA ram_счетчик_анимации_взрыва_объекта,X
+C - - - - - 0x00909F 02:908F: C9 02     CMP #$02
+C - - - - - 0x0090A1 02:9091: A9 08     LDA #$08
+C - - - - - 0x0090A3 02:9093: 90 13     BCC bra_90A8
+C - - - - - 0x0090A5 02:9095: DE 10 07  DEC ram_счетчик_анимации_взрыва_объекта,X
+C - - - - - 0x0090A8 02:9098: BD 56 07  LDA ram_скролл_объекта_X,X
+C - - - - - 0x0090AB 02:909B: 9D 76 06  STA ram_жизни_объектов_8bit,X
+C - - - - - 0x0090AE 02:909E: A9 08     LDA #$08
+C - - - - - 0x0090B0 02:90A0: 9D F4 06  STA ram_счетчкик_жизни_объектов,X
+C - - - - - 0x0090B3 02:90A3: A9 50     LDA #$50    ; счетчик
+                                        STA ram_счетчики_для_объектов,X
+                                        JMP loc_0x0062E7_увеличить_состояние_объекта
+bra_90A8:
+C - - - - - 0x0090B8 02:90A8: FE 10 07  INC ram_счетчик_анимации_взрыва_объекта,X
+bra_90AB:
+C D 0 - - - 0x0090BB 02:90AB: 9D E6 06  STA ram_счетчики_для_объектов,X
+bra_90AE_RTS:
+C - - - - - 0x0090BE 02:90AE: 60        RTS
+
+; ******************************************************************************************************************
+
+ofs_038_3D_90B5_05:
+C - - J - - 0x0090C5 02:90B5: DE F4 06  DEC ram_счетчкик_жизни_объектов,X
+C - - - - - 0x0090C8 02:90B8: D0 17     BNE bra_90D1
+C - - - - - 0x0090CA 02:90BA: A0 02     LDY #$02
+bra_90BC_loop:
+C - - - - - 0x0090CC 02:90BC: 84 08     STY ram_0008
+C - - - - - 0x0090CE 02:90BE: A0 55     LDY #con_obj_id_41  ; красный шип
+C - - - - - 0x0090D0 02:90C0: 20 C8 AB  JSR loc_0x006BD8_поиск_пустого_слота_и_попытка_создать_новый_объект_на_позиции_текущего_объекта
+C - - - - - 0x0090D3 02:90C3: 90 0C     BCC bra_90D1
+C - - - - - 0x0090D5 02:90C5: A4 11     LDY ram_0011
+C - - - - - 0x0090D7 02:90C7: A5 08     LDA ram_0008
+C - - - - - 0x0090D9 02:90C9: 99 1E 07  STA ram_флаги_объектов,Y
+C - - - - - 0x0090DC 02:90CC: A4 08     LDY ram_0008
+C - - - - - 0x0090DE 02:90CE: 88        DEY
+C - - - - - 0x0090DF 02:90CF: 10 EB     BPL bra_90BC_loop
+bra_90D1:
+C - - - - - 0x0090E1 02:90D1: DE E6 06  DEC ram_счетчики_для_объектов,X
+C - - - - - 0x0090E4 02:90D4: D0 D8     BNE bra_90AE_RTS
+C - - - - - 0x0090E6 02:90D6: BD 76 06  LDA ram_жизни_объектов_8bit,X
+C - - - - - 0x0090E9 02:90D9: 9D 56 07  STA ram_скролл_объекта_X,X
+C - - - - - 0x0090EC 02:90DC: A9 F0     LDA #con__hp_F0
+C - - - - - 0x0090EE 02:90DE: 9D 76 06  STA ram_жизни_объектов_32bit,X
+C - - - - - 0x0090F1 02:90E1: A9 01     LDA #$01     ; счетчик
+                                        STA ram_счетчики_для_объектов,X
+                                        JMP loc_0x0062E7_увеличить_состояние_объекта
+
+; ******************************************************************************************************************
+
+ofs_038_3D_90E6_06:
+C - - J - - 0x0090F6 02:90E6: DE E6 06  DEC ram_счетчики_для_объектов,X
+C - - - - - 0x0090F9 02:90E9: D0 C3     BNE bra_90B2_RTS
+C - - - - - 0x0090FB 02:90EB: 20 13 91  JSR sub_9113
+C - - - - - 0x0090FE 02:90EE: A9 01     LDA #$01
+C - - - - - 0x009100 02:90F0: B0 B9     BCS bra_90AB
+C - - - - - 0x009102 02:90F2: A9 08     LDA #$08
+C - - - - - 0x009104 02:90F4: BC 10 07  LDY ram_счетчик_анимации_взрыва_объекта,X
+C - - - - - 0x009107 02:90F7: D0 B6     BNE bra_90AF
+C - - - - - 0x009109 02:90F9: FE 10 07  INC ram_счетчик_анимации_взрыва_объекта,X
+C - - - - - 0x00910C 02:90FC: A9 80     LDA #$80
+C - - - - - 0x00910E 02:90FE: 9D E6 06  STA ram_счетчики_для_объектов,X
+C - - - - - 0x009111 02:9101: A9 04     LDA #$04
+C - - - - - 0x009113 02:9103: 4C 83 A2  JMP loc_0x006293_установить_состояние_объекта
+bra_90AF:
+C - - - - - 0x0090BF 02:90AF: DE 10 07  DEC ram_счетчик_анимации_взрыва_объекта,X
+                                        STA ram_счетчики_для_объектов,X
+bra_90B2_RTS:
+                                        RTS
+                                        
+; ******************************************************************************************************************
+
+ofs_038_3D_9106_09:
+C - - J - - 0x009116 02:9106: A9 03     LDA #$03
+C - - - - - 0x009118 02:9108: 20 16 91  JSR sub_9116
+C - - - - - 0x00911B 02:910B: B0 A1     BCS bra_90B2_RTS
+C - - - - - 0x00911D 02:910D: 4C A2 A2  JMP loc_0x0062B2_обработка_состояния_смерти_объекта
+
+; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+sub_9113:
+C - - - - - 0x009123 02:9113: BD 10 07  LDA ram_счетчик_анимации_взрыва_объекта,X
+sub_9116:
+C - - - - - 0x009126 02:9116: 18        CLC
+C - - - - - 0x009127 02:9117: 69 04     ADC #$04
+C - - - - - 0x009129 02:9119: A0 04     LDY #$04
+C - - - - - 0x00912B 02:911B: 4C 54 8D  JMP loc_8D54
+
+; ==================================================================================================================
+;  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+; ==================================================================================================================
+
+_off001_0x008C9D_3E_босс_7_грудная_клетка:
+- D 0 - I - 0x008C9D 02:8C8D: 9B 8C     .word ofs_038_3E_8C9B_01_активация_объекта ; 
+- D 0 - I - 0x008C9F 02:8C8F: C6 8C     .word ofs_038_3E_8CC6_02 ; 
+- D 0 - I - 0x008CA1 02:8C91: FB 8C     .word ofs_038_3E_8CFB_03 ; 
+- D 0 - I - 0x008CA3 02:8C93: 1A 8D     .word ofs_038_3E_8D1A_04 ; 
+- D 0 - I - 0x008CA5 02:8C95: 3A 8D     .word ofs_038_3E_8D3A_05 ; 
+- D 0 - I - 0x008CA7 02:8C97: FD A2     .word ofs_038_3E_0x00630D_06_обработка_анимации_взрыва_объекта ; 
+- D 0 - I - 0x008CA9 02:8C99: 44 8D     .word ofs_038_3E_8D44_07 ;
+
+; ******************************************************************************************************************
+
+ofs_038_3E_8C9B_01_активация_объекта:
+C - - J - - 0x008CAB 02:8C9B: A9 01     LDA #$01
+C - - - - - 0x008CAD 02:8C9D: 9D 08 05  STA ram_кадр_объекта_или_пули,X
+C - - - - - 0x008CB2 02:8CA2: 9D 2C 07  STA ram_состояние_хитбоксов_объектов,X
+C - - - - - 0x008CB5 02:8CA5: A9 18     LDA #$18
+C - - - - - 0x008CB7 02:8CA7: 20 95 AB  JSR sub_0x006BA5_выбрать_количество_HP_от_сложности_игры
+C - - - - - 0x008CBA 02:8CAA: 9D 48 07  STA ram_скролл_объекта_Y,X
+C - - - - - 0x008CBD 02:8CAD: A9 F0     LDA #con__hp_F0
+C - - - - - 0x008CBF 02:8CAF: 9D 76 06  STA ram_жизни_объектов_32bit,X
+C - - - - - 0x008CC2 02:8CB2: A9 70     LDA #$70
+C - - - - - 0x008CC4 02:8CB4: 9D 22 05  STA ram_позиция_y_спрайта_объекта_или_пули,X
+C - - - - - 0x008CC7 02:8CB7: A9 80     LDA #$80
+C - - - - - 0x008CC9 02:8CB9: 9D 3C 05  STA ram_позиция_x_спрайта_объекта_или_пули,X
+C - - - - - 0x008CCC 02:8CBC: A9 01     LDA #$01
+C - - - - - 0x008CCE 02:8CBE: 9D 10 07  STA ram_счетчик_анимации_взрыва_объекта,X
+C - - - - - 0x008CD1 02:8CC1: A9 40     LDA #$40    ; счетчик
+                                        STA ram_счетчики_для_объектов,X
+                                        JMP loc_0x0062E7_увеличить_состояние_объекта
+
+; ******************************************************************************************************************
+
+ofs_038_3E_8CC6_02:
+C - - J - - 0x008CD6 02:8CC6: DE E6 06  DEC ram_счетчики_для_объектов,X
+C - - - - - 0x008CD9 02:8CC9: D0 29     BNE bra_8CF4_RTS
+C - - - - - 0x008CDB 02:8CCB: 20 4F 8D  JSR sub_8D4F
+C - - - - - 0x008CDE 02:8CCE: A9 01     LDA #$01
+C - - - - - 0x008CE0 02:8CD0: B0 1F     BCS bra_8CF1
+C - - - - - 0x008CE2 02:8CD2: BD 10 07  LDA ram_счетчик_анимации_взрыва_объекта,X
+C - - - - - 0x008CE5 02:8CD5: C9 02     CMP #$02
+C - - - - - 0x008CE7 02:8CD7: A9 08     LDA #$08
+C - - - - - 0x008CE9 02:8CD9: 90 13     BCC bra_8CEE
+C - - - - - 0x008CEB 02:8CDB: DE 10 07  DEC ram_счетчик_анимации_взрыва_объекта,X
+C - - - - - 0x008CEE 02:8CDE: BD 48 07  LDA ram_скролл_объекта_Y,X
+C - - - - - 0x008CF1 02:8CE1: 9D 76 06  STA ram_жизни_объектов_8bit,X
+C - - - - - 0x008CF4 02:8CE4: A9 10     LDA #$10
+C - - - - - 0x008CF6 02:8CE6: 9D F4 06  STA ram_счетчкик_жизни_объектов,X
+C - - - - - 0x008CF9 02:8CE9: A9 70     LDA #$70    ; счетчик
+                                        STA ram_счетчики_для_объектов,X
+                                        JMP loc_0x0062E7_увеличить_состояние_объекта
+bra_8CEE:
+C - - - - - 0x008CFE 02:8CEE: FE 10 07  INC ram_счетчик_анимации_взрыва_объекта,X
+bra_8CF1:
+C D 0 - - - 0x008D01 02:8CF1: 9D E6 06  STA ram_счетчики_для_объектов,X
+bra_8CF4_RTS:
+C - - - - - 0x008D04 02:8CF4: 60        RTS
+
+; ******************************************************************************************************************
+
+ofs_038_3E_8CFB_03:
+C - - J - - 0x008D0B 02:8CFB: DE F4 06  DEC ram_счетчкик_жизни_объектов,X
+C - - - - - 0x008D0E 02:8CFE: D0 05     BNE bra_8D05
+C - - - - - 0x008D10 02:8D00: A0 54     LDY #con_obj_id_40  ; большой красный шар из груди
+C - - - - - 0x008D12 02:8D02: 20 C8 AB  JSR loc_0x006BD8_поиск_пустого_слота_и_попытка_создать_новый_объект_на_позиции_текущего_объекта
+bra_8D05:
+C - - - - - 0x008D15 02:8D05: DE E6 06  DEC ram_счетчики_для_объектов,X
+C - - - - - 0x008D18 02:8D08: D0 EA     BNE bra_8CF4_RTS
+C - - - - - 0x008D1A 02:8D0A: BD 76 06  LDA ram_жизни_объектов_8bit,X
+C - - - - - 0x008D1D 02:8D0D: 9D 48 07  STA ram_скролл_объекта_Y,X
+C - - - - - 0x008D20 02:8D10: A9 F0     LDA #con__hp_F0
+C - - - - - 0x008D22 02:8D12: 9D 76 06  STA ram_жизни_объектов_32bit,X
+C - - - - - 0x008D25 02:8D15: A9 01     LDA #$01    ; счетчик
+                                        STA ram_счетчики_для_объектов,X
+                                        JMP loc_0x0062E7_увеличить_состояние_объекта
+
+; ******************************************************************************************************************
+
+ofs_038_3E_8D1A_04:
+C - - J - - 0x008D2A 02:8D1A: DE E6 06  DEC ram_счетчики_для_объектов,X
+C - - - - - 0x008D2D 02:8D1D: D0 D5     BNE bra_8CF4_RTS
+C - - - - - 0x008D2F 02:8D1F: 20 4F 8D  JSR sub_8D4F
+C - - - - - 0x008D32 02:8D22: A9 01     LDA #$01
+C - - - - - 0x008D34 02:8D24: B0 CB     BCS bra_8CF1
+C - - - - - 0x008D36 02:8D26: A9 08     LDA #$08
+C - - - - - 0x008D38 02:8D28: BC 10 07  LDY ram_счетчик_анимации_взрыва_объекта,X
+C - - - - - 0x008D3B 02:8D2B: D0 C8     BNE bra_8CF5
+C - - - - - 0x008D3D 02:8D2D: FE 10 07  INC ram_счетчик_анимации_взрыва_объекта,X
+C - - - - - 0x008D40 02:8D30: A9 50     LDA #$50
+C - - - - - 0x008D42 02:8D32: 9D E6 06  STA ram_счетчики_для_объектов,X
+C - - - - - 0x008D45 02:8D35: A9 02     LDA #$02
+C - - - - - 0x008D47 02:8D37: 4C 83 A2  JMP loc_0x006293_установить_состояние_объекта
+bra_8CF5:
+C - - - - - 0x008D05 02:8CF5: DE 10 07  DEC ram_счетчик_анимации_взрыва_объекта,X
+                                        STA ram_счетчики_для_объектов,X
+                                        RTS
+
+; ******************************************************************************************************************
+
+ofs_038_3E_8D3A_05:
+C - - J - - 0x008D4A 02:8D3A: A9 03     LDA #$03
+C - - - - - 0x008D4C 02:8D3C: 20 52 8D  JSR sub_8D52
+C - - - - - 0x008D4F 02:8D3F: B0 B3     BCS bra_8CF4_RTS
+C - - - - - 0x008D51 02:8D41: 4C 9A A2  JMP loc_0x0062AA_обработка_состояния_смерти_объекта
+
+
+; ******************************************************************************************************************
+
+ofs_038_3E_8D44_07:
+C - - J - - 0x008D54 02:8D44: BC 80 07  LDY ram_0780_obj,X
+C - - - - - 0x008D57 02:8D47: A9 01     LDA #$01
+C - - - - - 0x008D59 02:8D49: 99 48 07  STA ram_скролл_объекта_Y,Y
+C - - - - - 0x008D5C 02:8D4C: 4C 3D A3  JMP loc_0x00628A_удалить_объект
+
+; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+sub_8D4F:
+C - - - - - 0x008D5F 02:8D4F: BD 10 07  LDA ram_счетчик_анимации_взрыва_объекта,X
+sub_8D52:
+C - - - - - 0x008D62 02:8D52: A0 00     LDY #$00
+loc_8D54:
+C D 0 - - - 0x008D64 02:8D54: 84 0E     STY ram_000E
+; A = 00-07
+C - - - - - 0x008D66 02:8D56: 0A        ASL
+C - - - - - 0x008D67 02:8D57: 0A        ASL
+C - - - - - 0x008D68 02:8D58: 85 0D     STA ram_000D
+; bzk optimize, check ram_index_ppu_buffer first
+C - - - - - 0x008D6A 02:8D5A: A5 1E     LDA ram_index_ppu_buffer
+C - - - - - 0x008D6C 02:8D5C: D0 33     BNE bra_8D91
+C - - - - - 0x008D6E 02:8D5E: A0 03     LDY #$03
+bra_8D60_loop:
+C - - - - - 0x008D70 02:8D60: 84 0F     STY ram_000F
+C - - - - - 0x008D72 02:8D62: 98        TYA
+C - - - - - 0x008D73 02:8D63: 18        CLC
+C - - - - - 0x008D74 02:8D64: 65 0D     ADC ram_000D
+C - - - - - 0x008D76 02:8D66: A8        TAY
+C - - - - - 0x008D77 02:8D67: B9 94 8D  LDA tbl_8D94,Y
+C - - - - - 0x008D7A 02:8D6A: 85 08     STA ram_0008
+C - - - - - 0x008D7C 02:8D6C: A5 0F     LDA ram_000F
+C - - - - - 0x008D7E 02:8D6E: 18        CLC
+C - - - - - 0x008D7F 02:8D6F: 65 0E     ADC ram_000E    ; 00/04
+C - - - - - 0x008D81 02:8D71: A8        TAY
+C - - - - - 0x008D82 02:8D72: B9 B4 8D  LDA tbl_8DB4,Y
+C - - - - - 0x008D85 02:8D75: 85 0C     STA ram_000C
+C - - - - - 0x008D87 02:8D77: B9 BC 8D  LDA tbl_8DBC,Y
+C - - - - - 0x008D8A 02:8D7A: A4 0C     LDY ram_000C
+C - - - - - 0x008D8C 02:8D7C: 20 A4 FE  JSR sub_0x01FEB4_подготовка_и_выбор_банков_для_перерисовки_части_фона_через_буфер
+C - - - - - 0x008D8F 02:8D7F: 8A        TXA
+C - - - - - 0x008D90 02:8D80: 38        SEC
+C - - - - - 0x008D91 02:8D81: E9 04     SBC #$04
+C - - - - - 0x008D93 02:8D83: 85 1E     STA ram_index_ppu_buffer
+C - - - - - 0x008D95 02:8D85: AA        TAX
+C - - - - - 0x008D96 02:8D86: A9 FF     LDA #$FF
+C - - - - - 0x008D98 02:8D88: 9D FF 02  STA ram_nmt_buffer - $01,X
+C - - - - - 0x008D9B 02:8D8B: A4 0F     LDY ram_000F
+C - - - - - 0x008D9D 02:8D8D: 88        DEY
+C - - - - - 0x008D9E 02:8D8E: 10 D0     BPL bra_8D60_loop
+C - - - - - 0x008DA0 02:8D90: 18        CLC
+bra_8D91:
+C - - - - - 0x008DA1 02:8D91: A6 10     LDX ram_0010
+C - - - - - 0x008DA3 02:8D93: 60        RTS
+
+tbl_8D94:
+- D 0 - - - 0x008DA4 02:8D94: 7F        .byte $7F, $80, $86, $87   ; 00 
+- D 0 - - - 0x008DA8 02:8D98: A1        .byte $A1, $A2, $A3, $A4   ; 01 
+- D 0 - - - 0x008DAC 02:8D9C: A5        .byte $A5, $A6, $A7, $A8   ; 02 
+- D 0 - - - 0x008DB0 02:8DA0: A5        .byte $A5, $A6, $A7, $A8   ; 03 
+- D 0 - - - 0x008DB4 02:8DA4: 73        .byte $73, $74, $79, $7A   ; 04 
+- D 0 - - - 0x008DB8 02:8DA8: A9        .byte $A9, $AA, $AB, $AC   ; 05 
+- D 0 - - - 0x008DBC 02:8DAC: AD        .byte $AD, $AE, $AF, $B0   ; 06 
+- D 0 - - - 0x008DC0 02:8DB0: AD        .byte $AD, $AE, $AF, $B0   ; 07 
+
+tbl_8DB4:
+- D 0 - - - 0x008DC4 02:8DB4: 60        .byte $60   ; 00 
+- D 0 - - - 0x008DC5 02:8DB5: 60        .byte $60   ; 01 
+- D 0 - - - 0x008DC6 02:8DB6: 80        .byte $80   ; 02 
+- D 0 - - - 0x008DC7 02:8DB7: 80        .byte $80   ; 03 
+- D 0 - - - 0x008DC8 02:8DB8: 20        .byte $20   ; 04 
+- D 0 - - - 0x008DC9 02:8DB9: 20        .byte $20   ; 05 
+- D 0 - - - 0x008DCA 02:8DBA: 40        .byte $40   ; 06 
+- D 0 - - - 0x008DCB 02:8DBB: 40        .byte $40   ; 07 
+
+tbl_8DBC:
+- D 0 - - - 0x008DCC 02:8DBC: 70        .byte $70   ; 00 
+- D 0 - - - 0x008DCD 02:8DBD: 90        .byte $90   ; 01 
+- D 0 - - - 0x008DCE 02:8DBE: 70        .byte $70   ; 02 
+- D 0 - - - 0x008DCF 02:8DBF: 90        .byte $90   ; 03 
+- D 0 - - - 0x008DD0 02:8DC0: 70        .byte $70   ; 04 
+- D 0 - - - 0x008DD1 02:8DC1: 90        .byte $90   ; 05 
+- D 0 - - - 0x008DD2 02:8DC2: 70        .byte $70   ; 06 
+- D 0 - - - 0x008DD3 02:8DC3: 90        .byte $90   ; 07 
+
+; ==================================================================================================================
+;  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+; ==================================================================================================================
+
+_off001_0x008DD4_3F_босс_7_костяное_ухо:
+- D 0 - I - 0x008DD4 02:8DC4: CE 8D     .word ofs_038_3F_8DCE_01_активация_объекта ; 
+- D 0 - I - 0x008DD6 02:8DC6: ED 8D     .word ofs_038_3F_8DED_02 ; 
+- D 0 - I - 0x008DD8 02:8DC8: 02 8E     .word ofs_038_3F_0x008E02_03_обработка_состояния_смерти_объекта ; 
+- D 0 - I - 0x008DDA 02:8DCA: FD A2     .word ofs_038_3F_0x00630D_04_обработка_анимации_взрыва_объекта ; 
+- D 0 - I - 0x008DDC 02:8DCC: 05 8E     .word ofs_038_3F_0x00628A_05_удалить_объект ; 
+
+; ******************************************************************************************************************
+
+ofs_038_3F_8DCE_01_активация_объекта:
+C - - J - - 0x008DDE 02:8DCE: A9 01     LDA #$01
+C - - - - - 0x008DE0 02:8DD0: 9D 2C 07  STA ram_состояние_хитбоксов_объектов,X
+C - - - - - 0x008DE3 02:8DD3: A9 10     LDA #$10
+C - - - - - 0x008DE5 02:8DD5: 20 95 AB  JSR sub_0x006BA5_выбрать_количество_HP_от_сложности_игры
+C - - - - - 0x008DE8 02:8DD8: BD 1E 07  LDA ram_флаги_объектов,X
+C - - - - - 0x008DEB 02:8DDB: 4A        LSR
+C - - - - - 0x008DEC 02:8DDC: A9 C4     LDA #$C4
+C - - - - - 0x008DEE 02:8DDE: B0 02     BCS bra_8DE2
+C - - - - - 0x008DF0 02:8DE0: A9 3C     LDA #$3C
+bra_8DE2:
+C - - - - - 0x008DF2 02:8DE2: 9D 3C 05  STA ram_позиция_x_спрайта_объекта_или_пули,X
+C - - - - - 0x008DF5 02:8DE5: A9 27     LDA #$27
+C - - - - - 0x008DF7 02:8DE7: 9D 22 05  STA ram_позиция_y_спрайта_объекта_или_пули,X
+                                        STA ram_счетчики_для_объектов,X
+                                        JMP loc_0x0062E7_увеличить_состояние_объекта
+
+; ******************************************************************************************************************
+
+ofs_038_3F_8DED_02:
+C - - J - - 0x008DFD 02:8DED: A9 01     LDA #$01
+C - - - - - 0x008DFF 02:8DEF: 9D 08 05  STA ram_кадр_объекта_или_пули,X
+C - - - - - 0x008E02 02:8DF2: DE E6 06  DEC ram_счетчики_для_объектов,X
+C - - - - - 0x008E05 02:8DF5: D0 0A     BNE bra_8E01_RTS
+C - - - - - 0x008E07 02:8DF7: A0 56     LDY #con_obj_id_42  ; ползающая слизь
+C - - - - - 0x008E09 02:8DF9: 20 C8 AB  JSR loc_0x006BD8_поиск_пустого_слота_и_попытка_создать_новый_объект_на_позиции_текущего_объекта
+C - - - - - 0x008E0C 02:8DFC: A9 A0     LDA #$A0
+C - - - - - 0x008E0E 02:8DFE: 9D E6 06  STA ram_счетчики_для_объектов,X
+bra_8E01_RTS:
+C - - - - - 0x008E11 02:8E01: 60        RTS
+
+; ==================================================================================================================
+;  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+; ==================================================================================================================
+
+_off001_0x008E18_40_босс_7_большой_красный_шар:
+- D 0 - I - 0x008E18 02:8E08: 14 8E     .word ofs_038_40_8E14_01_активация_объекта ; 
+- D 0 - I - 0x008E1A 02:8E0A: 23 8E     .word ofs_038_40_8E23_02 ; 
+- D 0 - I - 0x008E1C 02:8E0C: 39 8E     .word ofs_038_40_8E39_03 ; 
+- D 0 - I - 0x008E1E 02:8E0E: 9A A2     .word ofs_038_40_0x0062AA_04_обработка_состояния_смерти_объекта ; 
+- D 0 - I - 0x008E20 02:8E10: FD A2     .word ofs_038_40_0x00630D_05_обработка_анимации_взрыва_объекта ; 
+- D 0 - I - 0x008E22 02:8E12: 3D A3     .word ofs_038_40_0x00628A_06_удалить_объект ;
+
+; ******************************************************************************************************************
+
+ofs_038_40_8E14_01_активация_объекта:
+C - - J - - 0x008E24 02:8E14: A9 03     LDA #$03
+C - - - - - 0x008E26 02:8E16: 9D 76 06  STA ram_жизни_объектов_8bit,X
+C - - - - - 0x008E29 02:8E19: A9 02     LDA #$02
+C - - - - - 0x008E2B 02:8E1B: 9D 56 05  STA ram_атрибуты_спрайта_объекта_или_пули,X
+C - - - - - 0x008E2E 02:8E1E: A9 28     LDA #$28    ; счетчик
+                                        STA ram_счетчики_для_объектов,X
+                                        JMP loc_0x0062E7_увеличить_состояние_объекта
+
+; ******************************************************************************************************************
+
+ofs_038_40_8E23_02:
+C - - J - - 0x008E33 02:8E23: A0 11     LDY #$11
+C - - - - - 0x008E35 02:8E25: 20 FD AB  JSR sub_0x006C0D
+C - - - - - 0x008E38 02:8E28: DE E6 06  DEC ram_счетчики_для_объектов,X
+C - - - - - 0x008E3B 02:8E2B: D0 0B     BNE bra_8E38_RTS
+C - - - - - 0x008E3D 02:8E2D: 20 0B AB  JSR sub_0x006B1B_выбрать_ближайшего_игрока_по_оси_x
+C - - - - - 0x008E40 02:8E30: A0 07     LDY #$07
+C - - - - - 0x008E42 02:8E32: 20 57 A9  JSR sub_0x006967
+C - - - - - 0x008E45 02:8E35: 4C D7 A2  JMP loc_0x0062E7_увеличить_состояние_объекта
+bra_8E38_RTS:
+C - - - - - 0x008E48 02:8E38: 60        RTS
+
+; ******************************************************************************************************************
+
+ofs_038_40_8E39_03:
+C - - J - - 0x008E49 02:8E39: A0 11     LDY #$11
+C - - - - - 0x008E4B 02:8E3B: 20 FD AB  JSR sub_0x006C0D
+C - - - - - 0x008E4E 02:8E3E: 4C D3 A6  JMP loc_0x0066E3_обработка_позиции_Y_X_объекта_от_скорости
+
+; ==================================================================================================================
+;  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+; ==================================================================================================================
+
+_off001_0x008E51_41_босс_7_летающие_шипы:
+- D 0 - I - 0x008E51 02:8E41: 4B 8E     .word ofs_038_41_8E4B_01_активация_объекта ; 
+- D 0 - I - 0x008E53 02:8E43: 82 8E     .word ofs_038_41_8E82_02 ; 
+- D 0 - I - 0x008E55 02:8E45: 9A A2     .word ofs_038_41_0x0062AA_03_обработка_состояния_смерти_объекта ; 
+- D 0 - I - 0x008E57 02:8E47: FD A2     .word ofs_038_41_0x00630D_04_обработка_анимации_взрыва_объекта ; 
+- D 0 - I - 0x008E59 02:8E49: 3D A3     .word ofs_038_41_0x00628A_05_удалить_объект ; 
+
+; ******************************************************************************************************************
+
+ofs_038_41_8E4B_01_активация_объекта:
+C - - J - - 0x008E5B 02:8E4B: 20 0B AB  JSR sub_0x006B1B_выбрать_ближайшего_игрока_по_оси_x
+C - - - - - 0x008E5E 02:8E4E: A0 06     LDY #$06
+C - - - - - 0x008E60 02:8E50: 84 06     STY ram_0006
+C - - - - - 0x008E62 02:8E52: 20 AE AA  JSR sub_0x006ABE_копировать_позиции_спрайта
+C - - - - - 0x008E65 02:8E55: 20 F0 F4  JSR sub_0x01F500
+C - - - - - 0x008E68 02:8E58: BC 1E 07  LDY ram_флаги_объектов,X
+C - - - - - 0x008E6B 02:8E5B: B9 7F 8E  LDA tbl_8E7F,Y
+C - - - - - 0x008E6E 02:8E5E: 18        CLC
+C - - - - - 0x008E6F 02:8E5F: 65 0C     ADC ram_000C
+C - - - - - 0x008E71 02:8E61: C9 18     CMP #$18
+C - - - - - 0x008E73 02:8E63: 90 02     BCC bra_8E67
+- - - - - - 0x008E75 02:8E65: A9 00     LDA #$00
+bra_8E67:
+C - - - - - 0x008E77 02:8E67: 9D 48 07  STA ram_скролл_объекта_Y,X
+C - - - - - 0x008E7A 02:8E6A: A0 06     LDY #$06
+C - - - - - 0x008E7C 02:8E6C: 20 23 A9  JSR sub_0x006933
+C - - - - - 0x008E7F 02:8E6F: A9 02     LDA #$02
+C - - - - - 0x008E81 02:8E71: 9D 56 05  STA ram_атрибуты_спрайта_объекта_или_пули,X
+C - - - - - 0x008E84 02:8E74: A9 20     LDA #$20
+C - - - - - 0x008E86 02:8E76: 9D 56 07  STA ram_скролл_объекта_X,X
+C - - - - - 0x008E89 02:8E79: A9 2C     LDA #$2C    ;    счетчик
+                                        STA ram_счетчики_для_объектов,X
+                                        JMP loc_0x0062E7_увеличить_состояние_объекта
+
+tbl_8E7F:
+- D 0 - - - 0x008E8F 02:8E7F: 00        .byte $00   ; 00 
+- D 0 - - - 0x008E90 02:8E80: 04        .byte $04   ; 01 
+- D 0 - - - 0x008E91 02:8E81: FC        .byte $FC   ; 02 
+
+; ******************************************************************************************************************
+
+ofs_038_41_8E82_02:
+C - - J - - 0x008E92 02:8E82: A0 12     LDY #$12
+C - - - - - 0x008E94 02:8E84: 20 FD AB  JSR sub_0x006C0D
+C - - - - - 0x008E97 02:8E87: BD 56 07  LDA ram_скролл_объекта_X,X
+C - - - - - 0x008E9A 02:8E8A: F0 15     BEQ bra_8EA1
+C - - - - - 0x008E9C 02:8E8C: DE E6 06  DEC ram_счетчики_для_объектов,X
+C - - - - - 0x008E9F 02:8E8F: D0 10     BNE bra_8EA1
+C - - - - - 0x008EA1 02:8E91: A9 06     LDA #$06
+C - - - - - 0x008EA3 02:8E93: 9D E6 06  STA ram_счетчики_для_объектов,X
+C - - - - - 0x008EA6 02:8E96: 20 0B AB  JSR sub_0x006B1B_выбрать_ближайшего_игрока_по_оси_x
+C - - - - - 0x008EA9 02:8E99: A0 06     LDY #$06
+C - - - - - 0x008EAB 02:8E9B: 20 23 A9  JSR sub_0x006933
+C - - - - - 0x008EAE 02:8E9E: DE 56 07  DEC ram_скролл_объекта_X,X
+bra_8EA1:
+C - - - - - 0x008EB1 02:8EA1: 4C D3 A6  JMP loc_0x0066E3_обработка_позиции_Y_X_объекта_от_скорости
+
+; ==================================================================================================================
+;  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+; ==================================================================================================================
+
+_off001_0x008EB4_42_босс_7_ползающая_слизь:
+- D 0 - I - 0x008EB4 02:8EA4: B8 8E     .word ofs_038_42_8EB8_01_активация_объекта ; 
+- D 0 - I - 0x008EB6 02:8EA6: C0 8E     .word ofs_038_42_8EC0_02 ; 
+- D 0 - I - 0x008EB8 02:8EA8: DA 8E     .word ofs_038_42_8EDA_03 ; 
+- D 0 - I - 0x008EBA 02:8EAA: 01 8F     .word ofs_038_42_8F01_04 ; 
+- D 0 - I - 0x008EBC 02:8EAC: 51 8F     .word ofs_038_42_8F51_05 ; 
+- D 0 - I - 0x008EBE 02:8EAE: 70 8F     .word ofs_038_42_8F70_06 ; 
+- D 0 - I - 0x008EC0 02:8EB0: 92 8F     .word ofs_038_42_8F92_07 ; 
+- D 0 - I - 0x008EC2 02:8EB2: 9A A2     .word ofs_038_42_0x0062AA_08_обработка_состояния_смерти_объекта ; 
+- D 0 - I - 0x008EC4 02:8EB4: FD A2     .word ofs_038_42_0x00630D_09_обработка_анимации_взрыва_объекта ; 
+- D 0 - I - 0x008EC6 02:8EB6: 3D A3     .word ofs_038_42_0x00628A_0A_удалить_объект ; 
+
+; ******************************************************************************************************************
+
+ofs_038_42_8EB8_01_активация_объекта:
+C - - J - - 0x008EC8 02:8EB8: 20 9E 8F  JSR sub_8F9E
+C - - - - - 0x008ECB 02:8EBB: A9 0C     LDA #$0C    ; счетчик
+                                        STA ram_счетчики_для_объектов,X
+                                        JMP loc_0x0062E7_увеличить_состояние_объекта
+
+; ******************************************************************************************************************
+
+ofs_038_42_8EC0_02:
+C - - J - - 0x008ED0 02:8EC0: DE E6 06  DEC ram_счетчики_для_объектов,X
+C - - - - - 0x008ED3 02:8EC3: D0 3B     BNE bra_8F00_RTS
+C - - - - - 0x008ED5 02:8EC5: A9 0C     LDA #$0C
+C - - - - - 0x008ED7 02:8EC7: 9D E6 06  STA ram_счетчики_для_объектов,X
+C - - - - - 0x008EDA 02:8ECA: FE 10 07  INC ram_счетчик_анимации_взрыва_объекта,X
+C - - - - - 0x008EDD 02:8ECD: 20 9E 8F  JSR sub_8F9E
+C - - - - - 0x008EE0 02:8ED0: BD 10 07  LDA ram_счетчик_анимации_взрыва_объекта,X
+C - - - - - 0x008EE3 02:8ED3: C9 03     CMP #$03
+C - - - - - 0x008EE5 02:8ED5: 90 29     BCC bra_8F00_RTS
+C - - - - - 0x008EE7 02:8ED7: 4C D7 A2  JMP loc_0x0062E7_увеличить_состояние_объекта
+
+; ******************************************************************************************************************
+
+ofs_038_42_8EDA_03:
+C - - J - - 0x008EEA 02:8EDA: A9 10     LDA #$10
+C - - - - - 0x008EEC 02:8EDC: 20 CB AA  JSR sub_0x006ADB_прибавить_скорость_y
+C - - - - - 0x008EEF 02:8EDF: 20 D3 A6  JSR sub_0x0066E3_обработка_позиции_Y_X_объекта_от_скорости
+C - - - - - 0x008EF2 02:8EE2: BD 22 05  LDA ram_позиция_y_спрайта_объекта_или_пули,X
+C - - - - - 0x008EF5 02:8EE5: C9 4C     CMP #$4C
+C - - - - - 0x008EF7 02:8EE7: 90 17     BCC bra_8F00_RTS
+C - - - - - 0x008EF9 02:8EE9: A9 4C     LDA #$4C
+C - - - - - 0x008EFB 02:8EEB: 9D 22 05  STA ram_позиция_y_спрайта_объекта_или_пули,X
+C - - - - - 0x008EFE 02:8EEE: A9 05     LDA #$05
+C - - - - - 0x008F00 02:8EF0: 9D 56 07  STA ram_скролл_объекта_X,X
+C - - - - - 0x008F03 02:8EF3: 20 CA A7  JSR sub_0x0067DA_очистить_скорость_Y
+C - - - - - 0x008F06 02:8EF6: A9 00     LDA #$00
+C - - - - - 0x008F08 02:8EF8: 9D 10 07  STA ram_счетчик_анимации_взрыва_объекта,X
+C - - - - - 0x008F0B 02:8EFB: A9 10     LDA #$10    ; счетчик
+                                        STA ram_счетчики_для_объектов,X
+                                        JMP loc_0x0062E7_увеличить_состояние_объекта
+bra_8F00_RTS:
+C - - - - - 0x008F10 02:8F00: 60        RTS
+
+; ******************************************************************************************************************
+
+ofs_038_42_8F01_04:
+C - - J - - 0x008F11 02:8F01: A0 13     LDY #$13
+C - - - - - 0x008F13 02:8F03: 20 FD AB  JSR sub_0x006C0D
+C - - - - - 0x008F16 02:8F06: BD 1E 07  LDA ram_флаги_объектов,X
+C - - - - - 0x008F19 02:8F09: 29 01     AND #$01
+C - - - - - 0x008F1B 02:8F0B: 0A        ASL
+C - - - - - 0x008F1C 02:8F0C: 85 00     STA ram_0000
+C - - - - - 0x008F1E 02:8F0E: BD CA 06  LDA ram_скорость_объектов_x_старш,X
+C - - - - - 0x008F21 02:8F11: 2A        ROL
+C - - - - - 0x008F22 02:8F12: 2A        ROL
+C - - - - - 0x008F23 02:8F13: 29 01     AND #$01
+C - - - - - 0x008F25 02:8F15: 18        CLC
+C - - - - - 0x008F26 02:8F16: 65 00     ADC ram_0000    ; 00/02
+C - - - - - 0x008F28 02:8F18: A8        TAY
+C - - - - - 0x008F29 02:8F19: BD 3C 05  LDA ram_позиция_x_спрайта_объекта_или_пули,X
+C - - - - - 0x008F2C 02:8F1C: D9 4D 8F  CMP tbl_8F4D_позиция_X_спрайта_объекта,Y
+C - - - - - 0x008F2F 02:8F1F: 6A        ROR
+C - - - - - 0x008F30 02:8F20: 5D CA 06  EOR ram_скорость_объектов_x_старш,X
+C - - - - - 0x008F33 02:8F23: 10 03     BPL bra_8F28
+C - - - - - 0x008F35 02:8F25: 20 DC A7  JSR sub_0x0067EC_отразить_скорость_по_X
+bra_8F28:
+C - - - - - 0x008F38 02:8F28: 20 D3 A6  JSR sub_0x0066E3_обработка_позиции_Y_X_объекта_от_скорости
+C - - - - - 0x008F3B 02:8F2B: DE E6 06  DEC ram_счетчики_для_объектов,X
+C - - - - - 0x008F3E 02:8F2E: D0 D0     BNE bra_8F4A_RTS
+C - - - - - 0x008F40 02:8F30: A9 30     LDA #$30
+C - - - - - 0x008F42 02:8F32: 9D E6 06  STA ram_счетчики_для_объектов,X
+C - - - - - 0x008F45 02:8F35: 20 C9 8F  JSR sub_8FC9
+C - - - - - 0x008F48 02:8F38: DE 56 07  DEC ram_скролл_объекта_X,X
+C - - - - - 0x008F4B 02:8F3B: D0 C3     BNE bra_8F4A_RTS
+C - - - - - 0x008F4D 02:8F3D: 20 D3 A7  JSR sub_0x0067E3_очистить_скорость_X
+C - - - - - 0x008F50 02:8F40: A9 04     LDA #$04
+C - - - - - 0x008F52 02:8F42: 9D 10 07  STA ram_счетчик_анимации_взрыва_объекта,X
+C - - - - - 0x008F55 02:8F45: 20 9A 8F  JSR sub_8F9A
+C - - - - - 0x008F58 02:8F48: A9 0C     LDA #$0C    ; счетчик
+                                        STA ram_счетчики_для_объектов,X
+                                        JMP loc_0x0062E7_увеличить_состояние_объекта
+bra_8F4A_RTS:
+                                        RTS
+
+tbl_8F4D_позиция_X_спрайта_объекта:
+; 00 
+- D 0 - - - 0x008F5D 02:8F4D: 60        .byte $60   ; 00 
+- D 0 - - - 0x008F5E 02:8F4E: 20        .byte $20   ; 01 
+; 01 
+- D 0 - - - 0x008F5F 02:8F4F: E0        .byte $E0   ; 00 
+- D 0 - - - 0x008F60 02:8F50: A0        .byte $A0   ; 01 
+
+; ******************************************************************************************************************
+
+ofs_038_42_8F51_05:
+C - - J - - 0x008F61 02:8F51: DE E6 06  DEC ram_счетчики_для_объектов,X
+C - - - - - 0x008F64 02:8F54: D0 AA     BNE bra_8F4A_RTS
+C - - - - - 0x008F66 02:8F56: A9 0C     LDA #$0C
+C - - - - - 0x008F68 02:8F58: 9D E6 06  STA ram_счетчики_для_объектов,X
+C - - - - - 0x008F6B 02:8F5B: FE 10 07  INC ram_счетчик_анимации_взрыва_объекта,X
+C - - - - - 0x008F6E 02:8F5E: BD 10 07  LDA ram_счетчик_анимации_взрыва_объекта,X
+C - - - - - 0x008F71 02:8F61: C9 07     CMP #$07
+C - - - - - 0x008F73 02:8F63: B0 03     BCS bra_8F68
+C - - - - - 0x008F75 02:8F65: 4C 9A 8F  JMP loc_8F9A
+bra_8F68:
+C - - - - - 0x008F78 02:8F68: A9 97     LDA #$97
+C - - - - - 0x008F7A 02:8F6A: 9D 08 05  STA ram_кадр_объекта_или_пули,X
+C - - - - - 0x008F7D 02:8F6D: 4C D7 A2  JMP loc_0x0062E7_увеличить_состояние_объекта
+
+; ******************************************************************************************************************
+
+ofs_038_42_8F70_06:
+C - - J - - 0x008F80 02:8F70: A9 10     LDA #$10
+C - - - - - 0x008F82 02:8F72: 20 CB AA  JSR sub_0x006ADB_прибавить_скорость_y
+C - - - - - 0x008F85 02:8F75: 20 D3 A6  JSR sub_0x0066E3_обработка_позиции_Y_X_объекта_от_скорости
+C - - - - - 0x008F88 02:8F78: A9 0C     LDA #$0C
+C - - - - - 0x008F8A 02:8F7A: 20 0A A8  JSR sub_0x00681A_проверить_есть_или_нет_преграда_на_пути
+C - - - - - 0x008F8D 02:8F7D: F0 81     BEQ bra_8F4A_RTS
+C - - - - - 0x008F8F 02:8F7F: 20 3D A8  JSR sub_0x00684D_установить_Y_позицию_объекта_исходя_из_поверхности
+C - - - - - 0x008F92 02:8F82: 20 CA A7  JSR sub_0x0067DA_очистить_скорость_Y
+C - - - - - 0x008F95 02:8F85: A0 02     LDY #$02
+C - - - - - 0x008F97 02:8F87: 20 CB 8F  JSR sub_8FCB
+C - - - - - 0x008F9A 02:8F8A: A9 00     LDA #$00
+C - - - - - 0x008F9C 02:8F8C: 9D 10 07  STA ram_счетчик_анимации_взрыва_объекта,X
+C - - - - - 0x008F9F 02:8F8F: 4C D7 A2  JMP loc_0x0062E7_увеличить_состояние_объекта
+
+; ******************************************************************************************************************
+
+ofs_038_42_8F92_07:
+C - - J - - 0x008FA2 02:8F92: A0 14     LDY #$14
+C - - - - - 0x008FA4 02:8F94: 20 FD AB  JSR sub_0x006C0D
+C - - - - - 0x008FA7 02:8F97: 4C D3 A6  JMP loc_0x0066E3_обработка_позиции_Y_X_объекта_от_скорости
+
+; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+sub_8F9A:
+loc_8F9A:
+C D 0 - - - 0x008FAA 02:8F9A: A9 96     LDA #$96
+C - - - - - 0x008FAC 02:8F9C: D0 02     BNE bra_8FA0    ; jmp
+sub_8F9E:
+C - - - - - 0x008FAE 02:8F9E: A9 94     LDA #$94
+bra_8FA0:
+C - - - - - 0x008FB0 02:8FA0: 18        CLC
+C - - - - - 0x008FB1 02:8FA1: 7D 10 07  ADC ram_счетчик_анимации_взрыва_объекта,X
+C - - - - - 0x008FB4 02:8FA4: 9D 08 05  STA ram_кадр_объекта_или_пули,X
+C - - - - - 0x008FB7 02:8FA7: BC 10 07  LDY ram_счетчик_анимации_взрыва_объекта,X
+C - - - - - 0x008FBA 02:8FAA: BD 22 05  LDA ram_позиция_y_спрайта_объекта_или_пули,X
+C - - - - - 0x008FBD 02:8FAD: 18        CLC
+C - - - - - 0x008FBE 02:8FAE: 79 C2 8F  ADC tbl_8FC2_добавочная_позиция_Y_спрайта,Y
+C - - - - - 0x008FC1 02:8FB1: 9D 22 05  STA ram_позиция_y_спрайта_объекта_или_пули,X
+C - - - - - 0x008FC4 02:8FB4: BD 1E 07  LDA ram_флаги_объектов,X
+C - - - - - 0x008FC7 02:8FB7: 4A        LSR
+loc_8FB8:
+C D 0 - - - 0x008FC8 02:8FB8: A9 03     LDA #$03
+C - - - - - 0x008FCA 02:8FBA: 90 02     BCC bra_8FBE
+C - - - - - 0x008FCC 02:8FBC: A9 43     LDA #$43
+bra_8FBE:
+C - - - - - 0x008FCE 02:8FBE: 9D 56 05  STA ram_атрибуты_спрайта_объекта_или_пули,X
+C - - - - - 0x008FD1 02:8FC1: 60        RTS
+
+tbl_8FC2_добавочная_позиция_Y_спрайта:
+- D 0 - - - 0x008FD2 02:8FC2: 00        .byte $00   ; 00 
+- D 0 - - - 0x008FD3 02:8FC3: 04        .byte $04   ; 01 
+- D 0 - - - 0x008FD4 02:8FC4: 08        .byte $08   ; 02 
+- D 0 - - - 0x008FD5 02:8FC5: 04        .byte $04   ; 03 
+- D 0 - - - 0x008FD6 02:8FC6: 04        .byte $04   ; 04 
+- D 0 - - - 0x008FD7 02:8FC7: 08        .byte $08   ; 05 
+- D 0 - - - 0x008FD8 02:8FC8: 02        .byte $02   ; 06 
+
+; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+sub_8FC9:
+C - - - - - 0x008FD9 02:8FC9: A0 00     LDY #$00
+sub_8FCB:
+C - - - - - 0x008FDB 02:8FCB: B9 EE 8F  LDA tbl_8FEE_скорость_X,Y
+C - - - - - 0x008FDE 02:8FCE: 9D BC 06  STA ram_скорость_объектов_x_младш,X
+C - - - - - 0x008FE1 02:8FD1: B9 EF 8F  LDA tbl_8FEE_скорость_X + $01,Y
+C - - - - - 0x008FE4 02:8FD4: 9D CA 06  STA ram_скорость_объектов_x_старш,X
+C - - - - - 0x008FE7 02:8FD7: 20 0B AB  JSR sub_0x006B1B_выбрать_ближайшего_игрока_по_оси_x
+C - - - - - 0x008FEA 02:8FDA: BD 3C 05  LDA ram_позиция_x_спрайта_объекта_или_пули,X
+C - - - - - 0x008FED 02:8FDD: D9 4C 05  CMP ram_позиция_x_спрайта_игрока,Y
+C - - - - - 0x008FF0 02:8FE0: 90 03     BCC bra_8FE5
+C - - - - - 0x008FF2 02:8FE2: 20 DC A7  JSR sub_0x0067EC_отразить_скорость_по_X
+bra_8FE5:
+C - - - - - 0x008FF5 02:8FE5: BD CA 06  LDA ram_скорость_объектов_x_старш,X
+C - - - - - 0x008FF8 02:8FE8: 49 80     EOR #$80
+C - - - - - 0x008FFA 02:8FEA: 0A        ASL
+C - - - - - 0x008FFB 02:8FEB: 4C B8 8F  JMP loc_8FB8
+
+tbl_8FEE_скорость_X:
+- D 0 - - - 0x008FFE 02:8FEE: 80 00     .word $0080 ; 00 
+- D 0 - - - 0x009000 02:8FF0: 80 01     .word $0180 ; 02 
+
+; ==================================================================================================================
+;  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+; ==================================================================================================================
+
+_off001_0x00847F_1C_босс_8_летящий_красный_шип:
+- D 0 - I - 0x00847F 02:846F: 77 84     .word ofs_038_1C_8477_01_активация_объекта ; 
+- D 0 - I - 0x008481 02:8471: 92 84     .word ofs_038_1C_8492_02 ; 
+- D 0 - I - 0x008483 02:8473: A0 84     .word ofs_038_1C_84A0_03 ; 
+- D 0 - I - 0x008485 02:8475: 75 A2     .word ofs_038_1C_0x00628A_04_удалить_объект ; 
+
+; ******************************************************************************************************************
+
+ofs_038_1C_8477_01_активация_объекта:
+C - - J - - 0x008487 02:8477: A9 80     LDA #$80
+C - - - - - 0x008489 02:8479: 9D 2C 07  STA ram_состояние_хитбоксов_объектов,X
+C - - - - - 0x00848C 02:847C: A9 F1     LDA #con__hp_F1
+C - - - - - 0x00848E 02:847E: 9D 76 06  STA ram_жизни_объектов_32bit,X
+C - - - - - 0x008491 02:8481: BC 48 07  LDY ram_скролл_объекта_Y,X
+C - - - - - 0x008494 02:8484: B9 8A 84  LDA tbl_848A_счетчики,Y
+                                        STA ram_счетчики_для_объектов,X
+                                        JMP loc_0x0062E7_увеличить_состояние_объекта
+
+tbl_848A_счетчики:
+- D 0 - - - 0x00849A 02:848A: 1C        .byte $1C   ; 00 
+- D 0 - - - 0x00849B 02:848B: 18        .byte $18   ; 01 
+- D 0 - - - 0x00849C 02:848C: 14        .byte $14   ; 02 
+- D 0 - - - 0x00849D 02:848D: 10        .byte $10   ; 03 
+- D 0 - - - 0x00849E 02:848E: 0C        .byte $0C   ; 04 
+- D 0 - - - 0x00849F 02:848F: 08        .byte $08   ; 05 
+- D 0 - - - 0x0084A0 02:8490: 04        .byte $04   ; 06 
+- D 0 - - - 0x0084A1 02:8491: 01        .byte $01   ; 07 
+
+; ******************************************************************************************************************
+
+ofs_038_1C_8492_02:
+C - - J - - 0x0084A2 02:8492: DE E6 06  DEC ram_счетчики_для_объектов,X
+C - - - - - 0x0084A5 02:8495: D0 08     BNE bra_849F_RTS
+C - - - - - 0x0084A7 02:8497: A9 02     LDA #$02
+C - - - - - 0x0084A9 02:8499: 9D 56 05  STA ram_атрибуты_спрайта_объекта_или_пули,X
+C - - - - - 0x0084AC 02:849C: 4C D7 A2  JMP loc_0x0062E7_увеличить_состояние_объекта
+bra_849F_RTS:
+C - - - - - 0x0084AF 02:849F: 60        RTS
+
+; ******************************************************************************************************************
+
+ofs_038_1C_84A0_03:
+C - - J - - 0x0084B0 02:84A0: A0 16     LDY #$16
+C - - - - - 0x0084B2 02:84A2: 20 FD AB  JSR sub_0x006C0D
+C - - - - - 0x0084B5 02:84A5: 20 D3 A6  JSR sub_0x0066E3_обработка_позиции_Y_X_объекта_от_скорости
+C - - - - - 0x0084B8 02:84A8: 60        RTS
+
+; ==================================================================================================================
+;  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+; ==================================================================================================================
+
+_off001_0x0084B9_28_босс_8_летящий_синий_шип:
+- D 0 - I - 0x0084B9 02:84A9: B5 84     .word ofs_038_28_84B5_01_активация_объекта ; 
+- D 0 - I - 0x0084BB 02:84AB: EE 84     .word ofs_038_28_84EE_02 ; 
+- D 0 - I - 0x0084BD 02:84AD: 0B 85     .word ofs_038_28_850B_03 ; 
+- D 0 - I - 0x0084BF 02:84AF: 9A A2     .word ofs_038_28_0x0062AA_04_обработка_состояния_смерти_объекта ; 
+- D 0 - I - 0x0084C1 02:84B1: FD A2     .word ofs_038_28_0x00630D_05_обработка_анимации_взрыва_объекта ; 
+- D 0 - I - 0x0084C3 02:84B3: 3D A3     .word ofs_038_28_0x00628A_06_удалить_объект ; 
+
+; ******************************************************************************************************************
+
+ofs_038_28_84B5_01_активация_объекта:
+C - - J - - 0x0084C5 02:84B5: A9 03     LDA #$03
+C - - - - - 0x0084C7 02:84B7: 9D 56 05  STA ram_атрибуты_спрайта_объекта_или_пули,X
+C - - - - - 0x0084CA 02:84BA: A9 B8     LDA #$B8
+C - - - - - 0x0084CC 02:84BC: 9D 22 05  STA ram_позиция_y_спрайта_объекта_или_пули,X
+C - - - - - 0x0084CF 02:84BF: A9 D0     LDA #$D0
+C - - - - - 0x0084D1 02:84C1: 9D 3C 05  STA ram_позиция_x_спрайта_объекта_или_пули,X
+C - - - - - 0x0084D4 02:84C4: A5 23     LDA ram_рандом_байт
+C - - - - - 0x0084D6 02:84C6: 29 07     AND #$07
+C - - - - - 0x0084D8 02:84C8: 0A        ASL
+C - - - - - 0x0084D9 02:84C9: A8        TAY
+C - - - - - 0x0084DA 02:84CA: B9 13 85  LDA tbl_8513_скорость_Y,Y
+C - - - - - 0x0084DD 02:84CD: 9D A0 06  STA ram_скорость_объектов_y_младш,X
+C - - - - - 0x0084E0 02:84D0: B9 14 85  LDA tbl_8513_скорость_Y + $01,Y
+C - - - - - 0x0084E3 02:84D3: 9D AE 06  STA ram_скорость_объектов_y_старш,X
+C - - - - - 0x0084E6 02:84D6: A5 23     LDA ram_рандом_байт
+C - - - - - 0x0084E8 02:84D8: 18        CLC
+C - - - - - 0x0084E9 02:84D9: 65 1B     ADC ram_счетчик_кадров
+C - - - - - 0x0084EB 02:84DB: 29 07     AND #$07
+C - - - - - 0x0084ED 02:84DD: 0A        ASL
+C - - - - - 0x0084EE 02:84DE: A8        TAY
+C - - - - - 0x0084EF 02:84DF: B9 23 85  LDA tbl_8523_скорость_X,Y
+C - - - - - 0x0084F2 02:84E2: 9D BC 06  STA ram_скорость_объектов_x_младш,X
+C - - - - - 0x0084F5 02:84E5: B9 24 85  LDA tbl_8523_скорость_X + $01,Y
+C - - - - - 0x0084F8 02:84E8: 9D CA 06  STA ram_скорость_объектов_x_старш,X
+C - - - - - 0x0084FB 02:84EB: 4C D7 A2  JMP loc_0x0062E7_увеличить_состояние_объекта
+
+tbl_8513_скорость_Y:
+- D 0 - - - 0x008523 02:8513: C0 F9     .word $F9C0 ; 00 
+- D 0 - - - 0x008525 02:8515: 00 FA     .word $FA00 ; 01 
+- D 0 - - - 0x008527 02:8517: C0 F9     .word $F9C0 ; 02 
+- D 0 - - - 0x008529 02:8519: 00 FA     .word $FA00 ; 03 
+- D 0 - - - 0x00852B 02:851B: C0 F9     .word $F9C0 ; 04 
+- D 0 - - - 0x00852D 02:851D: 00 FA     .word $FA00 ; 05 
+- D 0 - - - 0x00852F 02:851F: C0 F9     .word $F9C0 ; 06 
+- D 0 - - - 0x008531 02:8521: 00 FA     .word $FA00 ; 07 
+
+tbl_8523_скорость_X:
+- D 0 - - - 0x008533 02:8523: 00 FD     .word $FD00 ; 00 
+- D 0 - - - 0x008535 02:8525: 30 FD     .word $FD30 ; 01 
+- D 0 - - - 0x008537 02:8527: 60 FD     .word $FD60 ; 02 
+- D 0 - - - 0x008539 02:8529: 90 FD     .word $FD90 ; 03 
+- D 0 - - - 0x00853B 02:852B: C0 FD     .word $FDC0 ; 04 
+- D 0 - - - 0x00853D 02:852D: F0 FD     .word $FDF0 ; 05 
+- D 0 - - - 0x00853F 02:852F: 20 FE     .word $FE20 ; 06 
+- D 0 - - - 0x008541 02:8531: 50 FE     .word $FE50 ; 07 
+
+; ******************************************************************************************************************
+
+ofs_038_28_84EE_02:
+C - - J - - 0x0084FE 02:84EE: A0 16     LDY #$16
+C - - - - - 0x008500 02:84F0: 20 FD AB  JSR sub_0x006C0D
+C - - - - - 0x008503 02:84F3: A9 20     LDA #$20
+C - - - - - 0x008505 02:84F5: 20 CB AA  JSR sub_0x006ADB_прибавить_скорость_y
+C - - - - - 0x008508 02:84F8: 20 D3 A6  JSR sub_0x0066E3_обработка_позиции_Y_X_объекта_от_скорости
+C - - - - - 0x00850B 02:84FB: BD AE 06  LDA ram_скорость_объектов_y_старш,X
+C - - - - - 0x00850E 02:84FE: 30 0A     BMI bra_850A_RTS
+C - - - - - 0x008510 02:8500: C9 01     CMP #$01
+C - - - - - 0x008512 02:8502: 90 06     BCC bra_850A_RTS
+C - - - - - 0x008514 02:8504: 20 D3 A7  JSR sub_0x0067E3_очистить_скорость_X
+C - - - - - 0x008517 02:8507: 4C D7 A2  JMP loc_0x0062E7_увеличить_состояние_объекта
+bra_850A_RTS:
+C - - - - - 0x00851A 02:850A: 60        RTS
+
+; ******************************************************************************************************************
+
+ofs_038_28_850B_03:
+C - - J - - 0x00851B 02:850B: A0 16     LDY #$16
+C - - - - - 0x00851D 02:850D: 20 FD AB  JSR sub_0x006C0D
+C - - - - - 0x008520 02:8510: 4C D3 A6  JMP loc_0x0066E3_обработка_позиции_Y_X_объекта_от_скорости
+
+; ==================================================================================================================
+;  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+; ==================================================================================================================
+
+_off001_0x0085A4_57_босс_8_глаз:
+- D 0 - I - 0x0085A4 02:8594: AC 85     .word ofs_038_57_85AC_01_активация_объекта ; 
+- D 0 - I - 0x0085A6 02:8596: B9 85     .word ofs_038_57_85B9_02 ; 
+- D 0 - I - 0x0085A8 02:8598: D4 85     .word ofs_038_57_85D4_03 ; 
+- D 0 - I - 0x0085AA 02:859A: 02 86     .word ofs_038_57_8602_04 ; 
+- D 0 - I - 0x0085AC 02:859C: 76 86     .word ofs_038_57_8676_05 ; 
+- D 0 - I - 0x0085AE 02:859E: B3 86     .word ofs_038_57_86B3_06 ; 
+- D 0 - I - 0x0085B0 02:85A0: 07 87     .word ofs_038_57_8707_07 ; 
+- D 0 - I - 0x0085B2 02:85A2: 0D 87     .word ofs_038_57_870D_08 ; 
+- D 0 - I - 0x0085B4 02:85A4: 18 87     .word ofs_038_57_8718_09 ; 
+- D 0 - I - 0x0085B6 02:85A6: 1E 87     .word ofs_038_57_871E_0A ; 
+- D 0 - I - 0x0085B8 02:85A8: F6 A2     .word ofs_038_57_0x006306_0B ; 
+- D 0 - I - 0x0085BA 02:85AA: 37 A3     .word ofs_038_57_0x006347_0C_удалить_объект_босс ; 
+
+; ******************************************************************************************************************
+
+ofs_038_57_85AC_01_активация_объекта:
+C - - J - - 0x0085BC 02:85AC: A9 91     LDA #$91
+C - - - - - 0x0085BE 02:85AE: 9D 2C 07  STA ram_состояние_хитбоксов_объектов,X
+C - - - - - 0x0085C1 02:85B1: A9 F0     LDA #con__hp_F0
+C - - - - - 0x0085C3 02:85B3: 9D 76 06  STA ram_жизни_объектов_32bit,X
+C - - - - - 0x0085C6 02:85B6: 4C D7 A2  JMP loc_0x0062E7_увеличить_состояние_объекта
+
+; ******************************************************************************************************************
+
+ofs_038_57_85B9_02:
+C - - J - - 0x0085C9 02:85B9: A5 61     LDA ram_0061_конфиг_уровня
+C - - - - - 0x0085CB 02:85BB: F0 26     BEQ bra_85E3_RTS
+C - - - - - 0x0085CD 02:85BD: A9 00     LDA #$00
+C - - - - - 0x0085CF 02:85BF: 85 64     STA ram_0064
+C - - - - - 0x0085D1 02:85C1: A9 02     LDA #$02
+C - - - - - 0x0085D3 02:85C3: 85 61     STA ram_0061_конфиг_уровня
+C - - - - - 0x0085D5 02:85C5: A0 50     LDY #$50
+C - - - - - 0x0085D7 02:85C7: 20 30 FA  JSR sub_0x01FA40
+C - - - - - 0x0085DA 02:85CA: A6 10     LDX ram_0010
+C - - - - - 0x0085DC 02:85CC: A9 08     LDA #$08
+C - - - - - 0x0085DE 02:85CE: 9D 48 07  STA ram_скролл_объекта_Y,X
+C - - - - - 0x0085E1 02:85D1: 4C D7 A2  JMP loc_0x0062E7_увеличить_состояние_объекта
+
+; ******************************************************************************************************************
+
+ofs_038_57_85D4_03:
+C - - J - - 0x0085E4 02:85D4: A5 60     LDA ram_0060_unk
+C - - - - - 0x0085E6 02:85D6: 05 70     ORA ram_0070
+C - - - - - 0x0085E8 02:85D8: D0 09     BNE bra_85E3_RTS
+C - - - - - 0x0085EA 02:85DA: DE 48 07  DEC ram_скролл_объекта_Y,X
+C - - - - - 0x0085ED 02:85DD: F0 05     BEQ bra_85E4
+C - - - - - 0x0085EF 02:85DF: A9 00     LDA #$00
+C - - - - - 0x0085F1 02:85E1: 85 6B     STA ram_006B
+bra_85E3_RTS:
+C - - - - - 0x0085F3 02:85E3: 60        RTS
+bra_85E4:
+C - - - - - 0x0085F4 02:85E4: A0 AC     LDY #con_F97C_colors + $2B * $04
+C - - - - - 0x0085F6 02:85E6: 20 64 F9  JSR sub_0x01F974_запись_3х_цветов_с_условием
+C - - - - - 0x0085F9 02:85E9: A6 10     LDX ram_0010
+C - - - - - 0x0085FB 02:85EB: A9 30     LDA #con_sound_30   ; музыка 8й босс
+C - - - - - 0x0085FD 02:85ED: 20 DE FD  JSR sub_0x01FDEE_play_music
+C - - - - - 0x008600 02:85F0: A9 01     LDA #$01
+C - - - - - 0x008602 02:85F2: 9D 72 07  STA ram_0772_obj,X
+C - - - - - 0x008605 02:85F5: 9D 02 07  STA ram_счетчик_анимации_объектов,X
+C - - - - - 0x008608 02:85F8: A9 00     LDA #$00
+C - - - - - 0x00860A 02:85FA: 9D 1E 07  STA ram_флаги_объектов,X
+C - - - - - 0x00860D 02:85FD: A9 40     LDA #$40    ; счетчик
+                                        STA ram_счетчики_для_объектов,X
+                                        JMP loc_0x0062E7_увеличить_состояние_объекта
+
+; ******************************************************************************************************************
+
+ofs_038_57_8602_04:
+C - - J - - 0x008612 02:8602: 20 87 88  JSR sub_8887
+C - - - - - 0x008615 02:8605: 20 99 88  JSR sub_8899
+C - - - - - 0x008618 02:8608: DE E6 06  DEC ram_счетчики_для_объектов,X
+C - - - - - 0x00861B 02:860B: D0 D6     BNE bra_85E3_RTS
+C - - - - - 0x00861D 02:860D: A9 02     LDA #$02
+C - - - - - 0x00861F 02:860F: 85 08     STA ram_0008
+bra_8611_loop:
+C - - - - - 0x008621 02:8611: A0 6E     LDY #con_obj_id_58  ; маленький камень
+C - - - - - 0x008623 02:8613: 20 C8 AB  JSR loc_0x006BD8_поиск_пустого_слота_и_попытка_создать_новый_объект_на_позиции_текущего_объекта
+C - - - - - 0x008626 02:8616: 90 0B     BCC bra_8623
+C - - - - - 0x008628 02:8618: A4 11     LDY ram_0011
+C - - - - - 0x00862A 02:861A: A5 08     LDA ram_0008
+C - - - - - 0x00862C 02:861C: 99 48 07  STA ram_скролл_объекта_Y,Y
+C - - - - - 0x00862F 02:861F: C6 08     DEC ram_0008
+C - - - - - 0x008631 02:8621: 10 EE     BPL bra_8611_loop
+bra_8623:
+C - - - - - 0x008633 02:8623: 20 4C 88  JSR sub_884C
+C - - - - - 0x008636 02:8626: A9 10     LDA #$10
+C - - - - - 0x008638 02:8628: 9D E6 06  STA ram_счетчики_для_объектов,X
+C - - - - - 0x00863B 02:862B: FE 1E 07  INC ram_флаги_объектов,X
+C - - - - - 0x00863E 02:862E: BD 1E 07  LDA ram_флаги_объектов,X
+C - - - - - 0x008641 02:8631: C9 14     CMP #$14
+C - - - - - 0x008643 02:8633: 90 AE     BCC bra_85E3_RTS
+C - - - - - 0x008645 02:8635: A9 01     LDA #con_mirroring_H
+C - - - - - 0x008647 02:8637: 85 26     STA ram_mirroring
+C - - - - - 0x008649 02:8639: A9 C8     LDA #$C8
+C - - - - - 0x00864B 02:863B: 9D 3C 05  STA ram_позиция_x_спрайта_объекта_или_пули,X
+C - - - - - 0x00864E 02:863E: A9 58     LDA #$58
+C - - - - - 0x008650 02:8640: 9D 22 05  STA ram_позиция_y_спрайта_объекта_или_пули,X
+C - - - - - 0x008653 02:8643: A9 01     LDA #$01
+C - - - - - 0x008655 02:8645: 9D 8E 07  STA ram_позиция_объектов_y_старш,X
+C - - - - - 0x008658 02:8648: A9 00     LDA #$00
+C - - - - - 0x00865A 02:864A: 85 FD     STA ram_scroll_X
+C - - - - - 0x00865C 02:864C: 85 FC     STA ram_scroll_Y
+C - - - - - 0x00865E 02:864E: A9 A8     LDA #$A8
+C - - - - - 0x008660 02:8650: 85 FF     STA ram_for_2000
+C - - - - - 0x008662 02:8652: 20 7F FC  JSR sub_0x01FC8F_copy_reg_values
+C - - - - - 0x008665 02:8655: A9 0D     LDA #con_irq_area_8_boss
+C - - - - - 0x008667 02:8657: 85 27     STA ram_irq_handler_hi
+C - - - - - 0x008669 02:8659: 20 9F 88  JSR sub_889F
+C - - - - - 0x00866C 02:865C: 20 CE A9  JSR sub_0x0069DE
+C - - - - - 0x00866F 02:865F: A9 00     LDA #$00
+C - - - - - 0x008671 02:8661: 9D 8E 07  STA ram_позиция_объектов_y_старш,X
+C - - - - - 0x008674 02:8664: A9 E0     LDA #$E0
+C - - - - - 0x008676 02:8666: 9D 22 05  STA ram_позиция_y_спрайта_объекта_или_пули,X
+C - - - - - 0x008679 02:8669: 20 9C 88  JSR sub_889C
+C - - - - - 0x00867C 02:866C: A0 00     LDY #$00
+C - - - - - 0x00867E 02:866E: 20 3B 88  JSR sub_883B
+C - - - - - 0x008681 02:8671: A9 40     LDA #$40    ; счетчик
+                                        STA ram_счетчики_для_объектов,X
+                                        JMP loc_0x0062E7_увеличить_состояние_объекта
+
+; ******************************************************************************************************************
+
+ofs_038_57_8676_05:
+C - - J - - 0x008686 02:8676: A9 01     LDA #$01
+C - - - - - 0x008688 02:8678: 9D 08 05  STA ram_кадр_объекта_или_пули,X
+C - - - - - 0x00868B 02:867B: 20 90 88  JSR sub_8890
+C - - - - - 0x00868E 02:867E: BD 22 05  LDA ram_позиция_y_спрайта_объекта_или_пули,X
+C - - - - - 0x008691 02:8681: C9 5A     CMP #$5A
+C - - - - - 0x008693 02:8683: 90 19     BCC bra_869E
+C - - - - - 0x008695 02:8685: DE E6 06  DEC ram_счетчики_для_объектов,X
+C - - - - - 0x008698 02:8688: D0 13     BNE bra_869D_RTS
+C - - - - - 0x00869A 02:868A: A9 01     LDA #$01
+C - - - - - 0x00869C 02:868C: 9D E6 06  STA ram_счетчики_для_объектов,X
+C - - - - - 0x00869F 02:868F: A0 6E     LDY #con_obj_id_58  ; маленький камень
+C - - - - - 0x0086A1 02:8691: 20 C8 AB  JSR loc_0x006BD8_поиск_пустого_слота_и_попытка_создать_новый_объект_на_позиции_текущего_объекта
+C - - - - - 0x0086A4 02:8694: 90 07     BCC bra_869D_RTS
+C - - - - - 0x0086A6 02:8696: A4 11     LDY ram_0011
+C - - - - - 0x0086A8 02:8698: A9 01     LDA #$01
+C - - - - - 0x0086AA 02:869A: 99 56 07  STA ram_скролл_объекта_X,Y
+bra_869D_RTS:
+C - - - - - 0x0086AD 02:869D: 60        RTS
+bra_869E:
+C - - - - - 0x0086AE 02:869E: A9 30     LDA #$30
+C - - - - - 0x0086B0 02:86A0: 20 99 AB  JSR sub_0x006BA9_выбрать_количество_HP_от_сложности_игры
+C - - - - - 0x0086B3 02:86A3: A9 10     LDA #$10
+C - - - - - 0x0086B5 02:86A5: 9D 2C 07  STA ram_состояние_хитбоксов_объектов,X
+C - - - - - 0x0086B8 02:86A8: 20 32 88  JSR sub_8832
+C - - - - - 0x0086BB 02:86AB: 20 CA A7  JSR sub_0x0067DA_очистить_скорость_Y
+C - - - - - 0x0086BE 02:86AE: A9 20     LDA #$20    ; счетчик
+                                        STA ram_счетчики_для_объектов,X
+                                        JMP loc_0x0062E7_увеличить_состояние_объекта
+
+; ******************************************************************************************************************
+
+ofs_038_57_86B3_06:
+; something during final boss spawn
+C - - J - - 0x0086C3 02:86B3: 20 99 88  JSR sub_8899
+C - - - - - 0x0086C6 02:86B6: DE E6 06  DEC ram_счетчики_для_объектов,X
+C - - - - - 0x0086C9 02:86B9: D0 E2     BNE bra_869D_RTS
+C - - - - - 0x0086CB 02:86BB: A4 1E     LDY ram_index_ppu_buffer
+C - - - - - 0x0086CD 02:86BD: A9 06     LDA #con_buf_mode_06
+C - - - - - 0x0086CF 02:86BF: 99 00 03  STA ram_nmt_buffer,Y
+C - - - - - 0x0086D2 02:86C2: A9 2D     LDA #> $2DD6
+C - - - - - 0x0086D4 02:86C4: 99 01 03  STA ram_nmt_buffer + $01,Y  ; ppu hi
+C - - - - - 0x0086D7 02:86C7: A9 D6     LDA #< $2DD6
+C - - - - - 0x0086D9 02:86C9: 99 02 03  STA ram_nmt_buffer + $02,Y  ; ppu lo
+C - - - - - 0x0086DC 02:86CC: A9 02     LDA #$02    ; tiles counter
+C - - - - - 0x0086DE 02:86CE: 99 03 03  STA ram_nmt_buffer + $03,Y
+C - - - - - 0x0086E1 02:86D1: A9 B9     LDA #$B9    ; tile
+C - - - - - 0x0086E3 02:86D3: 99 04 03  STA ram_nmt_buffer + $04,Y
+C - - - - - 0x0086E6 02:86D6: A9 BA     LDA #$BA    ; tile
+C - - - - - 0x0086E8 02:86D8: 99 05 03  STA ram_nmt_buffer + $05,Y
+C - - - - - 0x0086EB 02:86DB: A9 FF     LDA #$FF    ; close buffer
+C - - - - - 0x0086ED 02:86DD: 99 06 03  STA ram_nmt_buffer + $06,Y
+C - - - - - 0x0086F0 02:86E0: 98        TYA
+C - - - - - 0x0086F1 02:86E1: 18        CLC
+C - - - - - 0x0086F2 02:86E2: 69 07     ADC #$07
+C - - - - - 0x0086F4 02:86E4: 85 1E     STA ram_index_ppu_buffer
+C - - - - - 0x0086F6 02:86E6: A0 B0     LDY #con_F97C_colors + $2C * $04
+C - - - - - 0x0086F8 02:86E8: 20 64 F9  JSR sub_0x01F974_запись_3х_цветов_с_условием
+C - - - - - 0x0086FB 02:86EB: A6 10     LDX ram_0010
+C - - - - - 0x0086FD 02:86ED: A9 20     LDA #$20
+C - - - - - 0x0086FF 02:86EF: 9D 02 07  STA ram_счетчик_анимации_объектов,X
+C - - - - - 0x008702 02:86F2: A9 00     LDA #$00
+C - - - - - 0x008704 02:86F4: 9D 10 07  STA ram_счетчик_анимации_взрыва_объекта,X
+C - - - - - 0x008707 02:86F7: 9D 64 07  STA ram_0764_obj,X
+C - - - - - 0x00870A 02:86FA: A9 06     LDA #$06
+C - - - - - 0x00870C 02:86FC: 9D 56 07  STA ram_скролл_объекта_X,X
+C - - - - - 0x00870F 02:86FF: A9 30     LDA #$30
+C - - - - - 0x008711 02:8701: 9D E6 06  STA ram_счетчики_для_объектов,X
+C - - - - - 0x008714 02:8704: 4C D7 A2  JMP loc_0x0062E7_увеличить_состояние_объекта
+
+; ******************************************************************************************************************
+
+ofs_038_57_8707_07:
+C - - J - - 0x008717 02:8707: 20 27 87  JSR sub_8727
+C - - - - - 0x00871A 02:870A: 4C 99 88  JMP loc_8899
+
+; ******************************************************************************************************************
+
+ofs_038_57_870D_08:
+C - - J - - 0x00871D 02:870D: A0 02     LDY #$02
+C - - - - - 0x00871F 02:870F: 20 3B 88  JSR sub_883B
+C - - - - - 0x008722 02:8712: 20 90 88  JSR sub_8890
+C - - - - - 0x008725 02:8715: 4C B8 A3  JMP loc_0x0063C8_установить_статус_уничтожения_босса_и_убить_все_объекты
+
+; ******************************************************************************************************************
+
+ofs_038_57_8718_09:
+C - - J - - 0x008728 02:8718: 20 90 88  JSR sub_8890
+C - - - - - 0x00872B 02:871B: 4C D8 A3  JMP loc_0x0063E8_большие_взрывы_для_боссов
+
+; ******************************************************************************************************************
+
+ofs_038_57_871E_0A:
+                                        INC ram_002B
+C - - - - - 0x008731 02:8721: 20 32 88  JSR sub_8832
+C - - - - - 0x008734 02:8724: 4C A2 A2  JMP loc_0x0062B2_обработка_состояния_смерти_объекта
+
+; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+sub_8727:
+C - - - - - 0x008737 02:8727: DE E6 06  DEC ram_счетчики_для_объектов,X
+C - - - - - 0x00873A 02:872A: D0 20     BNE bra_874C
+C - - - - - 0x00873C 02:872C: FE 72 07  INC ram_0772_obj,X
+C - - - - - 0x00873F 02:872F: BD 72 07  LDA ram_0772_obj,X
+C - - - - - 0x008742 02:8732: C9 0A     CMP #$0A
+C - - - - - 0x008744 02:8734: A9 14     LDA #$14
+C - - - - - 0x008746 02:8736: 90 07     BCC bra_873F
+C - - - - - 0x008748 02:8738: A9 00     LDA #$00
+C - - - - - 0x00874A 02:873A: 9D 72 07  STA ram_0772_obj,X
+C - - - - - 0x00874D 02:873D: A9 80     LDA #$80
+bra_873F:
+C - - - - - 0x00874F 02:873F: 9D E6 06  STA ram_счетчики_для_объектов,X
+C - - - - - 0x008752 02:8742: A0 37     LDY #con_obj_id_28  ; синий шип на боссе
+C - - - - - 0x008754 02:8744: 84 17     STY ram_0017
+C - - - - - 0x008756 02:8746: 20 08 F7  JSR sub_0x01F718_попытка_найти_свободный_слот_для_объекта___X_слотов
+C - - - - - 0x008759 02:8749: 20 CD AB  JSR sub_0x00ABCD_попытка_создать_новый_объект_на_позиции_текущего_объекта
+bra_874C:
+C - - - - - 0x00875C 02:874C: BD F4 06  LDA ram_счетчкик_жизни_объектов,X
+C - - - - - 0x00875F 02:874F: F0 08     BEQ bra_8759
+C - - - - - 0x008761 02:8751: DE F4 06  DEC ram_счетчкик_жизни_объектов,X
+C - - - - - 0x008764 02:8754: D0 03     BNE bra_8759
+C - - - - - 0x008766 02:8756: 20 F7 87  JSR sub_87F7
+bra_8759:
+C - - - - - 0x008769 02:8759: DE 02 07  DEC ram_счетчик_анимации_объектов,X
+C - - - - - 0x00876C 02:875C: D0 45     BNE bra_87A3_RTS
+C - - - - - 0x00876E 02:875E: BD 64 07  LDA ram_0764_obj,X
+C - - - - - 0x008771 02:8761: D0 24     BNE bra_8787
+C - - - - - 0x008773 02:8763: FE 10 07  INC ram_счетчик_анимации_взрыва_объекта,X
+C - - - - - 0x008776 02:8766: 20 A4 87  JSR sub_87A4
+C - - - - - 0x008779 02:8769: BD 10 07  LDA ram_счетчик_анимации_взрыва_объекта,X
+C - - - - - 0x00877C 02:876C: C9 02     CMP #$02
+C - - - - - 0x00877E 02:876E: A9 08     LDA #$08
+C - - - - - 0x008780 02:8770: 90 2E     BCC bra_87A0
+C - - - - - 0x008782 02:8772: A9 10     LDA #$10
+C - - - - - 0x008784 02:8774: DE 56 07  DEC ram_скролл_объекта_X,X
+C - - - - - 0x008787 02:8777: D0 1D     BNE bra_8796
+C - - - - - 0x008789 02:8779: A9 04     LDA #$04
+C - - - - - 0x00878B 02:877B: 9D F4 06  STA ram_счетчкик_жизни_объектов,X
+C - - - - - 0x00878E 02:877E: A9 06     LDA #$06
+C - - - - - 0x008790 02:8780: 9D 56 07  STA ram_скролл_объекта_X,X
+C - - - - - 0x008793 02:8783: A9 40     LDA #$40
+C - - - - - 0x008795 02:8785: D0 0F     BNE bra_8796    ; jmp
+bra_8787:
+C - - - - - 0x008797 02:8787: DE 10 07  DEC ram_счетчик_анимации_взрыва_объекта,X
+C - - - - - 0x00879A 02:878A: 20 A4 87  JSR sub_87A4
+C - - - - - 0x00879D 02:878D: A9 08     LDA #$08
+C - - - - - 0x00879F 02:878F: BC 10 07  LDY ram_счетчик_анимации_взрыва_объекта,X
+C - - - - - 0x0087A2 02:8792: D0 0C     BNE bra_87A0
+C - - - - - 0x0087A4 02:8794: A9 10     LDA #$10
+bra_8796:
+C - - - - - 0x0087A6 02:8796: A8        TAY
+C - - - - - 0x0087A7 02:8797: BD 64 07  LDA ram_0764_obj,X
+C - - - - - 0x0087AA 02:879A: 49 01     EOR #$01
+C - - - - - 0x0087AC 02:879C: 9D 64 07  STA ram_0764_obj,X
+C - - - - - 0x0087AF 02:879F: 98        TYA
+bra_87A0:
+C - - - - - 0x0087B0 02:87A0: 9D 02 07  STA ram_счетчик_анимации_объектов,X
+bra_87A3_RTS:
+C - - - - - 0x0087B3 02:87A3: 60        RTS
+
+; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+sub_87A4:
+C - - - - - 0x0087B4 02:87A4: BD 10 07  LDA ram_счетчик_анимации_взрыва_объекта,X
+C - - - - - 0x0087B7 02:87A7: C9 03     CMP #$03
+C - - - - - 0x0087B9 02:87A9: 90 02     BCC bra_87AD
+- - - - - - 0x0087BB 02:87AB: A9 02     LDA #$01 * $02
+bra_87AD:
+C - - - - - 0x0087BD 02:87AD: 0A        ASL
+C - - - - - 0x0087BE 02:87AE: A8        TAY
+C - - - - - 0x0087BF 02:87AF: B9 CD 87  LDA tbl_87CD_поинтеры,Y
+C - - - - - 0x0087C2 02:87B2: 85 08     STA ram_0008
+C - - - - - 0x0087C4 02:87B4: B9 CE 87  LDA tbl_87CD_поинтеры + $01,Y
+C - - - - - 0x0087C7 02:87B7: 85 09     STA ram_0009
+C - - - - - 0x0087C9 02:87B9: A0 00     LDY #$00
+C - - - - - 0x0087CB 02:87BB: A6 1E     LDX ram_index_ppu_buffer
+bra_87BD_loop:
+C - - - - - 0x0087CD 02:87BD: B1 08     LDA (ram_0008),Y
+C - - - - - 0x0087CF 02:87BF: 9D 00 03  STA ram_nmt_buffer,X
+C - - - - - 0x0087D2 02:87C2: C8        INY
+C - - - - - 0x0087D3 02:87C3: E8        INX
+C - - - - - 0x0087D4 02:87C4: C9 FF     CMP #$FF
+C - - - - - 0x0087D6 02:87C6: D0 F5     BNE bra_87BD_loop
+C - - - - - 0x0087D8 02:87C8: 86 1E     STX ram_index_ppu_buffer
+C - - - - - 0x0087DA 02:87CA: A6 10     LDX ram_0010
+C - - - - - 0x0087DC 02:87CC: 60        RTS
+
+tbl_87CD_поинтеры:
+- D 0 - - - 0x0087DD 02:87CD: D3 87     .word off_87D3_00
+- D 0 - - - 0x0087DF 02:87CF: DF 87     .word off_87DF_01
+- D 0 - - - 0x0087E1 02:87D1: EB 87     .word off_87EB_02
+
+; _________________________________________________________________________________________________________________
+
+off_87D3_00:
+- D 0 - I - 0x0087E3 02:87D3: 06        .byte con_buf_mode_06   ; 
+
+- D 0 - I - 0x0087E4 02:87D4: 2D 58     .dbyt $2D58 ; ppu address
+- D 0 - I - 0x0087E6 02:87D6: 02        .byte $02   ; counter
+- D 0 - I - 0x0087E7 02:87D7: 0D        .byte $0D, $0E   ; tiles
+
+- D 0 - I - 0x0087E9 02:87D9: 2D 78     .dbyt $2D78 ; ppu address
+- D 0 - I - 0x0087EB 02:87DB: 02        .byte $02   ; counter
+- D 0 - I - 0x0087EC 02:87DC: 16        .byte $16, $17   ; tiles
+
+- D 0 - I - 0x0087EE 02:87DE: FF        .byte $FF   ; end token
+
+; _________________________________________________________________________________________________________________
+
+off_87DF_01:
+- D 0 - I - 0x0087EF 02:87DF: 06        .byte con_buf_mode_06   ; 
+
+- D 0 - I - 0x0087F0 02:87E0: 2D 58     .dbyt $2D58 ; ppu address
+- D 0 - I - 0x0087F2 02:87E2: 02        .byte $02   ; counter
+- D 0 - I - 0x0087F3 02:87E3: C6        .byte $C6, $C7   ; tiles
+
+- D 0 - I - 0x0087F5 02:87E5: 2D 78     .dbyt $2D78 ; ppu address
+- D 0 - I - 0x0087F7 02:87E7: 02        .byte $02   ; counter
+- D 0 - I - 0x0087F8 02:87E8: C8        .byte $C8, $C9   ; tiles
+
+- D 0 - I - 0x0087FA 02:87EA: FF        .byte $FF   ; end token
+
+; _________________________________________________________________________________________________________________
+
+off_87EB_02:
+- D 0 - I - 0x0087FB 02:87EB: 06        .byte con_buf_mode_06   ; 
+
+- D 0 - I - 0x0087FC 02:87EC: 2D 58     .dbyt $2D58 ; ppu address
+- D 0 - I - 0x0087FE 02:87EE: 02        .byte $02   ; counter
+- D 0 - I - 0x0087FF 02:87EF: CA        .byte $CA, $CB   ; tiles
+
+- D 0 - I - 0x008801 02:87F1: 2D 78     .dbyt $2D78 ; ppu address
+- D 0 - I - 0x008803 02:87F3: 02        .byte $02   ; counter
+- D 0 - I - 0x008804 02:87F4: CC        .byte $CC, $CD   ; tiles
+
+- D 0 - I - 0x008806 02:87F6: FF        .byte $FF   ; end token
+
+; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+sub_87F7:
+C - - - - - 0x008807 02:87F7: 20 0B AB  JSR sub_0x006B1B_выбрать_ближайшего_игрока_по_оси_x
+C - - - - - 0x00880A 02:87FA: A0 05     LDY #$05
+C - - - - - 0x00880C 02:87FC: 20 57 A9  JSR sub_0x006967
+C - - - - - 0x00880F 02:87FF: A0 07     LDY #$07
+bra_8801_loop:
+C - - - - - 0x008811 02:8801: 84 08     STY ram_0008
+C - - - - - 0x008813 02:8803: A9 2B     LDY #con_obj_id_1C
+C - - - - - 0x008816 02:8806: 20 C8 AB  JSR loc_0x006BD8_поиск_пустого_слота_и_попытка_создать_новый_объект_на_позиции_текущего_объекта
+C - - - - - 0x008819 02:8809: 90 24     BCC bra_882F
+C - - - - - 0x00881B 02:880B: A4 11     LDY ram_0011
+C - - - - - 0x00881D 02:880D: A5 08     LDA ram_0008
+C - - - - - 0x00881F 02:880F: 99 48 07  STA ram_скролл_объекта_Y,Y
+C - - - - - 0x008822 02:8812: BD A0 06  LDA ram_скорость_объектов_y_младш,X
+C - - - - - 0x008825 02:8815: 99 A0 06  STA ram_скорость_объектов_y_младш,Y
+C - - - - - 0x008828 02:8818: BD AE 06  LDA ram_скорость_объектов_y_старш,X
+C - - - - - 0x00882B 02:881B: 99 AE 06  STA ram_скорость_объектов_y_старш,Y
+C - - - - - 0x00882E 02:881E: BD BC 06  LDA ram_скорость_объектов_x_младш,X
+C - - - - - 0x008831 02:8821: 99 BC 06  STA ram_скорость_объектов_x_младш,Y
+C - - - - - 0x008834 02:8824: BD CA 06  LDA ram_скорость_объектов_x_старш,X
+C - - - - - 0x008837 02:8827: 99 CA 06  STA ram_скорость_объектов_x_старш,Y
+C - - - - - 0x00883A 02:882A: A4 08     LDY ram_0008
+C - - - - - 0x00883C 02:882C: 88        DEY
+C - - - - - 0x00883D 02:882D: 10 D2     BPL bra_8801_loop
+bra_882F:
+C - - - - - 0x00883F 02:882F: 4C C7 A7  JMP loc_0x0067D7_очистить_скорость_X_Y
+
+; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+sub_8832:
+C - - - - - 0x008842 02:8832: A9 00     LDA #$00
+C - - - - - 0x008844 02:8834: 85 FD     STA ram_scroll_X
+C - - - - - 0x008846 02:8836: 85 FA     STA ram_00FA
+C - - - - - 0x008848 02:8838: 85 FC     STA ram_scroll_Y
+C - - - - - 0x00884A 02:883A: 60        RTS
+
+; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+sub_883B:
+C - - - - - 0x00884B 02:883B: B9 48 88  LDA tbl_8848_скорость_Y,Y
+C - - - - - 0x00884E 02:883E: 9D A0 06  STA ram_скорость_объектов_y_младш,X
+C - - - - - 0x008851 02:8841: B9 49 88  LDA tbl_8848_скорость_Y + $01,Y
+C - - - - - 0x008854 02:8844: 9D AE 06  STA ram_скорость_объектов_y_старш,X
+C - - - - - 0x008857 02:8847: 60        RTS
+
+tbl_8848_скорость_Y:
+- D 0 - - - 0x008858 02:8848: C0 FF     .word $FFC0 ; 00 
+- D 0 - - - 0x00885A 02:884A: 40 00     .word $0040 ; 01 
+
+; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+sub_884C:
+C - - - - - 0x00885C 02:884C: A9 00     LDA #$00
+C - - - - - 0x00885E 02:884E: 85 00     STA ram_0000
+C - - - - - 0x008860 02:8850: A4 1E     LDY ram_index_ppu_buffer
+C - - - - - 0x008862 02:8852: A9 03     LDA #con_buf_mode_03
+C - - - - - 0x008864 02:8854: 99 00 03  STA ram_nmt_buffer,Y
+C - - - - - 0x008867 02:8857: BD 1E 07  LDA ram_флаги_объектов,X
+C - - - - - 0x00886A 02:885A: 0A        ASL
+C - - - - - 0x00886B 02:885B: 26 00     ROL ram_0000
+C - - - - - 0x00886D 02:885D: 0A        ASL
+C - - - - - 0x00886E 02:885E: 26 00     ROL ram_0000
+C - - - - - 0x008870 02:8860: 0A        ASL
+C - - - - - 0x008871 02:8861: 26 00     ROL ram_0000
+C - - - - - 0x008873 02:8863: 0A        ASL
+C - - - - - 0x008874 02:8864: 26 00     ROL ram_0000
+C - - - - - 0x008876 02:8866: 0A        ASL
+C - - - - - 0x008877 02:8867: 26 00     ROL ram_0000
+C - - - - - 0x008879 02:8869: 18        CLC
+C - - - - - 0x00887A 02:886A: 69 9C     ADC #< $209C
+C - - - - - 0x00887C 02:886C: 99 02 03  STA ram_nmt_buffer + $02,Y  ; ppu hi
+C - - - - - 0x00887F 02:886F: A5 00     LDA ram_0000
+C - - - - - 0x008881 02:8871: 69 20     ADC #> $209C
+C - - - - - 0x008883 02:8873: 99 01 03  STA ram_nmt_buffer + $01,Y  ; ppu lo
+C - - - - - 0x008886 02:8876: A9 04     LDA #$04    ; counter
+C - - - - - 0x008888 02:8878: 99 03 03  STA ram_nmt_buffer + $03,Y
+C - - - - - 0x00888B 02:887B: A9 00     LDA #$00    ; fill tile
+C - - - - - 0x00888D 02:887D: 99 04 03  STA ram_nmt_buffer + $04,Y
+C - - - - - 0x008890 02:8880: 98        TYA
+C - - - - - 0x008891 02:8881: 18        CLC
+C - - - - - 0x008892 02:8882: 69 05     ADC #$05
+C - - - - - 0x008894 02:8884: 85 1E     STA ram_index_ppu_buffer
+C - - - - - 0x008896 02:8886: 60        RTS
+
+; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+sub_8887:
+C - - - - - 0x008897 02:8887: BD 72 07  LDA ram_0772_obj,X
+C - - - - - 0x00889A 02:888A: F0 03     BEQ bra_888F_RTS
+C - - - - - 0x00889C 02:888C: 4C 6B AB  JMP loc_0x006B7B
+bra_888F_RTS:
+C - - - - - 0x00889F 02:888F: 60        RTS
+
+; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+sub_8890:
+C - - - - - 0x0088A0 02:8890: 20 87 88  JSR sub_8887
+C - - - - - 0x0088A3 02:8893: 20 4F A7  JSR sub_0x00675F
+C - - - - - 0x0088A6 02:8896: 4C 9C 88  JMP loc_889C
+
+; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+sub_8899:
+loc_8899:
+C D 0 - - - 0x0088A9 02:8899: 20 5D A7  JSR sub_0x00676D
+sub_889C:
+loc_889C:
+C D 0 - - - 0x0088AC 02:889C: 20 4F AA  JSR sub_0x006A5F
+sub_889F:
+C - - - - - 0x0088AF 02:889F: A9 F0     LDA #$F0
+C - - - - - 0x0088B1 02:88A1: 38        SEC
+C - - - - - 0x0088B2 02:88A2: E5 F9     SBC ram_00F9
+C - - - - - 0x0088B4 02:88A4: 18        CLC
+C - - - - - 0x0088B5 02:88A5: 69 31     ADC #$31
+C - - - - - 0x0088B7 02:88A7: 85 45     STA ram_номер_сканлинии
+C - - - - - 0x0088B9 02:88A9: A9 05     LDA #$05
+C - - - - - 0x0088BB 02:88AB: 85 46     STA ram_0046
+C - - - - - 0x0088BD 02:88AD: A9 BA     LDA #$BA
+C - - - - - 0x0088BF 02:88AF: 38        SEC
+C - - - - - 0x0088C0 02:88B0: E5 45     SBC ram_номер_сканлинии
+C - - - - - 0x0088C2 02:88B2: 85 47     STA ram_0047
+C - - - - - 0x0088C4 02:88B4: A9 C0     LDA #$C0
+C - - - - - 0x0088C6 02:88B6: 85 4A     STA ram_004A
+C - - - - - 0x0088C8 02:88B8: A9 2C     LDA #$2C
+C - - - - - 0x0088CA 02:88BA: 85 4B     STA ram_004B
+C - - - - - 0x0088CC 02:88BC: 60        RTS
+
+; ==================================================================================================================
+;  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+; ==================================================================================================================
+
+_off001_0x0088CD_58_босс_8_падающие_камни:
+- D 0 - I - 0x0088CD 02:88BD: C1 88     .word ofs_038_58_88C1_01_активация_объекта ; 
+- D 0 - I - 0x0088CF 02:88BF: 33 89     .word ofs_038_58_8933_02 ; 
+
+; ******************************************************************************************************************
+
+ofs_038_58_88C1_01_активация_объекта:
+C - - J - - 0x0088D1 02:88C1: A9 80     LDA #$80
+C - - - - - 0x0088D3 02:88C3: 9D 2C 07  STA ram_состояние_хитбоксов_объектов,X
+C - - - - - 0x0088D6 02:88C6: A9 03     LDA #$03
+C - - - - - 0x0088D8 02:88C8: 9D 56 05  STA ram_атрибуты_спрайта_объекта_или_пули,X
+C - - - - - 0x0088DB 02:88CB: BD 56 07  LDA ram_скролл_объекта_X,X
+C - - - - - 0x0088DE 02:88CE: D0 1A     BNE bra_88EA
+C - - - - - 0x0088E0 02:88D0: BD 1E 07  LDA ram_флаги_объектов,X
+C - - - - - 0x0088E3 02:88D3: 0A        ASL
+C - - - - - 0x0088E4 02:88D4: 0A        ASL
+C - - - - - 0x0088E5 02:88D5: 0A        ASL
+C - - - - - 0x0088E6 02:88D6: 69 24     ADC #$24
+C - - - - - 0x0088E8 02:88D8: 9D 22 05  STA ram_позиция_y_спрайта_объекта_или_пули,X
+C - - - - - 0x0088EB 02:88DB: BC 48 07  LDY ram_скролл_объекта_Y,X
+C - - - - - 0x0088EE 02:88DE: B9 21 89  LDA tbl_8921_позиция_X,Y
+C - - - - - 0x0088F1 02:88E1: 9D 3C 05  STA ram_позиция_x_спрайта_объекта_или_пули,X
+C - - - - - 0x0088F4 02:88E4: B9 24 89  LDA tbl_8924_счетчики,Y
+                                        STA ram_счетчики_для_объектов,X
+                                        JMP loc_0x0062E7_увеличить_состояние_объекта
+bra_88EA:
+C - - - - - 0x0088FA 02:88EA: A9 C0     LDA #$C0
+C - - - - - 0x0088FC 02:88EC: 9D 22 05  STA ram_позиция_y_спрайта_объекта_или_пули,X
+C - - - - - 0x0088FF 02:88EF: A5 23     LDA ram_рандом_байт
+C - - - - - 0x008901 02:88F1: 29 78     AND #$78
+C - - - - - 0x008903 02:88F3: 09 80     ORA #$80
+C - - - - - 0x008905 02:88F5: 9D 3C 05  STA ram_позиция_x_спрайта_объекта_или_пули,X
+C - - - - - 0x008908 02:88F8: A5 23     LDA ram_рандом_байт
+C - - - - - 0x00890A 02:88FA: 29 03     AND #$03
+C - - - - - 0x00890C 02:88FC: 0A        ASL
+C - - - - - 0x00890D 02:88FD: A8        TAY
+C - - - - - 0x00890E 02:88FE: B9 27 89  LDA tbl_8927_скорость_Y,Y
+C - - - - - 0x008911 02:8901: 9D A0 06  STA ram_скорость_объектов_y_младш,X
+C - - - - - 0x008914 02:8904: B9 28 89  LDA tbl_8927_скорость_Y + $01,Y
+C - - - - - 0x008917 02:8907: 9D AE 06  STA ram_скорость_объектов_y_старш,X
+C - - - - - 0x00891A 02:890A: A5 23     LDA ram_рандом_байт
+C - - - - - 0x00891C 02:890C: 30 10     BMI bra_891E
+C - - - - - 0x00891E 02:890E: 29 04     AND #$04
+C - - - - - 0x008920 02:8910: 4A        LSR
+C - - - - - 0x008921 02:8911: A8        TAY
+C - - - - - 0x008922 02:8912: B9 2F 89  LDA tbl_892F_скорость_X,Y
+C - - - - - 0x008925 02:8915: 9D BC 06  STA ram_скорость_объектов_x_младш,X
+C - - - - - 0x008928 02:8918: B9 30 89  LDA tbl_892F_скорость_X + $01,Y
+C - - - - - 0x00892B 02:891B: 9D CA 06  STA ram_скорость_объектов_x_старш,X
+bra_891E:
+C - - - - - 0x00892E 02:891E: 4C D7 A2  JMP loc_0x0062E7_увеличить_состояние_объекта
+
+tbl_8921_позиция_X:
+- D 0 - - - 0x008931 02:8921: E8        .byte $E8   ; 00 
+- D 0 - - - 0x008932 02:8922: F0        .byte $F0   ; 01 
+- D 0 - - - 0x008933 02:8923: F8        .byte $F8   ; 02 
+
+tbl_8924_счетчики:
+- D 0 - - - 0x008934 02:8924: 00        .byte $00   ; 00 
+- D 0 - - - 0x008935 02:8925: 06        .byte $06   ; 01 
+- D 0 - - - 0x008936 02:8926: 03        .byte $03   ; 02
+
+tbl_8927_скорость_Y:
+- D 0 - - - 0x008937 02:8927: 00 FF     .word $FF00 ; 00 
+- D 0 - - - 0x008939 02:8929: C0 FE     .word $FEC0 ; 01 
+- D 0 - - - 0x00893B 02:892B: 40 FF     .word $FF40 ; 02 
+- D 0 - - - 0x00893D 02:892D: 80 FF     .word $FF80 ; 03 
+
+tbl_892F_скорость_X:
+; bzk it may look like there should be 4 more bytes,
+; but no reads were logged below it.
+; it just works
+- D 0 - - - 0x00893F 02:892F: 40 00     .word $0040 ; 00 
+- D 0 - - - 0x008941 02:8931: C0 FF     .word $FFC0 ; 04
+
+; ******************************************************************************************************************
+
+ofs_038_58_8933_02:
+C - - J - - 0x008943 02:8933: BD E6 06  LDA ram_счетчики_для_объектов,X
+C - - - - - 0x008946 02:8936: F0 04     BEQ bra_893C
+C - - - - - 0x008948 02:8938: DE E6 06  DEC ram_счетчики_для_объектов,X
+C - - - - - 0x00894B 02:893B: 60        RTS
+bra_893C:
+C - - - - - 0x00894C 02:893C: A0 17     LDY #$17
+C - - - - - 0x00894E 02:893E: 20 FD AB  JSR sub_0x006C0D
+C - - - - - 0x008951 02:8941: A9 20     LDA #$20
+C - - - - - 0x008953 02:8943: 20 CB AA  JSR sub_0x006ADB_прибавить_скорость_y
+C - - - - - 0x008956 02:8946: 4C D3 A6  JMP loc_0x0066E3_обработка_позиции_Y_X_объекта_от_скорости
+
+; ==================================================================================================================
+;  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+; ==================================================================================================================
+
+; ******************************************************************************************************************
+; ******************************************************************************************************************
+; ******************************************************************************************************************
+; ******************************************************************************************************************
+; ******************************************************************************************************************
+; ******************************************************************************************************************
+; ******************************************************************************************************************
+; ******************************************************************************************************************
+; ******************************************************************************************************************
+; ******************************************************************************************************************
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.out .sprintf("Free bytes in bank 2F: %Xh [%d]", ($A000 - *), ($A000 - *))
+
