@@ -101,7 +101,7 @@ bra_8032_RTS:
 ofs_01_8040_02_press_start:
                                         JSR sub_E4D0_переключение_банков_анимация_super
                                         JSR sub_E4BC_переключение_банков_анимация_contra
-                                        LDA ram_таймер_до_демки
+                                        LDA ram_таймер_до_демки_lo
                                         AND #$10
                                         ASL
                                         ASL
@@ -118,7 +118,7 @@ bra_8042_нет_демки:
                                         BEQ bra_8043_RTS
 ; нажата start
                                         LDA #$47
-                                        STA ram_таймер_до_демки
+                                        STA ram_таймер_до_демки_lo
                                         INC ram_номер_действия_на_заставке
                                         LDA #con_sound_1A
                                         JMP loc_0x01FDEE_play_sound_напрямую
@@ -128,7 +128,7 @@ bra_8043_RTS:
 ofs_01_8050_03_мигание_press_start:
                                         JSR sub_E4D0_переключение_банков_анимация_super
                                         JSR sub_E4BC_переключение_банков_анимация_contra
-                                        LDA ram_таймер_до_демки
+                                        LDA ram_таймер_до_демки_lo
                                         AND #$04
                                         ASL
                                         ASL
@@ -138,7 +138,7 @@ ofs_01_8050_03_мигание_press_start:
                                         CLC
                                         ADC #con_0x0017EA_press_start
                                         JSR sub_0x01FE8A_bankswitch_отрисовка_текста_через_буфер_0300x
-                                        DEC ram_таймер_до_демки
+                                        DEC ram_таймер_до_демки_lo
                                         BNE bra_8051_RTS
                                         INC ram_номер_действия_на_заставке
                                         JSR sub_E502_подготовка_счетчиков
@@ -204,7 +204,7 @@ bra_8063:
 bra_8064:
                                         LDA #$80
 bra_8065:
-                                        STA ram_таймер_до_демки
+                                        STA ram_таймер_до_демки_lo
                                         INC ram_номер_действия_на_заставке
 bra_8066_RTS:
                                         RTS
@@ -212,7 +212,7 @@ bra_8066_RTS:
 ofs_01_8070_05_мигание_надписей:
                                         JSR sub_E4D0_переключение_банков_анимация_super
                                         JSR sub_E4BC_переключение_банков_анимация_contra
-                                        LDA ram_таймер_до_демки
+                                        LDA ram_таймер_до_демки_lo
                                         AND #$08
                                         ASL
                                         ASL
@@ -221,7 +221,7 @@ ofs_01_8070_05_мигание_надписей:
                                         CLC
                                         ADC ram_номер_опции_колво_игроков
                                         JSR sub_0x01FE8A_bankswitch_отрисовка_текста_через_буфер_0300x
-                                        DEC ram_таймер_до_демки
+                                        DEC ram_таймер_до_демки_lo
                                         BNE bra_8072_RTS
                                         LDA ram_номер_опции_колво_игроков
                                         CMP #con_0x0017EA_options
@@ -231,7 +231,7 @@ ofs_01_8070_05_мигание_надписей:
 bra_8071_options:
                                         INC ram_номер_действия_на_заставке
                                         LDA #$01
-                                        STA ram_0095
+                                        STA ram_счетчик_затемнения_экрана
 bra_8072_RTS:
                                         RTS
 
@@ -721,9 +721,9 @@ ofs_03_9B10_options_exit:
                                         BEQ bra_9B11_RTS
 ; выход
                                         LDA #$01
-                                        STA ram_0095
+                                        STA ram_счетчик_затемнения_экрана
                                         LDA #$40
-                                        STA ram_таймер_до_демки
+                                        STA ram_таймер_до_демки_lo
                                         INC ram_номер_действия_на_заставке
 bra_9B11_RTS:
                                         RTS
@@ -733,7 +733,7 @@ bra_9B11_RTS:
 ofs_02_8230_02_мерцание_exit:
                                         JSR sub_9B30_смена_палитры_сокола
                                         JSR sub_9B34_анимации_орла
-                                        LDA ram_таймер_до_демки
+                                        LDA ram_таймер_до_демки_lo
                                         AND #$08
                                         ASL
                                         ASL
@@ -742,7 +742,7 @@ ofs_02_8230_02_мерцание_exit:
                                         CLC
                                         ADC #con_0x0017EA_exit
                                         JSR sub_0x01FE8A_bankswitch_отрисовка_текста_через_буфер_0300x
-                                        DEC ram_таймер_до_демки
+                                        DEC ram_таймер_до_демки_lo
                                         BNE bra_9B13_RTS
                                         INC ram_номер_действия_на_заставке
 bra_9B13_RTS:
@@ -1392,7 +1392,7 @@ C - - - - - 0x01E585 07:E575: 85 23     STA ram_рандом_байт
 C - - - - - 0x01E587 07:E577: A9 10     LDA #$10
 C - - - - - 0x01E589 07:E579: 85 53     STA ram_жизни
 C - - - - - 0x01E58B 07:E57B: 85 54     STA ram_жизни + $01
-C - - - - - 0x01E58D 07:E57D: A5 F0     LDA ram_00F0
+C - - - - - 0x01E58D 07:E57D: A5 F0     LDA ram_номер_уровня_для_демки_ботов
 C - - - - - 0x01E58F 07:E57F: 85 50     STA ram_номер_уровня
 C - - - - - 0x01E591 07:E581: 60        RTS
 
@@ -1400,9 +1400,9 @@ C - - - - - 0x01E591 07:E581: 60        RTS
 
 
 sub_9D94_игра_ботов_в_демке:
-C D 0 - - - 0x001DA4 00:9D94: E6 4E     INC ram_004E
+C D 0 - - - 0x001DA4 00:9D94: E6 4E     INC ram_07DF
 C - - - - - 0x001DA6 00:9D96: D0 02     BNE bra_9D9A
-C - - - - - 0x001DA8 00:9D98: C6 4E     DEC ram_004E
+C - - - - - 0x001DA8 00:9D98: C6 4E     DEC ram_07DF
 bra_9D9A:
 C - - - - - 0x001DAA 00:9D9A: A2 01     LDX #$01
 C - - - - - 0x001DAC 00:9D9C: 20 A0 9D  JSR sub_9DA0
@@ -1411,7 +1411,7 @@ sub_9DA0:
 C - - - - - 0x001DB0 00:9DA0: A5 1B     LDA ram_счетчик_кадров
 C - - - - - 0x001DB2 00:9DA2: 4A        LSR
 C - - - - - 0x001DB3 00:9DA3: B0 33     BCS bra_9DD8
-C - - - - - 0x001DB5 00:9DA5: B5 41     LDA ram_0041_игрок,X
+C - - - - - 0x001DB5 00:9DA5: B5 41     LDA ram_07CC_игрок,X
 C - - - - - 0x001DB7 00:9DA7: D0 2D     BNE bra_9DD6
 C - - - - - 0x001DB9 00:9DA9: A5 50     LDA ram_номер_уровня
 C - - - - - 0x001DBB 00:9DAB: C9 03     CMP #$03
@@ -1430,23 +1430,24 @@ C - - - - - 0x001DCA 00:9DBA: B9 08 9E  LDA tbl_9E08_выбор_игрока_и_
 C - - - - - 0x001DCD 00:9DBD: 85 08     STA ram_0008
 C - - - - - 0x001DCF 00:9DBF: B9 09 9E  LDA tbl_9E08_выбор_игрока_и_уровня + $01,Y
 C - - - - - 0x001DD2 00:9DC2: 85 09     STA ram_0009
-C - - - - - 0x001DD4 00:9DC4: B4 43     LDY ram_0043_игрок,X
+C - - - - - 0x001DD4 00:9DC4: B4 43     LDY ram_07CE_игрок,X
 C - - - - - 0x001DD6 00:9DC6: B1 08     LDA (ram_0008),Y
 C - - - - - 0x001DD8 00:9DC8: C9 FF     CMP #$FF
 C - - - - - 0x001DDA 00:9DCA: F0 39     BEQ bra_9E05_FF
-C - - - - - 0x001DDC 00:9DCC: 95 4C     STA ram_004C_игрок,X
+C - - - - - 0x001DDC 00:9DCC: 95 4C     STA ram_07DD_игрок,X
 C - - - - - 0x001DDE 00:9DCE: C8        INY
 C - - - - - 0x001DDF 00:9DCF: B1 08     LDA (ram_0008),Y
-C - - - - - 0x001DE1 00:9DD1: 95 41     STA ram_0041_игрок,X
+C - - - - - 0x001DE1 00:9DD1: 95 41     STA ram_07CC_игрок,X
 C - - - - - 0x001DE3 00:9DD3: C8        INY
-C - - - - - 0x001DE4 00:9DD4: 94 43     STY ram_0043_игрок,X
+                                        TYA
+C - - - - - 0x001DE4 00:9DD4: 94 43     STA ram_07CE_игрок,X
 bra_9DD6:
-C - - - - - 0x001DE6 00:9DD6: D6 41     DEC ram_0041_игрок,X
+C - - - - - 0x001DE6 00:9DD6: D6 41     DEC ram_07CC_игрок,X
 bra_9DD8:
-C - - - - - 0x001DE8 00:9DD8: B5 4C     LDA ram_004C_игрок,X
+C - - - - - 0x001DE8 00:9DD8: B5 4C     LDA ram_07DD_игрок,X
 C - - - - - 0x001DEA 00:9DDA: 95 F1     STA ram_нажатая_кнопка,X
 C - - - - - 0x001DEC 00:9DDC: 95 F3     STA ram_удержанная_кнопка,X
-C - - - - - 0x001DEE 00:9DDE: A5 4E     LDA ram_004E
+C - - - - - 0x001DEE 00:9DDE: A5 4E     LDA ram_07DF
 C - - - - - 0x001DF0 00:9DE0: C9 E0     CMP #$E0
 C - - - - - 0x001DF2 00:9DE2: 90 20     BCC bra_9E04_RTS
 C - - - - - 0x001DF4 00:9DE4: B5 B8     LDA ram_оружие_игрока,X
@@ -2006,14 +2007,14 @@ C - - - - - 0x01E54F 07:E53F: 20 7A FE  JSR sub_0x01FE8A_bankswitch_отрисо
 
 
 sub_E4F1_проверка_на_демку:
-C - - - - - 0x01E501 07:E4F1: A5 3C     LDA ram_таймер_до_демки
-C - - - - - 0x01E503 07:E4F3: 05 3D     ORA ram_003D
+C - - - - - 0x01E501 07:E4F1: A5 3C     LDA ram_таймер_до_демки_lo
+C - - - - - 0x01E503 07:E4F3: 05 3D     ORA ram_таймер_до_демки_hi
 C - - - - - 0x01E505 07:E4F5: F0 0A     BEQ bra_E501_RTS
-C - - - - - 0x01E507 07:E4F7: A5 3C     LDA ram_таймер_до_демки
+C - - - - - 0x01E507 07:E4F7: A5 3C     LDA ram_таймер_до_демки_lo
 C - - - - - 0x01E509 07:E4F9: D0 02     BNE bra_E4FD
-C - - - - - 0x01E50B 07:E4FB: C6 3D     DEC ram_003D
+C - - - - - 0x01E50B 07:E4FB: C6 3D     DEC ram_таймер_до_демки_hi
 bra_E4FD:
-C - - - - - 0x01E50D 07:E4FD: C6 3C     DEC ram_таймер_до_демки
+C - - - - - 0x01E50D 07:E4FD: C6 3C     DEC ram_таймер_до_демки_lo
 C - - - - - 0x01E50F 07:E4FF: A9 01     LDA #$01
 bra_E501_RTS:
 C - - - - - 0x01E511 07:E501: 60        RTS
@@ -2023,8 +2024,8 @@ C - - - - - 0x01E511 07:E501: 60        RTS
 sub_E502_подготовка_счетчиков:
 C - - - - - 0x01E512 07:E502: A9 00     LDA #$00
 C - - - - - 0x01E514 07:E504: A0 01     LDY #$01
-C - - - - - 0x01E516 07:E506: 85 3C     STA ram_таймер_до_демки
-C - - - - - 0x01E518 07:E508: 84 3D     STY ram_003D
+C - - - - - 0x01E516 07:E506: 85 3C     STA ram_таймер_до_демки_lo
+C - - - - - 0x01E518 07:E508: 84 3D     STY ram_таймер_до_демки_hi
 C - - - - - 0x01E51A 07:E50A: 60        RTS
 
 
@@ -2166,11 +2167,6 @@ C - - - - - 0x009B89 02:9B79: AD 5E 9F  LDA #< tbl_9F62_автовоспроиз
 C - - - - - 0x009B8C 02:9B7C: 85 5C     STA ram_005C_sound_mode_data
 C - - - - - 0x009B8E 02:9B7E: AD 5F 9F  LDA #> tbl_9F62_автовоспроизведение
 C - - - - - 0x009B91 02:9B81: 85 5D     STA ram_005C_sound_mode_data + $01
-; bzk optimize, не похоже что данные из tbl_9FB7 будут считаны
-C - - - - - 0x009B93 02:9B83: AD 60 9F  LDA #< tbl_9FB7
-C - - - - - 0x009B96 02:9B86: 85 60     STA ram_0060_sound_mode_data
-C - - - - - 0x009B98 02:9B88: AD 61 9F  LDA #> tbl_9FB7
-C - - - - - 0x009B9B 02:9B8B: 85 61     STA ram_0060_sound_mode_data + $01
 C - - - - - 0x009B9D 02:9B8D: A9 01     LDA #$01
 C - - - - - 0x009B9F 02:9B8F: 85 59     STA ram_play_all
 C - - - - - 0x009BA1 02:9B91: 60        RTS
@@ -2646,9 +2642,6 @@ C D 0 - - - 0x009F55 02:9F45: A5 5C     LDA ram_005C_sound_mode_data
 C - - - - - 0x009F57 02:9F47: 18        CLC
 C - - - - - 0x009F58 02:9F48: 69 03     ADC #$03
 C - - - - - 0x009F5A 02:9F4A: 85 5C     STA ram_005C_sound_mode_data
-C - - - - - 0x009F5C 02:9F4C: 90 02     BCC bra_9F50_RTS
-- - - - - - 0x009F5E 02:9F4E: E6 5D     INC ram_005D_sound_mode
-bra_9F50_RTS:
 C - - - - - 0x009F60 02:9F50: 60        RTS
 bra_9F51_FF:
 sub_9F51:
@@ -2775,14 +2768,6 @@ tbl_9F62_автовоспроизведение:
 - D 0 - I - 0x009FC5 02:9FB5: 35        .byte con_sound_35   ; 
 
 - D 0 - I - 0x009FC6 02:9FB6: FF        .byte $FF   ; end token
-
-
-
-tbl_9FB7:
-- - - - - - 0x009FC7 02:9FB7: FF        .byte $FF   ; 
-
-
-
 
 
 
