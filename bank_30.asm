@@ -3457,7 +3457,7 @@ tbl_8EF0_вращение_пули:
 tbl_8F03_звук_пуль:
 - D 0 - - - 0x000F13 00:8F03: 0B        .byte con_sound_0B   ; 00 = pistol
 - D 0 - - - 0x000F14 00:8F04: 0C        .byte con_sound_0C   ; 01 = machine_gun
-- D 0 - - - 0x000F15 00:8F05: 0E        .byte con_sound_00   ; 02 = flame_thrower
+- D 0 - - - 0x000F15 00:8F05: 0E        .byte con_sound_04   ; 02 = flame_thrower
 - D 0 - - - 0x000F16 00:8F06: 0D        .byte con_sound_0E   ; 03 = spread
 - D 0 - - - 0x000F17 00:8F07: 0F        .byte con_sound_0D   ; 04 = laser
 - D 0 - - - 0x000F18 00:8F08: 0F        .byte con_sound_0F   ; 05 = flame
