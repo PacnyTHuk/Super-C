@@ -6,8 +6,8 @@
 
 
 
-.export loc_0x000011_обработка_игроков
-.export loc_0x001191_обработка_пуль_игроков
+.export sub_0x000011_обработка_игроков
+.export sub_0x001191_обработка_пуль_игроков
 .export loc_0x001271_flame_разрыв
 .export _off004_0x002B55_01_area_2
 .export _off005_0x002B71_01_area_2
@@ -21,7 +21,7 @@
 
 
 
-loc_0x000011_обработка_игроков:
+sub_0x000011_обработка_игроков:
 C D 0 - - - 0x000011 00:8001: A9        LDA #$00
 C - - - - - 0x000013 00:8003: 85 72     STA ram_скорость_камеры_Y
 C - - - - - 0x000015 00:8005: 85 62     STA ram_скорость_камеры_X
@@ -98,7 +98,12 @@ C - - - - - 0x0000B8 00:80A8: 20 57 84  JSR sub_8457_borrow_lives
 C - - - - - 0x0000BB 00:80AB: A5 CA     LDA ram_plr_game_over
 C - - - - - 0x0000BD 00:80AD: 25 CB     AND ram_plr_game_over + $01
 C - - - - - 0x0000BF 00:80AF: F0 03     BEQ bra_80B4_RTS
-C - - - - - 0x0000C1 00:80B1: 4C F6 E8  JMP loc_0x01E906
+C D 3 - - - 0x01E906 07:E8F6: A9 35     LDA #con_sound_35   ; музыка GAME OVER
+C - - - - - 0x01E908 07:E8F8: 20 DE FD  JSR sub_0x01FDEE_play_music
+C - - - - - 0x01E90B 07:E8FB: A0 01     LDY #$01
+C - - - - - 0x01E90F 07:E8FF: 84 3F     STY ram_таймер_экрана
+C - - - - - 0x01E90D 07:E8FD: A9 05     LDA #$05
+C - - - - - 0x0000C1 00:80B1: 4C F6 E8  JMP loc_0x01E906_запись_номера_экрана
 bra_80B4_RTS:
 C - - - - - 0x0000C4 00:80B4: 60        RTS
 
@@ -3629,7 +3634,7 @@ C - - - - - 0x01F81F 07:F80F: 60        RTS
 
 
 
-loc_0x001191_обработка_пуль_игроков:
+sub_0x001191_обработка_пуль_игроков:
 C D 0 - - - 0x001191 00:9181: A2 0F     LDX ram_макс_индекс_пули_игрока
 bra_9183_loop:
 C - - - - - 0x001193 00:9183: 20 B1 91  JSR sub_91B1_обработка_пуль_игроков
@@ -4202,7 +4207,6 @@ loc_9296_grenade_launcher:
 bra_9297_flame_разрыв:
 loc_9297_flame_разрыв:
 loc_0x001271_flame_разрыв:
-
                                         STX ram_000D    ; save индекс главной пули
 
                                         LDA #$00

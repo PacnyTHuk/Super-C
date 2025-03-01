@@ -14,6 +14,8 @@
 .export ofs_044_0x00D82A_05_area_6
 .export ofs_044_0x00D8F3_06_area_7
 .export ofs_044_0x00D977_07_area_8
+
+
 .export _off004_0x00DA87_03_area_4
 .export _off005_0x00DAE4_03_area_4
 .export _off006_0x00DFCA_03_area_4

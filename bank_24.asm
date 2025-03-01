@@ -111,7 +111,7 @@ ofs_01_8040_02_press_start:
                                         JSR sub_0x01FE8A_bankswitch_отрисовка_текста_через_буфер_0300x
                                         JSR sub_E4F1_проверка_на_демку
                                         BNE bra_8042_нет_демки
-                                        JMP loc_0x01E4F5_плюс1_демка
+                                        JMP loc_0x01E4F5_увеличить_демку
 bra_8042_нет_демки:
                                         LDA ram_копия_нажатая_кнопка
                                         AND #con_btn_Start
@@ -284,13 +284,13 @@ ofs_00_8110_02_подготовка_данных_для_старта_игрок�
 bra_8111:
                                         JSR sub_0x01E5E0_очистка_оперативки
                                         JSR sub_0x01E592_подготовка_игроков_к_началу
-                                        JMP loc_0x01E4F5_плюс1_демка
+                                        JMP loc_0x01E4F5_увеличить_демку
 
 
 ofs_00_8120_03_подготовка_экрана_для_старта_игроков:
                                         LDA #$00
                                         STA ram_номер_экрана
-                                        JMP loc_0x01E4F5_плюс1_демка
+                                        JMP loc_0x01E4F5_увеличить_демку
 
 
 ofs_00_8130_04_игра:
@@ -2048,7 +2048,7 @@ C - - - - - 0x01E539 07:E529: 60        RTS
 
 sub_9AE9_sound_mode_handler:
 ; leon опт
-                                        LDY ram_sound_mode_handler
+                                        LDY ram_0030_sound_mode_handler
                                         LDA tbl_9ADE_lo,y
                                         STA ram_0000
                                         LDA tbl_9ADE_hi,y
@@ -2075,9 +2075,9 @@ C - - - - - 0x009AFA 02:9AEA: 99 50 00  STA $00 + $50,Y
 C - - - - - 0x009AFD 02:9AED: 88        DEY
 C - - - - - 0x009AFE 02:9AEE: 10 FA     BPL bra_9AEA_loop
 C - - - - - 0x009B00 02:9AF0: A9 23     LDA #> $23A0
-C - - - - - 0x009B02 02:9AF2: 85 57     STA ram_0056_sound_mode_ppu + $01
+C - - - - - 0x009B02 02:9AF2: 85 57     STA ram_0037_sound_mode_ppu_hi
 C - - - - - 0x009B04 02:9AF4: A9 A0     LDA #< $23A0
-C - - - - - 0x009B06 02:9AF6: 85 56     STA ram_0056_sound_mode_ppu
+C - - - - - 0x009B06 02:9AF6: 85 56     STA ram_0036_sound_mode_ppu_lo
 C - - - - - 0x009B08 02:9AF8: A9 0D     LDA #$0D    ; clear lines counter
 C - - - - - 0x009B0A 02:9AFA: 85 55     STA ram_очки_до_жизни_младш
 C - - - - - 0x009B0C 02:9AFC: 4C 0E 9B  JMP loc_9B0E
@@ -2094,7 +2094,7 @@ C - - - - - 0x009B18 02:9B08: 85 55     STA ram_очки_до_жизни_мла�
 C - - - - - 0x009B1A 02:9B0A: A9 04     LDA #$04    ; wait 4 frames before drawing window
 C - - - - - 0x009B1C 02:9B0C: 85 52     STA ram_sound_mode_draw_cooldown
 loc_9B0E:
-C D 0 - - - 0x009B1E 02:9B0E: E6 50     INC ram_sound_mode_handler    ; 00 -> 01, 01 -> 02, 02 -> 03
+C D 0 - - - 0x009B1E 02:9B0E: E6 50     INC ram_0030_sound_mode_handler    ; 00 -> 01, 01 -> 02, 02 -> 03
 bra_9B10_RTS:
 C - - - - - 0x009B20 02:9B10: 60        RTS
 
@@ -2126,9 +2126,9 @@ C - - - - - 0x009B40 02:9B30: 20 50 9B  JSR sub_9B50_sound_mode
 ;C - - - - - 0x009B4A 02:9B3A: 8D 00 05  STA ram_кадр_анимации + $02
 C - - - - - 0x009B4D 02:9B3D: A9 34     LDY #$37
 ;C - - - - - 0x009B4F 02:9B3F: 8D 34 05  STA ram_позиция_x_спрайта + $02
-C - - - - - 0x009B52 02:9B42: A5 53     LDA ram_sound_mode_track_cur
+C - - - - - 0x009B52 02:9B42: A5 53     LDA ram_0032_sound_mode_track_cur
 C - - - - - 0x009B54 02:9B44: 38        SEC
-C - - - - - 0x009B55 02:9B45: E5 54     SBC ram_sound_mode_track_min
+C - - - - - 0x009B55 02:9B45: E5 54     SBC ram_0033_sound_mode_track_min
 C - - - - - 0x009B57 02:9B47: 0A        ASL
 C - - - - - 0x009B58 02:9B48: 0A        ASL
 C - - - - - 0x009B59 02:9B49: 0A        ASL
@@ -2150,71 +2150,71 @@ C - - - - - 0x009B6B 02:9B5B: 30 01     BMI bra_9B5E
 C - - - - - 0x009B6D 02:9B5D: 60        RTS
 bra_9B5E:
 C - - - - - 0x009B6E 02:9B5E: 20 51 9F  JSR sub_9F51
-C - - - - - 0x009B71 02:9B61: A5 53     LDA ram_sound_mode_track_cur
+C - - - - - 0x009B71 02:9B61: A5 53     LDA ram_0032_sound_mode_track_cur
 C - - - - - 0x009B73 02:9B63: C9 26     CMP #$26
 C - - - - - 0x009B75 02:9B65: F0 0F     BEQ bra_9B76_26
 C - - - - - 0x009B77 02:9B67: C9 0E     CMP #$0E
 C - - - - - 0x009B79 02:9B69: B0 03     BCS bra_9B6E
 C - - - - - 0x009B7B 02:9B6B: 20 0E FE  JSR sub_0x01FE1E_остановить_звуковой_движок
 bra_9B6E:
-C - - - - - 0x009B7E 02:9B6E: A4 53     LDY ram_sound_mode_track_cur
+C - - - - - 0x009B7E 02:9B6E: A4 53     LDY ram_0032_sound_mode_track_cur
 C - - - - - 0x009B80 02:9B70: B9 A4 9C  LDA tbl_9CA4_список_треков,Y
 C - - - - - 0x009B83 02:9B73: 4C DE FD  JMP loc_0x01FDEE_play_sound_напрямую
 bra_9B76_26:
 ; проиграть один за другим
 C - - - - - 0x009B86 02:9B76: 20 0E FE  JSR sub_0x01FE1E_остановить_звуковой_движок
 C - - - - - 0x009B89 02:9B79: AD 5E 9F  LDA #< tbl_9F62_автовоспроизведение
-C - - - - - 0x009B8C 02:9B7C: 85 5C     STA ram_005C_sound_mode_data
+C - - - - - 0x009B8C 02:9B7C: 85 5C     STA ram_0034_sound_mode_data_lo
 C - - - - - 0x009B8E 02:9B7E: AD 5F 9F  LDA #> tbl_9F62_автовоспроизведение
-C - - - - - 0x009B91 02:9B81: 85 5D     STA ram_005C_sound_mode_data + $01
+C - - - - - 0x009B91 02:9B81: 85 5D     STA ram_0035_sound_mode_data_hi
 C - - - - - 0x009B9D 02:9B8D: A9 01     LDA #$01
-C - - - - - 0x009B9F 02:9B8F: 85 59     STA ram_play_all
+C - - - - - 0x009B9F 02:9B8F: 85 59     STA ram_0054_play_all
 C - - - - - 0x009BA1 02:9B91: 60        RTS
 
 
 
 sub_9B92_sound_mode:
-C - - - - - 0x009BA2 02:9B92: A5 59     LDA ram_play_all
+C - - - - - 0x009BA2 02:9B92: A5 59     LDA ram_0054_play_all
 C - - - - - 0x009BA4 02:9B94: D0 31     BNE bra_9BC7_RTS
 C - - - - - 0x009BA6 02:9B96: A5 F7     LDA ram_копия_удержанная_кнопка
 C - - - - - 0x009BA8 02:9B98: 29 0C     AND #con_btns_UD
 C - - - - - 0x009BAA 02:9B9A: F0 2B     BEQ bra_9BC7_RTS
 C - - - - - 0x009BAC 02:9B9C: A0 04     LDY #$04
-C - - - - - 0x009BAE 02:9B9E: C6 58     DEC ram_0058_sound_mode
+C - - - - - 0x009BAE 02:9B9E: C6 58     DEC ram_002F_sound_mode
 C - - - - - 0x009BB0 02:9BA0: F0 08     BEQ bra_9BAA
 C - - - - - 0x009BB2 02:9BA2: A5 F5     LDA ram_копия_нажатая_кнопка
 C - - - - - 0x009BB4 02:9BA4: 29 0C     AND #con_btns_UD
 C - - - - - 0x009BB6 02:9BA6: F0 1F     BEQ bra_9BC7_RTS
 C - - - - - 0x009BB8 02:9BA8: A0 20     LDY #$20
 bra_9BAA:
-C - - - - - 0x009BBA 02:9BAA: 84 58     STY ram_0058_sound_mode
+C - - - - - 0x009BBA 02:9BAA: 84 58     STY ram_002F_sound_mode
 C - - - - - 0x009BBC 02:9BAC: 4A        LSR
 C - - - - - 0x009BBD 02:9BAD: 4A        LSR
 C - - - - - 0x009BBE 02:9BAE: 4A        LSR
 C - - - - - 0x009BBF 02:9BAF: 90 17     BCC bra_9BC8
-C - - - - - 0x009BC1 02:9BB1: A5 53     LDA ram_sound_mode_track_cur
+C - - - - - 0x009BC1 02:9BB1: A5 53     LDA ram_0032_sound_mode_track_cur
 C - - - - - 0x009BC3 02:9BB3: C9 26     CMP #$26
 C - - - - - 0x009BC5 02:9BB5: B0 10     BCS bra_9BC7_RTS
-C - - - - - 0x009BC7 02:9BB7: E6 53     INC ram_sound_mode_track_cur
-C - - - - - 0x009BC9 02:9BB9: A5 53     LDA ram_sound_mode_track_cur
+C - - - - - 0x009BC7 02:9BB7: E6 53     INC ram_0032_sound_mode_track_cur
+C - - - - - 0x009BC9 02:9BB9: A5 53     LDA ram_0032_sound_mode_track_cur
 C - - - - - 0x009BCB 02:9BBB: 38        SEC
-C - - - - - 0x009BCC 02:9BBC: E5 54     SBC ram_sound_mode_track_min
+C - - - - - 0x009BCC 02:9BBC: E5 54     SBC ram_0033_sound_mode_track_min
 C - - - - - 0x009BCE 02:9BBE: C9 07     CMP #$07
 C - - - - - 0x009BD0 02:9BC0: 90 05     BCC bra_9BC7_RTS
-C - - - - - 0x009BD2 02:9BC2: E6 54     INC ram_sound_mode_track_min
+C - - - - - 0x009BD2 02:9BC2: E6 54     INC ram_0033_sound_mode_track_min
 C - - - - - 0x009BD4 02:9BC4: 4C D9 9B  JMP loc_9BD9
 bra_9BC7_RTS:
 C - - - - - 0x009BD7 02:9BC7: 60        RTS
 bra_9BC8:
 C - - - - - 0x009BD8 02:9BC8: 4A        LSR
 C - - - - - 0x009BD9 02:9BC9: 90 FC     BCC bra_9BC7_RTS
-C - - - - - 0x009BDB 02:9BCB: A5 53     LDA ram_sound_mode_track_cur
+C - - - - - 0x009BDB 02:9BCB: A5 53     LDA ram_0032_sound_mode_track_cur
 C - - - - - 0x009BDD 02:9BCD: F0 F8     BEQ bra_9BC7_RTS
-C - - - - - 0x009BDF 02:9BCF: C6 53     DEC ram_sound_mode_track_cur
-C - - - - - 0x009BE1 02:9BD1: A5 53     LDA ram_sound_mode_track_cur
-C - - - - - 0x009BE3 02:9BD3: C5 54     CMP ram_sound_mode_track_min
+C - - - - - 0x009BDF 02:9BCF: C6 53     DEC ram_0032_sound_mode_track_cur
+C - - - - - 0x009BE1 02:9BD1: A5 53     LDA ram_0032_sound_mode_track_cur
+C - - - - - 0x009BE3 02:9BD3: C5 54     CMP ram_0033_sound_mode_track_min
 C - - - - - 0x009BE5 02:9BD5: B0 F0     BCS bra_9BC7_RTS
-C - - - - - 0x009BE7 02:9BD7: C6 54     DEC ram_sound_mode_track_min
+C - - - - - 0x009BE7 02:9BD7: C6 54     DEC ram_0033_sound_mode_track_min
 sub_9BD9:
 loc_9BD9:
 C D 0 - - - 0x009BE9 02:9BD9: A9 22     LDA #> $22A8
@@ -2223,7 +2223,7 @@ C - - - - - 0x009BED 02:9BDD: A9 A8     LDA #< $22A8
 C - - - - - 0x009BEF 02:9BDF: 85 00     STA ram_0000
 C - - - - - 0x009BF1 02:9BE1: A9 00     LDA #$00
 C - - - - - 0x009BF3 02:9BE3: 85 09     STA ram_0009
-C - - - - - 0x009BF5 02:9BE5: A5 54     LDA ram_sound_mode_track_min
+C - - - - - 0x009BF5 02:9BE5: A5 54     LDA ram_0033_sound_mode_track_min
 C - - - - - 0x009BF7 02:9BE7: 0A        ASL
 C - - - - - 0x009BF8 02:9BE8: 26 09     ROL ram_0009
 C - - - - - 0x009BFA 02:9BEA: 0A        ASL
@@ -2286,10 +2286,10 @@ C - - - - - 0x009C58 02:9C48: A6 1E     LDX ram_index_ppu_buffer
 C - - - - - 0x009C5A 02:9C4A: A9 03     LDA #con_buf_mode_03
 C - - - - - 0x009C5C 02:9C4C: 9D 00 03  STA ram_nmt_buffer,X
 C - - - - - 0x009C5F 02:9C4F: E8        INX
-C - - - - - 0x009C60 02:9C50: A5 57     LDA ram_0056_sound_mode_ppu + $01    ; ppu hi
+C - - - - - 0x009C60 02:9C50: A5 57     LDA ram_0037_sound_mode_ppu_hi  ; ppu hi
 C - - - - - 0x009C62 02:9C52: 9D 00 03  STA ram_nmt_buffer,X
 C - - - - - 0x009C65 02:9C55: E8        INX
-C - - - - - 0x009C66 02:9C56: A5 56     LDA ram_0056_sound_mode_ppu    ; ppu lo
+C - - - - - 0x009C66 02:9C56: A5 56     LDA ram_0036_sound_mode_ppu_lo  ; ppu lo
 C - - - - - 0x009C68 02:9C58: 9D 00 03  STA ram_nmt_buffer,X
 C - - - - - 0x009C6B 02:9C5B: E8        INX
 C - - - - - 0x009C6C 02:9C5C: A9 20     LDA #$20    ; counter
@@ -2299,13 +2299,13 @@ C - - - - - 0x009C72 02:9C62: A9 00     LDA #$00    ; tile
 C - - - - - 0x009C74 02:9C64: 9D 00 03  STA ram_nmt_buffer,X
 C - - - - - 0x009C77 02:9C67: E8        INX
 C - - - - - 0x009C78 02:9C68: 86 1E     STX ram_index_ppu_buffer
-C - - - - - 0x009C7A 02:9C6A: A5 56     LDA ram_0056_sound_mode_ppu
+C - - - - - 0x009C7A 02:9C6A: A5 56     LDA ram_0036_sound_mode_ppu_lo
 C - - - - - 0x009C7C 02:9C6C: 38        SEC
 C - - - - - 0x009C7D 02:9C6D: E9 20     SBC #< $0020
-C - - - - - 0x009C7F 02:9C6F: 85 56     STA ram_0056_sound_mode_ppu
-C - - - - - 0x009C81 02:9C71: A5 57     LDA ram_0056_sound_mode_ppu + $01
+C - - - - - 0x009C7F 02:9C6F: 85 56     STA ram_0036_sound_mode_ppu_lo
+C - - - - - 0x009C81 02:9C71: A5 57     LDA ram_0037_sound_mode_ppu_hi
 C - - - - - 0x009C83 02:9C73: E9 00     SBC #> $0020
-C - - - - - 0x009C85 02:9C75: 85 57     STA ram_0056_sound_mode_ppu + $01
+C - - - - - 0x009C85 02:9C75: 85 57     STA ram_0037_sound_mode_ppu_hi
 C - - - - - 0x009C87 02:9C77: 60        RTS
 
 
@@ -2603,7 +2603,7 @@ _off011_9EEE_0D:
 
 
 sub_9F08_sound_mode:
-C - - - - - 0x009F18 02:9F08: A5 59     LDA ram_play_all
+C - - - - - 0x009F18 02:9F08: A5 59     LDA ram_0054_play_all
 C - - - - - 0x009F1A 02:9F0A: F0 03     BEQ bra_9F0F_RTS
 C - - - - - 0x009F1C 02:9F0C: 20 10 9F  JSR sub_9F10
 bra_9F0F_RTS:
@@ -2612,43 +2612,43 @@ C - - - - - 0x009F1F 02:9F0F: 60        RTS
 
 
 sub_9F10:
-C - - - - - 0x009F20 02:9F10: A5 5A     LDA ram_005A_sound_mode
-C - - - - - 0x009F22 02:9F12: 05 5B     ORA ram_005B_sound_mode
+C - - - - - 0x009F20 02:9F10: A5 5A     LDA ram_0053_sound_mode
+C - - - - - 0x009F22 02:9F12: 05 5B     ORA ram_0031_sound_mode
 C - - - - - 0x009F24 02:9F14: F0 07     BEQ bra_9F1D
-C - - - - - 0x009F26 02:9F16: C6 5A     DEC ram_005A_sound_mode
+C - - - - - 0x009F26 02:9F16: C6 5A     DEC ram_0053_sound_mode
 C - - - - - 0x009F28 02:9F18: D0 02     BNE bra_9F1C_RTS
-C - - - - - 0x009F2A 02:9F1A: C6 5B     DEC ram_005B_sound_mode
+C - - - - - 0x009F2A 02:9F1A: C6 5B     DEC ram_0031_sound_mode
 bra_9F1C_RTS:
 C - - - - - 0x009F2C 02:9F1C: 60        RTS
 bra_9F1D:
 C - - - - - 0x009F2D 02:9F1D: A0 00     LDY #$00
-C - - - - - 0x009F2F 02:9F1F: B1 5C     LDA (ram_005C_sound_mode_data),Y
+C - - - - - 0x009F2F 02:9F1F: B1 5C     LDA (ram_0034_sound_mode_data_lo),Y
 C - - - - - 0x009F31 02:9F21: C9 FF     CMP #$FF
 C - - - - - 0x009F33 02:9F23: F0 2C     BEQ bra_9F51_FF
 C - - - - - 0x009F35 02:9F25: 85 09     STA ram_0009
 ; 1путин опт
-C - - - - - 0x009F39 02:9F29: 85 5B     STA ram_005B_sound_mode
+C - - - - - 0x009F39 02:9F29: 85 5B     STA ram_0031_sound_mode
 C - - - - - 0x009F3B 02:9F2B: C8        INY
-C - - - - - 0x009F3C 02:9F2C: B1 5C     LDA (ram_005C_sound_mode_data),Y
-C - - - - - 0x009F3E 02:9F2E: 85 5A     STA ram_005A_sound_mode
+C - - - - - 0x009F3C 02:9F2C: B1 5C     LDA (ram_0034_sound_mode_data_lo),Y
+C - - - - - 0x009F3E 02:9F2E: 85 5A     STA ram_0053_sound_mode
 C - - - - - 0x009F40 02:9F30: C8        INY
-C - - - - - 0x009F41 02:9F31: B1 5C     LDA (ram_005C_sound_mode_data),Y
+C - - - - - 0x009F41 02:9F31: B1 5C     LDA (ram_0034_sound_mode_data_lo),Y
 C - - - - - 0x009F43 02:9F33: 85 08     STA ram_0008
 ; 1путин опт
 C - - - - - 0x009F4A 02:9F3A: 20 0E FE  JSR sub_0x01FE1E_остановить_звуковой_движок
 C - - - - - 0x009F4D 02:9F3D: A5 08     LDA ram_0008
 C - - - - - 0x009F4F 02:9F3F: 20 DE FD  JSR sub_0x01FDEE_play_sound
-C D 0 - - - 0x009F55 02:9F45: A5 5C     LDA ram_005C_sound_mode_data
+C D 0 - - - 0x009F55 02:9F45: A5 5C     LDA ram_0034_sound_mode_data_lo
 C - - - - - 0x009F57 02:9F47: 18        CLC
 C - - - - - 0x009F58 02:9F48: 69 03     ADC #$03
-C - - - - - 0x009F5A 02:9F4A: 85 5C     STA ram_005C_sound_mode_data
+C - - - - - 0x009F5A 02:9F4A: 85 5C     STA ram_0034_sound_mode_data_lo
 C - - - - - 0x009F60 02:9F50: 60        RTS
 bra_9F51_FF:
 sub_9F51:
 C - - - - - 0x009F61 02:9F51: A9 00     LDA #$00
-C - - - - - 0x009F63 02:9F53: 85 59     STA ram_play_all
-C - - - - - 0x009F65 02:9F55: 85 5A     STA ram_005A_sound_mode
-C - - - - - 0x009F67 02:9F57: 85 5B     STA ram_005B_sound_mode
+C - - - - - 0x009F63 02:9F53: 85 59     STA ram_0054_play_all
+C - - - - - 0x009F65 02:9F55: 85 5A     STA ram_0053_sound_mode
+C - - - - - 0x009F67 02:9F57: 85 5B     STA ram_0031_sound_mode
 C - - - - - 0x009F6D 02:9F5D: 60        RTS
 
 

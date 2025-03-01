@@ -4,7 +4,7 @@
 .org $8000 ; for listing file
 ; 0x028010-0x02C00F
 
-.export loc_0x009158_спавн_объектов_из_данных_уровня
+.export sub_0x009158_спавн_объектов_из_данных_уровня
 .export _off004_0x009FC8_00_area_1
 .export _off005_0x00A002_00_area_1
 .export _off006_0x00A4E8_00_area_1
@@ -51,7 +51,7 @@ C - - - - - 0x009157 02:9147: 60        RTS
 
 
 
-loc_0x009158_спавн_объектов_из_данных_уровня:
+sub_0x009158_спавн_объектов_из_данных_уровня:
 C D 0 - - - 0x009158 02:9148: A5 5C     LDA ram_статус_завершения_уровня
 C - - - - - 0x00915A 02:914A: D0 FB     BNE bra_9147_RTS
 C - - - - - 0x00915C 02:914C: A5 61     LDA ram_0061_конфиг_уровня
@@ -282,8 +282,6 @@ C - - - - - 0x0092BD 02:92AD: 60        RTS
 bra_92AE_failed_to_place_object:
 C - - - - - 0x0092BE 02:92AE: 18        CLC
 C - - - - - 0x0092BF 02:92AF: 60        RTS
-
-
 
 tbl_F2D4_area_objects_spawner:
 - D 3 - - - 0x01F2E4 07:F2D4: C9 92     .word _off013_92C9_00_area_1
