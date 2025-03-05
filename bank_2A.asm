@@ -4,10 +4,6 @@
 .org $8000 ; for listing file
 ; 0x014010-0x01600F
 
-; bzk this byte must be placed at 8000
-    .byte con_prg_bank + $2A   ; 
-
-
     .byte $3F ; 00 / 00
     .byte $00 ; 00 / 04
     .byte $00 ; 00 / 08
@@ -4104,7 +4100,6 @@
     .byte $20 ; FC / F4
     .byte $20 ; FC / F8
     .byte $20 ; FC / FC
-
 
 
 .out .sprintf("Free bytes in bank 2A: %Xh [%d]", ($A000 - *), ($A000 - *))

@@ -106,6 +106,7 @@ sub_0x001000_тест_рассчета_угла_выстрела:
                                         EOR #$FF
                                         CLC
                                         ADC #$01
+                                        CLC
 bra_1001:
                                         ROL ram_7013
                                         LSR
@@ -139,7 +140,9 @@ bra_1001:
                                         EOR #$FF
                                         CLC
                                         ADC #$01
+                                        CLC
 bra_1002:
+                                        
                                         ROL ram_7013
                                         LSR
                                         LSR
@@ -147,7 +150,6 @@ bra_1002:
                                         ADC ram_7000    ; разница x
                                         STA ram_0000    ; 
                                         LDA ram_7001    ; разница X HI
-                                       ; CLC
                                         ADC #$A0    ; начальный адрес банка
                                         STA ram_0001    ; 
 
