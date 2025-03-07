@@ -9,7 +9,6 @@ local files_list = {
     "bank_26.asm",
     "bank_27.asm",
     "bank_28.asm",
-    "bank_29.asm",
     "bank_2A.asm",
     "bank_2B.asm",
     "bank_2C.asm",
