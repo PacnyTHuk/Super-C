@@ -1,7 +1,7 @@
 .segment "BANK_27"
 .include "copy_bank_ram.inc"
 .include "copy_bank_val.inc"
-.org $8000 ; for listing file
+.org $A000 ; for listing file
 ; 0x00E010-0x01000F
 
 ; направление (углы) для выстрела
@@ -4105,4 +4105,4 @@
     .byte $20 ; FC / FC
 
 
-.out .sprintf("Free bytes in bank 27: %Xh [%d]", ($A000 - *), ($A000 - *))
+.out .sprintf("Free bytes in bank 27: %Xh [%d]", ($C000 - *), ($C000 - *))
