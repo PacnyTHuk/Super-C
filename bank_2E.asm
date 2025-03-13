@@ -3061,7 +3061,7 @@ C - - - - - 0x011C32 04:9C22: A0 08     LDY #$08
 C - - - - - 0x011C34 04:9C24: BD 64 07  LDA ram_0764_obj,X
 C - - - - - 0x011C37 04:9C27: D0 07     BNE bra_9C30
 C - - - - - 0x011C39 04:9C29: BC 48 07  LDY ram_скролл_объекта_Y,X
-C - - - - - 0x011C3C 04:9C2C: B9 D4 F4  LDA tbl_0x01F4E4,Y
+C - - - - - 0x011C3C 04:9C2C: B9 D4 F4  LDA tbl_0x01F4E4_угол_поворота_объекта,Y
 C - - - - - 0x011C3F 04:9C2F: A8        TAY
 bra_9C30:
 C - - - - - 0x011C40 04:9C30: B9 3D 9C  LDA tbl_9C3D_кадры_анимации,Y
