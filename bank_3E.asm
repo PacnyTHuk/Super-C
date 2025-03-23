@@ -2035,19 +2035,18 @@ bra_F54C:
                                         CMP ram_000D    ; повернули в противоположную сторону
                                         BCS bra_F569_уменьшить  ; поворот вправо
 bra_F55F_увеличить:
-                                        LDA #$00
-                                        BEQ bra_F56B_RTS    ; jmp
+                                        LDA #$00    ; Z
+                                        RTS
 bra_F563:
                                         BCS bra_F55F_увеличить  ; поворот влево
                                         CMP ram_000D    ; повернули в противоположную сторону
                                         BCC bra_F55F_увеличить  ; поворот влево
 bra_F569_уменьшить:
-                                        LDA #$01
-bra_F56B_RTS:
+                                        LDA #$01    ; Z
                                         RTS
 bra_F56C_нет_движения:
                                         LDA #$80    ; N
-                                        BNE bra_F56B_RTS    ; jmp
+                                        RTS
 
 
 tbl_4444:
